@@ -47,6 +47,7 @@ amrfinderplus/update:
   - modules/amrfinderplus/update/**
   - tests/modules/amrfinderplus/update/**
 
+<<<<<<< HEAD
 antismash/antismashlite:
   - modules/antismash/antismashlite/**
   - tests/modules/antismash/antismashlite/**
