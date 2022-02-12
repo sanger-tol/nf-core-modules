@@ -1,0 +1,3 @@
+arima/filterfiveend:
+  - modules/arima/filterfiveend/**
+  - tests/modules/arima/filterfiveend/**
