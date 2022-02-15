@@ -38,6 +38,7 @@ amps:
   - modules/amps/**
   - tests/modules/amps/**
 
+<<<<<<< HEAD
 amrfinderplus/run:
   - modules/amrfinderplus/run/**
   - tests/modules/amrfinderplus/run/**
