@@ -38,6 +38,7 @@ amps:
   - modules/amps/**
   - tests/modules/amps/**
 
+<<<<<<< HEAD
 amrfinderplus/run:
   - modules/amrfinderplus/run/**
   - tests/modules/amrfinderplus/run/**
@@ -61,6 +62,10 @@ ariba/getref:
 ariba/run:
   - modules/ariba/run/**
   - tests/modules/ariba/run/**
+
+arima/2readsbamcombiner:
+  - modules/arima/2readsbamcombiner/**
+  - tests/modules/arima/2readsbamcombiner/**
 
 arriba:
   - modules/arriba/**
