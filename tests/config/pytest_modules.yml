@@ -1,3 +1,7 @@
 arima/2readsbamcombiner:
   - modules/arima/2readsbamcombiner/**
   - tests/modules/arima/2readsbamcombiner/**
+
+arima/filterfiveend:
+  - modules/arima/filterfiveend/**
+  - tests/modules/arima/filterfiveend/**
