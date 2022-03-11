@@ -38,7 +38,10 @@ amps:
   - modules/amps/**
   - tests/modules/amps/**
 
-<<<<<<< HEAD
+arima/2readsbamcombiner:
+  - modules/arima/2readsbamcombiner/**
+  - tests/modules/arima/2readsbamcombiner/**
+
 amrfinderplus/run:
   - modules/amrfinderplus/run/**
   - tests/modules/amrfinderplus/run/**
