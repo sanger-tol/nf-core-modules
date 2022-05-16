@@ -7,4 +7,4 @@
     - path: output/purgedups/FASTKDB/reads.hist
       md5sum: 3d5ae3a4449b9222559fbba368126036
     - path: output/purgedups/versions.yml
-      md5sum: 20fdcc53e5f2508690d6e8806e71d841
+      md5sum: 755547dd39c6eef98ef21de509bee728
