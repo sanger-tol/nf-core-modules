@@ -6,7 +6,7 @@ include { PURGEDUPS_FASTK } from '../../../../modules/purgedups/fastk/main.nf'
 
 workflow test_purgedups_fastk {
     
-        data = [
+    data = [
         [ id:'test'], // meta map
         [
            file('/lustre/scratch123/tol/teams/grit/yy5/nf_test_small/ilDiaRubi1.trimmedReads.fasta.gz', checkIfExists: true),
