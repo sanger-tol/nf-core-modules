@@ -9,7 +9,7 @@ workflow test_purgedups_fastk {
     data = [
         [ id:'test'], // meta map
         [
-           file('/lustre/scratch123/tol/teams/grit/yy5/nf_test_small/ilDiaRubi1.trimmedReads.fasta.gz', checkIfExists: true),
+           file('https://tolit.cog.sanger.ac.uk/test-data/Diarsia_rubi/working/ilDiaRubi1.hicanu.20220110/subset/ilDiaRubi1.trimmedReads.fasta.gz', checkIfExists: true),
         ],
     ]
 
