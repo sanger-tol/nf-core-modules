@@ -1,0 +1,10 @@
+- name: fastk fastk
+  command: nextflow run ./tests/modules/fastk/fastk -entry test_fastk_fastk -c ./tests/config/nextflow.config -c ./tests/modules/fastk/fastk/nextflow.config
+  tags:
+    - fastk
+    - fastk/fastk
+  files:
+    - path: output/fastk/reads.hist
+      md5sum: 3d5ae3a4449b9222559fbba368126036
+    - path: output/fastk/versions.yml
+      md5sum: 755547dd39c6eef98ef21de509bee728

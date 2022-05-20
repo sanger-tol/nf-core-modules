@@ -1487,9 +1487,9 @@ prokka:
   - modules/prokka/**
   - tests/modules/prokka/**
 
-purgedups/fastk:
-  - modules/purgedups/fastk/**
-  - tests/modules/purgedups/fastk/**
+fastk/fastk:
+  - modules/fastk/fastk/**
+  - tests/modules/fastk/fastk/**
 
 pycoqc:
   - modules/pycoqc/**

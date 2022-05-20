@@ -2,9 +2,9 @@
 
 nextflow.enable.dsl = 2
 
-include { PURGEDUPS_FASTK } from '../../../../modules/purgedups/fastk/main.nf'
+include { FASTK_FASTK } from '../../../../modules/fastk/fastk/main.nf'
 
-workflow test_purgedups_fastk {
+workflow test_fastk_fastk {
     
     data = [
         [ id:'test'], // meta map
@@ -16,6 +16,5 @@ workflow test_purgedups_fastk {
     kmer=31
     myoutdir='/lustre/scratch123/tol/teams/grit/yy5/nf_test_small'
     FASTKDB='FASTKDB'
-
-    PURGEDUPS_FASTK ( data,kmer,myoutdir,FASTKDB )
+    FASTK_FASTK ( data,kmer,FASTKDB)
 }

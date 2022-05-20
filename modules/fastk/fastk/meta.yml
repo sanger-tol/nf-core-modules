@@ -1,9 +1,9 @@
-name: purgedups_fastk
+name: fastk_fastk
 description: constructing fastk database from high quality reads
 keywords:
   - fastk
 tools:
-  - purgedups_fastk:
+  - fastk_fastk:
       description: k‑mer counter that is optimized for processing high quality DNA assembly data sets
       homepage: https://github.com/thegenemyers/FASTK/blob/master/README.md
       documentation: https://github.com/thegenemyers/FASTK/blob/master/README.md
@@ -25,9 +25,10 @@ input:
   - kmer:
     type: value
     description: the size/length of kmer
-
-  - redir:
-    type:
+  
+  - FASTKDB:
+    type: value
+    description: the specific folder to contain the fastk output
 
 output:
   - meta:
@@ -35,14 +36,13 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. [ id:'test', single_end:false ]
+  - hist:
+      type: file
+      description: fastk kmer database
+      pattern: "*.hist"
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
-
 authors:
   - "@yumisims"
