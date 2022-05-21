@@ -9,5 +9,5 @@ include { LONGRANGER_MKREF } from '../../../../modules/longranger/mkref/main.nf'
 
 workflow test_longranger_mkref {
     LONGRANGER_MKREF([ [id : "pEimTen1"],
-        file('https://darwin.cog.sanger.ac.uk/longranger_nf_test/pEimTen1.contigs.fasta', checkIfExists: true) ])
+        file(params.tol_test_data['small_genome']['pEimTen1']['assembly']['canu_contigs_fasta'] , checkIfExists: true) ])
 }
