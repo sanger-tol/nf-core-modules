@@ -7,4 +7,4 @@
     - path: output/fastk/reads.hist
       md5sum: 3d5ae3a4449b9222559fbba368126036
     - path: output/fastk/versions.yml
-      md5sum: 755547dd39c6eef98ef21de509bee728
+      md5sum: ea699417da39d40fb0f9327747699c54
