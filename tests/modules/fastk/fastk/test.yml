@@ -4,7 +4,9 @@
     - fastk
     - fastk/fastk
   files:
-    - path: output/fastk/reads.hist
+    - path: output/fastk/test_fk.hist
       md5sum: 3d5ae3a4449b9222559fbba368126036
     - path: output/fastk/versions.yml
       md5sum: ea699417da39d40fb0f9327747699c54
+    - path: output/fastk/test_fk.ktab
+      md5sum: 6b0c0aaec93bf3ab7bf286463d8f58e8

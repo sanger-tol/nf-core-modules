@@ -15,6 +15,5 @@ workflow test_fastk_fastk {
 
     kmer=31
     myoutdir='/lustre/scratch123/tol/teams/grit/yy5/nf_test_small'
-    FASTKDB='FASTKDB'
-    FASTK_FASTK ( data,kmer,FASTKDB)
+    FASTK_FASTK (data,kmer)
 }
