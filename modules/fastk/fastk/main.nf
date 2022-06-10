@@ -16,7 +16,6 @@ process FASTK_FASTK {
     output:
     tuple val(meta), path("*.hist"), emit: hist
     tuple val(meta), path("*.ktab*", hidden: true), emit: ktab, optional: true
-    tuple val(meta), path("*.prof*", hidden: true), emit: prof, optional: true
     path "versions.yml"           , emit: versions
 
     when:
@@ -29,7 +28,7 @@ process FASTK_FASTK {
     def cups = task.cups ?: ''
 
     """
-    FastK -k$kmer -T1 -t$cups -N${prefix}_fk $trimmedReads
+    FastK $args -k$kmer -T1 -t$cups -N${prefix}_fk $trimmedReads
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         fastk: $version
