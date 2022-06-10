@@ -42,7 +42,7 @@ output:
       type: file
       description: A sorted table of all canonical k‑mers along with their counts.
       pattern: "*.ktab"
-      
+
   - versions:
       type: file
       description: File containing software versions
