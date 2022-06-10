@@ -25,7 +25,7 @@ input:
   - kmer:
     type: value
     description: the size/length of kmer
-  
+
   - FASTKDB:
     type: value
     description: the specific folder to contain the fastk output
