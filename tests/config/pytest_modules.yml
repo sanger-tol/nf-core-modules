@@ -50,7 +50,6 @@ amrfinderplus/update:
   - modules/amrfinderplus/update/**
   - tests/modules/amrfinderplus/update/**
 
-<<<<<<< HEAD
 antismash/antismashlite:
   - modules/antismash/antismashlite/**
   - tests/modules/antismash/antismashlite/**
@@ -66,10 +65,6 @@ ariba/getref:
 ariba/run:
   - modules/ariba/run/**
   - tests/modules/ariba/run/**
-
-arima/2readsbamcombiner:
-  - modules/arima/2readsbamcombiner/**
-  - tests/modules/arima/2readsbamcombiner/**
 
 arima/filterfiveend:
   - modules/arima/filterfiveend/**
