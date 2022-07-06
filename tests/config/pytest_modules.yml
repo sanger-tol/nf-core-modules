@@ -5,3 +5,7 @@ arima/2readsbamcombiner:
 arima/filterfiveend:
   - modules/arima/filterfiveend/**
   - tests/modules/arima/filterfiveend/**
+
+longranger/align:
+  - modules/longranger/align/**
+  - tests/modules/longranger/align/**
