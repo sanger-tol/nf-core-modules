@@ -13,3 +13,11 @@ longranger/align:
 longranger/mkref:
   - modules/longranger/mkref/**
   - tests/modules/longranger/mkref/**
+
+makecmap/fa2cmapmulticolor:
+  - modules/makecmap/fa2cmapmulticolor/**
+  - tests/modules/makecmap/fa2cmapmulticolor/**
+
+makecmap/makecmap:
+  - modules/makecmap/makecmap/**
+  - tests/modules/makecmap/makecmap/**
