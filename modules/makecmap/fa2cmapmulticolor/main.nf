@@ -24,7 +24,7 @@ process MAKECMAP_FA2CMAPMULTICOLOR {
     script:
     def args = task.ext.args ?: ''
     """
-    fa2cmap_multi_color.pl -i $fasta -e $enzyme 1
+    fa2cmap_multi_color.pl -i $fasta -e $enzyme 1 $args
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
