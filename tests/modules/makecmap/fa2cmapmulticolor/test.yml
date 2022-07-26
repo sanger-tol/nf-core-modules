@@ -7,5 +7,7 @@
     - path: "output/makecmap/genome_BSPQI_0kb_0labels.cmap"
       md5sum: 729454daee6f853d52cfaacb27040e7f
     - path: "output/makecmap/genome_BSPQI_0kb_0labels_key.txt"
+      contains: "MT192765.1 Severe acute respiratory syndrome coronavirus 2 isolate SARS-CoV-2/human/USA/PC00101P/2020, complete genome"
+      contains: "29829"
     - path: output/makecmap/versions.yml
       md5sum: 86896713f084e23d3f3a1c562cf6fd1c
