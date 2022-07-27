@@ -1,0 +1,10 @@
+- name: "makecmap renamecmapids"
+  command: nextflow run ./tests/modules/makecmap/renamecmapids -entry test_makecmap_renamecmapids -c ./tests/config/nextflow.config -c ./tests/modules/makecmap/renamecmapids/nextflow.config
+  tags:
+    - "makecmap"
+    - "makecmap/renamecmapids"
+  files:
+    - path: "output/makecmap/test_EDITED.cmap"
+      md5sum: 059b7dbf37402166b644b37d2e5d50b9
+    - path: output/makecmap/versions.yml
+      md5sum: d1454a72e1bf50d66e7d780d91858100
