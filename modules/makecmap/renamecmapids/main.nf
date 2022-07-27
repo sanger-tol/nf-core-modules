@@ -10,7 +10,6 @@ process MAKECMAP_RENAMECMAPIDS {
     container "quay.io/sanger-tol/makecmap:${version}"
 
     input:
-
     tuple val(meta), path(cmap)
     path keys
 
