@@ -29,7 +29,7 @@ process MAKECMAP_RENAMECMAPIDS {
     rename_cmapids.pl -cmapfile $cmap -idx_key $keys > ${prefix}_EDITED.cmap
 
     cat <<-END_VERSIONS > versions.yml
-     "${task.process}":
+    "${task.process}":
         makecmap: $version
     END_VERSIONS
     """
