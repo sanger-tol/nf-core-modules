@@ -699,9 +699,17 @@ ensemblvep:
   - modules/ensemblvep/**
   - tests/modules/ensemblvep/**
 
+entrezdirect/esearch:
+  - modules/entrezdirect/esearch/**
+  - tests/modules/entrezdirect/esearch/**
+
 entrezdirect/esummary:
   - modules/entrezdirect/esummary/**
   - tests/modules/entrezdirect/esummary/**
+
+entrezdirect/xtract:
+  - modules/entrezdirect/xtract/**
+  - tests/modules/entrezdirect/xtract/**
 
 expansionhunter:
   - modules/expansionhunter/**
@@ -1038,6 +1046,14 @@ gunc/run:
 gunzip:
   - modules/gunzip/**
   - tests/modules/gunzip/**
+
+gvcftools/extractvariants:
+  - modules/gvcftools/extractvariants/**
+  - tests/modules/gvcftools/extractvariants/**
+
+hamronization/abricate:
+  - modules/hamronization/abricate/**
+  - tests/modules/hamronization/abricate/**
 
 hamronization/amrfinderplus:
   - modules/hamronization/amrfinderplus/**
@@ -1926,6 +1942,10 @@ samtools/convert:
 samtools/depth:
   - modules/samtools/depth/**
   - tests/modules/samtools/depth/**
+
+samtools/dict:
+  - modules/samtools/dict/**
+  - tests/modules/samtools/dict/**
 
 samtools/faidx:
   - modules/samtools/faidx/**
