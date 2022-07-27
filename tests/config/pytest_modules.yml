@@ -1366,6 +1366,10 @@ makecmap/fa2cmapmulticolor:
   - modules/makecmap/fa2cmapmulticolor/**
   - tests/modules/makecmap/fa2cmapmulticolor/**
 
+makecmap/renamecmapids:
+  - modules/makecmap/renamecmapids/**
+  - tests/modules/makecmap/renamecmapids/**
+
 malt/build:
   - modules/malt/build/**
   - tests/modules/malt/build_test/**
