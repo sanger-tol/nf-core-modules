@@ -25,7 +25,7 @@ process MAKECMAP_RENAMECMAPIDS {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    rename_cmapids.pl -cmapfile $cmap -idx_key $keys > ${prefix}_EDITED.cmap
+    rename_cmapids.pl -cmapfile $cmap -idx_key $keys $args > ${prefix}_EDITED.cmap
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
