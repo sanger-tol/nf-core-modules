@@ -18,6 +18,7 @@ makecmap/fa2cmapmulticolor:
   - modules/makecmap/fa2cmapmulticolor/**
   - tests/modules/makecmap/fa2cmapmulticolor/**
 
-makecmap/makecmap:
-  - modules/makecmap/makecmap/**
-  - tests/modules/makecmap/makecmap/**
+makecmap/renamecmapids:
+  - modules/makecmap/renamecmapids/**
+  - tests/modules/makecmap/renamecmapids/**
+
