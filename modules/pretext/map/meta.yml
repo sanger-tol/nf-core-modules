@@ -1,0 +1,48 @@
+name: "pretext_map"
+description: A collection of the Pretext Hi-C genome contact map tools.
+keywords:
+  - HiC
+  - genome
+  - contact map
+tools:
+  - "pretext":
+      description: "Paired REad TEXTure Mapper. Converts SAM formatted read pairs into genome contact maps."
+      homepage: "None"
+      documentation: "None"
+      tool_dev_url: https://github.com/wtsi-hpag/PretextMap
+      doi: ""
+      licence: "['MIT']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test' ]
+  - pairs:
+      type: file
+      description: Output of juicer pre or sam/bam file
+      pattern: "*.{txt,bam,sam}"
+  - fai:
+      type: file
+      description: |
+        Index of corresponding fasta reference file
+      pattern: "*fai"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test']
+  - pretext:
+      type: file
+      description: Contact map file
+      pattern: "*.pretext"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@ksenia-krasheninnikova"

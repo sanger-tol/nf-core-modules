@@ -1787,6 +1787,10 @@ preseq/lcextrap:
   - modules/preseq/lcextrap/**
   - tests/modules/preseq/lcextrap/**
 
+pretext/map:
+  - modules/pretext/map/**
+  - tests/modules/pretext/map/**
+
 prinseqplusplus:
   - modules/prinseqplusplus/**
   - tests/modules/prinseqplusplus/**
