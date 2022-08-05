@@ -1,0 +1,12 @@
+- name: "pretext map"
+  command: nextflow run ./tests/modules/pretext/map -entry test_pretext_map -c ./tests/config/nextflow.config -c ./tests/modules/pretext/map/nextflow.config
+  tags:
+    - "pretext"
+    #
+    - "pretext/map"
+    #
+  files:
+    - path: "output/pretext/test.pretext"
+      md5sum: ded4d679a0cbb571304b16e81caa359a
+    - path: output/pretext/versions.yml
+      md5sum: 2c73934f084a78ae68b87733a7f8f730
