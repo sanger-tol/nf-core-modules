@@ -1,0 +1,12 @@
+- name: "selfcomp splitfasta"
+  command: nextflow run ./tests/modules/selfcomp/splitfasta -entry test_selfcomp_splitfasta -c ./tests/config/nextflow.config -c ./tests/modules/selfcomp/splitfasta/nextflow.config
+  tags:
+    - "selfcomp"
+    - "selfcomp/splitfasta"
+  files:
+    - path: "output/selfcomp/test_split.fa"
+      md5sum: 5f065481defca7845f8f6d285bb4f39d
+    - path: "output/selfcomp/test_split.agp"
+      md5sum: 97375aa660ed799e79742dc5be10fb8c
+    - path: output/selfcomp/versions.yml
+      md5sum: 3a781a91a3b0af131560245b4a3cb658
