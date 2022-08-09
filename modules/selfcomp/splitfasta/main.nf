@@ -1,17 +1,17 @@
 process SELFCOMP_SPLITFASTA {
     tag "$meta.id"
     label 'process_medium'
-    
+
     def version = '0.001-c3'
 
     if (params.enable_conda) {
         exit 1, "Conda environments cannot be used when using the makecmap process. Please use docker or singularity containers."
     }
     container "quay.io/sanger-tol/splitfasta:${version}"
-    
+
     input:
     tuple val(meta), path(fasta)
-    
+
     output:
     tuple val(meta), path("*.fa"), emit: fa
     path("*.agp")                , emit: agp
@@ -19,7 +19,7 @@ process SELFCOMP_SPLITFASTA {
 
     when:
     task.ext.when == null || task.ext.when
-    
+
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
@@ -32,3 +32,4 @@ process SELFCOMP_SPLITFASTA {
     END_VERSIONS
     """
 }
+
