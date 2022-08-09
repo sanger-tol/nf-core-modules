@@ -1999,6 +1999,10 @@ seacr/callpeak:
   - modules/seacr/callpeak/**
   - tests/modules/seacr/callpeak/**
 
+selfcomp/splitfasta:
+  - modules/selfcomp/splitfasta/**
+  - tests/modules/selfcomp/splitfasta/**
+
 seqkit/pair:
   - modules/seqkit/pair/**
   - tests/modules/seqkit/pair/**
