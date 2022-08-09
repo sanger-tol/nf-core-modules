@@ -22,8 +22,9 @@ process SELFCOMP_SPLITFASTA {
     
     script:
     def args = task.ext.args ?: ''
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    split_genomes_for_ensembl.pl $fasta ${meta.id}_split.fa ${meta.id}_split.agp
+    split_genomes_for_ensembl.pl $fasta ${prefix}_split.fa ${prefix}_split.agp
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
