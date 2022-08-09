@@ -20,6 +20,8 @@ process PRETEXT_MAP {
 
     script:
     def args = task.ext.args ?: ''
+    def prefix = task.ext.prefix ?: "${meta.id}"
+
     if (alignment.split({'.'})[-1] in ['sam','bam']) {
         """
         samtools view -h | PretextMap $args -o $meta.id".pretext";
