@@ -1378,6 +1378,10 @@ mafft:
   - modules/mafft/**
   - tests/modules/mafft/**
 
+makecmap/cmap2bed:
+  - modules/makecmap/cmap2bed/**
+  - tests/modules/makecmap/cmap2bed/**
+
 makecmap/fa2cmapmulticolor:
   - modules/makecmap/fa2cmapmulticolor/**
   - tests/modules/makecmap/fa2cmapmulticolor/**
