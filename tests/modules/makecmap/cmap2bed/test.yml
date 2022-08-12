@@ -1,14 +1,10 @@
-## TODO nf-core: Please run the following command to build this file:
-#                nf-core modules create-test-yml makecmap/cmap2bed
 - name: "makecmap cmap2bed"
   command: nextflow run ./tests/modules/makecmap/cmap2bed -entry test_makecmap_cmap2bed -c ./tests/config/nextflow.config -c ./tests/modules/makecmap/cmap2bed/nextflow.config
   tags:
     - "makecmap"
-    #
     - "makecmap/cmap2bed"
-    #
   files:
-    - path: "output/makecmap/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
+    - path: "output/makecmap/test_DLE1.bed"
+      md5sum: 22f25a0226868fa4a793c798598d07f8
     - path: output/makecmap/versions.yml
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
+      md5sum: 1de3b0882d0f6c04a03eeaeefae4142a
