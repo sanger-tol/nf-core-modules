@@ -4,8 +4,7 @@ keywords:
   - cmap
 tools:
   - "cmap2bed":
-      description: "converted a id converted bionano cmap to a bed file"
-      licence: Sanger
+      description: "converted a id converted bionano cmap to a bed file and sort it in numerial order"
 
 input:
   - meta:

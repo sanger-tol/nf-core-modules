@@ -11,5 +11,5 @@ workflow test_makecmap_cmap2bed {
         file(params.tol_test_data['small_genome']['Mucor_piriformis']['genomic_data']['bionano_cmap'], checkIfExists: true)
     ]
     enzyme = "DLE1"
-    MAKECMAP_CMAP2BED ( input, enzyme)
+    MAKECMAP_CMAP2BED ( input, enzyme )
 }
