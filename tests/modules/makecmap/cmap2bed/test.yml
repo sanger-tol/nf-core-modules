@@ -6,5 +6,5 @@
   files:
     - path: "output/makecmap/test_DLE1.bed"
       md5sum: 22f25a0226868fa4a793c798598d07f8
-    - path: output/makecmap/versions.yml
+    - path: "output/makecmap/versions.yml"
       md5sum: 1de3b0882d0f6c04a03eeaeefae4142a
