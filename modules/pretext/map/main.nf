@@ -2,10 +2,10 @@ process PRETEXT_MAP {
     tag "$meta.id"
     label 'process_medium'
 
-    conda (params.enable_conda ? "bioconda::pretextmap:0.1.9" : null)
+    conda (params.enable_conda ? "bioconda::mulled-v2-f3591ce8609c7b3b33e5715333200aa5c163aa61:c3fe0c6711d0062519837db1b50d17f6899f65e4-0" : null)
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/pretextmap:0.1.9--h9f5acd7_1' :
-        'quay.io/biocontainers/pretextmap:0.1.9--h9f5acd7_1' }"
+        'https://depot.galaxyproject.org/singularity/mulled-v2-f3591ce8609c7b3b33e5715333200aa5c163aa61:c3fe0c6711d0062519837db1b50d17f6899f65e4-0' :
+        'quay.io/biocontainers/mulled-v2-f3591ce8609c7b3b33e5715333200aa5c163aa61:c3fe0c6711d0062519837db1b50d17f6899f65e4-0' }"
 
     input:
     tuple val(meta), path(alignment)
