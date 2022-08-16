@@ -5,9 +5,9 @@ keywords:
 tools:
   - "selfcomp":
       description: |
-      module to convert standard 4 columns output to bed file format and filtered by given motif length.
-      output bed file is in tab separated format:
-      reference_id ref_start ref_end query_id matching_length forward/reverse  query_start query_end sizeof_query
+        module to convert standard 4 columns output to bed file format and filtered by given motif length.
+        output bed file is in tab separated format
+        reference_id ref_start ref_end query_id matching_length forward/reverse  query_start query_end sizeof_query
 
 input:
   - meta:
