@@ -26,3 +26,11 @@ makecmap/renamecmapids:
   - modules/makecmap/renamecmapids/**
   - tests/modules/makecmap/renamecmapids/**
 
+selfcomp/mummer2bed:
+  - modules/selfcomp/mummer2bed/**
+  - tests/modules/selfcomp/mummer2bed/**
+
+selfcomp/splitfasta:
+  - modules/selfcomp/splitfasta/**
+  - tests/modules/selfcomp/splitfasta/**
+
