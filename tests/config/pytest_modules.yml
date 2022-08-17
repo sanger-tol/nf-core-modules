@@ -2019,6 +2019,10 @@ seacr/callpeak:
   - modules/seacr/callpeak/**
   - tests/modules/seacr/callpeak/**
 
+selfcomp/mummer2bed:
+  - modules/selfcomp/mummer2bed/**
+  - tests/modules/selfcomp/mummer2bed/**
+
 selfcomp/splitfasta:
   - modules/selfcomp/splitfasta/**
   - tests/modules/selfcomp/splitfasta/**

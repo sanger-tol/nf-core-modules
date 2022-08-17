@@ -1,0 +1,12 @@
+- name: "selfcomp mummer2bed"
+  command: nextflow run ./tests/modules/selfcomp/mummer2bed -entry test_selfcomp_mummer2bed -c ./tests/config/nextflow.config -c ./tests/modules/selfcomp/mummer2bed/nextflow.config
+  tags:
+    - "selfcomp"
+    #
+    - "selfcomp/mummer2bed"
+    #
+  files:
+    - path: "output/selfcomp/test.bed"
+      md5sum: 25518c0a084a16716f7bf2dbb38809f8
+    - path: output/selfcomp/versions.yml
+      md5sum: 70065850a1a5554c406e5282233c3fca
