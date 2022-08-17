@@ -1,0 +1,10 @@
+- name: "selfcomp mapids"
+  command: nextflow run ./tests/modules/selfcomp/mapids -entry test_selfcomp_mapids -c ./tests/config/nextflow.config -c ./tests/modules/selfcomp/mapids/nextflow.config
+  tags:
+    - "selfcomp"
+    - "selfcomp/mapids"
+  files:
+    - path: "output/selfcomp/test_mapped.bed"
+      md5sum: 48a9dac39390c775fcfab33fdaaa9e50
+    - path: output/selfcomp/versions.yml
+      md5sum: ca52e90228df601f0a8b533acfc4ef26

@@ -2019,6 +2019,14 @@ seacr/callpeak:
   - modules/seacr/callpeak/**
   - tests/modules/seacr/callpeak/**
 
+selfcomp/mapids:
+  - modules/selfcomp/mapids/**
+  - tests/modules/selfcomp/mapids/**
+
+selfcomp/mummer2bed:
+  - modules/selfcomp/mummer2bed/**
+  - tests/modules/selfcomp/mummer2bed/**
+
 selfcomp/splitfasta:
   - modules/selfcomp/splitfasta/**
   - tests/modules/selfcomp/splitfasta/**
@@ -2251,9 +2259,9 @@ trimmomatic:
   - modules/trimmomatic/**
   - tests/modules/trimmomatic/**
 
-ucsc/bed12tobigbed:
-  - modules/ucsc/bed12tobigbed/**
-  - tests/modules/ucsc/bed12tobigbed/**
+ucsc/bedtobigbed:
+  - modules/ucsc/bedtobigbed/**
+  - tests/modules/ucsc/bedtobigbed/**
 
 ucsc/bedclip:
   - modules/ucsc/bedclip/**
