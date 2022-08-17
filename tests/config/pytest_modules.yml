@@ -2022,7 +2022,7 @@ seacr/callpeak:
 selfcomp/mapids:
   - modules/selfcomp/mapids/**
   - tests/modules/selfcomp/mapids/**
-  
+
 selfcomp/mummer2bed:
   - modules/selfcomp/mummer2bed/**
   - tests/modules/selfcomp/mummer2bed/**
