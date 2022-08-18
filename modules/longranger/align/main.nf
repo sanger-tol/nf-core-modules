@@ -3,7 +3,7 @@ process LONGRANGER_ALIGN {
     // Visit tests/modules/longranger/align/nextflow.config for an example.
 
     tag "$meta.id"
-    label 'process_medium'
+    label 'process_high'
 
     def version = '2.2.2-c1'
 
