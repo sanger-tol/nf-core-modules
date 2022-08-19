@@ -6,6 +6,10 @@ arima/filterfiveend:
   - modules/arima/filterfiveend/**
   - tests/modules/arima/filterfiveend/**
 
+blast/tblastn:
+  - modules/blast/tblastn/**
+  - tests/modules/blast/tblastn/**
+
 longranger/align:
   - modules/longranger/align/**
   - tests/modules/longranger/align/**
