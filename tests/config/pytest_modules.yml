@@ -379,6 +379,10 @@ blast/makeblastdb:
   - modules/blast/makeblastdb/**
   - tests/modules/blast/makeblastdb/**
 
+blast/tblastn:
+  - modules/blast/tblastn/**
+  - tests/modules/blast/tblastn/**
+
 bowtie/align:
   - modules/bowtie/align/**
   - modules/bowtie/build/**
@@ -2263,10 +2267,6 @@ trimmomatic:
   - modules/trimmomatic/**
   - tests/modules/trimmomatic/**
 
-ucsc/bedtobigbed:
-  - modules/ucsc/bedtobigbed/**
-  - tests/modules/ucsc/bedtobigbed/**
-
 ucsc/bedclip:
   - modules/ucsc/bedclip/**
   - tests/modules/ucsc/bedclip/**
@@ -2274,6 +2274,10 @@ ucsc/bedclip:
 ucsc/bedgraphtobigwig:
   - modules/ucsc/bedgraphtobigwig/**
   - tests/modules/ucsc/bedgraphtobigwig/**
+
+ucsc/bedtobigbed:
+  - modules/ucsc/bedtobigbed/**
+  - tests/modules/ucsc/bedtobigbed/**
 
 ucsc/bigwigaverageoverbed:
   - modules/ucsc/bigwigaverageoverbed/**
