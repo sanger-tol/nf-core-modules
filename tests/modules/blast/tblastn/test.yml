@@ -13,7 +13,6 @@
     - path: output/blast/blast_db/nxOscSpen2_split.fa.nhr
       md5sum: 08986983b1a6c54f775b5b26b2dad19e
     - path: output/blast/blast_db/nxOscSpen2_split.fa.nin
-      md5sum: a6beb7ccde0395796bab176bcd36dd63
     - path: output/blast/blast_db/nxOscSpen2_split.fa.not
       md5sum: 3e1b6cf560a71e615ee03e9dd83883c9
     - path: output/blast/blast_db/nxOscSpen2_split.fa.nsq
