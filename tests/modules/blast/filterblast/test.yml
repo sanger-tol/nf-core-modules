@@ -4,7 +4,7 @@
     - "blast"
     - "blast/filterblast"
   files:
-    - path: "output/blast/test-null-filtered90.tsv"
+    - path: "output/blast/test-rna-filtered90.tsv"
       md5sum: 61b5735cf8045d870c2fd616a9a079f3
     - path: output/blast/versions.yml
       md5sum: 5f55b10ba9d1721b0b5705d7f8aa5c19
