@@ -375,6 +375,10 @@ blast/blastn:
   - modules/blast/blastn/**
   - tests/modules/blast/blastn/**
 
+blast/filterblast:
+  - modules/blast/filterblast/**
+  - tests/modules/blast/filterblast/**
+
 blast/makeblastdb:
   - modules/blast/makeblastdb/**
   - tests/modules/blast/makeblastdb/**
