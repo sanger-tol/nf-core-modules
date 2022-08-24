@@ -5,6 +5,6 @@
     - "blast/filterblast"
   files:
     - path: "output/blast/test-null-filtered90.tsv"
-      md5sum: d41d8cd98f00b204e9800998ecf8427e
+      md5sum: 61b5735cf8045d870c2fd616a9a079f3
     - path: output/blast/versions.yml
       md5sum: 5f55b10ba9d1721b0b5705d7f8aa5c19

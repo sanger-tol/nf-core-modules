@@ -11,16 +11,19 @@ process BLAST_FILTERBLAST {
 
 
     input:
-    tuple val( meta ), file( concat_blast_out )
+    tuple val(meta), path(blastout)
 
     output:
-    tuple val( meta ), file( "${meta.id}-${meta.type}-*.tsv")   , emit: final_tsv
+    tuple val( meta ), path( "${meta.id}-${meta.type}-*.tsv")   , emit: final_tsv
     path "versions.yml"                                         , emit: versions
+
+    when:
+    task.ext.when == null || task.ext.when
 
     script:
     def filt_percent = task.ext.args ?: 90.00
     """
-    filter_blast.py $meta.id $meta.type $concat_blast_out $filt_percent
+    filter_blast.py $meta.id $meta.type $blastout $filt_percent
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         filter_blast: $version
