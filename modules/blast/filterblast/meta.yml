@@ -1,0 +1,35 @@
+name: "blast_filterblast"
+description: filter the blastn/tblastn by confidence score and reformat the output to bed file
+keywords:
+  - filter
+tools:
+  - "filterblast":
+      description: "filter the blastn/tblastn by confidence score and reformat the output to bed file"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+  - blastout:
+      type: file
+      description: outfmt 6 output from blastn/tblastn
+      pattern: "*.{*}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - final_tsv:
+      type: file
+      description: filtered and reformatted tsv/bed file
+      pattern: "*.{*}"
+
+authors:
+  - "@yumisims"

@@ -6,6 +6,10 @@ arima/filterfiveend:
   - modules/arima/filterfiveend/**
   - tests/modules/arima/filterfiveend/**
 
+blast/filterblast:
+  - modules/blast/filterblast/**
+  - tests/modules/blast/filterblast/**
+
 blast/tblastn:
   - modules/blast/tblastn/**
   - tests/modules/blast/tblastn/**
