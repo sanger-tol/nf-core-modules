@@ -735,6 +735,10 @@ entrezdirect/xtract:
   - modules/entrezdirect/xtract/**
   - tests/modules/entrezdirect/xtract/**
 
+epang:
+  - modules/epang/**
+  - tests/modules/epang/
+
 expansionhunter:
   - modules/expansionhunter/**
   - tests/modules/expansionhunter/**
@@ -1570,13 +1574,13 @@ metabat2/metabat2:
   - modules/metabat2/metabat2/**
   - tests/modules/metabat2/metabat2/**
 
-metaphlan3/metaphlan3:
-  - modules/metaphlan3/metaphlan3/**
-  - tests/modules/metaphlan3/metaphlan3/**
-
 metaphlan3/mergemetaphlantables:
   - modules/metaphlan3/mergemetaphlantables/**
   - tests/modules/metaphlan3/mergemetaphlantables/**
+
+metaphlan3/metaphlan3:
+  - modules/metaphlan3/metaphlan3/**
+  - tests/modules/metaphlan3/metaphlan3/**
 
 methyldackel/extract:
   - modules/methyldackel/extract/**
@@ -2207,6 +2211,10 @@ snapaligner/index:
   - modules/snapaligner/index/**
   - tests/modules/snapaligner/index/**
 
+snippy/core:
+  - modules/snippy/core/**
+  - tests/modules/snippy/core/**
+
 snippy/run:
   - modules/snippy/run/**
   - tests/modules/snippy/run/**
@@ -2302,6 +2310,10 @@ svdb/merge:
 svdb/query:
   - modules/svdb/query/**
   - tests/modules/svdb/query/**
+
+svtk/standardize:
+  - modules/svtk/standardize/**
+  - tests/modules/svtk/standardize/**
 
 tabix/bgzip:
   - modules/tabix/bgzip/**
