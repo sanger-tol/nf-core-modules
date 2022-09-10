@@ -755,6 +755,10 @@ fastani:
   - modules/fastani/**
   - tests/modules/fastani/**
 
+fastawindows:
+  - modules/fastawindows/**
+  - tests/modules/fastawindows/**
+
 fastk/fastk:
   - modules/fastk/fastk/**
   - tests/modules/fastk/fastk/**
@@ -827,6 +831,10 @@ gamma/gamma:
   - modules/gamma/gamma/**
   - tests/modules/gamma/gamma/**
 
+gappa/examinegraft:
+  - modules/gappa/examinegraft/**
+  - tests/modules/gappa/examinegraft/**
+
 gatk/indelrealigner:
   - modules/gatk/indelrealigner/**
   - tests/modules/gatk/indelrealigner/**
@@ -878,6 +886,10 @@ gatk4/cnnscorevariants:
 gatk4/collectreadcounts:
   - modules/gatk4/collectreadcounts/**
   - tests/modules/gatk4/collectreadcounts/**
+
+gatk4/collectsvevidence:
+  - modules/gatk4/collectsvevidence/**
+  - tests/modules/gatk4/collectsvevidence/**
 
 gatk4/combinegvcfs:
   - modules/gatk4/combinegvcfs/**
