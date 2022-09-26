@@ -5,19 +5,21 @@
     - blast/tblastn
   files:
     - path: ./output/blast/test.tblastn.txt
-      md5sum: 3219f4daf98c1cd29b5a61adcb39aec9
+      md5sum: c26ccfa5ceae82fc6affdc77f5505b62
     - path: ./output/blast/versions.yml
       md5sum: 6d23563b8d75e2fe1e03d3fbe10098a9
-    - path: ./output/blast/blast_db/nxOscSpen2_split.fa.ndb
-      md5sum: ee69978842e9d5b99d2b61a52cd95111
-    - path: ./output/blast/blast_db/nxOscSpen2_split.fa.nhr
-      md5sum: 08986983b1a6c54f775b5b26b2dad19e
-    - path: ./output/blast/blast_db/nxOscSpen2_split.fa.nin
-    - path: ./output/blast/blast_db/nxOscSpen2_split.fa.not
-      md5sum: 3e1b6cf560a71e615ee03e9dd83883c9
-    - path: ./output/blast/blast_db/nxOscSpen2_split.fa.nsq
-      md5sum: 7e78ac277da4cc48140aeebd45b897cb
-    - path: ./output/blast/blast_db/nxOscSpen2_split.fa.ntf
+    - path: ./output/blast/blast_db/genome.fasta.nsq
+      md5sum: 982cbc7d9e38743b9b1037588862b9da
+    - path: ./output/blast/blast_db/genome.fasta.nin
+    - path: ./output/blast/blast_db/genome.fasta
+      md5sum: 6e9fe4042a72f2345f644f239272b7e6
+    - path: ./output/blast/blast_db/genome.fasta.nhr
+      md5sum: f4b4ddb034fd3dd7b25c89e9d50c004e
+    - path: ./output/blast/blast_db/genome.fasta.ndb
+      md5sum: 0d553c830656469211de113c5022f06d
+    - path: ./output/blast/blast_db/genome.fasta.not
+      md5sum: 1e53e9d08f1d23af0299cfa87478a7bb
+    - path: ./output/blast/blast_db/genome.fasta.nto
+      md5sum: 33cdeccccebe80329f1fdbee7f5874cb
+    - path: ./output/blast/blast_db/genome.fasta.ntf
       md5sum: de1250813f0c7affc6d12dac9d0fb6bb
-    - path: ./output/blast/blast_db/nxOscSpen2_split.fa.nto
-      md5sum: b4bf633b4c8f732aa51c909de1e4fd12

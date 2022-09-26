@@ -38,3 +38,4 @@ output:
       pattern: "versions.yml"
 authors:
   - "@yumisims"
+  - "@gq2"
