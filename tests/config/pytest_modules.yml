@@ -511,6 +511,10 @@ checkm/lineagewf:
   - modules/checkm/lineagewf/**
   - tests/modules/checkm/lineagewf/**
 
+checkm/qa:
+  - modules/checkm/qa/**
+  - tests/modules/checkm/qa/**
+
 chromap/chromap:
   - modules/chromap/chromap/**
   - tests/modules/chromap/chromap/**
@@ -810,6 +814,10 @@ fastqscan:
 fasttree:
   - modules/fasttree/**
   - tests/modules/fasttree/**
+
+fcs/fcsadaptor:
+  - modules/fcs/fcsadaptor/**
+  - tests/modules/fcs/fcsadaptor/**
 
 ffq:
   - modules/ffq/**
@@ -2539,6 +2547,10 @@ vcf2maf:
 vcfanno:
   - modules/vcfanno/**
   - tests/modules/vcfanno/**
+
+vcflib/vcfbreakmulti:
+  - modules/vcflib/vcfbreakmulti/**
+  - tests/modules/vcflib/vcfbreakmulti/**
 
 vcflib/vcfuniq:
   - modules/vcflib/vcfuniq/**
