@@ -2287,6 +2287,10 @@ sexdeterrmine:
   - modules/sexdeterrmine/**
   - tests/modules/sexdeterrmine/**
 
+shasta:
+  - modules/shasta/**
+  - tests/modules/shasta/**
+
 shasum:
   - modules/shasum/**
   - tests/modules/shasum/**
