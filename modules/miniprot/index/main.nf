@@ -25,10 +25,11 @@ process MINIPROT_INDEX {
         -d ${fasta.baseName}.mpi \\
         $args \\
         $fasta
-
+        
+    """
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        miniprot: \$(miniprot --version 2>&1)
+        miniprot: $version
     END_VERSIONS
     """
 }
