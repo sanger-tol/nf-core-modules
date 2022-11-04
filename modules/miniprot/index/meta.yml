@@ -27,7 +27,7 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. [ id:'test', single_end:false ]
-  - mmi:
+  - mgi:
       type: file
       description: miniprot fasta index.
       pattern: "*.mpi"
