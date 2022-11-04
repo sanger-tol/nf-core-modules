@@ -7,4 +7,4 @@
     - path: ./output/miniprot/genome.mpi
       md5sum: ec3d98dc989e73873afe5b529c84c022
     - path: output/miniprot/versions.yml
-      md5sum: 47797e3a679619c1b004d3bea41b128f
+      md5sum: b191a09118135126e3da7080ad64983d

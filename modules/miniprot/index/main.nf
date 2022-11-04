@@ -3,7 +3,7 @@ process MINIPROT_INDEX {
     label 'process_medium'
     def version = '0.5-c2'
     if (params.enable_conda) {
-        exit 1, "Conda environments cannot be used when using the mummer2bed process. Please use docker or singularity containers."
+        exit 1, "Conda environments cannot be used when using the miniprot process. Please use docker or singularity containers."
     }
     container "quay.io/sanger-tol/miniprot:${version}"
 
@@ -19,14 +19,14 @@ process MINIPROT_INDEX {
 
     script:
     def args = task.ext.args ?: ''
+
     """
     miniprot \\
         -t $task.cpus \\
         -d ${fasta.baseName}.mpi \\
         $args \\
         $fasta
-        
-    """
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         miniprot: $version
