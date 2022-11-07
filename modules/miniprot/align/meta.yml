@@ -1,18 +1,18 @@
-name: minimap2_align
+name: miniprot_align
 description: A versatile pairwise aligner for genomic and spliced nucleotide sequences
 keywords:
   - align
   - fasta
-  - fastq
+  - protein
   - genome
   - paf
-  - reference
+  - gff
 tools:
-  - minimap2:
+  - miniprot:
       description: |
-        A versatile pairwise aligner for genomic and spliced nucleotide sequences.
-      homepage: https://github.com/lh3/minimap2
-      documentation: https://github.com/lh3/minimap2#uguide
+        A versatile pairwise aligner for genomic and protein sequences.
+      homepage: https://github.com/lh3/miniprot
+      documentation: https://github.com/lh3/miniprot
       licence: ["MIT"]
 input:
   - meta:
@@ -20,25 +20,21 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. [ id:'test', single_end:false ]
-  - reads:
+  - pep:
       type: file
-      description: |
-        a FASTA contains protein data
-  - reference:
+      description: a fasta file contains one or multiple protein sequences
+  - ref:
       type: file
-      description: |
-        Reference database in FASTA format.
-  - bam_format:
-      type: boolean
-      description: Specify that output should be in BAM format
-  - cigar_paf_format:
+      description: Reference database in FASTA format.
+  - paf_format:
       type: boolean
       description: Specify that output CIGAR should be in PAF format
-  - cigar_bam:
+  - gff_format:
       type: boolean
-      description: |
-        Write CIGAR with >65535 ops at the CG tag. This is recommended when
-        doing XYZ (https://github.com/lh3/minimap2#working-with-65535-cigar-operations)
+      description: Specify that output should be in gff3 format
+  - gtf_format:
+      type: boolean
+      description: Specify that output should be in gtf format
 output:
   - meta:
       type: map
@@ -49,16 +45,17 @@ output:
       type: file
       description: Alignment in PAF format
       pattern: "*.paf"
-  - bam:
+  - gff:
       type: file
-      description: Alignment in BAM format
-      pattern: "*.bam"
+      description: Alignment in gff format
+      pattern: "*.gff"
+  - gtf:
+      type: file
+      description: Alignment in gtf format
+      pattern: "*.gtf"
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
 authors:
-  - "@heuermh"
-  - "@sofstam"
-  - "@sateeshperi"
-  - "@jfy133"
+  - "@yumisims"

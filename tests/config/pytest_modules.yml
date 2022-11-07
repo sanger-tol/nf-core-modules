@@ -1682,6 +1682,10 @@ minimap2/index:
   - modules/minimap2/index/**
   - tests/modules/minimap2/index/**
 
+miniprot/align:
+  - modules/miniprot/align/**
+  - tests/modules/miniprot/align/**
+
 miniprot/index:
   - modules/miniprot/index/**
   - tests/modules/miniprot/index/**
