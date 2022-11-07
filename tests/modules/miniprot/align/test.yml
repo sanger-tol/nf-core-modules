@@ -1,4 +1,3 @@
-
 - name: miniprot align
   command: nextflow run ./tests/modules/miniprot/align -entry test_miniprot_align -c ./tests/config/nextflow.config -c ./tests/modules/miniprot/align/nextflow.config
   tags:
@@ -11,4 +10,3 @@
       md5sum: dc2d01ac840ee26416b5eb9cf252181d
     - path: output/miniprot/versions.yml
       md5sum: 961576dd5637c8636e0d39a5dc63a134
-      
