@@ -4,18 +4,29 @@ nextflow.enable.dsl = 2
 include { MINIPROT_INDEX } from '../../../../modules/miniprot/index/main.nf'
 include { MINIPROT_ALIGN } from '../../../../modules/miniprot/align/main.nf'
 
-workflow test_miniprot_align {
+workflow test_miniprot_align_gff {
     
     input = file(params.test_data['sarscov2']['genome']['genome_fasta'], checkIfExists: true) 
     input_pep = file(params.test_data['sarscov2']['genome']['proteome_fasta'], checkIfExists: true)
 
+    pep_tuple = [ [id:'test'], input_pep]
     MINIPROT_INDEX ( [ [id:'test'], input] )
 
     input_ref = MINIPROT_INDEX.out.index
-
-    paf_format = false
-    gff_format = true
-    gtf_format = false
     
-    MINIPROT_ALIGN ( input_ref, input_pep, paf_format, gff_format, gtf_format )
+    MINIPROT_ALIGN ( input_ref, pep_tuple )
 }
+
+workflow test_miniprot_align_paf {
+    
+    input = file(params.test_data['sarscov2']['genome']['genome_fasta'], checkIfExists: true) 
+    input_pep = file(params.test_data['sarscov2']['genome']['proteome_fasta'], checkIfExists: true)
+
+    pep_tuple = [ [id:'test'], input_pep]
+    MINIPROT_INDEX ( [ [id:'test'], input] )
+
+    input_ref = MINIPROT_INDEX.out.index
+    
+    MINIPROT_ALIGN ( input_ref, pep_tuple )
+}
+

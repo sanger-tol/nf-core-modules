@@ -12,15 +12,12 @@ process MINIPROT_ALIGN {
 
     input:
     tuple val(meta), path(ref)
-    path pep                     /* Can be fasta format for index */
-    val paf_format
-    val gff_format
-    val gtf_format
+    tuple val(meta), path(pep)
+
 
     output:
     tuple val(meta), path("*.paf"), optional: true, emit: paf
     tuple val(meta), path("*.gff"), optional: true, emit: gff
-    tuple val(meta), path("*.gtf"), optional: true, emit: gtf
     path "versions.yml"                           , emit: versions
 
     when:
@@ -29,18 +26,16 @@ process MINIPROT_ALIGN {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def paf_out = paf_format ? "> ${prefix}.paf" : ''
-    def gff_out = gff_format ? "> ${prefix}.gff" : ''
-    def gtf_out = gtf_format ? "> ${prefix}.gtf" : ''
+    def extension = args.contains("--gtf")? "> ${prefix}.gtf" :
+                    args.contains("--gff")? "> ${prefix}.gff" :
+                    "> ${prefix}.paf"
     """
     miniprot \\
         $args \\
         -t $task.cpus \\
         $ref \\
         $pep \\
-        $paf_out \\
-        $gff_out \\
-        $gtf_out
+        ${extension}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
