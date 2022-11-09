@@ -26,7 +26,7 @@ process MINIPROT_ALIGN {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def extension = args.contains("--gff")? "> ${prefix}.gtf" :
+    def extension = args.contains("--gff")? "> ${prefix}.gff" :
                     "> ${prefix}.paf"
     """
     miniprot \\
