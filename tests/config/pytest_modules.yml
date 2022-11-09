@@ -34,6 +34,10 @@ makecmap/renamecmapids:
   - modules/makecmap/renamecmapids/**
   - tests/modules/makecmap/renamecmapids/**
 
+miniprot/align:
+  - modules/miniprot/align/**
+  - tests/modules/miniprot/align/**
+
 miniprot/index:
   - modules/miniprot/index/**
   - tests/modules/miniprot/index/**
