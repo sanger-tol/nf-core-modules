@@ -26,15 +26,6 @@ input:
   - ref:
       type: file
       description: Reference database in FASTA format.
-  - paf_format:
-      type: boolean
-      description: Specify that output CIGAR should be in PAF format
-  - gff_format:
-      type: boolean
-      description: Specify that output should be in gff3 format
-  - gtf_format:
-      type: boolean
-      description: Specify that output should be in gtf format
 output:
   - meta:
       type: map
@@ -49,10 +40,6 @@ output:
       type: file
       description: Alignment in gff format
       pattern: "*.gff"
-  - gtf:
-      type: file
-      description: Alignment in gtf format
-      pattern: "*.gtf"
   - versions:
       type: file
       description: File containing software versions
