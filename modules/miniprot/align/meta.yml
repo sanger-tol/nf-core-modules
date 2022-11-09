@@ -25,7 +25,7 @@ input:
       description: a fasta file contains one or multiple protein sequences
   - ref:
       type: file
-      description: Reference database in FASTA format.
+      description: Reference database in FASTA format or miniprot index format.
 output:
   - meta:
       type: map

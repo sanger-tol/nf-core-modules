@@ -12,7 +12,7 @@ process MINIPROT_ALIGN {
 
     input:
     tuple val(meta), path(ref)
-    tuple val(meta), path(pep)
+    path pep
 
 
     output:
@@ -26,15 +26,14 @@ process MINIPROT_ALIGN {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def extension = args.contains("--gff")? "> ${prefix}.gff" :
-                    "> ${prefix}.paf"
+    def extension = args.contains("--gff") ? "gff" : "paf"
     """
     miniprot \\
         $args \\
         -t $task.cpus \\
-        $ref \\
-        $pep \\
-        ${extension}
+        ${ref} \\
+        ${pep} \\
+        > ${prefix}.${extension}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
