@@ -1,5 +1,5 @@
 process BUSCOANNOTATION_ASSIGNANCESTRAL {
-  tag "$meta.id"
+    tag "$meta.id"
     label 'process_medium'
 
     def version = '0.001-c3'
