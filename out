@@ -1,0 +1,309 @@
+N E X T F L O W  ~  version 22.04.0
+Launching `/nfs/team135/yy5/nf11/nf-core-modules/tests/modules/buscoannotation/assignancestral/main.nf` [curious_morse] DSL2 - revision: b947a99614
+[-        ] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL -[K
+[2A
+[-        ] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL -[K
+Pulling Singularity image docker://quay.io/sanger-tol/buscogeneannotation:0.001-c2 [cache /lustre/scratch123/tol/teams/grit/yy5/NXF_SINGULARITY_CACHEDIR/quay.io-sanger-tol-buscogeneannotation-0.001-c2.img][K
+[3A
+executor >  local (1)[K
+[34/d44280] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [  0%] 0 of 1[K
+[K
+[4A
+executor >  local (1)[K
+[34/d44280] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [  0%] 0 of 1[K
+[31mError executing process > 'test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)'[K
+[K
+Caused by:[K
+  Process `test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)` terminated with an error exit status (127)[K
+[K
+Command executed:[K
+[K
+  assign_anc.py \[K
+       \[K
+      buscopainter_complete_location.tsv \[K
+      ilLepSina1_full_table.tsv \[K
+      test.csv[K
+  [K
+  cat <<-END_VERSIONS > versions.yml[K
+  "test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL":[K
+      buscoannotation: 0.001-c2[K
+  END_VERSIONS[K
+[K
+Command exit status:[K
+  127[K
+[K
+Command output:[K
+  (empty)[K
+[K
+Command error:[K
+  .command.sh: line 4: assign_anc.py: command not found[K
+[K
+Work dir:[K
+  /nfs/team135/yy5/nf11/nf-core-modules/work/34/d4428068272483087ecf5f0bb27ea1[K
+[K
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`[K
+[K
+[39m[K
+[36A
+executor >  local (1)[K
+[34/d44280] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [100%] 1 of 1, failed: 1 ✘[K
+[31mError executing process > 'test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)'[K
+[K
+Caused by:[K
+  Process `test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)` terminated with an error exit status (127)[K
+[K
+Command executed:[K
+[K
+  assign_anc.py \[K
+       \[K
+      buscopainter_complete_location.tsv \[K
+      ilLepSina1_full_table.tsv \[K
+      test.csv[K
+  [K
+  cat <<-END_VERSIONS > versions.yml[K
+  "test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL":[K
+      buscoannotation: 0.001-c2[K
+  END_VERSIONS[K
+[K
+Command exit status:[K
+  127[K
+[K
+Command output:[K
+  (empty)[K
+[K
+Command error:[K
+  .command.sh: line 4: assign_anc.py: command not found[K
+[K
+Work dir:[K
+  /nfs/team135/yy5/nf11/nf-core-modules/work/34/d4428068272483087ecf5f0bb27ea1[K
+[K
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`[K
+[K
+[39m[K
+
+N E X T F L O W  ~  version 22.04.0
+Launching `/nfs/team135/yy5/nf11/nf-core-modules/tests/modules/buscoannotation/assignancestral/main.nf` [amazing_babbage] DSL2 - revision: b947a99614
+[-        ] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL -[K
+[2A
+executor >  local (1)[K
+[74/de09ab] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [  0%] 0 of 1[K
+[3A
+executor >  local (1)[K
+[74/de09ab] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [  0%] 0 of 1[K
+[31mError executing process > 'test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)'[K
+[K
+Caused by:[K
+  Process `test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)` terminated with an error exit status (1)[K
+[K
+Command executed:[K
+[K
+  assign_busco.py \[K
+       \[K
+      buscopainter_complete_location.tsv \[K
+      ilLepSina1_full_table.tsv \[K
+      test.csv[K
+  [K
+  cat <<-END_VERSIONS > versions.yml[K
+  "test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL":[K
+      buscoannotation: 0.001-c2[K
+  END_VERSIONS[K
+[K
+Command exit status:[K
+  1[K
+[K
+Command output:[K
+  ...           ...  ...                                   ...[K
+  5366  16668at7088  ...  uncharacterized protein LOC111352205[K
+  5367  16739at7088  ...  uncharacterized protein LOC106135804[K
+  5368  16855at7088  ...                                  HMGA[K
+  5369  16938at7088  ...                                   NaN[K
+  5370  16982at7088  ...  uncharacterized protein LOC110370494[K
+  [K
+  [5371 rows x 10 columns][K
+            buscoID    query_chr    position assigned_chr status[K
+  0         0at7088  SCAFFOLD_30   2475251.0          M27    M27[K
+  1         1at7088   SCAFFOLD_1  16997136.0           MZ   self[K
+  2         2at7088   SCAFFOLD_8   9227709.0           M4     M4[K
+  3         3at7088  SCAFFOLD_48   2821735.5           M6   self[K
+  4         4at7088  SCAFFOLD_14  13196693.0          M21    M21[K
+  ...           ...          ...         ...          ...    ...[K
+  5117  16647at7088   SCAFFOLD_1  14885861.5           MZ   self[K
+  5118  16663at7088   SCAFFOLD_4  14543186.0          M16   self[K
+  5119  16668at7088  SCAFFOLD_25   7807881.5           M1   self[K
+  5120  16739at7088  SCAFFOLD_35   5503099.0          M21   self[K
+  5121  16982at7088   SCAFFOLD_2  18876422.5          M10    M10[K
+  [K
+  [5122 rows x 5 columns][K
+           Sequence  Gene Start    Gene End[K
+  0     SCAFFOLD_30   2398754.0   2551748.0[K
+  1      SCAFFOLD_1  16933177.0  17061095.0[K
+  2      SCAFFOLD_8   9178336.0   9277082.0[K
+  3     SCAFFOLD_48   2722428.0   2921043.0[K
+  4     SCAFFOLD_14  13117170.0  13276216.0[K
+  ...           ...         ...         ...[K
+  5117   SCAFFOLD_1  14884074.0  14887649.0[K
+  5118   SCAFFOLD_4  14541214.0  14545158.0[K
+  5119  SCAFFOLD_25   7807585.0   7808178.0[K
+  5120  SCAFFOLD_35   5503020.0   5503178.0[K
+  5121   SCAFFOLD_2  18876174.0  18876671.0[K
+  [K
+  [5122 rows x 3 columns][K
+            buscoID  ...                                        Description[K
+  0         0at7088  ...                                           twitchin[K
+  1         1at7088  ...                                              titin[K
+  2         2at7088  ...                                 Notch-like protein[K
+  3         3at7088  ...                               nesprin-1 isoform X1[K
+  4         4at7088  ...               uncharacterized protein LOC110381036[K
+  ...           ...  ...                                                ...[K
+  5117  16647at7088  ...                               selenoprotein K-like[K
+  5118  16663at7088  ...  LOW QUALITY PROTEIN: jupiter microtubule assoc...[K
+  5119  16668at7088  ...               uncharacterized protein LOC111352205[K
+  5120  16739at7088  ...               uncharacterized protein LOC106135804[K
+  5121  16982at7088  ...               uncharacterized protein LOC110370494[K
+  [K
+  [5122 rows x 14 columns][K
+[K
+Command error:[K
+  Traceback (most recent call last):[K
+    File "/usr/local/bin/assign_busco.py", line 35, in <module>[K
+      df_new=df_a.join(df[["ancestral"]]).join(df[["Score"]]).join(df[["Strand"]]).join(df[["OrthoDB url"]])[K
+    File "/usr/local/lib/python3.9/site-packages/pandas/core/frame.py", line 3810, in __getitem__[K
+      indexer = self.columns._get_indexer_strict(key, "columns")[1][K
+    File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 6111, in _get_indexer_strict[K
+      self._raise_if_missing(keyarr, indexer, axis_name)[K
+    File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 6171, in _raise_if_missing[K
+      raise KeyError(f"None of [{key}] are in the [{axis_name}]")[K
+  KeyError: "None of [Index(['ancestral'], dtype='object')] are in the [columns]"[K
+[K
+Work dir:[K
+  /nfs/team135/yy5/nf11/nf-core-modules/work/74/de09ab9853249cc202e1e57424eadb[K
+[K
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`[K
+[K
+[39m[K
+[94A
+executor >  local (1)[K
+[74/de09ab] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [100%] 1 of 1, failed: 1 ✘[K
+[31mError executing process > 'test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)'[K
+[K
+Caused by:[K
+  Process `test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test)` terminated with an error exit status (1)[K
+[K
+Command executed:[K
+[K
+  assign_busco.py \[K
+       \[K
+      buscopainter_complete_location.tsv \[K
+      ilLepSina1_full_table.tsv \[K
+      test.csv[K
+  [K
+  cat <<-END_VERSIONS > versions.yml[K
+  "test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL":[K
+      buscoannotation: 0.001-c2[K
+  END_VERSIONS[K
+[K
+Command exit status:[K
+  1[K
+[K
+Command output:[K
+  ...           ...  ...                                   ...[K
+  5366  16668at7088  ...  uncharacterized protein LOC111352205[K
+  5367  16739at7088  ...  uncharacterized protein LOC106135804[K
+  5368  16855at7088  ...                                  HMGA[K
+  5369  16938at7088  ...                                   NaN[K
+  5370  16982at7088  ...  uncharacterized protein LOC110370494[K
+  [K
+  [5371 rows x 10 columns][K
+            buscoID    query_chr    position assigned_chr status[K
+  0         0at7088  SCAFFOLD_30   2475251.0          M27    M27[K
+  1         1at7088   SCAFFOLD_1  16997136.0           MZ   self[K
+  2         2at7088   SCAFFOLD_8   9227709.0           M4     M4[K
+  3         3at7088  SCAFFOLD_48   2821735.5           M6   self[K
+  4         4at7088  SCAFFOLD_14  13196693.0          M21    M21[K
+  ...           ...          ...         ...          ...    ...[K
+  5117  16647at7088   SCAFFOLD_1  14885861.5           MZ   self[K
+  5118  16663at7088   SCAFFOLD_4  14543186.0          M16   self[K
+  5119  16668at7088  SCAFFOLD_25   7807881.5           M1   self[K
+  5120  16739at7088  SCAFFOLD_35   5503099.0          M21   self[K
+  5121  16982at7088   SCAFFOLD_2  18876422.5          M10    M10[K
+  [K
+  [5122 rows x 5 columns][K
+           Sequence  Gene Start    Gene End[K
+  0     SCAFFOLD_30   2398754.0   2551748.0[K
+  1      SCAFFOLD_1  16933177.0  17061095.0[K
+  2      SCAFFOLD_8   9178336.0   9277082.0[K
+  3     SCAFFOLD_48   2722428.0   2921043.0[K
+  4     SCAFFOLD_14  13117170.0  13276216.0[K
+  ...           ...         ...         ...[K
+  5117   SCAFFOLD_1  14884074.0  14887649.0[K
+  5118   SCAFFOLD_4  14541214.0  14545158.0[K
+  5119  SCAFFOLD_25   7807585.0   7808178.0[K
+  5120  SCAFFOLD_35   5503020.0   5503178.0[K
+  5121   SCAFFOLD_2  18876174.0  18876671.0[K
+  [K
+  [5122 rows x 3 columns][K
+            buscoID  ...                                        Description[K
+  0         0at7088  ...                                           twitchin[K
+  1         1at7088  ...                                              titin[K
+  2         2at7088  ...                                 Notch-like protein[K
+  3         3at7088  ...                               nesprin-1 isoform X1[K
+  4         4at7088  ...               uncharacterized protein LOC110381036[K
+  ...           ...  ...                                                ...[K
+  5117  16647at7088  ...                               selenoprotein K-like[K
+  5118  16663at7088  ...  LOW QUALITY PROTEIN: jupiter microtubule assoc...[K
+  5119  16668at7088  ...               uncharacterized protein LOC111352205[K
+  5120  16739at7088  ...               uncharacterized protein LOC106135804[K
+  5121  16982at7088  ...               uncharacterized protein LOC110370494[K
+  [K
+  [5122 rows x 14 columns][K
+[K
+Command error:[K
+  Traceback (most recent call last):[K
+    File "/usr/local/bin/assign_busco.py", line 35, in <module>[K
+      df_new=df_a.join(df[["ancestral"]]).join(df[["Score"]]).join(df[["Strand"]]).join(df[["OrthoDB url"]])[K
+    File "/usr/local/lib/python3.9/site-packages/pandas/core/frame.py", line 3810, in __getitem__[K
+      indexer = self.columns._get_indexer_strict(key, "columns")[1][K
+    File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 6111, in _get_indexer_strict[K
+      self._raise_if_missing(keyarr, indexer, axis_name)[K
+    File "/usr/local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 6171, in _raise_if_missing[K
+      raise KeyError(f"None of [{key}] are in the [{axis_name}]")[K
+  KeyError: "None of [Index(['ancestral'], dtype='object')] are in the [columns]"[K
+[K
+Work dir:[K
+  /nfs/team135/yy5/nf11/nf-core-modules/work/74/de09ab9853249cc202e1e57424eadb[K
+[K
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`[K
+[K
+[39m[K
+
+N E X T F L O W  ~  version 22.04.0
+Launching `/nfs/team135/yy5/nf11/nf-core-modules/tests/modules/buscoannotation/assignancestral/main.nf` [drunk_meucci] DSL2 - revision: b947a99614
+[-        ] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL -[K
+[2A
+[-        ] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL -[K
+Pulling Singularity image docker://quay.io/sanger-tol/buscogeneannotation:0.001-c3 [cache /lustre/scratch123/tol/teams/grit/yy5/NXF_SINGULARITY_CACHEDIR/quay.io-sanger-tol-buscogeneannotation-0.001-c3.img][K
+[3A
+executor >  local (1)[K
+[1a/f69274] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [  0%] 0 of 1[K
+[K
+[4A
+executor >  local (1)[K
+[1a/f69274] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [100%] 1 of 1 ✔[K
+[K
+
+N E X T F L O W  ~  version 22.04.0
+Launching `/nfs/team135/yy5/nf11/nf-core-modules/tests/modules/buscoannotation/assignancestral/main.nf` [condescending_thompson] DSL2 - revision: e22ae5acd5
+[-        ] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL -[K
+[2A
+executor >  local (1)[K
+[a8/0bd380] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [  0%] 0 of 1[K
+[3A
+executor >  local (1)[K
+[a8/0bd380] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [  0%] 0 of 1[K
+[3A
+executor >  local (1)[K
+[a8/0bd380] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [100%] 1 of 1 ✔[K
+[3A
+executor >  local (1)[K
+[a8/0bd380] process > test_buscoannotation_assignancestral:BUSCOANNOTATION_ASSIGNANCESTRAL (test) [100%] 1 of 1 ✔[K
+
