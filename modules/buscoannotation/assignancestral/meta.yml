@@ -1,5 +1,5 @@
 name: "buscoannotation_assignancestral"
-description: write your description here
+description: busco gene extraction and provide busco gene and ancestral element annotation to genome assembly
 keywords:
   - busco
   - full table
