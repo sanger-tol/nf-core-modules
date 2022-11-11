@@ -31,7 +31,7 @@ output:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  - outcsv:
+  - ancestralresult:
       type: file
       description: a cvs file contains ancestral information of the genome
       pattern: "*.{csv}"
