@@ -6,7 +6,7 @@ keywords:
 tools:
   - "buscoannotation":
       description: a tool kit to extract ancestral gene based on the busco result
-      licence: sanger
+      licence: ["MIT"]
 input:
   - meta:
       type: map
