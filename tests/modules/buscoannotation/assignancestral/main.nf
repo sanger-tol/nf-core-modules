@@ -7,11 +7,11 @@ include { BUSCOANNOTATION_ASSIGNANCESTRAL } from '../../../../modules/buscoannot
 workflow test_buscoannotation_assignancestral {
     
     ancestral_locations = [
-        [ id:'test', single_end:false ], // meta map
-        file("https://tolit.cog.sanger.ac.uk/test-data/Leptidea_sinapis/genomic_data/ilLepSina1/busco/buscopainter_complete_location.tsv",checkIfExists: true)
+        [ id:'test', single_end:false ],
+        file(params.tol_test_data['small_genome']['Oscheius_sp']['genomic_data']['ilLepSina1']['busco']['buscopaintedfile'], checkIfExists: true)
     ]
 
-    fulltable = file("https://tolit.cog.sanger.ac.uk/test-data/Leptidea_sinapis/genomic_data/ilLepSina1/busco/ilLepSina1_full_table.tsv",checkIfExists: true)
+    fulltable = file(params.tol_test_data['small_genome']['Oscheius_sp']['genomic_data']['ilLepSina1']['busco']['full_table'], checkIfExists: true)
 
     BUSCOANNOTATION_ASSIGNANCESTRAL ( ancestral_locations, fulltable  )
 }
