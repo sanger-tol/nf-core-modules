@@ -433,6 +433,10 @@ busco:
   - modules/busco/**
   - tests/modules/busco/**
 
+buscoannotation/assignancestral:
+  - modules/buscoannotation/assignancestral/**
+  - tests/modules/buscoannotation/assignancestral/**
+
 bwa/aln:
   - modules/bwa/aln/**
   - tests/modules/bwa/aln/**
