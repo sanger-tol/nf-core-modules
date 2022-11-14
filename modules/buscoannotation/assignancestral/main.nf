@@ -2,7 +2,7 @@ process BUSCOANNOTATION_ASSIGNANCESTRAL {
     tag "$meta.id"
     label 'process_medium'
 
-    def version = '0.001-c3'
+    def version = '0.001-c4'
     if (params.enable_conda) {
         exit 1, "Conda environments cannot be used when using the buscoannotation process. Please use docker or singularity containers."
     }
