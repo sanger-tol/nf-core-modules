@@ -14,6 +14,10 @@ blast/tblastn:
   - modules/blast/tblastn/**
   - tests/modules/blast/tblastn/**
 
+buscoannotation/assignancestral:
+  - modules/buscoannotation/assignancestral/**
+  - tests/modules/buscoannotation/assignancestral/**
+
 longranger/align:
   - modules/longranger/align/**
   - tests/modules/longranger/align/**

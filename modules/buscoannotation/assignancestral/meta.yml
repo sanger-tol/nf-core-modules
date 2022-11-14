@@ -1,0 +1,39 @@
+name: "buscoannotation_assignancestral"
+description: busco gene extraction and provide busco gene and ancestral element annotation to genome assembly
+keywords:
+  - busco
+  - full table
+tools:
+  - "buscoannotation":
+      description: a tool kit to extract ancestral gene based on the busco result
+      licence: ["MIT"]
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - paintedtsv:
+      type: file
+      description: tsv file contains ancestral gene annotation, it is output from busco painting programme
+      pattern: "*.{tsv}"
+  - fulltable:
+      type: file
+      description: busco analysis result
+      pattern: "*.{tsv}"
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - ancestralresult:
+      type: file
+      description: a cvs file contains ancestral information of the genome
+      pattern: "*.{csv}"
+authors:
+  - "@yumisims"

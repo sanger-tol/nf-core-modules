@@ -1,0 +1,10 @@
+- name: "buscoannotation assignancestral"
+  command: nextflow run ./tests/modules/buscoannotation/assignancestral -entry test_buscoannotation_assignancestral -c ./tests/config/nextflow.config -c ./tests/modules/buscoannotation/assignancestral/nextflow.config
+  tags:
+    - "buscoannotation"
+    - "buscoannotation/assignancestral"
+  files:
+    - path: output/buscoannotation/test.csv
+      md5sum: c7d6a8facfb6c0827a8d9bcaacd3b0dd
+    - path: output/buscoannotation/versions.yml
+      md5sum: dc8f64c0787205d39eed2bf6bd80e579
