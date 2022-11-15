@@ -16,7 +16,7 @@ input:
         e.g. [ id:'test' ]
   - tsv:
       type: file
-      description: TSV file
+      description: Output full table TSV file from BUSCO process
       pattern: "*.tsv"
 output:
   - meta:
@@ -30,7 +30,7 @@ output:
       pattern: "versions.yml"
   - csv:
       type: file
-      description: CSV file
+      description: CSV file containing extracted genes
       pattern: "*.csv"
 authors:
   - "@weaglesBio"

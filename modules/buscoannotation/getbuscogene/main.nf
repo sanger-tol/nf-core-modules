@@ -7,14 +7,14 @@ process BUSCOANNOTATION_GETBUSCOGENE {
     if (params.enable_conda) {
         exit 1, "Conda environments cannot be used when using the buscogeneannotation process. Please use docker or singularity containers."
     }
-    //container "quay.io/sanger-tol/buscogeneannotation:${version}"
-    container "gitlab-registry.internal.sanger.ac.uk/tol-it/software/docker-images-test/buscogeneannotation:0.001-c5"
+    container "quay.io/sanger-tol/buscogeneannotation:${version}"
+    
     input:
     tuple val(meta), path(full_table_tsv)
 
     output:
     tuple val(meta), path("*_busco.csv")  , emit: busco_csv
-    path "versions.yml"             , emit: versions
+    path "versions.yml"                   , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
