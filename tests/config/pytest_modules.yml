@@ -440,6 +440,10 @@ buscoannotation/assignancestral:
 buscoannotation/buscopainterlep:
   - modules/buscoannotation/buscopainterlep/**
   - tests/modules/buscoannotation/buscopainterlep/**
+  
+buscoannotation/getbuscogene:
+  - modules/buscoannotation/getbuscogene/**
+  - tests/modules/buscoannotation/getbuscogene/**
 
 bwa/aln:
   - modules/bwa/aln/**
