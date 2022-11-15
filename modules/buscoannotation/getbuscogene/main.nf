@@ -8,7 +8,7 @@ process BUSCOANNOTATION_GETBUSCOGENE {
         exit 1, "Conda environments cannot be used when using the buscogeneannotation process. Please use docker or singularity containers."
     }
     container "quay.io/sanger-tol/buscogeneannotation:${version}"
-    
+
     input:
     tuple val(meta), path(full_table_tsv)
 
