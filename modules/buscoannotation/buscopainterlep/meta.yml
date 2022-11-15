@@ -13,14 +13,14 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [ id:'test'  ]
+        e.g. [ id:'test' ]
   - full_table_tsv:
       type: file
-      description: TSV file
+      description: Output full table TSV file from BUSCO process
       pattern: "*.tsv"
   - merian_tsv:
       type: file
-      description: TSV file
+      description: TSV of reference file of merian ancestral units. Compiled by Charlotte Wright
       pattern: "*.tsv"
 output:
   - meta:
@@ -34,15 +34,15 @@ output:
       pattern: "versions.yml"
   - complete_location_tsv:
       type: file
-      description: TSV file
+      description: TSV file containing location and status of all shared complete BUSCOs.
       pattern: "*_complete_location.tsv"
   - duplicated_location_tsv:
       type: file
-      description: TSV file
+      description: TSV file containing location and status of all duplicated BUSCOs.
       pattern: "*_duplicated_location.tsv"
-  - duplicated_location_tsv:
+  - summary_tsv:
       type: file
-      description: TSV file
+      description: TSV file containing a summary of the chromosomal assignments.
       pattern: "*_summary.tsv"
 authors:
   - "@weaglesBio"

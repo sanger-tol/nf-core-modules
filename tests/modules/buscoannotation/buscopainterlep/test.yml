@@ -11,4 +11,4 @@
     - path: "output/buscoannotation/test_summary.tsv"
       md5sum: 4d76b8778b862c5bc820b55871716114
     - path: output/buscoannotation/versions.yml
-      md5sum: c2456c99b0364c2c43a4c640dfff9b40
+      md5sum: bd2764f3a45ab33399f767673d8aaa27

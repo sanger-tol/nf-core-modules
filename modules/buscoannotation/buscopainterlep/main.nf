@@ -2,7 +2,7 @@ process BUSCOANNOTATION_BUSCOPAINTERLEP {
     tag "$meta.id"
     label 'process_medium'
 
-    def version = '0.001-c4'
+    def version = '0.001-c5'
 
     if (params.enable_conda) {
         exit 1, "Conda environments cannot be used when using the busco painter process. Please use docker or singularity containers."
