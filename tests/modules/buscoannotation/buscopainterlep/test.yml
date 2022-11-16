@@ -1,0 +1,14 @@
+- name: "buscoannotation buscopainterlep"
+  command: nextflow run ./tests/modules/buscoannotation/buscopainterlep -entry test_buscoannotation_buscopainterlep -c ./tests/config/nextflow.config -c ./tests/modules/buscoannotation/buscopainterlep/nextflow.config
+  tags:
+    - "buscoannotation"
+    - "buscoannotation/buscopainterlep"
+  files:
+    - path: "output/buscoannotation/test_complete_location.tsv"
+      md5sum: 3cdecbac0416efb36c7b237184c46efb
+    - path: "output/buscoannotation/test_duplicated_location.tsv"
+      md5sum: d5d4e9b7b6eefa230fc883273f811053
+    - path: "output/buscoannotation/test_summary.tsv"
+      md5sum: 4d76b8778b862c5bc820b55871716114
+    - path: output/buscoannotation/versions.yml
+      md5sum: bd2764f3a45ab33399f767673d8aaa27
