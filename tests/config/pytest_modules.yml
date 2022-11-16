@@ -437,6 +437,10 @@ buscoannotation/assignancestral:
   - modules/buscoannotation/assignancestral/**
   - tests/modules/buscoannotation/assignancestral/**
 
+buscoannotation/buscopainterlep:
+  - modules/buscoannotation/buscopainterlep/**
+  - tests/modules/buscoannotation/buscopainterlep/**
+
 bwa/aln:
   - modules/bwa/aln/**
   - tests/modules/bwa/aln/**
