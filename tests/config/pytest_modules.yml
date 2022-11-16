@@ -22,6 +22,10 @@ buscoannotation/buscopainterlep:
   - modules/buscoannotation/buscopainterlep/**
   - tests/modules/buscoannotation/buscopainterlep/**
 
+buscoannotation/getbuscogene:
+  - modules/buscoannotation/getbuscogene/**
+  - tests/modules/buscoannotation/getbuscogene/**
+
 longranger/align:
   - modules/longranger/align/**
   - tests/modules/longranger/align/**
