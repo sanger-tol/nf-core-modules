@@ -1,6 +1,6 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 0.2.0
-_src_path: ../modules-template/
+_commit: 0.1.0-7-ga29e1df
+_src_path: gh:nf-core/modules-template
 ci: github
 copyright_holder: Genome Research Ltd.
 copyright_license: MIT License
