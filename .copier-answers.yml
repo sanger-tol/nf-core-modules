@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 0.2.0
+_src_path: ../modules-template/
+ci: github
+copyright_holder: Genome Research Ltd.
+copyright_license: MIT License
+copyright_year: 2025
+default_branch: main
+description: An nf-core modules repository hosting Nextflow DSL2 modules for the Sanger
+    Tree of Life organization.
+repo_host: https://github.com
+repo_name: nf-core-modules
+repo_org_name: sanger-tol
+short_org_name: sanger-tol
