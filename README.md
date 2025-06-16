@@ -15,8 +15,8 @@ An nf-core modules repository hosting Nextflow DSL2 modules for the Sanger Tree 
   - [Table of contents](#table-of-contents)
   - [Using existing modules](#using-existing-modules)
   - [Adding new modules](#adding-new-modules)
-  - [Help](#help)
   - [Citation](#citation)
+  - [Template](#template)
 
 ## Using existing modules
 
@@ -135,6 +135,15 @@ We use a helper command in the `nf-core/tools` package that uses the GitHub API 
       │ [!]   6 Test Warnings │
       │ [✗]   0 Tests Failed  │
    ```
+
+## Adding new modules
+
+A complete example exists in the nf-core test repository <https://github.com/nf-core-test/modules>.
+In short:
+
+1. Write sub-workflows `.nf` files that refer to locations in both `sanger-tol` and `nf-core`. [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/main.nf#L1-L2)
+2. Add a `git_remote` key for the `nf-core` modules. [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/meta.yml#L10)
+3. In `/modules`, only add `sanger-tol` modules since the `nf-core` ones will be pulled live from nf-core itself. [Example](https://github.com/nf-core-test/modules/tree/main/modules/)
 
 ## Citation
 
