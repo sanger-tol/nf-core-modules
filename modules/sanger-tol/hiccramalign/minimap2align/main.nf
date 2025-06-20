@@ -4,7 +4,7 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/65/65076cea537714273d691bebd9ad2be1a64d9f6fe5c992528389c8d4c6820d32/data' :
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/71/711a743a18039d9ecfc6032fb1e124eea4a87bc2bf2ed47a1c5b8534f8193b1f/data' :
         'community.wave.seqera.io/library/minimap2_samtools_perl:65833242e5ffdf5c' }"
 
     input:
