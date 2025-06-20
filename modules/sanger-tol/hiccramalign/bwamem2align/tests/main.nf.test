@@ -18,18 +18,29 @@ nextflow_process {
             script "./bwamem2.nf"
             process {
                 """
-                input[0] = [
+                input[0] = Channel.of([
                     [ id: "test" ],
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
-                ]
+                ])
                 """
             }
         }
     }
 
     test("meles meles") {
+        config "./nextflow.config"
 
         when {
+
+            params {
+                samtools_cat_args = ""
+                samtools_fastq_args = "-F0xB00 -nt"
+                bwamem2_mem_args = "-5SPCp"
+                samtools_fixmate_args = "-mpu"
+                samtools_view_args = "-q 0 -F 0x904"
+                samtools_sort_args = "--write-index -l1"
+            }
+
             process {
                 """
                 input[0] = Channel.of([
@@ -38,10 +49,11 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram.crai', checkIfExists: true),
                     1,
                     [0, 1],
-                    BWAMEM2_INDEX.out.index[1],
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true),
                 ]).join(BWAMEM2_INDEX.out.index)
-                .map { it[0], it[1], it[2], it[3], it[4], it[6], it[5] }
+                .map { meta, cram, crai, chunkn, range, ref, index ->
+                    [ meta, cram, crai, chunkn, range, index, ref ]
+                }
                 """
             }
         }
@@ -70,7 +82,9 @@ nextflow_process {
                     [0, 1],
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true),
                 ]).join(BWAMEM2_INDEX.out.index)
-                .map { it[0], it[1], it[2], it[3], it[4], it[6], it[5] }
+                .map { meta, cram, crai, chunkn, range, ref, index ->
+                    [ meta, cram, crai, chunkn, range, index, ref ]
+                }
                 """
             }
         }

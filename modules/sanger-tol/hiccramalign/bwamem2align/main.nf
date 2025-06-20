@@ -29,10 +29,10 @@ process HICCRAMALIGN_BWAMEM2ALIGN {
     """
     INDEX=`find -L ./ -name "*.amb" | sed 's/\\.amb\$//'`
 
-    samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} - | \\
-        samtools fastq ${args2} | \\
-        bwa-mem2 mem ${args3} -t ${task.cpus} \${INDEX} - | \\
-        samtools fixmate ${args4} - - | \\
+    samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
+        samtools fastq ${args2} |\\
+        bwa-mem2 mem ${args3} -t ${task.cpus} \${INDEX} - |\\
+        samtools fixmate ${args4} - - |\\
         samtools view -h ${args5} |\\
         samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.bam -
 

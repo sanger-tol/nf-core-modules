@@ -7,7 +7,7 @@ process BWAMEM2_INDEX {
     // source: https://github.com/bwa-mem2/bwa-mem2/issues/9
     memory { 28.B * fasta.size() }
 
-    conda "${moduleDir}/environment.yml"
+    conda "bioconda::bwa-mem2=2.2.1" // Modified!
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9a/9ac054213e67b3c9308e409b459080bbe438f8fd6c646c351bc42887f35a42e7/data' :
         'community.wave.seqera.io/library/bwa-mem2_htslib_samtools:e1f420694f8e42bd' }"
@@ -30,7 +30,8 @@ process BWAMEM2_INDEX {
     bwa-mem2 \\
         index \\
         $args \\
-        $fasta -p bwamem2/${prefix}
+        -p bwamem2/${prefix} \\
+        $fasta
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
