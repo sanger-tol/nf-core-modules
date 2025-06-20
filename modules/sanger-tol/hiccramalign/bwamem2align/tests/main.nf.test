@@ -32,7 +32,7 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = [
+                input[0] = Channel.of([
                     [ id:'test' ], // meta map
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram.crai', checkIfExists: true),
@@ -40,7 +40,8 @@ nextflow_process {
                     [0, 1],
                     BWAMEM2_INDEX.out.index[1],
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true),
-                ]
+                ]).join(BWAMEM2_INDEX.out.index)
+                .map { it[0], it[1], it[2], it[3], it[4], it[6], it[5] }
                 """
             }
         }
@@ -61,15 +62,15 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = [
+                input[0] = Channel.of([
                     [ id:'test' ], // meta map
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram.crai', checkIfExists: true),
                     1,
                     [0, 1],
-                    BWAMEM2_INDEX.out.index[1],
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true),
-                ]
+                ]).join(BWAMEM2_INDEX.out.index)
+                .map { it[0], it[1], it[2], it[3], it[4], it[6], it[5] }
                 """
             }
         }
