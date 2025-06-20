@@ -1,13 +1,13 @@
 nextflow_process {
 
-    name "Test Process CRAMALIGN_CHUNKS"
+    name "Test Process HICCRAMALIGN_CHUNKS"
     script "../main.nf"
-    process "CRAMALIGN_CHUNKS"
+    process "HICCRAMALIGN_CHUNKS"
 
     tag "modules"
     tag "modules_sangertol"
-    tag "cramalign"
-    tag "cramalign/chunks"
+    tag "hiccramalign"
+    tag "hiccramalign/chunks"
 
     test("cram") {
 
