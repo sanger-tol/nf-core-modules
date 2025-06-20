@@ -10,7 +10,7 @@ process BWAMEM2_INDEX {
     conda "bioconda::bwa-mem2=2.2.1" // Modified!
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9a/9ac054213e67b3c9308e409b459080bbe438f8fd6c646c351bc42887f35a42e7/data' :
-        'community.wave.seqera.io/library/bwa-mem2:2.2.1--1842774b9b0b4729' }"
+        'quay.io/biocontainers/bwa-mem2:2.2.1--he70b' }"
 
     input:
     tuple val(meta), path(fasta)
