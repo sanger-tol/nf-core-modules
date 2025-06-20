@@ -148,7 +148,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - uses: actions/cache@3624ceb22c1c5a301c8db4169662070a689d9ea8 # v4
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
         id: cache-pip
         with:
           path: ~/.cache/pip
@@ -235,7 +235,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - uses: actions/cache@3624ceb22c1c5a301c8db4169662070a689d9ea8 # v4
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
         id: cache-pip-pytest
         with:
           path: ~/.cache/pip
@@ -367,7 +367,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - uses: actions/cache@3624ceb22c1c5a301c8db4169662070a689d9ea8 # v4
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
         id: cache-pip-pdiff
         with:
           path: ~/.cache/pip
