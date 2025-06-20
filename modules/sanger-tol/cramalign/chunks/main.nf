@@ -3,6 +3,7 @@ process CRAMALIGN_CHUNKS {
     executor "local"
 
     input:
+    // Native processes can't take path values as inputs
     tuple val(meta), val(cram), val(crai)
     val cram_bin_size
 
@@ -20,8 +21,8 @@ process CRAMALIGN_CHUNKS {
     def n_slices = file(crai).countLines(decompress: true) - 1
     def size     = cram_bin_size
     def n_bins   = n_slices.intdiv(size)
-    chunkn = (0..n_bins)
-    slices   = chunkn.collect { chunk ->
+    chunkn       = (0..n_bins)
+    slices       = chunkn.collect { chunk ->
         def lower = chunk * size
         def upper = [lower + size - 1, n_slices - 1].min()
 
