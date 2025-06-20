@@ -1,4 +1,4 @@
-process CRAMALIGN_CATALIGNBWAMEM2FIXMATESORT {
+process HICCRAMALIGN_BWAMEM2ALIGN {
     tag "$meta.id"
     label "process_high"
 

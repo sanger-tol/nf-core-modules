@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "cramalign_cramcatalignbwamem2fixmatesort"
+name: "hiccramalign_bwamem2align"
 ## TODO nf-core: Add a description of the module and list keywords
 description: write your description here
 keywords:
