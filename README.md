@@ -13,12 +13,12 @@ An nf-core modules repository hosting Nextflow DSL2 modules for the Sanger Tree 
 
 - [sanger-tol/nf-core-modules](#sanger-tol/nf-core-modules)
   - [Table of contents](#table-of-contents)
-  - [Using existing modules](#using-existing-modules)
-  - [Adding new modules](#adding-new-modules)
+  - [Modules](#modules)
+  - [Sub-workflows](#sub-workflows)
   - [Citation](#citation)
   - [Template](#template)
 
-## Using existing modules
+## Modules
 
 The module files hosted in this repository define a set of processes for software tools that allow you to share and add common functionality across multiple pipelines in a modular fashion.
 
@@ -136,14 +136,38 @@ We use a helper command in the `nf-core/tools` package that uses the GitHub API 
       │ [✗]   0 Tests Failed  │
    ```
 
-## Adding new modules
+## Sub-workflows
+
+Like modules, sub-workflows are managed by the `nf-core/tools` package.
+
+The `subworkflows` command group has the same commands as `modules`, e.g.:
+
+- `nf-core subworkflows --git-remote https://github.com/sanger-tol/nf-core-modules.git list`
+- `nf-core subworkflows --git-remote https://github.com/sanger-tol/nf-core-modules.git install`
+- `nf-core subworkflows --git-remote https://github.com/sanger-tol/nf-core-modules.git update`
+- `nf-core subworkflows --git-remote https://github.com/sanger-tol/nf-core-modules.git remove`
+
+### Writing cross-organisation modules and sub-workflows
+
+"Cross-organisation" sub-workflows are sub-workflows that contain components from both `nf-core/modules` and `sanger-tol/nf-core-modules`.
+They require the version 3.3 (or later) of the `nf-core/tools` package.
 
 A complete example exists in the nf-core test repository <https://github.com/nf-core-test/modules>.
 In short:
 
 1. Write sub-workflows `.nf` files that refer to locations in both `sanger-tol` and `nf-core`. [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/main.nf#L1-L2)
-2. Add a `git_remote` key for the `nf-core` modules. [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/meta.yml#L10)
+2. In `meta.yml`:
+   1. Change the first line to
+      ```
+      # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core-test/modules/main/subworkflows/yaml-schema.json
+      ```
+      This ensures that the right schema will be used to validate the file
+   2. Add a `git_remote` key for the `nf-core` modules. [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/meta.yml#L10)
 3. In `/modules`, only add `sanger-tol` modules since the `nf-core` ones will be pulled live from nf-core itself. [Example](https://github.com/nf-core-test/modules/tree/main/modules/)
+
+For testing, you may need a copy of the nf-core modules, for instance as input to your own modules.
+The procedure is to make a copy of the nf-core module into this repository, [example](https://github.com/sanger-tol/nf-core-modules/blob/main/modules/sanger-tol/hiccramalign/bwamem2align/tests/bwamem2.nf),
+and call it in the _setup_ phase of the test, [example](https://github.com/sanger-tol/nf-core-modules/blob/main/modules/sanger-tol/hiccramalign/bwamem2align/tests/main.nf.test#L15-L27).
 
 ## Citation
 
