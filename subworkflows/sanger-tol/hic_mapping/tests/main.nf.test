@@ -1,0 +1,41 @@
+nextflow_workflow {
+
+    name "Test Subworkflow HIC_MAPPING"
+    script "../main.nf"
+    workflow "HIC_MAPPING"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/hic_mapping"
+    tag "hiccramalign/chunks"
+    tag "hiccramalign/bwamem2align"
+    tag "hiccramalign/minimap2align"
+
+    test("sarscov2 - bam - single_end") {
+
+        when {
+            workflow {
+                """
+                input[0] = [
+                    [ id:'test', assembler: 'metamdbg' ], // meta map
+                    file(params.modules_testdata_base_path + 'Zymo_D6311_Metagenome/assembly/xyTesTing1_metamdbg.contigs.fasta.gz', checkIfExists: true),
+                ]
+                input[1] = [
+                    [ id:'test' ],
+                    [
+                        file(params.modules_testdata_base_path + 'Zymo_D6311_Metagenome/genomic_data/hic_sim3c/hic1.cram', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'Zymo_D6311_Metagenome/genomic_data/hic_sim3c/hic2.cram', checkIfExists: true),
+                    ]
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(workflow.out).match()}
+            )
+        }
+    }
+}
