@@ -10,6 +10,7 @@ nextflow_process {
     tag "minimap2/index"
     tag "hiccramalign"
     tag "hiccramalign/minimap2align"
+    tag "nf-core/minimap2/index"
 
     setup {
         new File("${moduleTestDir}/modules").mkdirs()
