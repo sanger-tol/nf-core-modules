@@ -13,20 +13,12 @@ nextflow_process {
     tag "nf-core/minimap2/index"
 
     setup {
-        new File("${launchDir}/modules").mkdirs()
-        def nfcore_yml = new File("${launchDir}/.nf-core.yml")
-        nfcore_yml.write(
-            """
-repository_type: "pipeline"
-template:
-  name: test"""
-        )
+        def shell = new GroovyShell()
+        def nfcoreUtils = shell.parse(new File("${baseDir}/tests/lib/nfcore.groovy"))
 
-        def command2 = ['bash', '-c', "cd ${launchDir} && nf-core modules install minimap2/index"]
-        def command_result = command2.execute()
-        command_result.waitFor()
-        println command_result.err.text
-        "ln -s ${launchDir}/modules/nf-core ${baseDir}/modules/nf-core".execute().waitFor()
+        nfcoreUtils.nfcore_setup(launchDir)
+        nfcoreUtils.nfcore_install(launchDir, ["minimap2/index"])
+        nfcoreUtils.nfcore_link(launchDir, baseDir)
 
         run("MINIMAP2_INDEX") {
             script "../../../../nf-core/minimap2/index/main.nf"
@@ -75,13 +67,6 @@ template:
             )
         }
 
-        cleanup {
-            new File("${launchDir}/modules").deleteDir()
-            new File("${launchDir}/.nf-core.yml").delete()
-            new File("${launchDir}/modules.json").delete()
-            new File("${baseDir}/modules/nf-core").delete()
-        }
-
     }
 
     test("meles meles - stub") {
@@ -107,13 +92,6 @@ template:
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
-        }
-
-        cleanup {
-            new File("${launchDir}/modules").deleteDir()
-            new File("${launchDir}/.nf-core.yml").delete()
-            new File("${launchDir}/modules.json").delete()
-            new File("${baseDir}/modules/nf-core").delete()
         }
 
     }
