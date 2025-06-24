@@ -16,6 +16,7 @@ tests/data/
 work/
 .github/CODEOWNERS-tmp
 modules/nf-core/
+modules/nf-core/*
 modules/sanger-tol/**/.nf-core.yml
 modules/sanger-tol/**/modules.json
 modules/sanger-tol/**/modules
