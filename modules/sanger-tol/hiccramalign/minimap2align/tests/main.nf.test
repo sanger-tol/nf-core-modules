@@ -13,12 +13,9 @@ nextflow_process {
     tag "nf-core/minimap2/index"
 
     setup {
-        def shell = new GroovyShell()
-        def nfcoreUtils = shell.parse(new File("${baseDir}/tests/lib/nfcore.groovy"))
-
-        nfcoreUtils.nfcore_setup(launchDir)
-        nfcoreUtils.nfcore_install(launchDir, ["minimap2/index"])
-        nfcoreUtils.nfcore_link(launchDir, baseDir)
+        nfcoreSetup(launchDir)
+        nfcoreInstall(launchDir, ["minimap2/index"])
+        nfcoreLink(launchDir, baseDir)
 
         run("MINIMAP2_INDEX") {
             script "../../../../nf-core/minimap2/index/main.nf"
@@ -67,6 +64,10 @@ nextflow_process {
             )
         }
 
+        cleanup {
+            nfcoreCleanup(launchDir, baseDir)
+        }
+
     }
 
     test("meles meles - stub") {
@@ -92,6 +93,10 @@ nextflow_process {
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
+        }
+
+        cleanup {
+            nfcoreCleanup(launchDir, baseDir)
         }
 
     }
