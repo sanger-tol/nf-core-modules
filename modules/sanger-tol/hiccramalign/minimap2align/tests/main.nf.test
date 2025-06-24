@@ -15,7 +15,7 @@ nextflow_process {
     setup {
         nfcoreSetup(launchDir)
         nfcoreInstall(launchDir, ["minimap2/index"])
-        nfcoreLink(launchDir, baseDir)
+        nfcoreLink(launchDir, "${baseDir}/modules")
 
         run("MINIMAP2_INDEX") {
             script "../../../../nf-core/minimap2/index/main.nf"
@@ -65,7 +65,7 @@ nextflow_process {
         }
 
         cleanup {
-            nfcoreCleanup(launchDir, baseDir)
+            nfcoreCleanup(launchDir, "${baseDir}/modules")
         }
 
     }
@@ -96,7 +96,7 @@ nextflow_process {
         }
 
         cleanup {
-            nfcoreCleanup(launchDir, baseDir)
+            nfcoreCleanup(launchDir, "${baseDir}/modules")
         }
 
     }
