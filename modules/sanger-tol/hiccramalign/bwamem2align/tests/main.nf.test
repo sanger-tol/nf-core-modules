@@ -10,12 +10,15 @@ nextflow_process {
     tag "bwamem2/index"
     tag "hiccramalign"
     tag "hiccramalign/bwamem2align"
+    tag "nf-core/bwamem2/index"
 
     setup {
+        nfcoreSetup("${launchDir}/library/")
+        nfcoreInstall("${launchDir}/library/", ["bwamem2/index"])
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules")
+
         run("BWAMEM2_INDEX") {
-            // Copied from nf-core modules on 2025-06-2025
-            // Keep up-to-date when updating the module!
-            script "./bwamem2.nf"
+            script "../../../../nf-core/bwamem2/index/main.nf"
             process {
                 """
                 input[0] = Channel.of([
@@ -65,6 +68,10 @@ nextflow_process {
             )
         }
 
+        cleanup {
+            nfcoreUnlink("${baseDir}/modules")
+        }
+
     }
 
     test("meles meles - stub") {
@@ -94,6 +101,10 @@ nextflow_process {
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
+        }
+
+        cleanup {
+            nfcoreUnlink("${baseDir}/modules")
         }
 
     }
