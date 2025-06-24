@@ -23,8 +23,9 @@ template:
         )
 
         def command2 = ['bash', '-c', "cd ${moduleTestDir} && nf-core modules install minimap2/index"]
-        println command2
-        command2.execute().waitFor()
+        def command_result = command2.execute()
+        command_result.waitFor()
+        println command_result.err.text
         "ln -s ${moduleTestDir}/modules/nf-core ${baseDir}/modules/nf-core".execute().waitFor()
 
         run("MINIMAP2_INDEX") {
