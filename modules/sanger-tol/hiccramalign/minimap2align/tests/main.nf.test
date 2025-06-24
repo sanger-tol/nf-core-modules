@@ -12,10 +12,22 @@ nextflow_process {
     tag "hiccramalign/minimap2align"
 
     setup {
+        new File("${moduleTestDir}/modules").mkdirs()
+        def nfcore_yml = new File("${moduleTestDir}/.nf-core.yml")
+        nfcore_yml.write(
+            """
+repository_type: "pipeline"
+template:
+  name: test"""
+        )
+
+        def command2 = ['bash', '-c', "cd ${moduleTestDir} && nf-core modules install minimap2/index"]
+        println command2
+        command2.execute().waitFor()
+        "ln -s ${moduleTestDir}/modules/nf-core ${baseDir}/modules/nf-core".execute().waitFor()
+
         run("MINIMAP2_INDEX") {
-            // Copied from nf-core modules on 2025-06-2025
-            // Keep up-to-date when updating the module!
-            script "./minimap2.nf"
+            script "../../../../nf-core/minimap2/index/main.nf"
             process {
                 """
                 input[0] = Channel.of([
@@ -61,6 +73,13 @@ nextflow_process {
             )
         }
 
+        cleanup {
+            new File("${moduleTestDir}/modules").deleteDir()
+            new File("${moduleTestDir}/.nf-core.yml").delete()
+            new File("${moduleTestDir}/modules.json").delete()
+            new File("${baseDir}/modules/nf-core").delete()
+        }
+
     }
 
     test("meles meles - stub") {
@@ -88,6 +107,12 @@ nextflow_process {
             )
         }
 
-    }
+        cleanup {
+            new File("${moduleTestDir}/modules").deleteDir()
+            new File("${moduleTestDir}/.nf-core.yml").delete()
+            new File("${moduleTestDir}/modules.json").delete()
+            new File("${baseDir}/modules/nf-core").delete()
+        }
 
+    }
 }
