@@ -13,8 +13,8 @@ nextflow_process {
     tag "nf-core/minimap2/index"
 
     setup {
-        new File("${moduleTestDir}/modules").mkdirs()
-        def nfcore_yml = new File("${moduleTestDir}/.nf-core.yml")
+        new File("${launchDir}/modules").mkdirs()
+        def nfcore_yml = new File("${launchDir}/.nf-core.yml")
         nfcore_yml.write(
             """
 repository_type: "pipeline"
@@ -22,11 +22,11 @@ template:
   name: test"""
         )
 
-        def command2 = ['bash', '-c', "cd ${moduleTestDir} && nf-core modules install minimap2/index"]
+        def command2 = ['bash', '-c', "cd ${launchDir} && nf-core modules install minimap2/index"]
         def command_result = command2.execute()
         command_result.waitFor()
         println command_result.err.text
-        "ln -s ${moduleTestDir}/modules/nf-core ${baseDir}/modules/nf-core".execute().waitFor()
+        "ln -s ${launchDir}/modules/nf-core ${baseDir}/modules/nf-core".execute().waitFor()
 
         run("MINIMAP2_INDEX") {
             script "../../../../nf-core/minimap2/index/main.nf"
