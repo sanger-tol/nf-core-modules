@@ -76,9 +76,9 @@ template:
         }
 
         cleanup {
-            new File("${moduleTestDir}/modules").deleteDir()
-            new File("${moduleTestDir}/.nf-core.yml").delete()
-            new File("${moduleTestDir}/modules.json").delete()
+            new File("${launchDir}/modules").deleteDir()
+            new File("${launchDir}/.nf-core.yml").delete()
+            new File("${launchDir}/modules.json").delete()
             new File("${baseDir}/modules/nf-core").delete()
         }
 
@@ -110,9 +110,9 @@ template:
         }
 
         cleanup {
-            new File("${moduleTestDir}/modules").deleteDir()
-            new File("${moduleTestDir}/.nf-core.yml").delete()
-            new File("${moduleTestDir}/modules.json").delete()
+            new File("${launchDir}/modules").deleteDir()
+            new File("${launchDir}/.nf-core.yml").delete()
+            new File("${launchDir}/modules.json").delete()
             new File("${baseDir}/modules/nf-core").delete()
         }
 
