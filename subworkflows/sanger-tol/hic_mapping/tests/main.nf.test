@@ -11,6 +11,12 @@ nextflow_workflow {
     tag "hiccramalign/chunks"
     tag "hiccramalign/bwamem2align"
     tag "hiccramalign/minimap2align"
+    tag "subworkflows/../../modules/nf-core/samtools/markdup"
+    tag "subworkflows/../../modules/nf-core/minimap2/index"
+    tag "subworkflows/../../modules/nf-core/samtools/merge"
+    tag "subworkflows/../../modules/nf-core/samtools/index"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/bwamem2/index"
 
     setup {
         nfcoreSetup("${launchDir}/library/")
