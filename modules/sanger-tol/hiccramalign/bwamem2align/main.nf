@@ -24,7 +24,7 @@ process HICCRAMALIGN_BWAMEM2ALIGN {
     def args4 = task.ext.args4 ?: ''
     def args5 = task.ext.args5 ?: ''
     def args6 = task.ext.args6 ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     // Please be aware one of the tools here required mem = 28 * reference size!!!
     """
     INDEX=`find -L ./ -name "*.amb" | sed 's/\\.amb\$//'`
@@ -44,7 +44,7 @@ process HICCRAMALIGN_BWAMEM2ALIGN {
     """
 
     stub:
-    def prefix  = task.ext.prefix ?: "${meta.id}"
+    def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
     touch ${prefix}.bam
 

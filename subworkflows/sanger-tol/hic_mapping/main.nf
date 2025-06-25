@@ -39,11 +39,11 @@ workflow HIC_MAPPING {
     //
     // Module: Index CRAM files without indexes
     //
-    SAMTOOLS_INDEX_HIC_CRAM(ch_hic_cram_raw.no_index)
-    ch_versions = ch_versions.mix(SAMTOOLS_INDEX_HIC_CRAM.out.versions)
+    SAMTOOLS_INDEX(ch_hic_cram_raw.no_index)
+    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions)
 
     ch_hic_cram = ch_hic_cram_raw.have_index
-        | mix(SAMTOOLS_INDEX_HIC_CRAM.out.crai)
+        | mix(SAMTOOLS_INDEX.out.crai)
 
     //
     // Module: Process the cram index files to determine how many
@@ -51,13 +51,13 @@ workflow HIC_MAPPING {
     //
     HICCRAMALIGN_CHUNKS(
         ch_hic_cram,
-        hic_mapping_cram_chunk_size
+        val_cram_chunk_size
     )
 
     //
     // Logic: Count the total number of cram chunks for downstream grouping
     //
-    ch_n_cram_chunks = CRAM_CHUNKS.out.cram_slices
+    ch_n_cram_chunks = HICCRAMALIGN_CHUNKS.out.cram_slices
         | map { _meta, _cram, _crai, chunkn, _slices -> chunkn }
         | collect
         | map { chunkns -> chunkns.size() }
@@ -69,10 +69,10 @@ workflow HIC_MAPPING {
         //
         // Module: Create bwa-mem2 index for assembly
         //
-        BWAMEM2_INDEX(assemblies)
+        BWAMEM2_INDEX(ch_assemblies)
         ch_versions = ch_versions.mix(BWAMEM2_INDEX.out.versions)
 
-        ch_assemblies_with_reference = assemblies
+        ch_assemblies_with_reference = ch_assemblies
             | combine(BWAMEM2_INDEX.out.index, by: 0)
 
         ch_cram_chunks = HICCRAMALIGN_CHUNKS.out.cram_slices
@@ -90,7 +90,7 @@ workflow HIC_MAPPING {
         //
         // MODULE: generate minimap2 mmi file
         //
-        MINIMAP2_INDEX(assemblies)
+        MINIMAP2_INDEX(ch_assemblies)
         ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
         ch_cram_chunks = HICCRAMALIGN_CHUNKS.out.cram_slices
@@ -112,7 +112,7 @@ workflow HIC_MAPPING {
     // Logic: Index assembly fastas
     //
     SAMTOOLS_FAIDX(
-        assemblies, // reference
+        ch_assemblies, // reference
         [[:],[]],   // fai
         false       // get sizes
     )
@@ -130,12 +130,14 @@ workflow HIC_MAPPING {
         }
         | groupTuple()
         | map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
-        | combine(assemblies, by: 0)
-        | combine(SAMTOOLS_FAIDX_HIC_MAPPING.out.fai, by: 0)
-        | multiMap { meta, bams, assembly, fai ->
+        | combine(ch_assemblies, by: 0)
+        | combine(SAMTOOLS_FAIDX.out.fai, by: 0)
+        | combine(SAMTOOLS_FAIDX.out.gzi.ifEmpty([[], []]), by: 0)
+        | multiMap { meta, bams, assembly, fai, gzi ->
             bam:   [meta, bams]
             fasta: [meta, assembly]
             fai:   [meta, fai]
+            gzi:   [meta, gzi]
         }
 
     //
@@ -144,16 +146,17 @@ workflow HIC_MAPPING {
     SAMTOOLS_MERGE(
         ch_samtools_merge_input.bam,
         ch_samtools_merge_input.fasta,
-        ch_samtools_merge_input.fai
+        ch_samtools_merge_input.fai,
+        ch_samtools_merge_input.gzi,
     )
-    ch_versions = ch_versions.mix (SAMTOOLS_MERGE_HIC_MAPPING.out.versions)
+    ch_versions = ch_versions.mix(SAMTOOLS_MERGE.out.versions)
 
     //
     // Module: Mark duplicates on the merged bam
     //
-    ch_samtools_markdup_input = SAMTOOLS_MERGE_HIC_MAPPING.out.bam
+    ch_samtools_markdup_input = SAMTOOLS_MERGE.out.bam
         | filter { val_mark_duplicates }
-        | combine(assemblies, by: 0)
+        | combine(ch_assemblies, by: 0)
         | multiMap { meta, bam, assembly ->
             bam:      [meta, bam]
             assembly: [meta, assembly]
@@ -163,9 +166,9 @@ workflow HIC_MAPPING {
         ch_samtools_markdup_input.bam,
         ch_samtools_markdup_input.assembly
     )
-    ch_versions = ch_versions.mix(SAMTOOLS_MARKDUP_HIC_MAPPING.out.versions)
+    ch_versions = ch_versions.mix(SAMTOOLS_MARKDUP.out.versions)
 
     emit:
-    bam      = SAMTOOLS_MARKDUP_HIC_MAPPING.out.bam
+    bam      = val_mark_duplicates ? SAMTOOLS_MARKDUP.out.bam : SAMTOOLS_MERGE.out.bam
     versions = ch_versions
 }

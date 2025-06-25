@@ -29,7 +29,7 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
     def args4 = task.ext.args4 ?: ''
     def args5 = task.ext.args5 ?: ''
     def args6 = task.ext.args6 ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\
@@ -47,7 +47,7 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
     """
 
     stub:
-    def prefix  = task.ext.prefix ?: "${meta.id}"
+    def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
     touch ${prefix}.bam
 
