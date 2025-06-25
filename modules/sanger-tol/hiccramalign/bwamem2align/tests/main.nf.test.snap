@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bam:md5,41a3896f06416d1204455a047aa55970"
+                        "35528_2%231_subset.cram.1.test.bam:md5,d0fb5c3e3ab5fb3e35c8e64f64563101"
                     ]
                 ],
                 "1": [
@@ -18,7 +18,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bam:md5,41a3896f06416d1204455a047aa55970"
+                        "35528_2%231_subset.cram.1.test.bam:md5,d0fb5c3e3ab5fb3e35c8e64f64563101"
                     ]
                 ],
                 "versions": [
@@ -30,7 +30,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-20T13:49:24.905332"
+        "timestamp": "2025-06-25T11:43:57.491479"
     },
     "meles meles - stub": {
         "content": [
@@ -40,7 +40,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "35528_2%231_subset.cram.1.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -51,7 +51,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "35528_2%231_subset.cram.1.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
@@ -63,6 +63,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-20T13:25:36.307424"
+        "timestamp": "2025-06-25T11:44:19.601764"
     }
 }
