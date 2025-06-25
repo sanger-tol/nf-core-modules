@@ -174,7 +174,7 @@ nextflow_workflow {
                 { assert workflow.success},
                 {
                     assert snapshot(
-                        bam(workflow.out.bam.get(0).get(1), stringency: "lenient").getReadsMD5(),
+                        bam(workflow.out.bam.get(0).get(1)).getReadsMD5(),
                         workflow.out.versions.collect{ path(it).yaml }
                     ).match()
                 }
@@ -224,7 +224,7 @@ nextflow_workflow {
                 { assert workflow.success},
                 {
                     assert snapshot(
-                        bam(workflow.out.bam.get(0).get(1), stringency: "lenient").getReadsMD5(),
+                        bam(workflow.out.bam.get(0).get(1)).getReadsMD5(),
                         workflow.out.versions.collect{ path(it).yaml }
                     ).match()
                 }

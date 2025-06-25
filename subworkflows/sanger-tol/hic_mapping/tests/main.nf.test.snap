@@ -1,7 +1,7 @@
 {
     "meles meles - minimap2 - no markdup": {
         "content": [
-            "aeeda5ffed22b0a6f7335d046f99c95c",
+            "d41d8cd98f00b204e9800998ecf8427e",
             [
                 {
                     "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
@@ -35,7 +35,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T13:43:19.252816"
+        "timestamp": "2025-06-25T15:46:58.889717"
     },
     "meles meles - bwamem2 - no markdup": {
         "content": [
@@ -77,7 +77,7 @@
     },
     "meles meles - minimap2 - markdup": {
         "content": [
-            "aeeda5ffed22b0a6f7335d046f99c95c",
+            "d41d8cd98f00b204e9800998ecf8427e",
             [
                 {
                     "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
@@ -116,7 +116,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T13:42:33.209224"
+        "timestamp": "2025-06-25T15:46:12.441365"
     },
     "meles meles - bwamem2 - markdup": {
         "content": [

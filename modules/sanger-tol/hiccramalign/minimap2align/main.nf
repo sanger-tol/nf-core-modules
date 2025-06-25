@@ -34,7 +34,27 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\
         minimap2 -t${task.cpus} ${args3} ${reference} - |\\
+        awk '{
+            if(\$1 ~ /^\\@/) {
+                print \$0
+            } else {
+                if(and(\$2,64)>0) {
+                    print 1 \$0
+                } else {
+                    print 2 \$0
+                }
+            }
+        }' |\\
         filter_five_end.pl |\\
+        awk '
+            BEGIN { OFS="\t" }
+            { if(\$1 ~ /^\\@/) {
+                print \$0
+            } else {
+                \$2=and(\$2,compl(2048))
+                print substr(\$0,2)
+            }
+        }' |\\
         samtools fixmate ${args4} - - |\\
         samtools view -h ${args5} |\\
         samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.bam -
