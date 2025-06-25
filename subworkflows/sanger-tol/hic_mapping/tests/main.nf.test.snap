@@ -1,17 +1,11 @@
 {
     "meles meles - minimap2 - no markdup": {
         "content": [
-            "d41d8cd98f00b204e9800998ecf8427e",
+            "cadae29d5849e3c4b7328c3eb8cc239d",
             [
                 {
                     "HIC_MAPPING:SAMTOOLS_FAIDX": {
                         "samtools": 1.21
-                    }
-                },
-                {
-                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
-                        "samtools": 1.22,
-                        "minimap2": "2.30-r1287"
                     }
                 },
                 {
@@ -25,6 +19,13 @@
                     }
                 },
                 {
+                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
+                        "samtools": 1.22,
+                        "minimap2": "2.30-r1287",
+                        "gawk": "5.3.1"
+                    }
+                },
+                {
                     "HIC_MAPPING:MINIMAP2_INDEX": {
                         "minimap2": "2.29-r1283"
                     }
@@ -35,7 +36,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T18:04:48.131272"
+        "timestamp": "2025-06-25T18:32:56.582806"
     },
     "meles meles - bwamem2 - no markdup": {
         "content": [
@@ -77,7 +78,7 @@
     },
     "meles meles - minimap2 - markdup": {
         "content": [
-            "d41d8cd98f00b204e9800998ecf8427e",
+            "cadae29d5849e3c4b7328c3eb8cc239d",
             [
                 {
                     "HIC_MAPPING:SAMTOOLS_FAIDX": {
@@ -87,12 +88,6 @@
                 {
                     "HIC_MAPPING:SAMTOOLS_MARKDUP": {
                         "samtools": 1.21
-                    }
-                },
-                {
-                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
-                        "samtools": 1.22,
-                        "minimap2": "2.30-r1287"
                     }
                 },
                 {
@@ -106,6 +101,13 @@
                     }
                 },
                 {
+                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
+                        "samtools": 1.22,
+                        "minimap2": "2.30-r1287",
+                        "gawk": "5.3.1"
+                    }
+                },
+                {
                     "HIC_MAPPING:MINIMAP2_INDEX": {
                         "minimap2": "2.29-r1283"
                     }
@@ -116,7 +118,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T18:03:57.89471"
+        "timestamp": "2025-06-25T18:32:05.585058"
     },
     "meles meles - bwamem2 - markdup": {
         "content": [

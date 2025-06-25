@@ -38,7 +38,7 @@ nextflow_process {
             params {
                 samtools_cat_args     = ""
                 samtools_fastq_args   = "-F0xB00 -nt"
-                minimap2_args         = "-ax sr --no-pairing"
+                minimap2_args         = "-ax sr"
                 samtools_fixmate_args = "-mpu"
                 samtools_view_args    = "-q 0 -F 0x904"
                 samtools_sort_args    = "--write-index -l1"

@@ -4,8 +4,8 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/71/711a743a18039d9ecfc6032fb1e124eea4a87bc2bf2ed47a1c5b8534f8193b1f/data' :
-        'community.wave.seqera.io/library/minimap2_samtools_perl:65833242e5ffdf5c' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/3c/3c40d54b6b5337f299ba22f9cf8febaabb33920d81122b5993c9255b7b8d1dd6/data' :
+        'community.wave.seqera.io/library/minimap2_samtools_gawk_perl:2b2d4d47ac8c2890' }"
 
     input:
     tuple val(meta), path(cram), path(crai), val(chunkn), val(range), path(reference)
@@ -34,27 +34,17 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\
         minimap2 -t${task.cpus} ${args3} ${reference} - |\\
-        awk '{
-            if(\$1 ~ /^\\@/) {
-                print \$0
-            } else {
-                if(and(\$2,64)>0) {
-                    print 1 \$0
-                } else {
-                    print 2 \$0
-                }
-            }
-        }' |\\
+        gawk '
+            \$1 ~ /^\\@/ { print \$0 }
+            \$1 !~ /^\\@/ && and(\$2, 64) > 0 { print 1 \$0 }
+            \$1 !~ /^\\@/ && and(\$2, 64) == 0 { print 2 \$0 }
+        ' |\\
         filter_five_end.pl |\\
-        awk '
+        gawk '
             BEGIN { OFS="\\t" }
-            { if(\$1 ~ /^\\@/) {
-                print \$0
-            } else {
-                \$2=and(\$2,compl(2048))
-                print substr(\$0,2)
-            }
-        }' |\\
+            \$1 ~ /^\\@/ { print \$0 }
+            \$1 !~ /^\\@/ { \$2 = and(\$2, compl(2048)); print substr(\$0, 2) }
+        ' |\\
         samtools fixmate ${args4} - - |\\
         samtools view -h ${args5} |\\
         samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.bam -
@@ -63,6 +53,7 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
     "${task.process}":
         samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//' )
         minimap2: \$(minimap2 --version | sed 's/minimap2 //g')
+        gawk: \$(gawk --version | grep -o -E "[0-9]+(\\.[0-9]+)+" | head -n1)
     END_VERSIONS
     """
 
@@ -75,6 +66,7 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
     "${task.process}":
         samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//' )
         minimap2: \$(minimap2 --version | sed 's/minimap2 //g')
+        gawk: \$(gawk --version | grep -o -E "[0-9]+(\\.[0-9]+)+" | head -n1)
     END_VERSIONS
     """
 }
