@@ -47,7 +47,7 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
         }' |\\
         filter_five_end.pl |\\
         awk '
-            BEGIN { OFS="\t" }
+            BEGIN { OFS="\\t" }
             { if(\$1 ~ /^\\@/) {
                 print \$0
             } else {
