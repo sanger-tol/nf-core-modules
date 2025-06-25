@@ -15,7 +15,7 @@ nextflow_process {
     setup {
         nfcoreSetup("${launchDir}/library/")
         nfcoreInstall("${launchDir}/library/", ["bwamem2/index"])
-        nfcoreLink("${launchDir}/library/", "${baseDir}/modules")
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/nf-core")
 
         run("BWAMEM2_INDEX") {
             script "../../../../nf-core/bwamem2/index/main.nf"
@@ -69,7 +69,7 @@ nextflow_process {
         }
 
         cleanup {
-            nfcoreUnlink("${baseDir}/modules")
+            nfcoreUnlink("${baseDir}/modules/nf-core")
         }
 
     }
@@ -104,7 +104,7 @@ nextflow_process {
         }
 
         cleanup {
-            nfcoreUnlink("${baseDir}/modules")
+            nfcoreUnlink("${baseDir}/modules/nf-core")
         }
 
     }
