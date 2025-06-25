@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "35528_2%231_subset.cram.1.test.bam:md5,5f1be683197b3beb989908bb3bf71d86"
+                        "35528_2%231_subset.cram.1.test.bam:md5,6a474bb6f19477eb228a8b403e7da677"
                     ]
                 ],
                 "1": [
@@ -18,7 +18,7 @@
                         {
                             "id": "test"
                         },
-                        "35528_2%231_subset.cram.1.test.bam:md5,5f1be683197b3beb989908bb3bf71d86"
+                        "35528_2%231_subset.cram.1.test.bam:md5,6a474bb6f19477eb228a8b403e7da677"
                     ]
                 ],
                 "versions": [
@@ -30,7 +30,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T18:20:42.0286"
+        "timestamp": "2025-06-25T18:48:09.137055"
     },
     "meles meles - stub": {
         "content": [
