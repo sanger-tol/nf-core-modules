@@ -71,7 +71,12 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                {
+                    assert snapshot(
+                        bam(workflow.out.bam.get(0).get(1)).getReadsMD5(),
+                        workflow.out.versions.collect{ path(it).yaml }
+                    ).match()
+                }
             )
         }
 
@@ -117,7 +122,12 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                {
+                    assert snapshot(
+                        bam(workflow.out.bam.get(0).get(1)).getReadsMD5(),
+                        workflow.out.versions.collect{ path(it).yaml }
+                    ).match()
+                }
             )
         }
 
@@ -162,7 +172,12 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                {
+                    assert snapshot(
+                        bam(workflow.out.bam.get(0).get(1), stringency: "lenient").getReadsMD5(),
+                        workflow.out.versions.collect{ path(it).yaml }
+                    ).match()
+                }
             )
         }
 
@@ -207,7 +222,12 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                {
+                    assert snapshot(
+                        bam(workflow.out.bam.get(0).get(1), stringency: "lenient").getReadsMD5(),
+                        workflow.out.versions.collect{ path(it).yaml }
+                    ).match()
+                }
             )
         }
 

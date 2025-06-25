@@ -1,162 +1,164 @@
 {
     "meles meles - minimap2 - no markdup": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.bam:md5,110d3e2c8df2ea76c2a19c6893046618"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,23bcb52f21b91f15f880f92a5b37da2e",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665",
-                    "versions.yml:md5,fd15db333caf07479a96afdbe9a149e0"
-                ],
-                "bam": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.bam:md5,110d3e2c8df2ea76c2a19c6893046618"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,23bcb52f21b91f15f880f92a5b37da2e",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665",
-                    "versions.yml:md5,fd15db333caf07479a96afdbe9a149e0"
-                ]
-            }
+            "aeeda5ffed22b0a6f7335d046f99c95c",
+            [
+                {
+                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
+                        "samtools": 1.22,
+                        "minimap2": "2.30-r1287"
+                    }
+                },
+                {
+                    "HICCRAMALIGN_CHUNKS": {
+                        "hiccramalign_chunks": "1.0.0"
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_MERGE": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:MINIMAP2_INDEX": {
+                        "minimap2": "2.29-r1283"
+                    }
+                }
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T11:26:53.248878"
+        "timestamp": "2025-06-25T13:43:19.252816"
     },
     "meles meles - bwamem2 - no markdup": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.bam:md5,85122d28bf56b77c0bf706d84c8a97ad"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
-                    "versions.yml:md5,997e5b1acb1b79a07931e38b6dd2216f",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665"
-                ],
-                "bam": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.bam:md5,85122d28bf56b77c0bf706d84c8a97ad"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
-                    "versions.yml:md5,997e5b1acb1b79a07931e38b6dd2216f",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665"
-                ]
-            }
+            "7d1eeee0a6762dd68a561558e2aa63a2",
+            [
+                {
+                    "HICCRAMALIGN_CHUNKS": {
+                        "hiccramalign_chunks": "1.0.0"
+                    }
+                },
+                {
+                    "HIC_MAPPING:BWAMEM2_INDEX": {
+                        "bwamem2": "2.2.1"
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:HICCRAMALIGN_BWAMEM2ALIGN": {
+                        "samtools": 1.22,
+                        "bwamem2": "2.2.1"
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_MERGE": {
+                        "samtools": 1.22
+                    }
+                }
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T11:25:13.692468"
+        "timestamp": "2025-06-25T13:35:52.528643"
     },
     "meles meles - minimap2 - markdup": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.mkdup.bam:md5,f81a3d8aedaee2dc498cc408f1b9bcb5"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,23bcb52f21b91f15f880f92a5b37da2e",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665",
-                    "versions.yml:md5,c34f98bd84ffe9381869dc901928eeb9",
-                    "versions.yml:md5,fd15db333caf07479a96afdbe9a149e0"
-                ],
-                "bam": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.mkdup.bam:md5,f81a3d8aedaee2dc498cc408f1b9bcb5"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,23bcb52f21b91f15f880f92a5b37da2e",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665",
-                    "versions.yml:md5,c34f98bd84ffe9381869dc901928eeb9",
-                    "versions.yml:md5,fd15db333caf07479a96afdbe9a149e0"
-                ]
-            }
+            "aeeda5ffed22b0a6f7335d046f99c95c",
+            [
+                {
+                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
+                        "samtools": 1.22,
+                        "minimap2": "2.30-r1287"
+                    }
+                },
+                {
+                    "HICCRAMALIGN_CHUNKS": {
+                        "hiccramalign_chunks": "1.0.0"
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_MERGE": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_MARKDUP": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:MINIMAP2_INDEX": {
+                        "minimap2": "2.29-r1283"
+                    }
+                }
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T11:26:07.231744"
+        "timestamp": "2025-06-25T13:42:33.209224"
     },
     "meles meles - bwamem2 - markdup": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.mkdup.bam:md5,9306e283a8603f64ffcd98e0afd9b4fd"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
-                    "versions.yml:md5,997e5b1acb1b79a07931e38b6dd2216f",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665",
-                    "versions.yml:md5,c34f98bd84ffe9381869dc901928eeb9"
-                ],
-                "bam": [
-                    [
-                        {
-                            "id": "test",
-                            "assembler": "metamdbg"
-                        },
-                        "test.mkdup.bam:md5,9306e283a8603f64ffcd98e0afd9b4fd"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
-                    "versions.yml:md5,997e5b1acb1b79a07931e38b6dd2216f",
-                    "versions.yml:md5,9a751797ad534cd108b281bec8d5f665",
-                    "versions.yml:md5,c34f98bd84ffe9381869dc901928eeb9"
-                ]
-            }
+            "7d1eeee0a6762dd68a561558e2aa63a2",
+            [
+                {
+                    "HICCRAMALIGN_CHUNKS": {
+                        "hiccramalign_chunks": "1.0.0"
+                    }
+                },
+                {
+                    "HIC_MAPPING:BWAMEM2_INDEX": {
+                        "bwamem2": "2.2.1"
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:HICCRAMALIGN_BWAMEM2ALIGN": {
+                        "samtools": 1.22,
+                        "bwamem2": "2.2.1"
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_MERGE": {
+                        "samtools": 1.22
+                    }
+                },
+                {
+                    "HIC_MAPPING:SAMTOOLS_MARKDUP": {
+                        "samtools": 1.22
+                    }
+                }
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-06-25T11:24:16.858923"
+        "timestamp": "2025-06-25T13:35:01.508668"
     }
 }

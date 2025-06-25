@@ -53,6 +53,7 @@ workflow HIC_MAPPING {
         ch_hic_cram,
         val_cram_chunk_size
     )
+    ch_versions = ch_versions.mix(HICCRAMALIGN_CHUNKS.out.versions)
 
     //
     // Logic: Count the total number of cram chunks for downstream grouping
@@ -116,6 +117,7 @@ workflow HIC_MAPPING {
         [[:],[]],   // fai
         false       // get sizes
     )
+    ch_versions = ch_versions.mix(SAMTOOLS_FAIDX.out.versions)
 
     //
     // Logic: Prepare input for merging bams.
