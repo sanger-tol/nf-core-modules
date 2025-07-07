@@ -19,7 +19,7 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/bwamem2/index"
 
     setup {
-        nfcoreSetup("${launchDir}/library/")
+        nfcoreInitialise("${launchDir}/library/")
         nfcoreInstall(
             "${launchDir}/library/",
             [
@@ -81,7 +81,7 @@ nextflow_workflow {
         }
 
         cleanup {
-            nfcoreUnlink("${baseDir}/modules/nf-core")
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 
@@ -132,7 +132,7 @@ nextflow_workflow {
         }
 
         cleanup {
-            nfcoreUnlink("${baseDir}/modules/nf-core")
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 
@@ -182,7 +182,7 @@ nextflow_workflow {
         }
 
         cleanup {
-            nfcoreUnlink("${baseDir}/modules/nf-core")
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 
@@ -232,7 +232,7 @@ nextflow_workflow {
         }
 
         cleanup {
-            nfcoreUnlink("${baseDir}/modules/nf-core")
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 

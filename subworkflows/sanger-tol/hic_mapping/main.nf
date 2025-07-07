@@ -1,4 +1,3 @@
-//include { BAMTOBED_SORT                                    } from '../../../modules/local/bamtobed_sort'
 include { BWAMEM2_INDEX              } from '../../../modules/nf-core/bwamem2/index/main'
 include { HICCRAMALIGN_CHUNKS        } from '../../../modules/sanger-tol/hiccramalign/chunks'
 include { HICCRAMALIGN_BWAMEM2ALIGN  } from '../../../modules/sanger-tol/hiccramalign/bwamem2align'
