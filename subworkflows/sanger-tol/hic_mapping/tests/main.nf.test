@@ -31,7 +31,7 @@ nextflow_workflow {
                 "samtools/faidx"
             ]
         )
-        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
     test("meles meles - bwamem2 - markdup") {
