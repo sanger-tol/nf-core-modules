@@ -41,7 +41,7 @@ nextflow_workflow {
             params {
                 samtools_cat_args = ""
                 samtools_fastq_args = "-F0xB00 -nt"
-                bwamem2_mem_args = "-5SPCp"
+                bwamem2_mem_args = "-5SPp"
                 samtools_fixmate_args = "-mpu"
                 samtools_view_args = "-q 0 -F 0x904"
                 samtools_sort_args = "--write-index -l1"
@@ -92,7 +92,7 @@ nextflow_workflow {
             params {
                 samtools_cat_args = ""
                 samtools_fastq_args = "-F0xB00 -nt"
-                bwamem2_mem_args = "-5SPCp"
+                bwamem2_mem_args = "-5SPp"
                 samtools_fixmate_args = "-mpu"
                 samtools_view_args = "-q 0 -F 0x904"
                 samtools_sort_args = "--write-index -l1"
