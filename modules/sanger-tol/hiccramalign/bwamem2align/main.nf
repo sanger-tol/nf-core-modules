@@ -4,8 +4,8 @@ process HICCRAMALIGN_BWAMEM2ALIGN {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/41/41a128095da89d592889899dceed75ba0252bf9471eebee2db6ae0eb5474738a/data' :
-        'community.wave.seqera.io/library/bwa-mem2_samtools:34483fa65c9842a5' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/e0/e05ce34b46ad42810eb29f74e4e304c0cb592b2ca15572929ed8bbaee58faf01/data' :
+        'community.wave.seqera.io/library/bwa-mem2_htslib_samtools:db98f81f55b64113' }"
 
     input:
     tuple val(meta), path(cram), path(crai), val(chunkn), val(range), path(index), path(reference)

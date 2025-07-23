@@ -4,8 +4,8 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/3c/3c40d54b6b5337f299ba22f9cf8febaabb33920d81122b5993c9255b7b8d1dd6/data' :
-        'community.wave.seqera.io/library/minimap2_samtools_gawk_perl:2b2d4d47ac8c2890' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/65/65858e733832166824cfd05291fc456bdf219b02baa3944c2c92efad86a6ee7f/data' :
+        'community.wave.seqera.io/library/htslib_minimap2_samtools_gawk_perl:6729620c63652154' }"
 
     input:
     tuple val(meta), path(cram), path(crai), val(chunkn), val(range), path(reference)
@@ -20,7 +20,7 @@ process HICCRAMALIGN_MINIMAP2ALIGN {
     script:
     // WARNING: This module includes the filter_five_end.pl script as a module binary in
     // ${moduleDir}/resources/usr/bin/filter_five_end.pl. To use this module, you will
-    // either have to copy this file to ${projectDir}/bin or enable the option
+    // either have to copy this file to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true
     // in your nextflow.config file.
     def args1 = task.ext.args1 ?: ''
