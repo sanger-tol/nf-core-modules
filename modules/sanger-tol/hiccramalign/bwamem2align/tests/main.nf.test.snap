@@ -3,14 +3,14 @@
         "content": [
             "12bbc3437515580a7dcc3c0d677c225a",
             [
-                "versions.yml:md5,ac4c4b780f998adb83af41f0042f5437"
+                "versions.yml:md5,0d682908c95be4f8e0e547e03c448d7d"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-07-23T10:24:18.396975456"
+        "timestamp": "2025-07-23T10:53:49.822774198"
     },
     "meles meles - stub": {
         "content": [
@@ -24,7 +24,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,ac4c4b780f998adb83af41f0042f5437"
+                    "versions.yml:md5,0d682908c95be4f8e0e547e03c448d7d"
                 ],
                 "bam": [
                     [
@@ -35,7 +35,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,ac4c4b780f998adb83af41f0042f5437"
+                    "versions.yml:md5,0d682908c95be4f8e0e547e03c448d7d"
                 ]
             }
         ],
@@ -43,6 +43,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-07-23T10:24:37.184103773"
+        "timestamp": "2025-07-23T10:54:36.060555429"
     }
 }
