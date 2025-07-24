@@ -165,9 +165,24 @@ In short:
    2. Add a `git_remote` key for the `nf-core` modules. [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/meta.yml#L10)
 3. In `/modules`, only add `sanger-tol` modules since the `nf-core` ones will be pulled live from nf-core itself. [Example](https://github.com/nf-core-test/modules/tree/main/modules/)
 
-For testing, you may need a copy of the nf-core modules, for instance as input to your own modules.
-The procedure is to make a copy of the nf-core module into this repository, [example](https://github.com/sanger-tol/nf-core-modules/blob/main/modules/sanger-tol/hiccramalign/bwamem2align/tests/bwamem2.nf),
-and call it in the _setup_ phase of the test, [example](https://github.com/sanger-tol/nf-core-modules/blob/main/modules/sanger-tol/hiccramalign/bwamem2align/tests/main.nf.test#L15-L27).
+Tests will probably need a copy of the nf-core modules.
+Instead of keeping copies of nf-core modules here, we use functions from the `nft-utils` plugin to load them on-the-fly when running tests.
+For this, we load the `nft-utils` plugin (via `nf-test.config`).
+
+Take the [hic_mapping](https://github.com/sanger-tol/nf-core-modules/blob/main/subworkflows/sanger-tol/hic_mapping/tests/main.nf.test)
+sub-workflow as an example.
+
+In your sub-workflow's tests, in the _setup_ phase:
+
+1. Call `nfcoreInitialise` to initialise a new "library" directory.
+2. Call `nfcoreInstall` to install all the nf-core modules you need in that library.
+3. Call `nfcoreLink` to link the nf-core modules from the above "library" into the test's "modules" directory.
+
+And in the _cleanup_ phase:
+
+1. Call `nfcoreUnlink`.
+
+(and that's all !)
 
 ## Citation
 
