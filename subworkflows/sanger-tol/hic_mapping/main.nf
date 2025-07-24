@@ -43,7 +43,7 @@ workflow HIC_MAPPING {
 
     ch_hic_cram_indexed = ch_hic_cram_raw.have_index
         | mix(
-            ch_hic_cram.no_index.join(SAMTOOLS_INDEX.out.crai)
+            ch_hic_cram_raw.no_index.join(SAMTOOLS_INDEX.out.crai)
         )
 
     //
