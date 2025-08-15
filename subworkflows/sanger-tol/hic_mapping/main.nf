@@ -140,7 +140,7 @@ workflow HIC_MAPPING {
             bam:   [meta, bams]
             fasta: [meta, assembly]
             fai:   [meta, fai]
-            gzi:   [meta, gzi]
+            gzi:   gzi ? [meta, gzi] : [[], []] // need to pass an empty list - null doesn't work
         }
 
     //
