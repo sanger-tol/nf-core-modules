@@ -2,6 +2,7 @@ process BEDTOOLS_BAMTOBEDSORT {
     tag "$meta.id"
     label "process_high"
 
+    conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/cf/cf65e22485bc417775bef295e324b214d5a4ddfea5c3cbfedf8623bf8af55612/data' :
         'community.wave.seqera.io/library/bedtools_samtools_coreutils:43e34cbcf7cfff84' }"
