@@ -11,7 +11,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,b6105950904360fbce5569a064ca1a65"
+                    "versions.yml:md5,a88f52d5c4de030fb43d44b7697c44ff"
                 ],
                 "sorted_bed": [
                     [
@@ -22,7 +22,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,b6105950904360fbce5569a064ca1a65"
+                    "versions.yml:md5,a88f52d5c4de030fb43d44b7697c44ff"
                 ]
             }
         ],
@@ -30,7 +30,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-08-22T16:05:06.151895764"
+        "timestamp": "2025-08-22T16:13:40.428649821"
     },
     "Undibacterium unclassified - bam - stub": {
         "content": [
