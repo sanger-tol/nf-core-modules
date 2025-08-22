@@ -26,7 +26,8 @@ process BEDTOOLS_BAMTOBEDSORT {
     """
     samtools view \\
         -@${st_cores} \\
-        ${args1} ${bam} | \\
+        ${args1} \\
+		${bam} | \\
     bamToBed ${args2} -i stdin | \\
     sort ${args3} \\
         --parallel=${task.cpus} \\
