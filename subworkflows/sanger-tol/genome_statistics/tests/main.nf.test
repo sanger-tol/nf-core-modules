@@ -1,0 +1,127 @@
+nextflow_workflow {
+
+    name "Test Subworkflow GENOME_STATISTICS"
+    script "../main.nf"
+    workflow "GENOME_STATISTICS"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/genome_statistics"
+    tag "asmstats"
+    tag "subworkflows/../../modules/nf-core/busco/busco"
+    tag "subworkflows/../../modules/nf-core/gfastats"
+    tag "subworkflows/../../modules/nf-core/merquryfk/merquryfk"
+
+    test("meles meles - no trio - no fastk") {
+
+        config "./no_fastk.config"
+
+        setup {
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "busco/busco",
+                    "gfastats",
+                    "merquryfk/merquryfk",
+                ]
+            )
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+        }
+
+        when {
+
+            workflow {
+                """
+                input[0] = [
+                    [ id: "test"],
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true)
+                ]
+                input[1] = Channel.empty()
+                input[2] = Channel.empty()
+                input[3] = Channel.empty()
+                input[4] = "lepidoptera_odb12"
+                input[5] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success               },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("meles meles - no trio - fastk") {
+
+        config "./fastk.config"
+
+        setup {
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "busco/busco",
+                    "gfastats",
+                    "merquryfk/merquryfk",
+                    "fastk/fastk",
+                ]
+            )
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+            run("FASTK_FASTK") {
+                script "../../../../nf-core/fastk/fastk/main.nf"
+                process {
+                    """
+                    input[0] = [
+                        [ id: "test" ],
+                        file(params.modules_testdata_base_path + 'Ceramica_pisi/genomic_data/ilCerPisi1/pacbio/m64097e_230309_154741.ccs.bc1012_BAK8A_OA--bc1012_BAK8A_OA.subsampled.bam', checkIfExists: true)
+                    ]
+                    """
+                }
+            }
+
+        }
+
+        when {
+
+            params {
+                fastk_args = "-t"
+            }
+
+            workflow {
+                """
+                input[0] = [
+                    [ id: "test"],
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true)
+                ]
+                input[1] = FASTK_FASTK.out.hist.join(FASTK_FASTK.out.ktab)
+                input[2] = Channel.empty()
+                input[3] = Channel.empty()
+                input[4] = "lepidoptera_odb12"
+                input[5] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success               },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+}

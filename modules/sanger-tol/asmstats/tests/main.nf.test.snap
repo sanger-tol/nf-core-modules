@@ -1,0 +1,68 @@
+{
+    "meles meles - fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "GCA_922984935.2.subset.fasta.gz.stats:md5,4f692268fb5b50290af7454a32744055"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,66f87e4391d320f82e0b580bafb46935"
+                ],
+                "stats": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "GCA_922984935.2.subset.fasta.gz.stats:md5,4f692268fb5b50290af7454a32744055"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,66f87e4391d320f82e0b580bafb46935"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-08-29T13:46:30.170536"
+    },
+    "meles meles - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.stats:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,05166db6706453b214b205f0acc4d7a9"
+                ],
+                "stats": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.stats:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,05166db6706453b214b205f0acc4d7a9"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-08-29T13:45:12.765972"
+    }
+}
