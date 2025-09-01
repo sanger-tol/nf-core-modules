@@ -46,12 +46,18 @@ workflow GENOME_STATISTICS {
     ch_versions = ch_versions.mix(GFASTATS.out.versions)
 
     //
-    // Module: Assess assembly using BUSCO_BUSCO
+    // Module: Assess assembly using BUSCO_BUSCO. If val_busco_lineage
+    //         not provided then we properly skip the process entirely.
     //
+    ch_busco_lineage_input = Channel.empty()
+    if(val_busco_lineage) {
+        ch_busco_lineage_input = Channel.of(val_busco_lineage)
+    }
+
     BUSCO_BUSCO(
         ch_assemblies_split,               // assembly
         "genome",                          // busco mode
-        val_busco_lineage,                 // lineage to run BUSCO predictions
+        ch_busco_lineage_input,            // lineage to run BUSCO predictions
         val_busco_lineage_directory ?: [], // busco lineage directory
         [],                                // busco config
         true                               // clean intermediates

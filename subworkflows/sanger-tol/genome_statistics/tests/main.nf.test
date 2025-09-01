@@ -13,6 +13,53 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/merquryfk/merquryfk"
     tag "modules/nf-core/fastk/fastk"
 
+    test("meles meles - no trio - no busco - no fastk") {
+
+        config "./no_fastk.config"
+
+        setup {
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "busco/busco",
+                    "gfastats",
+                    "merquryfk/merquryfk",
+                ]
+            )
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+        }
+
+        when {
+
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id: "test"],
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859975.1_alt.fasta.gz', checkIfExists: true)
+                ])
+                input[1] = Channel.empty()
+                input[2] = Channel.empty()
+                input[3] = Channel.empty()
+                input[4] = ""
+                input[5] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success               },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
     test("meles meles - no trio - no fastk") {
 
         config "./no_fastk.config"
@@ -50,8 +97,32 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success               },
-                { assert snapshot(workflow.out).match() }
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.asmstats,
+                    workflow.out.gfastats,
+                    workflow.out.merqury_qv,
+                    workflow.out.merqury_completeness,
+                    workflow.out.merqury_phased_stats,
+                    workflow.out.merqury_images,
+                    workflow.out.versions
+                    ).match()
+                },
+                { assert with(path(workflow.out.busco_summary_txt[0][1]).text) {
+                        assert contains('BUSCO version')
+                        assert contains('The lineage dataset is')
+                        assert contains('BUSCO was run in mode')
+                        assert contains('Complete BUSCOs')
+                        assert contains('Missing BUSCOs')
+                        assert contains('Dependencies and versions')
+                    }
+                }
+                { assert with(path(workflow.out.busco_summary_json[0][1]).text) {
+                    assert contains('one_line_summary')
+                    assert contains('mode')
+                    assert contains('dataset')
+                    }
+                }
             )
         }
 
@@ -115,8 +186,32 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success               },
-                { assert snapshot(workflow.out).match() }
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.asmstats,
+                    workflow.out.gfastats,
+                    workflow.out.merqury_qv,
+                    workflow.out.merqury_completeness,
+                    workflow.out.merqury_phased_stats,
+                    workflow.out.merqury_images,
+                    workflow.out.versions
+                    ).match()
+                },
+                { assert with(path(workflow.out.busco_summary_txt[0][1]).text) {
+                        assert contains('BUSCO version')
+                        assert contains('The lineage dataset is')
+                        assert contains('BUSCO was run in mode')
+                        assert contains('Complete BUSCOs')
+                        assert contains('Missing BUSCOs')
+                        assert contains('Dependencies and versions')
+                    }
+                }
+                { assert with(path(workflow.out.busco_summary_json[0][1]).text) {
+                    assert contains('one_line_summary')
+                    assert contains('mode')
+                    assert contains('dataset')
+                    }
+                }
             )
         }
 
