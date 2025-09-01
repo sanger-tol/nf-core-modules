@@ -20,7 +20,7 @@ workflow GENOME_STATISTICS {
         | flatMap { meta, asm1, asm2 ->
             def meta_asm1 = meta + [_hap: "hap1"]
             def meta_asm2 = meta + [_hap: "hap2"]
-            [ [meta_asm1, asm1], [meta_asm2, asm2] ]
+            return [ [meta_asm1, asm1], [meta_asm2, asm2] ]
         }
         | filter { meta, asm -> asm }
 
@@ -73,14 +73,15 @@ workflow GENOME_STATISTICS {
         ch_pat_fastk.ifEmpty([[],[]])
     )
     ch_versions = ch_versions.mix(MERQURYFK_MERQURYFK.out.versions)
-    ch_merquryfk_images = MERQURYFK_MERQURYFK.out.spectra_cn_fl
+
+    ch_merquryfk_images = Channel.empty()
         | mix(
             MERQURYFK_MERQURYFK.out.spectra_cn_fl,
             MERQURYFK_MERQURYFK.out.spectra_cn_ln,
             MERQURYFK_MERQURYFK.out.spectra_cn_st,
             MERQURYFK_MERQURYFK.out.spectra_asm_fl,
-            MERQURYFK_MERQURYFK.out.spectra_cn_ln,
-            MERQURYFK_MERQURYFK.out.spectra_cn_st,
+            MERQURYFK_MERQURYFK.out.spectra_asm_ln,
+            MERQURYFK_MERQURYFK.out.spectra_asm_st,
             MERQURYFK_MERQURYFK.out.continuity_N,
             MERQURYFK_MERQURYFK.out.block_N,
             MERQURYFK_MERQURYFK.out.block_blob,
@@ -97,5 +98,4 @@ workflow GENOME_STATISTICS {
     merqury_phased_stats = MERQURYFK_MERQURYFK.out.phased_block_stats
     merqury_images       = ch_merquryfk_images
     versions             = ch_versions
-
 }
