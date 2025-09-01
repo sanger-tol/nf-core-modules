@@ -36,7 +36,7 @@ nextflow_workflow {
                 input[0] = Channel.of([
                     [ id: "test"],
                     file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859975.1_alt.fasta.gz', checkIfExists: true)
                 ])
                 input[1] = Channel.empty()
                 input[2] = Channel.empty()
@@ -101,7 +101,7 @@ nextflow_workflow {
                 input[0] = Channel.of([
                     [ id: "test"],
                     file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859975.1_alt.fasta.gz', checkIfExists: true)
                 ])
                 input[1] = FASTK_FASTK.out.hist.join(FASTK_FASTK.out.ktab)
                 input[2] = Channel.empty()

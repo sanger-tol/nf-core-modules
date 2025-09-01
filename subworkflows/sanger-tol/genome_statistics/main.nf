@@ -36,8 +36,8 @@ workflow GENOME_STATISTICS {
     GFASTATS(
         ch_assemblies_split, // assembly
         "fasta",             // out_fmt
-        [],                  // genome size
-        [],                  // target
+        "",                  // genome size
+        "",                  // target
         [[],[]],             // agp file
         [[],[]],             // include bed
         [[],[]],             // exclude bed
