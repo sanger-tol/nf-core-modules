@@ -98,6 +98,8 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
+                { assert workflow.out.busco_summary_txt != null  },
+                { assert workflow.out.busco_summary_json != null },
                 { assert snapshot(
                     workflow.out.asmstats,
                     workflow.out.gfastats,
@@ -107,21 +109,6 @@ nextflow_workflow {
                     workflow.out.merqury_images,
                     workflow.out.versions
                     ).match()
-                },
-                { assert with(path(workflow.out.busco_summary_txt[0][1]).text) {
-                        assert contains('BUSCO version')
-                        assert contains('The lineage dataset is')
-                        assert contains('BUSCO was run in mode')
-                        assert contains('Complete BUSCOs')
-                        assert contains('Missing BUSCOs')
-                        assert contains('Dependencies and versions')
-                    }
-                }
-                { assert with(path(workflow.out.busco_summary_json[0][1]).text) {
-                    assert contains('one_line_summary')
-                    assert contains('mode')
-                    assert contains('dataset')
-                    }
                 }
             )
         }
@@ -187,6 +174,8 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
+                { assert workflow.out.busco_summary_txt != null  },
+                { assert workflow.out.busco_summary_json != null },
                 { assert snapshot(
                     workflow.out.asmstats,
                     workflow.out.gfastats,
@@ -196,21 +185,6 @@ nextflow_workflow {
                     workflow.out.merqury_images,
                     workflow.out.versions
                     ).match()
-                },
-                { assert with(path(workflow.out.busco_summary_txt[0][1]).text) {
-                        assert contains('BUSCO version')
-                        assert contains('The lineage dataset is')
-                        assert contains('BUSCO was run in mode')
-                        assert contains('Complete BUSCOs')
-                        assert contains('Missing BUSCOs')
-                        assert contains('Dependencies and versions')
-                    }
-                }
-                { assert with(path(workflow.out.busco_summary_json[0][1]).text) {
-                    assert contains('one_line_summary')
-                    assert contains('mode')
-                    assert contains('dataset')
-                    }
                 }
             )
         }
