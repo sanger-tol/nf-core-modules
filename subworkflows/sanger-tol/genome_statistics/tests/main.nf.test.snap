@@ -1,184 +1,180 @@
 {
     "meles meles - no trio - no fastk": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
-                    ]
+            [
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap1"
+                    },
+                    "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
                 ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.txt:md5,607f3627caada26218232b9232edb8b5"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.txt:md5,e93b2e32f123ab36706bc5a0a9eaaf04"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.json:md5,9081ab8cd0aa8f00ecfc7c3f8c9ebee0"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.json:md5,8d78a24eeb4d4b54d072cc2d78499dba"
-                    ]
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
-                "7": [
-                    
-                ],
-                "8": [
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
-                    "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36",
-                    "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36"
-                ],
-                "asmstats": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
-                    ]
-                ],
-                "busco_summary_json": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.json:md5,9081ab8cd0aa8f00ecfc7c3f8c9ebee0"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.json:md5,8d78a24eeb4d4b54d072cc2d78499dba"
-                    ]
-                ],
-                "busco_summary_txt": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.txt:md5,607f3627caada26218232b9232edb8b5"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.txt:md5,e93b2e32f123ab36706bc5a0a9eaaf04"
-                    ]
-                ],
-                "gfastats": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
-                    ]
-                ],
-                "merqury_completeness": [
-                    
-                ],
-                "merqury_images": [
-                    
-                ],
-                "merqury_phased_stats": [
-                    
-                ],
-                "merqury_qv": [
-                    
-                ],
-                "versions": [
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
-                    "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36",
-                    "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36"
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap2"
+                    },
+                    "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap1"
+                    },
+                    "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
+                ],
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap2"
+                    },
+                    "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
+                ]
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
+                "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
+                "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
+                "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36",
+                "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36"
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-01T14:49:29.885520833"
+        "timestamp": "2025-09-01T18:57:36.408961885"
     },
     "meles meles - no trio - fastk": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap1"
+                    },
+                    "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
+                ],
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap2"
+                    },
+                    "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap1"
+                    },
+                    "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
+                ],
+                [
+                    {
+                        "id": "test",
+                        "_hap": "hap2"
+                    },
+                    "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.qv:md5,2ad445619abaea809f86268872c1bdae"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.completeness.stats:md5,4499c462a6cae00678eefdeb898e8513"
+                ]
+            ],
+            [
+                
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    [
+                        "test.GCA_963859965.1.spectra-cn.fl.png:md5,c7bd0b65f7fe2a278d8e8342cf24dc45",
+                        "test.GCA_963859975.1_alt.spectra-cn.fl.png:md5,faa973397243a56ca290203fbcf2ca62"
+                    ]
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    [
+                        "test.GCA_963859965.1.spectra-cn.st.png:md5,fded9bf30138acdf0d94e542c2f950b8",
+                        "test.GCA_963859975.1_alt.spectra-cn.st.png:md5,e87c4c5ade1e82f341d491660496ae7e"
+                    ]
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.spectra-asm.fl.png:md5,4a805b352b0c3d58a260da186b464c0d"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.spectra-asm.ln.png:md5,1da92137877b50f5aa8a0b6758cfa533"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.spectra-asm.st.png:md5,c16709e5d4bbba67cc16ba1af4f1692b"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    [
+                        "test.GCA_963859965.1.spectra-cn.ln.png:md5,9e105e1a4bd8b97bc7a0c17075053f61",
+                        "test.GCA_963859975.1_alt.spectra-cn.ln.png:md5,82d5022abd9140e46d0e32e0804d1807"
+                    ]
+                ]
+            ],
+            [
+                "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
+                "versions.yml:md5,6ca1cfcfe9de105329f67f268cfdeeeb",
+                "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
+                "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
+                "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36",
+                "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.3"
+        },
+        "timestamp": "2025-09-01T19:19:42.294970467"
+    },
+    "meles meles - no trio - no busco - no fastk": {
         "content": [
             {
                 "0": [
@@ -214,107 +210,24 @@
                     ]
                 ],
                 "2": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.txt:md5,303cbb08dfef891b26420741690ed3af"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.txt:md5,d29274d3b64591598c4ff13434f83ffb"
-                    ]
+                    
                 ],
                 "3": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.json:md5,785e29b8ab58ab9849da7f7e671d8ebb"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.json:md5,2cc47942c5c30b8da3769a6823a7fe8a"
-                    ]
+                    
                 ],
                 "4": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.qv:md5,2ad445619abaea809f86268872c1bdae"
-                    ]
+                    
                 ],
                 "5": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.completeness.stats:md5,4499c462a6cae00678eefdeb898e8513"
-                    ]
+                    
                 ],
                 "6": [
                     
                 ],
                 "7": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.GCA_963859965.1.spectra-cn.fl.png:md5,c7bd0b65f7fe2a278d8e8342cf24dc45",
-                            "test.GCA_963859975.1_alt.spectra-cn.fl.png:md5,faa973397243a56ca290203fbcf2ca62"
-                        ]
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.spectra-asm.ln.png:md5,1da92137877b50f5aa8a0b6758cfa533"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.GCA_963859965.1.spectra-cn.ln.png:md5,9e105e1a4bd8b97bc7a0c17075053f61",
-                            "test.GCA_963859975.1_alt.spectra-cn.ln.png:md5,82d5022abd9140e46d0e32e0804d1807"
-                        ]
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.spectra-asm.fl.png:md5,4a805b352b0c3d58a260da186b464c0d"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.spectra-asm.st.png:md5,c16709e5d4bbba67cc16ba1af4f1692b"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.GCA_963859965.1.spectra-cn.st.png:md5,fded9bf30138acdf0d94e542c2f950b8",
-                            "test.GCA_963859975.1_alt.spectra-cn.st.png:md5,e87c4c5ade1e82f341d491660496ae7e"
-                        ]
-                    ]
+                    
                 ],
                 "8": [
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,6ca1cfcfe9de105329f67f268cfdeeeb",
                     "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
                     "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
                     "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36",
@@ -337,36 +250,10 @@
                     ]
                 ],
                 "busco_summary_json": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.json:md5,785e29b8ab58ab9849da7f7e671d8ebb"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.json:md5,2cc47942c5c30b8da3769a6823a7fe8a"
-                    ]
+                    
                 ],
                 "busco_summary_txt": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859965.1.fasta.txt:md5,303cbb08dfef891b26420741690ed3af"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "short_summary.specific.lepidoptera_odb12.GCA_963859975.1_alt.fasta.txt:md5,d29274d3b64591598c4ff13434f83ffb"
-                    ]
+                    
                 ],
                 "gfastats": [
                     [
@@ -385,75 +272,18 @@
                     ]
                 ],
                 "merqury_completeness": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.completeness.stats:md5,4499c462a6cae00678eefdeb898e8513"
-                    ]
+                    
                 ],
                 "merqury_images": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.GCA_963859965.1.spectra-cn.fl.png:md5,c7bd0b65f7fe2a278d8e8342cf24dc45",
-                            "test.GCA_963859975.1_alt.spectra-cn.fl.png:md5,faa973397243a56ca290203fbcf2ca62"
-                        ]
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.spectra-asm.ln.png:md5,1da92137877b50f5aa8a0b6758cfa533"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.GCA_963859965.1.spectra-cn.ln.png:md5,9e105e1a4bd8b97bc7a0c17075053f61",
-                            "test.GCA_963859975.1_alt.spectra-cn.ln.png:md5,82d5022abd9140e46d0e32e0804d1807"
-                        ]
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.spectra-asm.fl.png:md5,4a805b352b0c3d58a260da186b464c0d"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.spectra-asm.st.png:md5,c16709e5d4bbba67cc16ba1af4f1692b"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "test.GCA_963859965.1.spectra-cn.st.png:md5,fded9bf30138acdf0d94e542c2f950b8",
-                            "test.GCA_963859975.1_alt.spectra-cn.st.png:md5,e87c4c5ade1e82f341d491660496ae7e"
-                        ]
-                    ]
+                    
                 ],
                 "merqury_phased_stats": [
                     
                 ],
                 "merqury_qv": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.qv:md5,2ad445619abaea809f86268872c1bdae"
-                    ]
+                    
                 ],
                 "versions": [
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
-                    "versions.yml:md5,6ca1cfcfe9de105329f67f268cfdeeeb",
                     "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
                     "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
                     "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36",
@@ -465,6 +295,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-01T15:11:22.405129542"
+        "timestamp": "2025-09-01T16:56:02.670048879"
     }
 }
