@@ -47,6 +47,7 @@
             ],
             [
                 "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
+                "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
                 "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
                 "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
                 "versions.yml:md5,e162b266a7bfe9ab0ae9716e929feb36",
@@ -57,7 +58,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-01T18:57:36.408961885"
+        "timestamp": "2025-09-02T12:22:29.99745606"
     },
     "meles meles - no trio - fastk": {
         "content": [
@@ -117,58 +118,59 @@
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859965.1.spectra-cn.fl.png:md5,c7bd0b65f7fe2a278d8e8342cf24dc45"
+                    "test.GCA_963859965.1.spectra-cn.fl.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859965.1.spectra-cn.ln.png:md5,9e105e1a4bd8b97bc7a0c17075053f61"
+                    "test.GCA_963859965.1.spectra-cn.ln.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859965.1.spectra-cn.st.png:md5,fded9bf30138acdf0d94e542c2f950b8"
+                    "test.GCA_963859965.1.spectra-cn.st.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859975.1_alt.spectra-cn.fl.png:md5,faa973397243a56ca290203fbcf2ca62"
+                    "test.GCA_963859975.1_alt.spectra-cn.fl.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859975.1_alt.spectra-cn.ln.png:md5,82d5022abd9140e46d0e32e0804d1807"
+                    "test.GCA_963859975.1_alt.spectra-cn.ln.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859975.1_alt.spectra-cn.st.png:md5,e87c4c5ade1e82f341d491660496ae7e"
+                    "test.GCA_963859975.1_alt.spectra-cn.st.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.spectra-asm.fl.png:md5,4a805b352b0c3d58a260da186b464c0d"
+                    "test.spectra-asm.fl.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.spectra-asm.ln.png:md5,1da92137877b50f5aa8a0b6758cfa533"
+                    "test.spectra-asm.ln.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.spectra-asm.st.png:md5,c16709e5d4bbba67cc16ba1af4f1692b"
+                    "test.spectra-asm.st.png"
                 ]
             ],
             [
+                "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
                 "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
                 "versions.yml:md5,6ca1cfcfe9de105329f67f268cfdeeeb",
                 "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
@@ -181,7 +183,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-02T09:53:02.711938626"
+        "timestamp": "2025-09-02T12:45:26.75061184"
     },
     "meles meles - no trio - no busco - no fastk": {
         "content": [
