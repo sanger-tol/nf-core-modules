@@ -36,8 +36,8 @@ nextflow_workflow {
                 """
                 input[0] = Channel.of([
                     [ id: "test"],
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859975.1_alt.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.fa.gz', checkIfExists: true)
                 ])
                 input[1] = Channel.empty()
                 input[2] = Channel.empty()
@@ -83,13 +83,13 @@ nextflow_workflow {
                 """
                 input[0] = Channel.of([
                     [ id: "test"],
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859975.1_alt.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.fa.gz', checkIfExists: true)
                 ])
                 input[1] = Channel.empty()
                 input[2] = Channel.empty()
                 input[3] = Channel.empty()
-                input[4] = "lepidoptera_odb12"
+                input[4] = "bacteria_odb12"
                 input[5] = []
                 """
             }
@@ -147,7 +147,7 @@ nextflow_workflow {
                     """
                     input[0] = [
                         [ id: "test" ],
-                        file(params.modules_testdata_base_path + 'Ceramica_pisi/genomic_data/ilCerPisi1/pacbio/m64097e_230309_154741.ccs.bc1012_BAK8A_OA--bc1012_BAK8A_OA.subsampled.bam', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true)
                     ]
                     """
                 }
@@ -165,13 +165,13 @@ nextflow_workflow {
                 """
                 input[0] = Channel.of([
                     [ id: "test"],
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true),
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859975.1_alt.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.fa.gz', checkIfExists: true)
                 ])
                 input[1] = FASTK_FASTK.out.hist.join(FASTK_FASTK.out.ktab)
                 input[2] = Channel.empty()
                 input[3] = Channel.empty()
-                input[4] = "lepidoptera_odb12"
+                input[4] = "bacteria_odb12"
                 input[5] = []
                 """
             }

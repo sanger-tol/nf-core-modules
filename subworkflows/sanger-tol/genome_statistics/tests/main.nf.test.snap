@@ -7,14 +7,14 @@
                         "id": "test",
                         "_hap": "hap1"
                     },
-                    "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
+                    "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
                 ],
                 [
                     {
                         "id": "test",
                         "_hap": "hap2"
                     },
-                    "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
+                    "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
                 ]
             ],
             [
@@ -23,14 +23,14 @@
                         "id": "test",
                         "_hap": "hap1"
                     },
-                    "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
+                    "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
                 ],
                 [
                     {
                         "id": "test",
                         "_hap": "hap2"
                     },
-                    "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
+                    "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
                 ]
             ],
             [
@@ -58,7 +58,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-02T12:22:29.99745606"
+        "timestamp": "2025-09-02T14:02:18.380027698"
     },
     "meles meles - no trio - fastk": {
         "content": [
@@ -68,14 +68,14 @@
                         "id": "test",
                         "_hap": "hap1"
                     },
-                    "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
+                    "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
                 ],
                 [
                     {
                         "id": "test",
                         "_hap": "hap2"
                     },
-                    "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
+                    "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
                 ]
             ],
             [
@@ -84,14 +84,14 @@
                         "id": "test",
                         "_hap": "hap1"
                     },
-                    "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
+                    "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
                 ],
                 [
                     {
                         "id": "test",
                         "_hap": "hap2"
                     },
-                    "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
+                    "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
                 ]
             ],
             [
@@ -99,7 +99,7 @@
                     {
                         "id": "test"
                     },
-                    "test.qv:md5,2ad445619abaea809f86268872c1bdae"
+                    "test.qv:md5,5754802f3d1e6e84365dcf8bbf549343"
                 ]
             ],
             [
@@ -107,7 +107,7 @@
                     {
                         "id": "test"
                     },
-                    "test.completeness.stats:md5,4499c462a6cae00678eefdeb898e8513"
+                    "test.completeness.stats:md5,51b412fa6dcaccdd0c7f5b46e6db0d0b"
                 ]
             ],
             [
@@ -118,37 +118,37 @@
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859965.1.spectra-cn.fl.png"
+                    "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859965.1.spectra-cn.ln.png"
+                    "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859965.1.spectra-cn.st.png"
+                    "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859975.1_alt.spectra-cn.fl.png"
+                    "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859975.1_alt.spectra-cn.ln.png"
+                    "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "test.GCA_963859975.1_alt.spectra-cn.st.png"
+                    "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png"
                 ],
                 [
                     {
@@ -183,7 +183,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-02T12:45:26.75061184"
+        "timestamp": "2025-09-02T14:04:52.534157712"
     },
     "meles meles - no trio - no busco - no fastk": {
         "content": [
@@ -194,14 +194,14 @@
                             "id": "test",
                             "_hap": "hap1"
                         },
-                        "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
                     ],
                     [
                         {
                             "id": "test",
                             "_hap": "hap2"
                         },
-                        "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
                     ]
                 ],
                 "1": [
@@ -210,14 +210,14 @@
                             "id": "test",
                             "_hap": "hap1"
                         },
-                        "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
+                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
                     ],
                     [
                         {
                             "id": "test",
                             "_hap": "hap2"
                         },
-                        "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
+                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
                     ]
                 ],
                 "2": [
@@ -250,14 +250,14 @@
                             "id": "test",
                             "_hap": "hap1"
                         },
-                        "GCA_963859965.1.fasta.gz.stats:md5,27e0c97332ed50fbae78572581db1b56"
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
                     ],
                     [
                         {
                             "id": "test",
                             "_hap": "hap2"
                         },
-                        "GCA_963859975.1_alt.fasta.gz.stats:md5,bf5abf082c028eee5fbae15da09d9100"
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
                     ]
                 ],
                 "busco_summary_json": [
@@ -272,14 +272,14 @@
                             "id": "test",
                             "_hap": "hap1"
                         },
-                        "test.assembly_summary:md5,03bd6448d99f284cee9224e932c26336"
+                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
                     ],
                     [
                         {
                             "id": "test",
                             "_hap": "hap2"
                         },
-                        "test.assembly_summary:md5,36a8cadec7d7dfd1ec7a922261cf95be"
+                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
                     ]
                 ],
                 "merqury_completeness": [
@@ -306,6 +306,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-01T16:56:02.670048879"
+        "timestamp": "2025-09-02T13:57:25.355266248"
     }
 }
