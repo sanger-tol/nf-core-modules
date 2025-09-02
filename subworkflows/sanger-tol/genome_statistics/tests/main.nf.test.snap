@@ -117,19 +117,37 @@
                     {
                         "id": "test"
                     },
-                    [
-                        "test.GCA_963859965.1.spectra-cn.fl.png:md5,c7bd0b65f7fe2a278d8e8342cf24dc45",
-                        "test.GCA_963859975.1_alt.spectra-cn.fl.png:md5,faa973397243a56ca290203fbcf2ca62"
-                    ]
+                    "test.GCA_963859965.1.spectra-cn.fl.png:md5,c7bd0b65f7fe2a278d8e8342cf24dc45"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    [
-                        "test.GCA_963859965.1.spectra-cn.st.png:md5,fded9bf30138acdf0d94e542c2f950b8",
-                        "test.GCA_963859975.1_alt.spectra-cn.st.png:md5,e87c4c5ade1e82f341d491660496ae7e"
-                    ]
+                    "test.GCA_963859965.1.spectra-cn.ln.png:md5,9e105e1a4bd8b97bc7a0c17075053f61"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.GCA_963859965.1.spectra-cn.st.png:md5,fded9bf30138acdf0d94e542c2f950b8"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.GCA_963859975.1_alt.spectra-cn.fl.png:md5,faa973397243a56ca290203fbcf2ca62"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.GCA_963859975.1_alt.spectra-cn.ln.png:md5,82d5022abd9140e46d0e32e0804d1807"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.GCA_963859975.1_alt.spectra-cn.st.png:md5,e87c4c5ade1e82f341d491660496ae7e"
                 ],
                 [
                     {
@@ -148,15 +166,6 @@
                         "id": "test"
                     },
                     "test.spectra-asm.st.png:md5,c16709e5d4bbba67cc16ba1af4f1692b"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    [
-                        "test.GCA_963859965.1.spectra-cn.ln.png:md5,9e105e1a4bd8b97bc7a0c17075053f61",
-                        "test.GCA_963859975.1_alt.spectra-cn.ln.png:md5,82d5022abd9140e46d0e32e0804d1807"
-                    ]
                 ]
             ],
             [
@@ -172,7 +181,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.3"
         },
-        "timestamp": "2025-09-01T19:19:42.294970467"
+        "timestamp": "2025-09-02T09:53:02.711938626"
     },
     "meles meles - no trio - no busco - no fastk": {
         "content": [

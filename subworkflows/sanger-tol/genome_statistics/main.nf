@@ -93,6 +93,7 @@ workflow GENOME_STATISTICS {
             MERQURYFK_MERQURYFK.out.block_blob,
             MERQURYFK_MERQURYFK.out.hapmers_blob,
         )
+		| transpose()
 
     emit:
     asmstats             = ASMSTATS.out.stats
