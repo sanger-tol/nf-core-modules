@@ -49,10 +49,8 @@ workflow GENOME_STATISTICS {
     // Module: Assess assembly using BUSCO_BUSCO. If val_busco_lineage
     //         not provided then we properly skip the process entirely.
     //
-    ch_busco_lineage_input = Channel.empty()
-    if(val_busco_lineage) {
-        ch_busco_lineage_input = Channel.of(val_busco_lineage)
-    }
+    ch_busco_lineage_input = Channel.value(val_busco_lineage)
+        | filter { lineage -> lineage }
 
     BUSCO_BUSCO(
         ch_assemblies_split,               // assembly
