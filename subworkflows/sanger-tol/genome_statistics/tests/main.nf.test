@@ -112,7 +112,7 @@ nextflow_workflow {
                     workflow.out.merqury_qv,
                     workflow.out.merqury_completeness,
                     workflow.out.merqury_phased_stats,
-                    workflow.out.merqury_images,
+                    workflow.out.merqury_images.collect { meta, image -> [meta, file(image).name] },
                     workflow.out.versions
                     ).match()
                 }
@@ -194,7 +194,7 @@ nextflow_workflow {
                     workflow.out.merqury_qv,
                     workflow.out.merqury_completeness,
                     workflow.out.merqury_phased_stats,
-                    workflow.out.merqury_images,
+                    workflow.out.merqury_images.collect { meta, image -> [meta, file(image).name] },
                     workflow.out.versions
                     ).match()
                 }
