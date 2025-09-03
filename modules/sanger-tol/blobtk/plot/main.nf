@@ -12,7 +12,7 @@ process BLOBTK_PLOT {
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
-    container "docker.io/genomehubs/blobtk:0.6.5"
+    container "docker.io/genomehubs/blobtk:0.7.1"
 
     input:
     tuple val(meta), path(fasta)
@@ -31,7 +31,6 @@ process BLOBTK_PLOT {
     def args         = task.ext.args ?: ''
     def prefix       = task.ext.prefix ?: "${meta.id}_${blobtk_args.name}"
     def resource     = online_path ?: local_path
-    def VERSION      = "0.6.5"
     """
     blobtk plot \\
         -d $resource \\
@@ -41,19 +40,18 @@ process BLOBTK_PLOT {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        blobtk: $VERSION
+        blobtk: \$(blobtk --version | cut -d' ' -f2)
     END_VERSIONS
     """
 
     stub:
     def prefix       = task.ext.prefix ?: "${meta.id}_${blobtk_args.name}"
-    def VERSION      = "0.6.5"
     """
     touch ${prefix}.png
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        blobtk: $VERSION
+        blobtk: \$(blobtk --version | cut -d' ' -f2)
     END_VERSIONS
     """
 }

@@ -3,7 +3,7 @@ process BLOBTK_DEPTH {
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
-    container "docker.io/genomehubs/blobtk:0.6.5"
+    container "docker.io/genomehubs/blobtk:0.7.1"
 
     input:
     tuple val(meta), path(bam), path(bai)
@@ -32,13 +32,12 @@ process BLOBTK_DEPTH {
 
     stub:
     def prefix      = task.ext.prefix ?: "${meta.id}"
-    def VERSION     = "0.6.5"
     """
     echo "" | gzip > ${prefix}.regions.bed.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        blobtk: $VERSION
+        blobtk: \$(blobtk --version | cut -d' ' -f2)
     END_VERSIONS
     """
 }
