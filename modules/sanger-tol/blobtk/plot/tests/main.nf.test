@@ -8,7 +8,7 @@ nextflow_process {
     tag "modules_sangertol"
     tag "blobtk"
     tag "blobtk/plot"
-    tag "nf-core/gunzip/gunzip"
+    tag "nf-core/gunzip
 
     setup {
         nfcoreInitialise("${launchDir}/library/")

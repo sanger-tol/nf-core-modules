@@ -41,13 +41,13 @@ input:
         description: |
           A webaddress to a Blob Dir e.g. hosted on a BlobToolKit Viewer.
         pattern: "*/"
-    - blobtk_args:
-        type: string
-        description: |
-          A string of arguments to be used to generate a BlobPlot.
-          These are provided as an argument to allow for paralelising a list of
-          provided arguments. In the style of `[name: "", args: ""]`.
-        pattern: ""
+    # - blobtk_args:
+    #     type: string
+    #     description: |
+    #       A string of arguments to be used to generate a BlobPlot.
+    #       These are provided as an argument to allow for paralelising a list of
+    #       provided arguments. In the style of `[name: "", args: ""]`.
+    #     pattern: ""
 
 output:
   png:
