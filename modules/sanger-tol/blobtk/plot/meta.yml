@@ -31,23 +31,23 @@ input:
         pattern: "*.fasta"
         ontologies:
           - edam: http://edamontology.org/format_1929
-    - local_path:
-        type: directory
-        description: |
-          A path to a Blob Dir generated as part of a greater pipeline.
-        pattern: "*/"
-    - online_path:
-        type: string
-        description: |
-          A webaddress to a Blob Dir e.g. hosted on a BlobToolKit Viewer.
-        pattern: "*/"
-    # - blobtk_args:
-    #     type: string
-    #     description: |
-    #       A string of arguments to be used to generate a BlobPlot.
-    #       These are provided as an argument to allow for paralelising a list of
-    #       provided arguments. In the style of `[name: "", args: ""]`.
-    #     pattern: ""
+  - local_path:
+      type: directory
+      description: |
+        A path to a Blob Dir generated as part of a greater pipeline.
+      pattern: "*/"
+  - online_path:
+      type: string
+      description: |
+        A webaddress to a Blob Dir e.g. hosted on a BlobToolKit Viewer.
+      pattern: "*/"
+      # - blobtk_args:
+      #     type: string
+      #     description: |
+      #       A string of arguments to be used to generate a BlobPlot.
+      #       These are provided as an argument to allow for paralelising a list of
+      #       provided arguments. In the style of `[name: "", args: ""]`.
+      #     pattern: ""
 
 output:
   png:
@@ -60,6 +60,7 @@ output:
           type: file
           description: |
             Blobplot PNG results of input arguments.
+          ontologies: []
   versions:
     - versions.yml:
         type: file
