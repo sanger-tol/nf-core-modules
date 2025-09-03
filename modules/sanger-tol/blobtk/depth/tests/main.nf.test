@@ -17,7 +17,6 @@ nextflow_process {
 
             params {
                 blobtk_args = "-s 1000"
-                modules_testdata_base_path = "https://tolit.cog.sanger.ac.uk/test-data/"
             }
 
             process {
