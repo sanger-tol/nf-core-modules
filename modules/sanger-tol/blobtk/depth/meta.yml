@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "blobtk_depth"
 description: |
-  Creation of a bed file containing the depth of data at intervals of the aligned bam.
+  Creates a bed file containing the depth of data at intervals of an aligned bam.
 keywords:
   - bam
   - gzipped
@@ -30,14 +30,14 @@ input:
           Algined BAM file.
         pattern: "*.bam"
         ontologies:
-          - edam: http://edamontology.org/format_2572
+          - edam: http://edamontology.org/format_2572 # BAM
     - bai:
         type: file
         description: |
           Algined BAM index file.
         pattern: "*.bai|*.csi"
         ontologies:
-          - edam: http://edamontology.org/format_3327
+          - edam: http://edamontology.org/format_3327 # BAI
 
 output:
   bed:
@@ -49,7 +49,7 @@ output:
       - "*.regions.bed.gz":
           type: file
           description: |
-            Contains the depth of regions across the genome.
+            Bed file describing the depth of regions across the genome.
   versions:
     - versions.yml:
         type: file
