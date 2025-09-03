@@ -39,11 +39,6 @@ nextflow_process {
                 { assert snapshot(process.out).match() }
             )
         }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/")
-        }
-
     }
 
     test("Cantharis rufa - bam and bai - stub") {
@@ -71,11 +66,5 @@ nextflow_process {
                 { assert snapshot(process.out).match() }
             )
         }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/")
-        }
-
     }
-
 }
