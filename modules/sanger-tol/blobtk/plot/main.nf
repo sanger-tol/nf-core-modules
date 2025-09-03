@@ -12,7 +12,7 @@ process BLOBTK_PLOT {
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
-    container "docker.io/genomehubs/blobtk:0.7.1"
+    container "community.wave.seqera.io/library/blobtk:0.7.1--e3f63bb2cdc8fb96"
 
     input:
     tuple val(meta), path(fasta)
