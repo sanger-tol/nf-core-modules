@@ -55,7 +55,12 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                {
+                    assert snapshot(
+                        process.out.png.collect { meta, image -> [meta, file(image).name] },
+                        process.out.versions
+                    ).match()
+                }
             )
         }
 

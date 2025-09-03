@@ -1,36 +1,23 @@
 {
     "Ceramica pisi - fasta": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test_BLOB_VIEW.png:md5,65207e5c8813cb037da713020dcc1f78"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,9855c180bfc28c1fd411132466496d76"
-                ],
-                "png": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test_BLOB_VIEW.png:md5,65207e5c8813cb037da713020dcc1f78"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,9855c180bfc28c1fd411132466496d76"
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test_BLOB_VIEW.png"
                 ]
-            }
+            ],
+            [
+                "versions.yml:md5,9855c180bfc28c1fd411132466496d76"
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2025-09-03T16:02:28.721796"
+        "timestamp": "2025-09-03T16:23:44.858282"
     },
     "Ceramica pisi - fasta - stub": {
         "content": [
