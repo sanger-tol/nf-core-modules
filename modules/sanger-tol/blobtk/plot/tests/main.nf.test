@@ -28,6 +28,8 @@ nextflow_process {
         }
     }
 
+    config './nextflow.config'
+
     test("Ceramica pisi - fasta") {
 
         when {
@@ -40,12 +42,12 @@ nextflow_process {
 
                 input[2] = "https://blobtoolkit.genomehubs.org/api/v1/dataset/id/CALUEP01"
 
-                input[3] = [
+                input[3] = Channel.of(
                     [
                         name: "BLOB_VIEW",
                         args: "-v blob"
                     ]
-                ]
+                )
                 """
             }
         }
@@ -82,12 +84,12 @@ nextflow_process {
 
                 input[2] = "https://blobtoolkit.genomehubs.org/api/v1/dataset/id/CALUEP01"
 
-                input[3] = [
+                input[3] = Channel.of(
                     [
                         name: "BLOB_VIEW",
                         args: "-v blob"
                     ]
-                ]
+                )
                 """
             }
         }

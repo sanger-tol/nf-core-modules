@@ -22,8 +22,8 @@ input:
   - - meta:
         type: map
         description: |
-          Groovy Map containing sample information
-          e.g. `[ id:'sample1' ]`
+          Groovy Map containing sample information and blobtk arguments
+          e.g. `[ id:'sample1']`
     - fasta:
         type: file
         description: |
@@ -41,12 +41,11 @@ input:
       description: |
         A webaddress to a Blob Dir e.g. hosted on a BlobToolKit Viewer.
       pattern: "*/"
-      # - blobtk_args:
-      #     type: map
-      #     description: |
-      #       A string of arguments to be used to generate a BlobPlot.
-      #       These are provided as an argument to allow for paralelising a list of
-      #       provided arguments. In the style of `[name: "", args: ""]`.
+  - extra_args:
+      type: map
+      description: |
+        Groovy Map containing sample information and blobtk arguments
+        e.g. `[name: 'VIEW', args: "-v"]`
 
 output:
   png:

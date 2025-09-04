@@ -10,14 +10,14 @@
                 ]
             ],
             [
-                "versions.yml:md5,9855c180bfc28c1fd411132466496d76"
+                "versions.yml:md5,9088ecc5a86071ec5a538c50b17f899a"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.04.2"
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2025-09-03T16:23:44.858282"
+        "timestamp": "2025-09-04T14:27:14.600528208"
     },
     "Ceramica pisi - fasta - stub": {
         "content": [
