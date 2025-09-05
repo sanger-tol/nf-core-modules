@@ -46,7 +46,7 @@ workflow GENOME_STATISTICS {
     ch_versions = ch_versions.mix(GFASTATS.out.versions)
 
     //
-    // Module: Assess assembly using BUSCO. 
+    // Module: Assess assembly using BUSCO.
     //
     BUSCO_BUSCO(
         ch_assemblies_split,               // assembly
