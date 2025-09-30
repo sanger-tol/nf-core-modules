@@ -31,6 +31,7 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
     def args6 = task.ext.args6 ?: ''
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
+    # We love pipes
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\
         minimap2 -t${task.cpus} ${args3} ${reference} - |\\
