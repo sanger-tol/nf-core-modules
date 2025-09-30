@@ -4,12 +4,10 @@ on:
     paths-ignore:
       - "**/meta.yml"
   pull_request:
-    branches: [main]
     paths-ignore:
       - "**/meta.yml"
   merge_group:
     types: [checks_requested]
-    branches: [main]
   workflow_dispatch:
 
 # Cancel if a newer run is started
