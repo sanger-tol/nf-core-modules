@@ -147,7 +147,7 @@ jobs:
         run: python -m pip install --upgrade --force-reinstall git+https://github.com/nf-core/tools.git@dev
 
       - name: Lint module ${{ matrix.module }}
-        run: nf-core modules lint ${{ matrix.module }}
+        run: nf-core modules --git-remote https://github.com/sanger-tol/nf-core-modules.git lint ${{ matrix.module }}
 
   nf-core-lint-subworkflows:
     runs-on: ubuntu-latest
@@ -176,7 +176,7 @@ jobs:
         run: python -m pip install --upgrade --force-reinstall git+https://github.com/nf-core/tools.git@dev
 
       - name: Lint subworkflow ${{ matrix.subworkflow }}
-        run: nf-core subworkflows lint ${{ matrix.subworkflow }}
+        run: nf-core subworkflows --git-remote https://github.com/sanger-tol/nf-core-modules.git lint ${{ matrix.subworkflow }}
 
   confirm-pass-lint:
     runs-on: ubuntu-latest
