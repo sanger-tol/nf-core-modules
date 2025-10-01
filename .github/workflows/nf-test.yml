@@ -36,8 +36,6 @@ jobs:
       paths: ${{ steps.list.outputs.components }}
       modules: ${{ steps.components.outputs.modules }}
       subworkflows: ${{ steps.components.outputs.subworkflows}}
-      shard: ${{ steps.set-shards.outputs.shard }}
-      total_shards: ${{ steps.set-shards.outputs.total_shards }}
     steps:
       - name: Clean Workspace # Purge the workspace in case it's running on a self-hosted runner
         run: |
@@ -71,7 +69,6 @@ jobs:
         env:
           NFT_VER: ${{ env.NFT_VER }}
         with:
-          max_shards: 15
           paths: "${{ join(fromJson(steps.list.outputs.components ), ' ') }}"
 
       - name: debug
@@ -79,18 +76,14 @@ jobs:
           echo ${{ steps.list.outputs.components }}
           echo ${{ steps.components.outputs.modules }}
           echo ${{ steps.components.outputs.subworkflows }}
-          echo ${{ steps.set-shards.outputs.shard }}
-          echo ${{ steps.set-shards.outputs.total_shards }}
 
   nf-test:
     runs-on: ubuntu-latest
-    name: "${{ matrix.arch }} | ${{ matrix.profile }} | ${{ matrix.shard }}"
+    name: "${{ matrix.arch }} | ${{ matrix.profile }}"
     needs: [nf-test-changes]
-    if: ${{ needs.nf-test-changes.outputs.total_shards != '0' }}
     strategy:
       fail-fast: false
       matrix:
-        shard: ${{ fromJson(needs.nf-test-changes.outputs.shard) }}
         profile: [conda, docker, singularity]
         arch:
           - x64
@@ -98,7 +91,6 @@ jobs:
           # - arm64
     env:
       NXF_ANSI_LOG: false
-      TOTAL_SHARDS: ${{ needs.nf-test-changes.outputs.total_shards }}
     outputs:
       filtered_paths: ${{ steps.filter.outputs.filtered_paths }}
 
@@ -158,8 +150,6 @@ jobs:
           SENTIEON_AUTH_MECH: "GitHub Actions - token"
         with:
           profile: ${{ matrix.profile }}${{ runner.arch == 'ARM64' && ',arm64,wave' || '' }}
-          shard: ${{ matrix.shard }}
-          total_shards: ${{ env.TOTAL_SHARDS }}
           paths: "${{ join(fromJson(steps.filter.outputs.filtered_paths), ' ') }}"
 
   confirm-pass-nf-test:
