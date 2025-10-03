@@ -2,8 +2,8 @@ name: longranger_align
 description: Performs alignment of Illumina 10X sequencing data to the indexed reference genome
 keywords:
   - longranger
-  - align
   - 10X
+  - align
 tools:
   - longranger:
       description: Long Ranger is a set of analysis pipelines that processes Chromium sequencing output to align reads and call and phase SNPs, indels, and structural variants.
@@ -20,7 +20,7 @@ input:
           e.g. [ id:'pEimTen1' ]
     - reference:
         type: file
-        description: Reference built by longranger/mkref
+        description: Longranger reference from longranger/mkref
   - - meta2:
         type: map
         description: |
@@ -28,15 +28,15 @@ input:
           e.g. [ id:'pEimTen1' ]
     - fastq:
         type: file
-        description: Illumina 10X reads in fastq format
-        pattern: "*.fq.gz"
+        description: Illumina 10X Fastq files
+        pattern: "*.fastq.gz"
 output:
-  bam:
+  reference:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
-            e.g. [ id:'pEimTen1' ]
+            e.g. `[ id:'sample1' ]`
       - "${meta.id}/outs/possorted_bam.bam":
           type: file
           description: Sorted BAM file
