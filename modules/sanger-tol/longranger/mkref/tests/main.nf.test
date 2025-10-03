@@ -17,12 +17,14 @@ nextflow_process {
 
         run("GUNZIP"){
             script "../../../../nf-core/gunzip/main.nf"
-            """
-            input[0] = [
-                [ id: "test" ],
-                file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true)
-            ]
-            """
+            process {
+                """
+                input[0] = [
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true)
+                ]
+                """
+            }
         }
     }
 
