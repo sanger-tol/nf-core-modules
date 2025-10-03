@@ -4,12 +4,6 @@ inputs:
   profile:
     description: "Profile to use"
     required: true
-  shard:
-    description: "Shard number for this CI job"
-    required: true
-  total_shards:
-    description: "Total number of test shards(NOT the total number of matrix jobs)"
-    required: true
   paths:
     description: "Test paths"
     required: true
@@ -92,7 +86,6 @@ runs:
           --tap=test.tap \
           --verbose \
           --ci \
-          --shard ${{ inputs.shard }}/${{ inputs.total_shards }} \
           --filter process,workflow \
           ${{ inputs.paths }}
 
@@ -118,16 +111,16 @@ runs:
               test_name="${line#ok }"
               # Remove the test number from the beginning
               test_name="${test_name#* }"
-              echo "| ✅ | ${test_name} | ${{ inputs.profile }} | ${{ inputs.shard }}/${{ inputs.total_shards }} |" >> $GITHUB_STEP_SUMMARY
+              echo "| ✅ | ${test_name} | ${{ inputs.profile }} |" >> $GITHUB_STEP_SUMMARY
             elif [[ $line =~ ^not\ ok ]]; then
               test_name="${line#not ok }"
               # Remove the test number from the beginning
               test_name="${test_name#* }"
-              echo "| ❌ | ${test_name} | ${{ inputs.profile }} | ${{ inputs.shard }}/${{ inputs.total_shards }} |" >> $GITHUB_STEP_SUMMARY
+              echo "| ❌ | ${test_name} | ${{ inputs.profile }} |" >> $GITHUB_STEP_SUMMARY
             fi
           done < test.tap
         else
-          echo "| ⚠️ | No test results found | ${{ inputs.profile }} | ${{ inputs.shard }}/${{ inputs.total_shards }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⚠️ | No test results found | ${{ inputs.profile }} |" >> $GITHUB_STEP_SUMMARY
         fi
 
     - name: Clean up
