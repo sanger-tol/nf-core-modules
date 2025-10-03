@@ -7,8 +7,6 @@
                         {
                             "id": "test"
                         },
-                        "/test-data/Undibacterium_unclassified/genomic_data/baUndUnlc1/hic-arima2/41741_2%237.sub.cram",
-                        "/test-data/Undibacterium_unclassified/genomic_data/baUndUnlc1/hic-arima2/41741_2%237.sub.cram.crai",
                         [
                             0,
                             1,
@@ -218,8 +216,6 @@
                         {
                             "id": "test"
                         },
-                        "/test-data/Undibacterium_unclassified/genomic_data/baUndUnlc1/hic-arima2/41741_2%237.sub.cram",
-                        "/test-data/Undibacterium_unclassified/genomic_data/baUndUnlc1/hic-arima2/41741_2%237.sub.cram.crai",
                         [
                             0,
                             1,
@@ -430,6 +426,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T09:59:57.523129"
+        "timestamp": "2025-10-03T13:14:09.683352"
     }
 }
