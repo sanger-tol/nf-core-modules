@@ -3,6 +3,7 @@ nextflow_process {
     name "Test Process LONGRANGER_ALIGN"
     script "../main.nf"
     process "LONGRANGER_ALIGN"
+    config "./nextflow.config"
 
     tag "modules"
     tag "modules_sangertol"
@@ -54,7 +55,12 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    bam(process.out.bam.get(0).get(1)).getStatistics()
+                    process.out.bai.getName,
+                    process.out.csv,
+                    process.out.versions
+                ).match() }
             )
         }
 

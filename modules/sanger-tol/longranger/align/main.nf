@@ -35,7 +35,7 @@ process LONGRANGER_ALIGN {
     """
 
     stub:
-    def prefix      = reference - ~/\.fa/
+    def prefix = reference.getName() - ~/\.fa/
     """
     mkdir -p refdata-${prefix}/outs
     touch refdata-${prefix}/outs/possorted_bam.bam
