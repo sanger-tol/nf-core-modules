@@ -1,7 +1,7 @@
 include { BWAMEM2_INDEX              } from '../../../modules/nf-core/bwamem2/index/main'
-include { HICCRAMALIGN_CHUNKS        } from '../../../modules/sanger-tol/hiccramalign/chunks'
-include { HICCRAMALIGN_BWAMEM2ALIGN  } from '../../../modules/sanger-tol/hiccramalign/bwamem2align'
-include { HICCRAMALIGN_MINIMAP2ALIGN } from '../../../modules/sanger-tol/hiccramalign/minimap2align'
+include { CRAMALIGN_GENCRAMCHUNKS    } from '../../../modules/sanger-tol/cramalign/gencramchunks'
+include { CRAMALIGN_BWAMEM2ALIGNHIC  } from '../../../modules/sanger-tol/cramalign/bwamem2alignhic'
+include { CRAMALIGN_MINIMAP2ALIGNHIC } from '../../../modules/sanger-tol/cramalign/minimap2alignhic'
 include { MINIMAP2_INDEX             } from '../../../modules/nf-core/minimap2/index/main'
 include { SAMTOOLS_FAIDX             } from '../../../modules/nf-core/samtools/faidx/main'
 include { SAMTOOLS_INDEX             } from '../../../modules/nf-core/samtools/index/main'
@@ -50,16 +50,16 @@ workflow HIC_MAPPING {
     // Module: Process the cram index files to determine how many
     //         chunks to split into for mapping
     //
-    HICCRAMALIGN_CHUNKS(
+    CRAMALIGN_GENCRAMCHUNKS(
         ch_hic_cram_indexed,
         val_cram_chunk_size
     )
-    ch_versions = ch_versions.mix(HICCRAMALIGN_CHUNKS.out.versions)
+    ch_versions = ch_versions.mix(CRAMALIGN_GENCRAMCHUNKS.out.versions)
 
     //
     // Logic: Count the total number of cram chunks for downstream grouping
     //
-    ch_n_cram_chunks = HICCRAMALIGN_CHUNKS.out.cram_slices
+    ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
         | map { _meta, _cram, _crai, chunkn, _slices -> chunkn }
         | collect
         | map { chunkns -> chunkns.size() }
@@ -77,17 +77,17 @@ workflow HIC_MAPPING {
         ch_assemblies_with_reference = ch_assemblies
             | combine(BWAMEM2_INDEX.out.index, by: 0)
 
-        ch_cram_chunks = HICCRAMALIGN_CHUNKS.out.cram_slices
+        ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
             | transpose()
             | combine(ch_assemblies_with_reference)
             | map { _meta, cram, crai, chunkn, slices, meta_assembly, index, assembly ->
                 [ meta_assembly, cram, crai, chunkn, slices, index, assembly ]
             }
 
-        HICCRAMALIGN_BWAMEM2ALIGN(ch_cram_chunks)
-        ch_versions = ch_versions.mix(HICCRAMALIGN_BWAMEM2ALIGN.out.versions)
+        CRAMALIGN_BWAMEM2ALIGNHIC(ch_cram_chunks)
+        ch_versions = ch_versions.mix(CRAMALIGN_BWAMEM2ALIGNHIC.out.versions)
 
-        ch_mapped_bams = HICCRAMALIGN_BWAMEM2ALIGN.out.bam
+        ch_mapped_bams = CRAMALIGN_BWAMEM2ALIGNHIC.out.bam
     } else if(val_aligner == "minimap2") {
         //
         // MODULE: generate minimap2 mmi file
@@ -95,17 +95,17 @@ workflow HIC_MAPPING {
         MINIMAP2_INDEX(ch_assemblies)
         ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
-        ch_cram_chunks = HICCRAMALIGN_CHUNKS.out.cram_slices
+        ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
             | transpose()
             | combine(MINIMAP2_INDEX.out.index)
             | map { _meta, cram, crai, chunkn, slices, meta_assembly, index ->
                 [ meta_assembly, cram, crai, chunkn, slices, index ]
             }
 
-        HICCRAMALIGN_MINIMAP2ALIGN(ch_cram_chunks)
-        ch_versions = ch_versions.mix(HICCRAMALIGN_MINIMAP2ALIGN.out.versions)
+        CRAMALIGN_MINIMAP2ALIGNHIC(ch_cram_chunks)
+        ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGNHIC.out.versions)
 
-        ch_mapped_bams = HICCRAMALIGN_MINIMAP2ALIGN.out.bam
+        ch_mapped_bams = CRAMALIGN_MINIMAP2ALIGNHIC.out.bam
     } else {
         log.error("Unsupported aligner: ${val_aligner}")
     }
