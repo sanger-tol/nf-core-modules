@@ -2,8 +2,28 @@
     "meles meles - bwamem2 - multiple samples": {
         "content": [
             [
-                "6cd55d34356b3b4f2fe654db77d4d22c",
-                "6cd55d34356b3b4f2fe654db77d4d22c"
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
+                },
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
+                }
             ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
@@ -26,12 +46,22 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T13:59:08.548342"
+        "timestamp": "2025-10-03T14:24:01.558479"
     },
     "meles meles - bwamem2": {
         "content": [
             [
-                "6cd55d34356b3b4f2fe654db77d4d22c"
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
+                }
             ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
@@ -47,12 +77,22 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T13:57:55.38749"
+        "timestamp": "2025-10-03T14:28:38.433133"
     },
     "meles meles - minimap2": {
         "content": [
             [
-                "3196a1997c55d543d773a1af0595fa6d"
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 25,
+                    "meanReadLength": 147,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 9,
+                    "readCount": 1856,
+                    "duplicateReadCount": 33,
+                    "sorted": true
+                }
             ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
@@ -68,12 +108,22 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T13:46:44.4551"
+        "timestamp": "2025-10-03T14:26:15.789848"
     },
     "meles meles - bwamem2 - multiple samples - meta mismatch": {
         "content": [
             [
-                "18a7b1230848a060219df7ddf5c78f25"
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
+                }
             ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
@@ -92,6 +142,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T14:00:15.919119"
+        "timestamp": "2025-10-03T14:25:14.450599"
     }
 }

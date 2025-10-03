@@ -73,7 +73,7 @@ nextflow_workflow {
                 { assert workflow.out.bam.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getReadsMD5() }.sort(),
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
                         workflow.out.versions
                     ).match()
                 }
@@ -132,7 +132,7 @@ nextflow_workflow {
                 { assert workflow.out.bam.size() == 2 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getReadsMD5() }.sort(),
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
                         workflow.out.versions
                     ).match()
                 }
@@ -191,7 +191,7 @@ nextflow_workflow {
                 { assert workflow.out.bam.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getReadsMD5() }.sort(),
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
                         workflow.out.versions
                     ).match()
                 }
@@ -241,7 +241,7 @@ nextflow_workflow {
                 { assert workflow.out.bam.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getReadsMD5() }.sort(),
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
                         workflow.out.versions
                     ).match()
                 }
