@@ -1,4 +1,4 @@
-process HICCRAMALIGN_CHUNKS {
+process CRAMALIGN_GENCRAMCHUNKS {
     label "process_single"
     executor "local"
 
@@ -31,8 +31,8 @@ process HICCRAMALIGN_CHUNKS {
     def versions_file = new File("${task.workDir}/versions.yml")
     versions_file.write(
         """
-        HICCRAMALIGN_CHUNKS:
-            hiccramalign_chunks: ${VERSION}
+        CRAMALIGN_GENCRAMCHUNKS:
+            cramalign_gencramchunks: ${VERSION}
         """
     )
 }

@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "HICCRAMALIGN_CHUNKS"
+name: "CRAMALIGN_GENCRAMCHUNKS"
 description: Determine the chunks to split a CRAM file into for alignment
 keywords:
   - cram
   - chunk
   - align
 tools:
-  - "hiccramalign/chunks":
+  - "cramalign/gencramchunks":
       description: "not a real tool!"
       homepage: "https://i.need.this.to.lint.org"
       documentation: "https://i.need.this.to.lint.org"
