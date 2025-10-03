@@ -28,7 +28,7 @@ nextflow_process {
         }
 
         run("LONGRANGER_MKREF") {
-            script "../../sanger-tol/longranger/mkref/main.nf"
+            script "../../mkref/main.nf"
             process {
                 """
                 input[0] = GUNZIP.out.gunzip
@@ -37,7 +37,7 @@ nextflow_process {
         }
     }
 
-    test("sarscov2 - bam") {
+    test("undibacterium unclassified") {
 
         when {
             process {
@@ -64,7 +64,7 @@ nextflow_process {
 
     }
 
-    test("sarscov2 - bam - stub") {
+    test("undibacterium unclassified - stub") {
 
         options "-stub"
 

@@ -28,7 +28,7 @@ nextflow_process {
         }
     }
 
-    test("meles meles - fasta") {
+    test("undibacterium unclassified") {
 
         when {
             process {
@@ -51,7 +51,7 @@ nextflow_process {
 
     }
 
-    test("meles meles - fasta - stub") {
+    test("undibacterium unclassified - stub") {
 
         options "-stub"
 
