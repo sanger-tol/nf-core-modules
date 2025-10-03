@@ -1,7 +1,10 @@
 {
     "meles meles - bwamem2 - multiple samples": {
         "content": [
-            "18a7b1230848a060219df7ddf5c78f25",
+            [
+                "18a7b1230848a060219df7ddf5c78f25",
+                "6cd55d34356b3b4f2fe654db77d4d22c"
+            ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
@@ -23,10 +26,13 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T12:26:28.87123"
+        "timestamp": "2025-10-03T13:44:28.627387"
     },
     "meles meles - bwamem2": {
         "content": [
+            [
+                "18a7b1230848a060219df7ddf5c78f25"
+            ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
                 "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
@@ -41,11 +47,13 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T13:05:30.47784"
+        "timestamp": "2025-10-03T13:43:18.93428"
     },
     "meles meles - minimap2": {
         "content": [
-            "3196a1997c55d543d773a1af0595fa6d",
+            [
+                "3196a1997c55d543d773a1af0595fa6d"
+            ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
                 "versions.yml:md5,897099b3ba1f2612a98b07f805a89d42",
@@ -60,11 +68,13 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T13:08:54.568952"
+        "timestamp": "2025-10-03T13:46:44.4551"
     },
     "meles meles - bwamem2 - multiple samples - meta mismatch": {
         "content": [
-            "18a7b1230848a060219df7ddf5c78f25",
+            [
+                "6cd55d34356b3b4f2fe654db77d4d22c"
+            ],
             [
                 "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
                 "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
@@ -82,6 +92,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-03T13:07:50.723861"
+        "timestamp": "2025-10-03T13:45:40.643241"
     }
 }
