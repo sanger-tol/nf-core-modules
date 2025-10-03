@@ -149,7 +149,7 @@ workflow HIC_MAPPING {
         | combine(ch_assemblies, by: 0)
         | combine(ch_fai_gzi, by: 0)
         | multiMap { meta, bams, assembly, fai, gzi ->
-            bam:   [ meta, bams ]
+            bam:   [ meta, bams.sort() ]
             fasta: [ meta, assembly ]
             fai:   [ meta, fai ]
             gzi:   [ meta, gzi ]
