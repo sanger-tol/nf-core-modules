@@ -7,7 +7,7 @@ keywords:
   - align
   - bam
 components:
-  - cramalign/countcramchunks
+  - cramalign/gencramchunks
   - cramalign/bwamem2alignhic
   - cramalign/minimap2alignhic
   - samtools/index:

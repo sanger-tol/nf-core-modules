@@ -1,5 +1,5 @@
 include { BWAMEM2_INDEX              } from '../../../modules/nf-core/bwamem2/index/main'
-include { CRAMALIGN_GENCRAMCHUNKS    } from '../../../modules/sanger-tol/cramalign/chunks'
+include { CRAMALIGN_GENCRAMCHUNKS    } from '../../../modules/sanger-tol/cramalign/gencramchunks'
 include { CRAMALIGN_BWAMEM2ALIGNHIC  } from '../../../modules/sanger-tol/cramalign/bwamem2alignhic'
 include { CRAMALIGN_MINIMAP2ALIGNHIC } from '../../../modules/sanger-tol/cramalign/minimap2alignhic'
 include { MINIMAP2_INDEX             } from '../../../modules/nf-core/minimap2/index/main'
