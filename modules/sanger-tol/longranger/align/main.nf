@@ -2,6 +2,10 @@ process LONGRANGER_ALIGN {
     tag "${meta.id}"
     label 'process_high'
 
+    // NOTE: As longranger is proprietary software, no container or conda environment
+    // can be provided for this module. Please configure your own container and then
+    // pass the path to this container as part of a Nextflow configuration file.
+
     input:
     tuple val(meta) , path(fastq, stageAs: "10X_inputs/*")
     tuple val(meta2), path(reference)
@@ -41,7 +45,7 @@ process LONGRANGER_ALIGN {
     touch ${prefix}/outs/possorted_bam.bam
     touch ${prefix}/outs/possorted_bam.bam.bai
     touch ${prefix}/outs/summary.csv
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         longranger: \$(longranger align --version | grep longranger | sed 's/.*(//' | sed 's/).*//')
