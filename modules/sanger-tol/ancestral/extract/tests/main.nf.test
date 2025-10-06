@@ -10,8 +10,6 @@ nextflow_process {
     tag "ancestral"
     tag "ancestral/extract"
 
-    config './nextflow.config'
-
     test("GCA_963859965.1 - tsv") {
 
         when {
@@ -46,11 +44,6 @@ nextflow_process {
         options "-stub"
 
         when {
-
-            params {
-                samtools_view_args = "-u"
-                sort_args          = "-k4"
-            }
 
             process {
                 """

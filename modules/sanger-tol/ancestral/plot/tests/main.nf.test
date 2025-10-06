@@ -15,6 +15,9 @@ nextflow_process {
     test("GCA_963859965.1 - tsv - fai") {
 
         when {
+            params {
+                outdir  = "$outputDir"
+            }
 
             process {
                 """
@@ -36,9 +39,22 @@ nextflow_process {
         }
 
         then {
+            def stable_name_files = getAllFilesFromDir(
+                params.outdir,
+                includeDir: true,
+                relative: true,
+                include: [
+                    // Meta Data changes between runs
+                    "*.pdf",
+                    "*.png"
+                ]
+            )
+
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    stable_name_files
+                ).match() }
             )
         }
 
@@ -49,10 +65,8 @@ nextflow_process {
         options "-stub"
 
         when {
-
             params {
-                samtools_view_args = "-u"
-                sort_args          = "-k4"
+                outdir  = "$outputDir"
             }
 
             process {
@@ -75,9 +89,22 @@ nextflow_process {
         }
 
         then {
+            def stable_name_files = getAllFilesFromDir(
+                params.outdir,
+                includeDir: true,
+                relative: true,
+                include: [
+                    // Meta Data changes between runs
+                    "*.pdf",
+                    "*.png"
+                ]
+            )
+
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    stable_name_files
+                ).match() }
             )
         }
 

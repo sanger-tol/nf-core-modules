@@ -1,100 +1,26 @@
 {
     "GCA_963859965.1 - tsv - fai - stub": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.png:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.pdf:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "2": [
-                    "versions.yml:md5,1dcd83e7dc8c5843c7004c702f61dc7d"
-                ],
-                "pdf_plot": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.pdf:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "png_plot": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.png:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,1dcd83e7dc8c5843c7004c702f61dc7d"
-                ]
-            }
+            [
+                
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2025-10-06T10:57:56.130132548"
+        "timestamp": "2025-10-06T11:33:52.784498374"
     },
     "GCA_963859965.1 - tsv - fai": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.png:md5,c285241499b662cb358ed1d8ef9d50f7"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.pdf:md5,4b17f1567ef5a200c2a37d0ac21863ec"
-                    ]
-                ],
-                "2": [
-                    "versions.yml:md5,1dcd83e7dc8c5843c7004c702f61dc7d"
-                ],
-                "pdf_plot": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.pdf:md5,4b17f1567ef5a200c2a37d0ac21863ec"
-                    ]
-                ],
-                "png_plot": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "buscopainter_complete_location.tsv_buscopainter.png:md5,c285241499b662cb358ed1d8ef9d50f7"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,1dcd83e7dc8c5843c7004c702f61dc7d"
-                ]
-            }
+            [
+                
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2025-10-06T10:57:45.61336884"
+        "timestamp": "2025-10-06T11:33:44.603114364"
     }
 }
