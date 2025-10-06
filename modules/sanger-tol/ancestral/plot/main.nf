@@ -7,7 +7,7 @@ process ANCESTRAL_PLOT {
 
     input:
     tuple val(meta), path(comp_location)
-    tuple val(meta2), path(genome_index)
+    tuple val(meta2), path(fai)
 
     output:
     path("*_buscopainter.png")  , emit: png_plot
@@ -26,7 +26,7 @@ process ANCESTRAL_PLOT {
     plot_buscopainter.R \\
         -f ${comp_location} \\
         -p ${prefix} \\
-        -i ${genome_index} \\
+        -i ${fai} \\
         ${args}
 
     cat <<-END_VERSIONS > versions.yml

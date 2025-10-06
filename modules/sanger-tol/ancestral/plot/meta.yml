@@ -20,7 +20,7 @@ input:
         description: |
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
-    - tsv:
+    - comp_location:
         type: file
         description: |
           Complete location busco painter output.
@@ -40,13 +40,14 @@ input:
         ontologies: []
 
 output:
-  comp_location:
+  png_plot:
     - "*_buscopainter.png":
         type: file
         description: |
           A PNG plot showing busco gene linkage maps.
         ontologies:
           - edam: http://edamontology.org/format_1915
+  pdf_plot:
     - "*_buscopainter.pdf":
         type: file
         description: |

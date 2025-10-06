@@ -20,14 +20,14 @@ input:
         description: |
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
-    - tsv:
+    - fulltable:
         type: file
         description: |
           BUSCO full table tsv file.
         pattern: "*.tsv"
         ontologies:
           - edam: http://edamontology.org/format_2572
-    - reference_table:
+    - ancestraltable:
         type: file
         description: |
           A reference TSV containing ancestrally linked genes.
