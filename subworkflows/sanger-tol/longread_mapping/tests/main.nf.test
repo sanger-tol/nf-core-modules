@@ -1,0 +1,245 @@
+nextflow_workflow {
+
+    name "Test Subworkflow LONGREAD_MAPPING"
+    script "../main.nf"
+    workflow "LONGREAD_MAPPING"
+    config "./nextflow.config"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/longread_mapping"
+    tag "cramalign/gencramchunks"
+    tag "cramalign/minimap2alignlongread"
+    tag "subworkflows/../../modules/nf-core/minimap2/index"
+    tag "subworkflows/../../modules/nf-core/samtools/merge"
+    tag "subworkflows/../../modules/nf-core/samtools/index"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "minimap2/index",
+                "samtools/index",
+                "samtools/merge",
+                "samtools/faidx"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("meles meles - single test") {
+
+        when {
+            params {
+                samtools_cat_args     = ""
+                samtools_fastq_args   = "-F 0x200 -nt"
+                minimap2_args         = "-ax map-ont"
+                samtools_sort_args    = "--write-index -l1"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                    ]
+                )
+                input[2] = 10
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.bam.size() == 1 },
+                {
+                    assert snapshot(
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.versions
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("meles meles - multiple test") {
+
+        when {
+            params {
+                samtools_cat_args     = ""
+                samtools_fastq_args   = "-F 0x200 -nt"
+                minimap2_args         = "-ax map-ont"
+                samtools_sort_args    = "--write-index -l1"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test1' ], // meta map
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test1' ],
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                    ]
+                )
+                input[2] = 5
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.bam.size() == 2 },
+                {
+                    assert snapshot(
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.versions
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("meles meles - mismatch meta test") {
+
+        when {
+            params {
+                samtools_cat_args     = ""
+                samtools_fastq_args   = "-F 0x200 -nt"
+                minimap2_args         = "-ax map-ont"
+                samtools_sort_args    = "--write-index -l1"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test1' ], // meta map
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test2' ],
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                    ]
+                )
+                input[2] = 5
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.bam.size() == 1 },
+                {
+                    assert snapshot(
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.versions
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("meles meles - PacBio Hifi test") {
+
+        when {
+            params {
+                samtools_cat_args     = ""
+                samtools_fastq_args   = "-F 0x200 -nt"
+                minimap2_args         = "-ax map-hifi"
+                samtools_sort_args    = "--write-index -l1"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test1' ], // meta map
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test1' ],
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                    ]
+                )
+                input[2] = 5
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.bam.size() == 2 },
+                {
+                    assert snapshot(
+                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.versions
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+    
+
+}
