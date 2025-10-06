@@ -19,32 +19,32 @@ nextflow_workflow {
             "${launchDir}/library/",
             [
                 "seqtk/cutn",
-                "gawk"
+                "gawk",
+                "gunzip"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
 
-        // Download test data
-        new File("${launchDir}/data").mkdir()
-        zippped_test_data = "https://tolit.cog.sanger.ac.uk/test-data/resources/nextflow/test-data/Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz"
-        def command = ['bash', '-c', "curl ${zippped_test_data} | tar xzf - -C ${launchDir}/data/"]
-        def process = command.execute()
-        process.waitFor()
+        run("GUNZIP"){
+            script "../../../../nf-core/gunzip/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id: "Cloeon_Dipeterum" ],
+                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true)
+                ]
+                """
+            }
+        }
     }
 
     test("Cloeon_dipterum genome [fasta]") {
 
         when {
-            params {
-                reference   =   "${launchDir}/data/GCA_949628265.1.fasta"
-            }
 
             workflow {
                 """
-                input[0] = Channel.of([
-                    [ id:'test', single_end:false ], // meta map
-                    file($reference, checkIfExists: true)
-                ])
+                input[0] = GUNZIP.out.gunzip
                 """
             }
         }
@@ -64,16 +64,10 @@ nextflow_workflow {
     test("Cloeon_dipterum genome - stub") {
         options "-stub"
         when {
-            params {
-                reference   =   "${launchDir}/data/GCA_949628265.1.fasta"
-            }
 
             workflow {
                 """
-                input[0] = Channel.of([
-                    [ id:'test', single_end:false ], // meta map
-                    file($reference, checkIfExists: true)
-                ])
+                input[0] = GUNZIP.out.gunzip
                 """
             }
         }
