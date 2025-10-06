@@ -42,6 +42,15 @@ runs:
         version: "${{ env.NFT_VER }}"
         install-pdiff: true
 
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Check out pipeline code
+      uses: actions/checkout@v3
+
     - name: Set up apptainer
       if: contains(inputs.profile, 'singularity')
       shell: bash
