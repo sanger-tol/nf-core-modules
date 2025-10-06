@@ -12,7 +12,7 @@ nextflow_process {
 
     config './nextflow.config'
 
-    test("Undibacterium unclassified - bam") {
+    test("GCA_963859965.1 - tsv - fai") {
 
         when {
 
@@ -21,14 +21,14 @@ nextflow_process {
                 input[0] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/buscopainter_complete_location.tsv', checkIfExists: true)
                     ]
                 )
 
                 input[1] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/GCA_963859965.1.fasta.fai', checkIfExists: true)
                     ]
                 )
                 """
@@ -44,7 +44,7 @@ nextflow_process {
 
     }
 
-    test("Undibacterium unclassified - bam - stub") {
+    test("GCA_963859965.1 - tsv - fai - stub") {
 
         options "-stub"
 
@@ -60,14 +60,14 @@ nextflow_process {
                 input[0] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/buscopainter_complete_location.tsv', checkIfExists: true)
                     ]
                 )
 
                 input[1] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/GCA_963859965.1.fasta.fai', checkIfExists: true)
                     ]
                 )
                 """
