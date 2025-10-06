@@ -29,7 +29,7 @@ process CRAMALIGN_GENCRAMCHUNKS {
         return [ lower, upper ]
     }
 
-    file("${task.workDir}/versions.yml").text = """
+    file("${task.workDir}/versions.yml").text = """\
         CRAMALIGN_GENCRAMCHUNKS:
             cramalign_gencramchunks: ${VERSION}
         """.stripIndent()
