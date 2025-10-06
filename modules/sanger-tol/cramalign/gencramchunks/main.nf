@@ -28,11 +28,9 @@ process CRAMALIGN_GENCRAMCHUNKS {
 
         return [ lower, upper ]
     }
-    def versions_file = new File("${task.workDir}/versions.yml")
-    versions_file.write(
-        """
+
+    file("${task.workDir}/versions.yml").text = """
         CRAMALIGN_GENCRAMCHUNKS:
             cramalign_gencramchunks: ${VERSION}
-        """
-    )
+        """.stripIndent()
 }
