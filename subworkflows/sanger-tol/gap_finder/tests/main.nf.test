@@ -26,7 +26,7 @@ nextflow_workflow {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
 
         run("GUNZIP"){
-            script "../../../../nf-core/gunzip/main.nf"
+            script "../../../../modules/nf-core/gunzip/main.nf"
             process {
                 """
                 input[0] = [

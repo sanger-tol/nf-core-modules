@@ -1,14 +1,13 @@
 {
-    "sarscov2 genome - stub": {
+    "Cloeon_dipterum genome - stub": {
         "content": [
             {
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "Cloeon_Dipeterum"
                         },
-                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -18,10 +17,9 @@
                 "gap_file": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "Cloeon_Dipeterum"
                         },
-                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
@@ -32,20 +30,19 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nextflow": "25.04.7"
         },
-        "timestamp": "2025-10-03T12:27:09.342414128"
+        "timestamp": "2025-10-06T16:13:51.003190181"
     },
-    "sarscov2 genome [fasta]": {
+    "Cloeon_dipterum genome [fasta]": {
         "content": [
             {
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "Cloeon_Dipeterum"
                         },
-                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -55,10 +52,9 @@
                 "gap_file": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "Cloeon_Dipeterum"
                         },
-                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
@@ -69,8 +65,8 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
+            "nextflow": "25.04.7"
         },
-        "timestamp": "2025-10-03T12:26:59.052766966"
+        "timestamp": "2025-10-06T16:12:33.072452968"
     }
 }
