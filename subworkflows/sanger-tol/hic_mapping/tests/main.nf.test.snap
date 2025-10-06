@@ -1,166 +1,147 @@
 {
-    "meles meles - minimap2 - no markdup": {
+    "meles meles - bwamem2 - multiple samples": {
         "content": [
-            "cadae29d5849e3c4b7328c3eb8cc239d",
             [
                 {
-                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
-                    }
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
                 },
                 {
-                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
-                        "samtools": "1.22.1",
-                        "minimap2": "2.30-r1287",
-                        "gawk": "5.3.1"
-                    }
-                },
-                {
-                    "HICCRAMALIGN_CHUNKS": {
-                        "hiccramalign_chunks": "1.0.0"
-                    }
-                },
-                {
-                    "HIC_MAPPING:SAMTOOLS_MERGE": {
-                        "samtools": 1.21
-                    }
-                },
-                {
-                    "HIC_MAPPING:MINIMAP2_INDEX": {
-                        "minimap2": "2.29-r1283"
-                    }
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
                 }
+            ],
+            [
+                "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
+                "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
+                "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
+                "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
+                "versions.yml:md5,937b65ae8a1a62094e422deed4aa2480",
+                "versions.yml:md5,937b65ae8a1a62094e422deed4aa2480",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,e938bc5e520e0423caa5e6ed7908cb3d",
+                "versions.yml:md5,e938bc5e520e0423caa5e6ed7908cb3d",
+                "versions.yml:md5,fdcbb8a03dee4c8ba03fd83bbcd10f19",
+                "versions.yml:md5,fdcbb8a03dee4c8ba03fd83bbcd10f19"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-07-23T10:11:31.789347"
+        "timestamp": "2025-10-03T14:24:01.558479"
     },
-    "meles meles - bwamem2 - no markdup": {
+    "meles meles - bwamem2": {
         "content": [
-            "7d1eeee0a6762dd68a561558e2aa63a2",
             [
                 {
-                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
-                    }
-                },
-                {
-                    "HICCRAMALIGN_CHUNKS": {
-                        "hiccramalign_chunks": "1.0.0"
-                    }
-                },
-                {
-                    "HIC_MAPPING:HICCRAMALIGN_BWAMEM2ALIGN": {
-                        "samtools": "1.22.1",
-                        "bwamem2": "2.2.1"
-                    }
-                },
-                {
-                    "HIC_MAPPING:BWAMEM2_INDEX": {
-                        "bwamem2": "2.2.1"
-                    }
-                },
-                {
-                    "HIC_MAPPING:SAMTOOLS_MERGE": {
-                        "samtools": 1.21
-                    }
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
                 }
+            ],
+            [
+                "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
+                "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
+                "versions.yml:md5,937b65ae8a1a62094e422deed4aa2480",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,e938bc5e520e0423caa5e6ed7908cb3d",
+                "versions.yml:md5,fdcbb8a03dee4c8ba03fd83bbcd10f19"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-07-23T10:09:47.382064"
+        "timestamp": "2025-10-03T14:28:38.433133"
     },
-    "meles meles - minimap2 - markdup": {
+    "meles meles - minimap2": {
         "content": [
-            "cadae29d5849e3c4b7328c3eb8cc239d",
             [
                 {
-                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
-                    }
-                },
-                {
-                    "HIC_MAPPING:SAMTOOLS_MARKDUP": {
-                        "samtools": 1.21
-                    }
-                },
-                {
-                    "HIC_MAPPING:HICCRAMALIGN_MINIMAP2ALIGN": {
-                        "samtools": "1.22.1",
-                        "minimap2": "2.30-r1287",
-                        "gawk": "5.3.1"
-                    }
-                },
-                {
-                    "HICCRAMALIGN_CHUNKS": {
-                        "hiccramalign_chunks": "1.0.0"
-                    }
-                },
-                {
-                    "HIC_MAPPING:SAMTOOLS_MERGE": {
-                        "samtools": 1.21
-                    }
-                },
-                {
-                    "HIC_MAPPING:MINIMAP2_INDEX": {
-                        "minimap2": "2.29-r1283"
-                    }
+                    "maxReadLength": 151,
+                    "minReadLength": 25,
+                    "meanReadLength": 147,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 9,
+                    "readCount": 1856,
+                    "duplicateReadCount": 33,
+                    "sorted": true
                 }
+            ],
+            [
+                "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
+                "versions.yml:md5,897099b3ba1f2612a98b07f805a89d42",
+                "versions.yml:md5,897099b3ba1f2612a98b07f805a89d42",
+                "versions.yml:md5,937b65ae8a1a62094e422deed4aa2480",
+                "versions.yml:md5,e938bc5e520e0423caa5e6ed7908cb3d",
+                "versions.yml:md5,fd15db333caf07479a96afdbe9a149e0",
+                "versions.yml:md5,fdcbb8a03dee4c8ba03fd83bbcd10f19"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-07-23T10:10:43.208374"
+        "timestamp": "2025-10-03T14:26:15.789848"
     },
-    "meles meles - bwamem2 - markdup": {
+    "meles meles - bwamem2 - multiple samples - meta mismatch": {
         "content": [
-            "7d1eeee0a6762dd68a561558e2aa63a2",
             [
                 {
-                    "HIC_MAPPING:SAMTOOLS_FAIDX": {
-                        "samtools": 1.21
-                    }
-                },
-                {
-                    "HIC_MAPPING:SAMTOOLS_MARKDUP": {
-                        "samtools": 1.21
-                    }
-                },
-                {
-                    "HICCRAMALIGN_CHUNKS": {
-                        "hiccramalign_chunks": "1.0.0"
-                    }
-                },
-                {
-                    "HIC_MAPPING:HICCRAMALIGN_BWAMEM2ALIGN": {
-                        "samtools": "1.22.1",
-                        "bwamem2": "2.2.1"
-                    }
-                },
-                {
-                    "HIC_MAPPING:BWAMEM2_INDEX": {
-                        "bwamem2": "2.2.1"
-                    }
-                },
-                {
-                    "HIC_MAPPING:SAMTOOLS_MERGE": {
-                        "samtools": 1.21
-                    }
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
                 }
+            ],
+            [
+                "versions.yml:md5,6da1ff684dd357b0be447eff01112c09",
+                "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
+                "versions.yml:md5,804d2da0c4ff5dfe1ea5b14f0c3994a2",
+                "versions.yml:md5,937b65ae8a1a62094e422deed4aa2480",
+                "versions.yml:md5,937b65ae8a1a62094e422deed4aa2480",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,bbc059343be8756eb41864dceae346d0",
+                "versions.yml:md5,e938bc5e520e0423caa5e6ed7908cb3d",
+                "versions.yml:md5,e938bc5e520e0423caa5e6ed7908cb3d",
+                "versions.yml:md5,fdcbb8a03dee4c8ba03fd83bbcd10f19"
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-07-23T10:08:55.207581"
+        "timestamp": "2025-10-03T14:25:14.450599"
     }
 }

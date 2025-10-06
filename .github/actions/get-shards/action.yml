@@ -1,0 +1,17 @@
+name: "Get number of shards"
+description: "Get the number of nf-test shards for the current CI job"
+inputs:
+  tags:
+    description: "Tags to pass as argument for nf-test --tag parameter"
+    required: true
+  paths:
+    description: "Component paths to test"
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: Set up nf-test
+      uses: nf-core/setup-nf-test@v1
+      with:
+        version: ${{ env.NFT_VER }}
+        install-pdiff: true
