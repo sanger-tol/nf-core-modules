@@ -84,9 +84,9 @@ nextflow_workflow {
                 { assert snapshot(workflow.out).match() }
             )
         }
-    }
 
-    cleanup {
-        nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
     }
 }
