@@ -135,6 +135,15 @@ jobs:
 
           echo "filtered_paths=${FILTERED}" >> $GITHUB_OUTPUT
 
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check out pipeline code
+        uses: actions/checkout@v3
+
       - name: debug
         run: |
           echo filtered_paths = ${{ steps.filter.outputs.filtered_paths }}
