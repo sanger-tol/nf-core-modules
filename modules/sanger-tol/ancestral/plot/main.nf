@@ -10,9 +10,12 @@ process ANCESTRAL_PLOT {
     tuple val(meta2), path(fai)
 
     output:
-    path("*_buscopainter.png")  , emit: png_plot
-    path("*_buscopainter.pdf")  , emit: pdf_plot
-    path("versions.yml")        , emit: versions
+    tuple val(meta), path("*_buscopainter.png") , emit: png_plot
+    tuple val(meta), path("*_buscopainter.pdf") , emit: pdf_plot
+    path("versions.yml")                        , emit: versions
+
+    when:
+    task.ext.when == null || task.ext.when
 
     script:
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {

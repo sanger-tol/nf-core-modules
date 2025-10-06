@@ -14,6 +14,7 @@ tools:
       homepage: https://github.com/sanger-tol/busco_painter
       documentation: https://github.com/sanger-tol/busco_painter
       licence: ["GPL v2.0"]
+      identifier: ""
 input:
   - - meta:
         type: map
@@ -27,6 +28,7 @@ input:
         pattern: "*.tsv"
         ontologies:
           - edam: http://edamontology.org/format_2572
+          - edam: http://edamontology.org/format_3475 # TSV
   - - meta2:
         type: map
         description: |
@@ -38,22 +40,31 @@ input:
           Assembly index file
         pattern: "*.fai"
         ontologies: []
-
 output:
   png_plot:
-    - "*_buscopainter.png":
-        type: file
-        description: |
-          A PNG plot showing busco gene linkage maps.
-        ontologies:
-          - edam: http://edamontology.org/format_1915
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_buscopainter.png":
+          type: file
+          description: |
+            A PNG plot showing busco gene linkage maps.
+          ontologies:
+            - edam: http://edamontology.org/format_1915
   pdf_plot:
-    - "*_buscopainter.pdf":
-        type: file
-        description: |
-          A PDF plot showing busco gene linkage maps.
-        ontologies:
-          - edam: http://edamontology.org/format_3508
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_buscopainter.pdf":
+          type: file
+          description: |
+            A PDF plot showing busco gene linkage maps.
+          ontologies:
+            - edam: http://edamontology.org/format_3508
 
   versions:
     - versions.yml:

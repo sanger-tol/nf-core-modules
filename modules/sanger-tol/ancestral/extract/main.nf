@@ -15,6 +15,9 @@ process ANCESTRAL_EXTRACT {
     tuple val(meta), path("*summary.tsv")                         , emit: summary
     path "versions.yml"                                           , emit: versions
 
+    when:
+    task.ext.when == null || task.ext.when
+
     script:
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "ANCESTRAL_EXTRACT module does not support Conda. Please use Docker / Singularity / Podman instead."

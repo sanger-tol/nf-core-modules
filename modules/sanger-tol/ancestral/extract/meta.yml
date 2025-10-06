@@ -14,6 +14,7 @@ tools:
       homepage: https://github.com/sanger-tol/busco_painter
       documentation: https://github.com/sanger-tol/busco_painter
       licence: ["GPL v2.0"]
+      identifier: ""
 input:
   - - meta:
         type: map
@@ -27,13 +28,15 @@ input:
         pattern: "*.tsv"
         ontologies:
           - edam: http://edamontology.org/format_2572
-    - ancestraltable:
-        type: file
-        description: |
-          A reference TSV containing ancestrally linked genes.
-        pattern: "*.tsv"
-        ontologies:
-          - edam: http://edamontology.org/format_2572
+          - edam: http://edamontology.org/format_3475 # TSV
+  - ancestraltable:
+      type: file
+      description: |
+        A reference TSV containing ancestrally linked genes.
+      pattern: "*.tsv"
+      ontologies:
+        - edam: http://edamontology.org/format_2572
+        - edam: http://edamontology.org/format_3475 # TSV
 output:
   comp_location:
     - - meta:
