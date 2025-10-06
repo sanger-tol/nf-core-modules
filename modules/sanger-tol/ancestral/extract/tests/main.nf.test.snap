@@ -13,7 +13,7 @@
                 "1": [
                     [
                         {
-                            "id": "test-full-tabl"
+                            "id": "test-full-table"
                         },
                         "buscopainter_duplicated_location.tsv:md5,23301496a69958b2b64d30df982ca2df"
                     ]
@@ -21,7 +21,7 @@
                 "2": [
                     [
                         {
-                            "id": "test-full-tabl"
+                            "id": "test-full-table"
                         },
                         "buscopainter_summary.tsv:md5,16931cc78cc8506863b360e149d81111"
                     ]
@@ -32,7 +32,7 @@
                 "comp_location": [
                     [
                         {
-                            "id": "test-full-tabl"
+                            "id": "test-full-table"
                         },
                         "buscopainter_complete_location.tsv:md5,92a2d60e7a66edeb5070e3d982a53193"
                     ]
@@ -40,7 +40,7 @@
                 "dup_location": [
                     [
                         {
-                            "id": "test-full-tabl"
+                            "id": "test-full-table"
                         },
                         "buscopainter_duplicated_location.tsv:md5,23301496a69958b2b64d30df982ca2df"
                     ]
@@ -48,7 +48,7 @@
                 "summary": [
                     [
                         {
-                            "id": "test-full-tabl"
+                            "id": "test-full-table"
                         },
                         "buscopainter_summary.tsv:md5,16931cc78cc8506863b360e149d81111"
                     ]
@@ -62,7 +62,7 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2025-10-06T10:26:27.966492498"
+        "timestamp": "2025-10-06T11:47:09.348481052"
     },
     "GCA_963859965.1 - tsv- stub": {
         "content": [
