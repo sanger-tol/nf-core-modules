@@ -1,5 +1,5 @@
 {
-    "conda": [],
+    "conda": ["modules/sanger-tol/longranger"],
     "docker": [],
     "singularity": []
 }
