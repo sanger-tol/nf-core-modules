@@ -30,7 +30,7 @@ process LONGRANGER_MKREF {
     """
 
     stub:
-    def prefix = assembly - ~/\.fa/
+    def prefix = assembly.getName() - ~/\.fa/
     """
     mkdir refdata-${prefix}
     mkdir -p refdata-${prefix}/fasta

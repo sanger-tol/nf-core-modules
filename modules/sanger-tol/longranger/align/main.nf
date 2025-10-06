@@ -3,14 +3,14 @@ process LONGRANGER_ALIGN {
     label 'process_high'
 
     input:
-    tuple val(meta) , path(reference)
-    tuple val(meta2), path(fastq, stageAs: "10X_inputs/*")
+    tuple val(meta) , path(fastq, stageAs: "10X_inputs/*")
+    tuple val(meta2), path(reference)
 
     output:
-    tuple val(meta), path("${meta.id}/outs/possorted_bam.bam")    , emit: bam
-    tuple val(meta), path("${meta.id}/outs/possorted_bam.bam.bai"), emit: bai
-    tuple val(meta), path("${meta.id}/outs/summary.csv")          , emit: csv
-    path("versions.yml")                                          , emit: versions
+    tuple val(meta), path("${prefix}/outs/possorted_bam.bam")    , emit: bam
+    tuple val(meta), path("${prefix}/outs/possorted_bam.bam.bai"), emit: bai
+    tuple val(meta), path("${prefix}/outs/summary.csv")          , emit: csv
+    path("versions.yml")                                         , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -18,7 +18,7 @@ process LONGRANGER_ALIGN {
     script:
     def local_setup = !(task.ext.args =~ /--jobmode=lsf|--jobmode=sge/) ? "--localcores=${task.cpus}" : ""
     def args        = task.ext.args   ?: ""
-    def prefix      = task.ext.prefix ?: "${meta.id}"
+    prefix      = task.ext.prefix ?: "${meta.id}"
     """
     longranger align \\
         --id=${prefix} \\
@@ -35,11 +35,16 @@ process LONGRANGER_ALIGN {
     """
 
     stub:
-    def prefix = reference.getName() - ~/\.fa/
+    prefix = task.ext.prefix ?: "${meta.id}"
     """
-    mkdir -p refdata-${prefix}/outs
-    touch refdata-${prefix}/outs/possorted_bam.bam
-    touch refdata-${prefix}/outs/possorted_bam.bam.bai
-    touch refdata-${prefix}/outs/summary.csv
+    mkdir -p ${prefix}/outs
+    touch ${prefix}/outs/possorted_bam.bam
+    touch ${prefix}/outs/possorted_bam.bam.bai
+    touch ${prefix}/outs/summary.csv
+    
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        longranger: \$(longranger align --version | grep longranger | sed 's/.*(//' | sed 's/).*//')
+    END_VERSIONS
     """
 }
