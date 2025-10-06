@@ -8,7 +8,7 @@ keywords:
   - trimming
   - fasta
 components:
-  - seqtk_cutn
+  - seqtk/cutn
   - gawk
 input:
   - ch_reference:

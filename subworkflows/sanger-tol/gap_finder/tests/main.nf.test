@@ -6,19 +6,71 @@ nextflow_workflow {
     workflow "GAP_FINDER"
 
     tag "subworkflows"
-    tag "subworkflows_nfcore"
+    tag "subworkflows_sangertol"
     tag "subworkflows/gap_finder"
     tag "seqtk/cutn"
     tag "gawk"
+    tag "subworkflows/../../modules/nf-core/gawk"
+    tag "subworkflows/../../modules/nf-core/seqtk/cutn"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "seqtk/cutn",
+                "gawk"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        zippped_test_data = "https://tolit.cog.sanger.ac.uk/test-data/resources/nextflow/test-data/Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz"
+        def command = ['bash', '-c', "curl ${zippped_test_data} | tar xzf - -C ${launchDir}"]
+        def process = command.execute()
+        process.waitFor()
+    }
 
     test("sarscov2 genome [fasta]") {
 
         when {
+            params {
+                reference   =   "${launchDir}/GCA_949628265.1.fasta"
+            }
+
             workflow {
                 """
                 input[0] = Channel.of([
                     [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + "genomics/sarscov2/genome/genome.fasta", checkIfExists: true)
+                    file($reference, checkIfExists: true)
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("sarscov2 genome - stub") {
+        options "-stub"
+        when {
+            params {
+                reference   =   "${launchDir}/GCA_949628265.1.fasta"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test', single_end:false ], // meta map
+                    file($reference, checkIfExists: true)
                 ])
                 """
             }
@@ -32,24 +84,7 @@ nextflow_workflow {
         }
     }
 
-    test("sarscov2 genome - stub") {
-        options "-stub"
-        when {
-            workflow {
-                """
-                input[0] = Channel.of([
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + "genomics/sarscov2/genome/genome.fasta", checkIfExists: true)
-                ])
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
-            )
-        }
+    cleanup {
+        nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
     }
 }
