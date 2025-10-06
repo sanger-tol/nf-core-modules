@@ -34,6 +34,8 @@ input:
       pattern: "*.cram"
   - val_cram_chunk_size:
       type: integer
+      description: Size of chunk to split CRAM files into
+
 output:
   - bam:
       type: file

@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "minimap2alignlongread"
+name: "cramalign_minimap2alignlongread"
 description: |
   Aligns a subset of PacBio/ONT reads from a CRAM file to a reference genome using minimap2,
     pipes the resulting alignments through samtools sort, outputting an alignment in BAM format.
