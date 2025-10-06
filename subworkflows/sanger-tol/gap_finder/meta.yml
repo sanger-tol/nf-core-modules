@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
 name: "gap_finder"
-description: Generated a bed file containing gaps and their length
+description: Generate a bed file containing gaps and their length
 keywords:
   - gap
   - bed
