@@ -22,12 +22,11 @@ process LONGRANGER_ALIGN {
     script:
     def local_setup = !(task.ext.args =~ /--jobmode=lsf|--jobmode=sge/) ? "--localcores=${task.cpus}" : ""
     def args        = task.ext.args   ?: ""
-    prefix      = task.ext.prefix ?: "${meta.id}"
+    prefix          = task.ext.prefix ?: "${meta.id}"
     """
     longranger align \\
         --id=${prefix} \\
         --fastqs=10X_inputs \\
-        --sample=${prefix} \\
         --reference=${reference} \\
         ${local_setup} \\
         ${args}
