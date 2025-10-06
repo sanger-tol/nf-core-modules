@@ -1,4 +1,4 @@
-nextflow_workflow {Add a comment on lines R1 to R87Add diff commentMarkdown input:  edit mode selected.WritePreviewAdd a suggestionHeadingBoldItalicQuoteCodeLinkUnordered listNumbered listTask listMentionReferenceSaved repliesAdd FilesPaste, drop, or click to add filesCancelCommentStart a reviewReturn to code
+nextflow_workflow {
 
     name "Test Subworkflow GAP_FINDER"
     script "../main.nf"
