@@ -1,27 +1,23 @@
 name: longranger_align
-description: Performs alignment of Illumina 10X sequencing data to the indexed reference genome
+description: Performs alignment of Illumina 10X sequencing data to the indexed reference
+  genome
 keywords:
   - longranger
   - 10X
   - align
 tools:
   - longranger:
-      description: Long Ranger is a set of analysis pipelines that processes Chromium sequencing output to align reads and call and phase SNPs, indels, and structural variants.
+      description: Long Ranger is a set of analysis pipelines that processes Chromium
+        sequencing output to align reads and call and phase SNPs, indels, and structural
+        variants.
       homepage: https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger
       documentation: https://support.10xgenomics.com/genome-exome/software/pipelines/latest/what-is-long-ranger
       tool_dev_url: https://github.com/10XGenomics/longranger
       doi: no DOI available
       licence: ["https://support.10xgenomics.com/genome-exome/software/downloads/latest"]
+      identifier: ""
 input:
   - - meta:
-        type: map
-        description: |
-          Groovy Map containing sample information
-          e.g. [ id:'pEimTen1' ]
-    - reference:
-        type: file
-        description: Longranger reference from longranger/mkref
-  - - meta2:
         type: map
         description: |
           Groovy Map containing sample information
@@ -30,42 +26,58 @@ input:
         type: file
         description: Illumina 10X Fastq files
         pattern: "*.fastq.gz"
+        ontologies:
+          - edam: http://edamontology.org/format_1930 # FASTQ format
+  - - meta2:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'pEimTen1' ]
+    - reference:
+        type: file
+        description: Longranger reference from longranger/mkref
+        ontologies: []
 output:
-  reference:
+  bam:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "${meta.id}/outs/possorted_bam.bam":
+      - ${prefix}/outs/possorted_bam.bam:
           type: file
-          description: Sorted BAM file
-          pattern: "${meta.id}/outs/possorted_bam.bam"
+          description: Sorted BAM file of 10X reads mapped to the reference
+          ontologies:
+            - edam: http://edamontology.org/format_2572 # BAM
   bai:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
-            e.g. [ id:'pEimTen1' ]
-      - "${meta.id}/outs/possorted_bam.bam.bai":
+            e.g. `[ id:'sample1' ]`
+      - ${prefix}/outs/possorted_bam.bam.bai:
           type: file
-          description: Bam index
-          pattern: "${meta.id}/outs/possorted_bam.bam.bai"
+          description: BAM file index
+          ontologies:
+            - edam: http://edamontology.org/format_3327 # BAI
   csv:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
-            e.g. [ id:'pEimTen1' ]
-      - "${meta.id}/outs/summary.csv":
-        type: file
-        description: Summary CSV file
-        pattern: "${meta.id}/outs/summary.csv"
+            e.g. `[ id:'sample1' ]`
+      - ${prefix}/outs/summary.csv:
+          type: file
+          description: Summary CSV describing Longranger process
+          ontologies:
+            - edam: http://edamontology.org/format_3752 # CSV
   versions:
-    - "versions.yml":
+    - versions.yml:
         type: file
         description: File containing software versions
         pattern: "versions.yml"
+        ontologies:
+          - edam: http://edamontology.org/format_3750 # YAML
 authors:
   - "@ksenia-krasheninnikova"
   - "@prototaxites"

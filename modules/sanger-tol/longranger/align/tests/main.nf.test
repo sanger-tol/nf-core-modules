@@ -7,6 +7,7 @@ nextflow_process {
 
     tag "modules"
     tag "modules_sangertol"
+    tag "nf-core/gunzip"
     tag "longranger"
     tag "longranger/mkref"
     tag "longranger/align"
