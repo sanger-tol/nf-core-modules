@@ -36,6 +36,7 @@ nextflow_workflow {
                 samtools_cat_args     = ""
                 samtools_fastq_args   = "-F 0x200 -nt"
                 minimap2_args         = "-ax map-ont"
+                samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
             }
 
@@ -83,6 +84,7 @@ nextflow_workflow {
                 samtools_cat_args     = ""
                 samtools_fastq_args   = "-F 0x200 -nt"
                 minimap2_args         = "-ax map-ont"
+                samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
             }
 
@@ -138,6 +140,7 @@ nextflow_workflow {
                 samtools_cat_args     = ""
                 samtools_fastq_args   = "-F 0x200 -nt"
                 minimap2_args         = "-ax map-ont"
+                samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
             }
 
@@ -193,6 +196,7 @@ nextflow_workflow {
                 samtools_cat_args     = ""
                 samtools_fastq_args   = "-F 0x200 -nt"
                 minimap2_args         = "-ax map-hifi"
+                samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
             }
 

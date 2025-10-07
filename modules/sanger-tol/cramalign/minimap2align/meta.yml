@@ -3,7 +3,7 @@
 name: "cramalign_minimap2align"
 description: |
   Aligns a subset of sequencing reads from a CRAM file to a reference genome using minimap2,
-    pipes the resulting alignments through samtools sort, outputting an alignment in BAM format.
+    pipes the resulting alignments through samtools view (optional) and samtools sort, outputting an alignment in BAM format.
 keywords:
   - align
   - cram
