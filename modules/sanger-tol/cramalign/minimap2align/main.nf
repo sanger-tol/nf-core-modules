@@ -30,7 +30,7 @@ process CRAMALIGN_MINIMAP2ALIGN {
         samtools fastq ${args2} - |  \\
         minimap2 -t${task.cpus} ${args3} ${reference} - | \\
         ${post_filter} \\
-        samtools sort ${args5} -@${task.cpus} -T ${prefix}_sort_tmp -o ${prefix}_mm.bam -
+        samtools sort ${args5} -@${task.cpus} -T ${prefix}_sort_tmp -o ${prefix}.bam -
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

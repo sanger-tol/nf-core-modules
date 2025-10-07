@@ -32,6 +32,19 @@
         },
         "timestamp": "2025-10-07T16:31:23.252769"
     },
+    "Meles meles - ONT filtered reads": {
+        "content": [
+            "46218777936eb60118e3e131c8d742eb",
+            [
+                "versions.yml:md5,55891c41bf5000a37ba817c3431dd57b"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-10-07T18:58:59.282604"
+    },
     "Meles meles - PacBio HiFi reads": {
         "content": [
             "dfcc4dbebe23293f4f0b9338c2aef9cd",
