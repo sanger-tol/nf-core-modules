@@ -82,8 +82,6 @@ workflow LONGREAD_MAPPING {
     CRAMALIGN_MINIMAP2ALIGNLONGREAD(ch_cram_chunks)
     ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGNLONGREAD.out.versions)
 
-    ch_mapped_bams = CRAMALIGN_MINIMAP2ALIGNLONGREAD.out.bam
-
     //
     // Module: Index assembly fastas
     //
@@ -109,7 +107,7 @@ workflow LONGREAD_MAPPING {
     //        We use the ch_n_cram_chunks to set a groupKey so that
     //        we emit groups downstream ASAP once all bams have been made
     //
-    ch_samtools_merge_input = ch_mapped_bams
+    ch_samtools_merge_input = CRAMALIGN_MINIMAP2ALIGNLONGREAD.out.bam
         | combine(ch_n_cram_chunks, by: 0)
         | map { meta, bam, n_chunks ->
             def key = groupKey(meta, n_chunks)

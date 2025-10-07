@@ -23,7 +23,6 @@ process CRAMALIGN_MINIMAP2ALIGNLONGREAD {
     def args3 = task.ext.args3 ?: ''
     def args4 = task.ext.args4 ?: ''
     def prefix = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
-
     """
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} | \\
         samtools fastq ${args2} - |  \\
