@@ -8,7 +8,7 @@ nextflow_process {
     tag "modules_sangertol"
     tag "minimap2/index"
     tag "cramalign"
-    tag "cramalign/minimap2alignlongread"
+    tag "cramalign/minimap2align"
     tag "nf-core/minimap2/index"
 
     setup {
