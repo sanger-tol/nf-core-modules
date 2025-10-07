@@ -1,8 +1,8 @@
 nextflow_process {
 
-    name "Test Process CRAMALIGN_MINIMAP2ALIGNLONGREAD"
+    name "Test Process CRAMALIGN_MINIMAP2ALIGN"
     script "../main.nf"
-    process "CRAMALIGN_MINIMAP2ALIGNLONGREAD"
+    process "CRAMALIGN_MINIMAP2ALIGN"
 
     tag "modules"
     tag "modules_sangertol"

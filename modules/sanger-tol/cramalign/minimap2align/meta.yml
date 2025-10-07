@@ -1,14 +1,13 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "cramalign_minimap2alignlongread"
+name: "cramalign_minimap2align"
 description: |
-  Aligns a subset of PacBio/ONT reads from a CRAM file to a reference genome using minimap2,
+  Aligns a subset of sequencing reads from a CRAM file to a reference genome using minimap2,
     pipes the resulting alignments through samtools sort, outputting an alignment in BAM format.
 keywords:
   - align
   - cram
   - chunk
-  - longread
 tools:
   - samtools:
       description: |
@@ -37,7 +36,7 @@ input:
 
     - cram:
         type: file
-        description: CRAM file containing ONT & PacBio sequences to align
+        description: CRAM file containing sequences to align
         pattern: "*.cram"
         ontologies:
           - edam: "http://edamontology.org/format_3462" # CRAM
@@ -70,7 +69,7 @@ output:
             e.g. `[ id:'sample1' ]`
       - "*.bam":
           type: file
-          description: BAM file of mapped ONT/PacBio sequences
+          description: BAM file of mapped sequences
           pattern: "*.bam"
           ontologies:
             - edam: "http://edamontology.org/format_2572"

@@ -1,4 +1,4 @@
-process CRAMALIGN_MINIMAP2ALIGNLONGREAD {
+process CRAMALIGN_MINIMAP2ALIGN {
     tag "$meta.id"
     label 'process_high'
 

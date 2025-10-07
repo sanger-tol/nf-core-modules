@@ -1,5 +1,5 @@
 include { CRAMALIGN_GENCRAMCHUNKS         } from '../../../modules/sanger-tol/cramalign/gencramchunks'
-include { CRAMALIGN_MINIMAP2ALIGNLONGREAD } from '../../../modules/sanger-tol/cramalign/minimap2alignlongread/main'
+include { CRAMALIGN_MINIMAP2ALIGN         } from '../../../modules/sanger-tol/cramalign/minimap2align/main'
 include { MINIMAP2_INDEX                  } from '../../../modules/nf-core/minimap2/index/main'
 include { SAMTOOLS_FAIDX                  } from '../../../modules/nf-core/samtools/faidx/main'
 include { SAMTOOLS_INDEX                  } from '../../../modules/nf-core/samtools/index/main'
@@ -79,8 +79,8 @@ workflow LONGREAD_MAPPING {
         | transpose()
         | combine(MINIMAP2_INDEX.out.index, by: 0)
 
-    CRAMALIGN_MINIMAP2ALIGNLONGREAD(ch_cram_chunks)
-    ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGNLONGREAD.out.versions)
+    CRAMALIGN_MINIMAP2ALIGN(ch_cram_chunks)
+    ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGN.out.versions)
 
     //
     // Module: Index assembly fastas
@@ -107,7 +107,7 @@ workflow LONGREAD_MAPPING {
     //        We use the ch_n_cram_chunks to set a groupKey so that
     //        we emit groups downstream ASAP once all bams have been made
     //
-    ch_samtools_merge_input = CRAMALIGN_MINIMAP2ALIGNLONGREAD.out.bam
+    ch_samtools_merge_input = CRAMALIGN_MINIMAP2ALIGN.out.bam
         | combine(ch_n_cram_chunks, by: 0)
         | map { meta, bam, n_chunks ->
             def key = groupKey(meta, n_chunks)
