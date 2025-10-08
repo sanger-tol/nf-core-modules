@@ -20,13 +20,6 @@ input:
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
 
-    - cram:
-        type: file
-        description: Unaligned BAM/CRAM/SAM file
-        pattern: "*.cram"
-        ontologies:
-          - edam: "http://edamontology.org/format_3462" # CRAM
-
     - crai:
         type: file
         description: Sorted BAM/CRAM/SAM file
@@ -48,18 +41,6 @@ output:
           pattern: "*.cram"
           ontologies:
             - edam: "http://edamontology.org/format_3462" # CRAM
-      - cram:
-          type: string
-          description: Input CRAM file
-          pattern: "*.cram"
-          ontologies:
-            - edam: "http://edamontology.org/format_3462" # CRAM
-      - crai:
-          type: string
-          description: Input CRAM index
-          pattern: "*.cram"
-          ontologies:
-            - edam: "http://edamontology.org/format_3475" # TSV
       - chunkn:
           type: integer
           description: CRAM chunk index

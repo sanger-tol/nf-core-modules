@@ -15,7 +15,6 @@ workflow HIC_MAPPING {
     ch_hic_cram          // Channel [meta, cram] OR [meta, [cram1, cram2, ..., cram_n]]
     val_aligner          // string: [either "bwamem2" or "minimap2"]
     val_cram_chunk_size  // integer: Number of CRAM slices per chunk for mapping
-    val_mark_duplicates  // boolean: Mark duplicates on the BAM?
 
     main:
     ch_versions = Channel.empty()
@@ -50,8 +49,11 @@ workflow HIC_MAPPING {
     // Module: Process the cram index files to determine how many
     //         chunks to split into for mapping
     //
+    ch_cram_indexes = ch_hic_cram_indexed
+        | map { meta, cram, index -> [ meta, index ] }
+
     CRAMALIGN_GENCRAMCHUNKS(
-        ch_hic_cram_indexed,
+        ch_cram_indexes,
         val_cram_chunk_size
     )
     ch_versions = ch_versions.mix(CRAMALIGN_GENCRAMCHUNKS.out.versions)
@@ -60,9 +62,16 @@ workflow HIC_MAPPING {
     // Logic: Count the total number of cram chunks for downstream grouping
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
-        | map { _meta, _cram, _crai, chunkn, _slices -> chunkn }
-        | collect
-        | map { chunkns -> chunkns.size() }
+        | map { meta, chunkn, _slices -> [ meta, chunkn ] }
+        | transpose()
+        | groupTuple(by: 0)
+        | map { meta, chunkns -> [ meta, chunkns.size() ] }
+
+    //
+    // Logic: Re-join the cram files and indexes to their chunk information
+    //
+    ch_cram_with_slices = ch_hic_cram_indexed
+        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
 
     //
     // Logic: Begin alignment - fork depending on specified aligner
@@ -77,12 +86,9 @@ workflow HIC_MAPPING {
         ch_assemblies_with_reference = ch_assemblies
             | combine(BWAMEM2_INDEX.out.index, by: 0)
 
-        ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
+        ch_cram_chunks = ch_cram_with_slices
             | transpose()
-            | combine(ch_assemblies_with_reference)
-            | map { _meta, cram, crai, chunkn, slices, meta_assembly, index, assembly ->
-                [ meta_assembly, cram, crai, chunkn, slices, index, assembly ]
-            }
+            | combine(ch_assemblies_with_reference, by: 0)
 
         CRAMALIGN_BWAMEM2ALIGNHIC(ch_cram_chunks)
         ch_versions = ch_versions.mix(CRAMALIGN_BWAMEM2ALIGNHIC.out.versions)
@@ -95,12 +101,9 @@ workflow HIC_MAPPING {
         MINIMAP2_INDEX(ch_assemblies)
         ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
-        ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
+        ch_cram_chunks = ch_cram_with_slices
             | transpose()
-            | combine(MINIMAP2_INDEX.out.index)
-            | map { _meta, cram, crai, chunkn, slices, meta_assembly, index ->
-                [ meta_assembly, cram, crai, chunkn, slices, index ]
-            }
+            | combine(MINIMAP2_INDEX.out.index, by: 0)
 
         CRAMALIGN_MINIMAP2ALIGNHIC(ch_cram_chunks)
         ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGNHIC.out.versions)
@@ -111,14 +114,24 @@ workflow HIC_MAPPING {
     }
 
     //
-    // Logic: Index assembly fastas
+    // Module: Index assembly fastas
     //
     SAMTOOLS_FAIDX(
         ch_assemblies, // reference
-        [[:],[]],   // fai
-        false       // get sizes
+        [ [:],[] ],    // fai
+        false          // get sizes
     )
     ch_versions = ch_versions.mix(SAMTOOLS_FAIDX.out.versions)
+
+    //
+    // Logic: create a channel with both fai and gzi for each assembly
+    //        We do it here so we don't cause downstream issues with the
+    //        remainder join
+    //
+    ch_fai_gzi = SAMTOOLS_FAIDX.out.fai
+        | join(SAMTOOLS_FAIDX.out.gzi, by: 0, remainder: true)
+        | map { meta, fai, gzi -> [ meta, fai, gzi ?: [] ] }
+
 
     //
     // Logic: Prepare input for merging bams.
@@ -126,21 +139,20 @@ workflow HIC_MAPPING {
     //        we emit groups downstream ASAP once all bams have been made
     //
     ch_samtools_merge_input = ch_mapped_bams
-        | combine(ch_n_cram_chunks)
+        | combine(ch_n_cram_chunks, by: 0)
         | map { meta, bam, n_chunks ->
             def key = groupKey(meta, n_chunks)
             [key, bam]
         }
-        | groupTuple()
+        | groupTuple(by: 0)
         | map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
-        | join(ch_assemblies, by: 0)
-        | join(SAMTOOLS_FAIDX.out.fai, by: 0)
-        | join(SAMTOOLS_FAIDX.out.gzi, by: 0, remainder: true)
+        | combine(ch_assemblies, by: 0)
+        | combine(ch_fai_gzi, by: 0)
         | multiMap { meta, bams, assembly, fai, gzi ->
-            bam:   [meta, bams]
-            fasta: [meta, assembly]
-            fai:   [meta, fai]
-            gzi:   [meta, gzi ?: []]
+            bam:   [ meta, bams ]
+            fasta: [ meta, assembly ]
+            fai:   [ meta, fai ]
+            gzi:   [ meta, gzi ]
         }
 
     //
@@ -158,11 +170,10 @@ workflow HIC_MAPPING {
     // Module: Mark duplicates on the merged bam
     //
     ch_samtools_markdup_input = SAMTOOLS_MERGE.out.bam
-        | filter { val_mark_duplicates }
         | combine(ch_assemblies, by: 0)
         | multiMap { meta, bam, assembly ->
-            bam:      [meta, bam]
-            assembly: [meta, assembly]
+            bam:      [ meta, bam ]
+            assembly: [ meta, assembly ]
         }
 
     SAMTOOLS_MARKDUP(
@@ -172,6 +183,6 @@ workflow HIC_MAPPING {
     ch_versions = ch_versions.mix(SAMTOOLS_MARKDUP.out.versions)
 
     emit:
-    bam      = val_mark_duplicates ? SAMTOOLS_MARKDUP.out.bam : SAMTOOLS_MERGE.out.bam
+    bam      = SAMTOOLS_MARKDUP.out.bam
     versions = ch_versions
 }
