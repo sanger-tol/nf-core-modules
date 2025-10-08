@@ -9,7 +9,7 @@ keywords:
   - busco
 components:
   - ancestral/extract
-  - ancestral/plots
+  - ancestral/plot
   - samtools/faidx:
       git_remote: https://github.com/nf-core/modules.git
 
