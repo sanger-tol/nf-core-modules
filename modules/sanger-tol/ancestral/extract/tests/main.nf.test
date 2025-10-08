@@ -10,6 +10,8 @@ nextflow_process {
     tag "ancestral"
     tag "ancestral/extract"
 
+    config './nextflow.config'
+
     test("GCA_963859965.1 - tsv") {
 
         when {
@@ -24,7 +26,10 @@ nextflow_process {
                 )
 
                 input[1] = Channel.of(
-                    file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/Merian_elements_full_table.tsv', checkIfExists: true)
+                    [
+                        [ id:'lepidoptera' ], // meta map
+                        file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/Merian_elements_full_table.tsv', checkIfExists: true)
+                    ]
                 )
                 """
             }
@@ -55,7 +60,10 @@ nextflow_process {
                 )
 
                 input[1] = Channel.of(
-                    file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/Merian_elements_full_table.tsv', checkIfExists: true)
+                    [
+                        [ id:'lepidoptera' ], // meta map
+                        file(params.modules_testdata_base_path + 'resources/genomenote/ancestral_data/Merian_elements_full_table.tsv', checkIfExists: true)
+                    ]
                 )
                 """
             }

@@ -39,21 +39,11 @@ nextflow_process {
         }
 
         then {
-            def stable_name_files = getAllFilesFromDir(
-                params.outdir,
-                includeDir: true,
-                relative: true,
-                include: [
-                    // Meta Data changes between runs
-                    "*.pdf",
-                    "*.png"
-                ]
-            )
-
             assertAll(
                 { assert process.success },
                 { assert snapshot(
-                    stable_name_files,
+                    file(process.out.pdf_plot.get(0).get(1)).getName(),
+                    file(process.out.png_plot.get(0).get(1)).getName(),
                     process.out.versions
                 ).match() }
             )
@@ -90,21 +80,11 @@ nextflow_process {
         }
 
         then {
-            def stable_name_files = getAllFilesFromDir(
-                params.outdir,
-                includeDir: true,
-                relative: true,
-                include: [
-                    // Meta Data changes between runs
-                    "*.pdf",
-                    "*.png"
-                ]
-            )
-
             assertAll(
                 { assert process.success },
                 { assert snapshot(
-                    stable_name_files,
+                    file(process.out.pdf_plot.get(0).get(1)).getName(),
+                    file(process.out.png_plot.get(0).get(1)).getName(),
                     process.out.versions
                 ).match() }
             )

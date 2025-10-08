@@ -7,7 +7,7 @@ process ANCESTRAL_EXTRACT {
 
     input:
     tuple val(meta), path(fulltable)
-    path(ancestraltable)
+    tuple val(meta2), path(ancestraltable)
 
     output:
     tuple val(meta), path("*buscopainter_complete_location.tsv")  , emit: comp_location
