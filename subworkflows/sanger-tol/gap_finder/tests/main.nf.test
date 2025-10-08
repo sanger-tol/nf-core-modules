@@ -12,6 +12,7 @@ nextflow_workflow {
     tag "gawk"
     tag "subworkflows/../../modules/nf-core/gawk"
     tag "subworkflows/../../modules/nf-core/seqtk/cutn"
+	tag "modules/nf-core/gunzip"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
