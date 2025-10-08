@@ -30,15 +30,15 @@ nextflow_workflow {
             process {
                 """
                 input[0] = [
-                    [ id: "Cloeon_Dipeterum" ],
-                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true)
+                    [ id: "Ceramica_pisi" ],
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true)
                 ]
                 """
             }
         }
     }
 
-    test("Cloeon_dipterum genome [fasta]") {
+    test("Ceramica_pisi genome [fasta]") {
 
         when {
 
