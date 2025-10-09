@@ -6,7 +6,7 @@ process TELOMERE_REGIONS {
 
     input:
     tuple val(meta), path(reference)
-    val (telomereseq)
+    val telomereseq
 
     output:
     tuple val( meta ), path( "*.telomere" ) , emit: telomere
