@@ -27,8 +27,7 @@ input:
         description: |
           Telomere file containing telomeric sites.
         pattern: "*.telomere"
-        ontologies:
-          - edam: "http://edamontology.org/format_3475" # TSV
+        ontologies: []
 
 output:
   bed:
