@@ -30,7 +30,7 @@ input:
   - telomereseq:
       type: string
       description: |
-        The telomere motif
+        A string containing the DNA sequence of a telomere motif
       ontologies: []
 output:
   telomere:
