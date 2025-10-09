@@ -1,5 +1,5 @@
 {
-    "conda": ["modules/sanger-tol/ancestral"],
-    "docker": [],
+    "conda": ["modules/sanger-tol/longranger", "modules/sanger-tol/ancestral"],
+    "docker": ["modules/sanger-tol/longranger"],
     "singularity": []
 }
