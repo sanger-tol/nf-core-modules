@@ -2,14 +2,14 @@ process TELOMERE_REGIONS {
     tag "${meta.id}"
     label 'process_low'
 
-    container 'quay.io/sanger-tol/telomere:0.0.1-c1'
+    container 'sanger-tol/telomere:0.0.1-c1'
 
     input:
     tuple val(meta), path(reference)
     val (telomereseq)
 
     output:
-    tuple val( meta ), file( "*.telomere" ) , emit: telomere
+    tuple val( meta ), path( "*.telomere" ) , emit: telomere
     path "versions.yml"                     , emit: versions
 
     when:

@@ -24,14 +24,14 @@ input:
         type: file
         description: |
           Assembly for telomere.
-        pattern: "*.fa(sta)"
+        pattern: "*.{fa,fna,fasta}"
         ontologies:
-          - edam: http://edamontology.org/format_3475 # TSV
-    - fai:
-        type: string
-        description: |
-          A telomere motif
-        ontologies: []
+          - edam: http://edamontology.org/format_1929 # FASTA
+  - telomereseq:
+      type: string
+      description: |
+        The telomere motif
+      ontologies: []
 output:
   telomere:
     - - meta:
@@ -42,7 +42,7 @@ output:
       - "*.telomere":
           type: file
           description: |
-            A PNG plot showing busco gene linkage maps.
+            File containing telomeric regions
           ontologies: []
 
   versions:
