@@ -1,5 +1,10 @@
 {
-    "conda": ["modules/sanger-tol/telomere", "modules/sanger-tol/longranger", "modules/sanger-tol/ancestral", "subworkflows/sanger-tol/ancestral"],
+    "conda": [
+        "modules/sanger-tol/ancestral",
+        "modules/sanger-tol/longranger",
+        "modules/sanger-tol/telomere",
+        "subworkflows/sanger-tol/ancestral"
+    ],
     "docker": ["modules/sanger-tol/longranger"],
     "singularity": []
 }
