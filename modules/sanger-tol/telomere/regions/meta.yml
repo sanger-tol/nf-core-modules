@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "telomere_regions"
 description: |
-  Identify regions of the assembly matching a given sequencew
+  Identify regions of the assembly matching a given sequence
 keywords:
   - telomere
   - regions
