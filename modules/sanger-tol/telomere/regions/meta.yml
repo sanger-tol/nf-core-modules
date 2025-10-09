@@ -43,7 +43,8 @@ output:
           type: file
           description: |
             File containing telomeric regions
-          ontologies: []
+        ontologies:
+          - edam: "http://edamontology.org/format_3475" # TSV
 
   versions:
     - versions.yml:
