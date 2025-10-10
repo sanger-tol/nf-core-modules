@@ -42,7 +42,7 @@ nextflow_workflow {
     test("Cloeon_dipterum genome [fasta]") {
 
         when {
-        
+
             params {
                 gawk_args = "'BEGIN { OFS = \"\\t\" }{print \$0, sqrt((\$3-\$2)*(\$3-\$2))}'"
                 seqtk_args = "-n 1"
@@ -71,7 +71,7 @@ nextflow_workflow {
     test("Cloeon_dipterum genome - stub") {
         options "-stub"
         when {
-        
+
             params {
                 gawk_args = "'BEGIN { OFS = \"\\t\" }{print \$0, sqrt((\$3-\$2)*(\$3-\$2))}'"
                 seqtk_args = "-n 1"
