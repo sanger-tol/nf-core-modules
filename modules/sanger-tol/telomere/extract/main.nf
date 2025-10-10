@@ -21,8 +21,12 @@ process TELOMERE_EXTRACT {
     script:
     def prefix  = task.ext.prefix ?: "${meta.id}"
     """
-    awk 'BEGIN {OFS = "\\t"} {print \$2, \$4, \$5}' ${telomere} | sed 's/>//g' > ${prefix}_telomere.bed
-    awk 'BEGIN {OFS = "\\t"} {print \$2,\$4,\$5,(((\$5-\$4)<0)?-(\$5-\$4):(\$5-\$4))}' ${telomere} | sed 's/>//g' > ${prefix}_telomere.bedgraph
+    awk 'BEGIN { OFS = "\t" }
+    {
+        gsub(">", "")
+        print \$2, \$4, \$5 >> "${prefix}_telomere.bed"
+        print \$2, \$4, \$5, (((\$5-\$4)<0)?-(\$5-\$4):(\$5-\$4)) >> "${prefix}_telomere.bedgraph"
+    }' ${telomere}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
