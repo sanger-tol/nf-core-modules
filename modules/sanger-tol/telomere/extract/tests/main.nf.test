@@ -16,7 +16,7 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id: 'Cloeon_dipterum' ], // meta map
-                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/analysis/ieCloDipt1.1/telomere/Cloeon_Dipeterum.telomere', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.windows', checkIfExists: true)
                 ]
                 """
             }
@@ -39,7 +39,7 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id: 'Cloeon_dipterum' ], // meta map
-                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/analysis/ieCloDipt1.1/telomere/Cloeon_Dipeterum.telomere', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.windows', checkIfExists: true)
                 ]
                 """
             }
