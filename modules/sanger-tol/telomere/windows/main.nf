@@ -22,6 +22,11 @@ process TELOMERE_WINDOWS {
     // ${moduleDir}/resources/usr/bin/telomere.jar. To use this module, you will
     // either have to copy this file to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true in your nextflow.config file.
+
+    if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
+        error "TELOMERE_WINDOWS module does not support Conda. Please use Docker / Singularity instead."
+    }
+
     def prefix = task.ext.prefix ?: "${meta.id}"
     def VERSION = "1.0" // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     def telomere_jar = task.ext.telomere_jar ?: "telomere.jar"
