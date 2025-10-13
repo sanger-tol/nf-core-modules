@@ -12,13 +12,13 @@ nextflow_process {
 
     config "./nextflow.config"
 
-    test("Cloeon_dipterum - telomere") {
+    test("idFanCani4 - telomere") {
 
         when {
             process {
                 """
                 input[0] = [
-                    [ id: "Cloeon_dipterum" ],
+                    [ id: "idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.telomere', checkIfExists: true)
                 ]
                 """
@@ -33,7 +33,7 @@ nextflow_process {
         }
     }
 
-    test("Cloeon_dipterum - telomere - stub") {
+    test("idFanCani4 - telomere - stub") {
 
         options "-stub"
 
@@ -41,7 +41,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [
-                    [ id: "Cloeon_dipterum" ],
+                    [ id: "idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.telomere', checkIfExists: true)
                 ]
                 """
