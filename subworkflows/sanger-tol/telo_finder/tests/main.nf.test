@@ -1,0 +1,102 @@
+nextflow_workflow {
+
+    name "Test Subworkflow TELO_FINDER"
+    script "../main.nf"
+    config "./nextflow.config"
+    workflow "TELO_FINDER"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/telo_finder"
+    tag "telomere/regions"
+    tag "telomere/windows"
+    tag "telomere/extract"
+    tag "subworkflows/../../modules/nf-core/gawk"
+	tag "subworkflows/../../modules/nf-core/gunzip"
+
+
+
+    test("THING - no split - fasta") {
+        when {
+            params {
+                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
+                gawk_suffix     = "split.telomere"
+            }
+
+            workflow {
+                """
+                input[0] = [ [id: "test"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[1] = "TTAGG"
+                input[2] = false
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("THING - split - fasta") {
+        when {
+            params {
+                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
+                gawk_suffix     = "split.telomere"
+            }
+
+            workflow {
+                """
+                input[0] = [ [id: "test"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[1] = "TTAGG"
+                input[2] = true
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("THING - no split - fasta - stub") {
+        when {
+            params {
+                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
+                gawk_suffix     = "split.telomere"
+            }
+
+            workflow {
+                """
+                input[0] = [ [id: "test"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[1] = "TTAGG"
+                input[2] = false
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+}
