@@ -16,7 +16,7 @@ nextflow_workflow {
 
 
 
-    test("THING - no split - fasta") {
+    test("idFanCani4 - no split - fasta") {
         when {
             params {
                 gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
@@ -25,7 +25,7 @@ nextflow_workflow {
 
             workflow {
                 """
-                input[0] = [ [id: "test"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[0] = [ [id: "idFanCani4"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
                 input[1] = "TTAGG"
                 input[2] = false
                 """
@@ -44,7 +44,7 @@ nextflow_workflow {
         }
     }
 
-    test("THING - split - fasta") {
+    test("idFanCani4 - split - fasta") {
         when {
             params {
                 gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
@@ -53,7 +53,7 @@ nextflow_workflow {
 
             workflow {
                 """
-                input[0] = [ [id: "test"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[0] = [ [id: "idFanCani4"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
                 input[1] = "TTAGG"
                 input[2] = true
                 """
@@ -72,7 +72,7 @@ nextflow_workflow {
         }
     }
 
-    test("THING - no split - fasta - stub") {
+    test("idFanCani4 - no split - fasta - stub") {
         when {
             params {
                 gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
@@ -81,7 +81,7 @@ nextflow_workflow {
 
             workflow {
                 """
-                input[0] = [ [id: "test"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[0] = [ [id: "idFanCani4"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
                 input[1] = "TTAGG"
                 input[2] = false
                 """
