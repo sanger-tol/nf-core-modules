@@ -15,6 +15,10 @@ nextflow_process {
     test("idFanCani4 - telomere") {
 
         when {
+            params {
+                telomere_window_cut = 99.9
+            }
+
             process {
                 """
                 input[0] = [
