@@ -24,7 +24,7 @@ process TELOMERE_WINDOWS {
     // nextflow.enable.moduleBinaries = true in your nextflow.config file.
 
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "TELOMERE_WINDOWS module does not support Conda. Please use Docker / Singularity instead."
+        error "ERROR: The TELOMERE_WINDOWS module does not support Conda. Please use Docker / Singularity instead."
     }
 
     def prefix      = task.ext.prefix ?: "${meta.id}"
