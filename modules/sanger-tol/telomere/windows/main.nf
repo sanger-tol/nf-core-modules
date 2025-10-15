@@ -18,7 +18,7 @@ process TELOMERE_WINDOWS {
     task.ext.when == null || task.ext.when
 
     script:
-    // WARNING: This module includes the asmstats script as a module binary in
+    // WARNING: This module includes the telomere.jar binary as a module binary in
     // ${moduleDir}/resources/usr/bin/telomere.jar. To use this module, you will
     // either have to copy this file to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true in your nextflow.config file.
