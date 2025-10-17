@@ -12,20 +12,42 @@ nextflow_workflow {
     tag "telomere/windows"
     tag "telomere/extract"
     tag "subworkflows/../../modules/nf-core/gawk"
-	tag "subworkflows/../../modules/nf-core/gunzip"
+    tag "subworkflows/../../modules/nf-core/gunzip"
 
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "gawk",
+                "gunzip"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
 
+        run("GUNZIP"){
+            script "../../../../modules/nf-core/gunzip/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id: "idFanCani4" ],
+                    file(params.modules_testdata_base_path + 'modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz', checkIfExists: true)
+                ]
+                """
+            }
+        }
+    }
 
     test("idFanCani4 - no split - fasta") {
         when {
             params {
                 gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
-                gawk_suffix     = "split.telomere"
+                windows_percent = "99.9"
             }
 
             workflow {
                 """
-                input[0] = [ [id: "idFanCani4"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[0] = GUNZIP.out.gunzip
                 input[1] = "TTAGG"
                 input[2] = false
                 """
@@ -48,12 +70,12 @@ nextflow_workflow {
         when {
             params {
                 gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
-                gawk_suffix     = "split.telomere"
+                windows_percent = "99.9"
             }
 
             workflow {
                 """
-                input[0] = [ [id: "idFanCani4"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[0] = GUNZIP.out.gunzip
                 input[1] = "TTAGG"
                 input[2] = true
                 """
@@ -76,12 +98,12 @@ nextflow_workflow {
         when {
             params {
                 gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
-                gawk_suffix     = "split.telomere"
+                windows_percent = "99.9"
             }
 
             workflow {
                 """
-                input[0] = [ [id: "idFanCani4"], file("/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/idFanCani4.hap1.1.primary.curated.part_002.fa")]
+                input[0] = GUNZIP.out.gunzip
                 input[1] = "TTAGG"
                 input[2] = false
                 """

@@ -2,8 +2,7 @@
 // MODULE IMPORT BLOCK
 //
 include { TELOMERE_REGIONS          } from '../../../modules/sanger-tol/telomere/regions/main'
-//include { GAWK_SPLIT_DIRECTIONS     } from '../../../modules/local/gawk_split_directions/main'
-include { GAWK} from '../../../modules/nf-core/gawk/main'
+include { GAWK                      } from '../../../modules/nf-core/gawk/main'
 include { TELOMERE_WINDOWS          } from '../../../modules/sanger-tol/telomere/windows/main'
 include { TELOMERE_EXTRACT          } from '../../../modules/sanger-tol/telomere/extract/main'
 
