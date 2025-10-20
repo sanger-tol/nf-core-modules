@@ -30,7 +30,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def args3       = task.ext.args3  ?: ''
     def prefix      = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
     def post_filter = args2 ? "samtools view -h ${args2} - |" : ''
-    def sort_bam    = "samtools sort -@ ${task.cpus-1} -o ${prefix}.bam -T ${prefix}_sort_tmp ${args3} -"
+    def sort_bam    = "samtools sort -@ ${task.cpus > 1 ? task.cpus - 1 : 1} -o ${prefix}.bam -T ${prefix}_sort_tmp ${args3} -"
     def bam_output  = bam_format      ? "-a | ${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
     """
     slice_fasta.py slice ${fastx} ${range[0]} ${range[1]} | \\
