@@ -42,7 +42,7 @@ input:
         description: |
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
-    - fasta:
+    - fastx:
         type: file
         description: FASTx file of reads to map a chunk of
         pattern: "*.{fasta,fa,fasta.gz,fa.gz,fq,fq.gz}"

@@ -8,7 +8,7 @@ process FASTXALIGN_PYFASTXINDEX {
         'community.wave.seqera.io/library/htslib_minimap2_pyfastx_samtools_click:bfd8f60cc27aa6d6' }"
 
     input:
-    tuple val(meta), path(fasta)
+    tuple val(meta), path(fastx)
 
     output:
     tuple val(meta), path("*.fxi"), stdout, emit: index
@@ -25,7 +25,9 @@ process FASTXALIGN_PYFASTXINDEX {
     // in your nextflow.config file.
     def args       = task.ext.args  ?: ''
     """
-    slice_fasta.py index ${fasta}
+    slice_fasta.py index \\
+        ${fastx} \\
+        ${args}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

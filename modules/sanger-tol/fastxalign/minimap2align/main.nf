@@ -8,7 +8,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
         'community.wave.seqera.io/library/htslib_minimap2_pyfastx_samtools_click:bfd8f60cc27aa6d6' }"
 
     input:
-    tuple val(meta), path(fasta), path(fxi), val(chunkn), val(range), path(reference)
+    tuple val(meta), path(fastx), path(fxi), val(chunkn), val(range), path(reference)
     val bam_format
 
     output:
@@ -28,12 +28,12 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def args1       = task.ext.args1  ?: ''
     def args2       = task.ext.args2  ?: ''
     def args3       = task.ext.args3  ?: ''
-    def prefix      = task.ext.prefix ?: "${fasta}.${chunkn}.${meta.id}"
-    def post_filter = task.ext.args2  ? "samtools view -h ${task.ext.args2} - |" : ''
+    def prefix      = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
+    def post_filter = args2 ? "samtools view -h ${args2} - |" : ''
     def sort_bam    = "samtools sort -@ ${task.cpus-1} -o ${prefix}.bam -T ${prefix}_sort_tmp ${args3} -"
     def bam_output  = bam_format      ? "-a | ${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
     """
-    slice_fasta.py slice ${fasta} ${range[0]} ${range[1]} | \\
+    slice_fasta.py slice ${fastx} ${range[0]} ${range[1]} | \\
         minimap2 -t${task.cpus} ${args1} ${reference} - \\
         ${bam_output}
 
@@ -46,7 +46,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     """
 
     stub:
-    def prefix  = task.ext.prefix ?: "${fasta}.${chunkn}.${meta.id}"
+    def prefix  = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
     """
     touch ${prefix}.bam
     echo "" | gzip > ${prefix}.paf.gz

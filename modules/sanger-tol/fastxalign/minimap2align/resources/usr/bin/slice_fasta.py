@@ -29,25 +29,34 @@ import pyfastx
 
 
 ##
-## fastx_format_check borrowed from https://github.com/lmdu/pyfastx/blob/master/pyfastxcli.py
+## fastx_format_check modified from https://github.com/lmdu/pyfastx/blob/master/pyfastxcli.py
 ## Author: Lianming Du
 ## License: MIT
 ##
-def fastx_format_check(fasta):
-    if pyfastx.gzip_check(fasta):
-        fp = gzip.open(fasta, "rt")
+def fastx_format_check(fastx):
+    """
+    Check which file format the input fastx is by checking whether it starts
+    with a > or a @.
+    """
+    if pyfastx.gzip_check(fastx):
+        fp = gzip.open(fastx, "rt")
     else:
-        fp = open(fasta)
+        fp = open(fastx)
 
+    first_char = None
     for line in fp:
-        if line.strip():
+        stripped = line.strip()
+        if stripped:
+            first_char = stripped[0]
             break
 
     fp.close()
 
-    if line[0] == ">":
+    if first_char is None:
+        raise RuntimeError("Error: Input file is empty!")
+    elif first_char == ">":
         return "fasta"
-    elif line[0] == "@":
+    elif first_char == "@":
         return "fastq"
     else:
         raise RuntimeError("Error: Input file not FASTA or FASTQ!")
@@ -61,14 +70,17 @@ def cli():
 
 
 @click.command("index")
-@click.argument("fasta", type=click.Path(exists=True))
-def index(fasta):
-    fastx_type = fastx_format_check(fasta)
+@click.argument("fastx", type=click.Path(exists=True))
+def index(fastx):
+    """
+    Index the input fastx and print the number of sequences to stdout.
+    """
+    fastx_type = fastx_format_check(fastx)
 
     if fastx_type == "fasta":
-        seq = pyfastx.Fasta(fasta, full_index=False)
+        seq = pyfastx.Fasta(fastx, full_index=False)
     elif fastx_type == "fastq":
-        seq = pyfastx.Fastq(fasta, full_index=False)
+        seq = pyfastx.Fastq(fastx, full_index=False)
     else:
         raise RuntimeError("Error: Input file not FASTA or FASTQ!")
 
@@ -76,20 +88,28 @@ def index(fasta):
 
 
 @click.command("slice")
-@click.argument("fasta", type=click.Path(exists=True))
+@click.argument("fastx", type=click.Path(exists=True))
 @click.argument("start", type=int)
 @click.argument("end", type=int)
-def slice(fasta, start, end):
-    fastx_type = fastx_format_check(fasta)
+def slice(fastx, start, end):
+    """
+    Read an input fastx file and print out the slice of reads from start to end.
+    """
+    fastx_type = fastx_format_check(fastx)
 
     if fastx_type == "fasta":
-        seq = pyfastx.Fasta(fasta, full_index=False)
+        seq = pyfastx.Fasta(fastx, full_index=False)
     elif fastx_type == "fastq":
-        seq = pyfastx.Fastq(fasta, full_index=False)
+        seq = pyfastx.Fastq(fastx, full_index=False)
     else:
         raise RuntimeError("Error: Input file not FASTA or FASTQ!")
 
-    for i in range(start, end):
+    used_end = end
+    if end > len(seq):
+        click.echo(f"Warning: End position exceeds sequence length. Will only output reads until {len(seq)}", err=True)
+        used_end = len(seq)
+
+    for i in range(start, used_end):
         click.echo(seq[i].raw, nl=False)
 
 
