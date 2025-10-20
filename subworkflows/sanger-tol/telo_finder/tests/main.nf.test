@@ -13,6 +13,7 @@ nextflow_workflow {
     tag "telomere/extract"
     tag "subworkflows/../../modules/nf-core/gawk"
     tag "subworkflows/../../modules/nf-core/gunzip"
+    tag "modules/nf-core/gunzip"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
