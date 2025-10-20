@@ -32,7 +32,7 @@ nextflow_workflow {
                 """
                 input[0] = [
                     [ id: "idFanCani4" ],
-                    file(params.modules_testdata_base_path + 'modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz', checkIfExists: true)
                 ]
                 """
             }
