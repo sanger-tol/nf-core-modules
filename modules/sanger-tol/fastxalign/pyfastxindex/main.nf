@@ -37,7 +37,7 @@ process FASTXALIGN_PYFASTXINDEX {
 
     stub:
     """
-    touch ${fasta}.fxi
+    touch ${fastx}.fxi
     ## output dummy count to stdout
     echo -n 100
 
