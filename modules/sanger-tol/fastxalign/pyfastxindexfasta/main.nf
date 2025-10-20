@@ -4,8 +4,8 @@ process FASTXALIGN_PYFASTXINDEXFASTA {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/65/65858e733832166824cfd05291fc456bdf219b02baa3944c2c92efad86a6ee7f/data' :
-        'community.wave.seqera.io/library/htslib_minimap2_samtools_gawk_perl:6729620c63652154' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/63/637ecb387eaafe0b1689e3e32c5eda589e016cfd46c482946425181f69f0733e/data' :
+        'community.wave.seqera.io/library/htslib_minimap2_pyfastx_samtools_click:bfd8f60cc27aa6d6' }"
 
     input:
     tuple val(meta), path(fasta)

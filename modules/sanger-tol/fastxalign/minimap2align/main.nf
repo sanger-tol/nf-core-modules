@@ -4,17 +4,17 @@ process FASTXALIGN_MINIMAP2ALIGN {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/65/65858e733832166824cfd05291fc456bdf219b02baa3944c2c92efad86a6ee7f/data' :
-        'community.wave.seqera.io/library/htslib_minimap2_samtools_gawk_perl:6729620c63652154' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/63/637ecb387eaafe0b1689e3e32c5eda589e016cfd46c482946425181f69f0733e/data' :
+        'community.wave.seqera.io/library/htslib_minimap2_pyfastx_samtools_click:bfd8f60cc27aa6d6' }"
 
     input:
     tuple val(meta), path(fasta), path(fxi), val(chunkn), val(range), path(reference)
     val bam_format
 
     output:
-    tuple val(meta), path("*.bam"), emit: bam, optional: true
-    tuple val(meta), path("*.paf"), emit: paf, optional: true
-    path "versions.yml"           , emit: versions
+    tuple val(meta), path("*.bam")   , emit: bam, optional: true
+    tuple val(meta), path("*.paf.gz"), emit: paf, optional: true
+    path "versions.yml"              , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -31,7 +31,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def prefix      = task.ext.prefix ?: "${fasta}.${chunkn}.${meta.id}"
     def post_filter = task.ext.args2  ? "samtools view -h ${task.ext.args2} - |" : ''
     def sort_bam    = "samtools sort -@ ${task.cpus-1} -o ${prefix}.bam -T ${prefix}_sort_tmp ${args3} -"
-    def bam_output  = bam_format      ? "-a | ${post_filter} ${sort_bam}" : ""
+    def bam_output  = bam_format      ? "-a | ${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
     """
     slice_fasta.py slice ${fasta} ${range[0]} ${range[1]} | \\
         minimap2 -t${task.cpus} ${args1} ${reference} - \\
@@ -49,7 +49,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def prefix  = task.ext.prefix ?: "${fasta}.${chunkn}.${meta.id}"
     """
     touch ${prefix}.bam
-    touch ${prefix}.paf
+    echo "" | gzip > ${prefix}.paf.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

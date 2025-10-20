@@ -38,7 +38,7 @@
                         {
                             "id": "test"
                         },
-                        "HiFi.reads.fasta.0.test.paf:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "HiFi.reads.fasta.0.test.paf.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "2": [
@@ -57,7 +57,7 @@
                         {
                             "id": "test"
                         },
-                        "HiFi.reads.fasta.0.test.paf:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "HiFi.reads.fasta.0.test.paf.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "versions": [
@@ -69,7 +69,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-20T11:44:04.167447"
+        "timestamp": "2025-10-20T11:55:49.588468"
     },
     "Undibacterium_unclassified - fasta - bam out - no filter": {
         "content": [
@@ -101,7 +101,12 @@
                     
                 ],
                 "1": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "HiFi.reads.fasta.0.test.paf.gz:md5,b01d63d1ea02e5fdc42259091cb50898"
+                    ]
                 ],
                 "2": [
                     "versions.yml:md5,3c11d63382002b700419986fc18f8faa"
@@ -110,7 +115,12 @@
                     
                 ],
                 "paf": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "HiFi.reads.fasta.0.test.paf.gz:md5,b01d63d1ea02e5fdc42259091cb50898"
+                    ]
                 ],
                 "versions": [
                     "versions.yml:md5,3c11d63382002b700419986fc18f8faa"
@@ -121,6 +131,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-20T11:43:39.452366"
+        "timestamp": "2025-10-20T11:55:21.987279"
     }
 }

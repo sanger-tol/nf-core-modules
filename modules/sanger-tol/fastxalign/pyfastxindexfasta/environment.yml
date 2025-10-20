@@ -6,3 +6,4 @@ channels:
 dependencies:
   - bioconda::pyfastx=2.2.0
   - conda-forge::click=8.3.0
+  - conda-forge::python=3.13
