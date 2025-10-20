@@ -13,7 +13,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,059f3152e70f24c2838e832d839e225f"
+                    "versions.yml:md5,df71a9c1c15afae42d50c6150e13df66"
                 ],
                 "index": [
                     [
@@ -26,15 +26,15 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,059f3152e70f24c2838e832d839e225f"
+                    "versions.yml:md5,df71a9c1c15afae42d50c6150e13df66"
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-20T11:44:17.101661"
+        "timestamp": "2025-10-20T14:54:55.456528"
     },
     "Undibacterium_unclassified - fasta - stub": {
         "content": [
@@ -50,7 +50,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,059f3152e70f24c2838e832d839e225f"
+                    "versions.yml:md5,df71a9c1c15afae42d50c6150e13df66"
                 ],
                 "index": [
                     [
@@ -63,14 +63,14 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,059f3152e70f24c2838e832d839e225f"
+                    "versions.yml:md5,df71a9c1c15afae42d50c6150e13df66"
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-20T11:44:29.925631"
+        "timestamp": "2025-10-20T14:55:08.398709"
     }
 }
