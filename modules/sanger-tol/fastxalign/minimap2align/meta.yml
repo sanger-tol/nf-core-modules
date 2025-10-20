@@ -1,4 +1,3 @@
----
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fastxalign_minimap2align"
 description: |
@@ -19,6 +18,7 @@ tools:
         seqeunce from FASTA and reads from FASTQ by identifier and index number.
       homepage: "https://github.com/lmdu/pyfastx"
       licence: ["MIT"]
+      identifier: ""
   - samtools:
       description: |
         SAMtools is a set of utilities for interacting with and post-processing
@@ -58,10 +58,14 @@ input:
         description: Integer index of FASTA chunk to map
     - range:
         type: list
-        description: Start and end indices defining FASTA slices to align
+        description: Start and end indices defining FASTA slices to align, 0-indexed
     - reference:
         type: file
-        description: minimap2 index of the reference to be aligned to
+        description: FASTA file or minimap2 index of the reference to be aligned to
+        ontologies: []
+  - bam_format:
+      type: boolean
+      description: Output PAF format or BAM format alignments
 output:
   bam:
     - - meta:
@@ -81,17 +85,20 @@ output:
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "*.paf":
+      - "*.paf.gz":
           type: file
-          description: PAF file of mapped sequences
-          pattern: "*.paf"
+          description: bgzipped PAF file of mapped sequences
+          pattern: "*.paf.gz"
           ontologies:
             - edam: "http://edamontology.org/format_3475" # TSV
+            - edam: http://edamontology.org/format_3989 # GZIP format
   versions:
     - "versions.yml":
         type: file
         description: File containing software versions
         pattern: "versions.yml"
+        ontologies:
+          - edam: http://edamontology.org/format_3750 # YAML
 authors:
   - "@prototaxites"
 maintainers:
