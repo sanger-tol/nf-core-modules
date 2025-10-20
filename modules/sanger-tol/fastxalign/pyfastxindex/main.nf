@@ -1,4 +1,4 @@
-process FASTXALIGN_PYFASTXINDEXFASTA {
+process FASTXALIGN_PYFASTXINDEX {
     tag "$meta.id"
     label 'process_high'
 

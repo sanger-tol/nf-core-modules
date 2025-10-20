@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "fastxalign_pyfastxindexfasta"
+name: "fastxalign_pyfastxindex"
 description: |
   Index a FASTx file using pyfastx to enable random access to a slice of reads in the file. Also returns
   the raw count of reads in the file.

@@ -7,14 +7,14 @@ nextflow_process {
     tag "modules"
     tag "modules_sangertol"
     tag "fastxalign"
-    tag "fastxalign/pyfastxindexfasta"
+    tag "fastxalign/pyfastxindex"
     tag "fastxalign/minimap2align"
 
     config "./nextflow.config"
 
     setup {
-        run("FASTXALIGN_PYFASTXINDEXFASTA") {
-            script "../../pyfastxindexfasta/main.nf"
+        run("FASTXALIGN_PYFASTXINDEX") {
+            script "../../pyfastxindex/main.nf"
             process {
                 """
                 input[0] = Channel.of([
@@ -44,7 +44,7 @@ nextflow_process {
                     0,
                     [0, 500],
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true)
-                ]).combine(FASTXALIGN_PYFASTXINDEXFASTA.out.index, by: 0)
+                ]).combine(FASTXALIGN_PYFASTXINDEX.out.index, by: 0)
                 .map { meta, reads, chunkn, range, reference, index, count ->
                     [ meta, reads, index, chunkn, range, reference ]
                 }
@@ -83,7 +83,7 @@ nextflow_process {
                     0,
                     [0, 500],
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true)
-                ]).combine(FASTXALIGN_PYFASTXINDEXFASTA.out.index, by: 0)
+                ]).combine(FASTXALIGN_PYFASTXINDEX.out.index, by: 0)
                 .map { meta, reads, chunkn, range, reference, index, count ->
                     [ meta, reads, index, chunkn, range, reference ]
                 }
@@ -122,7 +122,7 @@ nextflow_process {
                     0,
                     [0, 500],
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true)
-                ]).combine(FASTXALIGN_PYFASTXINDEXFASTA.out.index, by: 0)
+                ]).combine(FASTXALIGN_PYFASTXINDEX.out.index, by: 0)
                 .map { meta, reads, chunkn, range, reference, index, count ->
                     [ meta, reads, index, chunkn, range, reference ]
                 }
@@ -160,7 +160,7 @@ nextflow_process {
                     0,
                     [0, 500],
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true)
-                ]).combine(FASTXALIGN_PYFASTXINDEXFASTA.out.index, by: 0)
+                ]).combine(FASTXALIGN_PYFASTXINDEX.out.index, by: 0)
                 .map { meta, reads, chunkn, range, reference, index, count ->
                     [ meta, reads, index, chunkn, range, reference ]
                 }

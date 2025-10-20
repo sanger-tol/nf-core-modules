@@ -1,13 +1,13 @@
 nextflow_process {
 
-    name "Test Process FASTXALIGN_PYFASTXINDEXFASTA"
+    name "Test Process FASTXALIGN_PYFASTXINDEX"
     script "../main.nf"
-    process "FASTXALIGN_PYFASTXINDEXFASTA"
+    process "FASTXALIGN_PYFASTXINDEX"
 
     tag "modules"
     tag "modules_sangertol"
     tag "fastxalign"
-    tag "fastxalign/pyfastxindexfasta"
+    tag "fastxalign/pyfastxindex"
     config "./nextflow.config"
 
     test("Undibacterium_unclassified - fasta") {
