@@ -1,12 +1,12 @@
 nextflow_workflow {
 
-    name "Test Subworkflow FASTA_MAP_LONG_READS"
+    name "Test Subworkflow FASTX_MAP_LONG_READS"
     script "../main.nf"
-    workflow "FASTA_MAP_LONG_READS"
+    workflow "FASTX_MAP_LONG_READS"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
-    tag "subworkflows/fasta_map_long_reads"
+    tag "subworkflows/fastx_map_long_reads"
     tag "fastxalign"
     tag "fastxalign/pyfastxindex"
     tag "fastxalign/minimap2align"
@@ -44,7 +44,7 @@ nextflow_workflow {
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true),
                 ])
                 input[2] = 200
-                input[3] = true
+                input[3] = false
                 """
             }
         }
@@ -76,7 +76,7 @@ nextflow_workflow {
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true),
                 ])
                 input[2] = 200
-                input[3] = false
+                input[3] = true
                 """
             }
         }

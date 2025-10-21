@@ -4,7 +4,7 @@ include { MINIMAP2_INDEX             } from '../../../modules/nf-core/minimap2/i
 
 include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
 
-workflow FASTA_MAP_LONG_READS {
+workflow FASTX_MAP_LONG_READS {
 
     take:
     ch_assemblies             // Channel [meta, assembly]
