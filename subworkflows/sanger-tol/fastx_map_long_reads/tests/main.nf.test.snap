@@ -5,11 +5,11 @@
                 {
                     "maxReadLength": 26402,
                     "minReadLength": 0,
-                    "meanReadLength": 7626,
+                    "meanReadLength": 7644,
                     "maxQuality": 60,
                     "minQuality": 0,
                     "meanQuality": 54,
-                    "readCount": 1034,
+                    "readCount": 1038,
                     "duplicateReadCount": 0,
                     "sorted": false
                 }
@@ -23,7 +23,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-21T15:18:18.153514"
+        "timestamp": "2025-10-21T16:52:26.897301"
     },
     "Undibacterium unclassified - fasta - paf": {
         "content": [
@@ -32,36 +32,43 @@
                     {
                         "id": "test"
                     },
-                    "HiFi.reads.fasta.0.test.paf.gz:md5,31a0da221b9d4e0be0cd5fc104c7cdd5"
+                    "HiFi.reads.fasta.0.test.paf.gz:md5,d74ffe5ca051a58b834712bbfecb7875"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "HiFi.reads.fasta.1.test.paf.gz:md5,a1fe910ba8785011aff32b3e2e9885b3"
+                    "HiFi.reads.fasta.1.test.paf.gz:md5,b534510e942d0b8ea7150bb08a0ac9e1"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "HiFi.reads.fasta.2.test.paf.gz:md5,c9026b300a6c5a9cc590ccdccb20ab4c"
+                    "HiFi.reads.fasta.2.test.paf.gz:md5,ba98f31b846d1830279c51d3bc829760"
                 ],
                 [
                     {
                         "id": "test"
                     },
-                    "HiFi.reads.fasta.3.test.paf.gz:md5,8e5e81b3f5b79e6b5dc064ad04a85210"
+                    "HiFi.reads.fasta.3.test.paf.gz:md5,7f945c1697a0e727c672bffe0dab8799"
                 ],
                 [
                     {
                         "id": "test"
                     },
                     "HiFi.reads.fasta.4.test.paf.gz:md5,ee7fdba4b0311d309292f28ada0ef137"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "HiFi.reads.fasta.5.test.paf.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                 ]
             ],
             [
                 "versions.yml:md5,0c140183a1240ea56d0d489501143554",
                 "versions.yml:md5,ab7cf2afd6c2bc60cfe7452fa4f5282b",
+                "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
                 "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
                 "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
                 "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
@@ -73,6 +80,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-21T15:17:18.992078"
+        "timestamp": "2025-10-21T16:51:26.159306"
     }
 }
