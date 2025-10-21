@@ -1,0 +1,39 @@
+{
+    "Undibacterium unclassified - fasta - bam": {
+        "content": [
+            [
+                
+            ],
+            [
+                "versions.yml:md5,5299b3cb6ae4039a1d4c88744b5a6e8d",
+                "versions.yml:md5,5299b3cb6ae4039a1d4c88744b5a6e8d",
+                "versions.yml:md5,5299b3cb6ae4039a1d4c88744b5a6e8d",
+                "versions.yml:md5,5299b3cb6ae4039a1d4c88744b5a6e8d",
+                "versions.yml:md5,5299b3cb6ae4039a1d4c88744b5a6e8d",
+                "versions.yml:md5,ab446039e206e2a3cbf7ded5e7df3014",
+                "versions.yml:md5,d2e7fb6240915c14053020f85c612ff9"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-10-21T14:56:37.308319"
+    },
+    "Undibacterium unclassified - fasta - paf": {
+        "content": [
+            [
+                
+            ],
+            [
+                "versions.yml:md5,5d1666e8d665aec95ce52f1331ca95fd",
+                "versions.yml:md5,5de8c01d3473e95b382756c7a2fa79a7"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-10-21T14:50:58.191897"
+    }
+}
