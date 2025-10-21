@@ -19,13 +19,13 @@ input:
       description: |
         The input channel containing the BAM/CRAM/SAM files
         Structure: [ val(meta), path(bam) ]
-      pattern: "*.{bam/cram/sam}"
+      pattern: "*.{bam,cram,sam}"
   - ch_assemblies:
       type: file
       description: |
         Assemblies for merging and marking duplicates.
         Structure: [ val(meta), path(fasta) ]
-      pattern: "*.{fasta,.fasta.gz}"
+      pattern: "*.{fasta,fasta.gz}"
   - val_mark_duplicates:
       type: boolean
       description: |

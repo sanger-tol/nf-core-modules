@@ -90,7 +90,7 @@ workflow FASTX_MAP_LONG_READS {
             ch_assemblies,
             false
         )
-        ch_versions = BAM_SAMTOOLS_MERGE_MARKDUP.out.versions
+        ch_versions = ch_versions.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.versions)
 
         ch_output_bam = ch_output_bam.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam)
     }

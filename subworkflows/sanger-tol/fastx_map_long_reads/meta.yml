@@ -18,7 +18,7 @@ components:
 input:
   - ch_assemblies:
       description: |
-        Assembies to map reads to, in FASTA format. Can be gzipped.
+        Assemblies to map reads to, in FASTA format. Can be gzipped.
         Structure: [ val(meta), path(fasta) ]
   - ch_fasta:
       description: |
@@ -43,7 +43,7 @@ output:
       type: file
       description: |
         Channel containing PAF files
-        Structure: [ val(meta), path(bam) ]
+        Structure: [ val(meta), path(paf) ]
       pattern: "*.paf"
   - versions:
       type: file
