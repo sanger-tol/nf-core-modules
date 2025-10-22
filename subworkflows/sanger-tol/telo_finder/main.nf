@@ -26,6 +26,12 @@ workflow TELO_FINDER {
     )
     ch_versions         = ch_versions.mix(TELOMERE_REGIONS.out.versions)
 
+    TELOMERE_REGIONS.out.telomere
+        .map{ meta, file ->
+            def new_meta = meta + [direction: 0]
+            [new_meta, file]
+        }
+        .set { ch_full_telomere }
 
     //
     // MODULE: SPLIT THE TELOMERE FILE INTO 5' and 3' FILES
@@ -33,7 +39,7 @@ workflow TELO_FINDER {
     if (val_split_telomere) {
 
         GAWK (
-            TELOMERE_REGIONS.out.telomere,
+            ch_full_telomere,
             [],
             true
         )
@@ -51,20 +57,20 @@ workflow TELO_FINDER {
                     .findAll { file -> file.size() > 0 }
                     .collect { file ->
                         if (file.name.contains("direction.0")) {
-                            new_meta = meta + [direction: "5P"]
+                            new_meta = meta + [direction: 5]
                         }
                         if (file.name.contains("direction.1")) {
-                            new_meta = meta + [direction: "3P"]
+                            new_meta = meta + [direction: 3]
                         }
                         [new_meta, file]
                     }
             }
-            .mix(TELOMERE_REGIONS.out.telomere)
+            .mix(ch_full_telomere)
             .set { ch_regions_for_extraction }
 
 
     } else {
-        ch_regions_for_extraction  = TELOMERE_REGIONS.out.telomere
+        ch_regions_for_extraction  = ch_full_telomere
     }
 
 
