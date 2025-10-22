@@ -47,9 +47,12 @@ workflow TELO_FINDER {
 
         //
         // LOGIC: COLLECT FILES AND ITERATE THROUGH
-        //          CHANGE meta.id BASED ON THE FILE NAME
+        //          ADD DIRECTION BASED ON:
+        //              0: FULL TELOMERE FILE
+        //              3: FOR 3Prime DIRECTION
+        //              5: For 5Prime DIRECTION
         //          THIS PRODUCES A TRIO OF CHANNELS: [meta], file
-        //          THESE CAN BE 0 SIZE AND CAUSE ISSUES DOWNSTREAM
+        //          FILTER FOR SIZE > 0 FOR SAFETY
         //
         GAWK.out.output
             .flatMap { meta, files ->
