@@ -101,7 +101,7 @@ workflow TELO_FINDER {
         .map { meta, bedgraph ->
             [ meta - meta.subMap("direction"), bedgraph ]
         }
-        .groupTuple(by: 0)
+        .groupTuple(by: 0, sort: true)
         .set { ch_telo_bedgraphs }
 
 
