@@ -1,0 +1,109 @@
+{
+    "idFanCani4 - no split - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "idFanCani4"
+                        },
+                        [
+                            "idFanCani4_0P_telomere.bedgraph:md5,f8df4805d7f8948a5bc74c674965d064"
+                        ]
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,02bd065343bd2db9fbe8c9eb341f1fb7",
+                    "versions.yml:md5,29f570909fd629fc4a80db0039b84506",
+                    "versions.yml:md5,2db8465f80039d90274c185879ae48bc"
+                ],
+                "bedgraph_file": [
+                    [
+                        {
+                            "id": "idFanCani4"
+                        },
+                        [
+                            "idFanCani4_0P_telomere.bedgraph:md5,f8df4805d7f8948a5bc74c674965d064"
+                        ]
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,02bd065343bd2db9fbe8c9eb341f1fb7",
+                    "versions.yml:md5,29f570909fd629fc4a80db0039b84506",
+                    "versions.yml:md5,2db8465f80039d90274c185879ae48bc"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.4"
+        },
+        "timestamp": "2025-10-22T14:16:33.049713893"
+    },
+    "idFanCani4 - no split - fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "idFanCani4"
+                        },
+                        [
+                            "idFanCani4_0P_telomere.bedgraph:md5,f8df4805d7f8948a5bc74c674965d064"
+                        ]
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,02bd065343bd2db9fbe8c9eb341f1fb7",
+                    "versions.yml:md5,29f570909fd629fc4a80db0039b84506",
+                    "versions.yml:md5,2db8465f80039d90274c185879ae48bc"
+                ],
+                "bedgraph_file": [
+                    [
+                        {
+                            "id": "idFanCani4"
+                        },
+                        [
+                            "idFanCani4_0P_telomere.bedgraph:md5,f8df4805d7f8948a5bc74c674965d064"
+                        ]
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,02bd065343bd2db9fbe8c9eb341f1fb7",
+                    "versions.yml:md5,29f570909fd629fc4a80db0039b84506",
+                    "versions.yml:md5,2db8465f80039d90274c185879ae48bc"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.4"
+        },
+        "timestamp": "2025-10-22T14:15:17.974360012"
+    },
+    "idFanCani4 - split - fasta": {
+        "content": [
+            true,
+            {
+                "idFanCani4_0P_telomere.bedgraph": "f8df4805d7f8948a5bc74c674965d064",
+                "idFanCani4_3P_telomere.bedgraph": "ae30aa41f6e9c53df160ddb17ecccd09",
+                "idFanCani4_5P_telomere.bedgraph": "ac00ddc89af099cfdd820495cd8c8c76"
+            },
+            [
+                "versions.yml:md5,02bd065343bd2db9fbe8c9eb341f1fb7",
+                "versions.yml:md5,02bd065343bd2db9fbe8c9eb341f1fb7",
+                "versions.yml:md5,02bd065343bd2db9fbe8c9eb341f1fb7",
+                "versions.yml:md5,0369772f1c0a734c3565a277a9f0f6ba",
+                "versions.yml:md5,29f570909fd629fc4a80db0039b84506",
+                "versions.yml:md5,29f570909fd629fc4a80db0039b84506",
+                "versions.yml:md5,29f570909fd629fc4a80db0039b84506",
+                "versions.yml:md5,2db8465f80039d90274c185879ae48bc"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.4"
+        },
+        "timestamp": "2025-10-22T16:50:53.328186353"
+    }
+}
