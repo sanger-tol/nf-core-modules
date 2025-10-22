@@ -89,9 +89,9 @@
                         "id": "idFanCani4"
                     },
                     [
-                        "idFanCani4_FULL_telomere.bedgraph:md5,f8df4805d7f8948a5bc74c674965d064",
+                        "idFanCani4_3P_telomere.bedgraph:md5,ae30aa41f6e9c53df160ddb17ecccd09",
                         "idFanCani4_5P_telomere.bedgraph:md5,ac00ddc89af099cfdd820495cd8c8c76",
-                        "idFanCani4_3P_telomere.bedgraph:md5,ae30aa41f6e9c53df160ddb17ecccd09"
+                        "idFanCani4_FULL_telomere.bedgraph:md5,f8df4805d7f8948a5bc74c674965d064"
                     ]
                 ]
             ]
@@ -100,6 +100,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2025-10-22T11:53:40.877515374"
+        "timestamp": "2025-10-22T12:56:47.048451136"
     }
 }
