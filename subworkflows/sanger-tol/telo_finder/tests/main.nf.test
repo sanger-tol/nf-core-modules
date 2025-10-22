@@ -86,13 +86,9 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                {
-                    def files = workflow.out.bedgraph_file.collect()[0]
-
-                    assert files.any { file(it).name.contains("idFanCani4_telomere.bedgraph") }
-                    assert files.any { file(it).name.contains("idFanCani4_3P_telomere.bedgraph") }
-                    assert files.any { file(it).name.contains("idFanCani4_5P_telomere.bedgraph") }
-                }
+                { assert snapshot(
+                    workflow.out.bedgraph_file.sort { file(it.get(1)).name }
+                ).match() }
             )
         }
 

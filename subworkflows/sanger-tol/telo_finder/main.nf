@@ -9,9 +9,9 @@ include { TELOMERE_EXTRACT          } from '../../../modules/sanger-tol/telomere
 workflow TELO_FINDER {
 
     take:
-    ch_reference     // Channel [ val(meta), path(fasta) ]
-    telomereseq      // Channel.of( telomere sequence )
-    split_telomere   // bool
+    ch_reference        // Channel [ val(meta), path(fasta) ]
+    ch_telomereseq      // Channel.of( telomere sequence )
+    val_split_telomere  // bool
 
     main:
     ch_versions         = Channel.empty()
@@ -22,7 +22,7 @@ workflow TELO_FINDER {
     //
     TELOMERE_REGIONS (
         ch_reference,
-        telomereseq
+        ch_telomereseq
     )
     ch_versions         = ch_versions.mix(TELOMERE_REGIONS.out.versions)
 
@@ -31,7 +31,7 @@ workflow TELO_FINDER {
     // MODULE: SPLIT THE TELOMERE FILE INTO 5' and 3' FILES
     //              THIS IS RUNNING ON A LOCAL VERSION OF THE GAWK MODULE
     //
-    if (split_telomere) {
+    if (val_split_telomere) {
 
         GAWK (
             TELOMERE_REGIONS.out.telomere,
@@ -51,22 +51,21 @@ workflow TELO_FINDER {
                 files
                     .findAll { file -> file.size() > 0 }
                     .collect { file ->
-                        def new_meta = meta.clone()
                         if (file.name.contains("direction.0")) {
-                            new_meta.id = "${meta.id}_5P"
+                            new_meta = meta + [direction: "5P"]
                         }
                         if (file.name.contains("direction.1")) {
-                            new_meta.id = "${meta.id}_3P"
+                            new_meta = meta + [direction: "3P"]
                         }
                         [new_meta, file]
                     }
             }
             .mix(TELOMERE_REGIONS.out.telomere)
-            .set { for_extraction }
+            .set { ch_regions_for_extraction }
 
 
     } else {
-        for_extraction  = TELOMERE_REGIONS.out.telomere
+        ch_regions_for_extraction  = TELOMERE_REGIONS.out.telomere
     }
 
 
@@ -74,7 +73,7 @@ workflow TELO_FINDER {
     // MODULE: GENERATES A WINDOWS FILE FROM THE ABOVE
     //
     TELOMERE_WINDOWS (
-        for_extraction
+        ch_regions_for_extraction
     )
     ch_versions         = ch_versions.mix(TELOMERE_WINDOWS.out.versions)
 
@@ -87,27 +86,27 @@ workflow TELO_FINDER {
         .filter { _meta, file ->
             file.size() > 0
         }
-        .set { safe_extract_input  }
+        .set { ch_filtered_windows_for_extraction  }
 
     //
     // MODULE: Extract the telomere data from the FIND_TELOMERE
     //          file and reformat into bed
     //
     TELOMERE_EXTRACT(
-        safe_extract_input
+        ch_filtered_windows_for_extraction
     )
     ch_versions         = ch_versions.mix(TELOMERE_EXTRACT.out.versions)
 
 
     TELOMERE_EXTRACT.out.bedgraph
-        .map{ _meta, bedgraph ->
-            bedgraph
+        .map { meta, bedgraph ->
+            [ meta - meta.subMap("direction"), bedgraph ]
         }
-        .collect()
-        .set { telo_bedgraphs }
+        .groupTuple(by: 0)
+        .set { ch_telo_bedgraphs }
 
 
     emit:
-    bedgraph_file       = telo_bedgraphs    // Used in pretext_graph
+    bedgraph_file       = ch_telo_bedgraphs    // Used in pretext_graph
     versions            = ch_versions
 }
