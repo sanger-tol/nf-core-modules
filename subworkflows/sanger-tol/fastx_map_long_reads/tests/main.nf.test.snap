@@ -15,15 +15,22 @@
                 }
             ],
             [
+                "versions.yml:md5,0c140183a1240ea56d0d489501143554",
                 "versions.yml:md5,0f8abad8666548b83cdf8a2087056aed",
-                "versions.yml:md5,e2202eedd003106e612336bcd8036b07"
+                "versions.yml:md5,ab7cf2afd6c2bc60cfe7452fa4f5282b",
+                "versions.yml:md5,e2202eedd003106e612336bcd8036b07",
+                "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
+                "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
+                "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
+                "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
+                "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-21T16:52:26.897301"
+        "timestamp": "2025-10-22T09:12:34.001975"
     },
     "Undibacterium unclassified - fasta - paf": {
         "content": [
@@ -57,18 +64,11 @@
                         "id": "test"
                     },
                     "HiFi.reads.fasta.4.test.paf.gz:md5,ee7fdba4b0311d309292f28ada0ef137"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "HiFi.reads.fasta.5.test.paf.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                 ]
             ],
             [
                 "versions.yml:md5,0c140183a1240ea56d0d489501143554",
                 "versions.yml:md5,ab7cf2afd6c2bc60cfe7452fa4f5282b",
-                "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
                 "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
                 "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
                 "versions.yml:md5,fb7f80773e78298912f0a6f3d80f0084",
@@ -80,6 +80,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-21T16:51:26.159306"
+        "timestamp": "2025-10-22T09:11:33.158758"
     }
 }

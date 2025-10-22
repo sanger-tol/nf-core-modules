@@ -33,6 +33,7 @@ nextflow_workflow {
     test("Undibacterium unclassified - fasta - paf") {
 
         when {
+
             workflow {
                 """
                 input[0] = Channel.of([
@@ -65,6 +66,7 @@ nextflow_workflow {
     test("Undibacterium unclassified - fasta - bam") {
 
         when {
+
             workflow {
                 """
                 input[0] = Channel.of([

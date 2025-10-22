@@ -29,7 +29,7 @@ workflow FASTX_MAP_LONG_READS {
             def intcount = count.toInteger()
             def size     = val_reads_per_fasta_chunk
             def n_bins   = (intcount + size - 1).intdiv(size)
-            chunkn       = (0..n_bins).collect()
+            chunkn       = (0..<n_bins).collect()
             slices       = chunkn.collect { chunk ->
                 def lower = chunk * size
                 def upper = [lower + size, intcount].min()
