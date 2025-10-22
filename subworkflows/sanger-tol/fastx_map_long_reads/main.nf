@@ -28,7 +28,7 @@ workflow FASTX_MAP_LONG_READS {
         | map { meta, index, count ->
             def intcount = count.toInteger()
             def size     = val_reads_per_fasta_chunk
-            def n_bins   = (intcount / size).ceil().toInteger()
+            def n_bins   = Math.ceil(intcount / size).toInteger()
             chunkn       = (0..<n_bins).collect()
             slices       = chunkn.collect { chunk ->
                 def lower = chunk * size
