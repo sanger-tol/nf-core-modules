@@ -29,7 +29,6 @@ workflow TELO_FINDER {
 
     //
     // MODULE: SPLIT THE TELOMERE FILE INTO 5' and 3' FILES
-    //              THIS IS RUNNING ON A LOCAL VERSION OF THE GAWK MODULE
     //
     if (val_split_telomere) {
 
