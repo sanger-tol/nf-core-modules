@@ -21,11 +21,11 @@ input:
         Structure [ val(meta), path(reference) ]
         Meta is the Groovy Map containing sample information
         Reference is the fasta for analysis
-  - telomereseq:
+  - ch_telomereseq:
       type: string
       description: |
         A string containing the DNA sequence of a telomere motif
-  - split_telomere:
+  - val_split_telomere:
       type: boolean
       description: |
         A boolean to control use of the gawk to split the telomere.
