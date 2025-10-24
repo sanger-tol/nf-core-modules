@@ -23,7 +23,7 @@ process SAMTOOLS_GREPREADGROUPS {
     """
     samtools view -H ${bam} |\\
         ## Do some pretty printing with awk to avoid starting or trailing newlines
-        awk '/@RG/ { printf "%s%s", (n++ ? "\\n" : ""), \$0 }'
+        awk '/^@RG/ { printf "%s%s", (n++ ? "\\n" : ""), \$0 }'
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
