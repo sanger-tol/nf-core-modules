@@ -1,0 +1,46 @@
+{
+    "meles meles - cram - stub": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "@RG\tID:49240_6#4\tDT:2024-07-25T16:52:42Z\tPU:20240725_LH00275_0063_A22CHVNLT4_6#4\tLB:72611119\tPG:SCS\tSM:SAMEA111361848\tCN:SC\tPL:ILLUMINA\tDS:ERP129860: Sequencing and assembly of symbiont/host genomes in marine and freshwater species, where at least one partner is a microbe, for the Aquatic Symbiosis Genomics project. Upon completion, genomes will be publicly available on an online data coordination center run by the European Bioinformatics Institute. All the data the project generates will be released openly and fairly, as the effort works towards a global community of scientists and ecologists aiming to understand and conserve ocean and freshwater biodiversity. This data is part of a pre-publication release. For information on the proper use of pre-publication data shared by the Wellcome Trust Sanger Institute (including details of any publication moratoria), please see http://www.sanger.ac.uk/datasharing/"
+                ]
+            ],
+            {
+                "SAMTOOLS_GREPREADGROUPS": {
+                    "samtools": "1.22.1"
+                }
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-10-24T16:18:58.528805"
+    },
+    "meles meles - cram": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "@RG\tID:35528_2#1\tDT:2020-11-17T00:00:00+0000\tPU:201117_A00948_0206_AHGML2DSXY_2#1\tLB:33637906\tPG:SCS\tSM:SAMEA5962964\tCN:SC\tPL:ILLUMINA\tDS:ERP116890: Sequencing and assembly of genomes from British species for the Darwin Tree of Life Project. This data is part of a pre-publication release. For information on the proper use of pre-publication data shared by the Wellcome Trust Sanger Institute (including details of any publication moratoria), please see http://www.sanger.ac.uk/datasharing/ "
+                ]
+            ],
+            {
+                "SAMTOOLS_GREPREADGROUPS": {
+                    "samtools": "1.22.1"
+                }
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-10-24T16:18:54.728348"
+    }
+}

@@ -1,0 +1,64 @@
+nextflow_process {
+
+    name "Test Process SAMTOOLS_GREPREADGROUPS"
+    script "../main.nf"
+    process "SAMTOOLS_GREPREADGROUPS"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "samtools"
+    tag "samtools/grepreadgroups"
+
+    test("meles meles - cram") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram', checkIfExists: true),
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(
+                    process.out.read_group,
+                    path(process.out.versions[0]).yaml
+                ).match() }
+            )
+        }
+
+    }
+
+    test("meles meles - cram - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram', checkIfExists: true),
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(
+                    process.out.read_group,
+                    path(process.out.versions[0]).yaml
+                ).match() }
+            )
+        }
+
+    }
+
+}
