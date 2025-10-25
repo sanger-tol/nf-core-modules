@@ -5,22 +5,22 @@
                 {
                     "maxReadLength": 96980,
                     "minReadLength": 0,
-                    "meanReadLength": 4840,
+                    "meanReadLength": 4849,
                     "maxQuality": 60,
                     "minQuality": 0,
                     "meanQuality": 3,
-                    "readCount": 16265,
+                    "readCount": 16083,
                     "duplicateReadCount": 0,
                     "sorted": false
                 },
                 {
                     "maxReadLength": 96980,
                     "minReadLength": 0,
-                    "meanReadLength": 4840,
+                    "meanReadLength": 4849,
                     "maxQuality": 60,
                     "minQuality": 0,
                     "meanQuality": 3,
-                    "readCount": 16265,
+                    "readCount": 16083,
                     "duplicateReadCount": 0,
                     "sorted": false
                 }
@@ -39,16 +39,14 @@
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
-                "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
-                "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd"
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-07T16:51:48.531568"
+        "timestamp": "2025-10-22T09:32:46.672143"
     },
     "meles meles - PacBio Hifi test": {
         "content": [
@@ -113,11 +111,11 @@
                 {
                     "maxReadLength": 96980,
                     "minReadLength": 0,
-                    "meanReadLength": 4840,
+                    "meanReadLength": 4849,
                     "maxQuality": 60,
                     "minQuality": 0,
                     "meanQuality": 3,
-                    "readCount": 16265,
+                    "readCount": 16083,
                     "duplicateReadCount": 0,
                     "sorted": false
                 }
@@ -132,15 +130,14 @@
                 "versions.yml:md5,67afe4aba4aab8e07765f229e5964159",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
-                "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd"
             ]
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-07T16:52:48.5016"
+        "timestamp": "2025-10-22T09:33:46.166764"
     },
     "meles meles - single test": {
         "content": [
