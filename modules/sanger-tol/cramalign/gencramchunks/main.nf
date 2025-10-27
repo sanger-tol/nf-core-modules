@@ -24,9 +24,9 @@ process CRAMALIGN_GENCRAMCHUNKS {
     chunkn       = (0..<n_bins).collect()
     slices       = chunkn.collect { chunk ->
         def lower = chunk * size
-        def upper = [lower + size - 1, n_slices - 1].min()
+        def upper = [lower + size, n_slices].min()
 
-        return [ lower, upper ]
+        return [ lower, upper - 1 ]
     }
 
     file("${task.workDir}/versions.yml").text = """\
