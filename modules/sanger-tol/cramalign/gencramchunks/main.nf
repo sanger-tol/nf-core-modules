@@ -16,7 +16,7 @@ process CRAMALIGN_GENCRAMCHUNKS {
 
     exec:
     // Note: Manually bump version number when updating module
-    def VERSION = "1.0.1"
+    def VERSION = "1.1.0"
 
     def n_slices = file(crai).countLines(decompress: true)
     def size     = cram_bin_size

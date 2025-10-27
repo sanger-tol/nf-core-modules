@@ -209,7 +209,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,0ba5a443eb8721c533ff4d72982054f9"
+                    "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f"
                 ],
                 "cram_slices": [
                     [
@@ -418,7 +418,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,0ba5a443eb8721c533ff4d72982054f9"
+                    "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f"
                 ]
             }
         ],
@@ -426,6 +426,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-27T09:16:19.974765"
+        "timestamp": "2025-10-27T13:48:20.116245"
     }
 }
