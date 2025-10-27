@@ -8,6 +8,7 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/cram_map_illumina_hic"
+    tag "subworkflows/bam_samtools_merge_markdup"
     tag "cramalign/gencramchunks"
     tag "cramalign/bwamem2alignhic"
     tag "cramalign/minimap2alignhic"
