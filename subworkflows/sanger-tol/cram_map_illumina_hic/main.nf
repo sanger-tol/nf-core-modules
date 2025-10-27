@@ -113,26 +113,6 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     }
 
     //
-    // Module: Index assembly fastas
-    //
-    SAMTOOLS_FAIDX(
-        ch_assemblies, // reference
-        [ [:],[] ],    // fai
-        false          // get sizes
-    )
-    ch_versions = ch_versions.mix(SAMTOOLS_FAIDX.out.versions)
-
-    //
-    // Logic: create a channel with both fai and gzi for each assembly
-    //        We do it here so we don't cause downstream issues with the
-    //        remainder join
-    //
-    ch_fai_gzi = SAMTOOLS_FAIDX.out.fai
-        | join(SAMTOOLS_FAIDX.out.gzi, by: 0, remainder: true)
-        | map { meta, fai, gzi -> [ meta, fai, gzi ?: [] ] }
-
-
-    //
     // Logic: Prepare input for merging bams.
     //        We use the ch_n_cram_chunks to set a groupKey so that
     //        we emit groups downstream ASAP once all bams have been made
