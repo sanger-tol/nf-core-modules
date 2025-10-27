@@ -18,13 +18,13 @@ process CRAMALIGN_GENCRAMCHUNKS {
     // Note: Manually bump version number when updating module
     def VERSION = "1.0.1"
 
-    def n_slices = file(crai).countLines(decompress: true) - 1
+    def n_slices = file(crai).countLines(decompress: true)
     def size     = cram_bin_size
     def n_bins   = Math.ceil(n_slices / size).toInteger()
     chunkn       = (0..<n_bins).collect()
     slices       = chunkn.collect { chunk ->
         def lower = chunk * size
-        def upper = [lower + size - 1, n_slices].min()
+        def upper = [lower + size - 1, n_slices - 1].min()
 
         return [ lower, upper ]
     }
