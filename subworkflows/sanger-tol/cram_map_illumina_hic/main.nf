@@ -3,10 +3,7 @@ include { CRAMALIGN_GENCRAMCHUNKS    } from '../../../modules/sanger-tol/cramali
 include { CRAMALIGN_BWAMEM2ALIGNHIC  } from '../../../modules/sanger-tol/cramalign/bwamem2alignhic'
 include { CRAMALIGN_MINIMAP2ALIGNHIC } from '../../../modules/sanger-tol/cramalign/minimap2alignhic'
 include { MINIMAP2_INDEX             } from '../../../modules/nf-core/minimap2/index/main'
-include { SAMTOOLS_FAIDX             } from '../../../modules/nf-core/samtools/faidx/main'
 include { SAMTOOLS_INDEX             } from '../../../modules/nf-core/samtools/index/main'
-include { SAMTOOLS_MARKDUP           } from '../../../modules/nf-core/samtools/markdup/main'
-include { SAMTOOLS_MERGE             } from '../../../modules/nf-core/samtools/merge/main'
 
 include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
 
