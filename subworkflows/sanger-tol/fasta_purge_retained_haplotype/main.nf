@@ -83,8 +83,8 @@ workflow PURGING {
     // Module: Purge haplotigs from primary assembly
     //
     ch_purgedups_input = PURGEDUPS_PBCSTAT.out.basecov
-        | join(PURGEDUPS_CALCUTS.out.cutoff)
-        | join(MINIMAP2_ALIGN_ASSEMBLY.out.paf)
+        | combine(PURGEDUPS_CALCUTS.out.cutoff, by: 0)
+        | combine(MINIMAP2_ALIGN_ASSEMBLY.out.paf, by: 0)
 
     PURGEDUPS_PURGEDUPS(ch_purgedups_input)
     ch_versions = ch_versions.mix(PURGEDUPS_PURGEDUPS.out.versions)
@@ -93,30 +93,40 @@ workflow PURGING {
     // Module: Generate the primary and alternative contigs
     //
     ch_getseqs_input = ch_assemblies_split.primary
-        | join(PURGEDUPS_PURGEDUPS.out.bed)
+        | combine(PURGEDUPS_PURGEDUPS.out.bed, by: 0)
 
     PURGEDUPS_GETSEQS(ch_getseqs_input)
     ch_versions = ch_versions.mix(PURGEDUPS_GETSEQS.out.versions)
 
     //
+    // Module: join the alternate assembly to the purged haplotigs
+    //         and prepare those that have both for concatenation
+    //
+    ch_alt_split = ch_assemblies_split.alternate
+        | combine(PURGEDUPS_GETSEQS.out.haplotigs, by: 0)
+        | branch { meta, haps, alt ->
+            def alt_exists  = !!alt
+            def haps_exists = haps.size() > 0
+
+            concatenate: join_haps
+                return [ meta, [ alt, haps ] ]
+            asis: true
+                return [ meta, alt_exists ? alt : haps ]
+        }
+
+    //
     // Module: Combine the haplotigs purged from the primary back
     //         into the alternate assembly
     //
-    ch_alt_to_cat = PURGEDUPS_GETSEQS.out.haplotigs
-        | join(ch_assemblies_split.alternate)
-        | map { meta, haps, alt -> [meta, [alt, haps]] }
-
-    CAT_PURGED_HAPS_TO_ALT(ch_alt_to_cat)
+    CAT_PURGED_HAPS_TO_ALT(ch_alt.concatenate)
     ch_versions = ch_versions.mix(CAT_PURGED_HAPS_TO_ALT.out.versions)
 
     //
-    // Logic: Combine purged primary and alternate assemblies back into
-    //        a single output channel
+    // Logic: mix the concatenated alts and as-is alts back together
     //
-    ch_assemblies  = PURGEDUPS_GETSEQS.out.purged
-        | join(CAT_PURGED_HAPS_TO_ALT.out.file_out)
+    ch_alts = ch_alt_split.asis.mix(CAT_PURGED_HAPS_TO_ALT.out.file_out)
 
     emit:
-    assemblies = ch_assemblies
+    assemblies = PURGEDUPS_GETSEQS.out.purged.combine(ch_alts, by: 0)
     versions = ch_versions
 }
