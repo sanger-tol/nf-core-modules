@@ -18,7 +18,7 @@ include { PURGEDUPS_SPLITFA                         } from '../../../modules/nf-
 
 include { FASTX_MAP_LONG_READS                      } from '../fastx_map_long_reads/main'
 
-workflow PURGING {
+workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
 
     take:
     ch_assemblies             // [meta, hap1, hap2]
