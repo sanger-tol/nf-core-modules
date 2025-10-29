@@ -1,15 +1,14 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
 name: "fasta_purge_retained_haplotype"
-## TODO nf-core: Add a description of the subworkflow and list keywords
-description: Sort SAM/BAM/CRAM file
+description: |
+  Purge retained haplotypic duplications from a primary assembly using purge_dups.
 keywords:
-  - sort
-  - bam
-  - sam
+  - fasta
+  - purging
+  - haplotypes
   - cram
-## TODO nf-core: Add a list of the modules and/or subworkflows used in the subworkflow
 components:
-  - samtools/sort
+  - fastx_map_long_reads
   - samtools/index
 ## TODO nf-core: List all of the channels used as input with a description and their structure
 input:
