@@ -79,7 +79,7 @@ workflow FASTX_MAP_LONG_READS {
             def key = groupKey(meta, n_chunks)
             [key, paf]
         }
-        | groupTuple(by: 0)
+        | groupTuple(by: 0, sort: { it.getName() } )
         | map { key, paf -> [key.target, paf] } // Get meta back out of groupKey
 
     //
