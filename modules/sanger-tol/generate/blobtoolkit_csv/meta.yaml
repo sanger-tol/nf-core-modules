@@ -48,6 +48,7 @@ output:
         pattern: "versions.yml"
 
 authors:
+  - "@mahesh-panchal"
   - "@DLBPointon"
 maintainers:
   - "@DLBPointon"
