@@ -1,43 +1,108 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
 name: "fasta_purge_retained_haplotype"
 description: |
-  Purge retained haplotypic duplications from a primary assembly using purge_dups.
+  Purge retained haplotypic duplications from an assembly using purge_dups. If an alternate assembly
+  is provided, the purged haplotypic sequence will be added to the alt.
 keywords:
   - fasta
   - purging
   - haplotypes
-  - cram
+  - coverage
+  - duplication
 components:
   - fastx_map_long_reads
-  - samtools/index
-## TODO nf-core: List all of the channels used as input with a description and their structure
+  - cat/cat:
+      git_remote: https://github.com/nf-core/modules.git
+  - minimap2/align:
+      git_remote: https://github.com/nf-core/modules.git
+  - purgedups/calcuts:
+      git_remote: https://github.com/nf-core/modules.git
+  - purgedups/getseqs:
+      git_remote: https://github.com/nf-core/modules.git
+  - purgedups/pbcstat:
+      git_remote: https://github.com/nf-core/modules.git
+  - purgedups/purgedups:
+      git_remote: https://github.com/nf-core/modules.git
+  - purgedups/splitfa:
+      git_remote: https://github.com/nf-core/modules.git
 input:
-  - ch_bam:
+  - ch_assemblies:
       type: file
       description: |
-        The input channel containing the BAM/CRAM/SAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.{bam/cram/sam}"
-## TODO nf-core: List all of the channels used as output with a descriptions and their structure
+        Input assemblies for purging in FASTA format. The second FASTA may be an empty list.
+
+        Structure: [ val(meta), [ path(fasta) , path(fasta) ] ] or [ val(meta), [ path(fasta) , [] ] ] ]
+      pattern: "*.{fasta,fasta.gz}"
+  - ch_long_reads:
+      type: file
+      description: |
+        Reads to map to the primary assembly to determine base-level coverage.
+
+        Structure: [ val(meta), [path(fasta)... ] ]
+      pattern: "*.{fasta,fasta.gz,fastq,fastq.gz}"
+  - val_fastx_reads_per_chunk:
+      type: integer
+      description: |
+        How many reads to map to the primary in a single chunk.
 output:
-  - bam:
+  - purged_assemblies:
       type: file
       description: |
-        Channel containing BAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.bam"
-  - bai:
+        Channel containing the purged primary assembly, and alternate assembly
+        with purged haplotigs appended.
+
+        Structure: [ val(meta), path(fasta), path(fasta) ]
+      pattern: "*.fa"
+  - purged_haplotigs:
       type: file
       description: |
-        Channel containing indexed BAM (BAI) files
-        Structure: [ val(meta), path(bai) ]
-      pattern: "*.bai"
-  - csi:
+        Channel containing just the haplotig sequence that was purged from the
+        primary assembly.
+
+        Structure: [ val(meta), path(fasta) ]
+      pattern: "*.fa"
+  - purgedups_pbcstat_hist:
       type: file
       description: |
-        Channel containing CSI files
+        Channel containing the read depth histogram
+
         Structure: [ val(meta), path(csi) ]
-      pattern: "*.csi"
+      pattern: "*.stat"
+  - purgedups_pbcstat_basecov:
+      type: file
+      description: |
+        Channel containing base-level read depth of the contigs
+
+        Structure: [ val(meta), path(bae) ]
+      pattern: "*.base.cov"
+  - purgedups_calcuts_cutoffs:
+      type: file
+      description: |
+        Channel containing the purge_dups cutoffs file
+
+        Structure: [ val(meta), path(cutoffs) ]
+      pattern: "*.cutoffs"
+  - purgedups_calcuts_log:
+      type: file
+      description: |
+        Channel containing the log file from cutoff calculation
+
+        Structure: [ val(meta), path(log) ]
+      pattern: "*.cutoffs.log"
+  - purgedups_bed:
+      type: file
+      description: |
+        Channel containing the BED file describing regions to purge
+
+        Structure: [ val(meta), path(bed) ]
+      pattern: "*.bed"
+  - purgedups_log:
+      type: file
+      description: |
+        Channel containing the log file from purge_dups
+
+        Structure: [ val(meta), path(log) ]
+      pattern: "*.log"
   - versions:
       type: file
       description: |

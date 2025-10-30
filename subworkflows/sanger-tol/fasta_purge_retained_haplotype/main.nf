@@ -3,11 +3,6 @@ Adapted from
 https://github.com/NBISweden/Earth-Biogenome-Project-pilot/blob/5ec2002638055bb8396857a8ee418bf86188fc59/subworkflows/purge_dups/main.nf
 */
 
-/*
- * Workflow based around the purge_dups tool
- * https://github.com/dfguan/purge_dups
- */
-
 include { CAT_CAT as CAT_PURGED_HAPS_TO_ALT         } from '../../../modules/nf-core/cat/cat'
 include { MINIMAP2_ALIGN as MINIMAP2_ALIGN_ASSEMBLY } from '../../../modules/nf-core/minimap2/align'
 include { PURGEDUPS_CALCUTS                         } from '../../../modules/nf-core/purgedups/calcuts'
@@ -22,7 +17,7 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
 
     take:
     ch_assemblies             // [meta, hap1, hap2]
-    ch_long_reads             // [meta, [reads]] - should be a value channel
+    ch_long_reads             // [meta, [reads]]
     val_fastx_reads_per_chunk // integer: number of reads per chunk to map
 
     main:
@@ -84,7 +79,7 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     //
     ch_purgedups_input = PURGEDUPS_PBCSTAT.out.basecov
         | combine(PURGEDUPS_CALCUTS.out.cutoff, by: 0)
-        | combine(MINIMAP2_ALIGN_ASSEMBLY.out.paf, by: 0)
+        | combine(FASTX_MAP_LONG_READS.out.paf, by: 0)
 
     PURGEDUPS_PURGEDUPS(ch_purgedups_input)
     ch_versions = ch_versions.mix(PURGEDUPS_PURGEDUPS.out.versions)
@@ -127,6 +122,13 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     ch_alts = ch_alt_split.asis.mix(CAT_PURGED_HAPS_TO_ALT.out.file_out)
 
     emit:
-    assemblies = PURGEDUPS_GETSEQS.out.purged.combine(ch_alts, by: 0)
-    versions = ch_versions
+    purged_assemblies         = PURGEDUPS_GETSEQS.out.purged.combine(ch_alts, by: 0)
+    purged_haplotigs          = PURGEDUPS_GETSEQS.out.haplotigs
+    purgedups_pbcstat_hist    = PURGEDUPS_PBCSTAT.out.stat
+    purgedups_pbcstat_basecov = PURGEDUPS_PBCSTAT.out.basecov
+    purgedups_calcuts_cutoffs = PURGEDUPS_CALCUTS.out.cutoff
+    purgedups_calcuts_log     = PURGEDUPS_CALCUTS.out.log
+    purgedups_bed             = PURGEDUPS_PURGEDUPS.out.bed
+    purgedups_log             = PURGEDUPS_PURGEDUPS.out.log
+    versions                  = ch_versions
 }
