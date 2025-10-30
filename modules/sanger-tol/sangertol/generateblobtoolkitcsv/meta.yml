@@ -28,7 +28,7 @@ input:
         ontologies:
           - edam: "http://edamontology.org/format_3989"
 
-  - library_layout:
+  - longread_technology:
       type: string
       pattern: "[a-z]*"
       description: |
@@ -46,7 +46,7 @@ output:
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "samplesheet.csv":
+      - "${prefix}.samplesheet.csv":
           type: file
           description: CSV samplesheet required for Blobtoolkit
           ontologies:
