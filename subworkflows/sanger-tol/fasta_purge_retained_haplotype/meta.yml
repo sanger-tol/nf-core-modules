@@ -2,7 +2,7 @@
 name: "fasta_purge_retained_haplotype"
 description: |
   Purge retained haplotypic duplications from an assembly using purge_dups. If an alternate assembly
-  is provided, the purged haplotypic sequence will be added to the alt.
+  is provided, the purged haplotypic sequence will be concatenated to the alt.
 keywords:
   - fasta
   - purging
