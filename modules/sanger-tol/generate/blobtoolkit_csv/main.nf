@@ -11,6 +11,9 @@ process GENERATE_BLOBTOOLKIT_CSV {
     tuple val(meta),    path("samplesheet.csv") , emit: csv
     path("versions.yml")                        , emit: versions
 
+    when:
+    task.ext.when == null || task.ext.when
+
     exec:
     // Note: Manually bump version number when updating module
     def VERSION = "1.0.0"
