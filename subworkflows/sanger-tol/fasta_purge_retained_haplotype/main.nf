@@ -103,7 +103,7 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
             def alt_exists  = !!alt
             def haps_exists = haps.size() > 0
 
-            concatenate: join_haps
+            concatenate: alt_exists && haps_exists
                 return [ meta, [ alt, haps ] ]
             asis: true
                 return [ meta, alt_exists ? alt : haps ]
@@ -113,7 +113,7 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     // Module: Combine the haplotigs purged from the primary back
     //         into the alternate assembly
     //
-    CAT_PURGED_HAPS_TO_ALT(ch_alt.concatenate)
+    CAT_PURGED_HAPS_TO_ALT(ch_alt_split.concatenate)
     ch_versions = ch_versions.mix(CAT_PURGED_HAPS_TO_ALT.out.versions)
 
     //

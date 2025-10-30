@@ -8,9 +8,15 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/fasta_purge_retained_haplotype"
     tag "subworkflows/fastx_map_long_reads"
-    tag "samtools"
-    tag "samtools/sort"
-    tag "samtools/index"
+    tag "subworkflows/../../modules/nf-core/minimap2/align"
+    tag "subworkflows/../../modules/nf-core/purgedups/pbcstat"
+    tag "subworkflows/../../modules/nf-core/purgedups/splitfa"
+    tag "subworkflows/../../modules/nf-core/purgedups/getseqs"
+    tag "subworkflows/../../modules/nf-core/purgedups/purgedups"
+    tag "subworkflows/../../modules/nf-core/purgedups/calcuts"
+    tag "subworkflows/../../modules/nf-core/cat/cat"
+
+    config "./nextflow.config"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
@@ -18,6 +24,7 @@ nextflow_workflow {
             "${launchDir}/library/",
             [
                 "cat/cat",
+                "minimap2/align",
                 "minimap2/index",
                 "samtools/merge",
                 "samtools/markdup",
@@ -32,9 +39,10 @@ nextflow_workflow {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
-    test("sarscov2 - bam - single_end") {
+    test("Undibacterium unclassified - hap1/hap2 - hifi") {
 
         when {
+
             workflow {
                 """
                 input[0] = Channel.of(
@@ -50,17 +58,63 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true),
                     ]
                 )
+                input[2] = 200
                 """
             }
         }
+
         then {
             assert workflow.success
             assertAll(
                 { assert snapshot(
                     workflow.out
-                    //TODO nf-core: Add all required assertions to verify the test output.
                 ).match() }
             )
         }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+
     }
+
+    test("Undibacterium unclassified - hap1 only - hifi") {
+
+        when {
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id: 'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true),
+                        [],
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id: 'test' ],
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true),
+                    ]
+                )
+                input[2] = 200
+                """
+            }
+        }
+
+        then {
+            assert workflow.success
+            assertAll(
+                { assert snapshot(
+                    workflow.out
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+
+    }
+
 }
