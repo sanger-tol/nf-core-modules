@@ -39,31 +39,13 @@
                     {
                         "id": "test"
                     },
-                    "HiFi.reads.fasta.0.test.paf.gz:md5,d74ffe5ca051a58b834712bbfecb7875"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "HiFi.reads.fasta.1.test.paf.gz:md5,b534510e942d0b8ea7150bb08a0ac9e1"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "HiFi.reads.fasta.2.test.paf.gz:md5,ba98f31b846d1830279c51d3bc829760"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "HiFi.reads.fasta.3.test.paf.gz:md5,7f945c1697a0e727c672bffe0dab8799"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "HiFi.reads.fasta.4.test.paf.gz:md5,ee7fdba4b0311d309292f28ada0ef137"
+                    [
+                        "HiFi.reads.fasta.0.test.paf.gz:md5,d74ffe5ca051a58b834712bbfecb7875",
+                        "HiFi.reads.fasta.1.test.paf.gz:md5,b534510e942d0b8ea7150bb08a0ac9e1",
+                        "HiFi.reads.fasta.2.test.paf.gz:md5,ba98f31b846d1830279c51d3bc829760",
+                        "HiFi.reads.fasta.3.test.paf.gz:md5,7f945c1697a0e727c672bffe0dab8799",
+                        "HiFi.reads.fasta.4.test.paf.gz:md5,ee7fdba4b0311d309292f28ada0ef137"
+                    ]
                 ]
             ],
             [
@@ -80,6 +62,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-22T09:11:33.158758"
+        "timestamp": "2025-10-29T09:16:47.78948"
     }
 }

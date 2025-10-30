@@ -69,6 +69,23 @@ workflow FASTX_MAP_LONG_READS {
     )
     ch_versions = ch_versions.mix(FASTXALIGN_MINIMAP2ALIGN.out.versions)
 
+    //
+    // Logic: Group all PAF files together, using a groupKey to output when
+    //        reaching the expected count of PAF files
+    //
+    ch_grouped_paf = FASTXALIGN_MINIMAP2ALIGN.out.paf
+        | combine(ch_n_fasta_chunks, by: 0)
+        | map { meta, paf, n_chunks ->
+            def key = groupKey(meta, n_chunks)
+            [key, paf]
+        }
+        | groupTuple(by: 0, sort: { it.getName() } )
+        | map { key, paf -> [key.target, paf] } // Get meta back out of groupKey
+
+    //
+    // Logic: Group all BAM files together for merging, using a groupKey to
+    //        output when reaching the expected count of PAF files
+    //
     ch_merge_input = FASTXALIGN_MINIMAP2ALIGN.out.bam
         | combine(ch_n_fasta_chunks, by: 0)
         | map { meta, bam, n_chunks ->
@@ -97,6 +114,6 @@ workflow FASTX_MAP_LONG_READS {
 
     emit:
     bam      = ch_output_bam
-    paf      = FASTXALIGN_MINIMAP2ALIGN.out.paf
+    paf      = ch_grouped_paf
     versions = ch_versions
 }
