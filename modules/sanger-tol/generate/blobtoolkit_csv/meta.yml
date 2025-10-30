@@ -19,8 +19,7 @@ input:
         description: |
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
-
-    - pacbio_path:
+    - pacbio_files:
         type: file
         description: |
           Collection of *.fasta.gz formatted longread data
@@ -28,10 +27,10 @@ input:
         ontologies:
           - edam: "http://edamontology.org/format_3989"
 
-  - - library_layout:
-        type: string
-        description: |
-          SINGLE or PAIRED reads
+  - library_layout:
+      type: string
+      description: |
+        SINGLE or PAIRED reads
 
 output:
   csv:
