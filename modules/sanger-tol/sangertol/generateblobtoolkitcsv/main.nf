@@ -17,7 +17,7 @@ process SANGERTOL_GENERATEBLOBTOOLKITCSV {
     exec:
     // Note: Manually bump version number when updating module
     def VERSION     = "1.0.0"
-    prefix      = task.ext.prefix ?: "${meta.id}"
+    prefix          = task.ext.prefix ?: "${meta.id}"
 
     def fasta_files = input_files.findAll { it.name.endsWith('.fasta.gz') || it.name.endsWith('.fa.gz') }
 
