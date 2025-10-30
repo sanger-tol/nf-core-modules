@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "GENERATE_BLOBTOOLKIT_CSV"
+description: Generate a samplesheet csv for sanger-tol/blobtoolkit
+keywords:
+  - blobtoolkit
+  - csv
+  - samplesheet
+tools:
+  - "generaet/blobtoolkit_csv":
+      description: "not a real tool!"
+      homepage: "https://i.need.this.to.lint.org"
+      documentation: "https://i.need.this.to.lint.org"
+      tool_dev_url: "https://i.need.this.to.lint.org"
+      doi: no DOI available
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+
+    - pacbio_path:
+        type: file
+        description: Collection of *.fasta.gz formatted longread data
+        ontologies: []
+
+  - library_layout:
+      type: string
+      description: SINGLE or PAIRED reads
+
+output:
+  csv:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "samplesheet.csv":
+          type: file
+          description: CSV samplesheet required for Blobtoolkit
+          ontologies:
+            - edam: "http://edamontology.org/format_3752"
+  versions:
+    - "versions.yml":
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+
+authors:
+  - "@mahesh-panchal"
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
