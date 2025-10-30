@@ -88,7 +88,7 @@ workflow TELO_FINDER {
 
     //
     // LOGIC: OUTPUT CAN HAVE SIZE 0 WHICH BREAKS gawk IN EXTRACT
-    //          FILTER OUT THE 0 SIZE FILES
+    //        FILTER OUT THE 0 SIZE FILES
     //
     TELOMERE_WINDOWS.out.windows
         .filter { _meta, file ->
@@ -97,8 +97,8 @@ workflow TELO_FINDER {
         .set { ch_filtered_windows_for_extraction  }
 
     //
-    // MODULE: Extract the telomere data from the FIND_TELOMERE
-    //          file and reformat into bed
+    // MODULE: EXTRACT TELOMERE DATA FROM FIND_TELOMERE
+    //         AND REFORMAT INTO BEDGRAPH FILE
     //
     TELOMERE_EXTRACT(
         ch_filtered_windows_for_extraction
@@ -106,15 +106,19 @@ workflow TELO_FINDER {
     ch_versions         = ch_versions.mix(TELOMERE_EXTRACT.out.versions)
 
 
+    //
+    // LOGIC: CLEAN OUTPUT CHANNEL INTO
+    //        [meta, [bedgraph_list]]
+    //
     TELOMERE_EXTRACT.out.bedgraph
         .map { meta, bedgraph ->
             [ meta - meta.subMap("direction"), bedgraph ]
         }
-        .groupTuple(by: 0, sort: true)
+        .groupTuple(by: 0, sort: { it.getName() })
         .set { ch_telo_bedgraphs }
 
 
     emit:
-    bedgraph_file       = ch_telo_bedgraphs    // Used in pretext_graph
+    bedgraph_file       = ch_telo_bedgraphs // Channel [meta, [bedfiles]] - Used in pretext_graph
     versions            = ch_versions
 }

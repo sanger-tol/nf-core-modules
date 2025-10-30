@@ -86,21 +86,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                {
-                    def files = workflow.out.bedgraph_file.flatten()[1..3]
-
-                    def bedgraph_files = [
-                        "idFanCani4_0P_telomere.bedgraph":path(files.find { file(it).name.contains("idFanCani4_0P_telomere.bedgraph") }).md5,
-                        "idFanCani4_3P_telomere.bedgraph":path(files.find { file(it).name.contains("idFanCani4_3P_telomere.bedgraph") }).md5,
-                        "idFanCani4_5P_telomere.bedgraph":path(files.find { file(it).name.contains("idFanCani4_5P_telomere.bedgraph") }).md5
-                    ]
-
-                    assert snapshot(
-                        files.size() == 3,
-                        bedgraph_files,
-                        workflow.out.versions
-                    ).match()
-                }
+                { assert snapshot(workflow.out).match() }
             )
         }
 
