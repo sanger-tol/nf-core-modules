@@ -22,12 +22,16 @@ input:
 
     - pacbio_path:
         type: file
-        description: Collection of *.fasta.gz formatted longread data
-        ontologies: []
+        description: |
+          Collection of *.fasta.gz formatted longread data
+        pattern: "[*.{fasta.gz,fa.gz}]"
+        ontologies:
+          - edam: "http://edamontology.org/format_3989"
 
-  - library_layout:
-      type: string
-      description: SINGLE or PAIRED reads
+  - - library_layout:
+        type: string
+        description: |
+          SINGLE or PAIRED reads
 
 output:
   csv:
@@ -40,7 +44,7 @@ output:
           type: file
           description: CSV samplesheet required for Blobtoolkit
           ontologies:
-            - edam: "http://edamontology.org/format_3752"
+            - edam: "http://edamontology.org/format_3752" # CSV
   versions:
     - "versions.yml":
         type: file

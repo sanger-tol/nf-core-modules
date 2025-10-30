@@ -18,7 +18,7 @@ nextflow_process {
                     [ id:'test' ], // meta map
                     [
                         file(params.modules_testdata_base_path + 'resources/ascc/asccTinyTest_V2/pacbio/Pyoeliiyoelii17XNL_pbtools_simulated_pacbio_reads.fa.gz', checkIfExists: true),
-                        file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/genomic_data/pacbio/seqkitPacbio50000.fasta.gz', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/genomic_data/pacbio/seqkitPacbio50000.fasta.gz', checkIfExists: true)
                     ]
                 ]
                 input[1] = "SINGLE"
