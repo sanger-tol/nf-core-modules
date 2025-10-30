@@ -86,14 +86,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                {
-                    def bedgraph_files = workflow.out.bedgraph_file
-
-                    assert snapshot(
-                        bedgraph_files,
-                        workflow.out.versions
-                    ).match()
-                }
+                { assert snapshot(workflow.out).match() }
             )
         }
 
