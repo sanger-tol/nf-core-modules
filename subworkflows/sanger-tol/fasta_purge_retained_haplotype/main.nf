@@ -3,7 +3,7 @@ Adapted from
 https://github.com/NBISweden/Earth-Biogenome-Project-pilot/blob/5ec2002638055bb8396857a8ee418bf86188fc59/subworkflows/purge_dups/main.nf
 */
 
-include { CAT_CAT as CAT_PURGED_HAPS_TO_ALT         } from '../../../modules/nf-core/cat/cat'
+include { CAT_CAT as CONCATENATE_HAPLOTYPES         } from '../../../modules/nf-core/cat/cat'
 include { MINIMAP2_ALIGN as MINIMAP2_ALIGN_ASSEMBLY } from '../../../modules/nf-core/minimap2/align'
 include { PURGEDUPS_CALCUTS                         } from '../../../modules/nf-core/purgedups/calcuts'
 include { PURGEDUPS_GETSEQS                         } from '../../../modules/nf-core/purgedups/getseqs'
@@ -113,13 +113,13 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     // Module: Combine the haplotigs purged from the primary back
     //         into the alternate assembly
     //
-    CAT_PURGED_HAPS_TO_ALT(ch_alt_split.concatenate)
-    ch_versions = ch_versions.mix(CAT_PURGED_HAPS_TO_ALT.out.versions)
+    CONCATENATE_HAPLOTYPES(ch_alt_split.concatenate)
+    ch_versions = ch_versions.mix(CONCATENATE_HAPLOTYPES.out.versions)
 
     //
     // Logic: mix the concatenated alts and as-is alts back together
     //
-    ch_alts = ch_alt_split.asis.mix(CAT_PURGED_HAPS_TO_ALT.out.file_out)
+    ch_alts = ch_alt_split.asis.mix(CONCATENATE_HAPLOTYPES.out.file_out)
 
     emit:
     purged_assemblies         = PURGEDUPS_GETSEQS.out.purged.combine(ch_alts, by: 0)
