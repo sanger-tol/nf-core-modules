@@ -68,7 +68,6 @@
                     ]
                 ],
                 "8": [
-                    "versions.yml:md5,1d7b7efe0b7f1f5f1cc8ae4c7fca0539",
                     "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
                     "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
                     "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
@@ -81,6 +80,7 @@
                     "versions.yml:md5,bceaceffe8da91afbb66e351b6a9678d",
                     "versions.yml:md5,c9411452b63f327d2a5b66a82b8fd621",
                     "versions.yml:md5,d9e6066e723f9a40b1e22c33e37f2edf",
+                    "versions.yml:md5,f7b0f31fa50eff25352b3aac997dfe71",
                     "versions.yml:md5,f8a504bd74283e317e5e474345c3badc"
                 ],
                 "purged_assemblies": [
@@ -149,7 +149,6 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,1d7b7efe0b7f1f5f1cc8ae4c7fca0539",
                     "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
                     "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
                     "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
@@ -162,6 +161,7 @@
                     "versions.yml:md5,bceaceffe8da91afbb66e351b6a9678d",
                     "versions.yml:md5,c9411452b63f327d2a5b66a82b8fd621",
                     "versions.yml:md5,d9e6066e723f9a40b1e22c33e37f2edf",
+                    "versions.yml:md5,f7b0f31fa50eff25352b3aac997dfe71",
                     "versions.yml:md5,f8a504bd74283e317e5e474345c3badc"
                 ]
             }
@@ -170,7 +170,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-30T10:58:48.347238"
+        "timestamp": "2025-10-31T11:30:38.764174"
     },
     "Undibacterium unclassified - hap1 only - hifi": {
         "content": [
