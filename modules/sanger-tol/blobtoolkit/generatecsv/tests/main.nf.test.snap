@@ -1,0 +1,146 @@
+{
+    "ont fasta.gz to csv": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "data_type": "ont",
+                            "library_layout": "SINGLE"
+                        },
+                        "test.samplesheet.csv:md5,b07de6dacdd5c4f314047496e3d32a1b"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,f7b11b15294a6105291c8c0be9118efb"
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "test",
+                            "data_type": "ont",
+                            "library_layout": "SINGLE"
+                        },
+                        "test.samplesheet.csv:md5,b07de6dacdd5c4f314047496e3d32a1b"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,f7b11b15294a6105291c8c0be9118efb"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-10-31T15:08:56.481170419"
+    },
+    "multiple fasta.gz to csv": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "data_type": "ont",
+                            "library_layout": "SINGLE"
+                        },
+                        "test.samplesheet.csv:md5,c36e7caa51f227defe1dde5aa1cc1e60"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,f7b11b15294a6105291c8c0be9118efb"
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "test",
+                            "data_type": "ont",
+                            "library_layout": "SINGLE"
+                        },
+                        "test.samplesheet.csv:md5,c36e7caa51f227defe1dde5aa1cc1e60"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,f7b11b15294a6105291c8c0be9118efb"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-10-31T15:11:54.091240254"
+    },
+    "pacbio fasta.gz to csv": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "data_type": "pacbio",
+                            "library_layout": "SINGLE"
+                        },
+                        "test.samplesheet.csv:md5,85f28ee33669df8cbe5c945988879e54"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,f7b11b15294a6105291c8c0be9118efb"
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "test",
+                            "data_type": "pacbio",
+                            "library_layout": "SINGLE"
+                        },
+                        "test.samplesheet.csv:md5,85f28ee33669df8cbe5c945988879e54"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,f7b11b15294a6105291c8c0be9118efb"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-10-31T15:08:47.825237422"
+    },
+    "fasta.gz to csv": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,85f28ee33669df8cbe5c945988879e54"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,d4f404227c9dfc0dfd7d27fbf1e33557"
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,85f28ee33669df8cbe5c945988879e54"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,d4f404227c9dfc0dfd7d27fbf1e33557"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-10-30T16:53:42.356305559"
+    }
+}
