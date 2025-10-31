@@ -20,24 +20,37 @@ input:
         description: |
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
-    - input_files:
+    - pacbio_files:
         type: file
         description: |
           Collection of *.fasta.gz formatted longread data
         pattern: "[*.{fasta.gz,fa.gz}]"
         ontologies:
           - edam: "http://edamontology.org/format_3989"
-
-  - longread_technology:
-      type: string
-      pattern: "[a-z]*"
-      description: |
-        the longread technology used, in lowercase. pacbio or ont for example
-
-  - library_layout:
-      type: string
-      description: |
-        SINGLE or PAIRED reads
+  - - meta2:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - ont_files:
+        type: file
+        description: |
+          Collection of *.fasta.gz formatted longread data
+        pattern: "[*.{fasta.gz,fa.gz}]"
+        ontologies:
+          - edam: "http://edamontology.org/format_3989"
+  - - meta3:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - illumina_files:
+        type: file
+        description: |
+          Collection of *.fasta.gz formatted longread data
+        pattern: "[*.{fasta.gz,fa.gz}]"
+        ontologies:
+          - edam: "http://edamontology.org/format_3989"
 
 output:
   csv:
