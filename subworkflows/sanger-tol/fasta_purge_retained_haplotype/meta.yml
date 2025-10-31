@@ -111,5 +111,6 @@ output:
       pattern: "versions.yml"
 authors:
   - "@prototaxites"
+  - "@ksenia-krasheninnikova"
 maintainers:
   - "@prototaxites"
