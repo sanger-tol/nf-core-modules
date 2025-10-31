@@ -56,7 +56,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
+                        "test.png:md5,5a8c5d7e247528882b65144fb4fd8afa"
                     ]
                 ],
                 "7": [
@@ -64,10 +64,19 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
                     ]
                 ],
                 "8": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                    ]
+                ],
+                "9": [
+                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
                     "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
                     "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
                     "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
@@ -124,6 +133,14 @@
                         "test.calcuts.log:md5,bb16374f3a2bc6ec445b9ac0b584d05b"
                     ]
                 ],
+                "purgedups_histplot": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.png:md5,5a8c5d7e247528882b65144fb4fd8afa"
+                    ]
+                ],
                 "purgedups_log": [
                     [
                         {
@@ -149,6 +166,7 @@
                     ]
                 ],
                 "versions": [
+                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
                     "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
                     "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
                     "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
@@ -170,7 +188,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-31T11:30:38.764174"
+        "timestamp": "2025-10-31T13:07:19.058159"
     },
     "Undibacterium unclassified - hap1 only - hifi": {
         "content": [
@@ -229,7 +247,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
+                        "test.png:md5,5a8c5d7e247528882b65144fb4fd8afa"
                     ]
                 ],
                 "7": [
@@ -237,10 +255,19 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
                     ]
                 ],
                 "8": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                    ]
+                ],
+                "9": [
+                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
                     "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
                     "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
                     "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
@@ -296,6 +323,14 @@
                         "test.calcuts.log:md5,bb16374f3a2bc6ec445b9ac0b584d05b"
                     ]
                 ],
+                "purgedups_histplot": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.png:md5,5a8c5d7e247528882b65144fb4fd8afa"
+                    ]
+                ],
                 "purgedups_log": [
                     [
                         {
@@ -321,6 +356,7 @@
                     ]
                 ],
                 "versions": [
+                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
                     "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
                     "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
                     "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
@@ -341,6 +377,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-10-30T11:02:30.336346"
+        "timestamp": "2025-10-31T13:08:47.321709"
     }
 }

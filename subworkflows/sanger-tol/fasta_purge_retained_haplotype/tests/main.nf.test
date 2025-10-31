@@ -31,6 +31,7 @@ nextflow_workflow {
                 "samtools/faidx",
                 "purgedups/calcuts",
                 "purgedups/getseqs",
+                "purgedups/histplot",
                 "purgedups/pbcstat",
                 "purgedups/purgedups",
                 "purgedups/splitfa"
