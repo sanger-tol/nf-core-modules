@@ -7,6 +7,7 @@ include { CAT_CAT as CONCATENATE_HAPLOTYPES         } from '../../../modules/nf-
 include { MINIMAP2_ALIGN as MINIMAP2_ALIGN_ASSEMBLY } from '../../../modules/nf-core/minimap2/align'
 include { PURGEDUPS_CALCUTS                         } from '../../../modules/nf-core/purgedups/calcuts'
 include { PURGEDUPS_GETSEQS                         } from '../../../modules/nf-core/purgedups/getseqs'
+include { PURGEDUPS_HISTPLOT                        } from '../../../modules/nf-core/purgedups/histplot'
 include { PURGEDUPS_PBCSTAT                         } from '../../../modules/nf-core/purgedups/pbcstat'
 include { PURGEDUPS_PURGEDUPS                       } from '../../../modules/nf-core/purgedups/purgedups'
 include { PURGEDUPS_SPLITFA                         } from '../../../modules/nf-core/purgedups/splitfa'
@@ -54,6 +55,15 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     //
     PURGEDUPS_CALCUTS(PURGEDUPS_PBCSTAT.out.stat)
     ch_versions = ch_versions.mix(PURGEDUPS_CALCUTS.out.versions)
+
+    //
+    // Module: Plot purge_dups histogram with cutoffs
+    //
+    ch_purgedups_histplot_input = PURGEDUPS_PBCSTAT.out.stat
+        | combine(PURGEDUPS_CALCUTS.out.cutoff, by: 0)
+
+    PURGEDUPS_HISTPLOT(ch_purgedups_histplot_input)
+    ch_versions = ch_versions.mix(PURGEDUPS_HISTPLOT.out.versions)
 
     //
     // Module: Split assembly
@@ -128,6 +138,7 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     purgedups_pbcstat_basecov = PURGEDUPS_PBCSTAT.out.basecov
     purgedups_calcuts_cutoffs = PURGEDUPS_CALCUTS.out.cutoff
     purgedups_calcuts_log     = PURGEDUPS_CALCUTS.out.log
+    purgedups_histplot        = PURGEDUPS_HISTPLOT.out.png
     purgedups_bed             = PURGEDUPS_PURGEDUPS.out.bed
     purgedups_log             = PURGEDUPS_PURGEDUPS.out.log
     versions                  = ch_versions
