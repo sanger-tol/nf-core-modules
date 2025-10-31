@@ -6,7 +6,7 @@ nextflow_process {
 
     tag "modules"
     tag "modules_sangertol"
-    tag "sangertol"
+    tag "blobtoolkit"
     tag "blobtoolkit/generatecsv"
 
     test("pacbio fasta.gz to csv") {
