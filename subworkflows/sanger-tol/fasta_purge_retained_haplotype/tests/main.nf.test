@@ -12,6 +12,7 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/purgedups/pbcstat"
     tag "subworkflows/../../modules/nf-core/purgedups/splitfa"
     tag "subworkflows/../../modules/nf-core/purgedups/getseqs"
+    tag "subworkflows/../../modules/nf-core/purgedups/histplot"
     tag "subworkflows/../../modules/nf-core/purgedups/purgedups"
     tag "subworkflows/../../modules/nf-core/purgedups/calcuts"
     tag "subworkflows/../../modules/nf-core/cat/cat"
