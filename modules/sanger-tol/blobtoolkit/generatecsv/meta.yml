@@ -8,11 +8,11 @@ keywords:
   - samplesheet
 tools:
   - "blobtoolkit_generatecsv":
-      description: "not a real tool!"
-      homepage: "https://i.need.this.to.lint.org"
-      documentation: "https://i.need.this.to.lint.org"
-      tool_dev_url: "https://i.need.this.to.lint.org"
-      doi: no DOI available
+      description: "A samplesheet generator for the BlobToolKit pipeline"
+      homepage: "https://pipelines.tol.sanger.ac.uk/blobtoolkit"
+      documentation: "https://pipelines.tol.sanger.ac.uk/blobtoolkit"
+      tool_dev_url: "https://pipelines.tol.sanger.ac.uk/blobtoolkit/usage#samplesheet-input"
+      doi: 10.5281/zenodo.7949058
       identifier: ""
 input:
   - - meta:
