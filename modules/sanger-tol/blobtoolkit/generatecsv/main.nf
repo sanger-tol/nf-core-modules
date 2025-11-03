@@ -36,7 +36,7 @@ process BLOBTOOLKIT_GENERATECSV {
     assert (pacbio_data.size() + ont_data.size() + illumina_data.size()) > 0
 
     // SET HEADER
-    def samplesheet_entries = ["sample,datatype,datafile,library_layout"]
+    def samplesheet_entries = [["sample", "datatype", "datafile", "library_layout"].join(",")]
 
     // START TOTAL FILE COUNTER
     def counter = 0
