@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "CURATIONPRETEXT_GENERATEPARAMSFILE"
+description: Generate a params file in json format for sanger-tol/curationpretext
+keywords:
+  - curationpretext/generateparamsfile
+  - generateparamsfile
+  - json
+  - paramsfile
+tools:
+  - "curationpretext_generateparamsfile":
+      description: "A samplesheet generator for the CurationPretext pipeline"
+      homepage: "https://pipelines.tol.sanger.ac.uk/curationpretext"
+      documentation: "https://pipelines.tol.sanger.ac.uk/curationpretext"
+      tool_dev_url: "https://pipelines.tol.sanger.ac.uk/curationpretext/usage"
+      doi: 10.5281/zenodo.12773958
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - reference:
+        type: file
+        description: |
+          Input assembly fasta file
+        pattern: "[*.{fasta,fa,fna}]"
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
+
+  - longread_dir:
+      type: directory
+      description: |
+        Directory containing longread fa(asta).gz files
+      ontologies: []
+
+  - cram_dir:
+      type: directory
+      description: |
+        Directory containing hic cram files
+      ontologies: []
+
+  - telomere_motif:
+      type: string
+      description: |
+        A telomere motif string
+      ontologies: []
+
+  - aligner:
+      type: string
+      description: |
+        Aligner to be used (minimap2, bwamem2, AUTO)
+      ontologies: []
+
+  - cpretext_extra_opts:
+      type: list
+      description: |
+        List of extra arguments for curationpretext
+      ontologies: []
+
+output:
+  json_params_file:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "${prefix}.curationpretext_params_file.json":
+          type: file
+          description: CSV samplesheet required for CurationPretext
+          ontologies:
+            - edam: "http://edamontology.org/format_3464" # JSON
+  versions:
+    - "versions.yml":
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+
+authors:
+  - "@mahesh-panchal"
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
