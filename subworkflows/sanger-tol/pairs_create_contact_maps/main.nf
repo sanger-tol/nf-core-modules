@@ -7,9 +7,12 @@ include { PRETEXTSNAPSHOT                            } from '../../../modules/nf
 
 workflow PAIRS_CREATE_CONTACT_MAPS {
     take:
-    ch_pairs       // [meta, pairs]
-    ch_chrom_sizes // [meta, sizes]
-    val_cool_bin   // val: cooler cload parameter
+    ch_pairs          // [meta, pairs]
+    ch_chrom_sizes    // [meta, sizes]
+    val_build_pretext // bool: build pretext map
+    val_build_cooler  // bool: build cooler
+    val_build_juicer  // bool: build juicer
+    val_cool_bin      // val: cooler cload parameter
 
     main:
     ch_versions = Channel.empty()
@@ -18,7 +21,7 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     // Module: Build PretextMap
     //
     PRETEXTMAP(
-        ch_pairs, // Pairs file
+        ch_pairs.filter { val_build_pretext }, // Pairs file
         [[], [], []]
     )
     ch_versions = ch_versions.mix(PRETEXTMAP.out.versions)
@@ -33,6 +36,7 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     // Module: Generate a multi-resolution cooler file by coarsening
     //
     ch_cooler_input = ch_pairs
+        | filter { val_build_cooler }
         | combine(ch_chrom_sizes, by: 0)
         | multiMap { meta, pairs, sizes ->
             pairs: [ meta, pairs, [] ]
@@ -65,7 +69,7 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
         | collectFile(name: "pairs_remove_chromsizes.awk", cache: true)
 
     GAWK_PROCESS_PAIRS_FILE(
-        ch_pairs,
+        ch_pairs.filter { val_build_juicer },
         ch_pairs_remove_chromsizes_awk,
         false
     )
