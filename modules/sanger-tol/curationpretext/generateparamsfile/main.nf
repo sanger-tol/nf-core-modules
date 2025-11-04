@@ -10,7 +10,7 @@ process CURATIONPRETEXT_GENERATEPARAMSFILE {
     val cpretext_extra_opts
 
     output:
-    tuple val(meta), path("${prefix}.curationpretext_params_file.json"), emit: params_file
+    tuple val(meta), path("${prefix}.curationpretext_params_file.json"), emit: json_params_file
     path("versions.yml")                                               , emit: versions
 
     exec:
@@ -26,7 +26,7 @@ process CURATIONPRETEXT_GENERATEPARAMSFILE {
         'aligner': aligner,
     ].findAll { it.value } // filter out falsy values (null, false, "", [], etc)
     def jsonBuilder = new groovy.json.JsonBuilder(cpretext_inputs)
-    file("${task.workDir}/cpretext_params_file.json").text = jsonBuilder.toPrettyString()
+    file("${task.workDir}/${prefix}.curationpretext_params_file.json").text = jsonBuilder.toPrettyString()
 
     file("${task.workDir}/versions.yml").text = """\
         CURATIONPRETEXT_GENERATEPARAMSFILE:
