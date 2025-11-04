@@ -33,6 +33,18 @@ input:
 
         Structure: [ val(meta), path(sizes) ]
       pattern: "*.{sizes,tsv}"
+  - val_build_pretext:
+      type: boolean
+      description: Build a PretextMap contact map
+  - val_build_cooler:
+      type: boolean
+      description: Build a Cooler contact map
+  - val_build_juicer:
+      type: boolean
+      description: Build a Juicer contact map
+  - val_cool_bin:
+      type: integer
+      description: Bin size for cooler
 output:
   - pretext:
       type: file
