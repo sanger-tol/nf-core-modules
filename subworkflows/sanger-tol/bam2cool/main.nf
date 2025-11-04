@@ -1,88 +1,95 @@
 include { SAMTOOLS_MARKDUP          } from '../../../modules/nf-core/samtools/markdup/main'
-include { BEDTOOLS_BAMTOBEDSORT     } from '../../../modules/nf-corel/bedtools/bamtobedsort/main'
-include { GET_PAIRED_CONTACT_BED    } from '../../../modules/sanger-tol/hic/getpairedcontactbed/main'
-include { COOLER_CLOAD              } from '../../../modules/sanger-tol/cooler/cload/main'
-include { COOLER_MERGE              } from '../../../modules/sanger-tol/cooler/merge/main'
-include { COOLER_ZOOMIFY            } from '../../../modules/sanger-tol/cooler/zoomify/main'
+include { BAMTOBEDSORT            } from '../../../modules/sanger-tol/bam2bedsort/main'
+include { CONTACTBED              } from '../../../modules/sanger-tol/contactbed/main'
+include { GENERATE_CONTACTS_INDEX } from '../../../modules/sanger-tol/generatecontactsindex/main'
+include { COOLER_CLOAD            } from '../../../modules/nf-core/cooler/cload/main'
+include { COOLER_MERGE            } from '../../../modules/nf-core/cooler/merge/main'
+include { COOLER_ZOOMIFY          } from '../../../modules/nf-core/cooler/zoomify/main'
 
 workflow BAM2COOL {
 
     take:
-    ch_bam_list         // channel: [ val(meta), [ bam1, bam2, ... ] ]
-    ch_reference        // channel: [ val(meta), path(fasta) ]
-    ch_chrom_sizes      // channel: [ val(meta), path(chrom_sizes) ]
-    val_bin_size        // value: bin size for cooler (e.g., 1000)
+    ch_bam_list     // channel: [val(meta), [bam1, bam2, ...]]
+    ch_reference    // channel: [val(meta), path(fasta)]
+    ch_chrom_sizes // channel: [val(meta), path(chrom_sizes)]
+    val_bin_size    // integer: bin size for cooler
 
     main:
 
     ch_versions = Channel.empty()
 
     //
-    // LOGIC: Transpose BAM list to process each BAM individually
-    //
-    ch_individual_bams = ch_bam_list
-        .transpose()
-        .map { meta, bam ->
-            def new_meta = meta.clone()
-            new_meta.id = "${meta.id}_${bam.baseName}"
-            [new_meta, bam]
-        }
-
-    //
-    // MODULE: SAMTOOLS MARKDUP - Mark duplicates in each BAM file
+    //  Mark duplicates for each BAM
     //
     SAMTOOLS_MARKDUP(
-        ch_individual_bams,
+        ch_bam_list,
         ch_reference
     )
     ch_versions = ch_versions.mix(SAMTOOLS_MARKDUP.out.versions)
 
     //
-    // MODULE: BAMTOBED AND SORT - Convert each markdup BAM to BED individually
+    // Convert marked BAMs to sorted BED
     //
-    BEDTOOLS_BAMTOBEDSORT(
+    BAMTOBEDSORT(
         SAMTOOLS_MARKDUP.out.bam
     )
-    ch_versions = ch_versions.mix(BEDTOOLS_BAMTOBEDSORT.out.versions)
+    ch_versions = ch_versions.mix(BAMTOBEDSORT.out.versions)
 
     //
-    // MODULE: GENERATE PAIRED CONTACT BED - Extract Hi-C contact pairs
+    // Generate paired contacts BED
     //
-    GET_PAIRED_CONTACT_BED(
-        BEDTOOLS_BAMTOBEDSORT.out.sorted_bed
+    CONTACTBED(
+        BAMTOBEDSORT.out.sorted_bed
     )
-    ch_versions = ch_versions.mix(GET_PAIRED_CONTACT_BED.out.versions)
+    ch_versions = ch_versions.mix(CONTACTBED.out.versions)
 
     //
-    // LOGIC: PREPARE COOLER INPUT - Combine contacts with chromosome sizes and bin size
+    // Generate index file from contacts
     //
-    ch_cooler_input = GET_PAIRED_CONTACT_BED.out.paired_contacts_bed
-        .combine(ch_chrom_sizes)
-        .map { meta_bam, contacts, meta_chrom, chrom_sizes ->
-            [meta_bam, contacts, chrom_sizes, val_bin_size]
-        }
-
+    GENERATE_CONTACTS_INDEX(
+        CONTACTBED.out.bed
+    )
+    ch_versions = ch_versions.mix(GENERATE_CONTACTS_INDEX.out.versions)
+    
     //
-    // MODULE: COOLER CLOAD - Generate individual cool files
+    // Generate individual .cool files
     //
     COOLER_CLOAD(
-        ch_cooler_input
+        GENERATE_CONTACTS_INDEX.out.contacts_with_index,
+        ch_chrom_sizes,
+        'full',
+        val_bin_size
     )
     ch_versions = ch_versions.mix(COOLER_CLOAD.out.versions)
 
     //
-    // LOGIC: COLLECT ALL COOL FILES FOR MERGING
+    // Collect all individual .cool files for merging
     //
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
-        .map { meta, cool -> cool }
         .collect()
         .map { cool_files ->
-            def meta = [id: 'merged']
-            [meta, cool_files]
+            // Extract meta and paths from tuples
+            def sample_ids = []
+            def cool_paths = []
+            cool_files.each { item ->
+                if (item instanceof List && item.size() >= 2) {
+                    if (item[0] != null && item[0].id != null) {
+                        sample_ids.add(item[0].id)
+                    }
+                    if (item[1] != null) {
+                        cool_paths.add(item[1])
+                    }
+                }
+            }
+            def merged_meta = [
+                id: 'merged',
+                samples: sample_ids
+            ]
+            [merged_meta, cool_paths]
         }
 
     //
-    // MODULE: COOLER MERGE - Merge all individual cool files
+    // Merge individual .cool files
     //
     COOLER_MERGE(
         ch_cool_files_for_merge
@@ -90,16 +97,18 @@ workflow BAM2COOL {
     ch_versions = ch_versions.mix(COOLER_MERGE.out.versions)
 
     //
-    // MODULE: COOLER ZOOMIFY - Create multi-resolution mcool file
+    // Generate multi-resolution .mcool
     //
     COOLER_ZOOMIFY(
         COOLER_MERGE.out.cool
     )
     ch_versions = ch_versions.mix(COOLER_ZOOMIFY.out.versions)
 
+    //
+    // Emit final outputs
+    //
     emit:
-    individual_cool = COOLER_CLOAD.out.cool        // channel: [ val(meta), path(cool) ]
-    merged_cool     = COOLER_MERGE.out.cool        // channel: [ val(meta), path(cool) ]
-    mcool           = COOLER_ZOOMIFY.out.mcool     // channel: [ val(meta), path(mcool) ]
-    versions        = ch_versions                  // channel: [ versions.yml ]
+    merged_cool     = COOLER_MERGE.out.cool
+    mcool           = COOLER_ZOOMIFY.out.mcool
+    versions        = ch_versions
 }

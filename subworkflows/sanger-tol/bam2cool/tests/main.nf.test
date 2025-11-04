@@ -1,45 +1,74 @@
-// TODO nf-core: Once you have added the required tests, please run the following command to build this file:
-// nf-core subworkflows test bam2cool
+// nf-core subworkflow test for BAM2COOL
 nextflow_workflow {
 
     name "Test Subworkflow BAM2COOL"
-    script "../main.nf"
-    workflow "BAM2COOL"
+    script "../main.nf"          // path to your workflow script
+    workflow "BAM2COOL"          // must match workflow name in main.nf
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/bam2cool"
-    // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
     tag "samtools"
-    tag "samtools/sort"
-    tag "samtools/index"
+    tag "cooler"
 
+    setup {
+        // Initialize module library
+        nfcoreInitialise("${launchDir}/library/")
 
-    // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
-    test("sarscov2 - bam - single_end") {
+        // Install required modules
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "samtools/markdup",
+                "samtools/faidx",
+                "sanger-tol/bam2bedsort",
+                "sanger-tol/contactbed",
+                "sanger-tol/generatecontactsindex",
+                "cooler/cload",
+                "cooler/merge",
+                "cooler/zoomify"
+            ]
+        )
+
+        // Link modules for workflow
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("sarscov2 - bam - paired_end stub") {
+
+        options "-stub"   // stub mode: modules replaced with placeholders
 
         when {
             workflow {
                 """
-                // TODO nf-core: define inputs of the workflow here. Example:
+                // Inputs to BAM2COOL workflow
                 input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
+                    [ id:'test', single_end:false ],
+                    file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: false)
                 ]
                 input[1] = [
-                    [ id:'genome' ],
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
+                    [ id:'fasta' ],
+                    file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.fa.gz', checkIfExists: false)
                 ]
+                input[2] = Channel.of([
+                    [ id:'genome' ],
+                    file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.genome', checkIfExists: false)
+                ])
+                input[3] = 1000
                 """
             }
         }
 
         then {
+            // Stub-safe assertions: workflow runs without error
             assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-                //TODO nf-core: Add all required assertions to verify the test output.
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
             )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 }
