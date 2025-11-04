@@ -10,8 +10,6 @@ nextflow_workflow {
 
     config "./nextflow.config"
 
-    config "./nextflow.config"
-
     setup {
         nfcoreInitialise("${launchDir}/library/")
         nfcoreInstall(
