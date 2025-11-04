@@ -75,12 +75,12 @@ input:
 
 output:
   json_params_file:
-    - - new_meta:
+    - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "${prefix}.samplesheet.csv":
+      - "${prefix}.blobtoolkit_params_file.json":
           type: file
           description: CSV samplesheet required for Blobtoolkit
           ontologies:

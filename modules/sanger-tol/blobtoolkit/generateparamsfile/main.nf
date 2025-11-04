@@ -12,13 +12,17 @@ process BLOBTOOLKIT_GENERATEPARAMSFILE {
     val btk_extra_opts
 
     output:
-    tuple val(meta), path("*.blobtoolkit_params_file.json"), emit: json_params_file
+    tuple val(meta), path("${prefix}.blobtoolkit_params_file.json") , emit: json_params_file
+    path("versions.yml")                                            , emit: versions
+
+    when:
+    task.ext.when == null || task.ext.when
 
     exec:
     // Note: Manually bump version number when updating module
     def VERSION = "1.0.0"
 
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    prefix = task.ext.prefix ?: "${meta.id}"
 
     def btk_inputs = btk_extra_opts + [
         'fasta': reference.toUriString(),
