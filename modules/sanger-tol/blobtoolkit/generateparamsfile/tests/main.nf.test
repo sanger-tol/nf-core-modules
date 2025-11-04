@@ -9,7 +9,7 @@ nextflow_process {
     tag "blobtoolkit"
     tag "blobtoolkit/generateparamsfile"
 
-    test("paramsfile") {
+    test("Generate Paramsfile") {
 
         setup {
 
@@ -51,11 +51,22 @@ nextflow_process {
         }
 
         then {
+
+            def json = path(process.out.json_params_file[0][1]).json
+
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    json.keySet(),
+                    [
+                        json.use_work_dir_as_temp,
+                        json.align,
+                        json.fasta,
+                        json.busco_lineages,
+                        json.taxon
+                    ]).match()
+                }
             )
         }
     }
-
 }

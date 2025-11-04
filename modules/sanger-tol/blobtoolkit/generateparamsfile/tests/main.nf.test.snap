@@ -1,35 +1,29 @@
 {
-    "paramsfile": {
+    "Generate Paramsfile": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.blobtoolkit_params_file.json:md5,41345c4cc9eaf96924ea1f6d34157d83"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,2bd80e1fa3d1dc57d1c9785d8735311b"
-                ],
-                "json_params_file": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.blobtoolkit_params_file.json:md5,41345c4cc9eaf96924ea1f6d34157d83"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,2bd80e1fa3d1dc57d1c9785d8735311b"
-                ]
-            }
+            [
+                "use_work_dir_as_temp",
+                "align",
+                "fasta",
+                "busco_lineages",
+                "taxon",
+                "taxdump",
+                "blastp",
+                "blastn",
+                "blastx"
+            ],
+            [
+                true,
+                true,
+                "https://tolit.cog.sanger.ac.uk/test-data/resources/ascc/asccTinyTest_V2/assembly/Pyoeliiyoelii17XNL_assembly_adaptors_hap1.fa",
+                "fungi_odb10",
+                101012
+            ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2025-11-04T12:52:10.174806732"
+        "timestamp": "2025-11-04T17:03:50.647988392"
     }
 }
