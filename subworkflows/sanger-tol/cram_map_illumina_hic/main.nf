@@ -1,9 +1,10 @@
-include { BWAMEM2_INDEX              } from '../../../modules/nf-core/bwamem2/index/main'
-include { CRAMALIGN_GENCRAMCHUNKS    } from '../../../modules/sanger-tol/cramalign/gencramchunks'
-include { CRAMALIGN_BWAMEM2ALIGNHIC  } from '../../../modules/sanger-tol/cramalign/bwamem2alignhic'
-include { CRAMALIGN_MINIMAP2ALIGNHIC } from '../../../modules/sanger-tol/cramalign/minimap2alignhic'
-include { MINIMAP2_INDEX             } from '../../../modules/nf-core/minimap2/index/main'
-include { SAMTOOLS_INDEX             } from '../../../modules/nf-core/samtools/index/main'
+include { BWAMEM2_INDEX                         } from '../../../modules/nf-core/bwamem2/index/main'
+include { CRAMALIGN_GENCRAMCHUNKS               } from '../../../modules/sanger-tol/cramalign/gencramchunks'
+include { CRAMALIGN_BWAMEM2ALIGNHIC             } from '../../../modules/sanger-tol/cramalign/bwamem2alignhic'
+include { CRAMALIGN_MINIMAP2ALIGNHIC            } from '../../../modules/sanger-tol/cramalign/minimap2alignhic'
+include { MINIMAP2_INDEX                        } from '../../../modules/nf-core/minimap2/index/main'
+include { SAMTOOLS_INDEX as SAMTOOLS_INDEX_BAM  } from '../../../modules/nf-core/samtools/index/main'
+include { SAMTOOLS_INDEX as SAMTOOLS_INDEX_CRAM } from '../../../modules/nf-core/samtools/index/main'
 
 include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
 
@@ -36,12 +37,12 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     // Module: Index CRAM files without indexes
     //
-    SAMTOOLS_INDEX(ch_hic_cram_raw.no_index)
-    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions)
+    SAMTOOLS_INDEX_CRAM(ch_hic_cram_raw.no_index)
+    ch_versions = ch_versions.mix(SAMTOOLS_INDEX_CRAM.out.versions)
 
     ch_hic_cram_indexed = ch_hic_cram_raw.have_index
         | mix(
-            ch_hic_cram_raw.no_index.join(SAMTOOLS_INDEX.out.crai)
+            ch_hic_cram_raw.no_index.join(SAMTOOLS_INDEX_CRAM.out.crai)
         )
 
     //
@@ -136,7 +137,14 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     )
     ch_versions = ch_versions.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.versions)
 
+    //
+    // Module: Index output BAM
+    //
+    SAMTOOLS_INDEX_BAM(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam)
+    ch_versions = ch_versions.mix(SAMTOOLS_INDEX_BAM.out.versions)
+
     emit:
     bam      = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
+    bai      = SAMTOOLS_INDEX_BAM.out.bai
     versions = ch_versions
 }
