@@ -39,6 +39,9 @@ nextflow_workflow {
         options "-stub"   // stub mode: modules replaced with placeholders
 
         when {
+            params {
+                cooler_cload_args = 'pairs -0 -c1 3 -p1 4 -c2 7 -p2 8'
+            }
             workflow {
                 """
                 // Inputs to BAM2COOL workflow
