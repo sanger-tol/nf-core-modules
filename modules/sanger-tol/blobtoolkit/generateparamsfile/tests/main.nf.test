@@ -13,62 +13,12 @@ nextflow_process {
 
         setup {
 
-            def database_dict = [
-                "BLASTN" :          [
-                    "URL": "https://dp24.cog.sanger.ac.uk/blastn.tar.gz",
-                    "OUT": "blastn"
-                ],
-                "NT_SUBSET" :       [
-                    "URL": "https://ftp.ncbi.nlm.nih.gov/blast/db/18S_fungal_sequences.tar.gz",
-                    "OUT": "NT_database"
-                ],
-            ]
+            File diamond = new File("${launchDir}/DIAMOND/diamond.dmnd")
+            diamond.getParentFile().mkdirs()
+            diamond.createNewFile()
 
-            for (String dbKey : database_dict.keySet()) {
-                def db = database_dict.get(dbKey)
-                new File("${launchDir}/${dbKey}").mkdir()
-
-                println "\nDownloading the database ${dbKey}..."
-                def command = ['bash', '-c', "curl ${db['URL']} | tar xzf - -C ${launchDir}/${dbKey}/"]
-                def process = command.execute()
-                process.waitFor()
-
-                if (process.exitValue() != 0) {
-                    throw new RuntimeException("Error - failed to download ${dbKey}: ${process.err.text}")
-                }
-
-                println "Done"
-            }
-
-            // Databases: The wierd ones
-
-            new File("${launchDir}/NCBI_TAXONOMY").mkdir()
-            new File("${launchDir}/DIAMOND").mkdir()
-            def other_dbs = [
-                "NCBI_TAXONOMY_DB": [
-                    "COMMAND":
-                        "curl -L --retry 5 --retry-delay 10 https://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz --output new_taxdump.tar.gz && tar -C ${launchDir}/NCBI_TAXONOMY -xzf new_taxdump.tar.gz"
-                ],
-                "ASCC_DIAMOND_DB": [
-                    "COMMAND":
-                        "curl https://dp24.cog.sanger.ac.uk/ascc/diamond.dmnd -o ${launchDir}/DIAMOND/diamond.dmnd"
-                ]
-            ]
-
-            for (String dbKey : other_dbs.keySet()) {
-                def db = other_dbs.get(dbKey)
-
-                println "\nDownloading the OTHER DB's: ${dbKey}..."
-                def command3 = ['bash', '-c', "${db['COMMAND']}"]
-                def process3 = command3.execute()
-                process3.waitFor()
-
-                if (process3.exitValue() != 0) {
-                    throw new RuntimeException("Error - failed to download ${dbKey}: ${process3.err.text}")
-                }
-
-                println "Done"
-            }
+            new File("${launchDir}/NCBI_TAXONOMY/").getParentFile().mkdirs()
+            new File("${launchDir}/BLASTN/blastdb/").getParentFile().mkdirs()
 
         }
 
