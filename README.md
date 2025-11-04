@@ -14,9 +14,9 @@ An nf-core modules repository hosting Nextflow DSL2 modules for the Sanger Tree 
 - [Modules](#modules)
 - [Sub-workflows](#sub-workflows)
 - [Cross-organisation sub-workflows](#cross-organisation-sub-workflows)
-  - [Writing cross-organisation sub-workflows](#cross-organisation-sub-workflows)
-  - [Testing cross-organisation sub-workflows](#cross-organisation-sub-workflows)
-  - [Using cross-organisation sub-workflows in pipelines](#cross-organisation-sub-workflows)
+  - [Writing cross-organisation sub-workflows](#writing-cross-organisation-sub-workflows)
+  - [Testing cross-organisation sub-workflows](#testing-cross-organisation-sub-workflows)
+  - [Using cross-organisation sub-workflows in pipelines](#using-cross-organisation-sub-workflows-in-pipelines)
 - [Citation](#citation)
 - [Template](#template)
 
