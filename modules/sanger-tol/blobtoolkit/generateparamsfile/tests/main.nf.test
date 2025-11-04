@@ -57,6 +57,7 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert snapshot(
+                    process.out.versions,
                     json.keySet(),
                     [
                         json.use_work_dir_as_temp,
