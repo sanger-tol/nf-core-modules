@@ -56,7 +56,6 @@ nextflow_process {
                     process.out.versions,
                     json.keySet(),
                     [
-                        json.sample,
                         json.reads,
                         json.teloseq,
                         json.aligner,
