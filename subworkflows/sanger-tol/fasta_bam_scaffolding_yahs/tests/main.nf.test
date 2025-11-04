@@ -1,5 +1,3 @@
-// TODO nf-core: Once you have added the required tests, please run the following command to build this file:
-// nf-core subworkflows test fasta_bam_scaffolding_yahs
 nextflow_workflow {
 
     name "Test Subworkflow FASTA_BAM_SCAFFOLDING_YAHS"
@@ -9,27 +7,52 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/fasta_bam_scaffolding_yahs"
-    // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
-    tag "samtools"
-    tag "samtools/sort"
-    tag "samtools/index"
 
+    config "./nextflow.config"
 
-    // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
-    test("sarscov2 - bam - single_end") {
+    config "./nextflow.config"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "cooler/cload",
+                "cooler/zoomify",
+                "gawk",
+                "juicertools/pre",
+                "pretextmap",
+                "pretextsnapshot",
+                "samtools/faidx",
+                "yahs"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("Undibacterium_unclassified - bam - hap1") {
 
         when {
+
+            params {
+                bamtobedsort_view_args = "-u"
+                bamtobedsort_sort_args = "-k4,4"
+            }
+
             workflow {
                 """
-                // TODO nf-core: define inputs of the workflow here. Example:
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
-                input[1] = [
-                    [ id:'genome' ],
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
+                input[0] = Channel.of([
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz', checkIfExists: true),
+                ])
+                input[1] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.3.bam', checkIfExists: true),
+                ])
+                input[2] = true
+                input[3] = true
+                input[4] = true
+                input[5] = 500
                 """
             }
         }
@@ -37,8 +60,12 @@ nextflow_workflow {
             assert workflow.success
             assertAll(
                 { assert snapshot(
-                    workflow.out
-                    //TODO nf-core: Add all required assertions to verify the test output.
+                    workflow.out.scaffolds_fasta,
+                    workflow.out.scaffolds_agp,
+                    file(workflow.out.pretext.get(0).get(1)).getName(),
+                    file(workflow.out.pretext_png.get(0).get(1)).getName(),
+                    file(workflow.out.cool.get(0).get(1)).getName(),
+                    file(workflow.out.hic.get(0).get(1)).getName(),
                 ).match() }
             )
         }

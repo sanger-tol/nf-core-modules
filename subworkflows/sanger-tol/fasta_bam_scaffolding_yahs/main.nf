@@ -7,13 +7,17 @@ include { YAHS_MAKEPAIRSFILE                         } from '../../../modules/sa
 include { PAIRS_CREATE_CONTACT_MAPS                  } from '../pairs_create_contact_maps/main'
 
 workflow FASTA_BAM_SCAFFOLDING_YAHS {
+
     take:
-    ch_fasta      // [meta, assembly]
-    ch_hic_bam    // [meta, bam/bed]
-    val_cool_bin  // val: cooler cload parameter
+    ch_fasta          // [meta, assembly]
+    ch_hic_bam        // [meta, bam/bed]
+    val_build_pretext // bool: build pretext map
+    val_build_cooler  // bool: build cooler
+    val_build_juicer  // bool: build juicer
+    val_cool_bin      // val: cooler cload parameter
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Module: Convert BAM to name-sorted BED
@@ -36,7 +40,7 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     //
     ch_yahs_input = ch_fasta
         | combine(SAMTOOLS_FAIDX_CONTIGS.out.fai, by: 0)
-        | combine(ch_bed, by: 0)
+        | combine(BEDTOOLS_BAMTOBEDSORT.out.sorted_bed, by: 0)
 
     YAHS(ch_yahs_input)
     ch_versions = ch_versions.mix(YAHS.out.versions)
@@ -55,9 +59,9 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     // Module: Make pairs file to build contact maps with
     //
     ch_pairs_input = SAMTOOLS_FAIDX_SCAFFOLDS.out.fai
-        | join(YAHS.out.scaffolds_agp, by: 0)
-        | join(SAMTOOLS_FAIDX_CONTIGS.out.fai, by: 0)
-        | join(YAHS.out.binary, by: 0)
+        | combine(YAHS.out.scaffolds_agp, by: 0)
+        | combine(SAMTOOLS_FAIDX_CONTIGS.out.fai, by: 0)
+        | combine(YAHS.out.binary, by: 0)
 
     YAHS_MAKEPAIRSFILE(ch_pairs_input)
     ch_versions = ch_versions.mix(YAHS_MAKEPAIRSFILE.out.versions)
@@ -65,19 +69,29 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     //
     // Subworkflow: Create Hi-C contact maps for visualisation of scaffolding outputs
     //
+    ch_contact_map_inputs = YAHS_MAKEPAIRSFILE.out.pairs
+        | combine(SAMTOOLS_FAIDX_SCAFFOLDS.out.sizes, by: 0)
+        | multiMap { meta, pairs, sizes ->
+            pairs: [ meta, pairs ]
+            sizes: [ meta, sizes ]
+        }
+
     PAIRS_CREATE_CONTACT_MAPS(
-        YAHS_MAKEPAIRSFILE.out.pairs,
-        SAMTOOLS_FAIDX_SCAFFOLDS.out.sizes,
+        ch_contact_map_inputs.pairs,
+        ch_contact_map_inputs.sizes,
+        val_build_pretext,
+        val_build_cooler,
+        val_build_juicer,
         val_cool_bin
     )
     ch_versions = ch_versions.mix(PAIRS_CREATE_CONTACT_MAPS.out.versions)
 
     emit:
-    assemblies  = YAHS.out.scaffolds_fasta
-    agp         = YAHS.out.scaffolds_agp
-    pretext     = PRETEXTMAP.out.pretext
-    pretext_png = PRETEXTSNAPSHOT.out.image
-    cool        = COOLER_ZOOMIFY.out.mcool
-    hic         = JUICERTOOLS_PRE.out.hic
-    versions    = ch_versions
+    scaffolds_fasta = YAHS.out.scaffolds_fasta
+    scaffolds_agp   = YAHS.out.scaffolds_agp
+    pretext         = PAIRS_CREATE_CONTACT_MAPS.out.pretext
+    pretext_png     = PAIRS_CREATE_CONTACT_MAPS.out.pretext_png
+    cool            = PAIRS_CREATE_CONTACT_MAPS.out.cool
+    hic             = PAIRS_CREATE_CONTACT_MAPS.out.hic
+    versions        = ch_versions
 }
