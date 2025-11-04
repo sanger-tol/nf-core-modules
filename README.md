@@ -41,7 +41,7 @@ We use a helper command in the `nf-core/tools` package that uses the GitHub API 
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
    INFO     Modules available from https://github.com/sanger-tol/nf-core-modules.git (main):
 
@@ -69,7 +69,7 @@ We use a helper command in the `nf-core/tools` package that uses the GitHub API 
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
    INFO     Installing 'asmstats'
    INFO     Use the following statement to include this module:
@@ -98,7 +98,7 @@ We use a helper command in the `nf-core/tools` package that uses the GitHub API 
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
       INFO     Linting pipeline: '.'
       INFO     Linting module: 'asmstats'
@@ -133,7 +133,7 @@ We use a helper command in the `nf-core/tools` package that uses the GitHub API 
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
    INFO     Removed files for 'asmstats' and its dependencies 'asmstats'.
    ```
@@ -158,7 +158,7 @@ Sub-workflows are stored in the [`subworkflows/`](subworkflows/) directory of th
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
    INFO     Subworkflows available from https://github.com/sanger-tol/nf-core-modules.git (main):
 
@@ -184,7 +184,7 @@ Sub-workflows are stored in the [`subworkflows/`](subworkflows/) directory of th
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
    INFO     Installing 'bam_samtools_merge_markdup'
    INFO     Use the following statement to include this subworkflow:
@@ -218,7 +218,7 @@ Sub-workflows are stored in the [`subworkflows/`](subworkflows/) directory of th
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
       INFO     Linting pipeline: '.'
       INFO     Linting subworkflow: 'bam_samtools_merge_markdup'
@@ -245,7 +245,7 @@ Sub-workflows are stored in the [`subworkflows/`](subworkflows/) directory of th
       | \| |       \__, \__/ |  \ |___      \`-._,-`-,
                                              `._,._,'
 
-      nf-core/tools version 3.3.2 - https://nf-co.re
+      nf-core/tools version 3.4.1 - https://nf-co.re
 
    INFO     Removed files for 'asmstats' and its dependencies 'asmstats'.
    ```
