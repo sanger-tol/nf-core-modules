@@ -13,6 +13,10 @@ An nf-core modules repository hosting Nextflow DSL2 modules for the Sanger Tree 
 
 - [Modules](#modules)
 - [Sub-workflows](#sub-workflows)
+- [Cross-organisation sub-workflows](#cross-organisation-sub-workflows)
+  - [Writing cross-organisation sub-workflows](#cross-organisation-sub-workflows)
+  - [Testing cross-organisation sub-workflows](#cross-organisation-sub-workflows)
+  - [Using cross-organisation sub-workflows in pipelines](#cross-organisation-sub-workflows)
 - [Citation](#citation)
 - [Template](#template)
 
@@ -251,7 +255,7 @@ Sub-workflows are stored in the [`subworkflows/`](subworkflows/) directory of th
 "Cross-organisation" sub-workflows are sub-workflows that contain components from both `nf-core/modules` and `sanger-tol/nf-core-modules`.
 They require the version 3.4 (or later) of the `nf-core/tools` package.
 
-### Nextflow code
+### Writing cross-organisation sub-workflows
 
 A reference example exists in the nf-core test repository <https://github.com/nf-core-test/modules>.
 
@@ -276,7 +280,7 @@ A reference example exists in the nf-core test repository <https://github.com/nf
    When installing a sub-workflow, the `nf-core` tools command will identify the nf-core modules from the `git_remote` key
    explained above, and install those modules automatically.
 
-### Testing
+### Testing cross-organisation sub-workflows
 
 Tests for a cross-organisation sub-workflow also need a copy of the nf-core modules to run.
 We use functions from the `nft-utils` plugin (version 0.0.7 or later), which is declared as a test dependency in `nf-test.config`.
