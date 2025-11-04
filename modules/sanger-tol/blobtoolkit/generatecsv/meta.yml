@@ -51,6 +51,10 @@ input:
         pattern: "[*.{fasta.gz,fa.gz}]"
         ontologies:
           - edam: "http://edamontology.org/format_3989"
+    - illumina_layout:
+        type: string
+        description: |
+          Layout of input data "SINGLE" or "PAIRED"
 
 output:
   csv:

@@ -22,7 +22,7 @@ nextflow_process {
                     ]
                 ]
                 input[1] = [[],[]]
-                input[2] = [[],[]]
+                input[2] = [[],[], []]
                 """
             }
         }
@@ -45,7 +45,7 @@ nextflow_process {
                     [ id:'test', data_type:'ont', library_layout: 'SINGLE' ], // meta map
                     [ file(params.modules_testdata_base_path + 'resources/ascc/asccTinyTest_V2/pacbio/Pyoeliiyoelii17XNL_pbtools_simulated_pacbio_reads.fa.gz', checkIfExists: true) ]
                 ]
-                input[2] = [[],[]]
+                input[2] = [[],[],[]]
                 """
             }
         }
@@ -70,8 +70,9 @@ nextflow_process {
                     [ file(params.modules_testdata_base_path + 'resources/ascc/asccTinyTest_V2/pacbio/Pyoeliiyoelii17XNL_pbtools_simulated_pacbio_reads.fa.gz', checkIfExists: true) ]
                 ]
                 input[2] = [
-                    [ id:'test', data_type:'illumina', library_layout: 'SINGLE' ], // meta map
-                    [ file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/genomic_data/pacbio/seqkitPacbio50000.fasta.gz', checkIfExists: true) ]
+                    [ id:'test', data_type:'illumina'], // meta map
+                    [ file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/genomic_data/pacbio/seqkitPacbio50000.fasta.gz', checkIfExists: true) ],
+                    "SINGLE"
                 ]
                 """
             }
