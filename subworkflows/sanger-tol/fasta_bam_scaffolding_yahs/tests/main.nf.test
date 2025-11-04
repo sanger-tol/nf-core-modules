@@ -7,6 +7,13 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/fasta_bam_scaffolding_yahs"
+    tag "subworkflows/pairs_create_contact_maps"
+
+    tag "bedtools/bamtobedsort"
+    tag "yahs/makepairsfile"
+    tag "modules/nf-core/samtools/view"
+    tag "subworkflows/../../modules/nf-core/yahs"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
 
     config "./nextflow.config"
 
@@ -22,31 +29,52 @@ nextflow_workflow {
                 "pretextmap",
                 "pretextsnapshot",
                 "samtools/faidx",
+                "samtools/view",
                 "yahs"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        run("SAMTOOLS_VIEW") {
+            script "../../../../modules/nf-core/samtools/view/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Meles_meles/analysis/mMelMel3.2_paternal_haplotype/read_mapping/hic/GCA_922984935.2.subset.unmasked.hic.mMelMel3.cram', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Meles_meles/analysis/mMelMel3.2_paternal_haplotype/read_mapping/hic/GCA_922984935.2.subset.unmasked.hic.mMelMel3.cram.crai', checkIfExists: true),
+                ]
+                input[1] = [
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                ]
+                input[2] = []
+                input[3] = []
+                """
+            }
+        }
     }
 
-    test("Undibacterium_unclassified - bam - hap1") {
+    test("Meles meles - bam - paternal") {
 
         when {
 
             params {
                 bamtobedsort_view_args = "-u"
                 bamtobedsort_sort_args = "-k4,4"
+                cooler_cload_args = '-0 -c1 2 -p1 3 -c2 4 -p2 5'
+                juicertools_args = "-r 20000"
+                pretextsnapshot_args = '--sequences \"=full\"'
+                samtools_view_args = "--output-fmt bam"
             }
 
             workflow {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
-                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
                 ])
-                input[1] = Channel.of([
-                    [ id:'test' ],
-                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.3.bam', checkIfExists: true),
-                ])
+                input[1] = SAMTOOLS_VIEW.out.bam
                 input[2] = true
                 input[3] = true
                 input[4] = true
@@ -64,6 +92,7 @@ nextflow_workflow {
                     file(workflow.out.pretext_png.get(0).get(1)).getName(),
                     file(workflow.out.cool.get(0).get(1)).getName(),
                     file(workflow.out.hic.get(0).get(1)).getName(),
+                    workflow.out.versions
                 ).match() }
             )
         }
