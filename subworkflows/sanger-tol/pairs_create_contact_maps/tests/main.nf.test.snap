@@ -1,0 +1,93 @@
+{
+    "Undibacterium_unclassified - pairs - hap2": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.pretext:md5,cb065a07eb4f0ff2b66c9de1165bc953"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_FullMap.png:md5,05782d3e68f1839f3666fd0fc2a6b1e3"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mcool:md5,8294aff9fc4736ce6fbd20bebbf4b817"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.hic:md5,52449677c6a6845ebce0b0fd09867bb9"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,233913cd50f0784c6531af9bddafe894",
+                    "versions.yml:md5,26ea58ea2328790e9133eeafb3c0c335",
+                    "versions.yml:md5,5621f2ebbec68103a6246577240ae91e",
+                    "versions.yml:md5,79b7e3fca9c7ede2a11735c875d66bc1",
+                    "versions.yml:md5,b3b08753a501b15237ba6c5ae8f2f5eb",
+                    "versions.yml:md5,ba2e456c3c7e17334410ae4405d8bb98"
+                ],
+                "cool": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mcool:md5,8294aff9fc4736ce6fbd20bebbf4b817"
+                    ]
+                ],
+                "hic": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.hic:md5,52449677c6a6845ebce0b0fd09867bb9"
+                    ]
+                ],
+                "pretext": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.pretext:md5,cb065a07eb4f0ff2b66c9de1165bc953"
+                    ]
+                ],
+                "pretext_png": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_FullMap.png:md5,05782d3e68f1839f3666fd0fc2a6b1e3"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,233913cd50f0784c6531af9bddafe894",
+                    "versions.yml:md5,26ea58ea2328790e9133eeafb3c0c335",
+                    "versions.yml:md5,5621f2ebbec68103a6246577240ae91e",
+                    "versions.yml:md5,79b7e3fca9c7ede2a11735c875d66bc1",
+                    "versions.yml:md5,b3b08753a501b15237ba6c5ae8f2f5eb",
+                    "versions.yml:md5,ba2e456c3c7e17334410ae4405d8bb98"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-11-04T12:32:58.084561"
+    }
+}
