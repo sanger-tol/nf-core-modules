@@ -7,6 +7,14 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/pairs_create_contact_maps"
+    tag "modules/nf-core/gawk"
+    tag "yahs/makepairsfile"
+    tag "subworkflows/../../modules/nf-core/cooler/cload"
+    tag "subworkflows/../../modules/nf-core/pretextsnapshot"
+    tag "subworkflows/../../modules/nf-core/pretextmap"
+    tag "subworkflows/../../modules/nf-core/cooler/zoomify"
+    tag "subworkflows/../../modules/nf-core/gawk"
+    tag "subworkflows/../../modules/nf-core/juicertools/pre"
 
     config "./nextflow.config"
 

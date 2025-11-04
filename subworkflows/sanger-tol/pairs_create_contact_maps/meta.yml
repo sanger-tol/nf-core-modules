@@ -10,13 +10,13 @@ components:
       git_remote: https://github.com/nf-core/modules.git
   - cooler/zoomify:
       git_remote: https://github.com/nf-core/modules.git
-  - gawk/main:
+  - gawk:
       git_remote: https://github.com/nf-core/modules.git
   - juicertools/pre:
       git_remote: https://github.com/nf-core/modules.git
-  - pretextmap/main:
+  - pretextmap:
       git_remote: https://github.com/nf-core/modules.git
-  - pretextsnapshot/main:
+  - pretextsnapshot:
       git_remote: https://github.com/nf-core/modules.git
 input:
   - ch_pairs:
