@@ -13,6 +13,9 @@ process CURATIONPRETEXT_GENERATEPARAMSFILE {
     tuple val(meta), path("${prefix}.curationpretext_params_file.json"), emit: json_params_file
     path("versions.yml")                                               , emit: versions
 
+    when:
+    task.ext.when == null || task.ext.when
+
     exec:
     def VERSION = "1.0.0"
 
