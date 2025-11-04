@@ -360,7 +360,7 @@ If you use the module files in this repository for your analysis please you can 
 
 ## Template
 
-This module library was create using [nf-core/modules-template](https://github.com/nf-core/modules-template) with this command:
+This module library was created using [nf-core/modules-template](https://github.com/nf-core/modules-template) with this command:
 
 ```bash
 copier copy --vcs-ref main gh:nf-core/modules-template ./sanger-tol-modules
