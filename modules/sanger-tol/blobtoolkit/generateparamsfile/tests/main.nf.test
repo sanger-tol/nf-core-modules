@@ -1,0 +1,111 @@
+nextflow_process {
+
+    name "Test Process BLOBTOOLKIT_GENERATEPARAMSFILE"
+    script "../main.nf"
+    process "BLOBTOOLKIT_GENERATEPARAMSFILE"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "blobtoolkit"
+    tag "blobtoolkit/generateparamsfile"
+
+    test("paramsfile") {
+
+        setup {
+
+            def database_dict = [
+                "BLASTN" :          [
+                    "URL": "https://dp24.cog.sanger.ac.uk/blastn.tar.gz",
+                    "OUT": "blastn"
+                ],
+                "NT_SUBSET" :       [
+                    "URL": "https://ftp.ncbi.nlm.nih.gov/blast/db/18S_fungal_sequences.tar.gz",
+                    "OUT": "NT_database"
+                ],
+            ]
+
+            for (String dbKey : database_dict.keySet()) {
+                def db = database_dict.get(dbKey)
+                new File("${launchDir}/${dbKey}").mkdir()
+
+                println "\nDownloading the database ${dbKey}..."
+                def command = ['bash', '-c', "curl ${db['URL']} | tar xzf - -C ${launchDir}/${dbKey}/"]
+                def process = command.execute()
+                process.waitFor()
+
+                if (process.exitValue() != 0) {
+                    throw new RuntimeException("Error - failed to download ${dbKey}: ${process.err.text}")
+                }
+
+                println "Done"
+            }
+
+            // Databases: The wierd ones
+
+            new File("${launchDir}/NCBI_TAXONOMY").mkdir()
+            new File("${launchDir}/DIAMOND").mkdir()
+            def other_dbs = [
+                "NCBI_TAXONOMY_DB": [
+                    "COMMAND":
+                        "curl -L --retry 5 --retry-delay 10 https://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz --output new_taxdump.tar.gz && tar -C ${launchDir}/NCBI_TAXONOMY -xzf new_taxdump.tar.gz"
+                ],
+                "ASCC_DIAMOND_DB": [
+                    "COMMAND":
+                        "curl https://dp24.cog.sanger.ac.uk/ascc/diamond.dmnd -o ${launchDir}/DIAMOND/diamond.dmnd"
+                ]
+            ]
+
+            for (String dbKey : other_dbs.keySet()) {
+                def db = other_dbs.get(dbKey)
+
+                println "\nDownloading the OTHER DB's: ${dbKey}..."
+                def command3 = ['bash', '-c', "${db['COMMAND']}"]
+                def process3 = command3.execute()
+                process3.waitFor()
+
+                if (process3.exitValue() != 0) {
+                    throw new RuntimeException("Error - failed to download ${dbKey}: ${process3.err.text}")
+                }
+
+                println "Done"
+            }
+
+        }
+
+        when {
+            params {
+                nt_database_path                = "${launchDir}/BLASTN/blastdb/"
+                ncbi_taxonomy_path              = "${launchDir}/NCBI_TAXONOMY/"
+                diamond_uniprot_database_path   = "${launchDir}/DIAMOND/diamond.dmnd"
+                diamond_nr_database_path        = "${launchDir}/DIAMOND/diamond.dmnd"
+            }
+
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'resources/ascc/asccTinyTest_V2/assembly/Pyoeliiyoelii17XNL_assembly_adaptors_hap1.fa', checkIfExists: true)
+                ]
+                input[1] = file(params.diamond_uniprot_database_path)
+                input[2] = file(params.nt_database_path)
+                input[3] = file(params.diamond_uniprot_database_path)
+                input[4] = file(params.ncbi_taxonomy_path)
+                input[5] = "fungi_odb10"
+                input[6] = 101012
+                input[7] = [
+                    'use_work_dir_as_temp': true,
+                    'align': true,
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+}
