@@ -13,7 +13,7 @@
                 "aligner"
             ],
             [
-                "/lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/.nf-test/tests/74e83bfb84701a4f4cfef60543d3d3e/longreads",
+                "test",
                 "TTAGG",
                 "AUTO",
                 true
@@ -23,6 +23,6 @@
             "nf-test": "0.9.2",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2025-11-04T19:54:16.445753834"
+        "timestamp": "2025-11-04T19:58:55.944664364"
     }
 }
