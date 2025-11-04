@@ -2,9 +2,6 @@ process BLOBTOOLKIT_GENERATECSV {
     tag "${meta.id ?: meta2.id ?: meta3.id}"
 
     input:
-    // It is expected that each meta will contain
-    // meta.library_layout : {true/false}
-    // meta.datatype: {pacbio/ont/illumina}
     tuple val(meta),    path(pacbio_files)
     tuple val(meta2),   path(ont_files)
     tuple val(meta3),   path(illumina_files), val(illumina_layout)
