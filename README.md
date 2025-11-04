@@ -246,12 +246,14 @@ Sub-workflows are stored in the [`subworkflows/`](subworkflows/) directory of th
    INFO     Removed files for 'asmstats' and its dependencies 'asmstats'.
    ```
 
-### Writing cross-organisation sub-workflows
+## Cross-organisation sub-workflows
 
 "Cross-organisation" sub-workflows are sub-workflows that contain components from both `nf-core/modules` and `sanger-tol/nf-core-modules`.
 They require the version 3.4 (or later) of the `nf-core/tools` package.
 
-A complete example exists in the nf-core test repository <https://github.com/nf-core-test/modules>.
+### Nextflow code
+
+A reference example exists in the nf-core test repository <https://github.com/nf-core-test/modules>.
 
 1. Write sub-workflows `.nf` files that refer to locations in both `sanger-tol` and `nf-core`.
    [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/main.nf#L1-L2)
@@ -262,24 +264,32 @@ A complete example exists in the nf-core test repository <https://github.com/nf-
       ```yaml
       # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core-test/modules/main/subworkflows/yaml-schema.json
       ```
-3. In `/modules`, only add `sanger-tol` modules since the `nf-core` ones will be pulled live from nf-core itself. [Example](https://github.com/nf-core-test/modules/tree/main/modules/)
 
-Tests will probably need a copy of the nf-core modules.
-Instead of keeping copies of nf-core modules here, we use functions from the `nft-utils` plugin to load them on-the-fly when running tests.
+      [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/meta.yml#L1).
       This ensures that the right schema will be used to validate the file.
-   2. Add a `git_remote` key that maps to the `nf-core` modules repository.
-      [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/meta.yml#L10)
+      This schema differs from the default one by allowing keys such as `git_remote` under "components", which are used to
+      indicate modules that live in the `nf-core/modules` repository, see next point.
 
+   2. Add a `git_remote` key that maps to the nf-core modules repository.
 
-For this, we load the `nft-utils` plugin (via `nf-test.config`).
+3. In `modules/`, do _not_ add nf-core modules.
+   When installing a sub-workflow, the `nf-core` tools command will identify the nf-core modules from the `git_remote` key
+   explained above, and install those modules automatically.
 
+### Testing
+
+Tests for a cross-organisation sub-workflow also need a copy of the nf-core modules to run.
+We use functions from the `nft-utils` plugin (version 0.0.7 or later), which is declared as a test dependency in `nf-test.config`.
+The functions will automatically download (and clean up) nf-core modules when running tests.
+These functions must be called from the sub-workflow's tests (e.g. the `main.nf.test` file).
 Take the [hic_mapping](https://github.com/sanger-tol/nf-core-modules/blob/main/subworkflows/sanger-tol/hic_mapping/tests/main.nf.test)
 sub-workflow as an example.
 
-In your sub-workflow's tests, in the _setup_ phase:
+In the _setup_ phase:
 
 1. Call `nfcoreInitialise` to initialise a new "library" directory.
 2. Call `nfcoreInstall` to install all the nf-core modules you need in that library.
+   You need to keep this list in sync with the modules declared in `meta.yml`.
 3. Call `nfcoreLink` to link the nf-core modules from the above "library" into the test's "modules" directory.
 
 And in the _cleanup_ phase:
@@ -287,6 +297,52 @@ And in the _cleanup_ phase:
 1. Call `nfcoreUnlink`.
 
 (and that's all !)
+
+### Using cross-organisation sub-workflows in pipelines
+
+Pipelines need a few modifications to work seamlessly with cross-organisation sub-workflows.
+
+1. In `.pre-commit-config.yaml`, add extra lines to ignore sanger-tol modules and sub-workflows the same way nf-core ones are ignored:
+
+   ```diff
+   --- a/.pre-commit-config.yaml
+   +++ b/.pre-commit-config.yaml
+   @@ -15,6 +15,8 @@ repos:
+                  .*ro-crate-metadata.json$|
+                  modules/nf-core/.*|
+                  subworkflows/nf-core/.*|
+   +              modules/sanger-tol/.*|
+   +              subworkflows/sanger-tol/.*|
+                  .*\.snap$
+            )$
+         - id: end-of-file-fixer
+   @@ -23,5 +25,7 @@ repos:
+                  .*ro-crate-metadata.json$|
+                  modules/nf-core/.*|
+                  subworkflows/nf-core/.*|
+   +              modules/sanger-tol/.*|
+   +              subworkflows/sanger-tol/.*|
+                  .*\.snap$
+            )$
+   ```
+
+2. `nf-test.config` needs similar rules:
+
+   ```diff
+   --- a/nf-test.config
+   +++ b/nf-test.config
+   @@ -9,7 +9,7 @@ config {
+      configFile "tests/nextflow.config"
+
+      // ignore tests coming from the nf-core/modules repo
+   -    ignore 'modules/nf-core/**/*', 'subworkflows/nf-core/**/*'
+   +    ignore 'modules/nf-core/**/*', 'subworkflows/nf-core/**/*', 'modules/sanger-tol/**/*', 'subworkflows/sanger-tol/**/*'
+
+      // run all test with defined profile(s) from the main nextflow.config
+      profile "test"
+   ```
+
+   It also meeds to refers to the version 0.0.5 or later of the `nft-utils` plugin (`load "nft-utils@` line).
 
 ## Citation
 
