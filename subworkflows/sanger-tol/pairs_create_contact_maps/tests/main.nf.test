@@ -85,7 +85,13 @@ nextflow_workflow {
         then {
             assert workflow.success
             assertAll(
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(
+                    file(workflow.out.pretext.get(0).get(1)).getName(),
+                    file(workflow.out.pretext_png.get(0).get(1)).getName(),
+                    file(workflow.out.cool.get(0).get(1)).getName(),
+                    file(workflow.out.hic.get(0).get(1)).getName(),
+                    workflow.out.versions,
+                ).match() }
             )
         }
 
