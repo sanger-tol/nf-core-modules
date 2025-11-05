@@ -22,6 +22,7 @@ nextflow_workflow {
             "${launchDir}/library/",
             [
                 "minimap2/index",
+                "samtools/index",
                 "samtools/merge",
                 "samtools/markdup",
                 "samtools/faidx"
