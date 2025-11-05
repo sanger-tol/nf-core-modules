@@ -247,7 +247,10 @@ Sub-workflows are stored in the [`subworkflows/`](subworkflows/) directory of th
 
       nf-core/tools version 3.4.1 - https://nf-co.re
 
-   INFO     Removed files for 'asmstats' and its dependencies 'asmstats'.
+   INFO     Removed files for 'samtools/faidx' and its dependencies 'samtools/faidx'.
+   INFO     Removed files for 'samtools/markdup' and its dependencies 'samtools/markdup'.
+   INFO     Removed files for 'samtools/merge' and its dependencies 'samtools/merge'.
+   INFO     Removed files for 'bam_samtools_merge_markdup' and its dependencies 'bam_samtools_merge_markdup, samtools_faidx, samtools_markdup, samtools_merge'.
    ```
 
 ## Cross-organisation sub-workflows
