@@ -16,7 +16,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     val_cram_chunk_size  // integer: Number of CRAM slices per chunk for mapping
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Logic: check if CRAM files are accompanied by an index
