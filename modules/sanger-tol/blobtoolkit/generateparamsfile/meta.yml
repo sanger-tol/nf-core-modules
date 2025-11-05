@@ -68,9 +68,9 @@ input:
       ontologies: []
 
   - btk_extra_opts:
-      type: list
+      type: map
       description: |
-        List of extra arguments for blobtoolkit
+        Map of extra arguments for blobtoolkit
       ontologies: []
 
 output:
