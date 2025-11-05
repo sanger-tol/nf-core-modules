@@ -87,6 +87,7 @@ nextflow_workflow {
             assertAll(
                 { assert snapshot(
                     workflow.out.bam.collect { bam(it.get(1)).getStatistics() },
+                    workflow.out.bam_index.collect { file(it.get(1)).getName() },
                     workflow.out.versions
                 ).match() }
             )
