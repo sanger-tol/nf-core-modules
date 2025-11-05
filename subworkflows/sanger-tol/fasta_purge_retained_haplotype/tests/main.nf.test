@@ -27,6 +27,7 @@ nextflow_workflow {
                 "cat/cat",
                 "minimap2/align",
                 "minimap2/index",
+                "samtools/index",
                 "samtools/merge",
                 "samtools/markdup",
                 "samtools/faidx",
