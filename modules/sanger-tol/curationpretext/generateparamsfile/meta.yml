@@ -53,9 +53,9 @@ input:
       ontologies: []
 
   - cpretext_extra_opts:
-      type: list
+      type: map
       description: |
-        List of extra arguments for curationpretext
+        Map of extra arguments for curationpretext
       ontologies: []
 
 output:
