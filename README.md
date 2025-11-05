@@ -20,6 +20,8 @@ An nf-core modules repository hosting Nextflow DSL2 modules for the Sanger Tree 
 - [Citation](#citation)
 - [Template](#template)
 
+<!-- If you update this README, update https://github.com/sanger-tol/pipelines-website/blob/main/markdown/usage/shared_modules.md too -->
+
 ## Modules
 
 The module files hosted in this repository define a set of processes for software tools that allow you to share and add common functionality across multiple pipelines in a modular fashion.
