@@ -1,5 +1,6 @@
 process CURATIONPRETEXT_GENERATEPARAMSFILE {
     tag "${meta.id}"
+    executor "local"
 
     input:
     tuple val(meta), path(reference)
