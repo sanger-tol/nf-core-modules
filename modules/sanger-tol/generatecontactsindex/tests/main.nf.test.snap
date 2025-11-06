@@ -7,8 +7,8 @@
                         {
                             "id": "test"
                         },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.index.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed:md5,5d41402abc4b2a76b9719d911017c592",
+                        "test.index.tsv:md5,098f6bcd4621d373cade4e832627b4f6"
                     ]
                 ],
                 "1": [
@@ -19,8 +19,8 @@
                         {
                             "id": "test"
                         },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.index.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed:md5,5d41402abc4b2a76b9719d911017c592",
+                        "test.index.tsv:md5,098f6bcd4621d373cade4e832627b4f6"
                     ]
                 ],
                 "versions": [
@@ -42,8 +42,8 @@
                         {
                             "id": "test"
                         },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.index.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed:md5,5d41402abc4b2a76b9719d911017c592",
+                        "test.index.tsv:md5,098f6bcd4621d373cade4e832627b4f6"
                     ]
                 ],
                 "1": [
@@ -54,8 +54,8 @@
                         {
                             "id": "test"
                         },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.index.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed:md5,5d41402abc4b2a76b9719d911017c592",
+                        "test.index.tsv:md5,098f6bcd4621d373cade4e832627b4f6"
                     ]
                 ],
                 "versions": [
