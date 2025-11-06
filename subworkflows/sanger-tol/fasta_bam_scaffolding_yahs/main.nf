@@ -41,9 +41,23 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     ch_yahs_input = ch_fasta
         | combine(SAMTOOLS_FAIDX_CONTIGS.out.fai, by: 0)
         | combine(BEDTOOLS_BAMTOBEDSORT.out.sorted_bed, by: 0)
+        | map { meta, fasta, fai, bed ->
+            // add empty AGP input
+            [ meta, fasta, fai, bed, [] ]
+        }
 
     YAHS(ch_yahs_input)
     ch_versions = ch_versions.mix(YAHS.out.versions)
+
+    //
+    // Logic: Mix intermediate YaHS outputs into a channel for emission
+    //
+    ch_yahs_extra = channel.empty()
+        | mix(
+            YAHS.out.initial_break_agp,
+            YAHS.out.round_agp,
+            YAHS.out.log,
+        )
 
     //
     // Module: Index output scaffolds
@@ -87,11 +101,15 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     ch_versions = ch_versions.mix(PAIRS_CREATE_CONTACT_MAPS.out.versions)
 
     emit:
-    scaffolds_fasta = YAHS.out.scaffolds_fasta
-    scaffolds_agp   = YAHS.out.scaffolds_agp
-    pretext         = PAIRS_CREATE_CONTACT_MAPS.out.pretext
-    pretext_png     = PAIRS_CREATE_CONTACT_MAPS.out.pretext_png
-    cool            = PAIRS_CREATE_CONTACT_MAPS.out.cool
-    hic             = PAIRS_CREATE_CONTACT_MAPS.out.hic
-    versions        = ch_versions
+    scaffolds_fasta   = YAHS.out.scaffolds_fasta
+    scaffolds_agp     = YAHS.out.scaffolds_agp
+    yahs_bin          = YAHS.out.binary
+    yahs_inital       = YAHS.out.initial_break_agp
+    yahs_intermediate = YAHS.out.round_agp
+    yahs_log          = YAHS.out.log
+    pretext           = PAIRS_CREATE_CONTACT_MAPS.out.pretext
+    pretext_png       = PAIRS_CREATE_CONTACT_MAPS.out.pretext_png
+    cool              = PAIRS_CREATE_CONTACT_MAPS.out.cool
+    hic               = PAIRS_CREATE_CONTACT_MAPS.out.hic
+    versions          = ch_versions
 }

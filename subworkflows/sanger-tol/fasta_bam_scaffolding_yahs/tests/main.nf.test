@@ -88,6 +88,9 @@ nextflow_workflow {
                 { assert snapshot(
                     workflow.out.scaffolds_fasta,
                     workflow.out.scaffolds_agp,
+                    workflow.out.yahs_bin,
+                    workflow.out.yahs_inital,
+                    workflow.out.yahs_intermediate,
                     file(workflow.out.pretext.get(0).get(1)).getName(),
                     file(workflow.out.pretext_png.get(0).get(1)).getName(),
                     file(workflow.out.cool.get(0).get(1)).getName(),
