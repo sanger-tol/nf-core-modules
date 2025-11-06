@@ -14,6 +14,9 @@ process GENERATE_CONTACTS_INDEX {
     tuple val(meta), path(contacts), path("*.index.tsv"), emit: contacts_with_index
     path "versions.yml", emit: versions
 
+    when:
+    task.ext.when == null || task.ext.when
+
     script:
     """
     # Create index TSV file from contacts

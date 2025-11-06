@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "generatecontactsindex"
+name: "generate_contacts_index"
 description: |
   Generates a TSV index file from contacts BED file by sorting and extracting unique contact positions.
 keywords:
@@ -42,7 +42,7 @@ output:
           pattern: "*.bed"
           ontologies:
             - edam: http://edamontology.org/format_3003
-      - index:
+      - "*.index.tsv":
           type: file
           description: |
             Path to index TSV file of the contacts.
