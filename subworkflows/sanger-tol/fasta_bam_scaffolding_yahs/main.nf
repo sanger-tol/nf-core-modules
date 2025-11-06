@@ -50,16 +50,6 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     ch_versions = ch_versions.mix(YAHS.out.versions)
 
     //
-    // Logic: Mix intermediate YaHS outputs into a channel for emission
-    //
-    ch_yahs_extra = channel.empty()
-        | mix(
-            YAHS.out.initial_break_agp,
-            YAHS.out.round_agp,
-            YAHS.out.log,
-        )
-
-    //
     // Module: Index output scaffolds
     //
     SAMTOOLS_FAIDX_SCAFFOLDS(
