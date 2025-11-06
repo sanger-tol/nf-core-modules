@@ -1,5 +1,5 @@
 include { SAMTOOLS_MARKDUP } from '../../../modules/nf-core/samtools/markdup/main'
-include { BAMTOBEDSORT     } from '../../../modules/sanger-tol/bam2bedsort/main'
+include { BAMTOBEDSORT     } from '../../../modules/sanger-tol/bedtools/bamtobedsort/main'
 include { CONTACTBED       } from '../../../modules/sanger-tol/contactbed/main'
 include { COOLER_CLOAD     } from '../../../modules/nf-core/cooler/cload/main'
 include { COOLER_MERGE     } from '../../../modules/nf-core/cooler/merge/main'
