@@ -21,9 +21,6 @@ nextflow_workflow {
             [
                 "samtools/markdup",
                 "samtools/faidx",
-                "sanger-tol/bam2bedsort",
-                "sanger-tol/contactbed",
-                "sanger-tol/generatecontactsindex",
                 "cooler/cload",
                 "cooler/merge",
                 "cooler/zoomify"
