@@ -1,10 +1,9 @@
-include { SAMTOOLS_MARKDUP          } from '../../../modules/nf-core/samtools/markdup/main'
-include { BAMTOBEDSORT            } from '../../../modules/sanger-tol/bam2bedsort/main'
-include { CONTACTBED              } from '../../../modules/sanger-tol/contactbed/main'
-include { GENERATE_CONTACTS_INDEX } from '../../../modules/sanger-tol/generatecontactsindex/main'
-include { COOLER_CLOAD            } from '../../../modules/nf-core/cooler/cload/main'
-include { COOLER_MERGE            } from '../../../modules/nf-core/cooler/merge/main'
-include { COOLER_ZOOMIFY          } from '../../../modules/nf-core/cooler/zoomify/main'
+include { SAMTOOLS_MARKDUP } from '../../../modules/nf-core/samtools/markdup/main'
+include { BAMTOBEDSORT     } from '../../../modules/sanger-tol/bam2bedsort/main'
+include { CONTACTBED       } from '../../../modules/sanger-tol/contactbed/main'
+include { COOLER_CLOAD     } from '../../../modules/nf-core/cooler/cload/main'
+include { COOLER_MERGE     } from '../../../modules/nf-core/cooler/merge/main'
+include { COOLER_ZOOMIFY   } from '../../../modules/nf-core/cooler/zoomify/main'
 
 workflow BAM2COOL {
 
@@ -27,6 +26,7 @@ workflow BAM2COOL {
     )
     ch_versions = ch_versions.mix(SAMTOOLS_MARKDUP.out.versions)
 
+    SAMTOOLS_MARKDUP.out.bam.view()
     //
     // Convert marked BAMs to sorted BED
     //
@@ -44,21 +44,18 @@ workflow BAM2COOL {
     ch_versions = ch_versions.mix(CONTACTBED.out.versions)
 
     //
-    // Generate index file from contacts
+    // Prepare input for individual COOLER_CLOAD
     //
-    GENERATE_CONTACTS_INDEX(
-        CONTACTBED.out.bed
-    )
-    ch_versions = ch_versions.mix(GENERATE_CONTACTS_INDEX.out.versions)
-    
+    ch_cooler_input = CONTACTBED.out.paired_contacts_bed.combine(ch_chrom_sizes)
+        .map { meta_bam, contacts, meta_chrom, chrom_sizes_path ->
+            [meta_bam, contacts, chrom_sizes_path, val_bin_size]
+        }
+
     //
     // Generate individual .cool files
     //
     COOLER_CLOAD(
-        GENERATE_CONTACTS_INDEX.out.contacts_with_index,
-        ch_chrom_sizes,
-        'full',
-        val_bin_size
+        ch_cooler_input
     )
     ch_versions = ch_versions.mix(COOLER_CLOAD.out.versions)
 
@@ -68,24 +65,13 @@ workflow BAM2COOL {
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
         .collect()
         .map { cool_files ->
-            // Extract meta and paths from tuples
-            def sample_ids = []
-            def cool_paths = []
-            cool_files.each { item ->
-                if (item instanceof List && item.size() >= 2) {
-                    if (item[0] != null && item[0].id != null) {
-                        sample_ids.add(item[0].id)
-                    }
-                    if (item[1] != null) {
-                        cool_paths.add(item[1])
-                    }
-                }
-            }
+            // Preserve list of contributing sample IDs
             def merged_meta = [
                 id: 'merged',
-                samples: sample_ids
+                samples: cool_files*.first.id
             ]
-            [merged_meta, cool_paths]
+            // Extract only the cool file paths
+            [merged_meta, cool_files*.last]
         }
 
     //
