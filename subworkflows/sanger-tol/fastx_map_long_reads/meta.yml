@@ -39,6 +39,12 @@ output:
         Channel containing BAM files
         Structure: [ val(meta), path(bam) ]
       pattern: "*.bam"
+  - bam_index:
+      type: file
+      description: |
+        Channel containing index files for output BAM
+        Structure: [ val(meta), path(index) ]
+      pattern: "*.{bai,csi,crai}"
   - paf:
       type: file
       description: |

@@ -13,7 +13,7 @@ workflow FASTX_MAP_LONG_READS {
     val_output_bam            // boolean: if true output alignments in BAM format
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Module: Index FASTA files
@@ -99,7 +99,8 @@ workflow FASTX_MAP_LONG_READS {
     // Logic: Wrap this in the conditional so we don't unnecessarily run
     //        samtools faidx if no bam output
     //
-    ch_output_bam = Channel.empty()
+    ch_output_bam       = channel.empty()
+    ch_output_bam_index = channel.empty()
 
     if(val_output_bam) {
         BAM_SAMTOOLS_MERGE_MARKDUP(
@@ -109,11 +110,13 @@ workflow FASTX_MAP_LONG_READS {
         )
         ch_versions = ch_versions.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.versions)
 
-        ch_output_bam = ch_output_bam.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam)
+        ch_output_bam       = ch_output_bam.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam)
+        ch_output_bam_index = ch_output_bam.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index)
     }
 
     emit:
-    bam      = ch_output_bam
-    paf      = ch_grouped_paf
-    versions = ch_versions
+    bam       = ch_output_bam
+    bam_index = ch_output_bam_index
+    paf       = ch_grouped_paf
+    versions  = ch_versions
 }

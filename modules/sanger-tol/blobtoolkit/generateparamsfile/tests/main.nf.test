@@ -1,0 +1,73 @@
+nextflow_process {
+
+    name "Test Process BLOBTOOLKIT_GENERATEPARAMSFILE"
+    script "../main.nf"
+    process "BLOBTOOLKIT_GENERATEPARAMSFILE"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "blobtoolkit"
+    tag "blobtoolkit/generateparamsfile"
+
+    test("Generate Paramsfile") {
+
+        setup {
+
+            File diamond = new File("${launchDir}/DIAMOND/diamond.dmnd")
+            diamond.getParentFile().mkdirs()
+            diamond.createNewFile()
+
+            new File("${launchDir}/NCBI_TAXONOMY/").getParentFile().mkdirs()
+            new File("${launchDir}/BLASTN/blastdb/").getParentFile().mkdirs()
+
+        }
+
+        when {
+            params {
+                nt_database_path                = "${launchDir}/BLASTN/blastdb/"
+                ncbi_taxonomy_path              = "${launchDir}/NCBI_TAXONOMY/"
+                diamond_uniprot_database_path   = "${launchDir}/DIAMOND/diamond.dmnd"
+                diamond_nr_database_path        = "${launchDir}/DIAMOND/diamond.dmnd"
+            }
+
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'resources/ascc/asccTinyTest_V2/assembly/Pyoeliiyoelii17XNL_assembly_adaptors_hap1.fa', checkIfExists: true)
+                ]
+                input[1] = file(params.diamond_uniprot_database_path)
+                input[2] = file(params.nt_database_path)
+                input[3] = file(params.diamond_uniprot_database_path)
+                input[4] = file(params.ncbi_taxonomy_path)
+                input[5] = "fungi_odb10"
+                input[6] = 101012
+                input[7] = [
+                    'use_work_dir_as_temp': true,
+                    'align': true,
+                ]
+                """
+            }
+        }
+
+        then {
+
+            def json = path(process.out.json_params_file[0][1]).json
+
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    process.out.versions,
+                    json.keySet(),
+                    [
+                        json.use_work_dir_as_temp,
+                        json.align,
+                        json.fasta,
+                        json.busco_lineages,
+                        json.taxon
+                    ]).match()
+                }
+            )
+        }
+    }
+}
