@@ -4,6 +4,7 @@ nextflow_workflow {
     name "Test Subworkflow BAM2COOL"
     script "../main.nf"          // path to your workflow script
     workflow "BAM2COOL"          // must match workflow name in main.nf
+    config "./nextflow.config"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
@@ -19,8 +20,6 @@ nextflow_workflow {
         nfcoreInstall(
             "${launchDir}/library/",
             [
-                "samtools/markdup",
-                "samtools/faidx",
                 "cooler/cload",
                 "cooler/merge",
                 "cooler/zoomify"
@@ -31,7 +30,7 @@ nextflow_workflow {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
-    test("sarscov2 - bam - paired_end stub") {
+    test("bam - paired_end stub") {
 
         options "-stub"   // stub mode: modules replaced with placeholders
 
