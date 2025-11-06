@@ -17,6 +17,25 @@
                     "test_scaffolds_final.agp:md5,c45367a1fbf9b80f4c3208e12e230758"
                 ]
             ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.bin:md5,00812a61ba6f5829bbf9ec32ec08c986"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test_inital_break_01.agp:md5,c45367a1fbf9b80f4c3208e12e230758"
+                ]
+            ],
+            [
+                
+            ],
             "test.pretext",
             "test_FullMap.png",
             "test.mcool",
@@ -39,6 +58,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-11-04T15:19:01.197405"
+        "timestamp": "2025-11-05T16:51:36.324811"
     }
 }
