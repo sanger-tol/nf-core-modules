@@ -1,0 +1,42 @@
+{
+    "Cloeon_dipterum genome - stub": {
+        "content": [
+            "test-full-table_buscopainter_complete_location.tsv_buscopainter.png",
+            "test-full-table_buscopainter_complete_location.tsv_buscopainter.pdf",
+            "test-full-table_buscopainter_complete_location.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
+            "test-full-table_buscopainter_duplicated_location.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
+            "test-full-table_summary.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
+            [
+                "versions.yml:md5,20310e7fc172ac22d25be609af42106c",
+                "versions.yml:md5,d0ef9468db0e5edbca7a780f944e3511",
+                "versions.yml:md5,d5b755683b719e0d350013bdbfc1214b"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.4"
+        },
+        "timestamp": "2025-10-08T16:35:43.743911115"
+    },
+    "Ceramica_pisi genome [fasta]": {
+        "content": [
+            "buscopainter_complete_location.tsv_buscopainter.png",
+            81941,
+            "buscopainter_complete_location.tsv_buscopainter.pdf",
+            6599,
+            "buscopainter_complete_location.tsv:md5,92a2d60e7a66edeb5070e3d982a53193",
+            "buscopainter_duplicated_location.tsv:md5,23301496a69958b2b64d30df982ca2df",
+            "buscopainter_summary.tsv:md5,16931cc78cc8506863b360e149d81111",
+            [
+                "versions.yml:md5,20310e7fc172ac22d25be609af42106c",
+                "versions.yml:md5,44f213ae69f976c93a19fd80e0520cae",
+                "versions.yml:md5,d0ef9468db0e5edbca7a780f944e3511"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.04.4"
+        },
+        "timestamp": "2025-10-09T09:36:36.508411829"
+    }
+}
