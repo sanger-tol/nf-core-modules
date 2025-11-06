@@ -14,11 +14,12 @@ nextflow_workflow {
 
     setup {
         // Initialize module library
-        nfcoreInitialise("${launchDir}/library/")
+        def libDir = launchDir ? "${launchDir}/library/" : "${baseDir}/.nf-test-library/"
+        nfcoreInitialise(libDir)
 
         // Install required modules
         nfcoreInstall(
-            "${launchDir}/library/",
+            libDir,
             [
                 "cooler/cload",
                 "cooler/merge",
@@ -27,7 +28,7 @@ nextflow_workflow {
         )
 
         // Link modules for workflow
-        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+        nfcoreLink(libDir, "${baseDir}/modules/")
     }
 
     test("bam - paired_end stub") {
