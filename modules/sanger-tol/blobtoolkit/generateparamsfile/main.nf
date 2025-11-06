@@ -1,5 +1,6 @@
 process BLOBTOOLKIT_GENERATEPARAMSFILE {
     tag "${meta.id}"
+    executor "local"
 
     input:
     tuple val(meta), val(reference)
