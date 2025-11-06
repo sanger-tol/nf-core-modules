@@ -46,15 +46,11 @@ nextflow_workflow {
                     [ id:'test', single_end:false ],
                     file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: false)
                 ]
-                input[1] = [
-                    [ id:'fasta' ],
-                    file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.fa.gz', checkIfExists: false)
-                ]
-                input[2] = Channel.of([
+                input[1] = Channel.of([
                     [ id:'genome' ],
                     file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.genome', checkIfExists: false)
                 ])
-                input[3] = 1000
+                input[2] = 1000
                 """
             }
         }

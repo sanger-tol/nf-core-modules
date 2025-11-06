@@ -9,7 +9,6 @@ workflow BAM2COOL {
 
     take:
     ch_bam_list     // channel: [val(meta), [bam1, bam2, ...]]
-    ch_reference    // channel: [val(meta), path(fasta)]
     ch_chrom_sizes // channel: [val(meta), path(chrom_sizes)]
     val_bin_size    // integer: bin size for cooler
 
@@ -18,20 +17,10 @@ workflow BAM2COOL {
     ch_versions = Channel.empty()
 
     //
-    //  Mark duplicates for each BAM
-    //
-    SAMTOOLS_MARKDUP(
-        ch_bam_list,
-        ch_reference
-    )
-    ch_versions = ch_versions.mix(SAMTOOLS_MARKDUP.out.versions)
-
-    SAMTOOLS_MARKDUP.out.bam.view()
-    //
     // Convert marked BAMs to sorted BED
     //
     BAMTOBEDSORT(
-        SAMTOOLS_MARKDUP.out.bam
+        ch_bam_list
     )
     ch_versions = ch_versions.mix(BAMTOBEDSORT.out.versions)
 
