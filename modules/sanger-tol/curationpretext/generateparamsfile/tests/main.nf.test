@@ -1,0 +1,68 @@
+nextflow_process {
+
+    name "Test Process CURATIONPRETEXT_GENERATEPARAMSFILE"
+    script "../main.nf"
+    process "CURATIONPRETEXT_GENERATEPARAMSFILE"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "curationpretext"
+    tag "curationpretext/generateparamsfile"
+
+    test ("Generate Paramsfile") {
+
+        setup {
+
+            File longread_file = new File("${launchDir}/longreads/test.fasta.gz")
+            longread_file.getParentFile().mkdirs()
+            longread_file.createNewFile()
+
+            File hic_file = new File("${launchDir}/cram/test.cram")
+            hic_file.getParentFile().mkdirs()
+            hic_file.createNewFile()
+
+        }
+
+        when {
+            params {
+                ch_longread = "${launchDir}/longreads/"
+                ch_cram     = "${launchDir}/cram/"
+            }
+
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'resources/ascc/asccTinyTest_V2/assembly/Pyoeliiyoelii17XNL_assembly_adaptors_hap1.fa', checkIfExists: true)
+                ]
+                input[1] = file(params.ch_longread)
+                input[2] = file(params.ch_cram)
+                input[3] = "TTAGG"
+                input[4] = "AUTO"
+                input[5] = [
+                    "all_output": true
+                ]
+                """
+            }
+        }
+
+        then {
+
+            def json = path(process.out.json_params_file[0][1]).json
+
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    process.out.versions,
+                    json.keySet(),
+                    [
+                        json.sample,
+                        json.teloseq,
+                        json.aligner,
+                        json.all_output
+                    ]).match()
+                }
+            )
+        }
+    }
+}
