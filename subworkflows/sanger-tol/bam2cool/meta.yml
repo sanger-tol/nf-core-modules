@@ -10,7 +10,7 @@ keywords:
 components:
   - bedtools/bamtobedsort
   - contactbed
-  - generatecontactsindex
+  - generate/contacts/index
   - hic/getpairedcontactbed
   - cooler/cload:
       git_remote: https://github.com/nf-core/modules.git
