@@ -11,7 +11,7 @@ nextflow_workflow {
     tag "subworkflows/bam2cool"
     tag "bedtools/bamtobedsort"
     tag "contactbed"
-    tag "generate/contacts/index"
+    tag "generatecontactsindex"
     tag "subworkflows/../../modules/nf-core/cooler/cload"
     tag "subworkflows/../../modules/nf-core/cooler/merge"
     tag "subworkflows/../../modules/nf-core/cooler/zoomify"
