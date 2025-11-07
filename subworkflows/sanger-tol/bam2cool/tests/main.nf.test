@@ -6,10 +6,7 @@ nextflow_workflow {
     workflow "BAM2COOL"          // must match workflow name in main.nf
     config "./nextflow.config"
 
-    tag "subworkflows"
-    tag "subworkflows_sangertol"
     tag "subworkflows/bam2cool"
-    tag "samtools"
     tag "bedtools/bamtobedsort"
     tag "contactbed"
     tag "generatecontactsindex"
