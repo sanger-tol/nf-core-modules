@@ -17,22 +17,16 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/cooler/zoomify"
 
     setup {
-        // Initialize module library
-        def libDir = launchDir ? "${launchDir}/library/" : "${baseDir}/.nf-test-library/"
-        nfcoreInitialise(libDir)
-
-        // Install required modules
+        nfcoreInitialise("${launchDir}/library/")
         nfcoreInstall(
-            libDir,
+            "${launchDir}/library/",
             [
                 "cooler/cload",
                 "cooler/merge",
                 "cooler/zoomify"
             ]
         )
-
-        // Link modules for workflow
-        nfcoreLink(libDir, "${baseDir}/modules/")
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
     test("bam - paired_end stub") {
@@ -68,8 +62,7 @@ nextflow_workflow {
         }
 
         cleanup {
-            def libDir = launchDir ? "${launchDir}/library/" : "${baseDir}/.nf-test-library/"
-            nfcoreUnlink(libDir, "${baseDir}/modules/nf-core")
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 }
