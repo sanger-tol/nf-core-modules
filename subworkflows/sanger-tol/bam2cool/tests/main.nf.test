@@ -13,7 +13,6 @@ nextflow_workflow {
     tag "bedtools/bamtobedsort"
     tag "contactbed"
     tag "generatecontactsindex"
-    tag "subworkflows/../../modules/nf-core/samtools/markdup"
     tag "subworkflows/../../modules/nf-core/cooler/cload"
     tag "subworkflows/../../modules/nf-core/cooler/merge"
     tag "subworkflows/../../modules/nf-core/cooler/zoomify"
