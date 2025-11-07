@@ -21,14 +21,12 @@ input:
       type: file
       description: |
         Channel containing assemblies for scaffolding.
-
         Structure: [ val(meta), path(fasta) ]
       pattern: "*.{bam/cram/sam}"
   - ch_hic_bam:
       type: file
       description: |
         Channel containing BAM files of Hi-C reads mapped to each assembly.
-
         Structure: [ val(meta), path(bam) ]
       pattern: "*.{bam/cram/sam}"
   - val_build_pretext:
@@ -47,15 +45,39 @@ output:
   - scaffolds_fasta:
       type: file
       description: |
-        Channel containing BAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.bam"
+        Final scaffolds from YaHS in FASTA format
+        Structure: [ val(meta), path(fasta) ]
+      pattern: "*.fasta"
   - scaffolds_agp:
       type: file
       description: |
-        Channel containing indexed BAM (BAI) files
-        Structure: [ val(meta), path(bai) ]
-      pattern: "*.bai"
+        AGP describing how contigs are transformed into final scaffolds
+        Structure: [ val(meta), path(agp) ]
+      pattern: "*.agp"
+  - yahs_bin:
+      type: file
+      description: |
+        YaHS binary file describing Hi-C contacts
+        Structure: [ val(meta), path(bin) ]
+      pattern: "*.bin"
+  - yahs_initial:
+      type: file
+      description: |
+        AGP files describing inital breaks by YaHS
+        Structure: [ val(meta), path(agp) ]
+      pattern: "*.agp"
+  - yahs_intermediate:
+      type: file
+      description: |
+        AGP files describing each scaffolding round by YaHS
+        Structure: [ val(meta), path(agp) ]
+      pattern: "*.agp"
+  - yahs_log:
+      type: file
+      description: |
+        YaHS log file
+        Structure: [ val(meta), path(log) ]
+      pattern: "*.log"
   - pretext:
       type: file
       description: |
