@@ -17,21 +17,16 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/cooler/zoomify"
 
     setup {
-        def launchDirValue = launchDir
-        if (!launchDirValue || launchDirValue == 'null') {
-            launchDirValue = System.getenv('NFT_WORKDIR') ?: baseDir
-        }
-        def libDir = "${launchDirValue}/library/"
-        nfcoreInitialise(libDir)
+        nfcoreInitialise("${launchDir}/library/")
         nfcoreInstall(
-            libDir,
+            "${launchDir}/library/",
             [
                 "cooler/cload",
                 "cooler/merge",
                 "cooler/zoomify"
             ]
         )
-        nfcoreLink(libDir, "${baseDir}/modules/")
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
     test("bam - paired_end stub") {
@@ -67,12 +62,7 @@ nextflow_workflow {
         }
 
         cleanup {
-            def launchDirValue = launchDir
-            if (!launchDirValue || launchDirValue == 'null') {
-                launchDirValue = System.getenv('NFT_WORKDIR') ?: baseDir
-            }
-            def libDir = "${launchDirValue}/library/"
-            nfcoreUnlink(libDir, "${baseDir}/modules/nf-core")
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 }
