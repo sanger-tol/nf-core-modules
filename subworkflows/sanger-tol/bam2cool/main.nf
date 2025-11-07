@@ -1,4 +1,3 @@
-include { SAMTOOLS_MARKDUP          } from '../../../modules/nf-core/samtools/markdup/main'
 include { BEDTOOLS_BAMTOBEDSORT     } from '../../../modules/sanger-tol/bedtools/bamtobedsort/main'
 include { CONTACTBED                } from '../../../modules/sanger-tol/contactbed/main'
 include { GENERATE_CONTACTS_INDEX   } from '../../../modules/sanger-tol/generatecontactsindex/main'
