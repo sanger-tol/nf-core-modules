@@ -18,9 +18,11 @@ process CONTACTBED {
     task.ext.when == null || task.ext.when
 
     script:
-    def pulled = '-T sort_tmp'
+    // WARNING: This module ships bed_to_contacts.sh as a module binary in
+    // ${moduleDir}/resources/usr/bin. Ensure either nextflow.enable.moduleBinaries = true
+    // or copy the script into ${projectDir}/bin before using this module.
     """
-    bed_to_contacts.sh $file > pre.bed
+    bed_to_contacts.sh ${file} > ${meta.id}_contacts.bed
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -30,7 +32,7 @@ process CONTACTBED {
 
     stub:
     """
-    touch ${meta.id}_paired.bed
+    touch ${meta.id}_contacts.bed
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

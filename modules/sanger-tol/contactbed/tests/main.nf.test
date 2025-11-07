@@ -19,7 +19,7 @@ nextflow_process {
                 input[0] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bed', checkIfExists: false)
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Allolobophora_molleri/analysis/sorted.bed', checkIfExists: false)
                     ]
                 )
                 """
@@ -46,7 +46,7 @@ nextflow_process {
                 input[0] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bed', checkIfExists: false)
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Allolobophora_molleri/analysis/sorted.bed', checkIfExists: false)
                     ]
                 )
                 """
