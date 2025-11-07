@@ -17,7 +17,11 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/cooler/zoomify"
 
     setup {
-        def libDir = "${(launchDir ?: System.getenv('NFT_WORKDIR') ?: baseDir)}/library/"
+        def launchDirValue = launchDir
+        if (!launchDirValue || launchDirValue == 'null') {
+            launchDirValue = System.getenv('NFT_WORKDIR') ?: baseDir
+        }
+        def libDir = "${launchDirValue}/library/"
         nfcoreInitialise(libDir)
         nfcoreInstall(
             libDir,
@@ -63,7 +67,11 @@ nextflow_workflow {
         }
 
         cleanup {
-            def libDir = "${(launchDir ?: System.getenv('NFT_WORKDIR') ?: baseDir)}/library/"
+            def launchDirValue = launchDir
+            if (!launchDirValue || launchDirValue == 'null') {
+                launchDirValue = System.getenv('NFT_WORKDIR') ?: baseDir
+            }
+            def libDir = "${launchDirValue}/library/"
             nfcoreUnlink(libDir, "${baseDir}/modules/nf-core")
         }
     }
