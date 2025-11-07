@@ -10,7 +10,13 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/bam2cool"
     tag "samtools"
-    tag "cooler"
+    tag "bedtools/bamtobedsort"
+    tag "contactbed"
+    tag "generatecontactsindex"
+    tag "subworkflows/../../modules/nf-core/samtools/markdup"
+    tag "subworkflows/../../modules/nf-core/cooler/cload"
+    tag "subworkflows/../../modules/nf-core/cooler/merge"
+    tag "subworkflows/../../modules/nf-core/cooler/zoomify"
 
     setup {
         // Initialize module library
@@ -64,7 +70,8 @@ nextflow_workflow {
         }
 
         cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+            def libDir = launchDir ? "${launchDir}/library/" : "${baseDir}/.nf-test-library/"
+            nfcoreUnlink(libDir, "${baseDir}/modules/nf-core")
         }
     }
 }

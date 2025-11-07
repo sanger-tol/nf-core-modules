@@ -11,10 +11,15 @@ components:
   - samtools/markdup:
       git_remote: https://github.com/nf-core/modules.git
   - bedtools/bamtobedsort
+  - contactbed
+  - generatecontactsindex
   - hic/getpairedcontactbed
-  - cooler/cload
-  - cooler/merge
-  - cooler/zoomify
+  - cooler/cload:
+      git_remote: https://github.com/nf-core/modules.git
+  - cooler/merge:
+      git_remote: https://github.com/nf-core/modules.git
+  - cooler/zoomify:
+      git_remote: https://github.com/nf-core/modules.git
 input:
   - ch_bam_list:
       type: file
