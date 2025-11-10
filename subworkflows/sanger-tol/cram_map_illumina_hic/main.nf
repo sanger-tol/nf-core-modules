@@ -19,6 +19,22 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     ch_versions = channel.empty()
 
     //
+    // Logic: rolling check of assembly meta objects to detect duplicates
+    //
+    ch_assemblies
+        | map { meta, _asm -> meta }
+        | reduce { acc, item ->
+            def res = [acc, item].flatten()
+            def duplicates = res.countBy { it }.findAll { it.value > 1 }.keySet()
+            
+            if (duplicates.size() > 0) {
+                error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${duplicates}")
+            }
+            
+            return res
+        }
+
+    //
     // Logic: check if CRAM files are accompanied by an index
     //        Get indexes, and index those that aren't
     //
