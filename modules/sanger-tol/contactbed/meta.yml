@@ -7,6 +7,17 @@ keywords:
   - bed
   - hic
   - pairs
+tools:
+  - coreutils:
+      description: |
+        GNU coreutils provides standard utilities such as paste and tr used during conversion.
+      homepage: https://www.gnu.org/software/coreutils/
+      licence: ["GPL v3.0"]
+  - awk:
+      description: |
+        AWK is used to transform BED records into the contacts format.
+      homepage: https://gnu.org/software/gawk/
+      licence: ["GPL v3.0"]
 input:
   - - meta:
         type: map
