@@ -31,11 +31,16 @@ input:
         A boolean to control use of the gawk to split the telomere.
 
 output:
+  - bed_file:
+      type: file
+      description: |
+        Structure: [ val(meta), [path(bed)] ]
+        A Queue of upto 3 bed file channels.
   - bedgraph_file:
       type: file
       description: |
-        Structure: [ val(meta), [path(gap_file)] ]
-        Collection of 1 or 3 telomere bed files.
+        Structure: [ val(meta), [path(bedgraph)] ]
+        Collection of 1 or 3 telomere bedgraph files.
   - versions:
       type: file
       description: File containing software versions
