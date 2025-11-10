@@ -55,7 +55,7 @@ workflow BAM2COOL {
     // Collect all individual .cool files for merging
     //
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
-        .collect()
+        .groupTuple(by: 0)
         .map { cool_files ->
             // Extract meta and paths from tuples
             def sample_ids = []
