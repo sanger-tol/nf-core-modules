@@ -31,7 +31,6 @@ workflow FASTX_MAP_LONG_READS {
             return res
         }
 
-
     //
     // Module: Index FASTA files
     //
