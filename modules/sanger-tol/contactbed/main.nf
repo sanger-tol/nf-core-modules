@@ -33,7 +33,7 @@ process CONTACTBED {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         paste: "coreutils 9.1"
-        awk: "gawk unknown"
+        awk: "coreutils 9.1"
         sort: "coreutils 9.1"
     END_VERSIONS
     """
@@ -45,7 +45,7 @@ process CONTACTBED {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         paste: "coreutils 9.1"
-        awk: "gawk unknown"
+        awk: "coreutils 9.1"
         sort: "coreutils 9.1"
     END_VERSIONS
     """
