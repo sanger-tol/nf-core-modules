@@ -117,8 +117,14 @@ workflow TELO_FINDER {
         .groupTuple(by: 0, sort: { it.getName() })
         .set { ch_telo_bedgraphs }
 
+    TELOMERE_EXTRACT.out.bed
+        .map { meta, bedgraph ->
+            [ meta - meta.subMap("direction"), bedgraph ]
+        }
+        .set { ch_telo_bedfiles }
 
     emit:
-    bedgraph_file       = ch_telo_bedgraphs // Channel [meta, [bedfiles]] - Used in pretext_graph
+    bed_file            = ch_telo_bedfiles          // Channel [meta, bed]
+    bedgraph_file       = ch_telo_bedgraphs         // Channel [meta, [bedfiles]] - Used in pretext_graph
     versions            = ch_versions
 }
