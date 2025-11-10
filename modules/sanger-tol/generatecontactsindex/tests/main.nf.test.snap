@@ -12,7 +12,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,81328c7b3b0c7c03a9d67d6b12c27f44"
+                    "versions.yml:md5,4264698bc9a395528666171898a62759"
                 ],
                 "contacts_with_index": [
                     [
@@ -24,7 +24,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,81328c7b3b0c7c03a9d67d6b12c27f44"
+                    "versions.yml:md5,4264698bc9a395528666171898a62759"
                 ]
             }
         ],
@@ -32,7 +32,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-10T21:23:51.451237179"
+        "timestamp": "2025-11-10T22:38:00.472592522"
     },
     "Undibacterium unclassified - contacts bed - stub": {
         "content": [
@@ -47,7 +47,7 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,41a4211db68e14b3c526b265d300dfea"
+                    "versions.yml:md5,4264698bc9a395528666171898a62759"
                 ],
                 "contacts_with_index": [
                     [
@@ -59,7 +59,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,41a4211db68e14b3c526b265d300dfea"
+                    "versions.yml:md5,4264698bc9a395528666171898a62759"
                 ]
             }
         ],
@@ -67,6 +67,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-10T21:23:58.31173889"
+        "timestamp": "2025-11-10T22:38:07.380998351"
     }
 }

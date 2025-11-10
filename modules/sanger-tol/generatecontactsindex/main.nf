@@ -25,7 +25,9 @@ process GENERATE_CONTACTS_INDEX {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        inline: "custom"
+        sort: "coreutils 9.1"
+        cut: "coreutils 9.1"
+        uniq: "coreutils 9.1"
     END_VERSIONS
     """
 
@@ -35,7 +37,9 @@ process GENERATE_CONTACTS_INDEX {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        inline: "stub"
+        sort: "coreutils 9.1"
+        cut: "coreutils 9.1"
+        uniq: "coreutils 9.1"
     END_VERSIONS
     """
 }
