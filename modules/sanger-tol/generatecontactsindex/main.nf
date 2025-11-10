@@ -25,8 +25,7 @@ process GENERATE_CONTACTS_INDEX {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        sort: \$(sort --version 2>&1 | head -n1)
-        cut: \$(cut --version 2>&1 | head -n1)
+        inline: "custom"
     END_VERSIONS
     """
 
@@ -36,8 +35,7 @@ process GENERATE_CONTACTS_INDEX {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        sort: \$(sort --version 2>&1 | head -n1)
-        cut: \$(cut --version 2>&1 | head -n1)
+        inline: "stub"
     END_VERSIONS
     """
 }
