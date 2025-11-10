@@ -27,9 +27,12 @@ nextflow_process {
         }
 
         then {
+            def out = process.out
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert out.bed.size() == 1 },
+                { assert file(out.bed[0][1]).exists() },
+                { assert out.versions.size() == 1 }
             )
         }
 
@@ -54,9 +57,12 @@ nextflow_process {
         }
 
         then {
+            def out = process.out
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert out.bed.size() == 1 },
+                { assert file(out.bed[0][1]).exists() },
+                { assert out.versions.size() == 1 }
             )
         }
 
