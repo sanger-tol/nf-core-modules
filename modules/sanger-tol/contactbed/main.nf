@@ -32,7 +32,9 @@ process CONTACTBED {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        bed_to_contacts: inline
+        paste: "coreutils 9.1"
+        awk: "gawk unknown"
+        sort: "coreutils 9.1"
     END_VERSIONS
     """
 
@@ -42,7 +44,9 @@ process CONTACTBED {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        bed_to_contacts: stub
+        paste: "coreutils 9.1"
+        awk: "gawk unknown"
+        sort: "coreutils 9.1"
     END_VERSIONS
     """
 }
