@@ -18,15 +18,21 @@ process CONTACTBED {
     task.ext.when == null || task.ext.when
 
     script:
-    // WARNING: This module ships bed_to_contacts.sh as a module binary in
-    // ${moduleDir}/resources/usr/bin. Ensure either nextflow.enable.moduleBinaries = true
-    // or copy the script into ${projectDir}/bin before using this module.
+    def output  = "${meta.id}_contacts.bed"
+    def sortTmp = task.ext.sort_tmp ?: "${task.workDir}/sort_tmp"
     """
-    bed_to_contacts.sh ${file} > ${meta.id}_contacts.bed
+    mkdir -p ${sortTmp}
+
+    paste -d '\t' - - < ${file} \
+      | awk 'BEGIN {FS="\t"; OFS="\t"} {if (\$1 > \$7) {print substr(\$4,1,length(\$4)-2),\$12,\$7,\$8,"16",\$6,\$1,\$2,"8",\$11,\$5} else {print substr(\$4,1,length(\$4)-2),\$6,\$1,\$2,"8",\$12,\$7,\$8,"16",\$5,\$11} }' \
+      | tr '\\-+' '01'  \
+      | LC_ALL=C sort -k3,3d -k7,7d --temporary-directory=${sortTmp} \
+      | awk 'NF==11' \
+      > ${output}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        bed_to_contacts: \$(bed_to_contacts.sh -v)
+        bed_to_contacts: inline
     END_VERSIONS
     """
 
@@ -36,7 +42,7 @@ process CONTACTBED {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        bed_to_contacts: \$(bed_to_contacts.sh -v)
+        bed_to_contacts: stub
     END_VERSIONS
     """
 }

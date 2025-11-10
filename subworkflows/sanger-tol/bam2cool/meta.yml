@@ -25,12 +25,6 @@ input:
         The input channel containing a list of BAM files
         Structure: [ val(meta), [path(bam1), path(bam2), ...] ]
       pattern: "*.bam"
-  - ch_reference:
-      type: file
-      description: |
-        The input channel containing the reference genome
-        Structure: [ val(meta), path(fasta) ]
-      pattern: "*.{fa,fasta,fn,fna,fsa}"
   - ch_chrom_sizes:
       type: file
       description: |
@@ -41,12 +35,6 @@ input:
       type: integer
       description: Bin size for cooler matrix (e.g., 1000)
 output:
-  - individual_cool:
-      type: file
-      description: |
-        Channel containing individual cooler files for each BAM
-        Structure: [ val(meta), path(cool) ]
-      pattern: "*.cool"
   - merged_cool:
       type: file
       description: |

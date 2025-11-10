@@ -1,24 +1,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "contactbed"
 description: |
-  Converts BED file to contacts BED format using bed_to_contacts.sh script.
+  Converts BED file to contacts BED format using shell utilities.
 keywords:
   - contacts
   - bed
   - hic
   - pairs
-tools:
-  - bed_to_contacts:
-      description: |
-        Script to convert BED file to contacts format for Hi-C analysis.
-      homepage: https://github.com/sanger-tol
-      licence: ["MIT"]
-  - coreutils:
-      description: |
-        GNU coreutils provides basic file, shell and text manipulation utilities.
-      homepage: https://www.gnu.org/software/coreutils/
-      documentation: https://www.gnu.org/software/coreutils/manual/
-      licence: ["GPL v3.0"]
 input:
   - - meta:
         type: map
