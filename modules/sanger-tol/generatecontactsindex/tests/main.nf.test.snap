@@ -32,7 +32,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-11T16:13:30.546539473"
+        "timestamp": "2025-11-11T19:42:25.85157003"
     },
     "Undibacterium unclassified - contacts bed - stub": {
         "content": [
@@ -67,6 +67,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-11T16:13:36.125427552"
+        "timestamp": "2025-11-11T19:42:31.404828515"
     }
 }

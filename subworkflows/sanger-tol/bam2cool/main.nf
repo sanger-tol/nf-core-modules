@@ -57,23 +57,13 @@ workflow BAM2COOL {
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
         .groupTuple(by: 0)
         .map { cool_files ->
-            // Extract meta and paths from tuples
-            def sample_ids = []
             def cool_paths = []
             cool_files.each { item ->
-                if (item instanceof List && item.size() >= 2) {
-                    if (item[0] != null && item[0].id != null) {
-                        sample_ids.add(item[0].id)
-                    }
-                    if (item[1] != null) {
-                        cool_paths.add(item[1])
-                    }
+                if (item instanceof List && item.size() >= 2 && item[1] != null) {
+                    cool_paths.add(item[1])
                 }
             }
-            def merged_meta = [
-                id: 'merged',
-                samples: sample_ids
-            ]
+            def merged_meta = [ id: 'merged' ]
             [merged_meta, cool_paths]
         }
 
