@@ -37,22 +37,8 @@
                     }
                 },
                 {
-                    "BAM2COOL:CONTACTBED": {
-                        "paste": "coreutils 9.5",
-                        "awk": "coreutils 9.5",
-                        "sort": "coreutils 9.5"
-                    }
-                },
-                {
                     "BAM2COOL:COOLER_CLOAD": {
                         "cooler": "0.10.4"
-                    }
-                },
-                {
-                    "BAM2COOL:GENERATE_CONTACTS_INDEX": {
-                        "sort": "coreutils 9.5",
-                        "cut": "coreutils 9.5",
-                        "uniq": "coreutils 9.5"
                     }
                 },
                 {
@@ -72,12 +58,6 @@
                         "samtools": "1.22.1",
                         "bedtools": "2.31.1"
                     }
-                },
-                {
-                    "BAM2COOL:BEDTOOLS_BAMTOBEDSORT": {
-                        "samtools": "1.22.1",
-                        "bedtools": "2.31.1"
-                    }
                 }
             ]
         ],
@@ -85,6 +65,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-11T15:32:45.840441134"
+        "timestamp": "2025-11-11T16:15:09.671362595"
     }
 }

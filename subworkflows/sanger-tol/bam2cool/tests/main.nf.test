@@ -42,14 +42,10 @@ nextflow_workflow {
                 // Inputs to BAM2COOL workflow
                 input[0] = Channel.of(
                     [
-                        [ id:'test1', single_end:false ],
+                        [ id:'test', single_end:false ],
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: false),
                         file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: false)
-                    ],
-                                        [
-                    [ id:'test2', single_end:false ],
-                        file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: false)
-                    ]
-                )
+                    ])
                 input[1] = Channel.of([
                     [ id:'genome' ],
                     file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.genome', checkIfExists: false)
