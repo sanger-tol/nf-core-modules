@@ -21,11 +21,11 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
     //
-    def meta_list = Collections.synchronizedSet(new HashSet())
+    def val_asm_meta_list = Collections.synchronizedSet(new HashSet())
     
     ch_assemblies
         | map { meta, _sample ->
-            if (!sample_set.add(meta)) {
+            if (!val_asm_meta_list.add(meta)) {
                 error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${meta}")
             }
             sample
