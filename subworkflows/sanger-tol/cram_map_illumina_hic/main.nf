@@ -28,7 +28,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             if (!val_asm_meta_list.add(meta)) {
                 error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${meta}")
             }
-            sample
+            meta
         }
 
     //
