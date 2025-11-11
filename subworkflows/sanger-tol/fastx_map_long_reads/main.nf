@@ -16,6 +16,19 @@ workflow FASTX_MAP_LONG_READS {
     ch_versions = channel.empty()
 
     //
+    // Logic: rolling check of assembly meta objects to detect duplicates
+    //
+    def val_asm_meta_list = Collections.synchronizedSet(new HashSet())
+    
+    ch_assemblies
+        | map { meta, _sample ->
+            if (!val_asm_meta_list.add(meta)) {
+                error("Error: Duplicate meta object found in `ch_assemblies` in FASTX_MAP_LONG_READS: ${meta}")
+            }
+            meta
+        }
+
+    //
     // Module: Index FASTA files
     //
     FASTXALIGN_PYFASTXINDEX(ch_fasta.transpose())
