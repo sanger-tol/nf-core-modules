@@ -18,17 +18,14 @@ workflow FASTX_MAP_LONG_READS {
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
     //
+    def meta_list = Collections.synchronizedSet(new HashSet())
+    
     ch_assemblies
-        | map { meta, _asm -> meta }
-        | reduce { acc, item ->
-            def res = [acc, item].flatten()
-            def duplicates = res.countBy { it }.findAll { it.value > 1 }.keySet()
-            
-            if (duplicates.size() > 0) {
-                error("Error: Duplicate meta object found in `ch_assemblies` in FASTX_MAP_LONG_READS: ${duplicates}")
+        | map { meta, _sample ->
+            if (!sample_set.add(meta)) {
+                error("Error: Duplicate meta object found in `ch_assemblies` in FASTX_MAP_LONG_READS: ${meta}")
             }
-            
-            return res
+            sample
         }
 
     //
