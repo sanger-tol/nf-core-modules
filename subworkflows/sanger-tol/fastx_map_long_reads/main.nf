@@ -100,7 +100,6 @@ workflow FASTX_MAP_LONG_READS {
     //
     ch_merge_input = FASTXALIGN_MINIMAP2ALIGN.out.bam
         | combine(ch_n_fasta_chunks, by: 0)
-        | view
         | map { meta, bam, n_chunks ->
             def key = groupKey(meta, n_chunks)
             [key, bam]

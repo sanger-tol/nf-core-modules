@@ -95,9 +95,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.04.2"
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-05T09:49:58.309855"
+        "timestamp": "2025-11-11T15:28:04.003108"
     },
     "Undibacterium unclassified - fasta - paf": {
         "content": [
