@@ -21,17 +21,14 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
     //
+    def meta_list = Collections.synchronizedSet(new HashSet())
+    
     ch_assemblies
-        | map { meta, _asm -> meta }
-        | reduce { acc, item ->
-            def res = [acc, item].flatten()
-            def duplicates = res.countBy { it }.findAll { it.value > 1 }.keySet()
-            
-            if (duplicates.size() > 0) {
-                error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${duplicates}")
+        | map { meta, _sample ->
+            if (!sample_set.add(meta)) {
+                error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${meta}")
             }
-            
-            return res
+            sample
         }
 
     //
