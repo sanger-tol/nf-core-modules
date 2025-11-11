@@ -24,21 +24,67 @@
                 ]
             ],
             [
-                "versions.yml:md5,235322142f0596d586adfaf54075fb75",
-                "versions.yml:md5,3193b1f4be347621b5931f461c3a92c5",
-                "versions.yml:md5,3193b1f4be347621b5931f461c3a92c5",
-                "versions.yml:md5,3bde837c874170f613ac330a39129b9a",
-                "versions.yml:md5,857a7b57e4374aa55bd3b0ec58303b6e",
-                "versions.yml:md5,af9c80f6b48a43175479cd9210582196",
-                "versions.yml:md5,dcff548f7ee136dddf31d4edf1634b2d",
-                "versions.yml:md5,dcff548f7ee136dddf31d4edf1634b2d",
-                "versions.yml:md5,fccce6926b30eb520e52fdcaa33ede3f"
+                {
+                    "BAM2COOL:COOLER_MERGE": {
+                        "cooler": "0.10.4"
+                    }
+                },
+                {
+                    "BAM2COOL:CONTACTBED": {
+                        "paste": "coreutils 9.1",
+                        "awk": "coreutils 9.1",
+                        "sort": "coreutils 9.1"
+                    }
+                },
+                {
+                    "BAM2COOL:CONTACTBED": {
+                        "paste": "coreutils 9.1",
+                        "awk": "coreutils 9.1",
+                        "sort": "coreutils 9.1"
+                    }
+                },
+                {
+                    "BAM2COOL:COOLER_CLOAD": {
+                        "cooler": "0.10.4"
+                    }
+                },
+                {
+                    "BAM2COOL:COOLER_ZOOMIFY": {
+                        "cooler": "0.10.4"
+                    }
+                },
+                {
+                    "BAM2COOL:BEDTOOLS_BAMTOBEDSORT": {
+                        "samtools": "1.22.1",
+                        "bedtools": "2.31.1"
+                    }
+                },
+                {
+                    "BAM2COOL:BEDTOOLS_BAMTOBEDSORT": {
+                        "samtools": "1.22.1",
+                        "bedtools": "2.31.1"
+                    }
+                },
+                {
+                    "BAM2COOL:GENERATE_CONTACTS_INDEX": {
+                        "sort": "coreutils 9.1",
+                        "cut": "coreutils 9.1",
+                        "uniq": "coreutils 9.1"
+                    }
+                },
+                {
+                    "BAM2COOL:GENERATE_CONTACTS_INDEX": {
+                        "sort": "coreutils 9.1",
+                        "cut": "coreutils 9.1",
+                        "uniq": "coreutils 9.1"
+                    }
+                }
             ]
         ],
         "meta": {
             "nf-test": "0.9.2",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-11T13:53:04.2027944"
+        "timestamp": "2025-11-11T15:01:22.679560709"
     }
 }

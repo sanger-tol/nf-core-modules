@@ -66,7 +66,7 @@ nextflow_workflow {
                 { assert snapshot(
                     workflow.out.merged_cool, 
                     workflow.out.mcool, 
-                    workflow.out.versions.collect { file(it).yaml }
+                    workflow.out.versions.collect { path(it).yaml }
                     ).match() 
                 }
             )
