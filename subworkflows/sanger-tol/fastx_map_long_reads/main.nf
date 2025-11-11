@@ -25,7 +25,7 @@ workflow FASTX_MAP_LONG_READS {
             if (!val_asm_meta_list.add(meta)) {
                 error("Error: Duplicate meta object found in `ch_assemblies` in FASTX_MAP_LONG_READS: ${meta}")
             }
-            sample
+            meta
         }
 
     //
