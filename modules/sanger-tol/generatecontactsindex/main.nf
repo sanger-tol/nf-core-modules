@@ -2,7 +2,7 @@ process GENERATE_CONTACTS_INDEX {
     tag "$meta.id"
     label 'process_low'
 
-    conda "conda-forge::coreutils=9.1"
+    conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
     'https://depot.galaxyproject.org/singularity/ubuntu:20.04' :
     'docker.io/ubuntu:20.04' }"
@@ -25,9 +25,9 @@ process GENERATE_CONTACTS_INDEX {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        sort: "coreutils 9.1"
-        cut: "coreutils 9.1"
-        uniq: "coreutils 9.1"
+        sort: "coreutils 9.5"
+        cut: "coreutils 9.5"
+        uniq: "coreutils 9.5"
     END_VERSIONS
     """
 
@@ -37,9 +37,9 @@ process GENERATE_CONTACTS_INDEX {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        sort: "coreutils 9.1"
-        cut: "coreutils 9.1"
-        uniq: "coreutils 9.1"
+        sort: "coreutils 9.5"
+        cut: "coreutils 9.5"
+        uniq: "coreutils 9.5"
     END_VERSIONS
     """
 }

@@ -2,7 +2,7 @@ process CONTACTBED {
     tag "$meta.id"
     label 'process_low'
 
-    conda "conda-forge::coreutils=9.1"
+    conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
     'https://depot.galaxyproject.org/singularity/ubuntu:20.04' :
     'docker.io/ubuntu:20.04' }"
@@ -29,9 +29,9 @@ process CONTACTBED {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        paste: "coreutils 9.1"
-        awk: "coreutils 9.1"
-        sort: "coreutils 9.1"
+        paste: "coreutils 9.5"
+        awk: "coreutils 9.5"
+        sort: "coreutils 9.5"
     END_VERSIONS
     """
 
@@ -41,9 +41,9 @@ process CONTACTBED {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        paste: "coreutils 9.1"
-        awk: "coreutils 9.1"
-        sort: "coreutils 9.1"
+        paste: "coreutils 9.5"
+        awk: "coreutils 9.5"
+        sort: "coreutils 9.5"
     END_VERSIONS
     """
 }
