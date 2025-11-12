@@ -9,18 +9,26 @@ workflow BAM2COOL {
 
     take:
     ch_bam_list     // channel: [val(meta), [bam1, bam2, ...]]
-    ch_chrom_sizes // channel: [val(meta), path(chrom_sizes)]
+    ch_chrom_sizes  // channel: [val(meta), path(chrom_sizes)]
     val_bin_size    // integer: bin size for cooler
 
     main:
 
     ch_versions = Channel.empty()
 
+    ch_bam_list_transposed = ch_bam_list
+        | flatMap { meta, bams ->
+            if (!(bams instanceof List)) {
+                error("BAM2COOL: BAM files not provided in list format!")
+            }
+            bams.withIndex().collect { bam, idx -> [meta + [bam_idx: idx], bam] }
+        }
+
     //
     // Convert marked BAMs to sorted BED
-    //
+    //ca
     BEDTOOLS_BAMTOBEDSORT(
-        ch_bam_list
+        ch_bam_list_transposed
     )
     ch_versions = ch_versions.mix(BEDTOOLS_BAMTOBEDSORT.out.versions)
 
@@ -44,10 +52,14 @@ workflow BAM2COOL {
     // Generate individual .cool files
     //
     ch_cooler_cload_input = GENERATE_CONTACTS_INDEX.out.contacts_with_index
+        | map { meta, contacts, index ->
+            def meta_join = meta - meta.subMap("bam_idx")
+            [ meta_join, meta, contacts, index ]
+        }
         | combine(ch_chrom_sizes, by: 0)
-        | multiMap { meta, contacts, index, sizes ->
-            bed: [ meta, contacts, index ]
-            chrom: [ meta, sizes ]
+        | multiMap { meta, chunk_meta, contacts, index, sizes ->
+            bed: [ chunk_meta, contacts, index ]
+            chrom: [ chunk_meta, sizes ]
         }
 
     COOLER_CLOAD(
@@ -62,7 +74,8 @@ workflow BAM2COOL {
     // Collect all individual .cool files for merging
     //
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
-        .groupTuple(by: 0)
+        | groupTuple(by: 0)
+        | map { meta, cool -> [ meta - meta.subMap("bam_idx"), cool ] }
 
     //
     // Merge individual .cool files
