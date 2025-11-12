@@ -98,7 +98,7 @@ nextflow_workflow {
         }
     }
 
-    test("Undibacterium unclassified - Meles meles - fasta - bam") {
+    test("Undibacterium unclassified - Meles meles - fasta - bam - double files") {
 
         when {
 
@@ -121,7 +121,10 @@ nextflow_workflow {
                     ],
                     [
                         [ id:'test2' ], // meta map
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.fastq.gz', checkIfExists: true),
+                        [
+                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200910_173211.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.5000.fastq.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.fastq.gz', checkIfExists: true)
+                        ]
                     ]
                 )
                 input[2] = 1000
