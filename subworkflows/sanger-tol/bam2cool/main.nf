@@ -21,7 +21,7 @@ workflow BAM2COOL {
             if (!(bams instanceof List)) {
                 error("BAM2COOL: BAM files not provided in list format!")
             }
-            bams.withIndex().collect { bam, idx -> [meta + [bam_idx: idx], bam] }
+            bams.sort().withIndex().collect { bam, idx -> [meta + [bam_idx: idx], bam] }
         }
 
     //
