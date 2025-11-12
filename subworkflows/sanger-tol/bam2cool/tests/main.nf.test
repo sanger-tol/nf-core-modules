@@ -21,39 +21,51 @@ nextflow_workflow {
         nfcoreInstall(
             "${launchDir}/library/",
             [
+                "samtools/faidx",
                 "cooler/cload",
                 "cooler/merge",
                 "cooler/zoomify"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        run("SAMTOOLS_FAIDX"){
+            script "../../../../modules/nf-core/samtools/faidx/main.nf"
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ],
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa.gz', checkIfExists: true)
+                    ]
+                )
+                input[1] = [[], []]
+                input[2] = true
+                """
+            }
+        }
     }
 
     test("bam - paired_end stub") {
 
-        options "-stub"   // stub mode: modules replaced with placeholders
-
         when {
             params {
-                cooler_cload_args = 'pairs -0 -c1 3 -p1 4 -c2 7 -p2 8'
+                cooler_cload_args = '-0 -c1 3 -p1 4 -c2 7 -p2 8'
             }
             workflow {
                 """
                 // Inputs to BAM2COOL workflow
                 input[0] = Channel.of(
                     [
-                        [ id:'test1', single_end:false ],
-                        file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: false)
+                        [ id:'test' ],
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.2.bam', checkIfExists: true)
                     ],
                     [
-                        [ id:'test2', single_end:false ],
-                        file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: false)
+                        [ id:'test' ],
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.3.bam', checkIfExists: true)
                     ]
                 )
-                input[1] = Channel.of([
-                    [ id:'genome' ],
-                    file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.genome', checkIfExists: false)
-                ])
+                input[1] = SAMTOOLS_FAIDX.out.sizes 
                 input[2] = 1000
                 """
             }

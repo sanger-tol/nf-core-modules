@@ -43,10 +43,17 @@ workflow BAM2COOL {
     //
     // Generate individual .cool files
     //
+    ch_cooler_cload_input = GENERATE_CONTACTS_INDEX.out.contacts_with_index
+        | combine(ch_chrom_sizes, by: 0)
+        | multiMap { meta, contacts, index, sizes ->
+            bed: [ meta, contacts, index ]
+            chrom: [ meta, sizes ]
+        }
+
     COOLER_CLOAD(
-        GENERATE_CONTACTS_INDEX.out.contacts_with_index,
-        ch_chrom_sizes,
-        'full',
+        ch_cooler_cload_input.bed,
+        ch_cooler_cload_input.chrom,
+        'pairs',
         val_bin_size
     )
     ch_versions = ch_versions.mix(COOLER_CLOAD.out.versions)
@@ -56,16 +63,6 @@ workflow BAM2COOL {
     //
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
         .groupTuple(by: 0)
-        .map { cool_files ->
-            def cool_paths = []
-            cool_files.each { item ->
-                if (item instanceof List && item.size() >= 2 && item[1] != null) {
-                    cool_paths.add(item[1])
-                }
-            }
-            def merged_meta = [ id: 'merged' ]
-            [merged_meta, cool_paths]
-        }
 
     //
     // Merge individual .cool files
