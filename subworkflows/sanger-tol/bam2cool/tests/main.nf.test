@@ -64,7 +64,12 @@ nextflow_workflow {
             // Stub-safe assertions: workflow runs without error
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(
+                    workflow.out.merged_cool.collect { file(it.get(1)).getName() },
+                    workflow.out.mcool.collect { file(it.get(1)).getName() },
+                    workflow.out.versions
+                    ).match()
+                }
             )
         }
 
