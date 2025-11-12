@@ -1,27 +1,28 @@
 {
-    "bam - paired_end stub": {
+    "bam - paired_end": {
         "content": [
             {
                 "0": [
                     [
                         {
-                            "id": "merged"
+                            "id": "test"
                         },
-                        "merged.cool:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.cool:md5,14d46221a45cdd5fd7d2d6d34b47621a"
                     ]
                 ],
                 "1": [
                     [
                         {
-                            "id": "merged"
+                            "id": "test"
                         },
-                        "merged.mcool:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.mcool:md5,fe07f3b459b70bb39febd8ad44fcb269"
                     ]
                 ],
                 "2": [
                     "versions.yml:md5,2a9c4e16fde5e168c75b31ab7d8394e8",
                     "versions.yml:md5,520059ed04546fa5368615d48b806455",
                     "versions.yml:md5,520059ed04546fa5368615d48b806455",
+                    "versions.yml:md5,6f50b763d693f23fcd0bd16d6a9e6b4f",
                     "versions.yml:md5,6f50b763d693f23fcd0bd16d6a9e6b4f",
                     "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb",
                     "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb",
@@ -32,23 +33,24 @@
                 "mcool": [
                     [
                         {
-                            "id": "merged"
+                            "id": "test"
                         },
-                        "merged.mcool:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.mcool:md5,fe07f3b459b70bb39febd8ad44fcb269"
                     ]
                 ],
                 "merged_cool": [
                     [
                         {
-                            "id": "merged"
+                            "id": "test"
                         },
-                        "merged.cool:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.cool:md5,14d46221a45cdd5fd7d2d6d34b47621a"
                     ]
                 ],
                 "versions": [
                     "versions.yml:md5,2a9c4e16fde5e168c75b31ab7d8394e8",
                     "versions.yml:md5,520059ed04546fa5368615d48b806455",
                     "versions.yml:md5,520059ed04546fa5368615d48b806455",
+                    "versions.yml:md5,6f50b763d693f23fcd0bd16d6a9e6b4f",
                     "versions.yml:md5,6f50b763d693f23fcd0bd16d6a9e6b4f",
                     "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb",
                     "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb",
@@ -59,9 +61,9 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-11T20:59:03.13535313"
+        "timestamp": "2025-11-12T20:52:05.160453"
     }
 }
