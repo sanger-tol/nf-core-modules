@@ -23,7 +23,6 @@ nextflow_workflow {
                 "samtools/faidx",
                 "samtools/index",
                 "samtools/merge",
-                "samtools/markdup"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
