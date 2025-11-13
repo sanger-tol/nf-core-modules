@@ -77,12 +77,6 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         | map { meta, chunkns -> [ meta, chunkns.size() ] }
 
     //
-    // Logic: Re-join the cram files and indexes to their chunk information
-    //
-    ch_cram_with_slices = ch_hic_cram_indexed
-        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
-
-    //
     // Logic: Begin alignment - fork depending on specified aligner
     //
     if(val_aligner == "bwamem2") {
@@ -119,7 +113,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
 
         ch_mapped_bams = CRAMALIGN_MINIMAP2ALIGNHIC.out.bam
     } else {
-        log.error("Unsupported aligner: ${val_aligner}")
+        error("Unsupported aligner: ${val_aligner}")
     }
 
     //
