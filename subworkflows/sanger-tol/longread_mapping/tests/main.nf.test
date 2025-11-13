@@ -189,7 +189,7 @@ nextflow_workflow {
         }
     }
 
-    test("meles meles - PacBio Hifi test") {
+    test("meles meles - PacBio Hifi test - double files") {
 
         when {
             params {
@@ -219,7 +219,10 @@ nextflow_workflow {
                     ],
                     [
                         [ id:'test1' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                        [
+                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200910_173211.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.5000.cram', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                        ]
                     ]
                 )
                 input[2] = 5
@@ -244,6 +247,6 @@ nextflow_workflow {
             nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
-    
+
 
 }
