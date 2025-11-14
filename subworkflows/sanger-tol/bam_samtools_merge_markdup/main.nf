@@ -1,5 +1,4 @@
 include { SAMTOOLS_FAIDX    } from '../../../modules/nf-core/samtools/faidx/main'
-include { SAMTOOLS_INDEX    } from '../../../modules/nf-core/samtools/index/main'
 include { SAMTOOLS_MERGE    } from '../../../modules/nf-core/samtools/merge/main'
 include { SAMTOOLS_MERGEDUP } from '../../../modules/sanger-tol/samtools/mergedup/main'
 
@@ -58,7 +57,11 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
             ch_samtools_merge_input.gzi,
         )
         ch_versions    = ch_versions.mix(SAMTOOLS_MERGEDUP.out.versions)
+
         ch_output_bam  = SAMTOOLS_MERGEDUP.out.bam
+        ch_output_index = SAMTOOLS_MERGEDUP.out.csi
+            | mix(SAMTOOLS_MERGEDUP.out.crai)
+        ch_output_metrics = SAMTOOLS_MERGEDUP.out.metrics
     } else {
         SAMTOOLS_MERGE(
             ch_samtools_merge_input.bam,
@@ -67,24 +70,16 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
             ch_samtools_merge_input.gzi,
         )
         ch_versions    = ch_versions.mix(SAMTOOLS_MERGE.out.versions)
+
         ch_output_bam  = SAMTOOLS_MERGE.out.bam
+        ch_output_index = SAMTOOLS_MERGE.out.csi
+            | mix(SAMTOOLS_MERGE.out.crai)
+        ch_output_metrics = channel.empty()
     }
 
-    //
-    // Module: Index output bam
-    //
-    SAMTOOLS_INDEX(ch_output_bam)
-    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions)
-
-    ch_bam_index = channel.empty()
-        | mix(
-            SAMTOOLS_INDEX.out.bai,
-            SAMTOOLS_INDEX.out.csi,
-            SAMTOOLS_INDEX.out.crai
-        )
-
     emit:
-    bam       = ch_output_bam // channel: [ val(meta), path(bam) ]
-    bam_index = ch_bam_index  // channel: [ val(meta), path(index) ]
-    versions  = ch_versions   // channel: [ versions.yml ]
+    bam       = ch_output_bam   // channel: [ val(meta), path(bam) ]
+    bam_index = ch_output_index // channel: [ val(meta), path(index) ]
+    metrics   = ch_output_metrics // channel [ val(meta), path(stats) ]
+    versions  = ch_versions     // channel: [ versions.yml ]
 }
