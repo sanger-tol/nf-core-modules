@@ -18,10 +18,11 @@ process GENERATE_CONTACTS_INDEX {
     task.ext.when == null || task.ext.when
 
     script:
+    prefix = task.ext.prefix ?: "${meta.id}"
     """
     # Create index TSV file from contacts
     # Index typically contains unique contact pairs or sorted positions
-    LC_ALL=C sort -k1,1 -k2,2n -S 2G ${contacts} | cut -f1,2 | uniq > ${meta.id}.index.tsv
+    LC_ALL=C sort -k1,1 -k2,2n -S 2G ${contacts} | cut -f1,2 | uniq > ${prefix}.index.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
