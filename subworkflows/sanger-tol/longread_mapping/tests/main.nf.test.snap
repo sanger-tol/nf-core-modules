@@ -28,10 +28,13 @@
             [
                 "versions.yml:md5,1e0ef2d568832aca8d333501199ae77b",
                 "versions.yml:md5,1e0ef2d568832aca8d333501199ae77b",
+                "versions.yml:md5,634e8c806cba8cca4b73c6b206f796b4",
+                "versions.yml:md5,634e8c806cba8cca4b73c6b206f796b4",
                 "versions.yml:md5,663fb1b828914274912d0ca51115378a",
                 "versions.yml:md5,663fb1b828914274912d0ca51115378a",
                 "versions.yml:md5,67afe4aba4aab8e07765f229e5964159",
                 "versions.yml:md5,67afe4aba4aab8e07765f229e5964159",
+                "versions.yml:md5,86a5462ba9782024e569266fc9ef7201",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
@@ -45,10 +48,10 @@
             ]
         ],
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.04.2"
+            "nf-test": "0.9.2",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-10-27T13:47:41.767886"
+        "timestamp": "2025-11-10T14:00:51.481726666"
     },
     "meles meles - mismatch meta test": {
         "content": [
@@ -114,10 +117,14 @@
             [
                 "versions.yml:md5,1e0ef2d568832aca8d333501199ae77b",
                 "versions.yml:md5,1e0ef2d568832aca8d333501199ae77b",
+                "versions.yml:md5,634e8c806cba8cca4b73c6b206f796b4",
+                "versions.yml:md5,634e8c806cba8cca4b73c6b206f796b4",
                 "versions.yml:md5,663fb1b828914274912d0ca51115378a",
                 "versions.yml:md5,663fb1b828914274912d0ca51115378a",
                 "versions.yml:md5,67afe4aba4aab8e07765f229e5964159",
                 "versions.yml:md5,67afe4aba4aab8e07765f229e5964159",
+                "versions.yml:md5,86a5462ba9782024e569266fc9ef7201",
+                "versions.yml:md5,86a5462ba9782024e569266fc9ef7201",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
@@ -132,6 +139,41 @@
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
+                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
+                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2025-11-10T14:05:13.847509635"
+    },
+    "meles meles - mismatch meta test": {
+        "content": [
+            [
+                {
+                    "maxReadLength": 96980,
+                    "minReadLength": 0,
+                    "meanReadLength": 4840,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 3,
+                    "readCount": 16265,
+                    "duplicateReadCount": 0,
+                    "sorted": false
+                }
+            ],
+            [
+                "versions.yml:md5,1e0ef2d568832aca8d333501199ae77b",
+                "versions.yml:md5,1e0ef2d568832aca8d333501199ae77b",
+                "versions.yml:md5,634e8c806cba8cca4b73c6b206f796b4",
+                "versions.yml:md5,634e8c806cba8cca4b73c6b206f796b4",
+                "versions.yml:md5,663fb1b828914274912d0ca51115378a",
+                "versions.yml:md5,663fb1b828914274912d0ca51115378a",
+                "versions.yml:md5,67afe4aba4aab8e07765f229e5964159",
+                "versions.yml:md5,86a5462ba9782024e569266fc9ef7201",
+                "versions.yml:md5,86a5462ba9782024e569266fc9ef7201",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
@@ -164,8 +206,10 @@
             ],
             [
                 "versions.yml:md5,1e0ef2d568832aca8d333501199ae77b",
+                "versions.yml:md5,634e8c806cba8cca4b73c6b206f796b4",
                 "versions.yml:md5,663fb1b828914274912d0ca51115378a",
                 "versions.yml:md5,67afe4aba4aab8e07765f229e5964159",
+                "versions.yml:md5,86a5462ba9782024e569266fc9ef7201",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,bb93856f33590e258c1f2c817bcf85cd",
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f"

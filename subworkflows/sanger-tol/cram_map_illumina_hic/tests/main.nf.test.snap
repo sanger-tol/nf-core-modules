@@ -1,4 +1,55 @@
 {
+    "meles meles - bwamem2 - multiple samples": {
+        "content": [
+            [
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
+                },
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 151,
+                    "meanReadLength": 151,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 7,
+                    "readCount": 3802,
+                    "duplicateReadCount": 54,
+                    "sorted": true
+                }
+            ],
+            [
+                "versions.yml:md5,408ffba01af9831d7188035990fe0092",
+                "versions.yml:md5,408ffba01af9831d7188035990fe0092",
+                "versions.yml:md5,567f8f10654341281642de9826ceba8b",
+                "versions.yml:md5,567f8f10654341281642de9826ceba8b",
+                "versions.yml:md5,6506bd5d600b4c2b5c9d51ab1e559772",
+                "versions.yml:md5,6506bd5d600b4c2b5c9d51ab1e559772",
+                "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
+                "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
+                "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
+                "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
+                "versions.yml:md5,8a7b8447a53edc0d6d66d3e2078f76f0",
+                "versions.yml:md5,8a7b8447a53edc0d6d66d3e2078f76f0",
+                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
+                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
+                "versions.yml:md5,d36134f61f1cf5af8f9aef2454a94e54",
+                "versions.yml:md5,d36134f61f1cf5af8f9aef2454a94e54"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2025-11-14T13:25:22.391321273"
+    },
     "meles meles - bwamem2": {
         "content": [
             [
@@ -30,6 +81,7 @@
                 "versions.yml:md5,6506bd5d600b4c2b5c9d51ab1e559772",
                 "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
                 "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
+                "versions.yml:md5,8a7b8447a53edc0d6d66d3e2078f76f0",
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
                 "versions.yml:md5,d36134f61f1cf5af8f9aef2454a94e54"
             ]
@@ -69,6 +121,7 @@
             [
                 "versions.yml:md5,21cd01daa785b5d5aecbd5a75b752c41",
                 "versions.yml:md5,57921e27b2a928b57e3419eb0e2cdfae",
+                "versions.yml:md5,8a7b8447a53edc0d6d66d3e2078f76f0",
                 "versions.yml:md5,95e0f5692187ae002f2dc5c27f09b239",
                 "versions.yml:md5,95e0f5692187ae002f2dc5c27f09b239",
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
@@ -192,6 +245,8 @@
                 "versions.yml:md5,6506bd5d600b4c2b5c9d51ab1e559772",
                 "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
                 "versions.yml:md5,6a676d249165bcef19b33bdd3be83e78",
+                "versions.yml:md5,8a7b8447a53edc0d6d66d3e2078f76f0",
+                "versions.yml:md5,8a7b8447a53edc0d6d66d3e2078f76f0",
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
                 "versions.yml:md5,d36134f61f1cf5af8f9aef2454a94e54",
@@ -202,6 +257,38 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-14T10:51:42.773355"
+        "timestamp": "2025-11-14T13:28:08.273944786"
+    },
+    "meles meles - multiple read groups": {
+        "content": [
+            [
+                {
+                    "maxReadLength": 151,
+                    "minReadLength": 26,
+                    "meanReadLength": 144,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 44,
+                    "readCount": 6659,
+                    "duplicateReadCount": 0,
+                    "sorted": false
+                }
+            ],
+            [
+                "versions.yml:md5,408ffba01af9831d7188035990fe0092",
+                "versions.yml:md5,567f8f10654341281642de9826ceba8b",
+                "versions.yml:md5,57921e27b2a928b57e3419eb0e2cdfae",
+                "versions.yml:md5,823323453cd1252e06e2d115039f5eed",
+                "versions.yml:md5,8a7b8447a53edc0d6d66d3e2078f76f0",
+                "versions.yml:md5,95e0f5692187ae002f2dc5c27f09b239",
+                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
+                "versions.yml:md5,d36134f61f1cf5af8f9aef2454a94e54"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2025-11-14T12:51:21.086530681"
     }
 }

@@ -4,6 +4,7 @@ include { MINIMAP2_INDEX                  } from '../../../modules/nf-core/minim
 include { SAMTOOLS_FAIDX                  } from '../../../modules/nf-core/samtools/faidx/main'
 include { SAMTOOLS_INDEX                  } from '../../../modules/nf-core/samtools/index/main'
 include { SAMTOOLS_MERGE                  } from '../../../modules/nf-core/samtools/merge/main'
+include { SAMTOOLS_SPLITHEADER            } from '../../../modules/nf-core/samtools/splitheader/main'
 
 workflow LONGREAD_MAPPING {
 
@@ -14,6 +15,7 @@ workflow LONGREAD_MAPPING {
 
     main:
     ch_versions = Channel.empty()
+
 
     //
     // Logic: check if CRAM files are accompanied by an index
@@ -42,6 +44,17 @@ workflow LONGREAD_MAPPING {
         )
 
     //
+    // Module: Extract read groups from CRAM headers
+    //
+    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_crams).readgroup
+    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
+
+    //
+    // Logic: Join read groups back to indexed crams
+    //
+    ch_cram_indexed_rg = ch_cram_indexed
+        | join(ch_readgroups, by: 0)
+
     // Module: Process the cram index files to determine how many
     //         chunks to split into for mapping
     //
@@ -61,6 +74,12 @@ workflow LONGREAD_MAPPING {
         | map { meta, chunkns -> [ meta, chunkns.size() ] }
 
     //
+    // Logic: Re-join the cram files and indexes to their chunk information
+    //
+    ch_cram_with_slices = ch_cram_indexed_rg
+        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
+
+    //
     // MODULE: generate minimap2 mmi file
     //
     MINIMAP2_INDEX(ch_assemblies)
@@ -69,6 +88,11 @@ workflow LONGREAD_MAPPING {
     ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
         | transpose()
         | combine(MINIMAP2_INDEX.out.index, by: 0)
+
+    ch_cram_chunk = ch_cram_with_slices
+        | transpose()
+    MINIMAP2_INDEX.out.index.view().collectFile(name: 'readgroup.txt', newLine: true, storeDir: 'results')
+
 
     CRAMALIGN_MINIMAP2ALIGN(ch_cram_chunks)
     ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGN.out.versions)

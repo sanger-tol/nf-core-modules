@@ -8,7 +8,7 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
         'community.wave.seqera.io/library/bwa-mem2_htslib_samtools:db98f81f55b64113' }"
 
     input:
-    tuple val(meta), path(cram), path(crai), val(chunkn), val(range), path(index), path(reference)
+    tuple val(meta), path(cram), path(crai), val(rg_file), val(chunkn), val(range), path(index), path(reference)
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
@@ -25,13 +25,15 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
     def args5 = task.ext.args5 ?: ''
     def args6 = task.ext.args6 ?: ''
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
+    def rg_lines = rg_file.readLines()
+    def rg_arg  = rg_lines ? "-C " + rg_lines.collect { " -H '${it.replaceAll("\t","\\\\t")}'" }.join(' ') : ''
     // Please be aware one of the tools here required mem = 28 * reference size!!!
     """
     INDEX=`find -L ./ -name "*.amb" | sed 's/\\.amb\$//'`
 
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\
-        bwa-mem2 mem ${args3} -t ${task.cpus} \${INDEX} - |\\
+        bwa-mem2 mem ${args3} -t ${task.cpus} \${INDEX} ${rg_arg} - |\\
         samtools fixmate ${args4} - - |\\
         samtools view -h ${args5} |\\
         samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.bam -

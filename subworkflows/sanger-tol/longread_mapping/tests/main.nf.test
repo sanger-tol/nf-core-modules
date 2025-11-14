@@ -23,7 +23,8 @@ nextflow_workflow {
                 "minimap2/index",
                 "samtools/index",
                 "samtools/merge",
-                "samtools/faidx"
+                "samtools/faidx",
+                "samtools/splitheader"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
@@ -51,7 +52,7 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file('/nfs/users/nfs_h/hh14/rm_new_dev/work/69/a75c0ae5646a33f6f75c8f137f4c42/mMelMel3_T2_addRG.cram', checkIfExists: true)
                     ]
                 )
                 input[2] = 10
@@ -103,7 +104,7 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file('/nfs/users/nfs_h/hh14/rm_new_dev/work/69/a75c0ae5646a33f6f75c8f137f4c42/mMelMel3_T2_addRG.cram', checkIfExists: true)
                     ],
                     [
                         [ id:'test1' ],
@@ -159,11 +160,11 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file('/nfs/users/nfs_h/hh14/rm_new_dev/work/69/a75c0ae5646a33f6f75c8f137f4c42/mMelMel3_T2_addRG.cram', checkIfExists: true)
                     ],
                     [
                         [ id:'test2' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file('/nfs/users/nfs_h/hh14/rm_new_dev/work/69/a75c0ae5646a33f6f75c8f137f4c42/mMelMel3_T2_addRG.cram', checkIfExists: true)
                     ]
                 )
                 input[2] = 5
@@ -215,13 +216,13 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                        file('/nfs/users/nfs_h/hh14/rm_new_dev/work/e4/718cd3abe3f9e8cc747dee65fe9d81/mMelMel3_T3_addRG.cram', checkIfExists: true)
                     ],
                     [
                         [ id:'test1' ],
                         [
                             file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200910_173211.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.5000.cram', checkIfExists: true),
-                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                            file('/nfs/users/nfs_h/hh14/rm_new_dev/work/e4/718cd3abe3f9e8cc747dee65fe9d81/mMelMel3_T3_addRG.cram', checkIfExists: true)
                         ]
                     ]
                 )

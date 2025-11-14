@@ -4,6 +4,7 @@ include { CRAMALIGN_BWAMEM2ALIGNHIC  } from '../../../modules/sanger-tol/cramali
 include { CRAMALIGN_MINIMAP2ALIGNHIC } from '../../../modules/sanger-tol/cramalign/minimap2alignhic'
 include { MINIMAP2_INDEX             } from '../../../modules/nf-core/minimap2/index/main'
 include { SAMTOOLS_INDEX             } from '../../../modules/nf-core/samtools/index/main'
+include { SAMTOOLS_SPLITHEADER       } from '../../../modules/nf-core/samtools/splitheader/main'
 
 include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
 
@@ -58,6 +59,18 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         )
 
     //
+    // Module: Extract read groups from CRAM headers
+    //
+    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram).readgroup
+    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
+
+    //
+    // Logic: Join read groups back to indexed crams
+    //
+    ch_hic_cram_indexed_rg = ch_hic_cram_indexed
+        | join(ch_readgroups, by: 0)
+
+    //
     // Module: Process the cram index files to determine how many
     //         chunks to split into for mapping
     //
@@ -75,6 +88,12 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         | transpose()
         | groupTuple(by: 0)
         | map { meta, chunkns -> [ meta, chunkns.size() ] }
+
+    //
+    // Logic: Re-join the cram files and indexes to their chunk information
+    //
+    ch_cram_with_slices = ch_hic_cram_indexed_rg
+        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
 
     //
     // Logic: Begin alignment - fork depending on specified aligner
