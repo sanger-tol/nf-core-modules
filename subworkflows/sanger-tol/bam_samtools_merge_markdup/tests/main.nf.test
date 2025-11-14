@@ -33,6 +33,10 @@ nextflow_workflow {
 
         when {
 
+            params {
+                samtools_args = "--write-index"
+            }
+
             workflow {
                 """
                 input[0] = Channel.of([
@@ -73,6 +77,10 @@ nextflow_workflow {
 
         when {
 
+            params {
+                samtools_args = "-s --write-index"
+            }
+
             workflow {
                 """
                 input[0] = Channel.of([
@@ -97,6 +105,7 @@ nextflow_workflow {
                 { assert snapshot(
                     workflow.out.bam.collect { bam(it.get(1)).getStatistics() },
                     workflow.out.bam_index.collect { file(it.get(1)).getName() },
+                    workflow.out.metrics,
                     workflow.out.versions
                 ).match() }
             )

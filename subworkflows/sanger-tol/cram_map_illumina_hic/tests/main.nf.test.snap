@@ -15,7 +15,15 @@
                 }
             ],
             [
-                
+                "test.bam.csi"
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.metrics:md5,51755ba7077cd444be19d1fd07569cb6"
+                ]
             ],
             [
                 "versions.yml:md5,21cd01daa785b5d5aecbd5a75b752c41",
@@ -30,7 +38,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-14T09:02:56.716996"
+        "timestamp": "2025-11-14T10:48:27.428806"
     },
     "meles meles - minimap2": {
         "content": [
@@ -48,7 +56,15 @@
                 }
             ],
             [
-                
+                "test.bam.csi"
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.metrics:md5,bc737c10e07175ea468040b952538e50"
+                ]
             ],
             [
                 "versions.yml:md5,21cd01daa785b5d5aecbd5a75b752c41",
@@ -63,7 +79,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-14T09:05:53.456216"
+        "timestamp": "2025-11-14T10:52:19.15697"
     },
     "meles meles - zymo - bwamem2 - multiple samples - double files": {
         "content": [
@@ -92,7 +108,22 @@
                 }
             ],
             [
-                
+                "test2.bam.csi",
+                "test.bam.csi"
+            ],
+            [
+                [
+                    {
+                        "id": "test2"
+                    },
+                    "test2.metrics:md5,9576c2cd924a502933e631d457d034b6"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.metrics:md5,75db11ef6694d30a041ce3ef5325dd19"
+                ]
             ],
             [
                 "versions.yml:md5,21cd01daa785b5d5aecbd5a75b752c41",
@@ -127,7 +158,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-14T09:04:31.147482"
+        "timestamp": "2025-11-14T10:50:52.713388"
     },
     "meles meles - bwamem2 - multiple samples - meta mismatch": {
         "content": [
@@ -145,7 +176,15 @@
                 }
             ],
             [
-                
+                "test.bam.csi"
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.metrics:md5,51755ba7077cd444be19d1fd07569cb6"
+                ]
             ],
             [
                 "versions.yml:md5,21cd01daa785b5d5aecbd5a75b752c41",
@@ -163,6 +202,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-14T09:05:15.497704"
+        "timestamp": "2025-11-14T10:51:42.773355"
     }
 }
