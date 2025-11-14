@@ -45,11 +45,8 @@ workflow LONGREAD_MAPPING {
     // Module: Process the cram index files to determine how many
     //         chunks to split into for mapping
     //
-    ch_cram_indexes = ch_cram_indexed
-        | map { meta, cram, index -> [ meta, index ] }
-
     CRAMALIGN_GENCRAMCHUNKS(
-        ch_cram_indexes,
+        ch_cram_indexed,
         val_cram_chunk_size
     )
     ch_versions = ch_versions.mix(CRAMALIGN_GENCRAMCHUNKS.out.versions)
@@ -58,16 +55,10 @@ workflow LONGREAD_MAPPING {
     // Logic: Count the total number of cram chunks for downstream grouping
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
-        | map { meta, chunkn, _slices -> [ meta, chunkn ] }
+        | map { meta, _cram, _crai, chunkn, _slices -> [ meta, chunkn ] }
         | transpose()
         | groupTuple(by: 0)
         | map { meta, chunkns -> [ meta, chunkns.size() ] }
-
-    //
-    // Logic: Re-join the cram files and indexes to their chunk information
-    //
-    ch_cram_with_slices = ch_cram_indexed
-        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
 
     //
     // MODULE: generate minimap2 mmi file
@@ -75,7 +66,7 @@ workflow LONGREAD_MAPPING {
     MINIMAP2_INDEX(ch_assemblies)
     ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
-    ch_cram_chunks = ch_cram_with_slices
+    ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
         | transpose()
         | combine(MINIMAP2_INDEX.out.index, by: 0)
 
