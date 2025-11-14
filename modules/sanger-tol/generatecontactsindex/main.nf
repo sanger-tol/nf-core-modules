@@ -22,7 +22,7 @@ process GENERATE_CONTACTS_INDEX {
     """
     # Create index TSV file from contacts
     # Index typically contains unique contact pairs or sorted positions
-    LC_ALL=C sort -k1,1 -k2,2n -S 2G ${contacts} | cut -f1,2 | uniq > ${prefix}.index.tsv
+    cut -f1,2 ${contacts} | LC_ALL=C sort -k1,1 -k2,2n -u -S ${task.memory.toGiga()}G > ${meta.id}.index.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
