@@ -1,0 +1,66 @@
+nextflow_process {
+
+    name "Test Process CONTACTBED"
+    script "../main.nf"
+    process "CONTACTBED"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "contactbed"
+
+    config './nextflow.config'
+
+    test("Undibacterium unclassified - bed") {
+
+        when {
+
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Allolobophora_molleri/analysis/sorted.bed', checkIfExists: false)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+    test("Undibacterium unclassified - bed - stub") {
+
+        options "-stub"
+
+        when {
+
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file('https://tolit.cog.sanger.ac.uk/test-data/Allolobophora_molleri/analysis/sorted.bed', checkIfExists: false)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+}
+

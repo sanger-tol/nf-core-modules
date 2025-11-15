@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
+name: "bam2cool"
+description: Convert BAM files to cooler format for Hi-C analysis
+keywords:
+  - hic
+  - cooler
+  - bam
+  - contacts
+  - mcool
+components:
+  - bedtools/bamtobedsort
+  - contactbed
+  - generate/contacts/index
+  - hic/getpairedcontactbed
+  - cooler/cload:
+      git_remote: https://github.com/nf-core/modules.git
+  - cooler/merge:
+      git_remote: https://github.com/nf-core/modules.git
+  - cooler/zoomify:
+      git_remote: https://github.com/nf-core/modules.git
+input:
+  - ch_bam_list:
+      type: file
+      description: |
+        The input channel containing a list of BAM files
+        Structure: [ val(meta), [path(bam1), path(bam2), ...] ]
+      pattern: "*.bam"
+  - ch_chrom_sizes:
+      type: file
+      description: |
+        The input channel containing chromosome sizes file
+        Structure: [ val(meta), path(chrom_sizes) ]
+      pattern: "*.{txt,sizes}"
+  - val_bin_size:
+      type: integer
+      description: Bin size for cooler matrix (e.g., 1000)
+output:
+  - merged_cool:
+      type: file
+      description: |
+        Channel containing merged cooler file
+        Structure: [ val(meta), path(cool) ]
+      pattern: "*.cool"
+  - mcool:
+      type: file
+      description: |
+        Channel containing multi-resolution cooler file
+        Structure: [ val(meta), path(mcool) ]
+      pattern: "*.mcool"
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"

@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "generate_contacts_index"
+description: |
+  Generates a TSV index file from contacts BED file by sorting and extracting unique contact positions.
+keywords:
+  - index
+  - contacts
+  - bed
+  - hic
+  - tsv
+tools:
+  - coreutils:
+      description: |
+        GNU coreutils provides basic file, shell and text manipulation utilities.
+      homepage: https://www.gnu.org/software/coreutils/
+      documentation: https://www.gnu.org/software/coreutils/manual/
+      licence: ["GPL v3.0"]
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - contacts:
+        type: file
+        description: |
+          Contacts BED file to generate index for.
+        pattern: "*.bed"
+        ontologies:
+          - edam: http://edamontology.org/format_3003
+output:
+  contacts_with_index:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - contacts:
+          type: file
+          description: |
+            Input contacts BED file (passed through).
+          pattern: "*.bed"
+          ontologies:
+            - edam: http://edamontology.org/format_3003
+      - "*.index.tsv":
+          type: file
+          description: |
+            Path to index TSV file of the contacts.
+          pattern: "*.index.tsv"
+          ontologies:
+            - edam: http://edamontology.org/format_3475 # TSV
+  versions:
+    - versions.yml:
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+        ontologies:
+          - edam: http://edamontology.org/format_3750 # YAML
+authors:
+  - "@sanger-tol"
+maintainers:
+  - "@sanger-tol"
+
