@@ -47,7 +47,7 @@ process ASMSTATS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        asmstats: \$(asmstats --version)
+        asmstats: ${VERSION}
         seqtk: \$(seqtk |& sed '/Version/!d; s/.* //')
     END_VERSIONS
     """
