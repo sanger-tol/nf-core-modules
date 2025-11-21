@@ -48,14 +48,15 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2_1_subset.cram.rg.txt', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram.crai', checkIfExists: true),
                     1,
                     [0, 1],
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true),
                 ]).join(BWAMEM2_INDEX.out.index)
-                .map { meta, cram, crai, chunkn, range, ref, index ->
-                    [ meta, cram, crai, chunkn, range, index, ref ]
+                .map { meta, rg, cram, crai, chunkn, range, ref, index ->
+                    [ meta, rg, cram, crai, chunkn, range, index, ref ]
                 }
                 """
             }
@@ -88,14 +89,15 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2_1_subset.cram.rg.txt', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/hic-arima2/35528_2%231_subset.cram.crai', checkIfExists: true),
                     1,
                     [0, 1],
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true),
                 ]).join(BWAMEM2_INDEX.out.index)
-                .map { meta, cram, crai, chunkn, range, ref, index ->
-                    [ meta, cram, crai, chunkn, range, index, ref ]
+                .map { meta, rg, cram, crai, chunkn, range, ref, index ->
+                    [ meta, rg, cram, crai, chunkn, range, index, ref ]
                 }
                 """
             }
