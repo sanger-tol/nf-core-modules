@@ -36,8 +36,11 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     // Logic: check if CRAM files are accompanied by an index
     //        Get indexes, and index those that aren't
     //
-    ch_hic_cram_raw = ch_hic_cram
+    ch_hic_cram_meta_mod = ch_hic_cram
         | transpose()
+        | map { meta, cram -> [ meta + [ cramfile: cram ], cram ]}
+
+    ch_hic_cram_raw = ch_hic_cram_meta_mod
         | branch { meta, cram ->
             def cram_file = file(cram, checkIfExists: true)
             def index = cram + ".crai"
@@ -59,18 +62,6 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         )
 
     //
-    // Module: Extract read groups from CRAM headers
-    //
-    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram).readgroup
-    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
-
-    //
-    // Logic: Join read groups back to indexed crams
-    //
-    ch_hic_cram_indexed_rg = ch_hic_cram_indexed
-        | join(ch_readgroups, by: 0)
-
-    //
     // Module: Process the cram index files to determine how many
     //         chunks to split into for mapping
     //
@@ -84,16 +75,30 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     // Logic: Count the total number of cram chunks for downstream grouping
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
-        | map { meta, _cram, _crai, chunkn, _slices -> [ meta, chunkn ] }
+        | map { meta, _cram, _crai, chunkn, _slices ->
+            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            [ clean_meta, chunkn ]
+        }
         | transpose()
         | groupTuple(by: 0)
-        | map { meta, chunkns -> [ meta, chunkns.size() ] }
+        | map { meta, chunkns ->[ meta, chunkns.size() ]
+        }
 
     //
-    // Logic: Re-join the cram files and indexes to their chunk information
+    // Module: Extract read groups from CRAM headers
     //
-    ch_cram_with_slices = ch_hic_cram_indexed_rg
+    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod).readgroup
+    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
+
+    //
+    // Logic: Join reagroups with the CRAM chunks and clean meta
+    //
+    ch_cram_rg = ch_readgroups
         | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
+        | map { meta, rg, cram, crai, chunkn, slices ->
+            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            [ clean_meta, rg, cram, crai, chunkn, slices ]
+        }
 
     //
     // Logic: Begin alignment - fork depending on specified aligner
@@ -108,7 +113,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         ch_assemblies_with_reference = ch_assemblies
             | combine(BWAMEM2_INDEX.out.index, by: 0)
 
-        ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
+        ch_cram_chunks = ch_cram_rg
             | transpose()
             | combine(ch_assemblies_with_reference, by: 0)
 
@@ -123,7 +128,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         MINIMAP2_INDEX(ch_assemblies)
         ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
-        ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
+        ch_cram_chunks = ch_cram_rg
             | transpose()
             | combine(MINIMAP2_INDEX.out.index, by: 0)
 
@@ -148,6 +153,8 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         }
         | groupTuple(by: 0)
         | map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
+
+    // ch_merge_input.view().collectFile(name: "readgroups.txt", storeDir: "./logs")
 
     //
     // Subworkflow: merge BAM files and mark duplicates

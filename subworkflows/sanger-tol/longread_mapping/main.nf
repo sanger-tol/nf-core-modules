@@ -16,13 +16,15 @@ workflow LONGREAD_MAPPING {
     main:
     ch_versions = Channel.empty()
 
-
     //
     // Logic: check if CRAM files are accompanied by an index
     //        Get indexes, and index those that aren't
     //
-    ch_cram_raw = ch_crams
+    ch_crams_meta_mod = ch_crams
         | transpose()
+        | map { meta, cram -> [ meta + [ cramfile: cram ], cram ] }
+
+    ch_cram_raw = ch_crams_meta_mod
         | branch { meta, cram ->
             def cram_file = file(cram, checkIfExists: true)
             def index = cram + ".crai"
@@ -43,18 +45,6 @@ workflow LONGREAD_MAPPING {
             ch_cram_raw.no_index.join(SAMTOOLS_INDEX.out.crai)
         )
 
-    //
-    // Module: Extract read groups from CRAM headers
-    //
-    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_crams).readgroup
-    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
-
-    //
-    // Logic: Join read groups back to indexed crams
-    //
-    ch_cram_indexed_rg = ch_cram_indexed
-        | join(ch_readgroups, by: 0)
-
     // Module: Process the cram index files to determine how many
     //         chunks to split into for mapping
     //
@@ -68,16 +58,30 @@ workflow LONGREAD_MAPPING {
     // Logic: Count the total number of cram chunks for downstream grouping
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
-        | map { meta, _cram, _crai, chunkn, _slices -> [ meta, chunkn ] }
+        | map { meta, _cram, _crai, chunkn, _slices -> 
+            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            [ clean_meta, chunkn ] 
+        }
         | transpose()
         | groupTuple(by: 0)
-        | map { meta, chunkns -> [ meta, chunkns.size() ] }
+        | map { meta, chunkns ->[ meta, chunkns.size() ] 
+        }
 
     //
-    // Logic: Re-join the cram files and indexes to their chunk information
+    // Module: Extract read groups from CRAM headers
     //
-    ch_cram_with_slices = ch_cram_indexed_rg
+    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_crams_meta_mod).readgroup
+    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
+
+    //
+    // Logic: Join reagroups with the CRAM chunks
+    //
+    ch_cram_rg = ch_readgroups
         | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
+        | map { meta, rg, cram, crai, chunkn, slices ->
+            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            [ clean_meta, rg, cram, crai, chunkn, slices ]
+        }
 
     //
     // MODULE: generate minimap2 mmi file
@@ -85,14 +89,9 @@ workflow LONGREAD_MAPPING {
     MINIMAP2_INDEX(ch_assemblies)
     ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
-    ch_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
+    ch_cram_chunks = ch_cram_rg
         | transpose()
         | combine(MINIMAP2_INDEX.out.index, by: 0)
-
-    ch_cram_chunk = ch_cram_with_slices
-        | transpose()
-    MINIMAP2_INDEX.out.index.view().collectFile(name: 'readgroup.txt', newLine: true, storeDir: 'results')
-
 
     CRAMALIGN_MINIMAP2ALIGN(ch_cram_chunks)
     ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGN.out.versions)
@@ -138,6 +137,7 @@ workflow LONGREAD_MAPPING {
             fai:   [ meta, fai ]
             gzi:   [ meta, gzi ]
         }
+    //CRAMALIGN_MINIMAP2ALIGN.out.bam.view().collectFile(name: 'readgroup.txt', newLine: true, storeDir: 'results')
 
     //
     // Module: Merge position-sorted bam files

@@ -8,7 +8,7 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
         'community.wave.seqera.io/library/htslib_minimap2_samtools_gawk_perl:6729620c63652154' }"
 
     input:
-    tuple val(meta), path(cram), path(crai), val(rg_file), val(chunkn), val(range), path(reference)
+    tuple val(meta), val(rg_file), path(cram), path(crai), val(chunkn), val(range), path(reference)
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
@@ -24,18 +24,26 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
     // nextflow.enable.moduleBinaries = true
     // in your nextflow.config file.
     def args1 = task.ext.args1 ?: ''
-    def args2 = task.ext.args2 ?: '-t'
+    def args2 = task.ext.args2 ?: '-t' // copy RG, BC and QT tags to the FASTQ header line
     def args3 = task.ext.args3 ?: ''
     def args4 = task.ext.args4 ?: ''
     def args5 = task.ext.args5 ?: ''
     def args6 = task.ext.args6 ?: ''
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
-    def rg_lines = rg_file.readLines()
-    def rg_arg  = rg_lines ? rg_lines.collect { "-R '${it.replaceAll("\t","\\\\t")}'" }.join(' ') : ''
+    // Prepare read group arguments if rglines are found, else, empty string
+    def rg_lines = file(rg_file).readLines()
+    def rg_arg = rg_lines ? "-y " + rg_lines.collect { line ->
+           // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
+            def l = line.contains("SM:") ? line 
+                : meta.sample ? "${line}\tSM:${meta.sample}" 
+                : "${line}\tSM:${meta.id}"
+            "-R '${l.replaceAll("\t", "\\\\t")}'"
+        }.join(' ') 
+        : ''
     """
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\
-        minimap2 -t${task.cpus} ${args3} ${reference} -y ${rg_arg} - |\\
+        minimap2 -t${task.cpus} ${args3} ${reference} ${rg_arg} - |\\
         gawk -F'\t' '
             BEGIN { OFS="\\t" }
             \$1 ~ /^\\@/ { print \$0 }
