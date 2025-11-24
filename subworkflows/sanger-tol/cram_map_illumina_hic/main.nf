@@ -81,14 +81,15 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         }
         | transpose()
         | groupTuple(by: 0)
-        | map { meta, chunkns ->[ meta, chunkns.size() ]
-        }
+        | map { meta, chunkns -> [ meta, chunkns.size() ] }
 
     //
     // Module: Extract read groups from CRAM headers
     //
-    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod).readgroup
+    SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod)
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
+    
+    ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
 
     //
     // Logic: Join reagroups with the CRAM chunks and clean meta
@@ -96,7 +97,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     ch_cram_rg = ch_readgroups
         | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
         | map { meta, rg, cram, crai, chunkn, slices ->
-            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, rg, cram, crai, chunkn, slices ]
         }
 
@@ -154,7 +155,6 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         | groupTuple(by: 0)
         | map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
 
-    // ch_merge_input.view().collectFile(name: "readgroups.txt", storeDir: "./logs")
 
     //
     // Subworkflow: merge BAM files and mark duplicates
