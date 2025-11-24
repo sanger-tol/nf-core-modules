@@ -7,8 +7,8 @@
                         {
                             "id": "test"
                         },
-                        "test.purged.fa:md5,f39e71df41f2d5eb58110e5222984dfa",
-                        "test.fa:md5,cd38bf45ddba78787705257b840f6568"
+                        "test.purged.fa:md5,6c5676989f08cdb97de451ecddab463a",
+                        "test.fa:md5,9124737e78ea9ad2c6d583cc4b93fa57"
                     ]
                 ],
                 "1": [
@@ -16,7 +16,7 @@
                         {
                             "id": "test"
                         },
-                        "test.hap.fa:md5,b89d4488c2451413b065b04bb6e08b64"
+                        "test.hap.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "2": [
@@ -64,7 +64,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
+                        "test.dups.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "8": [
@@ -72,7 +72,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                        "test.purge_dups.log:md5,77a60d9cb202ee5067c2254fba8bac52"
                     ]
                 ],
                 "9": [
@@ -97,8 +97,8 @@
                         {
                             "id": "test"
                         },
-                        "test.purged.fa:md5,f39e71df41f2d5eb58110e5222984dfa",
-                        "test.fa:md5,cd38bf45ddba78787705257b840f6568"
+                        "test.purged.fa:md5,6c5676989f08cdb97de451ecddab463a",
+                        "test.fa:md5,9124737e78ea9ad2c6d583cc4b93fa57"
                     ]
                 ],
                 "purged_haplotigs": [
@@ -106,7 +106,7 @@
                         {
                             "id": "test"
                         },
-                        "test.hap.fa:md5,b89d4488c2451413b065b04bb6e08b64"
+                        "test.hap.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "purgedups_bed": [
@@ -114,7 +114,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
+                        "test.dups.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "purgedups_calcuts_cutoffs": [
@@ -146,7 +146,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                        "test.purge_dups.log:md5,77a60d9cb202ee5067c2254fba8bac52"
                     ]
                 ],
                 "purgedups_pbcstat_basecov": [
@@ -186,9 +186,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.04.2"
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-10-31T13:07:19.058159"
+        "timestamp": "2025-11-24T09:41:28.196686"
     },
     "Undibacterium unclassified - hap1 only - hifi": {
         "content": [
@@ -198,8 +198,8 @@
                         {
                             "id": "test"
                         },
-                        "test.purged.fa:md5,f39e71df41f2d5eb58110e5222984dfa",
-                        "test.hap.fa:md5,b89d4488c2451413b065b04bb6e08b64"
+                        "test.purged.fa:md5,6c5676989f08cdb97de451ecddab463a",
+                        "test.hap.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -207,7 +207,7 @@
                         {
                             "id": "test"
                         },
-                        "test.hap.fa:md5,b89d4488c2451413b065b04bb6e08b64"
+                        "test.hap.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "2": [
@@ -255,7 +255,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
+                        "test.dups.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "8": [
@@ -263,7 +263,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                        "test.purge_dups.log:md5,77a60d9cb202ee5067c2254fba8bac52"
                     ]
                 ],
                 "9": [
@@ -287,8 +287,8 @@
                         {
                             "id": "test"
                         },
-                        "test.purged.fa:md5,f39e71df41f2d5eb58110e5222984dfa",
-                        "test.hap.fa:md5,b89d4488c2451413b065b04bb6e08b64"
+                        "test.purged.fa:md5,6c5676989f08cdb97de451ecddab463a",
+                        "test.hap.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "purged_haplotigs": [
@@ -296,7 +296,7 @@
                         {
                             "id": "test"
                         },
-                        "test.hap.fa:md5,b89d4488c2451413b065b04bb6e08b64"
+                        "test.hap.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "purgedups_bed": [
@@ -304,7 +304,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,dfb067e8acdfde5c6dbef54a2ce1e247"
+                        "test.dups.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "purgedups_calcuts_cutoffs": [
@@ -336,7 +336,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,f53e9e39a59a0e7870dd6e7aa047cf22"
+                        "test.purge_dups.log:md5,77a60d9cb202ee5067c2254fba8bac52"
                     ]
                 ],
                 "purgedups_pbcstat_basecov": [
@@ -375,8 +375,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.04.2"
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-10-31T13:08:47.321709"
+        "timestamp": "2025-11-24T09:43:03.658477"
     }
 }
