@@ -17,6 +17,19 @@ workflow LONGREAD_MAPPING {
     ch_versions = Channel.empty()
 
     //
+    // Logic: rolling check of assembly meta objects to detect duplicates
+    //
+    def val_asm_meta_list = Collections.synchronizedSet(new HashSet())
+
+    ch_assemblies
+        | map { meta, _sample ->
+            if (!val_asm_meta_list.add(meta)) {
+                error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${meta}")
+            }
+            meta
+        }
+
+    //
     // Logic: check if CRAM files are accompanied by an index
     //        Get indexes, and index those that aren't
     //
