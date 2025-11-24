@@ -31,7 +31,7 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
     def args6 = task.ext.args6 ?: ''
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     // Prepare read group arguments if rglines are found, else, empty string
-    def rg_lines = file(rg_file).readLines()
+    def rg_lines = (rg_file && file(rg_file).exists()) ? file(rg_file).readLines() : ''
     def rg_arg = rg_lines ? "-y " + rg_lines.collect { line ->
            // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
             def l = line.contains("SM:") ? line 
