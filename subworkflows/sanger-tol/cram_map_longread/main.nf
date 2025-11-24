@@ -6,7 +6,7 @@ include { SAMTOOLS_INDEX                  } from '../../../modules/nf-core/samto
 include { SAMTOOLS_MERGE                  } from '../../../modules/nf-core/samtools/merge/main'
 include { SAMTOOLS_SPLITHEADER            } from '../../../modules/nf-core/samtools/splitheader/main'
 
-workflow LONGREAD_MAPPING {
+workflow CRAM_MAP_LONGREAD {
 
     take:
     ch_assemblies           // Channel [meta, assembly]
