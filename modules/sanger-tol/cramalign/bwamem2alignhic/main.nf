@@ -8,7 +8,7 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
         'community.wave.seqera.io/library/bwa-mem2_htslib_samtools:db98f81f55b64113' }"
 
     input:
-    tuple val(meta), val(rg_file), path(cram), path(crai), val(chunkn), val(range), path(reference), path(index)
+    tuple val(meta), val(rg_file), path(cram), path(crai), val(chunkn), val(range), path(index), path(reference)
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
