@@ -58,7 +58,7 @@
         },
         "timestamp": "2025-10-07T16:31:02.641373"
     },
-    "Meles meles - ONT reads - no readgroup file": {
+    "Meles meles - ONT reads - no readgroup lines": {
         "content": [
             "c2aa5ec574995707a01cb9b4b887b4a9",
             [
@@ -69,7 +69,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-24T10:58:18.122456702"
+        "timestamp": "2025-11-25T14:27:24.091828111"
     },
     "Meles meles - ONT reads": {
         "content": [

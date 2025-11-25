@@ -85,11 +85,26 @@ workflow CRAM_MAP_ILLUMINA_HIC {
 
     //
     // Module: Extract read groups from CRAM headers
-    //
-    SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod)
+    //    
+    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod).readgroup
+        | map { meta, rg_file ->
+                // Prepare read group arguments
+                def args = (val_aligner=='bwamem2') ? ["-C ","-H "] 
+                    : (val_aligner=='minimap2') ? ["-y ","-R "] 
+                    : error ("Unsupported aligner: ${val_aligner}")
+                def rg_lines = rg_file.readLines()
+                def rg_arg = rg_lines ? args[0] + rg_lines.collect { line ->
+                        // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
+                        def l = line.contains("SM:") ? line 
+                            : meta.sample ? "${line}\tSM:${meta.sample}" 
+                            : "${line}\tSM:${meta.id}"
+                        args[1] + "'${l.replaceAll("\t", "\\\\t")}'"
+                    }.join(' ') 
+                    : ''
+                [ meta, rg_arg ]
+        }
+
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
-    
-    ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
 
     //
     // Logic: Join reagroups with the CRAM chunks and clean meta

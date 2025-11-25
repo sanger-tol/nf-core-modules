@@ -8,7 +8,7 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
         'community.wave.seqera.io/library/htslib_minimap2_samtools_gawk_perl:6729620c63652154' }"
 
     input:
-    tuple val(meta), val(rg_file), path(cram), path(crai), val(chunkn), val(range), path(reference)
+    tuple val(meta), val(rglines), path(cram), path(crai), val(chunkn), val(range), path(reference)
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
@@ -31,15 +31,7 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
     def args6 = task.ext.args6 ?: ''
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     // Prepare read group arguments if rglines are found, else, empty string
-    def rg_lines = (rg_file && file(rg_file).exists()) ? file(rg_file).readLines() : ''
-    def rg_arg = rg_lines ? "-y " + rg_lines.collect { line ->
-           // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-            def l = line.contains("SM:") ? line 
-                : meta.sample ? "${line}\tSM:${meta.sample}" 
-                : "${line}\tSM:${meta.id}"
-            "-R '${l.replaceAll("\t", "\\\\t")}'"
-        }.join(' ') 
-        : ''
+    def rg_arg = rglines ?: ''
     """
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\

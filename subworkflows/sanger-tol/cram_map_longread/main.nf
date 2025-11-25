@@ -84,6 +84,18 @@ workflow CRAM_MAP_LONGREAD {
     // Module: Extract read groups from CRAM headers
     //
     ch_readgroups = SAMTOOLS_SPLITHEADER(ch_crams_meta_mod).readgroup
+        | map { meta, rg_file ->
+                def rg_lines = rg_file.readLines()
+                def rg_arg = rg_lines ? "-y " + rg_lines.collect { line ->
+                    // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
+                        def l = line.contains("SM:") ? line 
+                            : meta.sample ? "${line}\tSM:${meta.sample}" 
+                            : "${line}\tSM:${meta.id}"
+                        "-R '${l.replaceAll("\t", "\\\\t")}'"
+                    }.join(' ') 
+                    : ''
+                [ meta, rg_arg ]
+        }
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
 
     //
@@ -92,7 +104,7 @@ workflow CRAM_MAP_LONGREAD {
     ch_cram_rg = ch_readgroups
         | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
         | map { meta, rg, cram, crai, chunkn, slices ->
-            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, rg, cram, crai, chunkn, slices ]
         }
 
