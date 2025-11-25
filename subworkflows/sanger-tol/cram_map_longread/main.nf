@@ -72,7 +72,7 @@ workflow CRAM_MAP_LONGREAD {
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
         | map { meta, _cram, _crai, chunkn, _slices -> 
-            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, chunkn ] 
         }
         | transpose()
@@ -84,30 +84,22 @@ workflow CRAM_MAP_LONGREAD {
     // Module: Extract read groups from CRAM headers
     //
     ch_readgroups = SAMTOOLS_SPLITHEADER(ch_crams_meta_mod).readgroup
-        | map { meta, rg_file ->
-                def rg_lines = rg_file.readLines()
-                def rg_arg = rg_lines ? "-y " + rg_lines.collect { line ->
-                    // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-                        def l = line.contains("SM:") ? line 
-                            : meta.sample ? "${line}\tSM:${meta.sample}" 
-                            : "${line}\tSM:${meta.id}"
-                        "-R '${l.replaceAll("\t", "\\\\t")}'"
-                    }.join(' ') 
-                    : ''
-                [ meta, rg_arg ]
+        | map { meta, rg_file -> 
+            [ meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") } ]
         }
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
 
     //
     // Logic: Join reagroups with the CRAM chunks
     //
+    ch_slices = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices.transpose()
     ch_cram_rg = ch_readgroups
-        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
+        | combine(ch_slices, by: 0)
         | map { meta, rg, cram, crai, chunkn, slices ->
             def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, rg, cram, crai, chunkn, slices ]
         }
-
+    
     //
     // MODULE: generate minimap2 mmi file
     //
@@ -115,7 +107,7 @@ workflow CRAM_MAP_LONGREAD {
     ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
     ch_cram_chunks = ch_cram_rg
-        | transpose()
+        // | transpose(by: [4,5]) // Only transpose by chunkn and slices to preserve @RG as a list
         | combine(MINIMAP2_INDEX.out.index, by: 0)
 
     CRAMALIGN_MINIMAP2ALIGN(ch_cram_chunks)
@@ -162,7 +154,6 @@ workflow CRAM_MAP_LONGREAD {
             fai:   [ meta, fai ]
             gzi:   [ meta, gzi ]
         }
-    //CRAMALIGN_MINIMAP2ALIGN.out.bam.view().collectFile(name: 'readgroup.txt', newLine: true, storeDir: 'results')
 
     //
     // Module: Merge position-sorted bam files

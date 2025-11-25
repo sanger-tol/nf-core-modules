@@ -46,7 +46,7 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
-                    '-y -R "@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3"',
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3'],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
                     1,
@@ -90,7 +90,7 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
-                    '-y -R "@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3"',
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3'],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
                     1,
@@ -170,7 +170,7 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
-                    '-y -R "@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3"',
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3'],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
                     1,

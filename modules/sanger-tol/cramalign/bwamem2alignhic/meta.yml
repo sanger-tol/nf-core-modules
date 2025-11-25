@@ -38,7 +38,7 @@ input:
           e.g. `[ id:'sample1' ]`
 
     - rglines:
-        type: string
+        type: list
         description: read group information to pass to aligners
 
     - cram:

@@ -24,7 +24,14 @@ process CRAMALIGN_MINIMAP2ALIGN {
     def args5 = task.ext.args5 ?: ''
     def prefix = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     def post_filter = task.ext.args4 ? "samtools view -h ${task.ext.args4} |" : ''
-    def rg_arg = rglines ?: ''
+    def rg_arg = rglines ? '-y ' + rglines.collect { line ->
+            // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
+            def l = line.contains("SM:") ? line 
+                : meta.sample ? "${line}\tSM:${meta.sample}" 
+                : "${line}\tSM:${meta.id}"
+            "-R '${l.replaceAll("\t", "\\\\t")}'"
+        }.join(' ') 
+        : ''
     """
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} | \\
         samtools fastq ${args2} - |  \\

@@ -76,7 +76,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
         | map { meta, _cram, _crai, chunkn, _slices ->
-            def clean_meta = meta.findAll { k, v -> k != 'cramfile' }
+            def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, chunkn ]
         }
         | transpose()
@@ -87,30 +87,17 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     // Module: Extract read groups from CRAM headers
     //    
     ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod).readgroup
-        | map { meta, rg_file ->
-                // Prepare read group arguments
-                def args = (val_aligner=='bwamem2') ? ["-C ","-H "] 
-                    : (val_aligner=='minimap2') ? ["-y ","-R "] 
-                    : error ("Unsupported aligner: ${val_aligner}")
-                def rg_lines = rg_file.readLines()
-                def rg_arg = rg_lines ? args[0] + rg_lines.collect { line ->
-                        // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-                        def l = line.contains("SM:") ? line 
-                            : meta.sample ? "${line}\tSM:${meta.sample}" 
-                            : "${line}\tSM:${meta.id}"
-                        args[1] + "'${l.replaceAll("\t", "\\\\t")}'"
-                    }.join(' ') 
-                    : ''
-                [ meta, rg_arg ]
+        | map { meta, rg_file -> 
+            [ meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") } ]
         }
-
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
 
     //
     // Logic: Join reagroups with the CRAM chunks and clean meta
     //
+    ch_slices = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices.transpose()
     ch_cram_rg = ch_readgroups
-        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices, by: 0)
+        | combine(ch_slices, by: 0)
         | map { meta, rg, cram, crai, chunkn, slices ->
             def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, rg, cram, crai, chunkn, slices ]
@@ -130,7 +117,6 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             | combine(BWAMEM2_INDEX.out.index, by: 0)
 
         ch_cram_chunks = ch_cram_rg
-            | transpose()
             | combine(ch_assemblies_with_reference, by: 0)
 
         CRAMALIGN_BWAMEM2ALIGNHIC(ch_cram_chunks)
@@ -145,7 +131,6 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
         ch_cram_chunks = ch_cram_rg
-            | transpose()
             | combine(MINIMAP2_INDEX.out.index, by: 0)
 
         CRAMALIGN_MINIMAP2ALIGNHIC(ch_cram_chunks)

@@ -31,7 +31,14 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
     def args6 = task.ext.args6 ?: ''
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     // Prepare read group arguments if rglines are found, else, empty string
-    def rg_arg = rglines ?: ''
+    def rg_arg = rglines ? '-y ' + rglines.collect { line ->
+            // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
+            def l = line.contains("SM:") ? line 
+                : meta.sample ? "${line}\tSM:${meta.sample}" 
+                : "${line}\tSM:${meta.id}"
+            "-R '${l.replaceAll("\t", "\\\\t")}'"
+        }.join(' ') 
+        : ''
     """
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\
         samtools fastq ${args2} - |\\
