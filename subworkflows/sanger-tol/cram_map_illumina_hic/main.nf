@@ -89,7 +89,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod)
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
     
-    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod).out.readgroup
+    ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
         | map { meta, rg_file -> 
             [ meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") } ]
         }
