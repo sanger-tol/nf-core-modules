@@ -6,6 +6,8 @@ include { SAMTOOLS_INDEX                  } from '../../../modules/nf-core/samto
 include { SAMTOOLS_MERGE                  } from '../../../modules/nf-core/samtools/merge/main'
 include { SAMTOOLS_SPLITHEADER            } from '../../../modules/nf-core/samtools/splitheader/main'
 
+include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
+
 workflow CRAM_MAP_LONG_READS {
 
     take:
@@ -77,8 +79,7 @@ workflow CRAM_MAP_LONG_READS {
         }
         | transpose()
         | groupTuple(by: 0)
-        | map { meta, chunkns ->[ meta, chunkns.size() ] 
-        }
+        | map { meta, chunkns ->[ meta, chunkns.size() ] }
 
     //
     // Module: Extract read groups from CRAM headers
@@ -138,7 +139,7 @@ workflow CRAM_MAP_LONG_READS {
     //        We use the ch_n_cram_chunks to set a groupKey so that
     //        we emit groups downstream ASAP once all bams have been made
     //
-    ch_samtools_merge_input = CRAMALIGN_MINIMAP2ALIGN.out.bam
+    ch_merge_input = CRAMALIGN_MINIMAP2ALIGN.out.bam
         | combine(ch_n_cram_chunks, by: 0)
         | map { meta, bam, n_chunks ->
             def key = groupKey(meta, n_chunks)
@@ -146,27 +147,19 @@ workflow CRAM_MAP_LONG_READS {
         }
         | groupTuple(by: 0)
         | map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
-        | combine(ch_assemblies, by: 0)
-        | combine(ch_fai_gzi, by: 0)
-        | multiMap { meta, bams, assembly, fai, gzi ->
-            bam:   [ meta, bams ]
-            fasta: [ meta, assembly ]
-            fai:   [ meta, fai ]
-            gzi:   [ meta, gzi ]
-        }
 
     //
-    // Module: Merge position-sorted bam files
+    // Subworkflow: merge BAM files and mark duplicates
     //
-    SAMTOOLS_MERGE(
-        ch_samtools_merge_input.bam,
-        ch_samtools_merge_input.fasta,
-        ch_samtools_merge_input.fai,
-        ch_samtools_merge_input.gzi,
+    BAM_SAMTOOLS_MERGE_MARKDUP(
+        ch_merge_input,
+        ch_assemblies,
+        false
     )
-    ch_versions = ch_versions.mix(SAMTOOLS_MERGE.out.versions)
+    ch_versions = ch_versions.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.versions)
 
     emit:
-    bam      = SAMTOOLS_MERGE.out.bam
-    versions = ch_versions
+    bam               = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
+    bam_index         = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
+    versions          = ch_versions
 }

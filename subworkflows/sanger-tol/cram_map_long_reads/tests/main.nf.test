@@ -41,6 +41,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-ont"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"            
             }
 
             workflow {
@@ -69,6 +70,7 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
                         workflow.out.versions
                     ).match()
                 }
@@ -89,6 +91,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-ont"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"
             }
 
             workflow {
@@ -125,6 +128,7 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
                         workflow.out.bam.collect {
                             def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
                             def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
@@ -150,6 +154,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-ont"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"
             }
 
             workflow {
@@ -186,6 +191,7 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
                         workflow.out.versions
                     ).match()
                 }
@@ -206,6 +212,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-hifi"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"
             }
 
             workflow {
@@ -245,6 +252,7 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
                         workflow.out.bam.collect {
                             def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
                             def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
