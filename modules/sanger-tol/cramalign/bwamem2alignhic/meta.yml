@@ -39,7 +39,7 @@ input:
 
     - rglines:
         type: list
-        description: read group information to pass to aligners
+        description: A list of strings, each a valid SAM-format @RG header line, to pass to the aligner
 
     - cram:
         type: file

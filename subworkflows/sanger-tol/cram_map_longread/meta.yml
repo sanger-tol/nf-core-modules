@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
-name: "cram_map_longread"
+name: "cram_map_long_reads"
 description: "Maps PacBio/ONT reads in unaligned CRAMs format to a set of references."
 keywords:
   - longread
