@@ -1,9 +1,7 @@
 include { CRAMALIGN_GENCRAMCHUNKS         } from '../../../modules/sanger-tol/cramalign/gencramchunks'
 include { CRAMALIGN_MINIMAP2ALIGN         } from '../../../modules/sanger-tol/cramalign/minimap2align/main'
 include { MINIMAP2_INDEX                  } from '../../../modules/nf-core/minimap2/index/main'
-include { SAMTOOLS_FAIDX                  } from '../../../modules/nf-core/samtools/faidx/main'
 include { SAMTOOLS_INDEX                  } from '../../../modules/nf-core/samtools/index/main'
-include { SAMTOOLS_MERGE                  } from '../../../modules/nf-core/samtools/merge/main'
 include { SAMTOOLS_SPLITHEADER            } from '../../../modules/nf-core/samtools/splitheader/main'
 
 include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
@@ -113,26 +111,6 @@ workflow CRAM_MAP_LONG_READS {
 
     CRAMALIGN_MINIMAP2ALIGN(ch_cram_chunks)
     ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGN.out.versions)
-
-    //
-    // Module: Index assembly fastas
-    //
-    SAMTOOLS_FAIDX(
-        ch_assemblies, // reference
-        [ [:],[] ],    // fai
-        false          // get sizes
-    )
-    ch_versions = ch_versions.mix(SAMTOOLS_FAIDX.out.versions)
-
-    //
-    // Logic: create a channel with both fai and gzi for each assembly
-    //        We do it here so we don't cause downstream issues with the
-    //        remainder join
-    //
-    ch_fai_gzi = SAMTOOLS_FAIDX.out.fai
-        | join(SAMTOOLS_FAIDX.out.gzi, by: 0, remainder: true)
-        | map { meta, fai, gzi -> [ meta, fai, gzi ?: [] ] }
-
 
     //
     // Logic: Prepare input for merging bams.
