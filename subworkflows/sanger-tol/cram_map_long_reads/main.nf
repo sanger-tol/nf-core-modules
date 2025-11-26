@@ -24,7 +24,7 @@ workflow CRAM_MAP_LONG_READS {
     ch_assemblies
         | map { meta, _sample ->
             if (!val_asm_meta_list.add(meta)) {
-                error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${meta}")
+                error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_LONG_READS: ${meta}")
             }
             meta
         }
@@ -83,7 +83,7 @@ workflow CRAM_MAP_LONG_READS {
     //
     // Module: Extract read groups from CRAM headers
     //
-    SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod)
+    SAMTOOLS_SPLITHEADER(ch_crams_meta_mod)
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
     
     ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
