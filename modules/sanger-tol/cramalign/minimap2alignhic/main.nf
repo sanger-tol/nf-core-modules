@@ -33,11 +33,11 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
     // Prepare read group arguments if rglines are found, else, empty string
     def rg_arg = rglines ? '-y ' + rglines.collect { line ->
             // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-            def l = line.contains("SM:") ? line 
-                : meta.sample ? "${line}\tSM:${meta.sample}" 
+            def l = line.contains("SM:") ? line
+                : meta.sample ? "${line}\tSM:${meta.sample}"
                 : "${line}\tSM:${meta.id}"
             "-R '${l.replaceAll("\t", "\\\\t")}'"
-        }.join(' ') 
+        }.join(' ')
         : ''
     """
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} |\\

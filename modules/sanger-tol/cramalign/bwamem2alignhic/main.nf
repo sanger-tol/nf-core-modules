@@ -28,11 +28,11 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
     // Prepare read group arguments if rglines are found, else, empty string
     def rg_arg = rglines ? '-C ' + rglines.collect { line ->
             // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-            def l = line.contains("SM:") ? line 
-                : meta.sample ? "${line}\tSM:${meta.sample}" 
+            def l = line.contains("SM:") ? line
+                : meta.sample ? "${line}\tSM:${meta.sample}"
                 : "${line}\tSM:${meta.id}"
             "-H '${l.replaceAll("\t", "\\\\t")}'"
-        }.join(' ') 
+        }.join(' ')
         : ''
     // Please be aware one of the tools here required mem = 28 * reference size!!!
     """

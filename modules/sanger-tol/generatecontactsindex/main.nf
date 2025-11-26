@@ -44,4 +44,3 @@ process GENERATE_CONTACTS_INDEX {
     END_VERSIONS
     """
 }
-
