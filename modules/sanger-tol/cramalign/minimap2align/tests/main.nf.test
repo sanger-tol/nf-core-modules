@@ -46,6 +46,7 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3'],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
                     1,
@@ -89,6 +90,7 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3'],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
                     1,
@@ -132,6 +134,7 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
+                    '',
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram.crai', checkIfExists: true),
                     1,
@@ -167,6 +170,7 @@ nextflow_process {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ], // meta map
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3'],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
                     1,
@@ -188,4 +192,49 @@ nextflow_process {
         }
 
     }
+
+    test("Meles meles - ONT reads - no readgroup lines") {
+        config "./nextflow.config"
+
+        when {
+
+            params {
+                samtools_cat_args   = ""
+                samtools_fastq_args = "-F0x200 -nt"
+                minimap2_args       = "-ax map-ont"
+                samtools_view_args  = ""
+                samtools_sort_args  = "--write-index -l1"
+            }
+
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id:'test' ], // meta map
+                    '',
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
+                    1,
+                    [0, 15],
+                ]).join(MINIMAP2_INDEX.out.index)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                {
+                    assert snapshot(
+                        bam(process.out.bam.get(0).get(1)).getReadsMD5(),
+                        process.out.versions
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules")
+        }
+    }
+
 }

@@ -1,19 +1,22 @@
 nextflow_workflow {
 
-    name "Test Subworkflow LONGREAD_MAPPING"
+    name "Test Subworkflow CRAM_MAP_LONG_READS"
     script "../main.nf"
-    workflow "LONGREAD_MAPPING"
+    workflow "CRAM_MAP_LONG_READS"
     config "./nextflow.config"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
-    tag "subworkflows/longread_mapping"
+    tag "subworkflows/cram_map_long_reads"
+    tag "subworkflows/bam_samtools_merge_markdup"
     tag "cramalign/gencramchunks"
     tag "cramalign/minimap2align"
     tag "subworkflows/../../modules/nf-core/minimap2/index"
     tag "subworkflows/../../modules/nf-core/samtools/merge"
     tag "subworkflows/../../modules/nf-core/samtools/index"
     tag "subworkflows/../../modules/nf-core/samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/samtools/splitheader"
+
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
@@ -23,7 +26,8 @@ nextflow_workflow {
                 "minimap2/index",
                 "samtools/index",
                 "samtools/merge",
-                "samtools/faidx"
+                "samtools/faidx",
+                "samtools/splitheader"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
@@ -38,6 +42,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-ont"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"            
             }
 
             workflow {
@@ -51,7 +56,7 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.addrg.cram', checkIfExists: true)
                     ]
                 )
                 input[2] = 10
@@ -66,6 +71,7 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
                         workflow.out.versions
                     ).match()
                 }
@@ -86,6 +92,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-ont"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"
             }
 
             workflow {
@@ -103,7 +110,7 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.addrg.cram', checkIfExists: true)
                     ],
                     [
                         [ id:'test1' ],
@@ -122,6 +129,12 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
+                        workflow.out.bam.collect {
+                            def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
+                            def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
+                            return "${it[0].id}: ${sm}"
+                        }.sort(),
                         workflow.out.versions
                     ).match()
                 }
@@ -142,6 +155,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-ont"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"
             }
 
             workflow {
@@ -159,11 +173,11 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.addrg.cram', checkIfExists: true)
                     ],
                     [
                         [ id:'test2' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.addrg.cram', checkIfExists: true)
                     ]
                 )
                 input[2] = 5
@@ -178,6 +192,7 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
                         workflow.out.versions
                     ).match()
                 }
@@ -198,6 +213,7 @@ nextflow_workflow {
                 minimap2_args         = "-ax map-hifi"
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
+                samtools_merge_args   = "--write-index"
             }
 
             workflow {
@@ -215,13 +231,13 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200910_173211.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.addrg.cram', checkIfExists: true)
                     ],
                     [
                         [ id:'test1' ],
                         [
                             file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200910_173211.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.5000.cram', checkIfExists: true),
-                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)
+                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true)        
                         ]
                     ]
                 )
@@ -237,6 +253,12 @@ nextflow_workflow {
                 {
                     assert snapshot(
                         workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
+                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
+                        workflow.out.bam.collect {
+                            def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
+                            def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
+                            return "${it[0].id}: ${sm}"
+                        }.sort(),
                         workflow.out.versions
                     ).match()
                 }
