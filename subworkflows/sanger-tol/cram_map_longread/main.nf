@@ -107,7 +107,6 @@ workflow CRAM_MAP_LONGREAD {
     ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
     ch_cram_chunks = ch_cram_rg
-        // | transpose(by: [4,5]) // Only transpose by chunkn and slices to preserve @RG as a list
         | combine(MINIMAP2_INDEX.out.index, by: 0)
 
     CRAMALIGN_MINIMAP2ALIGN(ch_cram_chunks)
