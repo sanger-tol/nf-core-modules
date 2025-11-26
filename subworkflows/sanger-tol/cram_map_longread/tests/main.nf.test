@@ -1,13 +1,13 @@
 nextflow_workflow {
 
-    name "Test Subworkflow CRAM_MAP_LONGREAD"
+    name "Test Subworkflow CRAM_MAP_LONG_READS"
     script "../main.nf"
-    workflow "CRAM_MAP_LONGREAD"
+    workflow "CRAM_MAP_LONG_READS"
     config "./nextflow.config"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
-    tag "subworkflows/cram_map_longread"
+    tag "subworkflows/cram_map_long_reads"
     tag "cramalign/gencramchunks"
     tag "cramalign/minimap2align"
     tag "subworkflows/../../modules/nf-core/minimap2/index"

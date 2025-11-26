@@ -50,8 +50,8 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
             \$1 !~ /^\\@/ && and(\$2, 64) == 0 { print 2 \$0 }
         ' |\\
         filter_five_end.pl |\\
-        gawk -F'\t' '
-            BEGIN { OFS="\\t" }
+        gawk '
+            BEGIN { FS = OFS="\\t" }
             \$1 ~ /^\\@/ { print \$0 }
             \$1 !~ /^\\@/ { \$2 = and(\$2, compl(2048)); print substr(\$0, 2) }
         ' |\\

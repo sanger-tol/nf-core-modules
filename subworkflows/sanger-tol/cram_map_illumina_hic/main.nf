@@ -86,18 +86,19 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     // Module: Extract read groups from CRAM headers
     //    
-    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod).readgroup
+    SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod)
+    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
+    
+    ch_readgroups = SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod).out.readgroup
         | map { meta, rg_file -> 
             [ meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") } ]
         }
-    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
 
     //
     // Logic: Join reagroups with the CRAM chunks and clean meta
     //
-    ch_slices = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices.transpose()
     ch_cram_rg = ch_readgroups
-        | combine(ch_slices, by: 0)
+        | combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices.transpose(), by: 0)
         | map { meta, rg, cram, crai, chunkn, slices ->
             def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, rg, cram, crai, chunkn, slices ]
