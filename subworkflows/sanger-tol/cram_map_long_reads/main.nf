@@ -71,9 +71,9 @@ workflow CRAM_MAP_LONG_READS {
     // Logic: Count the total number of cram chunks for downstream grouping
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
-        | map { meta, _cram, _crai, chunkn, _slices -> 
+        | map { meta, _cram, _crai, chunkn, _slices ->
             def clean_meta = meta - meta.subMap("cramfile")
-            [ clean_meta, chunkn ] 
+            [ clean_meta, chunkn ]
         }
         | transpose()
         | groupTuple(by: 0)
@@ -84,9 +84,9 @@ workflow CRAM_MAP_LONG_READS {
     //
     SAMTOOLS_SPLITHEADER(ch_crams_meta_mod)
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
-    
+
     ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
-        | map { meta, rg_file -> 
+        | map { meta, rg_file ->
             [ meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") } ]
         }
 
@@ -99,7 +99,7 @@ workflow CRAM_MAP_LONG_READS {
             def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, rg, cram, crai, chunkn, slices ]
         }
-    
+
     //
     // MODULE: generate minimap2 mmi file
     //
