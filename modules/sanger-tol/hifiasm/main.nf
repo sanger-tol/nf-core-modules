@@ -102,12 +102,19 @@ process HIFIASM {
     touch ${prefix}.hic.tlb.bin
     touch ${prefix}.hic.lk.bin
     echo "" | bgzip > ${prefix}.r_utg.gfa.gz
+    touch ${prefix}.r_utg.fa
     echo "" | bgzip > ${prefix}.bp.p_ctg.gfa.gz
+    touch ${prefix}.bp.p_ctg.fa
     echo "" | bgzip > ${prefix}.p_utg.gfa.gz
+    touch ${prefix}.p_utg.fa
     echo "" | bgzip > ${prefix}.p_ctg.gfa.gz
+    touch ${prefix}.p_ctg.fa
     echo "" | bgzip > ${prefix}.a_ctg.gfa.gz
+    touch ${prefix}.a_ctg.fa
     echo "" | bgzip > ${prefix}.hap1.p_ctg.gfa.gz
+    touch ${prefix}.hap1.p_ctg.fa
     echo "" | bgzip > ${prefix}.hap2.p_ctg.gfa.gz
+    touch ${prefix}.hap2.p_ctg.fa
     echo "" | bgzip > ${prefix}.ec.fa.gz
     echo "" | bgzip > ${prefix}.ovlp.paf.gz
     touch ${prefix}.log

@@ -6,8 +6,9 @@ nextflow_process {
     config "./nextflow.config"
 
     tag "modules"
-    tag "modules_sanger_tol"
+    tag "modules_sangertol"
     tag "hifiasm"
+    tag "nf-core/yak/count"
 
     test("Undibacterium_unclassified - long reads only") {
 
