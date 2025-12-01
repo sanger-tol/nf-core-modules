@@ -30,6 +30,7 @@ process HIFIASM {
     prefix = task.ext.prefix ?: "${meta.id}"
 
     def long_reads_sorted = long_reads instanceof List ? long_reads.sort{ file -> file.name } : long_reads
+    def hic_cram_sorted = hic_cram instanceof List ? hic_cram.sort{ file -> file.name } : hic_cram
     def ul_reads_sorted = ul_reads instanceof List ? ul_reads.sort{ file -> file.name } : ul_reads
     def ultralong = ul_reads ? "--ul ${ul_reads_sorted}" : ""
 
@@ -49,8 +50,8 @@ process HIFIASM {
     def input_hic1 = ""
     def input_hic2 = ""
     if(hic_cram) {
-        input_hic1 = "--h1 <(for f in ${hic_cram}; do samtools cat \$f | samtools fastq -n -f0x40 -F0xB00; done)"
-        input_hic2 = "--h2 <(for f in ${hic_cram}; do samtools cat \$f | samtools fastq -n -f0x80 -F0xB00; done)"
+        input_hic1 = "--h1 <(for f in ${hic_cram_sorted}; do samtools cat \$f | samtools fastq -n -f0x40 -F0xB00; done)"
+        input_hic2 = "--h2 <(for f in ${hic_cram_sorted}; do samtools cat \$f | samtools fastq -n -f0x80 -F0xB00; done)"
     }
     """
     hifiasm \\
