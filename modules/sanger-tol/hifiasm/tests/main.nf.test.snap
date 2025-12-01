@@ -42,17 +42,10 @@
                 
             ],
             [
-                [
-                    {
-                        "id": "test"
-                    },
-                    [
-                        "test.dip.hap1.p_ctg.lowQ.bed.gz:md5,56610782da9fd54caf4e141ae96f4f4d",
-                        "test.dip.hap2.p_ctg.lowQ.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.dip.p_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0",
-                        "test.dip.r_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0"
-                    ]
-                ]
+                "test.dip.hap1.p_ctg.lowQ.bed.gz",
+                "test.dip.hap2.p_ctg.lowQ.bed.gz",
+                "test.dip.p_utg.lowQ.bed.gz",
+                "test.dip.r_utg.lowQ.bed.gz"
             ],
             [
                 "versions.yml:md5,c5d43e7955e682b03e76387513047453"
@@ -62,7 +55,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-01T15:54:39.977782"
+        "timestamp": "2025-12-01T16:15:35.350355"
     },
     "Undibacterium_unclassified - pacbio hifi - bin files": {
         "content": [
@@ -111,18 +104,11 @@
                 
             ],
             [
-                [
-                    {
-                        "id": "test"
-                    },
-                    [
-                        "test.bp.hap1.p_ctg.lowQ.bed.gz:md5,56610782da9fd54caf4e141ae96f4f4d",
-                        "test.bp.hap2.p_ctg.lowQ.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.bp.p_ctg.lowQ.bed.gz:md5,005b96f5edddaea6d10e053db2e43772",
-                        "test.bp.p_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0",
-                        "test.bp.r_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0"
-                    ]
-                ]
+                "test.bp.hap1.p_ctg.lowQ.bed.gz",
+                "test.bp.hap2.p_ctg.lowQ.bed.gz",
+                "test.bp.p_ctg.lowQ.bed.gz",
+                "test.bp.p_utg.lowQ.bed.gz",
+                "test.bp.r_utg.lowQ.bed.gz"
             ],
             [
                 "versions.yml:md5,c5d43e7955e682b03e76387513047453"
@@ -132,7 +118,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-01T15:54:20.076611"
+        "timestamp": "2025-12-01T16:15:17.223656"
     },
     "Undibacterium_unclassified - long reads only": {
         "content": [
@@ -191,18 +177,11 @@
                 ]
             ],
             [
-                [
-                    {
-                        "id": "test"
-                    },
-                    [
-                        "test.bp.hap1.p_ctg.lowQ.bed.gz:md5,56610782da9fd54caf4e141ae96f4f4d",
-                        "test.bp.hap2.p_ctg.lowQ.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.bp.p_ctg.lowQ.bed.gz:md5,005b96f5edddaea6d10e053db2e43772",
-                        "test.bp.p_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0",
-                        "test.bp.r_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0"
-                    ]
-                ]
+                "test.bp.hap1.p_ctg.lowQ.bed.gz",
+                "test.bp.hap2.p_ctg.lowQ.bed.gz",
+                "test.bp.p_ctg.lowQ.bed.gz",
+                "test.bp.p_utg.lowQ.bed.gz",
+                "test.bp.r_utg.lowQ.bed.gz"
             ],
             [
                 "versions.yml:md5,c5d43e7955e682b03e76387513047453"
@@ -212,7 +191,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-01T15:54:06.705491"
+        "timestamp": "2025-12-01T16:15:05.16683"
     },
     "Undibacterium_unclassified - hi-c cram": {
         "content": [
@@ -261,18 +240,11 @@
                 
             ],
             [
-                [
-                    {
-                        "id": "test"
-                    },
-                    [
-                        "test.hic.hap1.p_ctg.lowQ.bed.gz:md5,27723c1e93f13f6d9544493e62f764b0",
-                        "test.hic.hap2.p_ctg.lowQ.bed.gz:md5,f0a47b9409bced3445e716b19a2d1bc3",
-                        "test.hic.p_ctg.lowQ.bed.gz:md5,005b96f5edddaea6d10e053db2e43772",
-                        "test.hic.p_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0",
-                        "test.hic.r_utg.lowQ.bed.gz:md5,17268565cd85de6adcf995e5cb120fd0"
-                    ]
-                ]
+                "test.hic.hap1.p_ctg.lowQ.bed.gz",
+                "test.hic.hap2.p_ctg.lowQ.bed.gz",
+                "test.hic.p_ctg.lowQ.bed.gz",
+                "test.hic.p_utg.lowQ.bed.gz",
+                "test.hic.r_utg.lowQ.bed.gz"
             ],
             [
                 "versions.yml:md5,c5d43e7955e682b03e76387513047453"
@@ -282,7 +254,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-01T15:59:00.121291"
+        "timestamp": "2025-12-01T16:15:58.920908"
     },
     "Undibacterium_unclassified - stub": {
         "content": [
