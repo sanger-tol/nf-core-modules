@@ -17,7 +17,7 @@ workflow BAM2COOL {
     ch_versions = Channel.empty()
 
     ch_bam_list_transposed = ch_bam_list
-        | flatMap { meta, bams ->
+        .flatMap { meta, bams ->
             if (!(bams instanceof List)) {
                 error("BAM2COOL: BAM files not provided in list format!")
             }
@@ -52,12 +52,12 @@ workflow BAM2COOL {
     // Generate individual .cool files
     //
     ch_cooler_cload_input = GENERATE_CONTACTS_INDEX.out.contacts_with_index
-        | map { meta, contacts, index ->
+        .map { meta, contacts, index ->
             def meta_join = meta - meta.subMap("bam_idx")
             [ meta_join, meta, contacts, index ]
         }
-        | combine(ch_chrom_sizes, by: 0)
-        | multiMap { meta, chunk_meta, contacts, index, sizes ->
+        .combine(ch_chrom_sizes, by: 0)
+        .multiMap { meta, chunk_meta, contacts, index, sizes ->
             bed: [ chunk_meta, contacts, index ]
             chrom: [ chunk_meta, sizes ]
         }
@@ -74,8 +74,8 @@ workflow BAM2COOL {
     // Collect all individual .cool files for merging
     //
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
-        | map { meta, cool -> [ meta - meta.subMap("bam_idx"), cool ] }
-        | groupTuple(by: 0, sort: { it.getName() })
+        .map { meta, cool -> [ meta - meta.subMap("bam_idx"), cool ] }
+        .groupTuple(by: 0, sort: { it.getName() })
 
     //
     // Merge individual .cool files
