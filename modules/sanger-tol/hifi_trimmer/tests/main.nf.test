@@ -1,0 +1,185 @@
+nextflow_process {
+
+
+    name "Test Process HIFI_TRIMMER"
+    script "../main.nf"
+    process "HIFI_TRIMMER"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "hifi_trimmer"
+
+    config './nextflow.config'
+
+    test("hifi_trimmer test - hits") {
+
+        when {
+            params {
+                process_blast_args = "-hf"
+                filter_bam_args    = "-f"
+            }
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/hits/test.bam', checkIfExists: true),
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/hits/test.blastout.gz', checkIfExists: true)
+                    ]
+                )
+                    input[1] = Channel.of(
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/hits/test.yaml', checkIfExists: true)
+                    )
+                input[2] = Channel.of(
+                    [
+                        [id:'test'], //meta map
+                        ""
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    process.out.filtered,
+                    process.out.bed,
+                    process.out.summary.collect{ meta, summary_file ->
+                        [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
+                    },
+                    process.out.hits,
+                    process.out.versions
+                    ).match()
+                }
+            )
+        }
+    }
+
+    test("hifi_trimmer test - no hits") {
+
+        when {
+            params {
+                process_blast_args = "-hf"
+                filter_bam_args    = "-f"
+            }
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/no_hits/test.bam', checkIfExists: true),
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/no_hits/test.blastout.gz', checkIfExists: true)
+                    ]
+                )
+                    input[1] = Channel.of(
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/no_hits/test.yaml', checkIfExists: true)
+                    )
+                input[2] = Channel.of(
+                    [
+                        [id:'test'], //meta map
+                        ""
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    process.out.filtered,
+                    process.out.bed,
+                    process.out.summary.collect{ meta, summary_file ->
+                        [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
+                    },
+                    process.out.hits,
+                    process.out.versions
+                    ).match()
+                }
+            )
+        }
+    }
+
+    test("hifi_trimmer test - no valid hits") {
+
+        when {
+            params {
+                process_blast_args = "-hf"
+                filter_bam_args    = "-f"
+            }
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/no_valid_hits/test.bam', checkIfExists: true),
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/no_valid_hits/test.blastout.gz', checkIfExists: true)
+                    ]
+                )
+                    input[1] = Channel.of(
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/no_valid_hits/test.yaml', checkIfExists: true)
+                    )
+                input[2] = Channel.of(
+                    [
+                        [id:'test'], //meta map
+                        ""
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    process.out.filtered,
+                    process.out.bed,
+                    process.out.summary.collect{ meta, summary_file ->
+                        [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
+                    },
+                    process.out.hits,
+                    process.out.versions
+                    ).match()
+                }
+            )
+        }
+    }
+
+    test("hifi_trimmer test - stub") {
+
+        options "-stub"
+
+        when {
+
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/hits/test.bam', checkIfExists: true),
+                        file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/hits/test.blastout.gz', checkIfExists: true)
+                    ]
+                )
+                input[1] = file('https://github.com/sanger-tol/hifi-trimmer/raw/refs/heads/main/tests/data/hits/test.yaml', checkIfExists: true)
+                input[2] = Channel.of(
+                    [
+                        [id:'test'], //meta map
+                        ""
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

@@ -1,0 +1,6 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/master/modules/environment-schema.json
+channels:
+  - bioconda
+dependencies:
+  - bioconda::hifi_trimmer=2.1.0
