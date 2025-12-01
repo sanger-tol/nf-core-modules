@@ -149,8 +149,7 @@ output:
       - "*.bed.gz":
           type: file
           description: |
-            If option --write-paf specified, a gzipped paf file describing the overlaps
-            among all error-corrected reads
+            BED files containing the co-ordinates of low-quality regions.
           pattern: "*.bed.gz"
           ontologies:
             - edam: http://edamontology.org/format_3003 # BED
