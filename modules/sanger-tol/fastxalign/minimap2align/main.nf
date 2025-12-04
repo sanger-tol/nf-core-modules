@@ -10,7 +10,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     input:
     tuple val(meta),  path(fastx), path(fxi)
     tuple val(meta2), path(index), path(reference)
-    val(chunkn), val(range)
+    tuple val(chunkn), val(range)
     val bam_format
 
     output:

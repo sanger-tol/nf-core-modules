@@ -10,7 +10,7 @@ process CRAMALIGN_MINIMAP2ALIGN {
     input:
     tuple val(meta),  path(cram),  path(crai), val(rglines)
     tuple val(meta2), path(index), path(reference)
-    val(chunkn), val(range)
+    tuple val(chunkn), val(range)
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
