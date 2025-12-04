@@ -48,8 +48,11 @@ workflow GENOME_STATISTICS {
     //
     // Module: Assess assembly using BUSCO.
     //
+    ch_assemblies_for_busco = ch_assemblies
+        .map { meta, hap1, hap2 -> [ meta, [hap1, hap2].findAll() ] }
+
     BUSCO_BUSCO(
-        ch_assemblies_split,               // assembly
+        ch_assemblies_for_busco,           // assembly
         "genome",                          // busco mode
         val_busco_lineage,                 // lineage to run BUSCO predictions
         val_busco_lineage_directory ?: [], // busco lineage directory
@@ -92,8 +95,11 @@ workflow GENOME_STATISTICS {
     emit:
     asmstats             = ASMSTATS.out.stats
     gfastats             = GFASTATS.out.assembly_summary
+    busco_batch_summary  = BUSCO_BUSCO.out.batch_summary
     busco_summary_txt    = BUSCO_BUSCO.out.short_summaries_txt
     busco_summary_json   = BUSCO_BUSCO.out.short_summaries_json
+    busco_log            = BUSCO_BUSCO.out.log
+    busco_directory      = BUSCO_BUSCO.out.busco_dir
     merqury_qv           = MERQURYFK_MERQURYFK.out.qv
     merqury_completeness = MERQURYFK_MERQURYFK.out.stats
     merqury_phased_stats = MERQURYFK_MERQURYFK.out.phased_block_stats
