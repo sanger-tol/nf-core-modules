@@ -78,7 +78,7 @@ workflow FASTX_MAP_LONG_READS {
         .multiMap { meta, fasta, fxi, chunkn, slices, asm, index ->
             fastx:     [ meta, fasta, fxi ]
             reference: [ meta, index, asm ]
-            slices:    [ meta, chunkn, slices ]
+            slices:    [ chunkn, slices ]
         }
 
     FASTXALIGN_MINIMAP2ALIGN(

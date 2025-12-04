@@ -10,7 +10,7 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
     input:
     tuple val(meta),  path(cram),  path(crai), val(rglines)
     tuple val(meta2), path(index), path(reference)
-    tuple val(meta3), val(chunkn), val(range)
+    val(chunkn), val(range)
 
     output:
     tuple val(meta), path("*.bam"), emit: bam

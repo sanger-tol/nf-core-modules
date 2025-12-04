@@ -65,12 +65,7 @@ input:
         type: file
         description: FASTA file or minimap2 index of the reference to be aligned to
         ontologies: []
-  - - meta3:
-        type: map
-        description: |
-          Groovy Map containing sample information
-          e.g. `[ id:'sample1' ]`
-    - chunkn:
+  - - chunkn:
         type: integer
         description: Integer index of FASTA chunk to map
     - range:

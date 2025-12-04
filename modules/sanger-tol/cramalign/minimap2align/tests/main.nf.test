@@ -55,7 +55,7 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
                 ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
                 input[2] = channel.of([
-                    [ id:'test' ], 1, [0, 15]
+                    1, [0, 15]
                 ])
                 """
             }
@@ -104,7 +104,7 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
                 ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
                 input[2] = channel.of([
-                    [ id:'test' ], 1, [0, 15]
+                    1, [0, 15]
                 ])
                 """
             }
@@ -153,7 +153,7 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
                 ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
                 input[2] = channel.of([
-                    [ id:'test' ], 1, [0, 15]
+                    1, [0, 15]
                 ])
                 """
             }
@@ -194,7 +194,7 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
                 ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
                 input[2] = channel.of([
-                    [ id:'test' ], 1, [0, 15]
+                    1, [0, 15]
                 ])
                 """
             }
@@ -239,7 +239,7 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
                 ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
                 input[2] = channel.of([
-                    [ id:'test' ], 1, [0, 15]
+                    1, [0, 15]
                 ])
                 """
             }

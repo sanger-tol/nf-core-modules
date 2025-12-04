@@ -120,7 +120,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             .multiMap { meta, rg, cram, crai, chunkn, slices, assembly, index ->
                 cram:      [ meta, cram, crai, rg ]
                 reference: [ meta, index, assembly ]
-                slices:    [ meta, chunkn, slices ]
+                slices:    [ chunkn, slices ]
             }
 
         CRAMALIGN_BWAMEM2ALIGNHIC(
@@ -144,7 +144,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             .multiMap { meta, rg, cram, crai, chunkn, slices, assembly, index ->
                 cram:      [ meta, cram, crai, rg ]
                 reference: [ meta, index, assembly ]
-                slices:    [ meta, chunkn, slices ]
+                slices:    [ chunkn, slices ]
             }
 
         CRAMALIGN_MINIMAP2ALIGNHIC(

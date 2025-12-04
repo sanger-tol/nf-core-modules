@@ -64,12 +64,7 @@ input:
         pattern: "*.fasta(.gz)?"
         ontologies:
           - edam: http://edamontology.org/format_1929 # FASTA
-  - - meta3:
-        type: map
-        description: |
-          Groovy Map containing sample information
-          e.g. `[ id:'sample1' ]`
-    - chunkn:
+  - - chunkn:
         type: integer
         description: Integer index of CRAM chunk to map
     - range:
