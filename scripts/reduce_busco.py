@@ -2,11 +2,7 @@
 
 import argparse
 import os
-import json
-import pathlib
-import sys
-import requests
-import re
+from pathlib import Path
 import shutil
 
 def read_full_table(filename):
@@ -74,8 +70,8 @@ def main(args):
         + sorted(genes["Duplicated"])[:args.duplicated] \
         + sorted(genes["Fragmented"])[:args.fragmented] \
         + sorted(genes["Missing"])[:args.missing]
-    output_dir = pathlib.Path(args.output_dir)
-    input_db = pathlib.Path(args.complete_database)
+    output_dir = Path(args.output_dir)
+    input_db = Path(args.complete_database)
     if os.path.exists(args.output_dir):
         shutil.rmtree(args.output_dir)
     output_dir.mkdir()
