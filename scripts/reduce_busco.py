@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 import argparse
-from collections.abc import Container, Sized
 import os
-from pathlib import Path
 import shutil
+from collections.abc import Container, Sized
+from pathlib import Path
 from typing import Dict, List
 
 
