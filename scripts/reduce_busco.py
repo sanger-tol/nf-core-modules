@@ -5,7 +5,7 @@ import os
 import shutil
 from collections.abc import Container, Sized
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Set, Tuple
 
 
 def read_full_table(filename):
@@ -25,6 +25,22 @@ def read_full_table(filename):
     return (lineage, genes)
 
 
+def read_full_tables(files: List[str]) -> Tuple[str, Dict[str, Set[str]]]:
+    lineage = ""
+    genes: Dict[str, Set[str]] = {s: set() for s in ("Missing", "Complete", "Duplicated", "Fragmented")}
+    for ft in files:
+        this_lineage, these_genes = read_full_table(ft)
+        if not lineage:
+            lineage = this_lineage
+        elif this_lineage != lineage:
+            raise SystemExit(
+                f"Lineage mismatch: {ft} has lineage '{this_lineage}' but previous lineage was '{lineage}'"
+            )
+        for mode, gene_list in these_genes.items():
+            genes[mode].update(gene_list)
+    return (lineage, genes)
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Create a reduced Busco database")
     parser.add_argument("--complete", type=int, help="Number of complete genes to include", default=10)
@@ -32,8 +48,10 @@ def parse_args():
     parser.add_argument("--fragmented", type=int, help="Number of fragmented genes to include", default=2)
     parser.add_argument("--missing", type=int, help="Number of missing genes to include", default=5)
     parser.add_argument("complete_database", help="Path to the complete Busco database")
-    parser.add_argument("full_table", help="Path to the full_table.csv output from an existing Busco run")
     parser.add_argument("output_dir", help="Output directory (completely recreated)")
+    parser.add_argument(
+        "full_table", nargs="+", help="Path(s) to one or more full_table.csv outputs from existing Busco runs"
+    )
     parser.add_argument("--version", action="version", version="%(prog)s 1.0")
     return parser.parse_args()
 
@@ -98,7 +116,7 @@ def write_subset_file(output_dir: Path, subset_genes: Dict[str, str]):
 
 def main(args):
     print(args)
-    (lineage, genes) = read_full_table(args.full_table)
+    (lineage, genes) = read_full_tables(args.full_table)
 
     subset_genes: Dict[str, str] = {}
     for mode, count in [
