@@ -77,7 +77,7 @@ def main(args):
     input_db = Path(args.complete_database)
     if os.path.exists(args.output_dir):
         shutil.rmtree(args.output_dir)
-    output_dir.mkdir()
+    output_dir.mkdir(parents=True, exist_ok=True)
     filter_tsv(input_db / "file_versions.tsv", output_dir / "file_versions.tsv", {0: [lineage]}, 0)
     filter_tsv(input_db / "info_mappings_all_busco_datasets_odb10.txt", output_dir / "info_mappings_all_busco_datasets_odb10.txt", {2: subset_genes, 3: [lineage]}, 0)
     (output_dir / "lineages").mkdir()
