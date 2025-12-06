@@ -66,6 +66,15 @@ def copy(input: Path, output: Path):
         with open(output, "w") as fho:
             shutil.copyfileobj(fhi, fho)
 
+def write_dataset_cfg(input_dir: Path, output_dir: Path, subset_genes: Sized):
+    with open(input_dir / "dataset.cfg") as fhi:
+        with open(output_dir / "dataset.cfg", "w") as fho:
+            for line in fhi:
+                if line.startswith("number_of_BUSCOs="):
+                    print(f"number_of_BUSCOs={len(subset_genes)}", file=fho)
+                else:
+                    fho.write(line)
+
 def main(args):
     print(args)
     (lineage, genes) = read_full_table(args.full_table)
@@ -108,13 +117,7 @@ def main(args):
             mode = [k for (k,l) in genes.items() if gene in l][0]
             print(gene, mode, file=fh)
 
-    with open(input_lineage / "dataset.cfg") as fhi:
-        with open(lineage_dir / "dataset.cfg", "w") as fho:
-            for line in fhi:
-                if line.startswith("number_of_BUSCOs="):
-                    print(f"number_of_BUSCOs={len(subset_genes)}", file=fho)
-                else:
-                    fho.write(line)
+    write_dataset_cfg(input_lineage, lineage_dir, subset_genes)
 
 
 if __name__ == "__main__":
