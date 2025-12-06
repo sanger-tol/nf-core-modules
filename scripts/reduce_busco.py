@@ -37,9 +37,9 @@ def parse_args():
     parser.add_argument("--version", action="version", version="%(prog)s 1.0")
     return parser.parse_args()
 
-def filter_tsv(filename: Path, output: Path, filters: Dict[int, Container[str]], header: int):
-    print("filter_tsv", filename.name)
-    with open(filename) as fhi:
+def filter_tsv(input: Path, output: Path, filters: Dict[int, Container[str]], header: int):
+    print("filter_tsv", input.name)
+    with open(input) as fhi:
         with open(output, "w") as fho:
             for (i, line) in enumerate(fhi):
                 if i < header:
@@ -49,10 +49,10 @@ def filter_tsv(filename: Path, output: Path, filters: Dict[int, Container[str]],
                     if all(t[col] in values for (col, values) in filters.items()):
                         fho.write(line)
 
-def filter_fasta(filename: Path, output: Path, values: Container[str]):
-    print("filter_fasta", filename.name)
+def filter_fasta(input: Path, output: Path, values: Container[str]):
+    print("filter_fasta", input.name)
     copy = False
-    with open(filename) as fhi:
+    with open(input) as fhi:
         with open(output, "w") as fho:
             for line in fhi:
                 if line.startswith(">"):
@@ -60,9 +60,9 @@ def filter_fasta(filename: Path, output: Path, values: Container[str]):
                 if copy:
                     fho.write(line)
 
-def copy(filename, output):
-    print("copy", filename.name)
-    with open(filename) as fhi:
+def copy(input: Path, output: Path):
+    print("copy", input.name)
+    with open(input) as fhi:
         with open(output, "w") as fho:
             for line in fhi:
                 fho.write(line)
