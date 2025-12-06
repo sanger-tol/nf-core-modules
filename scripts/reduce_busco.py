@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 
 import argparse
+from collections.abc import Container, Sized
 import os
 from pathlib import Path
 import shutil
+from typing import Dict, List
+
 
 def read_full_table(filename):
     """Read a Busco full_table file and return a tuple of (lineage, genes)
     where `genes` is a maps modes -> list(gene_ids).
     """
     lineage = None
-    genes = {s: [] for s in ("Missing", "Complete", "Duplicated", "Fragmented")}
+    genes: Dict[str, List[str]] = {s: [] for s in ("Missing", "Complete", "Duplicated", "Fragmented")}
     with open(filename) as fh:
         for line in fh:
             if line.startswith("# The lineage dataset is: "):
@@ -18,6 +21,7 @@ def read_full_table(filename):
             elif line and line[0] != "#":
                 t = line[:-1].split("\t")
                 genes[t[1]].append(t[0])
+    assert lineage
     return (lineage, genes)
 
 
@@ -33,7 +37,7 @@ def parse_args():
     parser.add_argument("--version", action="version", version="%(prog)s 1.0")
     return parser.parse_args()
 
-def filter_tsv(filename, output, filters, header):
+def filter_tsv(filename: Path, output: Path, filters: Dict[int, Container[str]], header: int):
     print("filter_tsv", filename.name)
     with open(filename) as fhi:
         with open(output, "w") as fho:
@@ -45,7 +49,7 @@ def filter_tsv(filename, output, filters, header):
                     if all(t[col] in values for (col, values) in filters.items()):
                         fho.write(line)
 
-def filter_fasta(filename, output, values):
+def filter_fasta(filename: Path, output: Path, values: Container[str]):
     print("filter_fasta", filename.name)
     copy = False
     with open(filename) as fhi:
@@ -99,7 +103,7 @@ def main(args):
     (lineage_dir / "prfl").mkdir()
     for gene in subset_genes:
         copy(input_lineage / "prfl" / f"{gene}.prfl", lineage_dir / "prfl" / f"{gene}.prfl")
-    
+
     with open(output_dir / "SUBSET", "w") as fh:
         for gene in subset_genes:
             mode = [k for (k,l) in genes.items() if gene in l][0]
