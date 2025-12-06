@@ -37,43 +37,58 @@ def parse_args():
     parser.add_argument("--version", action="version", version="%(prog)s 1.0")
     return parser.parse_args()
 
-def filter_tsv(input: Path, output: Path, filters: Dict[int, Container[str]], header: int):
-    print("filter_tsv", input.name)
-    with open(input) as fhi:
-        with open(output, "w") as fho:
-            for (i, line) in enumerate(fhi):
-                if i < header:
-                    fho.write(line)
-                else:
-                    t = line[:-1].split("\t")
-                    if all(t[col] in values for (col, values) in filters.items()):
+
+class BuscoReducer:
+    def __init__(self, input_dir: Path, output_dir: Path):
+        self.input_dir = input_dir
+        self.output_dir = output_dir
+
+    def filter_tsv(self, filename: str, filters: Dict[int, Container[str]], header: int):
+        input = self.input_dir / filename
+        output = self.output_dir / filename
+        print("filter_tsv", filename)
+        with open(input) as fhi:
+            with open(output, "w") as fho:
+                for i, line in enumerate(fhi):
+                    if i < header:
+                        fho.write(line)
+                    else:
+                        t = line[:-1].split("\t")
+                        if all(t[col] in values for (col, values) in filters.items()):
+                            fho.write(line)
+
+    def filter_fasta(self, filename: str, values: Container[str]):
+        input = self.input_dir / filename
+        output = self.output_dir / filename
+        print("filter_fasta", filename)
+        copy_block = False
+        with open(input) as fhi:
+            with open(output, "w") as fho:
+                for line in fhi:
+                    if line.startswith(">"):
+                        copy_block = line[1:-1].split("_")[0] in values
+                    if copy_block:
                         fho.write(line)
 
-def filter_fasta(input: Path, output: Path, values: Container[str]):
-    print("filter_fasta", input.name)
-    copy = False
-    with open(input) as fhi:
-        with open(output, "w") as fho:
-            for line in fhi:
-                if line.startswith(">"):
-                    copy = line[1:-1].split("_") in values
-                if copy:
-                    fho.write(line)
+    def copy(self, filename: str):
+        input = self.input_dir / filename
+        output = self.output_dir / filename
+        print("copy", filename)
+        with open(input) as fhi:
+            with open(output, "w") as fho:
+                shutil.copyfileobj(fhi, fho)
 
-def copy(input: Path, output: Path):
-    print("copy", input.name)
-    with open(input) as fhi:
-        with open(output, "w") as fho:
-            shutil.copyfileobj(fhi, fho)
+    def write_dataset_cfg(self, filename: str, subset_genes: Sized):
+        input = self.input_dir / filename
+        output = self.output_dir / filename
+        with open(input) as fhi:
+            with open(output, "w") as fho:
+                for line in fhi:
+                    if line.startswith("number_of_BUSCOs="):
+                        print(f"number_of_BUSCOs={len(subset_genes)}", file=fho)
+                    else:
+                        fho.write(line)
 
-def write_dataset_cfg(input_dir: Path, output_dir: Path, subset_genes: Sized):
-    with open(input_dir / "dataset.cfg") as fhi:
-        with open(output_dir / "dataset.cfg", "w") as fho:
-            for line in fhi:
-                if line.startswith("number_of_BUSCOs="):
-                    print(f"number_of_BUSCOs={len(subset_genes)}", file=fho)
-                else:
-                    fho.write(line)
 
 def write_subset_file(output_dir: Path, subset_genes: Dict[str, str]):
     with open(output_dir / "SUBSET", "w") as fh:
@@ -104,34 +119,36 @@ def main(args):
     if os.path.exists(args.output_dir):
         shutil.rmtree(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    filter_tsv(input_db / "file_versions.tsv", output_dir / "file_versions.tsv", {0: [lineage]}, 0)
-    filter_tsv(input_db / "info_mappings_all_busco_datasets_odb10.txt", output_dir / "info_mappings_all_busco_datasets_odb10.txt", {2: subset_genes, 3: [lineage]}, 0)
+    reducer = BuscoReducer(input_db, output_dir)
+    reducer.filter_tsv("file_versions.tsv", {0: [lineage]}, 0)
+    reducer.filter_tsv("info_mappings_all_busco_datasets_odb10.txt", {2: subset_genes, 3: [lineage]}, 0)
     (output_dir / "lineages").mkdir()
     lineage_dir = output_dir / "lineages" / lineage
     lineage_dir.mkdir()
     input_lineage = input_db / "lineages" / lineage
-    filter_fasta(input_lineage / "ancestral", lineage_dir / "ancestral", subset_genes)
-    filter_fasta(input_lineage / "ancestral_variants", lineage_dir / "ancestral_variants", subset_genes)
+    lineage_reducer = BuscoReducer(input_lineage, lineage_dir)
+    lineage_reducer.filter_fasta("ancestral", subset_genes)
+    lineage_reducer.filter_fasta("ancestral_variants", subset_genes)
     if lineage.endswith("_odb10"):
-        filter_tsv(input_lineage / "lengths_cutoff", lineage_dir / "lengths_cutoff", {0: subset_genes}, 0)
-        filter_tsv(input_lineage / "links_to_ODB10.txt", lineage_dir / "links_to_ODB10.txt", {0: subset_genes}, 0)
+        lineage_reducer.filter_tsv("lengths_cutoff", {0: subset_genes}, 0)
+        lineage_reducer.filter_tsv("links_to_ODB10.txt", {0: subset_genes}, 0)
     else:
-        filter_tsv(input_lineage / "links_to_ODB12.txt", lineage_dir / "links_to_ODB12.txt", {0: subset_genes}, 0)
-    filter_fasta(input_lineage / "refseq_db.faa", lineage_dir / "refseq_db.faa", subset_genes)
-    filter_tsv(input_lineage / "scores_cutoff", lineage_dir / "scores_cutoff", {0: subset_genes}, 0)
+        lineage_reducer.filter_tsv("links_to_ODB12.txt", {0: subset_genes}, 0)
+    lineage_reducer.filter_fasta("refseq_db.faa", subset_genes)
+    lineage_reducer.filter_tsv("scores_cutoff", {0: subset_genes}, 0)
     (lineage_dir / "hmms").mkdir()
     for gene in subset_genes:
-        copy(input_lineage / "hmms" / f"{gene}.hmm", lineage_dir / "hmms" / f"{gene}.hmm")
+        lineage_reducer.copy(f"hmms/{gene}.hmm")
     (lineage_dir / "info").mkdir()
-    filter_tsv(input_lineage / "info" / "ogs.id.info", lineage_dir / "info" / "ogs.id.info", {1: subset_genes}, 0)
-    copy(input_lineage / "info" / "species.info", lineage_dir / "info" / "species.info")
+    lineage_reducer.filter_tsv("info/ogs.id.info", {1: subset_genes}, 0)
+    lineage_reducer.copy("info/species.info")
     (lineage_dir / "prfl").mkdir()
     for gene in subset_genes:
-        copy(input_lineage / "prfl" / f"{gene}.prfl", lineage_dir / "prfl" / f"{gene}.prfl")
+        lineage_reducer.copy(f"prfl/{gene}.prfl")
+
+    lineage_reducer.write_dataset_cfg("dataset.cfg", subset_genes)
 
     write_subset_file(output_dir, subset_genes)
-
-    write_dataset_cfg(input_lineage, lineage_dir, subset_genes)
 
 
 if __name__ == "__main__":
