@@ -75,13 +75,30 @@ def write_dataset_cfg(input_dir: Path, output_dir: Path, subset_genes: Sized):
                 else:
                     fho.write(line)
 
+def write_subset_file(output_dir: Path, subset_genes: Dict[str, str]):
+    with open(output_dir / "SUBSET", "w") as fh:
+        for gene, mode in subset_genes.items():
+            print(gene, mode, file=fh)
+
+
 def main(args):
     print(args)
     (lineage, genes) = read_full_table(args.full_table)
-    subset_genes = sorted(genes["Complete"])[:args.complete] \
-        + sorted(genes["Duplicated"])[:args.duplicated] \
-        + sorted(genes["Fragmented"])[:args.fragmented] \
-        + sorted(genes["Missing"])[:args.missing]
+
+    subset_genes: Dict[str, str] = {}
+    for mode, count in [
+        ("Complete", args.complete),
+        ("Duplicated", args.duplicated),
+        ("Fragmented", args.fragmented),
+        ("Missing", args.missing),
+    ]:
+        if count > len(genes[mode]):
+            print(f"Requested {count} {mode} genes but only {len(genes[mode])} available")
+        for gene in sorted(genes[mode])[:count]:
+            subset_genes[gene] = mode
+    print(f"Selected {len(subset_genes)} genes for reduced database")
+    print(subset_genes)
+
     output_dir = Path(args.output_dir)
     input_db = Path(args.complete_database)
     if os.path.exists(args.output_dir):
@@ -112,10 +129,7 @@ def main(args):
     for gene in subset_genes:
         copy(input_lineage / "prfl" / f"{gene}.prfl", lineage_dir / "prfl" / f"{gene}.prfl")
 
-    with open(output_dir / "SUBSET", "w") as fh:
-        for gene in subset_genes:
-            mode = [k for (k,l) in genes.items() if gene in l][0]
-            print(gene, mode, file=fh)
+    write_subset_file(output_dir, subset_genes)
 
     write_dataset_cfg(input_lineage, lineage_dir, subset_genes)
 
