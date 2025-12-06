@@ -64,8 +64,7 @@ def copy(input: Path, output: Path):
     print("copy", input.name)
     with open(input) as fhi:
         with open(output, "w") as fho:
-            for line in fhi:
-                fho.write(line)
+            shutil.copyfileobj(fhi, fho)
 
 def main(args):
     print(args)
