@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
 import argparse
+import itertools
 import os
 import shutil
 from collections.abc import Container, Sized
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List, Set
+
+BUSCO_MODES = ("Missing", "Complete", "Duplicated", "Fragmented")
 
 
 def read_full_table(filename):
@@ -13,7 +16,7 @@ def read_full_table(filename):
     where `genes` is a maps modes -> list(gene_ids).
     """
     lineage = None
-    genes: Dict[str, List[str]] = {s: [] for s in ("Missing", "Complete", "Duplicated", "Fragmented")}
+    genes: Dict[str, List[str]] = {s: [] for s in BUSCO_MODES}
     with open(filename) as fh:
         for line in fh:
             if line.startswith("# The lineage dataset is: "):
@@ -25,20 +28,27 @@ def read_full_table(filename):
     return (lineage, genes)
 
 
-def read_full_tables(files: List[str]) -> Tuple[str, Dict[str, Set[str]]]:
-    lineage = ""
-    genes: Dict[str, Set[str]] = {s: set() for s in ("Missing", "Complete", "Duplicated", "Fragmented")}
+def read_full_tables(files: List[str]) -> Dict[str, Dict[str, Set[str]]]:
+    """Read multiple full_table files and aggregate genes per-lineage.
+
+    Returns `lineage_map` which maps each lineage to a dict of
+    mode -> set(gene_ids).
+    """
+    lineage_map: Dict[str, Dict[str, Set[str]]] = {}
     for ft in files:
-        this_lineage, these_genes = read_full_table(ft)
-        if not lineage:
-            lineage = this_lineage
-        elif this_lineage != lineage:
-            raise SystemExit(
-                f"Lineage mismatch: {ft} has lineage '{this_lineage}' but previous lineage was '{lineage}'"
-            )
-        for mode, gene_list in these_genes.items():
-            genes[mode].update(gene_list)
-    return (lineage, genes)
+        lineage, genes = read_full_table(ft)
+        if lineage not in lineage_map:
+            lineage_map[lineage] = {s: set() for s in BUSCO_MODES}
+        for mode, gene_list in genes.items():
+            lineage_map[lineage][mode].update(gene_list)
+    # Discard genes that appear in multiple modes
+    for gene_map in lineage_map.values():
+        ambiguous_genes: Set[str] = set()
+        for mode1, mode2 in itertools.combinations(BUSCO_MODES, 2):
+            ambiguous_genes.update(gene_map[mode1].intersection(gene_map[mode2]))
+        for mode in BUSCO_MODES:
+            gene_map[mode] -= ambiguous_genes
+    return lineage_map
 
 
 def parse_args():
@@ -116,57 +126,72 @@ def write_subset_file(output_dir: Path, subset_genes: Dict[str, str]):
 
 def main(args):
     print(args)
-    (lineage, genes) = read_full_tables(args.full_table)
+    all_full_tables = read_full_tables(args.full_table)
 
-    subset_genes: Dict[str, str] = {}
-    for mode, count in [
-        ("Complete", args.complete),
-        ("Duplicated", args.duplicated),
-        ("Fragmented", args.fragmented),
-        ("Missing", args.missing),
-    ]:
-        if count > len(genes[mode]):
-            print(f"Requested {count} {mode} genes but only {len(genes[mode])} available")
-        for gene in sorted(genes[mode])[:count]:
-            subset_genes[gene] = mode
-    print(f"Selected {len(subset_genes)} genes for reduced database")
-    print(subset_genes)
+    expected_counts = {
+        "Complete": args.complete,
+        "Duplicated": args.duplicated,
+        "Fragmented": args.fragmented,
+        "Missing": args.missing,
+    }
+
+    selected_genes: Dict[str, Dict[str, str]] = {}
+    all_selected_genes: Set[str] = set()
+    all_selected_odb10_genes: Set[str] = set()
+    all_odb10_lineages: Set[str] = set()
+    for lineage, gene_map in all_full_tables.items():
+        if lineage.endswith("_odb10"):
+            all_odb10_lineages.add(lineage)
+        selected_genes[lineage] = {}
+        for mode in BUSCO_MODES:
+            selected = sorted(gene_map[mode])[: expected_counts[mode]]
+            for gene in selected:
+                selected_genes[lineage][gene] = mode
+            all_selected_genes.update(selected)
+            if lineage.endswith("_odb10"):
+                all_selected_odb10_genes.update(selected)
 
     output_dir = Path(args.output_dir)
     input_db = Path(args.complete_database)
     if os.path.exists(args.output_dir):
         shutil.rmtree(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
     reducer = BuscoReducer(input_db, output_dir)
-    reducer.filter_tsv("file_versions.tsv", {0: [lineage]}, 0)
-    reducer.filter_tsv("info_mappings_all_busco_datasets_odb10.txt", {2: subset_genes, 3: [lineage]}, 0)
+    reducer.filter_tsv("file_versions.tsv", {0: selected_genes}, 0)
+    reducer.filter_tsv(
+        "info_mappings_all_busco_datasets_odb10.txt", {2: all_selected_odb10_genes, 3: all_odb10_lineages}, 1
+    )
+
     (output_dir / "lineages").mkdir()
-    lineage_dir = output_dir / "lineages" / lineage
-    lineage_dir.mkdir()
-    input_lineage = input_db / "lineages" / lineage
-    lineage_reducer = BuscoReducer(input_lineage, lineage_dir)
-    lineage_reducer.filter_fasta("ancestral", subset_genes)
-    lineage_reducer.filter_fasta("ancestral_variants", subset_genes)
-    if lineage.endswith("_odb10"):
-        lineage_reducer.filter_tsv("lengths_cutoff", {0: subset_genes}, 0)
-        lineage_reducer.filter_tsv("links_to_ODB10.txt", {0: subset_genes}, 0)
-    else:
-        lineage_reducer.filter_tsv("links_to_ODB12.txt", {0: subset_genes}, 0)
-    lineage_reducer.filter_fasta("refseq_db.faa", subset_genes)
-    lineage_reducer.filter_tsv("scores_cutoff", {0: subset_genes}, 0)
-    (lineage_dir / "hmms").mkdir()
-    for gene in subset_genes:
-        lineage_reducer.copy(f"hmms/{gene}.hmm")
-    (lineage_dir / "info").mkdir()
-    lineage_reducer.filter_tsv("info/ogs.id.info", {1: subset_genes}, 0)
-    lineage_reducer.copy("info/species.info")
-    (lineage_dir / "prfl").mkdir()
-    for gene in subset_genes:
-        lineage_reducer.copy(f"prfl/{gene}.prfl")
+    for lineage, genes in selected_genes.items():
+        print("Processing lineage", lineage, genes)
+        lineage_dir = output_dir / "lineages" / lineage
+        lineage_dir.mkdir()
+        input_lineage = input_db / "lineages" / lineage
+        lineage_reducer = BuscoReducer(input_lineage, lineage_dir)
 
-    lineage_reducer.write_dataset_cfg("dataset.cfg", subset_genes)
+        lineage_reducer.filter_fasta("ancestral", genes)
+        lineage_reducer.filter_fasta("ancestral_variants", genes)
+        if lineage.endswith("_odb10"):
+            lineage_reducer.filter_tsv("lengths_cutoff", {0: genes}, 0)
+            lineage_reducer.filter_tsv("links_to_ODB10.txt", {0: genes}, 0)
+        else:
+            lineage_reducer.filter_tsv("links_to_ODB12.txt", {0: genes}, 0)
+        lineage_reducer.filter_fasta("refseq_db.faa", genes)
+        lineage_reducer.filter_tsv("scores_cutoff", {0: genes}, 0)
+        (lineage_dir / "hmms").mkdir()
+        for gene in genes:
+            lineage_reducer.copy(f"hmms/{gene}.hmm")
+        (lineage_dir / "info").mkdir()
+        lineage_reducer.filter_tsv("info/ogs.id.info", {1: genes}, 0)
+        lineage_reducer.copy("info/species.info")
+        (lineage_dir / "prfl").mkdir()
+        for gene in genes:
+            lineage_reducer.copy(f"prfl/{gene}.prfl")
 
-    write_subset_file(output_dir, subset_genes)
+        lineage_reducer.write_dataset_cfg("dataset.cfg", genes)
+        write_subset_file(lineage_dir, genes)
 
 
 if __name__ == "__main__":
