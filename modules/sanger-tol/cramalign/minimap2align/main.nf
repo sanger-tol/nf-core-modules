@@ -23,6 +23,10 @@ process CRAMALIGN_MINIMAP2ALIGN {
     def args3 = task.ext.args3 ?: ''
     def args5 = task.ext.args5 ?: ''
     def prefix = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
+    // Allow full region if range not provided
+    def (samtools_cat_cmd, cram_input) = range
+        ? [ "samtools cat ${args1} -r '#:${range[0]}-${range[1]}' ${cram} |", "-" ]
+        : [ '', cram ]
     def post_filter = task.ext.args4 ? "samtools view -h ${task.ext.args4} |" : ''
     def rg_arg = rglines ? '-y ' + rglines.collect { line ->
             // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
@@ -33,8 +37,8 @@ process CRAMALIGN_MINIMAP2ALIGN {
         }.join(' ')
         : ''
     """
-    samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} | \\
-        samtools fastq ${args2} - |  \\
+    ${samtools_cat_cmd} \\
+        samtools fastq ${args2} ${cram_input} |  \\
         minimap2 -t${task.cpus} ${args3} ${reference} ${rg_arg} - | \\
         ${post_filter} \\
         samtools sort ${args5} -@${task.cpus} -T ${prefix}_sort_tmp -o ${prefix}.bam -
