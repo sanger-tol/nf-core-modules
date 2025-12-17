@@ -17,12 +17,12 @@ workflow GENOME_STATISTICS {
     ch_versions = channel.empty()
 
     ch_assemblies_split = ch_assemblies
-        | flatMap { meta, asm1, asm2 ->
+        .flatMap { meta, asm1, asm2 ->
             def meta_asm1 = meta + [_hap: "hap1"]
             def meta_asm2 = meta + [_hap: "hap2"]
             return [ [meta_asm1, asm1], [meta_asm2, asm2] ]
         }
-        | filter { _meta, asm -> asm }
+        .filter { _meta, asm -> asm }
 
     //
     // Module: Calculate assembly stats with asmstats
@@ -48,8 +48,11 @@ workflow GENOME_STATISTICS {
     //
     // Module: Assess assembly using BUSCO.
     //
+    ch_assemblies_for_busco = ch_assemblies
+        .map { meta, hap1, hap2 -> [ meta, [hap1, hap2].findAll() ] }
+
     BUSCO_BUSCO(
-        ch_assemblies_split,               // assembly
+        ch_assemblies_for_busco,           // assembly
         "genome",                          // busco mode
         val_busco_lineage,                 // lineage to run BUSCO predictions
         val_busco_lineage_directory ?: [], // busco lineage directory
@@ -62,8 +65,8 @@ workflow GENOME_STATISTICS {
     // Module: assess kmer completeness/QV using MerquryFK
     //
     ch_merquryfk_asm_input = ch_assemblies
-        | combine(ch_reads_fastk)
-        | map { meta_asm, hap1, hap2, _meta_fk, fk_hist, fk_ktabs ->
+        .combine(ch_reads_fastk)
+        .map { meta_asm, hap1, hap2, _meta_fk, fk_hist, fk_ktabs ->
             [meta_asm, fk_hist, fk_ktabs, hap1, hap2]
         }
 
@@ -75,7 +78,7 @@ workflow GENOME_STATISTICS {
     ch_versions = ch_versions.mix(MERQURYFK_MERQURYFK.out.versions)
 
     ch_merquryfk_images = channel.empty()
-        | mix(
+        .mix(
             MERQURYFK_MERQURYFK.out.spectra_cn_fl,
             MERQURYFK_MERQURYFK.out.spectra_cn_ln,
             MERQURYFK_MERQURYFK.out.spectra_cn_st,
@@ -87,13 +90,16 @@ workflow GENOME_STATISTICS {
             MERQURYFK_MERQURYFK.out.block_blob,
             MERQURYFK_MERQURYFK.out.hapmers_blob,
         )
-        | transpose()
+        .transpose()
 
     emit:
     asmstats             = ASMSTATS.out.stats
     gfastats             = GFASTATS.out.assembly_summary
+    busco_batch_summary  = BUSCO_BUSCO.out.batch_summary
     busco_summary_txt    = BUSCO_BUSCO.out.short_summaries_txt
     busco_summary_json   = BUSCO_BUSCO.out.short_summaries_json
+    busco_log            = BUSCO_BUSCO.out.log
+    busco_directory      = BUSCO_BUSCO.out.busco_dir
     merqury_qv           = MERQURYFK_MERQURYFK.out.qv
     merqury_completeness = MERQURYFK_MERQURYFK.out.stats
     merqury_phased_stats = MERQURYFK_MERQURYFK.out.phased_block_stats
