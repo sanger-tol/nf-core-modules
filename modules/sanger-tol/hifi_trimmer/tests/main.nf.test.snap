@@ -14,14 +14,6 @@
                     {
                         "id": "test"
                     },
-                    "test.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test"
-                    },
                     {
                         "detections": [
                             
@@ -129,14 +121,6 @@
                         "id": "test"
                     },
                     "test.hifi_trimmer.fastq.gz:md5,7a0563ed9905850910174535ea4a912e"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                 ]
             ],
             [

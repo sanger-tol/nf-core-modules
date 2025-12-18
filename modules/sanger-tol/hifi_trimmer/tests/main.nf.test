@@ -90,8 +90,8 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert snapshot(
+                    // dont check process.out.bed as it is expected to be an empty file, which fails modules lint
                     process.out.filtered,
-                    process.out.bed,
                     process.out.summary.collect{ meta, summary_file ->
                         [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                     },
@@ -136,8 +136,8 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert snapshot(
+                    // dont check process.out.bed as it is expected to be an empty file, which fails modules lint
                     process.out.filtered,
-                    process.out.bed,
                     process.out.summary.collect{ meta, summary_file ->
                         [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                     },

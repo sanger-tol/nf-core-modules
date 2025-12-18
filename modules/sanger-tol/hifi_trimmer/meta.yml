@@ -34,7 +34,7 @@ input:
       type: file
       description: YAML configuration file for `hifi_trimmer` (may contain barcodes)
       pattern: "*.{yaml,yml}"
-  - - meta:
+  - - meta1:
         type: map
         description: |
           Groovy Map containing sample information
