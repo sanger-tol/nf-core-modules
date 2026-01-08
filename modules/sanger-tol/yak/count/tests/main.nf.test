@@ -5,7 +5,7 @@ nextflow_process {
     process "YAK_COUNT"
 
     tag "modules"
-    tag "modules_nfcore"
+    tag "modules_sangertol"
     tag "yak"
     tag "yak/count"
 
