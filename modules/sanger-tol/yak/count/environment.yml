@@ -4,5 +4,5 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - bioconda::yak=0.1
   - bioconda::samtools=1.23
+  - bioconda::yak=0.1

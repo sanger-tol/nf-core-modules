@@ -24,9 +24,10 @@ input:
         type: file
         description: reads fastq/cram file
         pattern: "*.{fastq.gz,fq.gz,fasta.gz,fa.gz,cram}"
+        ontologies: []
 output:
-  - yak:
-      - meta:
+  yak:
+    - - meta:
           type: map
           description: |
             Groovy Map containing sample information
@@ -35,11 +36,14 @@ output:
           type: file
           description: k-mer hash table of input
           pattern: "*.{yak}"
-  - versions:
-      - versions.yml:
-          type: file
-          description: File containing software versions
-          pattern: "versions.yml"
+          ontologies: []
+  versions:
+    - versions.yml:
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+        ontologies:
+          - edam: http://edamontology.org/format_3750 # YAML
 authors:
   - "@yumisims"
   - "@prototaxites"
