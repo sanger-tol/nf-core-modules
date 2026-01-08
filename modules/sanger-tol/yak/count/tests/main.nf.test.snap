@@ -1,0 +1,101 @@
+{
+    "Meles meles - Illumina 10X - fastq": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.yak:md5,c4b89eb8e82ea8c56354fc029ceb580f"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                ],
+                "versions": [
+                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                ],
+                "yak": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.yak:md5,c4b89eb8e82ea8c56354fc029ceb580f"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2026-01-08T16:36:08.158465"
+    },
+    "Meles meles - Illumina - Hi-C - CRAM": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.yak:md5,72480c98818d5660d57352a427bbad8a"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                ],
+                "versions": [
+                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                ],
+                "yak": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.yak:md5,72480c98818d5660d57352a427bbad8a"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2026-01-08T16:40:07.560795"
+    },
+    "Meles meles - Illumina - Hi-C - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.yak:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                ],
+                "versions": [
+                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                ],
+                "yak": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.yak:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2026-01-08T16:34:36.030748"
+    }
+}
