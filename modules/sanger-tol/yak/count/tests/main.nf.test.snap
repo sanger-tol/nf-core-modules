@@ -11,10 +11,18 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                    [
+                        "YAK_COUNT",
+                        "yak",
+                        "0.1-r69-dirty"
+                    ]
                 ],
-                "versions": [
-                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                "versions_yak": [
+                    [
+                        "YAK_COUNT",
+                        "yak",
+                        "0.1-r69-dirty"
+                    ]
                 ],
                 "yak": [
                     [
@@ -30,7 +38,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-08T16:36:08.158465"
+        "timestamp": "2026-01-09T14:40:14.997056"
     },
     "Meles meles - Illumina - Hi-C - CRAM": {
         "content": [
@@ -44,10 +52,18 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                    [
+                        "YAK_COUNT",
+                        "yak",
+                        "0.1-r69-dirty"
+                    ]
                 ],
-                "versions": [
-                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                "versions_yak": [
+                    [
+                        "YAK_COUNT",
+                        "yak",
+                        "0.1-r69-dirty"
+                    ]
                 ],
                 "yak": [
                     [
@@ -63,7 +79,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-08T16:40:07.560795"
+        "timestamp": "2026-01-09T14:40:00.2391"
     },
     "Meles meles - Illumina - Hi-C - stub": {
         "content": [
@@ -77,10 +93,18 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                    [
+                        "YAK_COUNT",
+                        "yak",
+                        "0.1-r69-dirty"
+                    ]
                 ],
-                "versions": [
-                    "versions.yml:md5,ae46b0bacbd7068d85e1e81edcc37d25"
+                "versions_yak": [
+                    [
+                        "YAK_COUNT",
+                        "yak",
+                        "0.1-r69-dirty"
+                    ]
                 ],
                 "yak": [
                     [
@@ -96,6 +120,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-08T16:34:36.030748"
+        "timestamp": "2026-01-09T14:40:33.102458"
     }
 }
