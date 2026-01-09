@@ -14,7 +14,7 @@ BUSCO_MODES = ("Missing", "Complete", "Duplicated", "Fragmented")
 
 def read_full_table(filename):
     """Read a Busco full_table file and return a tuple of (lineage, genes)
-    where `genes` is a maps modes -> list(gene_ids).
+    where `genes` maps modes (cf BUSCO_MODES) to list(gene_ids).
     """
     lineage = None
     genes: Dict[str, List[str]] = {s: [] for s in BUSCO_MODES}
@@ -72,11 +72,17 @@ def parse_args():
     return parser.parse_args()
 
 
+# Collection of helper methods to filter various file formats
+# All paths are evaluated relative to `input_dir` and `output_dir`
 class BuscoReducer:
     def __init__(self, input_dir: Path, output_dir: Path):
         self.input_dir = input_dir
         self.output_dir = output_dir
 
+    # Filter a TSV file:
+    # - `filters` maps column numbers (0-based) to the only values that are allowed in said
+    #    column. Rows that have different values in any of those columns are discarded.
+    # - `header` is the number of lines to copy as-is.
     def filter_tsv(self, filename: str, filters: Dict[int, Container[str]], header: int):
         input = self.input_dir / filename
         output = self.output_dir / filename
