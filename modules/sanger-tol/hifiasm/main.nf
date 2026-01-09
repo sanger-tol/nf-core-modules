@@ -54,6 +54,7 @@ process HIFIASM {
         input_hic1 = "--h1 <(for f in ${hic_cram_sorted}; do samtools cat \$f | samtools fastq -n -f0x40 -F0xB00; done)"
         input_hic2 = "--h2 <(for f in ${hic_cram_sorted}; do samtools cat \$f | samtools fastq -n -f0x80 -F0xB00; done)"
     }
+
     """
     hifiasm \\
         $args \\
