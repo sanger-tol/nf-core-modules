@@ -4,6 +4,7 @@ import argparse
 import itertools
 import os
 import shutil
+import sys
 from collections.abc import Container, Sized
 from pathlib import Path
 from typing import Dict, List, Set
@@ -27,7 +28,9 @@ def read_full_table(filename):
                 mode = t[1]
                 # Will raise KeyError if the mode isn't recognised
                 genes[mode].append(gene_id)
-    assert lineage
+    if lineage is None:
+        print(f"Could not parse the lineage name in '{filename}'", file=sys.stderr)
+        raise SystemExit(1)
     return (lineage, genes)
 
 
