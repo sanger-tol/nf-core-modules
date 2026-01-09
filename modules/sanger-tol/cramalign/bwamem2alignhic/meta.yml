@@ -7,7 +7,7 @@ description: |
   an alignment in BAM format.
 keywords:
   - sort
-  - example
+  - alignment
   - genomics
 tools:
   - samtools:
