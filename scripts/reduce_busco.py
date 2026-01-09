@@ -23,7 +23,10 @@ def read_full_table(filename):
                 lineage = line.split()[5]
             elif line and line[0] != "#":
                 t = line[:-1].split("\t")
-                genes[t[1]].append(t[0])
+                gene_id = t[0]
+                mode = t[1]
+                # Will raise KeyError if the mode isn't recognised
+                genes[mode].append(gene_id)
     assert lineage
     return (lineage, genes)
 
