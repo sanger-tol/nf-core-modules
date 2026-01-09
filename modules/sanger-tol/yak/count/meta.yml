@@ -37,13 +37,27 @@ output:
           description: k-mer hash table of input
           pattern: "*.{yak}"
           ontologies: []
+  versions_yak:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - yak:
+          type: string
+          description: The tool name
+      - "yak version":
+          type: string
+          description: The command used to generate the version of the tool
+topics:
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
-        ontologies:
-          - edam: http://edamontology.org/format_3750 # YAML
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - yak:
+          type: string
+          description: The tool name
+      - "yak version":
+          type: string
+          description: The command used to generate the version of the tool
 authors:
   - "@yumisims"
   - "@prototaxites"

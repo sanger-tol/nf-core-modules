@@ -12,7 +12,7 @@ process YAK_COUNT {
 
     output:
     tuple val(meta), path("*.yak"), emit: yak
-    path "versions.yml"           , emit: versions
+    tuple val("${task.process}"), val('yak'), eval("yak version"), topic: versions, emit: versions_yak
 
     when:
     task.ext.when == null || task.ext.when
@@ -29,11 +29,6 @@ process YAK_COUNT {
         -t${task.cpus} \\
         -o ${prefix}.yak \\
         <(${fasta_command}) <(${fasta_command})
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        yak: \$(yak version)
-    END_VERSIONS
     """
 
     stub:
@@ -41,10 +36,5 @@ process YAK_COUNT {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.yak
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        yak: \$(yak version)
-    END_VERSIONS
     """
 }
