@@ -20,7 +20,6 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
         [ [:],[] ],    // fai
         false          // get sizes
     )
-    ch_versions = ch_versions.mix(SAMTOOLS_FAIDX.out.versions)
 
     //
     // Logic: create a channel with both fai and gzi for each assembly
@@ -72,7 +71,6 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
             ch_samtools_merge_input.fai,
             ch_samtools_merge_input.gzi,
         )
-        ch_versions    = ch_versions.mix(SAMTOOLS_MERGE.out.versions)
 
         ch_output_bam  = SAMTOOLS_MERGE.out.bam
             .mix(SAMTOOLS_MERGE.out.cram)
