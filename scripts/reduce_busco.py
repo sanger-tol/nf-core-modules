@@ -6,17 +6,21 @@ import shutil
 import sys
 from collections.abc import Container, Sized
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Dict, List, Set, TypeAlias
 
 BUSCO_MODES = ("Missing", "Complete", "Duplicated", "Fragmented")
 
+LineageName: TypeAlias = str
+BuscoMode: TypeAlias = str
+GeneName: TypeAlias = str
 
-def read_full_table(filename):
+
+def read_full_table(filename: str) -> tuple[LineageName, Dict[BuscoMode, List[GeneName]]]:
     """Read a Busco full_table file and return a tuple of (lineage, genes)
     where `genes` maps modes (cf BUSCO_MODES) to list(gene_ids).
     """
     lineage = None
-    genes: Dict[str, List[str]] = {s: [] for s in BUSCO_MODES}
+    genes: Dict[BuscoMode, List[GeneName]] = {s: [] for s in BUSCO_MODES}
     with open(filename) as fh:
         for line in fh:
             if line.startswith("# The lineage dataset is: "):
@@ -33,13 +37,13 @@ def read_full_table(filename):
     return (lineage, genes)
 
 
-def read_full_tables(files: List[str]) -> Dict[str, Dict[str, Set[str]]]:
+def read_full_tables(files: List[str]) -> Dict[LineageName, Dict[BuscoMode, Set[GeneName]]]:
     """Read multiple full_table files and aggregate genes per-lineage.
 
     Returns `lineage_map` which maps each lineage to a dict of
     mode -> set(gene_ids).
     """
-    lineage_map: Dict[str, Dict[str, Set[str]]] = {}
+    lineage_map: Dict[LineageName, Dict[BuscoMode, Set[GeneName]]] = {}
     for ft in files:
         lineage, genes = read_full_table(ft)
         if lineage not in lineage_map:
@@ -137,7 +141,7 @@ def main(args):
     print(args)
     all_full_tables = read_full_tables(args.full_table)
 
-    expected_counts = dict(
+    expected_counts: Dict[BuscoMode, int] = dict(
         zip(
             BUSCO_MODES,
             [
@@ -149,9 +153,9 @@ def main(args):
         )
     )
 
-    selected_genes: Dict[str, Dict[str, str]] = {}
-    all_selected_genes: Set[str] = set()
-    all_selected_odb10_genes: Set[str] = set()
+    selected_genes: Dict[LineageName, Dict[GeneName, BuscoMode]] = {}
+    all_selected_genes: Set[GeneName] = set()
+    all_selected_odb10_genes: Set[GeneName] = set()
     for lineage, gene_map in all_full_tables.items():
         selected_genes[lineage] = {}
         for mode in BUSCO_MODES:
