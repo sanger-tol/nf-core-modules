@@ -160,10 +160,7 @@ def main(args):
     selected_genes: Dict[str, Dict[str, str]] = {}
     all_selected_genes: Set[str] = set()
     all_selected_odb10_genes: Set[str] = set()
-    all_odb10_lineages: Set[str] = set()
     for lineage, gene_map in all_full_tables.items():
-        if lineage.endswith("_odb10"):
-            all_odb10_lineages.add(lineage)
         selected_genes[lineage] = {}
         for mode in BUSCO_MODES:
             selected = sorted(gene_map[mode])[: expected_counts[mode]]
@@ -172,6 +169,7 @@ def main(args):
             all_selected_genes.update(selected)
             if lineage.endswith("_odb10"):
                 all_selected_odb10_genes.update(selected)
+    all_odb10_lineages = set(filter(lambda lin: lin.endswith("_odb10"), all_full_tables.keys()))
 
     # Create output directory
     output_dir = Path(args.output_dir)
