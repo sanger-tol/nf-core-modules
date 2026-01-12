@@ -158,11 +158,11 @@ def main(args):
     all_selected_odb10_genes: Set[GeneName] = set()
     for lineage, gene_map in all_full_tables.items():
         selected_genes[lineage] = {}
-        for mode in BUSCO_MODES:
+        for mode, genes in gene_map.items():
             # Consider genes that have already been selected from other modes
-            selected = all_selected_genes.intersection(gene_map[mode])
+            selected = all_selected_genes.intersection(genes)
             if len(selected) < expected_counts[mode]:
-                selected.update(sorted(gene_map[mode])[: (expected_counts[mode] - len(selected))])
+                selected.update(sorted(genes)[: (expected_counts[mode] - len(selected))])
             for gene in selected:
                 selected_genes[lineage][gene] = mode
             all_selected_genes.update(selected)
