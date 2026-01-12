@@ -208,9 +208,10 @@ def main(args):
         (lineage_dir / "info").mkdir()
         lineage_reducer.filter_tsv("info/ogs.id.info", {1: genes})
         lineage_reducer.copy("info/species.info")
-        (lineage_dir / "prfl").mkdir()
-        for gene in genes:
-            lineage_reducer.copy(f"prfl/{gene}.prfl")
+        if not lineage.startswith("bacteria_") and not lineage.startswith("archaea_"):
+            (lineage_dir / "prfl").mkdir()
+            for gene in genes:
+                lineage_reducer.copy(f"prfl/{gene}.prfl")
 
         lineage_reducer.write_dataset_cfg("dataset.cfg", genes)
         write_subset_file(lineage_dir, genes)
