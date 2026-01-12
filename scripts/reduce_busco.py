@@ -83,7 +83,7 @@ class BuscoReducer:
     # - `filters` maps column numbers (0-based) to the only values that are allowed in said
     #    column. Rows that have different values in any of those columns are discarded.
     # - `header` is the number of lines to copy as-is.
-    def filter_tsv(self, filename: str, filters: Dict[int, Container[str]], header: int):
+    def filter_tsv(self, filename: str, filters: Dict[int, Container[str]], header: int = 0):
         input = self.input_dir / filename
         output = self.output_dir / filename
         print("filter_tsv", filename)
@@ -182,7 +182,7 @@ def main(args):
 
     # Copy and filter files in the main database directory
     reducer = BuscoReducer(input_db, output_dir)
-    reducer.filter_tsv("file_versions.tsv", {0: selected_genes}, 0)
+    reducer.filter_tsv("file_versions.tsv", {0: selected_genes})
     reducer.filter_tsv(
         "info_mappings_all_busco_datasets_odb10.txt", {2: all_selected_odb10_genes, 3: all_odb10_lineages}, 1
     )
@@ -199,17 +199,17 @@ def main(args):
         lineage_reducer.filter_fasta("ancestral", genes)
         lineage_reducer.filter_fasta("ancestral_variants", genes)
         if lineage.endswith("_odb10"):
-            lineage_reducer.filter_tsv("lengths_cutoff", {0: genes}, 0)
-            lineage_reducer.filter_tsv("links_to_ODB10.txt", {0: genes}, 0)
+            lineage_reducer.filter_tsv("lengths_cutoff", {0: genes})
+            lineage_reducer.filter_tsv("links_to_ODB10.txt", {0: genes})
         else:
-            lineage_reducer.filter_tsv("links_to_ODB12.txt", {0: genes}, 0)
+            lineage_reducer.filter_tsv("links_to_ODB12.txt", {0: genes})
         lineage_reducer.filter_fasta("refseq_db.faa", genes)
-        lineage_reducer.filter_tsv("scores_cutoff", {0: genes}, 0)
+        lineage_reducer.filter_tsv("scores_cutoff", {0: genes})
         (lineage_dir / "hmms").mkdir()
         for gene in genes:
             lineage_reducer.copy(f"hmms/{gene}.hmm")
         (lineage_dir / "info").mkdir()
-        lineage_reducer.filter_tsv("info/ogs.id.info", {1: genes}, 0)
+        lineage_reducer.filter_tsv("info/ogs.id.info", {1: genes})
         lineage_reducer.copy("info/species.info")
         (lineage_dir / "prfl").mkdir()
         for gene in genes:
