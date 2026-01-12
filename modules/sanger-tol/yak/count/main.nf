@@ -20,8 +20,8 @@ process YAK_COUNT {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def cram_input = (reads[0].getExtension() in ["bam", "cram"])
-    def fasta_command = cram_input ? "samtools cat ${reads} | samtools fasta" : "zcat ${reads}"
+    def need_cat = (reads[0].getExtension() in ["bam", "cram"])
+    def fasta_command = need_cat ? "samtools cat ${reads} | samtools fasta" : "zcat ${reads}"
     """
     yak \\
         count \\
