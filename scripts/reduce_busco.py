@@ -145,12 +145,17 @@ def main(args):
     print(args)
     all_full_tables = read_full_tables(args.full_table)
 
-    expected_counts = {
-        "Complete": args.complete,
-        "Duplicated": args.duplicated,
-        "Fragmented": args.fragmented,
-        "Missing": args.missing,
-    }
+    expected_counts = dict(
+        zip(
+            BUSCO_MODES,
+            [
+                args.missing,
+                args.complete,
+                args.duplicated,
+                args.fragmented,
+            ],
+        )
+    )
 
     selected_genes: Dict[str, Dict[str, str]] = {}
     all_selected_genes: Set[str] = set()
