@@ -96,6 +96,9 @@ class BuscoReducer:
                     if all(t[col] in values for (col, values) in filters.items()):
                         fho.write(line)
 
+    # Filter a FASTA file, keeping only sequences whose identifier starts with one of the
+    # values in `values`. The identifier is considered to be the part after the '>' up to
+    # the first underscore. That's what matches the gene IDs in the BUSCO full_table files.
     def filter_fasta(self, filename: str, values: Container[str]):
         input = self.input_dir / filename
         output = self.output_dir / filename
@@ -109,6 +112,7 @@ class BuscoReducer:
                     if copy_block:
                         fho.write(line)
 
+    # Copy a file as-is
     def copy(self, filename: str):
         input = self.input_dir / filename
         output = self.output_dir / filename
@@ -117,9 +121,11 @@ class BuscoReducer:
             with open(output, "w") as fho:
                 shutil.copyfileobj(fhi, fho)
 
+    # Write a reduced dataset.cfg file, simply updating the number_of_BUSCOs field
     def write_dataset_cfg(self, filename: str, subset_genes: Sized):
         input = self.input_dir / filename
         output = self.output_dir / filename
+        print("write dataset config", filename)
         with open(input) as fhi:
             with open(output, "w") as fho:
                 for line in fhi:
@@ -162,26 +168,29 @@ def main(args):
             if lineage.endswith("_odb10"):
                 all_selected_odb10_genes.update(selected)
 
+    # Create output directory
     output_dir = Path(args.output_dir)
     input_db = Path(args.complete_database)
     if os.path.exists(args.output_dir):
         shutil.rmtree(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Copy and filter files in the main database directory
     reducer = BuscoReducer(input_db, output_dir)
     reducer.filter_tsv("file_versions.tsv", {0: selected_genes}, 0)
     reducer.filter_tsv(
         "info_mappings_all_busco_datasets_odb10.txt", {2: all_selected_odb10_genes, 3: all_odb10_lineages}, 1
     )
-
+    # Then process each lineage
     (output_dir / "lineages").mkdir()
     for lineage, genes in selected_genes.items():
         print("Processing lineage", lineage, genes)
+        # Create lineage output directory
         lineage_dir = output_dir / "lineages" / lineage
         lineage_dir.mkdir()
         input_lineage = input_db / "lineages" / lineage
         lineage_reducer = BuscoReducer(input_lineage, lineage_dir)
-
+        # Copy and filter files in the lineage directory
         lineage_reducer.filter_fasta("ancestral", genes)
         lineage_reducer.filter_fasta("ancestral_variants", genes)
         if lineage.endswith("_odb10"):
