@@ -14,6 +14,11 @@ tools:
       tool_dev_url: "https://github.com/lh3/yak"
       licence: ["MIT"]
       identifier: ""
+extra_args:
+  - "args1":
+      description: Command-line arguments for samtools fastq
+  - "args2":
+      description: Command-line arguments for yak count
 input:
   - - meta:
         type: map
