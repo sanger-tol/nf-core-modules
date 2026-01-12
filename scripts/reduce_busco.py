@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import itertools
 import os
 import shutil
 import sys
@@ -47,13 +46,6 @@ def read_full_tables(files: List[str]) -> Dict[str, Dict[str, Set[str]]]:
             lineage_map[lineage] = {s: set() for s in BUSCO_MODES}
         for mode, gene_list in genes.items():
             lineage_map[lineage][mode].update(gene_list)
-    # Discard genes that appear in multiple modes
-    for gene_map in lineage_map.values():
-        ambiguous_genes: Set[str] = set()
-        for mode1, mode2 in itertools.combinations(BUSCO_MODES, 2):
-            ambiguous_genes.update(gene_map[mode1].intersection(gene_map[mode2]))
-        for mode in BUSCO_MODES:
-            gene_map[mode] -= ambiguous_genes
     return lineage_map
 
 
@@ -163,7 +155,10 @@ def main(args):
     for lineage, gene_map in all_full_tables.items():
         selected_genes[lineage] = {}
         for mode in BUSCO_MODES:
-            selected = sorted(gene_map[mode])[: expected_counts[mode]]
+            # Consider genes that have already been selected from other modes
+            selected = all_selected_genes.intersection(gene_map[mode])
+            if len(selected) < expected_counts[mode]:
+                selected.update(sorted(gene_map[mode])[: (expected_counts[mode] - len(selected))])
             for gene in selected:
                 selected_genes[lineage][gene] = mode
             all_selected_genes.update(selected)
