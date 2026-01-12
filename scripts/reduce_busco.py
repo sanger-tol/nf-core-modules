@@ -89,13 +89,12 @@ class BuscoReducer:
         print("filter_tsv", filename)
         with open(input) as fhi:
             with open(output, "w") as fho:
-                for i, line in enumerate(fhi):
-                    if i < header:
+                for _ in range(header):
+                    fho.write(fhi.readline())
+                for line in fhi:
+                    t = line[:-1].split("\t")
+                    if all(t[col] in values for (col, values) in filters.items()):
                         fho.write(line)
-                    else:
-                        t = line[:-1].split("\t")
-                        if all(t[col] in values for (col, values) in filters.items()):
-                            fho.write(line)
 
     def filter_fasta(self, filename: str, values: Container[str]):
         input = self.input_dir / filename
