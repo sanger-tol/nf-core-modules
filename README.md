@@ -271,10 +271,10 @@ A reference example exists in the nf-core test repository <https://github.com/nf
    1. Change the first line to
 
       ```yaml
-      # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core-test/modules/main/subworkflows/yaml-schema.json
+      # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
       ```
 
-      [Example](https://github.com/nf-core-test/modules/blob/main/subworkflows/nf-core-test/get_genome_annotation/meta.yml#L1).
+      [Example](https://github.com/sanger-tol/modules/blob/main/subworkflows/sanger-tol/cram_map_illumina_hic/meta.yml#L1).
       This ensures that the right schema will be used to validate the file.
       This schema differs from the default one by allowing keys such as `git_remote` under "components", which are used to
       indicate modules that live in the `nf-core/modules` repository, see next point.
