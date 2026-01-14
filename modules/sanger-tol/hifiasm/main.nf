@@ -77,7 +77,7 @@ process HIFIASM {
         ${ultralong} \\
         -o ${prefix} \\
         ${long_reads_sorted} \\
-        2> >( tee ${prefix}.log >&2 )
+        2> >( tee -a ${prefix}.log >&2 )
 
     if [ -f ${prefix}.ec.fa ]; then
         bgzip -@${task.cpus} ${prefix}.ec.fa
