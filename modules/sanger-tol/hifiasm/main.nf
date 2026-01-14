@@ -56,8 +56,8 @@ process HIFIASM {
     def input_hic1 = ""
     def input_hic2 = ""
     if(hic_cram) {
-        input_hic1 = "--h1 <(samtools cat ${hic_cram} | samtools fastq -n -f0x40 -F0xB00)"
-        input_hic2 = "--h2 <(samtools cat ${hic_cram} | samtools fastq -n -f0x80 -F0xB00)"
+        input_hic1 = "--h1 <(samtools cat ${hic_cram_sorted} | samtools fastq -n -f0x40 -F0xB00)"
+        input_hic2 = "--h2 <(samtools cat ${hic_cram_sorted} | samtools fastq -n -f0x80 -F0xB00)"
     }
 
     // Set up ultralong reads input
