@@ -208,6 +208,15 @@ topics:
       - hifiasm --version:
           type: string
           description: The command used to generate the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - samtools:
+          type: string
+          description: Name of the tool
+      - samtools --version | head -1 | sed -e "s/samtools //":
+          type: eval
+          description: The expression to obtain the version of the tool
 authors:
   - "@sidorov-si"
   - "@scorreard"
