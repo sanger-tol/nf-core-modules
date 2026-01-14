@@ -4,8 +4,8 @@ process HIFIASM {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/37/373e515588f1ee1cc0eb4c68fe83db690ccd372d134036464bcb24a2ef060b27/data' :
-        'community.wave.seqera.io/library/hifiasm_htslib_samtools_gawk:6a66c53cc0723e53' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/70/709e33ba3578cdaf75b73e4ca5e6d5159269394ab891618f4e97fb53d041cc0b/data' :
+        'community.wave.seqera.io/library/hifiasm_htslib_samtools_gawk:d1de2b33932e02cb' }"
 
     input:
     tuple val(meta) , path(long_reads, arity: '1..*'), path(ul_reads, arity: '0..*')
@@ -24,6 +24,7 @@ process HIFIASM {
     tuple val(meta), path("*.log")        , emit: log
     tuple val("${task.process}"), val('hifiasm'), eval("hifiasm --version"), emit: versions_hifiasm, topic: versions
     tuple val("${task.process}"), val('samtools'), eval('samtools --version | head -1 | sed -e "s/samtools //"'), emit: versions_samtools, topic: versions
+
     when:
     task.ext.when == null || task.ext.when
 

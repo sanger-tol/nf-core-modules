@@ -59,7 +59,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.22.1"
+                        "1.23"
                     ]
                 ]
             }
@@ -68,7 +68,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-14T13:16:06.363289"
+        "timestamp": "2026-01-14T13:34:17.708593"
     },
     "Undibacterium_unclassified - pacbio hifi - bin files": {
         "content": [
@@ -135,7 +135,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.22.1"
+                        "1.23"
                     ]
                 ]
             }
@@ -144,7 +144,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-14T13:15:50.255536"
+        "timestamp": "2026-01-14T13:34:00.831621"
     },
     "Undibacterium_unclassified - long reads only": {
         "content": [
@@ -221,7 +221,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.22.1"
+                        "1.23"
                     ]
                 ]
             }
@@ -230,7 +230,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-14T13:12:03.227928"
+        "timestamp": "2026-01-14T13:33:49.015556"
     },
     "Undibacterium_unclassified - hi-c cram": {
         "content": [
@@ -297,7 +297,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.22.1"
+                        "1.23"
                     ]
                 ]
             }
@@ -306,7 +306,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-14T13:16:32.53698"
+        "timestamp": "2026-01-14T13:34:43.561351"
     },
     "Undibacterium_unclassified - stub": {
         "content": [
@@ -395,7 +395,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.22.1"
+                        "1.23"
                     ]
                 ],
                 "assembly_fasta": [
@@ -482,7 +482,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.22.1"
+                        "1.23"
                     ]
                 ]
             }
@@ -491,6 +491,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-14T13:07:21.406322"
+        "timestamp": "2026-01-14T13:34:48.05805"
     }
 }
