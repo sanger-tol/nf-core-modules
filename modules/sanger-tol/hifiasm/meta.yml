@@ -194,7 +194,7 @@ output:
       - samtools:
           type: string
           description: Name of the tool
-      - samtools --version | head -1 | sed -e "s/samtools //:
+      - samtools --version | head -1 | sed -e "s/samtools //":
           type: eval
           description: The expression to obtain the version of the tool
 topics:
