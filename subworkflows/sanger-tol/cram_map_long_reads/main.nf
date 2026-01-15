@@ -120,7 +120,6 @@ workflow CRAM_MAP_LONG_READS {
         ch_mapping_inputs.reference,
         ch_mapping_inputs.slices
     )
-    ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGN.out.versions)
 
     //
     // Logic: Prepare input for merging bams.
