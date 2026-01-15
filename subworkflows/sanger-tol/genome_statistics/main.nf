@@ -41,7 +41,6 @@ workflow GENOME_STATISTICS {
     // Module: Calculate assembly stats with asmstats
     //
     ASMSTATS(ch_assemblies_split)
-    ch_versions = ch_versions.mix(ASMSTATS.out.versions)
 
     //
     // Module: Calculate assembly stats with gfastats
