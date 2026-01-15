@@ -2,13 +2,42 @@
     "meles meles": {
         "content": [
             "3196a1997c55d543d773a1af0595fa6d",
-            null
+            {
+                "versions_filterfiveend": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "filter_five_end.pl",
+                        "1.0"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_minimap2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "samtools",
+                        "1.22.1"
+                    ]
+                ]
+            }
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-15T14:46:42.763836"
+        "timestamp": "2026-01-15T15:22:49.448607"
     },
     "meles meles - stub": {
         "content": [
@@ -96,12 +125,41 @@
     "meles meles - no readgroup lines": {
         "content": [
             "3196a1997c55d543d773a1af0595fa6d",
-            null
+            {
+                "versions_filterfiveend": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "filter_five_end.pl",
+                        "1.0"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_minimap2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGNHIC",
+                        "samtools",
+                        "1.22.1"
+                    ]
+                ]
+            }
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-15T14:46:54.172326"
+        "timestamp": "2026-01-15T15:23:01.032824"
     }
 }
