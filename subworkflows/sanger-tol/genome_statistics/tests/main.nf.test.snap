@@ -107,13 +107,13 @@
                     },
                     [
                         "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png",
-                        "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
-                        "test.spectra-asm.ln.png",
                         "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
-                        "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
                         "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
+                        "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
+                        "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
                         "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
                         "test.spectra-asm.fl.png",
+                        "test.spectra-asm.ln.png",
                         "test.spectra-asm.st.png"
                     ]
                 ]
@@ -131,7 +131,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-15T13:23:15.837439"
+        "timestamp": "2026-01-15T13:42:16.28395"
     },
     "meles meles - no trio - no busco - no fastk": {
         "content": [
