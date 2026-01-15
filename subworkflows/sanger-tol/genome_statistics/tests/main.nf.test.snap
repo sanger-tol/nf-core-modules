@@ -34,18 +34,6 @@
                 ]
             ],
             [
-                
-            ],
-            [
-                
-            ],
-            [
-                
-            ],
-            [
-                
-            ],
-            [
                 "versions.yml:md5,09622cb9d9239872f0aa737cff7a2d5f",
                 "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
                 "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
@@ -57,7 +45,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-03T10:57:18.304707"
+        "timestamp": "2026-01-15T13:19:09.339765"
     },
     "meles meles - no trio - fastk": {
         "content": [
@@ -117,55 +105,17 @@
                     {
                         "id": "test"
                     },
-                    "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.spectra-asm.fl.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.spectra-asm.ln.png"
-                ],
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.spectra-asm.st.png"
+                    [
+                        "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png",
+                        "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
+                        "test.spectra-asm.ln.png",
+                        "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
+                        "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
+                        "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
+                        "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
+                        "test.spectra-asm.fl.png",
+                        "test.spectra-asm.st.png"
+                    ]
                 ]
             ],
             [
@@ -181,7 +131,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-03T11:08:35.709739"
+        "timestamp": "2026-01-15T13:23:15.837439"
     },
     "meles meles - no trio - no busco - no fastk": {
         "content": [
@@ -322,6 +272,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-12-03T10:56:30.314031"
+        "timestamp": "2026-01-15T13:18:25.493214"
     }
 }

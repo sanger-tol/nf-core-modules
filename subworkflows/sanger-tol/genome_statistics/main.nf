@@ -7,15 +7,28 @@ workflow GENOME_STATISTICS {
 
     take:
     ch_assemblies               // channel: [ val(meta), asm1, asm2 ] - asm2 can be empty
-    ch_reads_fastk              // channel: [ val(meta), fastk_hist, [fastk ktabs] ]
-    ch_mat_fastk                // channel: [ val(meta), [fastk ktabs] ] - optional
-    ch_pat_fastk                // channel: [ val(meta), [fastk ktabs] ] - optional
-    val_busco_lineage           // string: busco lineage name
+    ch_fastk                    // channel: [ val(meta), fastk_hist, [fastk ktabs], [mat_fastk_ktabs], [pat_fastk_ktabs] ]
+    ch_busco_lineage            // channel: [ val(meta), string: busco_lineage ]
     val_busco_lineage_directory // path: path to local busco lineages directory - optional
 
     main:
     ch_versions = channel.empty()
 
+    //
+    // Logic: rolling check of assembly meta objects to detect duplicates
+    //
+    def val_asm_meta_list = Collections.synchronizedSet(new HashSet())
+
+    ch_assemblies
+        .subscribe { meta, _asm1, _asm2 ->
+            if (!val_asm_meta_list.add(meta)) {
+                error("Error: Duplicate meta object found in `ch_assemblies` in GENOME_STATISTICS: ${meta}")
+            }
+        }
+
+    //
+    // Logic: split hap1/hap2 into independent channels
+    //
     ch_assemblies_split = ch_assemblies
         .flatMap { meta, asm1, asm2 ->
             def meta_asm1 = meta + [_hap: "hap1"]
@@ -50,11 +63,16 @@ workflow GENOME_STATISTICS {
     //
     ch_assemblies_for_busco = ch_assemblies
         .map { meta, hap1, hap2 -> [ meta, [hap1, hap2].findAll() ] }
+        .join(ch_busco_lineage, by: 0)
+        .multiMap { meta, asms, lineage ->
+            asms: [ meta, asms ]
+            lineage: lineage
+        }
 
     BUSCO_BUSCO(
-        ch_assemblies_for_busco,           // assembly
+        ch_assemblies_for_busco.asms,      // assembly
         "genome",                          // busco mode
-        val_busco_lineage,                 // lineage to run BUSCO predictions
+        ch_assemblies_for_busco.lineage,   // lineage to run BUSCO predictions
         val_busco_lineage_directory ?: [], // busco lineage directory
         [],                                // busco config
         true                               // clean intermediates
@@ -65,15 +83,17 @@ workflow GENOME_STATISTICS {
     // Module: assess kmer completeness/QV using MerquryFK
     //
     ch_merquryfk_asm_input = ch_assemblies
-        .combine(ch_reads_fastk)
-        .map { meta_asm, hap1, hap2, _meta_fk, fk_hist, fk_ktabs ->
-            [meta_asm, fk_hist, fk_ktabs, hap1, hap2]
+        .combine(ch_fastk, by: 0)
+        .multiMap { meta, hap1, hap2, fk_hist, fk_ktabs, mat_ktabs, pat_ktabs ->
+            asms: [meta, fk_hist, fk_ktabs, hap1, hap2]
+            mat: [meta, mat_ktabs]
+            pat: [meta, pat_ktabs]
         }
 
     MERQURYFK_MERQURYFK(
-        ch_merquryfk_asm_input,
-        ch_mat_fastk.ifEmpty([[],[]]),
-        ch_pat_fastk.ifEmpty([[],[]])
+        ch_merquryfk_asm_input.asms,
+        ch_merquryfk_asm_input.mat,
+        ch_merquryfk_asm_input.pat
     )
     ch_versions = ch_versions.mix(MERQURYFK_MERQURYFK.out.versions)
 
@@ -91,6 +111,7 @@ workflow GENOME_STATISTICS {
             MERQURYFK_MERQURYFK.out.hapmers_blob,
         )
         .transpose()
+        .groupTuple(by: 0)
 
     emit:
     asmstats             = ASMSTATS.out.stats
