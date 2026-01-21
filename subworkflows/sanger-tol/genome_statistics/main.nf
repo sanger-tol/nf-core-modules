@@ -94,23 +94,6 @@ workflow GENOME_STATISTICS {
         ch_merquryfk_asm_input.mat,
         ch_merquryfk_asm_input.pat
     )
-    ch_versions = ch_versions.mix(MERQURYFK_MERQURYFK.out.versions)
-
-    ch_merquryfk_images = channel.empty()
-        .mix(
-            MERQURYFK_MERQURYFK.out.spectra_cn_fl,
-            MERQURYFK_MERQURYFK.out.spectra_cn_ln,
-            MERQURYFK_MERQURYFK.out.spectra_cn_st,
-            MERQURYFK_MERQURYFK.out.spectra_asm_fl,
-            MERQURYFK_MERQURYFK.out.spectra_asm_ln,
-            MERQURYFK_MERQURYFK.out.spectra_asm_st,
-            MERQURYFK_MERQURYFK.out.continuity_N,
-            MERQURYFK_MERQURYFK.out.block_N,
-            MERQURYFK_MERQURYFK.out.block_blob,
-            MERQURYFK_MERQURYFK.out.hapmers_blob,
-        )
-        .transpose()
-        .groupTuple(by: 0)
 
     emit:
     asmstats             = ASMSTATS.out.stats
@@ -123,6 +106,6 @@ workflow GENOME_STATISTICS {
     merqury_qv           = MERQURYFK_MERQURYFK.out.qv
     merqury_completeness = MERQURYFK_MERQURYFK.out.stats
     merqury_phased_stats = MERQURYFK_MERQURYFK.out.phased_block_stats
-    merqury_images       = ch_merquryfk_images
+    merqury_images       = MERQURYFK_MERQURYFK.out.images
     versions             = ch_versions
 }
