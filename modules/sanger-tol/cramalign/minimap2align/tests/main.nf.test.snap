@@ -11,7 +11,18 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,55891c41bf5000a37ba817c3431dd57b"
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "samtools",
+                        "1.22.1"
+                    ]
                 ],
                 "bam": [
                     [
@@ -21,67 +32,130 @@
                         "PAE35587_pass_1f1f0707_115.subset.cram.1.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,55891c41bf5000a37ba817c3431dd57b"
+                "versions_minimap2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "samtools",
+                        "1.22.1"
+                    ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.2"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-10-07T16:31:23.252769"
+        "timestamp": "2026-01-15T14:40:37.641168"
     },
     "Meles meles - ONT filtered reads": {
         "content": [
             "46218777936eb60118e3e131c8d742eb",
-            [
-                "versions.yml:md5,55891c41bf5000a37ba817c3431dd57b"
-            ]
+            {
+                "versions_minimap2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "samtools",
+                        "1.22.1"
+                    ]
+                ]
+            }
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.2"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-10-07T18:58:59.282604"
+        "timestamp": "2026-01-15T14:39:45.342243"
     },
     "Meles meles - PacBio HiFi reads": {
         "content": [
             "dfcc4dbebe23293f4f0b9338c2aef9cd",
-            [
-                "versions.yml:md5,55891c41bf5000a37ba817c3431dd57b"
-            ]
+            {
+                "versions_minimap2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "samtools",
+                        "1.22.1"
+                    ]
+                ]
+            }
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.2"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-10-07T16:31:02.641373"
+        "timestamp": "2026-01-15T14:40:26.664658"
     },
     "Meles meles - ONT reads - no readgroup lines": {
         "content": [
             "c2aa5ec574995707a01cb9b4b887b4a9",
-            [
-                "versions.yml:md5,55891c41bf5000a37ba817c3431dd57b"
-            ]
+            {
+                "versions_minimap2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "samtools",
+                        "1.22.1"
+                    ]
+                ]
+            }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2025-11-25T14:27:24.091828111"
+        "timestamp": "2026-01-15T14:41:12.417595"
     },
     "Meles meles - ONT reads": {
         "content": [
             "c2aa5ec574995707a01cb9b4b887b4a9",
-            [
-                "versions.yml:md5,55891c41bf5000a37ba817c3431dd57b"
-            ]
+            {
+                "versions_minimap2": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "minimap2",
+                        "2.30-r1287"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_MINIMAP2ALIGN",
+                        "samtools",
+                        "1.22.1"
+                    ]
+                ]
+            }
         ],
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.2"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
         },
-        "timestamp": "2025-10-07T16:33:11.776935"
+        "timestamp": "2026-01-15T14:39:11.84945"
     }
 }
