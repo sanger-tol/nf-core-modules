@@ -14,7 +14,7 @@ workflow TELO_FINDER {
     val_split_telomere  // bool
 
     main:
-    ch_versions         = Channel.empty()
+    ch_versions         = channel.empty()
 
 
     //

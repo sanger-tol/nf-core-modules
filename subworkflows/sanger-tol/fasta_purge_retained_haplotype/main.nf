@@ -22,7 +22,7 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     val_fastx_reads_per_chunk // integer: number of reads per chunk to map
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Logic: split assemblies into primary and alternate

@@ -10,7 +10,7 @@ workflow GAP_FINDER {
     ch_reference     // Channel [ val(meta), path(fasta) ]
 
     main:
-    ch_versions     = Channel.empty()
+    ch_versions     = channel.empty()
 
 
     //

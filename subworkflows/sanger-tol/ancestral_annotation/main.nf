@@ -13,7 +13,7 @@ workflow ANCESTRAL_ANNOTATION {
     busco_full_table     // Channel: [ meta, busco_dir ]
 
     main:
-    ch_versions                     = Channel.empty()
+    ch_versions                     = channel.empty()
 
 
     //

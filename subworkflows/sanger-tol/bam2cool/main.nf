@@ -14,7 +14,7 @@ workflow BAM2COOL {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     ch_bam_list_transposed = ch_bam_list
         .flatMap { meta, bams ->
