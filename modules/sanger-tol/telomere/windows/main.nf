@@ -62,7 +62,6 @@ process TELOMERE_WINDOWS {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     def VERSION = "1.0" // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
-    def telomere = task.ext.telomere ?: ''
     """
     touch ${prefix}.windows
 
