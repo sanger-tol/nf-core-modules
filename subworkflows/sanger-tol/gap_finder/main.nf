@@ -19,7 +19,6 @@ workflow GAP_FINDER {
     SEQTK_CUTN (
         ch_reference
     )
-    ch_versions     = ch_versions.mix( SEQTK_CUTN.out.versions )
 
 
     //

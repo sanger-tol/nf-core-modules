@@ -124,7 +124,6 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     //         into the alternate assembly
     //
     CONCATENATE_HAPLOTYPES(ch_alt_split.concatenate)
-    ch_versions = ch_versions.mix(CONCATENATE_HAPLOTYPES.out.versions)
 
     //
     // Logic: mix the concatenated alts and as-is alts back together
