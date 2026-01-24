@@ -16,3 +16,4 @@ tests/data/
 work/
 .github/CODEOWNERS-tmp
 modules/nf-core
+subworkflows/nf-core
