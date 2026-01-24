@@ -57,7 +57,7 @@ workflow BAM2COOL {
             [ meta_join, meta, contacts, index ]
         }
         .combine(ch_chrom_sizes, by: 0)
-        .multiMap { meta, chunk_meta, contacts, index, sizes ->
+        .multiMap { _meta, chunk_meta, contacts, index, sizes ->
             bed: [ chunk_meta, contacts, index ]
             chrom: [ chunk_meta, sizes ]
         }
