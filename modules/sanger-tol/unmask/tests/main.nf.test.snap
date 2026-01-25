@@ -1,0 +1,215 @@
+{
+    "unmask - lower fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.unmasked.fa:md5,180be8e1506ddab3aec29e31b3a9358b"
+                    ]
+                ],
+                "1": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ],
+                "2": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "unmasked": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.unmasked.fa:md5,180be8e1506ddab3aec29e31b3a9358b"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_unmask": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ]
+            },
+            {
+                "versions_gawk": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_unmask": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-25T02:23:33.72635095"
+    },
+    "unmask - upper fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.unmasked.fa:md5,ad699c56ed38566c7d3e9579486b1706"
+                    ]
+                ],
+                "1": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ],
+                "2": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "unmasked": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.unmasked.fa:md5,ad699c56ed38566c7d3e9579486b1706"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_unmask": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ]
+            },
+            {
+                "versions_gawk": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_unmask": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-25T02:23:28.292815826"
+    },
+    "unmask - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.unmasked.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ],
+                "2": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "unmasked": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.unmasked.fa:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_unmask": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ]
+            },
+            {
+                "versions_gawk": [
+                    [
+                        "UNMASK",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "versions_unmask": [
+                    [
+                        "UNMASK",
+                        "unmask",
+                        "1.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-25T02:23:39.894466842"
+    }
+}
