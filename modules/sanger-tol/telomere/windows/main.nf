@@ -11,7 +11,7 @@ process TELOMERE_WINDOWS {
     tuple val(meta), path(telomere)
 
     output:
-    tuple val( meta ), path("*.windows")    , emit: windows
+    tuple val(meta), path("*.windows")    , emit: windows
     path "versions.yml"                     , emit: versions
 
     when:
