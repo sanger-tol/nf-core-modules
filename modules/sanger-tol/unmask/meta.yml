@@ -36,8 +36,8 @@ output:
             e.g. `[ id:'sample1' ]`
       - "*.unmasked.fa":
           type: file
-          description: Sorted BAM/CRAM/SAM file
-          pattern: "*.{bam,cram,sam}"
+          description: Unmasked FASTA file
+          pattern: "*.unmasked.fa"
           ontologies:
             - edam: "http://edamontology.org/format_1929" # FASTA
   versions_unmask:
