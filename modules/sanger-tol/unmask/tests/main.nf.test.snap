@@ -46,29 +46,13 @@
                         "1.0"
                     ]
                 ]
-            },
-            {
-                "versions_gawk": [
-                    [
-                        "UNMASK",
-                        "gawk",
-                        "5.3.1"
-                    ]
-                ],
-                "versions_unmask": [
-                    [
-                        "UNMASK",
-                        "unmask",
-                        "1.0"
-                    ]
-                ]
             }
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-01-25T02:23:33.72635095"
+        "timestamp": "2026-01-26T17:06:47.532406854"
     },
     "unmask - upper fasta": {
         "content": [
@@ -117,29 +101,13 @@
                         "1.0"
                     ]
                 ]
-            },
-            {
-                "versions_gawk": [
-                    [
-                        "UNMASK",
-                        "gawk",
-                        "5.3.1"
-                    ]
-                ],
-                "versions_unmask": [
-                    [
-                        "UNMASK",
-                        "unmask",
-                        "1.0"
-                    ]
-                ]
             }
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-01-25T02:23:28.292815826"
+        "timestamp": "2026-01-26T17:06:54.570510071"
     },
     "unmask - stub": {
         "content": [
@@ -188,28 +156,12 @@
                         "1.0"
                     ]
                 ]
-            },
-            {
-                "versions_gawk": [
-                    [
-                        "UNMASK",
-                        "gawk",
-                        "5.3.1"
-                    ]
-                ],
-                "versions_unmask": [
-                    [
-                        "UNMASK",
-                        "unmask",
-                        "1.0"
-                    ]
-                ]
             }
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-01-25T02:23:39.894466842"
+        "timestamp": "2026-01-26T17:07:00.63189566"
     }
 }
