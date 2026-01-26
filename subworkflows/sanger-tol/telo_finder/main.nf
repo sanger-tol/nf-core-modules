@@ -14,7 +14,7 @@ workflow TELO_FINDER {
     val_split_telomere  // bool
 
     main:
-    ch_versions         = Channel.empty()
+    ch_versions         = channel.empty()
 
 
     //
@@ -60,12 +60,12 @@ workflow TELO_FINDER {
                     .findAll { file -> file.size() > 0 }
                     .collect { file ->
                         if (file.name.contains("direction.0")) {
-                            new_meta = meta + [direction: 5]
+                            [meta + [direction: 5], file]
+                        } else if (file.name.contains("direction.1")) {
+                            [meta + [direction: 3], file]
+                        } else {
+                            error("Unexpected file name pattern in TELOMERE_REGIONS split output: ${file.name}")
                         }
-                        if (file.name.contains("direction.1")) {
-                            new_meta = meta + [direction: 3]
-                        }
-                        [new_meta, file]
                     }
             }
             .mix(ch_full_telomere)

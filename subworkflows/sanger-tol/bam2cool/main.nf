@@ -14,7 +14,7 @@ workflow BAM2COOL {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     ch_bam_list_transposed = ch_bam_list
         .flatMap { meta, bams ->
@@ -57,7 +57,7 @@ workflow BAM2COOL {
             [ meta_join, meta, contacts, index ]
         }
         .combine(ch_chrom_sizes, by: 0)
-        .multiMap { meta, chunk_meta, contacts, index, sizes ->
+        .multiMap { _meta, chunk_meta, contacts, index, sizes ->
             bed: [ chunk_meta, contacts, index ]
             chrom: [ chunk_meta, sizes ]
         }
