@@ -23,7 +23,7 @@ process UNMASK {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     awk 'BEGIN { FS = " " } \\
-        { if ( !/>/ ) { print toupper(\$0) } \\
+        { if ( !/^>/ ) { print toupper(\$0) } \\
           else { print \$0 } }' \\
         $args \\
         $fasta \\
