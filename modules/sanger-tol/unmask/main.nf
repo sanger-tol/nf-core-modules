@@ -21,12 +21,13 @@ process UNMASK {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def input  = fasta.getExtension() == "gz" ? "<(zcat ${fasta})" : "${fasta}"
     """
     awk 'BEGIN { FS = " " } \\
         { if ( !/^>/ ) { print toupper(\$0) } \\
           else { print \$0 } }' \\
         $args \\
-        $fasta \\
+        ${input} \\
         > ${prefix}.unmasked.fa
     """
 
