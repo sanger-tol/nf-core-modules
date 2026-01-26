@@ -82,7 +82,6 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
         false,     // cigar in paf file
         false      // cigar in bam file
     )
-    ch_versions = ch_versions.mix(MINIMAP2_ALIGN_ASSEMBLY.out.versions)
 
     //
     // Module: Purge haplotigs from primary assembly
