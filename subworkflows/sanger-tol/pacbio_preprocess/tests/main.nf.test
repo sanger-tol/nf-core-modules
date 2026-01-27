@@ -1,0 +1,258 @@
+nextflow_workflow {
+
+    name "Test Subworkflow PACBIO_PREPROCESS"
+    script "../main.nf"
+    workflow "PACBIO_PREPROCESS"
+    config "./nextflow.config"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/pacbio_preprocess"
+    tag "subworkflows/../../modules/nf-core/blast/blastn"
+    tag "subworkflows/../../modules/nf-core/hifitrimmer/processblast"
+    tag "subworkflows/../../modules/nf-core/hifitrimmer/filterbam"
+    tag "subworkflows/../../modules/nf-core/lima"
+    tag "subworkflows/../../modules/nf-core/pbmarkdup"
+    tag "subworkflows/../../modules/nf-core/samtools/fasta"
+    tag "subworkflows/../../modules/nf-core/samtools/fastq"
+    tag "subworkflows/../../modules/nf-core/samtools/import"
+    tag "subworkflows/../../modules/nf-core/samtools/view"
+    tag "subworkflows/../../modules/nf-core/seqkit/fq2fa" 
+    tag "subworkflows/../../modules/nf-core/tabix/bgzip"  
+
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "blast/blastn",
+                "hifitrimmer/processblast",
+                "hifitrimmer/filterbam",
+                "lima",
+                "pbmarkdup",
+                "samtools/fasta",
+                "samtools/fastq",
+                "samtools/import",
+                "samtools/view",
+                "seqkit/fq2fa",
+                "tabix/bgzip"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("meles meles") {
+
+        when {
+            params {
+                lima_args             = "--hifi-preset SYMMETRIC"
+                pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
+                samtools_fastq_args   = "-F 0x200 -nt"
+                samtools_fasta_args   = ""
+                fq2bam_args           = ""
+                fq2cram_args          = "--output-fmt cram,version=3.0"
+                fq2cram_untrim_args   = "--output-fmt cram,version=3.0"
+                samtools_view_args    = "--output-fmt cram,version=3.0"
+                blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
+                hifitrimmer_args      = "-f"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test_bam' ],
+                        file('/nfs/treeoflife-01/resources/nextflow/test-data/Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test_fasta' ],
+                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                    ],
+                    [
+                        [ id:'test_fastq' ],
+                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)                        
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test_bam' ], // meta map
+                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test_fastq' ], // meta map
+                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                    ]
+                )
+                input[2] = channel.of(
+                    [
+                        [id:'blast_db'], // meta map
+                        file('/data/tol/teams/tolit/nfs/users/hh14/hifi_trimmer_blast_db', checkIfExists: true)
+                    ]
+                )
+                input[3] = file('/data/tol/teams/tolit/nfs/users/hh14/pacbio_uli_adapter.fasta', checkIfExists: true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.cram.size() == 2 },
+                { assert workflow.out.fastx.size() == 2 },
+                {
+                    assert snapshot(
+                        workflow.out.fastx,
+                        workflow.out.cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
+                            [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
+                        },
+                        workflow.out.hifitrimmer_bed,
+                        workflow.out.lima_report,
+                        workflow.out.lima_summary,
+                        workflow.out.pbmarkdup_stats
+                    ).match()
+                }
+            )
+        }
+    }
+    test("meles meles - non-uli") {
+
+        when {
+            params {
+                lima_args             = "--hifi-preset SYMMETRIC"
+                pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
+                samtools_fastq_args   = "-F 0x200 -nt"
+                samtools_fasta_args   = ""
+                fq2bam_args           = ""
+                fq2cram_args          = "--output-fmt cram,version=3.0"
+                fq2cram_untrim_args   = "--output-fmt cram,version=3.0"
+                samtools_view_args    = "--output-fmt cram,version=3.0"
+                blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
+                hifitrimmer_args      = ""
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test_bam' ],
+                        file('/nfs/treeoflife-01/resources/nextflow/test-data/Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test_fasta' ],
+                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                    ],
+                    [
+                        [ id:'test_fastq' ],
+                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)                        
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test_bam' ], // meta map
+                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test_fastq' ], // meta map
+                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                    ]
+                )
+                input[2] = channel.of(
+                    [
+                        [id:'blast_db'], // meta map
+                        file('/data/tol/teams/tolit/nfs/users/hh14/hifi_trimmer_blast_db', checkIfExists: true)
+                    ]
+                )
+                input[3] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.cram.size() == 2 },
+                { assert workflow.out.fastx.size() == 2 },
+                {
+                    assert snapshot(
+                        workflow.out.fastx,
+                        workflow.out.cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
+                            [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
+                        },
+                        workflow.out.hifitrimmer_bed,
+                        workflow.out.lima_report,
+                        workflow.out.lima_summary,
+                        workflow.out.pbmarkdup_stats
+                    ).match()
+                }
+            )
+        }
+    }
+    
+    test("meles meles - uli - no trim") {
+
+        when {
+            params {
+                lima_args             = "--hifi-preset SYMMETRIC"
+                pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
+                samtools_fastq_args   = "-F 0x200 -nt"
+                samtools_fasta_args   = ""
+                fq2bam_args           = ""
+                fq2cram_args          = "--output-fmt cram,version=3.0"
+                fq2cram_untrim_args   = "--output-fmt cram,version=3.0"
+                samtools_view_args    = "--output-fmt cram,version=3.0"
+                blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
+                hifitrimmer_args      = "-f"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test_bam' ],
+                        file('/nfs/treeoflife-01/resources/nextflow/test-data/Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test_fasta' ],
+                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                    ],
+                    [
+                        [ id:'test_fastq' ],
+                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)                        
+                    ]
+                )
+                input[1] = []
+                input[2] = []
+                input[3] = file('/data/tol/teams/tolit/nfs/users/hh14/pacbio_uli_adapter.fasta', checkIfExists: true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.cram.size() == 3 },
+                { assert workflow.out.fastx.size() == 3 },
+                {
+                    assert snapshot(
+                        workflow.out.fastx,
+                        workflow.out.cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
+                            [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
+                        },
+                        workflow.out.hifitrimmer_bed,
+                        workflow.out.lima_report,
+                        workflow.out.lima_summary,
+                        workflow.out.pbmarkdup_stats
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+}
