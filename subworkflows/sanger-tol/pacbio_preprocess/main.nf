@@ -16,7 +16,7 @@ workflow PACBIO_PREPROCESS {
 
     take:
     ch_reads                // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format, if trimming, only FASTQ/BAM
-    ch_adapter_yaml         // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming 
+    ch_adapter_yaml         // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
     adapter_db              // adapter database for blastn
     uli_primers             // Primer file for lima
 
@@ -138,10 +138,10 @@ workflow PACBIO_PREPROCESS {
     emit:
     fastx               = fastx                // [meta, fastx] preprocessed reads in FASTA/FASTQ format, if trimming, only trimmed files
     cram                = cram                 // [meta, cram] preprocessed reads in CRAM format, if trimming, only trimmed files
-    lima_reports        = lima_reports         // [meta, report]
+    lima_report         = lima_reports         // [meta, report]
     lima_summary        = lima_summary         // [meta, summary]
     hifitrimmer_bed     = hifitrimmer_bed      // [meta, bed]
     hifitrimmer_summary = hifitrimmer_summary  // [meta, summary]
-    pbmarkdup_stats     = pbmarkdup_stats      // [meta, log]
+    pbmarkdup_stat      = pbmarkdup_stats      // [meta, log]
     versions            = ch_versions
 }

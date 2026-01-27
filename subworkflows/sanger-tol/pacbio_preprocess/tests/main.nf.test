@@ -17,8 +17,8 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/samtools/fastq"
     tag "subworkflows/../../modules/nf-core/samtools/import"
     tag "subworkflows/../../modules/nf-core/samtools/view"
-    tag "subworkflows/../../modules/nf-core/seqkit/fq2fa" 
-    tag "subworkflows/../../modules/nf-core/tabix/bgzip"  
+    tag "subworkflows/../../modules/nf-core/seqkit/fq2fa"
+    tag "subworkflows/../../modules/nf-core/tabix/bgzip"
 
 
     setup {
@@ -67,7 +67,7 @@ nextflow_workflow {
                     ],
                     [
                         [ id:'test_fasta' ],
-                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fastq' ],
@@ -77,20 +77,20 @@ nextflow_workflow {
                 input[1] = Channel.of(
                     [
                         [ id:'test_bam' ], // meta map
-                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fastq' ], // meta map
-                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ]
                 )
                 input[2] = channel.of(
                     [
                         [id:'blast_db'], // meta map
-                        file('/data/tol/teams/tolit/nfs/users/hh14/hifi_trimmer_blast_db', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/hifi_trimmer_blast_db/**', checkIfExists: true)
                     ]
                 )
-                input[3] = file('/data/tol/teams/tolit/nfs/users/hh14/pacbio_uli_adapter.fasta', checkIfExists: true)
+                input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
                 """
             }
         }
@@ -110,7 +110,7 @@ nextflow_workflow {
                         workflow.out.hifitrimmer_bed,
                         workflow.out.lima_report,
                         workflow.out.lima_summary,
-                        workflow.out.pbmarkdup_stats
+                        workflow.out.pbmarkdup_stat
                     ).match()
                 }
             )
@@ -141,7 +141,7 @@ nextflow_workflow {
                     ],
                     [
                         [ id:'test_fasta' ],
-                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fastq' ],
@@ -161,7 +161,7 @@ nextflow_workflow {
                 input[2] = channel.of(
                     [
                         [id:'blast_db'], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/hifi_trimmer_blast_db', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/hifi_trimmer_blast_db/**', checkIfExists: true)
                     ]
                 )
                 input[3] = []
@@ -184,13 +184,13 @@ nextflow_workflow {
                         workflow.out.hifitrimmer_bed,
                         workflow.out.lima_report,
                         workflow.out.lima_summary,
-                        workflow.out.pbmarkdup_stats
+                        workflow.out.pbmarkdup_stat
                     ).match()
                 }
             )
         }
     }
-    
+
     test("meles meles - uli - no trim") {
 
         when {
@@ -216,7 +216,7 @@ nextflow_workflow {
                     ],
                     [
                         [ id:'test_fasta' ],
-                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fastq' ],
@@ -245,7 +245,7 @@ nextflow_workflow {
                         workflow.out.hifitrimmer_bed,
                         workflow.out.lima_report,
                         workflow.out.lima_summary,
-                        workflow.out.pbmarkdup_stats
+                        workflow.out.pbmarkdup_stat
                     ).match()
                 }
             )
