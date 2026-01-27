@@ -14,7 +14,8 @@ process CRAMALIGN_MINIMAP2ALIGN {
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
-    path "versions.yml"           , emit: versions
+    tuple val("${task.process}"), val('minimap2'), eval('minimap2 --version | sed "s/minimap2 //g"'), emit: versions_minimap2, topic: versions
+    tuple val("${task.process}"), val('samtools'), eval('samtools --version | head -1 | sed -e "s/samtools //"'), emit: versions_samtools, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -40,23 +41,11 @@ process CRAMALIGN_MINIMAP2ALIGN {
         minimap2 -t${task.cpus} ${args3} ${index} ${rg_arg} - | \\
         ${post_filter} \\
         samtools sort ${args5} -@${task.cpus} -T ${prefix}_sort_tmp -o ${prefix}.bam -
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//' )
-        minimap2: \$(minimap2 --version | sed 's/minimap2 //g')
-    END_VERSIONS
     """
 
     stub:
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
     touch ${prefix}.bam
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//' )
-        minimap2: \$(minimap2 --version | sed 's/minimap2 //g')
-    END_VERSIONS
     """
 }

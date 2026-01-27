@@ -14,7 +14,7 @@ workflow CRAM_MAP_LONG_READS {
     val_cram_chunk_size     // integer: Number of CRAM slices per chunk for mapping
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
@@ -120,7 +120,6 @@ workflow CRAM_MAP_LONG_READS {
         ch_mapping_inputs.reference,
         ch_mapping_inputs.slices
     )
-    ch_versions = ch_versions.mix(CRAMALIGN_MINIMAP2ALIGN.out.versions)
 
     //
     // Logic: Prepare input for merging bams.

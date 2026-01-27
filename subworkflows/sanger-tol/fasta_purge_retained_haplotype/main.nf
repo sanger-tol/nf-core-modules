@@ -22,7 +22,7 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     val_fastx_reads_per_chunk // integer: number of reads per chunk to map
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Logic: split assemblies into primary and alternate
@@ -82,7 +82,6 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
         false,     // cigar in paf file
         false      // cigar in bam file
     )
-    ch_versions = ch_versions.mix(MINIMAP2_ALIGN_ASSEMBLY.out.versions)
 
     //
     // Module: Purge haplotigs from primary assembly
@@ -124,7 +123,6 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     //         into the alternate assembly
     //
     CONCATENATE_HAPLOTYPES(ch_alt_split.concatenate)
-    ch_versions = ch_versions.mix(CONCATENATE_HAPLOTYPES.out.versions)
 
     //
     // Logic: mix the concatenated alts and as-is alts back together
