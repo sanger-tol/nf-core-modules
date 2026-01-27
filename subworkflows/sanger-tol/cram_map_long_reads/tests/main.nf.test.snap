@@ -122,15 +122,98 @@
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
                 "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
+                "versions.yml:md5,d80e855c42992c93ac3ef8290d543643",
                 "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
                 "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-15T14:53:03.800306"
+        "timestamp": "2026-01-27T17:33:55.481818987"
+    },
+    "acropora cervicornis - PacBio Hifi test - ULI": {
+        "content": [
+            [
+                {
+                    "maxReadLength": 18647,
+                    "minReadLength": 0,
+                    "meanReadLength": 6271,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 42,
+                    "readCount": 58769,
+                    "duplicateReadCount": 0,
+                    "sorted": false
+                },
+                {
+                    "maxReadLength": 18647,
+                    "minReadLength": 0,
+                    "meanReadLength": 6271,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 42,
+                    "readCount": 58769,
+                    "duplicateReadCount": 0,
+                    "sorted": false
+                }
+            ],
+            [
+                "test1.bam.csi",
+                "test.bam.csi"
+            ],
+            [
+                "test1: DS:READTYPE=CCS;Ipd:CodecV1=ip;PulseWidth:CodecV1=pw;BINDINGKIT=102-739-100;SEQUENCINGKIT=102-118-800;BASECALLERVERSION=5.0;SMRTCELLKIT=102-202-200;SMRTCELLID=EA138735;RUNID=r84093_20241115_102726;ICSVERSION=13.0.0.212033;MOVIELENGTH=1440.0;FRAMERATEHZ=100.000000;BarcodeFile=metadata/m84093_241116_151316_s2.barcodes.fasta;BarcodeHash=86d73e586a6d3ede0295785b51105eea;BarcodeCount=96;BarcodeMode=Symmetric;BarcodeQuality=Score",
+                "test: DS:READTYPE=CCS;Ipd:CodecV1=ip;PulseWidth:CodecV1=pw;BINDINGKIT=102-739-100;SEQUENCINGKIT=102-118-800;BASECALLERVERSION=5.0;SMRTCELLKIT=102-202-200;SMRTCELLID=EA138735;RUNID=r84093_20241115_102726;ICSVERSION=13.0.0.212033;MOVIELENGTH=1440.0;FRAMERATEHZ=100.000000;BarcodeFile=metadata/m84093_241116_151316_s2.barcodes.fasta;BarcodeHash=86d73e586a6d3ede0295785b51105eea;BarcodeCount=96;BarcodeMode=Symmetric;BarcodeQuality=Score"
+            ],
+            [
+                "versions.yml:md5,6cb61a5e8451ed90cbc8e20dd97a7e9a",
+                "versions.yml:md5,6cb61a5e8451ed90cbc8e20dd97a7e9a",
+                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
+                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
+                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
+                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
+                "versions.yml:md5,d80e855c42992c93ac3ef8290d543643",
+                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
+                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2026-01-27T19:07:49.663694555"
     },
     "meles meles - single test": {
         "content": [
