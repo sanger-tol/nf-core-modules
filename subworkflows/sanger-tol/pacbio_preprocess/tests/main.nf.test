@@ -44,7 +44,7 @@ nextflow_workflow {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
-    test("meles meles") {
+    test("acropora cervicornis") {
 
         when {
             params {
@@ -124,7 +124,7 @@ nextflow_workflow {
         }
     }
 
-    test("meles meles - non-uli") {
+    test("acropora cervicornis - non-uli") {
 
         when {
             params {
@@ -204,7 +204,7 @@ nextflow_workflow {
         }
     }
 
-    test("meles meles - uli - no trim") {
+    test("acropora cervicornis - uli - no trim") {
 
         when {
             params {
