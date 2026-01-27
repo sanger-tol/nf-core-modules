@@ -93,7 +93,7 @@ workflow PACBIO_PREPROCESS {
         // PROCESS BLAST OUTPUT WITH HIFITRIMMER PROCESSBLAST
         //
         // Prepare input for Hifitimmer processblast
-        ch_input_processblast = BGZIP_BLASTN.out.output.join( ch_adapter_yaml, by: 0 )
+        ch_input_processblast = BGZIP_BLASTN.out.output.combine( ch_adapter_yaml, by: 0 )
             .multiMap { meta, blastn, yaml ->
                 blastn: [ meta, blastn ]
                 yaml: [ meta, yaml ]
@@ -112,7 +112,7 @@ workflow PACBIO_PREPROCESS {
         ch_versions = ch_versions.mix ( FQ2BAM.out.versions )
         bam_for_hifitrimmer = FQ2BAM.out.bam.mix( reads_to_filter.bam )
 
-        ch_input_filterbam = bam_for_hifitrimmer.join( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
+        ch_input_filterbam = bam_for_hifitrimmer.combine( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
         HIFITRIMMER_FILTERBAM ( ch_input_filterbam )
 
         fastx =  HIFITRIMMER_FILTERBAM.out.filtered
