@@ -9,6 +9,7 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/cram_map_long_reads"
     tag "subworkflows/bam_samtools_merge_markdup"
+    tag "subworkflows/pacbio_preprocess"
     tag "cramalign/gencramchunks"
     tag "cramalign/minimap2align"
     tag "subworkflows/../../modules/nf-core/minimap2/index"
@@ -16,6 +17,7 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/samtools/index"
     tag "subworkflows/../../modules/nf-core/samtools/faidx"
     tag "subworkflows/../../modules/nf-core/samtools/splitheader"
+    tag "subworkflows/../../modules/nf-core/samtools/view"
 
 
     setup {
