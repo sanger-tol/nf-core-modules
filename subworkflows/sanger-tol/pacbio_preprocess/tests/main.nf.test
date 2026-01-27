@@ -63,15 +63,15 @@ nextflow_workflow {
                 input[0] = Channel.of(
                     [
                         [ id:'test_bam' ],
-                        file('/nfs/treeoflife-01/resources/nextflow/test-data/Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fasta' ],
-                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
                     ],
                     [
                         [ id:'test_fastq' ],
-                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)
                     ]
                 )
                 input[1] = Channel.of(
@@ -136,32 +136,32 @@ nextflow_workflow {
                 """
                 input[0] = Channel.of(
                     [
-                        [ id:'test_bam' ],
-                        file('/nfs/treeoflife-01/resources/nextflow/test-data/Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
+                         [ id:'test_bam' ],
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fasta' ],
-                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
                     ],
                     [
                         [ id:'test_fastq' ],
-                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)
                     ]
                 )
                 input[1] = Channel.of(
                     [
                         [ id:'test_bam' ], // meta map
-                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fastq' ], // meta map
-                        file('/data/tol/teams/tolit/nfs/users/hh14/HiFi_adapter.yaml', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ]
                 )
                 input[2] = channel.of(
                     [
                         [id:'blast_db'], // meta map
-                        file('/data/tol/teams/tolit/nfs/users/hh14/hifi_trimmer_blast_db', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/hifi_trimmer_blast_db', checkIfExists: true)
                     ]
                 )
                 input[3] = []
@@ -212,20 +212,20 @@ nextflow_workflow {
                 input[0] = Channel.of(
                     [
                         [ id:'test_bam' ],
-                        file('/nfs/treeoflife-01/resources/nextflow/test-data/Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
                     ],
                     [
                         [ id:'test_fasta' ],
-                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true)                        
                     ],
                     [
                         [ id:'test_fastq' ],
-                        file('/data/tol/teams/tolit/nfs/users/hh14/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)                        
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)
                     ]
                 )
                 input[1] = []
                 input[2] = []
-                input[3] = file('/data/tol/teams/tolit/nfs/users/hh14/pacbio_uli_adapter.fasta', checkIfExists: true)
+                input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
                 """
             }
         }
