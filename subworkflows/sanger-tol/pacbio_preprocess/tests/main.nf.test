@@ -19,6 +19,7 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/samtools/view"
     tag "subworkflows/../../modules/nf-core/seqkit/fq2fa"
     tag "subworkflows/../../modules/nf-core/tabix/bgzip"
+    tag "subworkflows/../../modules/nf-core/untar"
 
 
     setup {
@@ -36,7 +37,8 @@ nextflow_workflow {
                 "samtools/import",
                 "samtools/view",
                 "seqkit/fq2fa",
-                "tabix/bgzip"
+                "tabix/bgzip",
+                "untar"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
@@ -84,10 +86,10 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ]
                 )
-                input[2] = channel.of(
+                input[2] = Channel.of(
                     [
                         [id:'blast_db'], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/hifi_trimmer_blast_db/**', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter_DB.tar.gz', checkIfExists: true)
                     ]
                 )
                 input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
@@ -110,12 +112,18 @@ nextflow_workflow {
                         workflow.out.hifitrimmer_bed,
                         workflow.out.lima_report,
                         workflow.out.lima_summary,
-                        workflow.out.pbmarkdup_stat
+                        workflow.out.pbmarkdup_stat,
+                        workflow.out.versions
                     ).match()
                 }
             )
         }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
     }
+
     test("meles meles - non-uli") {
 
         when {
@@ -158,10 +166,10 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ]
                 )
-                input[2] = channel.of(
+                input[2] = Channel.of(
                     [
                         [id:'blast_db'], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/hifi_trimmer_blast_db/**', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter_DB.tar.gz', checkIfExists: true)
                     ]
                 )
                 input[3] = []
@@ -184,10 +192,15 @@ nextflow_workflow {
                         workflow.out.hifitrimmer_bed,
                         workflow.out.lima_report,
                         workflow.out.lima_summary,
-                        workflow.out.pbmarkdup_stat
+                        workflow.out.pbmarkdup_stat,
+                        workflow.out.versions
                     ).match()
                 }
             )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 
@@ -245,7 +258,8 @@ nextflow_workflow {
                         workflow.out.hifitrimmer_bed,
                         workflow.out.lima_report,
                         workflow.out.lima_summary,
-                        workflow.out.pbmarkdup_stat
+                        workflow.out.pbmarkdup_stat,
+                        workflow.out.versions
                     ).match()
                 }
             )

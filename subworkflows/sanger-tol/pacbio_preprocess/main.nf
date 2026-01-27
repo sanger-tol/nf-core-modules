@@ -11,6 +11,7 @@ include { SAMTOOLS_IMPORT as FQ2CRAM_TRIM      } from '../../../modules/nf-core/
 include { SAMTOOLS_VIEW                        } from '../../../modules/nf-core/samtools/view/main'
 include { SEQKIT_FQ2FA                         } from '../../../modules/nf-core/seqkit/fq2fa/main'
 include { TABIX_BGZIP as BGZIP_BLASTN          } from '../../../modules/nf-core/tabix/bgzip/main'
+include { UNTAR                                } from '../../../modules/nf-core/untar/main'
 
 workflow PACBIO_PREPROCESS {
 
@@ -68,6 +69,9 @@ workflow PACBIO_PREPROCESS {
     hifitrimmer_summary = Channel.empty()
     hifitrimmer_bed = Channel.empty()
     if (adapter_db && ch_adapter_yaml) {
+        // UNTAR adapter database
+        UNTAR( adapter_db )
+        ch_versions = ch_versions.mix( UNTAR.out.versions )
         //
         // ADAPTER SEARCH WITH BLASTN
         //
@@ -81,7 +85,7 @@ workflow PACBIO_PREPROCESS {
             .mix( SEQKIT_FQ2FA.out.fasta )
             .mix( SAMTOOLS_FASTA.out.other )
 
-        BLAST_BLASTN ( fasta_for_blast, adapter_db.collect(), [],[],[] )
+        BLAST_BLASTN ( fasta_for_blast, UNTAR.out.untar.collect(), [],[],[] )
         BGZIP_BLASTN ( BLAST_BLASTN.out.txt )
         ch_versions = ch_versions.mix ( BLAST_BLASTN.out.versions )
 

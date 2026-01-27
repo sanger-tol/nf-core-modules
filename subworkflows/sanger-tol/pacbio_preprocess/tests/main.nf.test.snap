@@ -429,7 +429,26 @@
                     "test_fastq.txt.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
                 ]
             ],
-            null,
+            [
+                [
+                    {
+                        "id": "test_bam"
+                    },
+                    "test_bam.lima.report:md5,4e75e227f80bb115040ac340345e4742"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ]
+            ],
             [
                 [
                     {
@@ -469,13 +488,31 @@
                     },
                     "test_fastq_pbmarkdup.pbmarkdup.log:md5,f685238e8c170c886d7dfb3c22623faf"
                 ]
+            ],
+            [
+                "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
+                "versions.yml:md5,13f7e5579b3b4b695431b553174144d9",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
+                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
+                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
+                "versions.yml:md5,d07e355c9485eca42cac555480c74440",
+                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41",
+                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-27T09:44:47.665792622"
+        "timestamp": "2026-01-27T14:03:13.019923843"
     },
     "meles meles - non-uli": {
         "content": [
@@ -915,19 +952,33 @@
                     "test_fastq.txt.bed.gz:md5,45c78d87eee0433dd4e0300c04c3bd64"
                 ]
             ],
-            null,
             [
                 
             ],
             [
                 
+            ],
+            [
+                
+            ],
+            [
+                "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
+                "versions.yml:md5,13f7e5579b3b4b695431b553174144d9",
+                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
+                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
+                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,d07e355c9485eca42cac555480c74440",
+                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41",
+                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-27T10:11:51.502455038"
+        "timestamp": "2026-01-27T14:11:44.966418366"
     },
     "meles meles - uli - no trim": {
         "content": [
@@ -992,7 +1043,26 @@
             [
                 
             ],
-            null,
+            [
+                [
+                    {
+                        "id": "test_bam"
+                    },
+                    "test_bam.lima.report:md5,4e75e227f80bb115040ac340345e4742"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ]
+            ],
             [
                 [
                     {
@@ -1032,12 +1102,23 @@
                     },
                     "test_fastq_pbmarkdup.pbmarkdup.log:md5,f685238e8c170c886d7dfb3c22623faf"
                 ]
+            ],
+            [
+                "versions.yml:md5,25418662c467a4331c95d265e734a005",
+                "versions.yml:md5,25418662c467a4331c95d265e734a005",
+                "versions.yml:md5,2b68db98f68188e9af8ae2aa2233278f",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-27T10:18:50.610159525"
+        "timestamp": "2026-01-27T14:20:42.152940154"
     }
 }
