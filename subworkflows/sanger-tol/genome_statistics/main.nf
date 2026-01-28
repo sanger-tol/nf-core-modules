@@ -122,19 +122,25 @@ workflow GENOME_STATISTICS {
         .join(MERQURYFK_MERQURYFK.out.images, remainder: true)
         .map { meta, asmstats, gfastats, busco_batch_summary, busco_txt, busco_json,
             busco_log, busco_dir, mq_qv, mq_stats, mq_phased_block_stats, mq_images ->
-            return [
-                meta: meta,
-                asmstats: meta.asmstats,
-                gfastats: gfastats,
-                busco_batch_summary: busco_batch_summary,
-                busco_txt_summary: busco_txt,
-                busco_json_summary: busco_json,
-                busco_log: busco_log,
-                busco_dir: busco_dir,
-                merqury_qv: mq_qv,
-                merqury_stats: mq_stats,
-                merqury_phased_block_stats: mq_phased_block_stats,
-                merqury_images: mq_images,
+            return meta + [
+                stats: [
+                    asmstats: meta.asmstats,
+                    gfastats: gfastats,
+                ]
+                busco: [
+                    busco_lineage: meta.params.busco_lineage,
+                    busco_batch_summary: busco_batch_summary,
+                    busco_txt_summary: busco_txt,
+                    busco_json_summary: busco_json,
+                    busco_log: busco_log,
+                    busco_dir: busco_dir,
+                ],
+                merqury: [
+                    merqury_qv: mq_qv,
+                    merqury_stats: mq_stats,
+                    merqury_phased_block_stats: mq_phased_block_stats,
+                    merqury_images: mq_images
+                ]
             ]
         }
 
