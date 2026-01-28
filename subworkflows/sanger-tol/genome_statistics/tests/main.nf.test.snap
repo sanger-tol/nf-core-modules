@@ -18,8 +18,8 @@
                         "id": "test"
                     },
                     [
-                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437",
-                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
                     ]
                 ]
             ],
@@ -33,7 +33,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-28T13:08:52.469214"
+        "timestamp": "2026-01-28T13:28:19.241933"
     },
     "meles meles - no trio - fastk": {
         "content": [
@@ -54,8 +54,8 @@
                         "id": "test"
                     },
                     [
-                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437",
-                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
                     ]
                 ]
             ],
@@ -109,7 +109,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-28T13:10:10.125084"
+        "timestamp": "2026-01-28T13:29:35.531104"
     },
     "meles meles - no trio - no busco - no fastk": {
         "content": [
@@ -119,8 +119,8 @@
                         "id": "test"
                     },
                     [
-                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86",
-                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7",
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
                     ]
                 ]
             ],
@@ -130,8 +130,8 @@
                         "id": "test"
                     },
                     [
-                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
-                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
                     ]
                 ]
             ],
@@ -144,6 +144,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-28T13:08:05.848884"
+        "timestamp": "2026-01-28T13:27:31.824251"
     }
 }

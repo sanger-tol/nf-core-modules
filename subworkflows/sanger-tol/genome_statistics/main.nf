@@ -42,6 +42,11 @@ workflow GENOME_STATISTICS {
     //
     ASMSTATS(ch_assemblies_split)
 
+    ch_asmstats_output = ASMSTATS.out.stats
+        .map { meta, stats -> [meta - meta.subMap("_hap"), stats] }
+        .groupTuple(size: 2)
+        .map { meta, stats -> [meta, stats.sort { f -> f.getName() }] }
+
     //
     // Module: Calculate assembly stats with gfastats
     //
@@ -56,6 +61,11 @@ workflow GENOME_STATISTICS {
         [[],[]]              // instructions
     )
     ch_versions = ch_versions.mix(GFASTATS.out.versions)
+
+    ch_gfastats_output = GFASTATS.out.assembly_summary
+        .map { meta, stats -> [meta - meta.subMap("_hap"), stats] }
+        .groupTuple(size: 2)
+        .map { meta, stats -> [meta, stats.sort { f -> f.getName() }] }
 
     //
     // Module: Assess assembly using BUSCO.
@@ -99,8 +109,8 @@ workflow GENOME_STATISTICS {
     // Logic: Join all the outputs into a single map for ease of
     // publishing with workflow outputs
     //
-    ch_genome_statistics_output = ASMSTATS.out.stats.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2)
-        .join(GFASTATS.out.assembly_summary.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2))
+    ch_genome_statistics_output = ch_asmstats_output
+        .join(ch_gfastats_output)
         .join(BUSCO_BUSCO.out.batch_summary, remainder: true)
         .join(BUSCO_BUSCO.out.short_summaries_txt, remainder: true)
         .join(BUSCO_BUSCO.out.short_summaries_json, remainder: true)
@@ -129,8 +139,8 @@ workflow GENOME_STATISTICS {
         }
 
     emit:
-    asmstats                 = ASMSTATS.out.stats.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2)
-    gfastats                 = GFASTATS.out.assembly_summary.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2)
+    asmstats                 = ch_asmstats_output
+    gfastats                 = ch_gfastats_output
     busco_batch_summary      = BUSCO_BUSCO.out.batch_summary
     busco_summary_txt        = BUSCO_BUSCO.out.short_summaries_txt
     busco_summary_json       = BUSCO_BUSCO.out.short_summaries_json
