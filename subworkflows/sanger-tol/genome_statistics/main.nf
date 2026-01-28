@@ -124,11 +124,10 @@ workflow GENOME_STATISTICS {
             busco_log, busco_dir, mq_qv, mq_stats, mq_phased_block_stats, mq_images ->
             return meta + [
                 stats: [
-                    asmstats: meta.asmstats,
+                    asmstats: asmstats,
                     gfastats: gfastats,
-                ]
+                ],
                 busco: [
-                    busco_lineage: meta.params.busco_lineage,
                     busco_batch_summary: busco_batch_summary,
                     busco_txt_summary: busco_txt,
                     busco_json_summary: busco_json,
