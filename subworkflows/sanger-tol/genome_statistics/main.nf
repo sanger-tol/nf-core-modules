@@ -95,17 +95,51 @@ workflow GENOME_STATISTICS {
         ch_merquryfk_asm_input.pat
     )
 
+    //
+    // Logic: Join all the outputs into a single map for ease of
+    // publishing with workflow outputs
+    //
+    ch_genome_statistics_output = ASMSTATS.out.stats.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2)
+        .join(GFASTATS.out.assembly_summary.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2))
+        .join(BUSCO_BUSCO.out.batch_summary, remainder: true)
+        .join(BUSCO_BUSCO.out.short_summaries_txt, remainder: true)
+        .join(BUSCO_BUSCO.out.short_summaries_json, remainder: true)
+        .join(BUSCO_BUSCO.out.log, remainder: true)
+        .join(BUSCO_BUSCO.out.busco_dir, remainder: true)
+        .join(MERQURYFK_MERQURYFK.out.qv, remainder: true)
+        .join(MERQURYFK_MERQURYFK.out.stats, remainder: true)
+        .join(MERQURYFK_MERQURYFK.out.phased_block_stats, remainder: true)
+        .join(MERQURYFK_MERQURYFK.out.images, remainder: true)
+        .map { meta, asmstats, gfastats, busco_batch_summary, busco_txt, busco_json,
+            busco_log, busco_dir, mq_qv, mq_stats, mq_phased_block_stats, mq_images ->
+            return [
+                meta: meta,
+                asmstats: meta.asmstats,
+                gfastats: gfastats,
+                busco_batch_summary: busco_batch_summary,
+                busco_txt_summary: busco_txt,
+                busco_json_summary: busco_json,
+                busco_log: busco_log,
+                busco_dir: busco_dir,
+                merqury_qv: mq_qv,
+                merqury_stats: mq_stats,
+                merqury_phased_block_stats: mq_phased_block_stats,
+                merqury_images: mq_images,
+            ]
+        }
+
     emit:
-    asmstats             = ASMSTATS.out.stats
-    gfastats             = GFASTATS.out.assembly_summary
-    busco_batch_summary  = BUSCO_BUSCO.out.batch_summary
-    busco_summary_txt    = BUSCO_BUSCO.out.short_summaries_txt
-    busco_summary_json   = BUSCO_BUSCO.out.short_summaries_json
-    busco_log            = BUSCO_BUSCO.out.log
-    busco_directory      = BUSCO_BUSCO.out.busco_dir
-    merqury_qv           = MERQURYFK_MERQURYFK.out.qv
-    merqury_completeness = MERQURYFK_MERQURYFK.out.stats
-    merqury_phased_stats = MERQURYFK_MERQURYFK.out.phased_block_stats
-    merqury_images       = MERQURYFK_MERQURYFK.out.images
-    versions             = ch_versions
+    asmstats                 = ASMSTATS.out.stats.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2)
+    gfastats                 = GFASTATS.out.assembly_summary.map { meta, stats -> [meta - meta.subMap("_hap"), stats] }.groupTuple(size: 2)
+    busco_batch_summary      = BUSCO_BUSCO.out.batch_summary
+    busco_summary_txt        = BUSCO_BUSCO.out.short_summaries_txt
+    busco_summary_json       = BUSCO_BUSCO.out.short_summaries_json
+    busco_log                = BUSCO_BUSCO.out.log
+    busco_directory          = BUSCO_BUSCO.out.busco_dir
+    merqury_qv               = MERQURYFK_MERQURYFK.out.qv
+    merqury_completeness     = MERQURYFK_MERQURYFK.out.stats
+    merqury_phased_stats     = MERQURYFK_MERQURYFK.out.phased_block_stats
+    merqury_images           = MERQURYFK_MERQURYFK.out.images
+    genome_statistics_output = ch_genome_statistics_output
+    versions                 = ch_versions
 }

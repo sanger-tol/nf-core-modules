@@ -4,33 +4,23 @@
             [
                 [
                     {
-                        "id": "test",
-                        "_hap": "hap1"
+                        "id": "test"
                     },
-                    "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
-                ],
-                [
-                    {
-                        "id": "test",
-                        "_hap": "hap2"
-                    },
-                    "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
+                    [
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7",
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
+                    ]
                 ]
             ],
             [
                 [
                     {
-                        "id": "test",
-                        "_hap": "hap1"
+                        "id": "test"
                     },
-                    "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
-                ],
-                [
-                    {
-                        "id": "test",
-                        "_hap": "hap2"
-                    },
-                    "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
+                    [
+                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437",
+                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                    ]
                 ]
             ],
             [
@@ -41,42 +31,32 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-15T14:12:11.337512"
+        "timestamp": "2026-01-28T13:08:52.469214"
     },
     "meles meles - no trio - fastk": {
         "content": [
             [
                 [
                     {
-                        "id": "test",
-                        "_hap": "hap1"
+                        "id": "test"
                     },
-                    "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
-                ],
-                [
-                    {
-                        "id": "test",
-                        "_hap": "hap2"
-                    },
-                    "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
+                    [
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7",
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
+                    ]
                 ]
             ],
             [
                 [
                     {
-                        "id": "test",
-                        "_hap": "hap1"
+                        "id": "test"
                     },
-                    "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
-                ],
-                [
-                    {
-                        "id": "test",
-                        "_hap": "hap2"
-                    },
-                    "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
+                    [
+                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437",
+                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                    ]
                 ]
             ],
             [
@@ -127,145 +107,43 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-21T13:56:24.650418"
+        "timestamp": "2026-01-28T13:10:10.125084"
     },
     "meles meles - no trio - no busco - no fastk": {
         "content": [
-            {
-                "0": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
                     [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
+                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86",
                         "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
                     ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
-                    ]
-                ],
-                "10": [
-                    
-                ],
-                "11": [
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49"
-                ],
-                "2": [
-                    
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
-                "7": [
-                    
-                ],
-                "8": [
-                    
-                ],
-                "9": [
-                    
-                ],
-                "asmstats": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
-                    ]
-                ],
-                "busco_batch_summary": [
-                    
-                ],
-                "busco_directory": [
-                    
-                ],
-                "busco_log": [
-                    
-                ],
-                "busco_summary_json": [
-                    
-                ],
-                "busco_summary_txt": [
-                    
-                ],
-                "gfastats": [
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap1"
-                        },
-                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
-                    ],
-                    [
-                        {
-                            "id": "test",
-                            "_hap": "hap2"
-                        },
-                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
-                    ]
-                ],
-                "merqury_completeness": [
-                    
-                ],
-                "merqury_images": [
-                    
-                ],
-                "merqury_phased_stats": [
-                    
-                ],
-                "merqury_qv": [
-                    
-                ],
-                "versions": [
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
-                    "versions.yml:md5,ae8574670b9067c621698ce70bdfac49"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    [
+                        "test.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                        "test.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437"
+                    ]
+                ]
+            ],
+            [
+                "versions.yml:md5,ae8574670b9067c621698ce70bdfac49",
+                "versions.yml:md5,ae8574670b9067c621698ce70bdfac49"
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2026-01-15T14:11:28.220269"
+        "timestamp": "2026-01-28T13:08:05.848884"
     }
 }
