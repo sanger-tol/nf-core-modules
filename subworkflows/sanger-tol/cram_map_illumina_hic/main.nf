@@ -169,7 +169,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             [key, bam]
         }
         .groupTuple(by: 0)
-        .map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
+        .map { key, bam -> [key.target, bam.sort { b -> b.getName() }] }
 
 
     //
