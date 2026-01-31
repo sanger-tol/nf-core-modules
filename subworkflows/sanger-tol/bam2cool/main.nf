@@ -75,7 +75,8 @@ workflow BAM2COOL {
     //
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
         .map { meta, cool -> [ meta - meta.subMap("bam_idx"), cool ] }
-        .groupTuple(by: 0, sort: { it.getName() })
+        .groupTuple(by: 0)
+        .map { meta, cool_files -> [ meta, cool_files.sort { file -> file.name } ] }
 
     //
     // Merge individual .cool files

@@ -39,7 +39,7 @@ process TELOMERE_WINDOWS {
     // Use groovy to move through list of expected jar locations
     // Error if not found.
     def jar_locations = ["${moduleDir}/resources/usr/bin/telomere.jar", "${projectDir}/bin/telomere.jar", task.ext.jar]
-    def jar = jar_locations.find { file(it).exists() }
+    def jar = jar_locations.find { path -> file(path).exists() }
     if(!jar) {
         log.error("ERROR: Could not locate a telomere JAR file!")
     }
