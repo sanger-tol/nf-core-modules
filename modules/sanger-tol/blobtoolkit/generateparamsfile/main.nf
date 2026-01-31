@@ -33,7 +33,7 @@ process BLOBTOOLKIT_GENERATEPARAMSFILE {
         'blastp': blastp?.toUriString(),
         'blastn': blastn?.toUriString(),
         'blastx': blastx?.toUriString(),
-    ].findAll { it.value } // filter out falsy values (null, false, "", [], etc)
+    ].findAll { pair -> pair.value } // filter out falsy values (null, false, "", [], etc)
     def jsonBuilder = new groovy.json.JsonBuilder(btk_inputs)
     file("${task.workDir}/${prefix}.blobtoolkit_params_file.json").text = jsonBuilder.toPrettyString()
 
