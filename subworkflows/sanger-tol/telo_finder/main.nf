@@ -26,12 +26,11 @@ workflow TELO_FINDER {
     )
     ch_versions         = ch_versions.mix(TELOMERE_REGIONS.out.versions)
 
-    TELOMERE_REGIONS.out.telomere
+    ch_full_telomere = TELOMERE_REGIONS.out.telomere
         .map{ meta, file ->
             def new_meta = meta + [direction: 0]
             [new_meta, file]
         }
-        .set { ch_full_telomere }
 
     //
     // MODULE: SPLIT THE TELOMERE FILE INTO 5' and 3' FILES
@@ -54,7 +53,7 @@ workflow TELO_FINDER {
         //          THIS PRODUCES A TRIO OF CHANNELS: [meta], file
         //          FILTER FOR SIZE > 0 FOR SAFETY
         //
-        GAWK.out.output
+        ch_regions_for_extraction = GAWK.out.output
             .flatMap { meta, files ->
                 files
                     .findAll { file -> file.size() > 0 }
@@ -69,7 +68,6 @@ workflow TELO_FINDER {
                     }
             }
             .mix(ch_full_telomere)
-            .set { ch_regions_for_extraction }
 
 
     } else {
@@ -90,11 +88,10 @@ workflow TELO_FINDER {
     // LOGIC: OUTPUT CAN HAVE SIZE 0 WHICH BREAKS gawk IN EXTRACT
     //        FILTER OUT THE 0 SIZE FILES
     //
-    TELOMERE_WINDOWS.out.windows
+    ch_filtered_windows_for_extraction = TELOMERE_WINDOWS.out.windows
         .filter { _meta, file ->
             file.size() > 0
         }
-        .set { ch_filtered_windows_for_extraction  }
 
     //
     // MODULE: EXTRACT TELOMERE DATA FROM FIND_TELOMERE
@@ -110,19 +107,17 @@ workflow TELO_FINDER {
     // LOGIC: CLEAN OUTPUT CHANNEL INTO
     //        [meta, [bedgraph_list]]
     //
-    TELOMERE_EXTRACT.out.bedgraph
+    ch_telo_bedgraphs = TELOMERE_EXTRACT.out.bedgraph
         .map { meta, bedgraph ->
             [ meta - meta.subMap("direction"), bedgraph ]
         }
         .groupTuple(by: 0)
         .map { meta, bedgraphs -> [ meta, bedgraphs.sort { file -> file.name } ] }
-        .set { ch_telo_bedgraphs }
 
-    TELOMERE_EXTRACT.out.bed
+    ch_telo_bedfiles = TELOMERE_EXTRACT.out.bed
         .map { meta, bedgraph ->
             [ meta - meta.subMap("direction"), bedgraph ]
         }
-        .set { ch_telo_bedfiles }
 
     emit:
     bed_file            = ch_telo_bedfiles          // Channel [meta, bed]
