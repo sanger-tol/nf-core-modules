@@ -114,7 +114,8 @@ workflow TELO_FINDER {
         .map { meta, bedgraph ->
             [ meta - meta.subMap("direction"), bedgraph ]
         }
-        .groupTuple(by: 0, sort: { it.getName() })
+        .groupTuple(by: 0)
+        .map { meta, bedgraphs -> [ meta, bedgraphs.sort { file -> file.name } ] }
         .set { ch_telo_bedgraphs }
 
     TELOMERE_EXTRACT.out.bed
