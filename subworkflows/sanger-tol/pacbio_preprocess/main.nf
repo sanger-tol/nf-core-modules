@@ -18,15 +18,15 @@ workflow PACBIO_PREPROCESS {
     take:
     ch_reads                // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format, if trimming, only FASTQ/BAM
     ch_adapter_yaml         // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
-    adapter_db              // adapter database for blastn
-    uli_primers             // Primer file for lima
+    val_adapter_db              // adapter database for blastn
+    val_uli_primers             // Primer file for lima
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
-    lima_reports = Channel.empty()
-    lima_summary = Channel.empty()
-    pbmarkdup_stats = Channel.empty()
+    lima_reports = channel.empty()
+    lima_summary = channel.empty()
+    pbmarkdup_stats = channel.empty()
     if (uli_primers) {
         //
         // DEMULTIPLEX WITH LIMA
