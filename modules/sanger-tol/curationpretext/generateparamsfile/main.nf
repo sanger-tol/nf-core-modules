@@ -28,7 +28,7 @@ process CURATIONPRETEXT_GENERATEPARAMSFILE {
         'cram': cram_dir.toUriString(),
         'teloseq': telomere_motif,
         'aligner': aligner,
-    ].findAll { it.value } // filter out falsy values (null, false, "", [], etc)
+    ].findAll { kv -> kv.value } // filter out falsy values (null, false, "", [], etc)
     def jsonBuilder = new groovy.json.JsonBuilder(cpretext_inputs)
     file("${task.workDir}/${prefix}.curationpretext_params_file.json").text = jsonBuilder.toPrettyString()
 
