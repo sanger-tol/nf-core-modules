@@ -1,4 +1,5 @@
 include { BLAST_BLASTN                         } from '../../../modules/nf-core/blast/blastn/main'
+include { BLAST_MAKEBLASTDB                    } from '../../../modules/nf-core/blast/makeblastdb/main'
 include { HIFITRIMMER_PROCESSBLAST             } from '../../../modules/nf-core/hifitrimmer/processblast/main'
 include { HIFITRIMMER_FILTERBAM                } from '../../../modules/nf-core/hifitrimmer/filterbam/main'
 include { LIMA                                 } from '../../../modules/nf-core/lima/main'
@@ -11,14 +12,13 @@ include { SAMTOOLS_IMPORT as FQ2CRAM_TRIM      } from '../../../modules/nf-core/
 include { SAMTOOLS_VIEW                        } from '../../../modules/nf-core/samtools/view/main'
 include { SEQKIT_FQ2FA                         } from '../../../modules/nf-core/seqkit/fq2fa/main'
 include { TABIX_BGZIP as BGZIP_BLASTN          } from '../../../modules/nf-core/tabix/bgzip/main'
-include { UNTAR                                } from '../../../modules/nf-core/untar/main'
 
 workflow PACBIO_PREPROCESS {
 
     take:
     ch_reads                    // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format, if trimming, only FASTQ/BAM
     ch_adapter_yaml             // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
-    val_adapter_db              // adapter database for blastn
+    val_adapter_fasta           // Adapter fasta to make database for blastn
     val_uli_primers             // Primer file for lima
     val_pbmarkdup               // Options to run pbmarkdup
 
@@ -75,10 +75,11 @@ workflow PACBIO_PREPROCESS {
 
     hifitrimmer_summary = Channel.empty()
     hifitrimmer_bed = Channel.empty()
-    if ( val_adapter_db ) {
-        // UNTAR adapter database
-        UNTAR( adapter_db )
-        ch_versions = ch_versions.mix( UNTAR.out.versions )
+    if ( val_adapter_fasta ) {
+        // Make adapter database
+        BLAST_MAKEBLASTDB( val_adapter_fasta )
+        ch_versions = ch_versions.mix( BLAST_MAKEBLASTDB.out.versions )
+    
         //
         // ADAPTER SEARCH WITH BLASTN
         //
@@ -92,7 +93,7 @@ workflow PACBIO_PREPROCESS {
             .mix( SEQKIT_FQ2FA.out.fasta )
             .mix( SAMTOOLS_FASTA.out.other )
 
-        BLAST_BLASTN ( fasta_for_blast, UNTAR.out.untar.collect(), [],[],[] )
+        BLAST_BLASTN ( fasta_for_blast, BLAST_MAKEBLASTDB.out.db.collect(), [],[],[] )
         BGZIP_BLASTN ( BLAST_BLASTN.out.txt )
         ch_versions = ch_versions.mix ( BLAST_BLASTN.out.versions )
 
