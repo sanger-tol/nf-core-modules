@@ -16,10 +16,11 @@ include { UNTAR                                } from '../../../modules/nf-core/
 workflow PACBIO_PREPROCESS {
 
     take:
-    ch_reads                // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format, if trimming, only FASTQ/BAM
-    ch_adapter_yaml         // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
+    ch_reads                    // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format, if trimming, only FASTQ/BAM
+    ch_adapter_yaml             // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
     val_adapter_db              // adapter database for blastn
     val_uli_primers             // Primer file for lima
+    val_pbmarkdup               // Options to run pbmarkdup
 
     main:
     ch_versions = channel.empty()
@@ -27,34 +28,40 @@ workflow PACBIO_PREPROCESS {
     lima_reports = channel.empty()
     lima_summary = channel.empty()
     pbmarkdup_stats = channel.empty()
-    if (uli_primers) {
-        //
-        // DEMULTIPLEX WITH LIMA
-        //
+
+    //
+    // DEMULTIPLEX WITH LIMA
+    //
+    if ( val_uli_primers ) {
         LIMA( ch_reads, uli_primers )
         ch_versions = ch_versions.mix( LIMA.out.versions )
 
         lima_reports = lima_reports.mix( LIMA.out.report )
         lima_summary = lima_summary.mix( LIMA.out.summary )
 
-        //
-        // MARK DUPLICATES WITH PBMARKDUP
-        //
+        // prepare input for markdup or trimming
         ch_input_for_md = LIMA.out.bam
             .mix(LIMA.out.fastq)
             .mix(LIMA.out.fasta)
             .mix(LIMA.out.fastqgz)
             .mix( LIMA.out.fastagz )
+    } else {
+        ch_input_for_md = ch_reads
+    }
 
+    //
+    // MARKDUP WITH PBMARKDUP
+    //
+    ch_input_for_trimming = ch_input_for_md
+    if ( val_pbmarkdup ) {
         PBMARKDUP( ch_input_for_md )
         ch_versions = ch_versions.mix( PBMARKDUP.out.versions )
         pbmarkdup_stats = pbmarkdup_stats.mix( PBMARKDUP.out.log )
 
         ch_input_for_trimming = PBMARKDUP.out.markduped
-    } else {
-        ch_input_for_trimming = ch_reads
     }
 
+    // PREPARE INPUT FOR TRIMMING
     reads_to_filter = ch_input_for_trimming
         .branch { meta, reads ->
             def filename = reads.toString()
@@ -68,7 +75,7 @@ workflow PACBIO_PREPROCESS {
 
     hifitrimmer_summary = Channel.empty()
     hifitrimmer_bed = Channel.empty()
-    if (adapter_db && ch_adapter_yaml) {
+    if ( val_adapter_db ) {
         // UNTAR adapter database
         UNTAR( adapter_db )
         ch_versions = ch_versions.mix( UNTAR.out.versions )
