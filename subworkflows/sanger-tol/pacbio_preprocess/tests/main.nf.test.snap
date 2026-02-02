@@ -6,7 +6,7 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.fastq.gz:md5,5e8015b2899944815a6b934a92e8ab8f"
+                    "test_bam.fastq.gz:md5,4e9d67c3c3d3c01004093560341a125c"
                 ],
                 [
                     {
@@ -34,7 +34,7 @@
                     "maxQuality": 0,
                     "minQuality": 0,
                     "meanQuality": 0,
-                    "readCount": 42253,
+                    "readCount": 42206,
                     "duplicateReadCount": 0,
                     "sorted": true
                 }
@@ -52,7 +52,7 @@
                             },
                             {
                                 "adapter": "PacBio_ULI_adapter",
-                                "n_hits": 1160
+                                "n_hits": 1217
                             },
                             {
                                 "adapter": "TruSeq_i7s_UDI003",
@@ -61,6 +61,10 @@
                             {
                                 "adapter": "TruSeq_i7_UDP003",
                                 "n_hits": 10
+                            },
+                            {
+                                "adapter": "bc2028",
+                                "n_hits": 26
                             },
                             {
                                 "adapter": "gnl|uv|NGB00972.1:1-45",
@@ -187,10 +191,6 @@
                                 "n_hits": 1
                             },
                             {
-                                "adapter": "bc2028",
-                                "n_hits": 2
-                            },
-                            {
                                 "adapter": "TruSeq_D504",
                                 "n_hits": 1
                             },
@@ -215,15 +215,15 @@
                             {
                                 "adapter": "PacBio_ULI_adapter",
                                 "action": "discard",
-                                "n_hits": 1083,
-                                "n_reads": 249,
-                                "bases_removed": 2193582
+                                "n_hits": 1128,
+                                "n_reads": 294,
+                                "bases_removed": 2560108
                             }
                         ],
                         "summary": {
-                            "total_reads_discarded": 249,
+                            "total_reads_discarded": 294,
                             "total_reads_trimmed": 0,
-                            "total_bases_removed": 2193582
+                            "total_bases_removed": 2560108
                         }
                     }
                 ],
@@ -420,7 +420,7 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.txt.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
+                    "test_bam.txt.bed.gz:md5,c09824ea744da47e1190a207a24db950"
                 ],
                 [
                     {
@@ -434,7 +434,7 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.lima.report:md5,4e75e227f80bb115040ac340345e4742"
+                    "test_bam.lima.report:md5,6343113d84641786308e9f96eca9adfe"
                 ],
                 [
                     {
@@ -454,7 +454,7 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                    "test_bam.lima.summary:md5,8a416563a0207db595868964fa2275f9"
                 ],
                 [
                     {
@@ -474,7 +474,7 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam_pbmarkdup.pbmarkdup.log:md5,02efc656c114d8029ad4e8e79e778e35"
+                    "test_bam_pbmarkdup.pbmarkdup.log:md5,3e29fd0f490cdf8c221660b0feabc518"
                 ],
                 [
                     {
@@ -491,7 +491,6 @@
             ],
             [
                 "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
-                "versions.yml:md5,13f7e5579b3b4b695431b553174144d9",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
@@ -500,6 +499,7 @@
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
@@ -512,9 +512,9 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-27T14:03:13.019923843"
+        "timestamp": "2026-02-02T21:10:08.707639281"
     },
-    "acropora cervicornis - non-uli": {
+    "acropora cervicornis - non-uli - pbmarkdup - trim - cram": {
         "content": [
             [
                 [
@@ -563,7 +563,7 @@
                         "detections": [
                             {
                                 "adapter": "PacBio_ULI_adapter",
-                                "n_hits": 83353
+                                "n_hits": 83335
                             },
                             {
                                 "adapter": "gnl|uv|NGB00973.1:1-35",
@@ -734,15 +734,15 @@
                             {
                                 "adapter": "PacBio_ULI_adapter",
                                 "action": "discard",
-                                "n_hits": 82762,
-                                "n_reads": 42510,
-                                "bases_removed": 362209796
+                                "n_hits": 82744,
+                                "n_reads": 42501,
+                                "bases_removed": 362139516
                             }
                         ],
                         "summary": {
-                            "total_reads_discarded": 42510,
+                            "total_reads_discarded": 42501,
                             "total_reads_trimmed": 0,
-                            "total_bases_removed": 362209796
+                            "total_bases_removed": 362139516
                         }
                     }
                 ],
@@ -754,7 +754,7 @@
                         "detections": [
                             {
                                 "adapter": "PacBio_ULI_adapter",
-                                "n_hits": 83353
+                                "n_hits": 83335
                             },
                             {
                                 "adapter": "gnl|uv|NGB00973.1:1-35",
@@ -925,15 +925,15 @@
                             {
                                 "adapter": "PacBio_ULI_adapter",
                                 "action": "discard",
-                                "n_hits": 82762,
-                                "n_reads": 42510,
-                                "bases_removed": 362209796
+                                "n_hits": 82744,
+                                "n_reads": 42501,
+                                "bases_removed": 362139516
                             }
                         ],
                         "summary": {
-                            "total_reads_discarded": 42510,
+                            "total_reads_discarded": 42501,
                             "total_reads_trimmed": 0,
-                            "total_bases_removed": 362209796
+                            "total_bases_removed": 362139516
                         }
                     }
                 ]
@@ -943,13 +943,13 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.txt.bed.gz:md5,45c78d87eee0433dd4e0300c04c3bd64"
+                    "test_bam.txt.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
                 ],
                 [
                     {
                         "id": "test_fastq"
                     },
-                    "test_fastq.txt.bed.gz:md5,45c78d87eee0433dd4e0300c04c3bd64"
+                    "test_fastq.txt.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
                 ]
             ],
             [
@@ -959,16 +959,36 @@
                 
             ],
             [
-                
+                [
+                    {
+                        "id": "test_bam"
+                    },
+                    "test_bam_pbmarkdup.pbmarkdup.log:md5,b0f9657238ccc2feb3701b156e03b837"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta_pbmarkdup.pbmarkdup.log:md5,8c2b2839e7af4e8342dcc6480cb2b1b8"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq_pbmarkdup.pbmarkdup.log:md5,8c2b2839e7af4e8342dcc6480cb2b1b8"
+                ]
             ],
             [
                 "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
-                "versions.yml:md5,13f7e5579b3b4b695431b553174144d9",
                 "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
                 "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
+                "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,d07e355c9485eca42cac555480c74440",
                 "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41",
                 "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41"
@@ -978,64 +998,32 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-27T14:11:44.966418366"
+        "timestamp": "2026-02-02T21:19:02.208895227"
     },
-    "acropora cervicornis - uli - no trim": {
+    "acropora cervicornis - uli - no pbmarkdup - no trim - fastx": {
         "content": [
             [
                 [
                     {
                         "id": "test_bam"
                     },
-                    "test_bam_other.fastq.gz:md5,c97de8e8f70b7012539269c564c53fd8"
+                    "test_bam_other.fastq.gz:md5,a6283e381c372fe2518f041c81c50656"
                 ],
                 [
                     {
                         "id": "test_fasta"
                     },
-                    "test_fasta_pbmarkdup.fasta:md5,b16e3ccce0206c8d937ab2d6b2db0ff4"
+                    "test_fasta.fasta:md5,431671b2d09b72a23ad5fc224f5af12a"
                 ],
                 [
                     {
                         "id": "test_fastq"
                     },
-                    "test_fastq_pbmarkdup.fastq:md5,7d964ff617269a71eb9445e78f76321a"
+                    "test_fastq.fastq:md5,d82966330fbaa05fa5d962e173d10bcf"
                 ]
             ],
             [
-                {
-                    "maxReadLength": 18595,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8470,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42502,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                },
-                {
-                    "maxReadLength": 18595,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8470,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42502,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                },
-                {
-                    "maxReadLength": 18595,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8470,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42502,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                }
+                
             ],
             [
                 
@@ -1048,7 +1036,7 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.lima.report:md5,4e75e227f80bb115040ac340345e4742"
+                    "test_bam.lima.report:md5,6343113d84641786308e9f96eca9adfe"
                 ],
                 [
                     {
@@ -1068,7 +1056,7 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                    "test_bam.lima.summary:md5,8a416563a0207db595868964fa2275f9"
                 ],
                 [
                     {
@@ -1084,41 +1072,122 @@
                 ]
             ],
             [
-                [
-                    {
-                        "id": "test_bam"
-                    },
-                    "test_bam_pbmarkdup.pbmarkdup.log:md5,02efc656c114d8029ad4e8e79e778e35"
-                ],
-                [
-                    {
-                        "id": "test_fasta"
-                    },
-                    "test_fasta_pbmarkdup.pbmarkdup.log:md5,f685238e8c170c886d7dfb3c22623faf"
-                ],
-                [
-                    {
-                        "id": "test_fastq"
-                    },
-                    "test_fastq_pbmarkdup.pbmarkdup.log:md5,f685238e8c170c886d7dfb3c22623faf"
-                ]
+                
             ],
             [
-                "versions.yml:md5,25418662c467a4331c95d265e734a005",
-                "versions.yml:md5,25418662c467a4331c95d265e734a005",
                 "versions.yml:md5,2b68db98f68188e9af8ae2aa2233278f",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
-                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4"
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-01-27T14:20:42.152940154"
+        "timestamp": "2026-02-02T21:25:54.786979918"
+    },
+    "acropora cervicornis - uli - pbmarkdup - no trim - cram": {
+        "content": [
+            [
+                
+            ],
+            [
+                {
+                    "maxReadLength": 18595,
+                    "minReadLength": 1416,
+                    "meanReadLength": 8470,
+                    "maxQuality": 0,
+                    "minQuality": 0,
+                    "meanQuality": 0,
+                    "readCount": 42509,
+                    "duplicateReadCount": 0,
+                    "sorted": true
+                },
+                {
+                    "maxReadLength": 18595,
+                    "minReadLength": 1416,
+                    "meanReadLength": 8470,
+                    "maxQuality": 0,
+                    "minQuality": 0,
+                    "meanQuality": 0,
+                    "readCount": 42511,
+                    "duplicateReadCount": 0,
+                    "sorted": true
+                },
+                {
+                    "maxReadLength": 18595,
+                    "minReadLength": 1416,
+                    "meanReadLength": 8470,
+                    "maxQuality": 0,
+                    "minQuality": 0,
+                    "meanQuality": 0,
+                    "readCount": 42511,
+                    "duplicateReadCount": 0,
+                    "sorted": true
+                }
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                [
+                    {
+                        "id": "test_bam"
+                    },
+                    "test_bam.lima.report:md5,6343113d84641786308e9f96eca9adfe"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test_bam"
+                    },
+                    "test_bam.lima.summary:md5,8a416563a0207db595868964fa2275f9"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                ]
+            ],
+            [
+                
+            ],
+            [
+                "versions.yml:md5,25418662c467a4331c95d265e734a005",
+                "versions.yml:md5,25418662c467a4331c95d265e734a005",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2026-02-02T21:33:32.336299778"
     }
 }

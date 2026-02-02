@@ -81,7 +81,7 @@ workflow PACBIO_PREPROCESS {
         // Make adapter database
         BLAST_MAKEBLASTDB( val_adapter_fasta )
         ch_versions = ch_versions.mix( BLAST_MAKEBLASTDB.out.versions )
-    
+
         //
         // ADAPTER SEARCH WITH BLASTN
         //
