@@ -21,19 +21,21 @@ workflow PACBIO_PREPROCESS {
     val_adapter_fasta           // Adapter fasta to make database for blastn
     val_uli_primers             // Primer file for lima
     val_pbmarkdup               // Options to run pbmarkdup
+    val_output_format           // Output format: 'cram' or 'fastx' ( default: 'fastx' )
 
     main:
     ch_versions = channel.empty()
-
     lima_reports = channel.empty()
     lima_summary = channel.empty()
     pbmarkdup_stats = channel.empty()
+    fastx = channel.empty()
+    cram = channel.empty()
 
     //
     // DEMULTIPLEX WITH LIMA
     //
     if ( val_uli_primers ) {
-        LIMA( ch_reads, uli_primers )
+        LIMA( ch_reads, val_uli_primers )
         ch_versions = ch_versions.mix( LIMA.out.versions )
 
         lima_reports = lima_reports.mix( LIMA.out.report )
@@ -123,28 +125,35 @@ workflow PACBIO_PREPROCESS {
         ch_input_filterbam = bam_for_hifitrimmer.combine( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
         HIFITRIMMER_FILTERBAM ( ch_input_filterbam )
 
-        fastx =  HIFITRIMMER_FILTERBAM.out.filtered
+        fastx =  fastx.mix( HIFITRIMMER_FILTERBAM.out.filtered )
 
-        // convert INPUTs to CRAMs to export, need args `--output-format cram`
-        FQ2CRAM_TRIM ( fastx )
-        cram = FQ2CRAM_TRIM.out.cram
-        ch_versions = ch_versions.mix ( FQ2CRAM_TRIM.out.versions )
+        if ( val_output_format == 'cram' ) {
+            // convert INPUTs to CRAMs to export, need args `--output-format cram`
+            FQ2CRAM_TRIM ( fastx )
+            cram = cram.mix( FQ2CRAM_TRIM.out.cram )
+            ch_versions = ch_versions.mix ( FQ2CRAM_TRIM.out.versions )
+        }
     } else {
-        // Convert reads to FASTQs to export
-        // with --t arg for samtools fastq to copy RG, BC,  an QT tags to FASTQ header line
-        SAMTOOLS_FASTQ ( reads_to_filter.bam, false )
-        ch_versions = ch_versions.mix(SAMTOOLS_FASTQ.out.versions)
+        if ( val_output_format == 'cram' ) {
+            // convert INPUTs to CRAMs to export, need args `--output-format cram`
+            FQ2CRAM_UNTRIM ( reads_to_filter.fasta.mix( reads_to_filter.fastq ) )
+            ch_versions = ch_versions.mix ( FQ2CRAM_UNTRIM.out.versions )
 
-        fastx = SAMTOOLS_FASTQ.out.other
-            .mix( reads_to_filter.fastq )
-            .mix( reads_to_filter.fasta )
+            SAMTOOLS_VIEW ( reads_to_filter.bam.map{ meta, bam_file -> [ meta, bam_file, []]}, [[],[]], [], [] )
+            cram = cram
+                .mix( FQ2CRAM_UNTRIM.out.cram )
+                .mix( SAMTOOLS_VIEW.out.cram )
+        } else {
+            // Convert reads to FASTQs to export
+            // with --t arg for samtools fastq to copy RG, BC,  an QT tags to FASTQ header line
+            SAMTOOLS_FASTQ ( reads_to_filter.bam, false )
+            ch_versions = ch_versions.mix(SAMTOOLS_FASTQ.out.versions)
 
-        // convert INPUTs to CRAMs to export, need args `--output-format cram`
-        FQ2CRAM_UNTRIM ( reads_to_filter.fasta.mix( reads_to_filter.fastq ) )
-        ch_versions = ch_versions.mix ( FQ2CRAM_UNTRIM.out.versions )
-
-        SAMTOOLS_VIEW ( reads_to_filter.bam.map{ meta, bam_file -> [ meta, bam_file, []]}, [[],[]], [], [] )
-        cram = FQ2CRAM_UNTRIM.out.cram.mix( SAMTOOLS_VIEW.out.cram )
+            fastx = fastx
+                .mix( SAMTOOLS_FASTQ.out.other )
+                .mix( reads_to_filter.fastq )
+                .mix( reads_to_filter.fasta )
+        }
     }
 
     emit:
