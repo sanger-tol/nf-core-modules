@@ -33,8 +33,10 @@ process YAK_COUNT {
     """
 
     stub:
+    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
+    echo ${args}
     touch ${prefix}.yak
     """
 }
