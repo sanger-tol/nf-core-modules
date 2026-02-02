@@ -3,23 +3,18 @@ include { CRAMALIGN_MINIMAP2ALIGN         } from '../../../modules/sanger-tol/cr
 include { MINIMAP2_INDEX                  } from '../../../modules/nf-core/minimap2/index/main'
 include { SAMTOOLS_INDEX                  } from '../../../modules/nf-core/samtools/index/main'
 include { SAMTOOLS_SPLITHEADER            } from '../../../modules/nf-core/samtools/splitheader/main'
-include { SAMTOOLS_VIEW                   } from '../../../modules/nf-core/samtools/view/main'
 
 include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
-include { PACBIO_PREPROCESS          } from '../pacbio_preprocess/main'
 
 workflow CRAM_MAP_LONG_READS {
 
     take:
-    ch_assemblies               // Channel [meta, assembly]
-    ch_crams                    // Channel [meta, cram] OR [meta, [cram1, cram2, ..., cram_n]]
-    val_cram_chunk_size         // integer: Number of CRAM slices per chunk for mapping
-    ch_hifitrimmer_adapter_yaml // PacBio: Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
-    pacbio_adapter_db           // PacBio: adapter database for BLASTN adapter detection ".tar.gz"
-    pacbio_uli_primers          // PacBio: FASTA file contains adapter for LIMA to demultiplex PacBio ULI libraries
+    ch_assemblies           // Channel [meta, assembly]
+    ch_crams                // Channel [meta, cram] OR [meta, [cram1, cram2, ..., cram_n]]
+    val_cram_chunk_size     // integer: Number of CRAM slices per chunk for mapping
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
@@ -27,63 +22,23 @@ workflow CRAM_MAP_LONG_READS {
     def val_asm_meta_list = Collections.synchronizedSet(new HashSet())
 
     ch_assemblies
-        .map{ meta, _sample ->
-            if (!val_asm_meta_list.add(meta)){
+        .map { meta, _sample ->
+            if (!val_asm_meta_list.add(meta)) {
                 error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_LONG_READS: ${meta}")
             }
             meta
         }
 
-    ch_crams_transpose = ch_crams.transpose()
-    ch_crams_meta_mod = ch_crams_transpose.map{ meta, cram -> [ meta + [ cramfile: cram ], cram ] }
-
-    // PacBio preprocessing if adapter db or ULI primers are provided
-    pacbio_lima_report         = Channel.empty()
-    pacbio_lima_summary        = Channel.empty()
-    pacbio_hifitrimmer_bed     = Channel.empty()
-    pacbio_hifitrimmer_summary = Channel.empty()
-    pacbio_pbmarkdup_stat      = Channel.empty()
-    if ( pacbio_adapter_db || pacbio_uli_primers ) {
-        // Module: Convert CRAM to BAM for PacBio preprocessing
-        ch_crams_to_convert = ch_crams_transpose.map{ meta, cram -> [ meta, cram, [] ]}
-        SAMTOOLS_VIEW(ch_crams_to_convert, [[],[]], [], [])
-
-        SAMTOOLS_VIEW.out.bam
-        .combine(ch_hifitrimmer_adapter_yaml, by: 0)
-        .multiMap{ meta, bam, adapter_yaml ->
-            bam:          [ meta, bam ]
-            adapter_yaml: [ meta, adapter_yaml ]
-        }
-        .set{ ch_pacbio_preprocess_inputs }
-
-        PACBIO_PREPROCESS(
-            ch_pacbio_preprocess_inputs.bam,
-            ch_pacbio_preprocess_inputs.adapter_yaml,
-            pacbio_adapter_db,
-            pacbio_uli_primers
-        )
-        ch_versions                = ch_versions.mix(PACBIO_PREPROCESS.out.versions)
-        pacbio_lima_report         = pacbio_lima_report.mix( PACBIO_PREPROCESS.out.lima_report )
-        pacbio_lima_summary        = pacbio_lima_summary.mix( PACBIO_PREPROCESS.out.lima_summary )
-        pacbio_hifitrimmer_bed     = pacbio_hifitrimmer_bed.mix( PACBIO_PREPROCESS.out.hifitrimmer_bed )
-        pacbio_hifitrimmer_summary = pacbio_hifitrimmer_summary.mix( PACBIO_PREPROCESS.out.hifitrimmer_summary )
-        pacbio_pbmarkdup_stat      = pacbio_pbmarkdup_stat.mix( PACBIO_PREPROCESS.out.pbmarkdup_stat )
-
-        // Re-construct channel with original crams and pacbio processed crams
-        ch_crams_transpose = ch_crams_transpose
-        .join( PACBIO_PREPROCESS.out.cram, remainder: true )
-        .map{ meta, ori_cram, processed_cram ->
-            def final_cram = processed_cram ?: ori_cram
-            [meta, final_cram]
-        }
-    }
-
     //
     // Logic: check if CRAM files are accompanied by an index
     //        Get indexes, and index those that aren't
     //
+    ch_crams_meta_mod = ch_crams
+        .transpose()
+        .map { meta, cram -> [ meta + [ cramfile: cram ], cram ] }
+
     ch_cram_raw = ch_crams_meta_mod
-        .branch{ meta, cram ->
+        .branch { meta, cram ->
             def cram_file = file(cram, checkIfExists: true)
             def index = cram + ".crai"
             have_index: file(index).exists()
@@ -116,13 +71,13 @@ workflow CRAM_MAP_LONG_READS {
     // Logic: Count the total number of cram chunks for downstream grouping
     //
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
-        .map{ meta, _cram, _crai, chunkn, _slices ->
+        .map { meta, _cram, _crai, chunkn, _slices ->
             def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, chunkn ]
         }
         .transpose()
         .groupTuple(by: 0)
-        .map{ meta, chunkns ->[ meta, chunkns.size() ] }
+        .map { meta, chunkns ->[ meta, chunkns.size() ] }
 
     //
     // Module: Extract read groups from CRAM headers
@@ -131,8 +86,8 @@ workflow CRAM_MAP_LONG_READS {
     ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
 
     ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
-        .map{ meta, rg_file ->
-            [ meta, rg_file.readLines().collect{ line -> line.replaceAll("\t", "\\\\t") } ]
+        .map { meta, rg_file ->
+            [ meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") } ]
         }
 
     //
@@ -140,7 +95,7 @@ workflow CRAM_MAP_LONG_READS {
     //
     ch_cram_rg = ch_readgroups
         .combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices.transpose(), by: 0)
-        .map{ meta, rg, cram, crai, chunkn, slices ->
+        .map { meta, rg, cram, crai, chunkn, slices ->
             def clean_meta = meta - meta.subMap("cramfile")
             [ clean_meta, rg, cram, crai, chunkn, slices ]
         }
@@ -154,7 +109,7 @@ workflow CRAM_MAP_LONG_READS {
     ch_mapping_inputs = ch_cram_rg
         .combine(ch_assemblies, by: 0)
         .combine(MINIMAP2_INDEX.out.index, by: 0)
-        .multiMap{ meta, rg, cram, crai, chunkn, slices, assembly, index ->
+        .multiMap { meta, rg, cram, crai, chunkn, slices, assembly, index ->
             cram:      [ meta, cram, crai, rg ]
             reference: [ meta, index, assembly ]
             slices:    [ chunkn, slices ]
@@ -173,12 +128,12 @@ workflow CRAM_MAP_LONG_READS {
     //
     ch_merge_input = CRAMALIGN_MINIMAP2ALIGN.out.bam
         .combine(ch_n_cram_chunks, by: 0)
-        .map{ meta, bam, n_chunks ->
+        .map { meta, bam, n_chunks ->
             def key = groupKey(meta, n_chunks)
             [key, bam]
         }
         .groupTuple(by: 0)
-        .map{ key, bam -> [key.target, bam] } // Get meta back out of groupKey
+        .map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
 
     //
     // Subworkflow: merge BAM files and mark duplicates
@@ -191,13 +146,7 @@ workflow CRAM_MAP_LONG_READS {
     ch_versions = ch_versions.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.versions)
 
     emit:
-    bam                        = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
-    bam_index                  = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
-    versions                   = ch_versions
-
-    pacbio_lima_report         = pacbio_lima_report
-    pacbio_lima_summary        = pacbio_lima_summary
-    pacbio_hifitrimmer_bed     = pacbio_hifitrimmer_bed
-    pacbio_hifitrimmer_summary = pacbio_hifitrimmer_summary
-    pacbio_pbmarkdup_stat      = pacbio_pbmarkdup_stat
+    bam               = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
+    bam_index         = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
+    versions          = ch_versions
 }

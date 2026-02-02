@@ -63,8 +63,8 @@ output:
       description: |
         Channel containing preprocessed reads in FASTA/FASTQ format.
         Structure: [ val(meta), path(fasta/fastq) ]
-      pattern: "*.{fasta,fa,fastq,fq}{,.gz}"
-  - lima_report:
+      pattern: "*.fasta|*.fa|*.fastq|*.fq"
+  - lima_reports:
       type: file
       description: |
         LIMA demultiplexing reports (if uli_primers).
@@ -81,7 +81,7 @@ output:
       description: |
         HiFiTrimmer adapter trim coordinates in BED format (if adapter_db and ch_adapter_yaml provided).
         Structure: [ val(meta), path(bed) ]
-      pattern: "*.bed.gz"
+      pattern: "*.bed"
   - hifitrimmer_summary:
       type: file
       description: |

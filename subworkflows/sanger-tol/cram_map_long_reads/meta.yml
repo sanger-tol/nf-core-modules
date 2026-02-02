@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
 name: "cram_map_long_reads"
-description: "Maps PacBio/ONT reads in unaligned CRAMs format to a set of references. Also includes optional preprocessing for PacBio reads using the pacbio_preprocess subworkflow."
+description: "Maps PacBio/ONT reads in unaligned CRAMs format to a set of references."
 keywords:
   - longread
   - pacbio
@@ -11,7 +11,6 @@ components:
   - cramalign/gencramchunks
   - cramalign/minimap2align
   - bam_samtools_merge_markdup
-  - pacbio_preprocess
   - samtools/index:
       git_remote: https://github.com/nf-core/modules.git
   - samtools/splitheader:
@@ -37,23 +36,7 @@ input:
   - val_cram_chunk_size:
       type: integer
       description: Size of chunk to split CRAM files into
-  - ch_hifitrimmer_adapter_yaml:
-      type: file
-      description: |
-        Input channel containing YAML file for HiFiTrimmer adapter trimming.
-        Structure: [ val(meta), path(yaml) ]
-      pattern: "*.yaml"
-  - pacbio_adapter_db:
-      type: file
-      description: |
-        Adapter database for BLASTN adapter detection.
-      pattern: "*.tar.gz"
-  - pacbio_uli_primers:
-      type: file
-      description: |
-        ULI primer FASTA file used by LIMA for barcode demultiplexing.
-        Provide a primer FASTA to enable demultiplexing, or an empty channel to skip.
-      pattern: "*.fasta|*.fa"
+
 output:
   - bam:
       type: file
@@ -61,36 +44,6 @@ output:
         Channel containing the BAM files describing long-read alignments to the input assemblies
         Structure: [ val(meta), path(bam) ]
       pattern: "*.bam"
-  - pacbio_lima_reports:
-      type: file
-      description: |
-        LIMA demultiplexing reports (if uli_primers).
-        Structure: [ val(meta), path(report) ]
-      pattern: "*.report.csv"
-  - pacbio_lima_summary:
-      type: file
-      description: |
-        LIMA demultiplexing summary (if uli_primers).
-        Structure: [ val(meta), path(summary) ]
-      pattern: "*.summary.txt"
-  - pacbio_hifitrimmer_bed:
-      type: file
-      description: |
-        HiFiTrimmer adapter trim coordinates in BED format (if adapter_db and ch_adapter_yaml provided).
-        Structure: [ val(meta), path(bed) ]
-      pattern: "*.bed"
-  - pacbio_hifitrimmer_summary:
-      type: file
-      description: |
-        HiFiTrimmer trimming summary (if adapter_db and ch_adapter_yaml provided).
-        Structure: [ val(meta), path(summary) ]
-      pattern: "*.summary.json"
-  - pacbio_pbmarkdup_stats:
-      type: file
-      description: |
-        pbmarkdup duplicate marking statistics (if uli_primers).
-        Structure: [ val(meta), path(log) ]
-      pattern: "*.log"
   - versions:
       type: file
       description: |

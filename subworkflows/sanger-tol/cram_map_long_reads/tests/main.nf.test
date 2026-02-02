@@ -25,23 +25,11 @@ nextflow_workflow {
         nfcoreInstall(
             "${launchDir}/library/",
             [
-                "blast/blastn",
-                "hifitrimmer/processblast",
-                "hifitrimmer/filterbam",
-                "lima",
                 "minimap2/index",
-                "pbmarkdup",
                 "samtools/index",
                 "samtools/merge",
                 "samtools/faidx",
-                "samtools/splitheader",
-                "samtools/fasta",
-                "samtools/fastq",
-                "samtools/import",
-                "samtools/view",
-                "seqkit/fq2fa",
-                "tabix/bgzip",
-                "untar"
+                "samtools/splitheader"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
@@ -57,18 +45,6 @@ nextflow_workflow {
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
                 samtools_merge_args   = "--write-index"
-
-                // Pacbio preprocess
-                lima_args                    = "--hifi-preset SYMMETRIC"
-                pbmarkdup_args               = "--clobber --rmdup --log-level INFO"
-                pacbio_samtools_fastq_args   = "t"
-                samtools_fasta_args          = ""
-                fq2bam_args                  = ""
-                fq2cram_args                 = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args          = "--output-fmt cram,version=3.0"
-                pacbio_samtools_view_args    = "--output-fmt cram,version=3.0"
-                blastn_args                  = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
-                hifitrimmer_args             = "-f"
             }
 
             workflow {
@@ -86,9 +62,6 @@ nextflow_workflow {
                     ]
                 )
                 input[2] = 10
-                input[3] = []
-                input[4] = []
-                input[5] = []
                 """
             }
         }
@@ -122,18 +95,6 @@ nextflow_workflow {
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
                 samtools_merge_args   = "--write-index"
-
-                // Pacbio preprocess
-                lima_args                    = "--hifi-preset SYMMETRIC"
-                pbmarkdup_args               = "--clobber --rmdup --log-level INFO"
-                pacbio_samtools_fastq_args   = "t"
-                samtools_fasta_args          = ""
-                fq2bam_args                  = ""
-                fq2cram_args                 = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args          = "--output-fmt cram,version=3.0"
-                pacbio_samtools_view_args    = "--output-fmt cram,version=3.0"
-                blastn_args                  = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
-                hifitrimmer_args             = "-f"
             }
 
             workflow {
@@ -159,9 +120,6 @@ nextflow_workflow {
                     ]
                 )
                 input[2] = 5
-                input[3] = []
-                input[4] = []
-                input[5] = []
                 """
             }
         }
@@ -200,18 +158,6 @@ nextflow_workflow {
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
                 samtools_merge_args   = "--write-index"
-
-                // Pacbio preprocess
-                lima_args                    = "--hifi-preset SYMMETRIC"
-                pbmarkdup_args               = "--clobber --rmdup --log-level INFO"
-                pacbio_samtools_fastq_args   = "t"
-                samtools_fasta_args          = ""
-                fq2bam_args                  = ""
-                fq2cram_args                 = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args          = "--output-fmt cram,version=3.0"
-                pacbio_samtools_view_args    = "--output-fmt cram,version=3.0"
-                blastn_args                  = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
-                hifitrimmer_args             = "-f"
             }
 
             workflow {
@@ -237,9 +183,6 @@ nextflow_workflow {
                     ]
                 )
                 input[2] = 5
-                input[3] = []
-                input[4] = []
-                input[5] = []
                 """
             }
         }
@@ -273,18 +216,6 @@ nextflow_workflow {
                 samtools_view_args    = ""
                 samtools_sort_args    = "--write-index -l1"
                 samtools_merge_args   = "--write-index"
-
-                // Pacbio preprocess
-                lima_args                    = "--hifi-preset SYMMETRIC"
-                pbmarkdup_args               = "--clobber --rmdup --log-level INFO"
-                pacbio_samtools_fastq_args   = "t"
-                samtools_fasta_args          = ""
-                fq2bam_args                  = ""
-                fq2cram_args                 = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args          = "--output-fmt cram,version=3.0"
-                pacbio_samtools_view_args    = "--output-fmt cram,version=3.0"
-                blastn_args                  = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
-                hifitrimmer_args             = "-f"
             }
 
             workflow {
@@ -313,23 +244,6 @@ nextflow_workflow {
                     ]
                 )
                 input[2] = 5
-                input[3] = Channel.of(
-                    [
-                        [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
-                    ],
-                    [
-                        [ id:'test1' ], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
-                    ]
-                )
-                input[4] = Channel.of(
-                    [
-                        [id:'blast_db'], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter_DB.tar.gz', checkIfExists: true)
-                    ]
-                )
-                input[5] = []
                 """
             }
         }
@@ -347,14 +261,7 @@ nextflow_workflow {
                             def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
                             return "${it[0].id}: ${sm}"
                         }.sort(),
-                        workflow.out.versions,
-                        workflow.out.pacbio_hifitrimmer_summary.collect{ meta, summary_file ->
-                            [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
-                        },
-                        workflow.out.pacbio_hifitrimmer_bed,
-                        workflow.out.pacbio_lima_report,
-                        workflow.out.pacbio_lima_summary,
-                        workflow.out.pacbio_pbmarkdup_stat
+                        workflow.out.versions
                     ).match()
                 }
             )
@@ -365,104 +272,5 @@ nextflow_workflow {
         }
     }
 
-    test("acropora cervicornis - PacBio Hifi test - ULI") {
-
-        when {
-            params {
-                samtools_cat_args     = ""
-                samtools_fastq_args   = "-F 0x200 -nt"
-                minimap2_args         = "-ax map-hifi"
-                samtools_view_args    = ""
-                samtools_sort_args    = "--write-index -l1"
-                samtools_merge_args   = "--write-index"
-                // Pacbio preprocess
-                lima_args                    = "--hifi-preset SYMMETRIC"
-                pbmarkdup_args               = "--clobber --rmdup --log-level INFO"
-                pacbio_samtools_fastq_args   = "t"
-                samtools_fasta_args          = ""
-                fq2bam_args                  = ""
-                fq2cram_args                 = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args          = "--output-fmt cram,version=3.0"
-                pacbio_samtools_view_args    = "--output-fmt cram,version=3.0"
-                blastn_args                  = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
-                hifitrimmer_args             = "-f"
-            }
-
-            workflow {
-                """
-                input[0] = Channel.of(
-                    [
-                        [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/assembly/release/reference/insdc/GCA_964034985.1.fasta.gz', checkIfExists: true)
-                    ],
-                    [
-                        [ id:'test1' ], // meta map
-                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/assembly/release/reference/insdc/GCA_964034985.1.fasta.gz', checkIfExists: true)
-                    ]
-                )
-                input[1] = Channel.of(
-                    [
-                        [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.cram', checkIfExists: true)
-                    ],
-                    [
-                        [ id:'test1' ],
-                        [
-                            file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.cram', checkIfExists: true)
-                        ]
-                    ]
-                )
-                input[2] = 5
-                input[3] = Channel.of(
-                    [
-                        [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
-                    ],
-                    [
-                        [ id:'test1' ], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
-                    ]
-                )
-                input[4] = Channel.of(
-                    [
-                        [id:'blast_db'], // meta map
-                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter_DB.tar.gz', checkIfExists: true)
-                    ]
-                )
-                input[5] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert workflow.out.bam.size() == 2 },
-                {
-                    assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam.collect {
-                            def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
-                            def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
-                            return "${it[0].id}: ${sm}"
-                        }.sort(),
-                        workflow.out.versions,
-                        workflow.out.pacbio_hifitrimmer_summary.collect{ meta, summary_file ->
-                            [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
-                        },
-                        workflow.out.pacbio_hifitrimmer_bed,
-                        workflow.out.pacbio_lima_report,
-                        workflow.out.pacbio_lima_summary,
-                        workflow.out.pacbio_pbmarkdup_stat
-                    ).match()
-                }
-            )
-        }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
-    }
 
 }
