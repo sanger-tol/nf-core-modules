@@ -1075,7 +1075,6 @@
                 
             ],
             [
-                "versions.yml:md5,2b68db98f68188e9af8ae2aa2233278f",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077"
@@ -1085,7 +1084,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-02T21:25:54.786979918"
+        "timestamp": "2026-02-03T09:53:20.213681879"
     },
     "acropora cervicornis - uli - pbmarkdup - no trim - cram": {
         "content": [

@@ -147,7 +147,6 @@ workflow PACBIO_PREPROCESS {
             // Convert reads to FASTQs to export
             // with --t arg for samtools fastq to copy RG, BC,  an QT tags to FASTQ header line
             SAMTOOLS_FASTQ ( reads_to_filter.bam, false )
-            ch_versions = ch_versions.mix(SAMTOOLS_FASTQ.out.versions)
 
             fastx = fastx
                 .mix( SAMTOOLS_FASTQ.out.other )
