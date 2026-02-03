@@ -96,14 +96,13 @@ workflow PACBIO_PREPROCESS {
             .mix( SAMTOOLS_FASTA.out.other )
 
         BLAST_BLASTN ( fasta_for_blast, BLAST_MAKEBLASTDB.out.db.collect(), [],[],[] )
-        BGZIP_BLASTN ( BLAST_BLASTN.out.txt )
         ch_versions = ch_versions.mix ( BLAST_BLASTN.out.versions )
 
         //
         // PROCESS BLAST OUTPUT WITH HIFITRIMMER PROCESSBLAST
         //
         // Prepare input for Hifitimmer processblast
-        ch_input_processblast = BGZIP_BLASTN.out.output.combine( ch_adapter_yaml, by: 0 )
+        ch_input_processblast = BLAST_BLASTN.out.txt.combine( ch_adapter_yaml, by: 0 )
             .multiMap { meta, blastn, yaml ->
                 blastn: [ meta, blastn ]
                 yaml: [ meta, yaml ]

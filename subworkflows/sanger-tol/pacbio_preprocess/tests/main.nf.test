@@ -19,7 +19,6 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/samtools/import"
     tag "subworkflows/../../modules/nf-core/samtools/view"
     tag "subworkflows/../../modules/nf-core/seqkit/fq2fa"
-    tag "subworkflows/../../modules/nf-core/tabix/bgzip"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
@@ -36,8 +35,7 @@ nextflow_workflow {
                 "samtools/fastq",
                 "samtools/import",
                 "samtools/view",
-                "seqkit/fq2fa",
-                "tabix/bgzip"
+                "seqkit/fq2fa"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")

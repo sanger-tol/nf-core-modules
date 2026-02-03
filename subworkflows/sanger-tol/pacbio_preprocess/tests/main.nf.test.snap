@@ -420,13 +420,13 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.txt.bed.gz:md5,c09824ea744da47e1190a207a24db950"
+                    "test_bam.bed.gz:md5,c09824ea744da47e1190a207a24db950"
                 ],
                 [
                     {
                         "id": "test_fastq"
                     },
-                    "test_fastq.txt.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
+                    "test_fastq.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
                 ]
             ],
             [
@@ -512,7 +512,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-02T21:10:08.707639281"
+        "timestamp": "2026-02-03T12:06:02.74492947"
     },
     "acropora cervicornis - non-uli - pbmarkdup - trim - cram": {
         "content": [
@@ -943,13 +943,13 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.txt.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
+                    "test_bam.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
                 ],
                 [
                     {
                         "id": "test_fastq"
                     },
-                    "test_fastq.txt.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
+                    "test_fastq.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
                 ]
             ],
             [
@@ -998,7 +998,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-02T21:19:02.208895227"
+        "timestamp": "2026-02-03T12:27:35.648085085"
     },
     "acropora cervicornis - uli - no pbmarkdup - no trim - fastx": {
         "content": [
