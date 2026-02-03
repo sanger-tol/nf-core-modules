@@ -11,7 +11,6 @@ include { SAMTOOLS_IMPORT as FQ2CRAM_UNTRIM    } from '../../../modules/nf-core/
 include { SAMTOOLS_IMPORT as FQ2CRAM_TRIM      } from '../../../modules/nf-core/samtools/import/main'
 include { SAMTOOLS_VIEW                        } from '../../../modules/nf-core/samtools/view/main'
 include { SEQKIT_FQ2FA                         } from '../../../modules/nf-core/seqkit/fq2fa/main'
-include { TABIX_BGZIP as BGZIP_BLASTN          } from '../../../modules/nf-core/tabix/bgzip/main'
 
 workflow PACBIO_PREPROCESS {
 
