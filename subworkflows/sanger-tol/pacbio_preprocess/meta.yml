@@ -47,7 +47,7 @@ input:
       type: file
       description: |
         Adapter database for BLASTN adapter detection.
-      pattern: "*.tar.gz"
+      pattern: "*.(fasta|fa|fna)"
   - val_uli_primers:
       type: file
       description: |
@@ -70,7 +70,7 @@ output:
         Channel containing preprocessed reads in FASTA/FASTQ format.
         Structure: [ val(meta), path(fasta/fastq) ]
       pattern: "*.fasta|*.fa|*.fastq|*.fq"
-  - lima_reports:
+  - lima_report:
       type: file
       description: |
         LIMA demultiplexing reports (if uli_primers).
@@ -85,19 +85,19 @@ output:
   - hifitrimmer_bed:
       type: file
       description: |
-        HiFiTrimmer adapter trim coordinates in BED format (if adapter_db and ch_adapter_yaml provided).
+        HiFiTrimmer adapter trim coordinates in BED format (if val_adapter_fasta and ch_adapter_yaml provided).
         Structure: [ val(meta), path(bed) ]
       pattern: "*.bed"
   - hifitrimmer_summary:
       type: file
       description: |
-        HiFiTrimmer trimming summary (if adapter_db and ch_adapter_yaml provided).
+        HiFiTrimmer trimming summary (if val_adapter_fasta and ch_adapter_yaml provided).
         Structure: [ val(meta), path(summary) ]
       pattern: "*.summary.json"
   - pbmarkdup_stats:
       type: file
       description: |
-        pbmarkdup duplicate marking statistics (if uli_primers).
+        pbmarkdup duplicate marking statistics (if val_uli_primers provided).
         Structure: [ val(meta), path(log) ]
       pattern: "*.log"
   - versions:
