@@ -1,0 +1,85 @@
+// nf-core subworkflows test fasta_10x_polishing_longranger
+nextflow_workflow {
+
+    name "Test Subworkflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES"
+    script "../main.nf"
+    workflow "FASTA_10X_POLISHING_LONGRANGER_FREEBAYES"
+    config "./nextflow.config"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/fasta_10x_polishing_longranger_freebayes"
+    tag "bcftools/view"
+    tag "bcftools/consensus"
+    tag "bcftools/norm"
+    tag "bcftools/concat"
+    tag "bcftools/sort"
+    tag "bcftools/index"
+    tag "bcftools/index"
+    tag "bcftools/index"
+    tag "cat/cat"
+    tag "freebayes"
+    tag "gatk4/mergevcfs"
+    tag "samtools/faidx"
+    tag "seqkit/grep"
+    tag "bedchunks/create"
+    tag "longranger/mkref"
+    tag "longranger/align"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                'bcftools/view',
+                'bcftools/consensus',
+                'bcftools/norm',
+                'bcftools/concat',
+                'bcftools/sort',
+                'bcftools/index',
+                'cat/cat',
+                'freebayes',
+                'gatk4/mergevcfs',
+                'samtools/faidx',
+                'seqkit/grep'
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("sarscov2 - bam - single_end") {
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id: 'test' ], // meta map
+                        [
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa.gz', checkIfExists: true)
+                        ]
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id: 'test' ],
+                        [
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/10x/baUndUnlc1_S12_L002_I1_001.fastq.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/10x/baUndUnlc1_S12_L002_R1_001.fastq.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/10x/baUndUnlc1_S12_L002_R2_001.fastq.gz', checkIfExists: true)
+                        ]
+                    ]
+                )
+                input[2] = 100
+                """
+            }
+        }
+        then {
+            assert workflow.success
+            assertAll(
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}
