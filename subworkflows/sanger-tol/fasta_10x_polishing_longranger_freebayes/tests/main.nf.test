@@ -47,7 +47,7 @@ nextflow_workflow {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
-    test("sarscov2 - bam - single_end") {
+    test("Undibacterium_unclassified - 10x") {
 
         when {
             workflow {
