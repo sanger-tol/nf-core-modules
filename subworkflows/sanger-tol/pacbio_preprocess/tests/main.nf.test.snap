@@ -2,20 +2,43 @@
     "acropora cervicornis": {
         "content": [
             [
+                
+            ],
+            [
                 [
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.fastq.gz:md5,4e9d67c3c3d3c01004093560341a125c"
+                    "test_bam.fasta.gz:md5,cc85381555ca9711ccc240b62f0f3eba"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.fasta.gz:md5,bf709af5faaa020dc4e6a7b7e23a0002"
                 ],
                 [
                     {
                         "id": "test_fastq"
                     },
-                    "test_fastq.fastq.gz:md5,5e8015b2899944815a6b934a92e8ab8f"
+                    "test_fastq.fasta.gz:md5,3f93e046cbb0278282b96bfd584255f5"
                 ]
             ],
             [
+                
+            ],
+            [
+                {
+                    "maxReadLength": 17907,
+                    "minReadLength": 1416,
+                    "meanReadLength": 8468,
+                    "maxQuality": 0,
+                    "minQuality": 0,
+                    "meanQuality": 0,
+                    "readCount": 42253,
+                    "duplicateReadCount": 0,
+                    "sorted": true
+                },
                 {
                     "maxReadLength": 17907,
                     "minReadLength": 1416,
@@ -229,6 +252,193 @@
                 ],
                 [
                     {
+                        "id": "test_fasta"
+                    },
+                    {
+                        "detections": [
+                            {
+                                "adapter": "gnl|uv|NGB00973.1:1-35",
+                                "n_hits": 14340
+                            },
+                            {
+                                "adapter": "PacBio_ULI_adapter",
+                                "n_hits": 1160
+                            },
+                            {
+                                "adapter": "TruSeq_i7s_UDI003",
+                                "n_hits": 10
+                            },
+                            {
+                                "adapter": "TruSeq_i7_UDP003",
+                                "n_hits": 10
+                            },
+                            {
+                                "adapter": "gnl|uv|NGB00972.1:1-45",
+                                "n_hits": 49
+                            },
+                            {
+                                "adapter": "TruSeq_i7_UDP009",
+                                "n_hits": 4
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP009",
+                                "n_hits": 6
+                            },
+                            {
+                                "adapter": "TruSeq_D706",
+                                "n_hits": 6
+                            },
+                            {
+                                "adapter": "TruSeq_i7s_UDI004",
+                                "n_hits": 3
+                            },
+                            {
+                                "adapter": "TruSeq_i7_UDP010",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_i7_UDP004",
+                                "n_hits": 3
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP002",
+                                "n_hits": 4
+                            },
+                            {
+                                "adapter": "bc2092",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_D705",
+                                "n_hits": 4
+                            },
+                            {
+                                "adapter": "TruSeq_i7s_UDI006",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_i7_UDP006",
+                                "n_hits": 6
+                            },
+                            {
+                                "adapter": "TruSeq_i7_UDP011",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP012",
+                                "n_hits": 4
+                            },
+                            {
+                                "adapter": "TruSeq_D508",
+                                "n_hits": 4
+                            },
+                            {
+                                "adapter": "TruSeq_D704",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_D707",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "bc2035",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_i7_UDP001",
+                                "n_hits": 3
+                            },
+                            {
+                                "adapter": "bc2025",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_D506",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_i5s_UDI004",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP004",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "bc2076",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "bc2083",
+                                "n_hits": 6
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP011",
+                                "n_hits": 4
+                            },
+                            {
+                                "adapter": "TruSeq_D502",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_D503",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "TruSeq_D702",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "TruSeq_D708",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "bc2055",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "bc2028",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "TruSeq_D504",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP005",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP007",
+                                "n_hits": 2
+                            },
+                            {
+                                "adapter": "bc2082",
+                                "n_hits": 1
+                            },
+                            {
+                                "adapter": "TruSeq_i5_UDP008",
+                                "n_hits": 1
+                            }
+                        ],
+                        "hits": [
+                            {
+                                "adapter": "PacBio_ULI_adapter",
+                                "action": "discard",
+                                "n_hits": 1083,
+                                "n_reads": 249,
+                                "bases_removed": 2193582
+                            }
+                        ],
+                        "summary": {
+                            "total_reads_discarded": 249,
+                            "total_reads_trimmed": 0,
+                            "total_bases_removed": 2193582
+                        }
+                    }
+                ],
+                [
+                    {
                         "id": "test_fastq"
                     },
                     {
@@ -424,6 +634,12 @@
                 ],
                 [
                     {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
+                ],
+                [
+                    {
                         "id": "test_fastq"
                     },
                     "test_fastq.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
@@ -496,6 +712,7 @@
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
                 "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
+                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
@@ -503,7 +720,6 @@
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,d07e355c9485eca42cac555480c74440",
                 "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41",
                 "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41"
             ]
@@ -512,10 +728,13 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-03T12:06:02.74492947"
+        "timestamp": "2026-02-05T14:07:51.03992521"
     },
     "acropora cervicornis - non-uli - pbmarkdup - trim - cram": {
         "content": [
+            [
+                
+            ],
             [
                 [
                     {
@@ -529,6 +748,19 @@
                     },
                     "test_fastq.fasta.gz:md5,afb3e501c2dd781b90a689246bf65767"
                 ]
+            ],
+            [
+                {
+                    "maxReadLength": 18647,
+                    "minReadLength": 1468,
+                    "meanReadLength": 8520,
+                    "maxQuality": 0,
+                    "minQuality": 0,
+                    "meanQuality": 0,
+                    "readCount": 42541,
+                    "duplicateReadCount": 0,
+                    "sorted": true
+                }
             ],
             [
                 {
@@ -980,17 +1212,15 @@
             ],
             [
                 "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
+                "versions.yml:md5,25418662c467a4331c95d265e734a005",
                 "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
                 "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
-                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,d07e355c9485eca42cac555480c74440",
-                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41",
                 "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41"
             ]
         ],
@@ -998,7 +1228,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-03T12:27:35.648085085"
+        "timestamp": "2026-02-05T13:27:16.370872417"
     },
     "acropora cervicornis - uli - no pbmarkdup - no trim - fastx": {
         "content": [
@@ -1021,6 +1251,12 @@
                     },
                     "test_fastq.fastq:md5,d82966330fbaa05fa5d962e173d10bcf"
                 ]
+            ],
+            [
+                
+            ],
+            [
+                
             ],
             [
                 
@@ -1084,10 +1320,13 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-03T09:53:20.213681879"
+        "timestamp": "2026-02-05T11:22:25.632648464"
     },
     "acropora cervicornis - uli - pbmarkdup - no trim - cram": {
         "content": [
+            [
+                
+            ],
             [
                 
             ],
@@ -1133,6 +1372,9 @@
                 
             ],
             [
+                
+            ],
+            [
                 [
                     {
                         "id": "test_bam"
@@ -1187,6 +1429,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-02T21:33:32.336299778"
+        "timestamp": "2026-02-05T11:30:24.769247434"
     }
 }

@@ -40,7 +40,7 @@ input:
   - ch_adapter_yaml:
       type: file
       description: |
-        Input channel containing YAML file for HiFiTrimmer adapter trimming.
+        Input channel containing YAML file for HiFiTrimmer adapter trimming, specific to each read files, paired by meta information.
         Structure: [ val(meta), path(yaml) ]
       pattern: "*.yaml"
   - val_adapter_fasta:
@@ -64,12 +64,30 @@ input:
         Output format: 'cram' or 'fastx' ( default: 'fastx').
 
 output:
-  - fastx:
+  - untrimmed_fastx:
       type: file
       description: |
-        Channel containing preprocessed reads in FASTA/FASTQ format.
+        Channel containing preprocessed reads that are not filtered/trimmed with hifitrimmer in FASTA/FASTQ format.
         Structure: [ val(meta), path(fasta/fastq) ]
       pattern: "*.fasta|*.fa|*.fastq|*.fq"
+  - trimmed_fastx:
+      type: file
+      description: |
+        Channel containing preprocessed reads that have been filtered/trimmed with hifitrimmer in FASTA/FASTQ format.
+        Structure: [ val(meta), path(fasta/fastq) ]
+      pattern: "*.fasta|*.fa|*.fastq|*.fq"
+  - untrimmed_cram:
+      type: file
+      description: |
+        Channel containing preprocessed reads that are not filtered/trimmed with hifitrimmer in CRAM format.
+        Structure: [ val(meta), path(cram) ]
+      pattern: "*.cram"
+  - trimmed_cram:
+      type: file
+      description: |
+        Channel containing preprocessed reads that have been filtered/trimmed with hifitrimmer in CRAM format.
+        Structure: [ val(meta), path(cram) ]
+      pattern: "*.cram"
   - lima_report:
       type: file
       description: |

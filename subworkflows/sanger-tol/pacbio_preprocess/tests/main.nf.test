@@ -55,7 +55,7 @@ nextflow_workflow {
                 samtools_view_args    = "--output-fmt cram,version=3.0"
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
-                hifitrimmer_args      = "-f"
+                hifitrimmer_args      = ""
             }
 
             workflow {
@@ -80,6 +80,10 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ],
                     [
+                        [ id:'test_fasta' ], // meta map
+                        file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
+                    ],
+                    [
                         [ id:'test_fastq' ], // meta map
                         file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ]
@@ -100,12 +104,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.cram.size() == 2 },
-                { assert workflow.out.fastx.size() == 2 },
+                { assert workflow.out.trimmed_cram.size() == 3 },
+                { assert workflow.out.trimmed_fastx.size() == 3 }, // hifitrimmer always output fastx
+                { assert workflow.out.untrimmed_cram.size() == 0 },
+                { assert workflow.out.untrimmed_fastx.size() == 0 },
                 {
                     assert snapshot(
-                        workflow.out.fastx,
-                        workflow.out.cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_fastx,
+                        workflow.out.trimmed_fastx,
+                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
@@ -143,7 +151,7 @@ nextflow_workflow {
 
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                          [ id:'test_bam' ],
                         file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
@@ -157,7 +165,7 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)
                     ]
                 )
-                input[1] = Channel.of(
+                input[1] = channel.of(
                     [
                         [ id:'test_bam' ], // meta map
                         file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
@@ -167,7 +175,7 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/HiFi_adapter.yaml', checkIfExists: true)
                     ]
                 )
-                input[2] = Channel.of(
+                input[2] = channel.of(
                     [
                         [id:'blast_db'], // meta map
                         file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess//HiFi_adapter_DB.fasta', checkIfExists: true)
@@ -183,12 +191,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.cram.size() == 2 },
-                { assert workflow.out.fastx.size() == 2 },
+                { assert workflow.out.trimmed_cram.size() == 2 },
+                { assert workflow.out.trimmed_fastx.size() == 2 }, // hifitrimmer always output fastx
+                { assert workflow.out.untrimmed_cram.size() == 1 },
+                { assert workflow.out.untrimmed_fastx.size() == 0 },
                 {
                     assert snapshot(
-                        workflow.out.fastx,
-                        workflow.out.cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_fastx,
+                        workflow.out.trimmed_fastx,
+                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
@@ -226,7 +238,7 @@ nextflow_workflow {
 
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [ id:'test_bam' ],
                         file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
@@ -240,7 +252,7 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)
                     ]
                 )
-                input[1] = []
+                input[1] = channel.empty()
                 input[2] = []
                 input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
                 input[4] = false
@@ -252,12 +264,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.cram.size() == 0 },
-                { assert workflow.out.fastx.size() == 3 },
+                { assert workflow.out.trimmed_cram.size() == 0 },
+                { assert workflow.out.trimmed_fastx.size() == 0 }, // hifitrimmer always output fastx
+                { assert workflow.out.untrimmed_cram.size() == 0 },
+                { assert workflow.out.untrimmed_fastx.size() == 3 },
                 {
                     assert snapshot(
-                        workflow.out.fastx,
-                        workflow.out.cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_fastx,
+                        workflow.out.trimmed_fastx,
+                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
@@ -295,7 +311,7 @@ nextflow_workflow {
 
             workflow {
                 """
-                input[0] = Channel.of(
+                input[0] = channel.of(
                     [
                         [ id:'test_bam' ],
                         file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true)
@@ -309,7 +325,7 @@ nextflow_workflow {
                         file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true)
                     ]
                 )
-                input[1] = []
+                input[1] = channel.empty()
                 input[2] = []
                 input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
                 input[4] = false
@@ -321,12 +337,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.cram.size() == 3 },
-                { assert workflow.out.fastx.size() == 0 },
+                { assert workflow.out.trimmed_cram.size() == 0 },
+                { assert workflow.out.trimmed_fastx.size() == 0 }, // hifitrimmer always output fastx
+                { assert workflow.out.untrimmed_cram.size() == 3 },
+                { assert workflow.out.untrimmed_fastx.size() == 0 },
                 {
                     assert snapshot(
-                        workflow.out.fastx,
-                        workflow.out.cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_fastx,
+                        workflow.out.trimmed_fastx,
+                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
