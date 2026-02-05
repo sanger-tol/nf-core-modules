@@ -710,25 +710,20 @@
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
-                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
-                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
-                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41",
-                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41"
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-05T14:07:51.03992521"
+        "timestamp": "2026-02-05T15:06:14.371102503"
     },
     "acropora cervicornis - non-uli - pbmarkdup - trim - cram": {
         "content": [
@@ -1212,23 +1207,19 @@
             ],
             [
                 "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
-                "versions.yml:md5,25418662c467a4331c95d265e734a005",
-                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
-                "versions.yml:md5,965f68aafcc1ef54dd30e14a10150902",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,f8e49341b5c83223cf6d6de094206c41"
+                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-05T13:27:16.370872417"
+        "timestamp": "2026-02-05T15:13:07.27129269"
     },
     "acropora cervicornis - uli - no pbmarkdup - no trim - fastx": {
         "content": [
@@ -1418,8 +1409,6 @@
                 
             ],
             [
-                "versions.yml:md5,25418662c467a4331c95d265e734a005",
-                "versions.yml:md5,25418662c467a4331c95d265e734a005",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077"
@@ -1429,6 +1418,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-05T11:30:24.769247434"
+        "timestamp": "2026-02-05T15:25:07.637793745"
     }
 }

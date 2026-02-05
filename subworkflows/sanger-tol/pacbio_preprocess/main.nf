@@ -139,7 +139,6 @@ workflow PACBIO_PREPROCESS {
         //
         // Convert FASTA and FASTQ to BAM for hifitrimmer filtering
         FQ2BAM ( ch_input_trim_branch.fasta.mix( ch_input_trim_branch.fastq ) )
-        ch_versions = ch_versions.mix ( FQ2BAM.out.versions )
         bam_for_hifitrimmer = FQ2BAM.out.bam.mix( ch_input_trim_branch.bam )
 
         ch_input_filterbam = bam_for_hifitrimmer.combine( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
@@ -151,7 +150,6 @@ workflow PACBIO_PREPROCESS {
             // convert INPUTs to CRAMs to export, need args `--output-format cram`
             FQ2CRAM_TRIM ( trimmed_fastx )
             trimmed_cram = trimmed_cram.mix( FQ2CRAM_TRIM.out.cram )
-            ch_versions = ch_versions.mix ( FQ2CRAM_TRIM.out.versions )
         }
     } else {
         ch_input_skip_trim = ch_input_to_trim
@@ -171,8 +169,6 @@ workflow PACBIO_PREPROCESS {
     if ( val_output_format == 'cram' ) {
         // convert INPUTs to CRAMs to export, need args `--output-format cram`
         FQ2CRAM_UNTRIM ( ch_input_skip_trim_branch.fastx )
-        ch_versions = ch_versions.mix ( FQ2CRAM_UNTRIM.out.versions )
-
         SAMTOOLS_VIEW ( ch_input_skip_trim_branch.bam.map{ meta, bam_file -> [ meta, bam_file, []]}, [[],[]], [], [] )
         untrimmed_cram = untrimmed_cram
             .mix( FQ2CRAM_UNTRIM.out.cram )
