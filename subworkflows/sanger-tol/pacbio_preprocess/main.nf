@@ -60,10 +60,10 @@ workflow PACBIO_PREPROCESS {
         ch_versions = ch_versions.mix( PBMARKDUP.out.versions )
         pbmarkdup_stats = pbmarkdup_stats.mix( PBMARKDUP.out.log )
 
-        ch_input_to_trim = PBMARKDUP.out.markduped
+        ch_input_pre_trim = PBMARKDUP.out.markduped
     } else {
         // If not running markdup, pass the input to trimming step
-        ch_input_to_trim = ch_input_for_md
+        ch_input_pre_trim = ch_input_for_md
     }
 
     //
@@ -73,10 +73,10 @@ workflow PACBIO_PREPROCESS {
     hifitrimmer_bed = Channel.empty()
     if ( val_adapter_fasta ) {
         // Assign ch_input_skip_trimm to those without adapter yaml for trimming
-        ch_input_skip_trim = ch_input_to_trim
-        .join(ch_adapter_yaml, by: 0, remainder: true)
-        .filter { meta, reads, yaml -> yaml == null }
-        .map { meta, reads, yaml -> [meta, reads ] }
+        ch_input_skip_trim = ch_input_pre_trim
+            .join(ch_adapter_yaml, by: 0, remainder: true)
+            .filter { meta, reads, yaml -> yaml == null }
+            .map { meta, reads, yaml -> [meta, reads ] }
 
         // Warning for skip trimming
         ch_input_skip_trim
@@ -86,12 +86,12 @@ workflow PACBIO_PREPROCESS {
 
         // PREPARE INPUT FOR TRIMMING
         // Combine adapter yaml to input reads, only those with adapter yaml will be used for trimming, skip those without
-        ch_input_trim_yaml = ch_input_to_trim
+        ch_input_to_trim = ch_input_pre_trim
             .combine(ch_adapter_yaml, by: 0)
             .map { meta, reads, yaml -> [meta, reads] }
 
         // Prepare reads for filter
-        ch_input_trim_branch = ch_input_trim_yaml
+        ch_input_trim_branch = ch_input_to_trim
             .branch { meta, reads -> def filename = reads.toString()
                 fasta: filename =~ /\.(fasta|fa|fna)(\.gz)?$/
                     return [ meta, reads ]
@@ -152,7 +152,7 @@ workflow PACBIO_PREPROCESS {
             trimmed_cram = trimmed_cram.mix( FQ2CRAM_TRIM.out.cram )
         }
     } else {
-        ch_input_skip_trim = ch_input_to_trim
+        ch_input_skip_trim = ch_input_pre_trim
     }
 
     ch_input_skip_trim_branch = ch_input_skip_trim
