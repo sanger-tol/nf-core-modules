@@ -194,9 +194,10 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     // Module: split the haplotypes back out using seqkit grep + regex
     //
     ch_polished_assemblies_to_separate = BCFTOOLS_CONSENSUS.out.fasta
-        .flatMap { meta, asm ->
-            return (1..2).collect { count ->
-                [meta + [_hap: "hap${count}"], asm]
+        .combine(ch_assemblies.map {meta, assemblies -> [meta, assemblies.size()] }, by: 0)
+        .flatMap { meta, asm, size ->
+            return (1..size).collect { count ->
+                [meta + [_hap: "hap${count}", _nhaps: size], asm]
             }
         }
 
@@ -211,13 +212,13 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     //
     ch_assemblies_polished_split = SEPARATE_HAPLOTYPES.out.filter
         .map { meta, asm ->
-            def meta_new = meta - meta.subMap("_hap")
+            def meta_new = meta - meta.subMap(["_hap", "_nhaps"])
             [ meta_new, meta._hap, asm ]
         }
         .groupTuple(by: 0)
-        .map { meta_new, hap_labels, asms ->
+        .map { meta, hap_labels, asms ->
             def hap_map = [hap_labels, asms].transpose().collectEntries()
-            [ meta_new, hap_map.hap1, hap_map.hap2 ]
+            [ meta, hap_map.sort().values() ]
         }
 
     emit:
