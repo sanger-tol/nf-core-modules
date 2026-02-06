@@ -7,10 +7,9 @@ keywords:
   - vcf
   - bam
 components:
+  - bedchunks/create
   - longranger/align
   - longranger/mkref
-  - bcftools/concat:
-      git_remote: https://github.com/nf-core/modules.git
   - bcftools/consensus:
       git_remote: https://github.com/nf-core/modules.git
   - bcftools/index:
@@ -21,11 +20,11 @@ components:
       git_remote: https://github.com/nf-core/modules.git
   - bcftools/view:
       git_remote: https://github.com/nf-core/modules.git
+  - cat/cat:
+      git_remote: https://github.com/nf-core/modules.git
   - freebayes:
       git_remote: https://github.com/nf-core/modules.git
   - gatk4/mergevcfs:
-      git_remote: https://github.com/nf-core/modules.git
-  - gawk:
       git_remote: https://github.com/nf-core/modules.git
   - samtools/faidx:
       git_remote: https://github.com/nf-core/modules.git

@@ -9,19 +9,16 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/fasta_10x_polishing_longranger_freebayes"
-    tag "bcftools/view"
-    tag "bcftools/consensus"
-    tag "bcftools/norm"
-    tag "bcftools/concat"
-    tag "bcftools/sort"
-    tag "bcftools/index"
-    tag "bcftools/index"
-    tag "bcftools/index"
-    tag "cat/cat"
-    tag "freebayes"
-    tag "gatk4/mergevcfs"
-    tag "samtools/faidx"
-    tag "seqkit/grep"
+    tag "subworkflows/../../modules/nf-core/bcftools/view"
+    tag "subworkflows/../../modules/nf-core/bcftools/consensus"
+    tag "subworkflows/../../modules/nf-core/bcftools/norm"
+    tag "subworkflows/../../modules/nf-core/bcftools/sort"
+    tag "subworkflows/../../modules/nf-core/bcftools/index"
+    tag "subworkflows/../../modules/nf-core/cat/cat"
+    tag "subworkflows/../../modules/nf-core/freebayes"
+    tag "subworkflows/../../modules/nf-core/gatk4/mergevcfs"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/seqkit/grep"
     tag "bedchunks/create"
     tag "longranger/mkref"
     tag "longranger/align"
@@ -34,7 +31,6 @@ nextflow_workflow {
                 'bcftools/view',
                 'bcftools/consensus',
                 'bcftools/norm',
-                'bcftools/concat',
                 'bcftools/sort',
                 'bcftools/index',
                 'cat/cat',
