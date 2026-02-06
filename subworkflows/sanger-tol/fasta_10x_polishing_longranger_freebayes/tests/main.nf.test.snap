@@ -1,0 +1,163 @@
+{
+    "Undibacterium_unclassified - 10x": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.hap2.fa.gz:md5,cb573a3883d09d99ebf7677378b74167",
+                        "test.hap2.fa.gz:md5,cb573a3883d09d99ebf7677378b74167"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.consensus.fa:md5,cb573a3883d09d99ebf7677378b74167"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "possorted_bam.bam:md5,6d13db702758cf2810574df26588ac51"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "possorted_bam.bam.bai:md5,81fb34066f974ee5a8ce0f3350e9abc2"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "summary.csv:md5,152e8b370a89f9182f7c5373745581ee"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.merged.vcf.gz:md5,16a0ade629110deea9858b8789850118"
+                    ]
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.merged.vcf.gz.tbi:md5,845c683249a53d8884d0d0a092237ab4"
+                    ]
+                ],
+                "7": [
+                    "versions.yml:md5,1b813a318f48807c6faa340f367affef",
+                    "versions.yml:md5,1b813a318f48807c6faa340f367affef",
+                    "versions.yml:md5,3e71d972e8c7e375458f6a64040b88e5",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,f263f03faf4268443d59ce3203cc6a89"
+                ],
+                "assembly_consensus": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.consensus.fa:md5,cb573a3883d09d99ebf7677378b74167"
+                    ]
+                ],
+                "longranger_bai": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "possorted_bam.bam.bai:md5,81fb34066f974ee5a8ce0f3350e9abc2"
+                    ]
+                ],
+                "longranger_bam": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "possorted_bam.bam:md5,6d13db702758cf2810574df26588ac51"
+                    ]
+                ],
+                "longranger_summary": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "summary.csv:md5,152e8b370a89f9182f7c5373745581ee"
+                    ]
+                ],
+                "merged_vcf": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.merged.vcf.gz:md5,16a0ade629110deea9858b8789850118"
+                    ]
+                ],
+                "merged_vcf_tbi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.merged.vcf.gz.tbi:md5,845c683249a53d8884d0d0a092237ab4"
+                    ]
+                ],
+                "polished_assemblies": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.hap2.fa.gz:md5,cb573a3883d09d99ebf7677378b74167",
+                        "test.hap2.fa.gz:md5,cb573a3883d09d99ebf7677378b74167"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,1b813a318f48807c6faa340f367affef",
+                    "versions.yml:md5,1b813a318f48807c6faa340f367affef",
+                    "versions.yml:md5,3e71d972e8c7e375458f6a64040b88e5",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,7d8d24b0299881f3f648f6aaf1712eb4",
+                    "versions.yml:md5,f263f03faf4268443d59ce3203cc6a89"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2026-02-06T12:07:39.861108357"
+    }
+}
