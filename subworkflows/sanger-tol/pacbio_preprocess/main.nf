@@ -92,7 +92,7 @@ workflow PACBIO_PREPROCESS {
 
         // Prepare reads for filter
         ch_input_trim_branch = ch_input_to_trim
-            .branch { meta, reads -> def filename = reads.toString()
+            .branch { meta, reads -> def filename = reads.name
                 fasta: filename =~ /\.(fasta|fa|fna)(\.gz)?$/
                     return [ meta, reads ]
                 fastq: filename =~ /\.(fastq|fq)(\.gz)?$/
