@@ -15,7 +15,7 @@ include { SEQKIT_FQ2FA                         } from '../../../modules/nf-core/
 workflow PACBIO_PREPROCESS {
 
     take:
-    ch_reads                    // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format, if trimming, only FASTQ/BAM
+    ch_reads                    // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format
     ch_adapter_yaml             // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
     val_adapter_fasta           // Adapter fasta to make database for blastn
     val_uli_primers             // Primer file for lima
@@ -185,10 +185,10 @@ workflow PACBIO_PREPROCESS {
 
 
     emit:
-    untrimmed_fastx     = untrimmed_fastx      // [meta, fastx] untrimmed reads in FASTA/FASTQ format, if trimming, only trimmed files
-    untrimmed_cram      = untrimmed_cram       // [meta, cram] untrimmed reads in CRAM format, if trimming, only trimmed files
-    trimmed_fastx       = trimmed_fastx        // [meta, fastx] preprocessed reads in FASTA/FASTQ format, if trimming, only trimmed files
-    trimmed_cram        = trimmed_cram         // [meta, cram] preprocessed reads in CRAM format, if trimming, only trimmed files
+    untrimmed_fastx     = untrimmed_fastx      // [meta, fastx] untrimmed reads in FASTA/FASTQ format
+    untrimmed_cram      = untrimmed_cram       // [meta, cram] untrimmed reads in CRAM format
+    trimmed_fastx       = trimmed_fastx        // [meta, fastx] preprocessed reads in FASTA/FASTQ format
+    trimmed_cram        = trimmed_cram         // [meta, cram] preprocessed reads in CRAM format
     lima_report         = lima_reports         // [meta, report]
     lima_summary        = lima_summary         // [meta, summary]
     hifitrimmer_bed     = hifitrimmer_bed      // [meta, bed]
