@@ -19,7 +19,6 @@ process BEDCHUNKS_CREATE {
     task.ext.when == null || task.ext.when
 
     script:
-    def args  = task.ext.args  ?: ''
     prefix    = task.ext.prefix ?: "${meta.id}"
     """
     gawk -v prefix=${prefix} -v chunk_size=${chunk_size} \\

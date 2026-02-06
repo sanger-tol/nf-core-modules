@@ -15,7 +15,7 @@ include { SEQKIT_GREP as SEPARATE_HAPLOTYPES    } from '../../../modules/nf-core
 
 workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     take:
-    ch_assemblies          // [meta, [hap1, hap2]]
+    ch_assemblies          // [meta, [hap1, hap2, ... hapn]]
     ch_illumina_10x_reads  // [meta, reads]
     val_sequences_per_polishing_chunk // integer: number of sequences per polishing chunk
 
@@ -36,12 +36,12 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
         }
 
     //
-    // Module: Concatenate hap1/hap2 together for polishing
+    // Module: Concatenate haps together for polishing
     //
     CONCATENATE_ASSEMBLIES(ch_assemblies)
 
     //
-    // Module: Index assembly FASTA
+    // Module: Index combined assembly FASTA
     //
     SAMTOOLS_FAIDX(
         CONCATENATE_ASSEMBLIES.out.file_out,
@@ -134,7 +134,7 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     ch_bcftools_view_input = FREEBAYES.out.vcf.combine(BCFTOOLS_INDEX_FB.out.tbi, by: 0)
 
     //
-    // MODULE: FILTER FREEBAYES RESULTS
+    // Module: Filer Freebayes results
     //
     BCFTOOLS_VIEW(ch_bcftools_view_input, [], [], [])
 
@@ -151,6 +151,7 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
             return [meta - meta.subMap(["longranger_cov", "chunk_id"]), vcf]
         }
         .groupTuple(by: 0)
+        .map { meta, vcf -> [meta, vcf.sort { f -> f.getName() }] }
 
     GATK4_MERGEVCFS(
         ch_gatk4_mergevcf_input,
@@ -208,7 +209,7 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     ch_versions = ch_versions.mix(SEPARATE_HAPLOTYPES.out.versions)
 
     //
-    // Logic: Take the split assemblies and re-orgnaise into a [meta, hap1, hap2] format
+    // Logic: Take the split assemblies and re-orgnaise into [meta, [hap1, hap2, ... hapn]] format
     //
     ch_assemblies_polished_split = SEPARATE_HAPLOTYPES.out.filter
         .map { meta, asm ->
