@@ -195,10 +195,10 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     // Module: split the haplotypes back out using seqkit grep + regex
     //
     ch_polished_assemblies_to_separate = BCFTOOLS_CONSENSUS.out.fasta
-        .combine(ch_assemblies.map {meta, assemblies -> [meta, assemblies.size()] }, by: 0)
+        .combine(ch_assemblies.map { meta, assemblies -> [meta, assemblies.size()] }, by: 0)
         .flatMap { meta, asm, size ->
             return (1..size).collect { count ->
-                [meta + [_hap: "hap${count}", _nhaps: size], asm]
+                [meta + [_hap: "hap" + count, _nhaps: size], asm]
             }
         }
 
