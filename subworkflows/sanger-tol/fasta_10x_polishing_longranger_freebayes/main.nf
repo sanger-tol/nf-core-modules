@@ -49,7 +49,7 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
         [[:], []],
         false)
 
-    ch_assemblies_with_index = ch_assemblies.join(SAMTOOLS_FAIDX.out.fai)
+    ch_assemblies_with_index = CONCATENATE_ASSEMBLIES.out.file_out.join(SAMTOOLS_FAIDX.out.fai)
 
     //
     // Module: Generate references
