@@ -34,7 +34,7 @@ input:
   - ch_reads:
       type: file
       description: |
-        Input channel containing sequencing reads in BAM, FASTQ, or FASTA format (FASTA is not accepted for HiFitrimmer)
+        Input channel containing sequencing reads in BAM, FASTQ, or FASTA format.
         Structure: [ val(meta), path(reads) ]
       pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
   - ch_adapter_yaml:
