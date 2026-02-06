@@ -214,9 +214,10 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
             def meta_new = meta - meta.subMap("_hap")
             [ meta_new, meta._hap, asm ]
         }
-        .groupTuple(by: 0, size: 2, remainder: true)
+        .groupTuple(by: 0)
         .map { meta_new, hap_labels, asms ->
-            [ meta_new, asms[hap_labels.indexOf("hap1")], asms[hap_labels.indexOf("hap2")] ]
+            def hap_map = [hap_labels, asms].transpose().collectEntries()
+            [ meta_new, hap_map.hap1, hap_map.hap2 ]
         }
 
     emit:
