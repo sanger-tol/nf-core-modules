@@ -20,7 +20,7 @@ process TELOMERE_WINDOWS {
     script:
     // WARNING: This module includes the telomere.jar binary and its wrapper telomere_windows.sh
     // as module binaries in ${moduleDir}/resources/usr/bin/. To use this module, you will
-    // either have to copy this file to ${projectDir}/bin or set the option
+    // either have to copy these two files to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true in your nextflow.config file.
 
     def prefix      = task.ext.prefix ?: "${meta.id}"
