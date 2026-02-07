@@ -6,10 +6,7 @@ include { LIMA                                 } from '../../../modules/nf-core/
 include { PBMARKDUP                            } from '../../../modules/nf-core/pbmarkdup/main'
 include { SAMTOOLS_FASTA                       } from '../../../modules/nf-core/samtools/fasta/main'
 include { SAMTOOLS_FASTQ                       } from '../../../modules/nf-core/samtools/fastq/main'
-include { SAMTOOLS_IMPORT as FQ2BAM            } from '../../../modules/nf-core/samtools/import/main'
-include { SAMTOOLS_IMPORT as FQ2CRAM_UNTRIM    } from '../../../modules/nf-core/samtools/import/main'
-include { SAMTOOLS_IMPORT as FQ2CRAM_TRIM      } from '../../../modules/nf-core/samtools/import/main'
-include { SAMTOOLS_VIEW                        } from '../../../modules/nf-core/samtools/view/main'
+include { SAMTOOLS_IMPORT                      } from '../../../modules/nf-core/samtools/import/main'
 include { SEQKIT_FQ2FA                         } from '../../../modules/nf-core/seqkit/fq2fa/main'
 
 workflow PACBIO_PREPROCESS {
@@ -20,7 +17,6 @@ workflow PACBIO_PREPROCESS {
     val_adapter_fasta           // Adapter fasta to make database for blastn
     val_uli_primers             // Primer file for lima
     val_pbmarkdup               // Options to run pbmarkdup
-    val_output_format           // Output format: 'cram' or 'fastx' ( default: 'fastx' )
 
     main:
     ch_versions = channel.empty()
@@ -138,19 +134,13 @@ workflow PACBIO_PREPROCESS {
         // FILTER READS WITH HIFITRIMMER FILTERBAM
         //
         // Convert FASTA and FASTQ to BAM for hifitrimmer filtering
-        FQ2BAM ( ch_input_trim_branch.fasta.mix( ch_input_trim_branch.fastq ) )
-        bam_for_hifitrimmer = FQ2BAM.out.bam.mix( ch_input_trim_branch.bam )
+        SAMTOOLS_IMPORT ( ch_input_trim_branch.fasta.mix( ch_input_trim_branch.fastq ) )
+        bam_for_hifitrimmer = SAMTOOLS_IMPORT.out.bam.mix( ch_input_trim_branch.bam )
 
         ch_input_filterbam = bam_for_hifitrimmer.combine( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
         HIFITRIMMER_FILTERBAM ( ch_input_filterbam )
 
         trimmed_fastx =  trimmed_fastx.mix( HIFITRIMMER_FILTERBAM.out.filtered )
-
-        if ( val_output_format == 'cram' ) {
-            // convert INPUTs to CRAMs to export, need args `--output-format cram`
-            FQ2CRAM_TRIM ( trimmed_fastx )
-            trimmed_cram = trimmed_cram.mix( FQ2CRAM_TRIM.out.cram )
-        }
     } else {
         ch_input_skip_trim = ch_input_pre_trim
     }
@@ -163,36 +153,14 @@ workflow PACBIO_PREPROCESS {
                 return [ meta, reads ]
         }
 
-    //
-    // PROCESS UNTRIMMED READS FOR OUTPUT
-    //
-    if ( val_output_format == 'cram' ) {
-        // convert INPUTs to CRAMs to export, need args `--output-format cram`
-        FQ2CRAM_UNTRIM ( ch_input_skip_trim_branch.fastx )
-        SAMTOOLS_VIEW ( ch_input_skip_trim_branch.bam.map{ meta, bam_file -> [ meta, bam_file, []]}, [[],[]], [], [] )
-        untrimmed_cram = untrimmed_cram
-            .mix( FQ2CRAM_UNTRIM.out.cram )
-            .mix( SAMTOOLS_VIEW.out.cram )
-    } else {
-        // Convert reads to FASTQs to export
-        // with --t arg for samtools fastq to copy RG, BC,  an QT tags to FASTQ header line
-        SAMTOOLS_FASTQ ( ch_input_skip_trim_branch.bam, false )
-
-        untrimmed_fastx = untrimmed_fastx
-            .mix( SAMTOOLS_FASTQ.out.other )
-            .mix( ch_input_skip_trim_branch.fastx )
-    }
-
-
     emit:
-    untrimmed_fastx     = untrimmed_fastx      // [meta, fastx] untrimmed reads in FASTA/FASTQ format
-    untrimmed_cram      = untrimmed_cram       // [meta, cram] untrimmed reads in CRAM format
-    trimmed_fastx       = trimmed_fastx        // [meta, fastx] preprocessed reads in FASTA/FASTQ format
-    trimmed_cram        = trimmed_cram         // [meta, cram] preprocessed reads in CRAM format
-    lima_report         = lima_reports         // [meta, report]
-    lima_summary        = lima_summary         // [meta, summary]
-    hifitrimmer_bed     = hifitrimmer_bed      // [meta, bed]
-    hifitrimmer_summary = hifitrimmer_summary  // [meta, summary]
-    pbmarkdup_stat      = pbmarkdup_stats      // [meta, log]
+    untrimmed_fastx     = ch_input_skip_trim_branch.fastx   // [meta, fastx] untrimmed reads in FASTA/FASTQ format
+    untrimmed_bam       = ch_input_skip_trim_branch.bam     // [meta, bam] untrimmed reads in BAM format
+    trimmed_fastx       = trimmed_fastx                     // [meta, fastx] preprocessed reads in FASTA/FASTQ format
+    lima_report         = lima_reports                      // [meta, report]
+    lima_summary        = lima_summary                      // [meta, summary]
+    hifitrimmer_bed     = hifitrimmer_bed                   // [meta, bed]
+    hifitrimmer_summary = hifitrimmer_summary               // [meta, summary]
+    pbmarkdup_stat      = pbmarkdup_stats                   // [meta, log]
     versions            = ch_versions
 }

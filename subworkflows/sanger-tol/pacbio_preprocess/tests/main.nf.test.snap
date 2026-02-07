@@ -1,4 +1,97 @@
 {
+    "acropora cervicornis - uli - pbmarkdup - no trim": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.fasta:md5,431671b2d09b72a23ad5fc224f5af12a"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq.fastq:md5,d82966330fbaa05fa5d962e173d10bcf"
+                ]
+            ],
+            [
+                
+            ],
+            [
+                {
+                    "maxReadLength": 18595,
+                    "minReadLength": 1416,
+                    "meanReadLength": 8470,
+                    "maxQuality": 255,
+                    "minQuality": 255,
+                    "meanQuality": 255,
+                    "readCount": 42509,
+                    "duplicateReadCount": 0,
+                    "sorted": true
+                }
+            ],
+            [
+                
+            ],
+            [
+                
+            ],
+            [
+                [
+                    {
+                        "id": "test_bam"
+                    },
+                    "test_bam.lima.report:md5,6343113d84641786308e9f96eca9adfe"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq.lima.report:md5,f48651719c5d4863355725261708e9b4"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test_bam"
+                    },
+                    "test_bam.lima.summary:md5,8a416563a0207db595868964fa2275f9"
+                ],
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                ],
+                [
+                    {
+                        "id": "test_fastq"
+                    },
+                    "test_fastq.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                ]
+            ],
+            [
+                
+            ],
+            [
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
+                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.0"
+        },
+        "timestamp": "2026-02-07T03:24:17.839534975"
+    },
     "acropora cervicornis": {
         "content": [
             [
@@ -26,41 +119,6 @@
             ],
             [
                 
-            ],
-            [
-                {
-                    "maxReadLength": 17907,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8468,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42253,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                },
-                {
-                    "maxReadLength": 17907,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8468,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42253,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                },
-                {
-                    "maxReadLength": 17907,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8468,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42206,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                }
             ],
             [
                 [
@@ -723,12 +781,17 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-05T15:06:14.371102503"
+        "timestamp": "2026-02-07T03:06:31.350765342"
     },
-    "acropora cervicornis - non-uli - pbmarkdup - trim - cram": {
+    "acropora cervicornis - non-uli - pbmarkdup - trim": {
         "content": [
             [
-                
+                [
+                    {
+                        "id": "test_fasta"
+                    },
+                    "test_fasta_pbmarkdup.fasta:md5,8d47ef74249cd43bbe35434c3fe73731"
+                ]
             ],
             [
                 [
@@ -745,41 +808,7 @@
                 ]
             ],
             [
-                {
-                    "maxReadLength": 18647,
-                    "minReadLength": 1468,
-                    "meanReadLength": 8520,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42541,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                }
-            ],
-            [
-                {
-                    "maxReadLength": 12807,
-                    "minReadLength": 2604,
-                    "meanReadLength": 8693,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 40,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                },
-                {
-                    "maxReadLength": 12807,
-                    "minReadLength": 2604,
-                    "meanReadLength": 8693,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 40,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                }
+                
             ],
             [
                 [
@@ -1219,17 +1248,11 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-05T15:13:07.27129269"
+        "timestamp": "2026-02-07T03:13:14.100000139"
     },
-    "acropora cervicornis - uli - no pbmarkdup - no trim - fastx": {
+    "acropora cervicornis - uli - no pbmarkdup - no trim": {
         "content": [
             [
-                [
-                    {
-                        "id": "test_bam"
-                    },
-                    "test_bam_other.fastq.gz:md5,a6283e381c372fe2518f041c81c50656"
-                ],
                 [
                     {
                         "id": "test_fasta"
@@ -1247,111 +1270,14 @@
                 
             ],
             [
-                
-            ],
-            [
-                
-            ],
-            [
-                
-            ],
-            [
-                
-            ],
-            [
-                [
-                    {
-                        "id": "test_bam"
-                    },
-                    "test_bam.lima.report:md5,6343113d84641786308e9f96eca9adfe"
-                ],
-                [
-                    {
-                        "id": "test_fasta"
-                    },
-                    "test_fasta.lima.report:md5,f48651719c5d4863355725261708e9b4"
-                ],
-                [
-                    {
-                        "id": "test_fastq"
-                    },
-                    "test_fastq.lima.report:md5,f48651719c5d4863355725261708e9b4"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test_bam"
-                    },
-                    "test_bam.lima.summary:md5,8a416563a0207db595868964fa2275f9"
-                ],
-                [
-                    {
-                        "id": "test_fasta"
-                    },
-                    "test_fasta.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
-                ],
-                [
-                    {
-                        "id": "test_fastq"
-                    },
-                    "test_fastq.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
-                ]
-            ],
-            [
-                
-            ],
-            [
-                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
-                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
-                "versions.yml:md5,69cee3cfe024119268f7e87888a6e077"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2026-02-05T11:22:25.632648464"
-    },
-    "acropora cervicornis - uli - pbmarkdup - no trim - cram": {
-        "content": [
-            [
-                
-            ],
-            [
-                
-            ],
-            [
                 {
                     "maxReadLength": 18595,
                     "minReadLength": 1416,
                     "meanReadLength": 8470,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
+                    "maxQuality": 255,
+                    "minQuality": 255,
+                    "meanQuality": 255,
                     "readCount": 42509,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                },
-                {
-                    "maxReadLength": 18595,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8470,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42511,
-                    "duplicateReadCount": 0,
-                    "sorted": true
-                },
-                {
-                    "maxReadLength": 18595,
-                    "minReadLength": 1416,
-                    "meanReadLength": 8470,
-                    "maxQuality": 0,
-                    "minQuality": 0,
-                    "meanQuality": 0,
-                    "readCount": 42511,
                     "duplicateReadCount": 0,
                     "sorted": true
                 }
@@ -1363,9 +1289,6 @@
                 
             ],
             [
-                
-            ],
-            [
                 [
                     {
                         "id": "test_bam"
@@ -1418,6 +1341,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-05T15:25:07.637793745"
+        "timestamp": "2026-02-07T03:18:48.301519067"
     }
 }

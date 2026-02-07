@@ -17,7 +17,6 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/samtools/fasta"
     tag "subworkflows/../../modules/nf-core/samtools/fastq"
     tag "subworkflows/../../modules/nf-core/samtools/import"
-    tag "subworkflows/../../modules/nf-core/samtools/view"
     tag "subworkflows/../../modules/nf-core/seqkit/fq2fa"
 
     setup {
@@ -34,7 +33,6 @@ nextflow_workflow {
                 "samtools/fasta",
                 "samtools/fastq",
                 "samtools/import",
-                "samtools/view",
                 "seqkit/fq2fa"
             ]
         )
@@ -49,10 +47,6 @@ nextflow_workflow {
                 pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
                 samtools_fastq_args   = "-F 0x200 -nt"
                 samtools_fasta_args   = ""
-                fq2bam_args           = ""
-                fq2cram_args          = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args   = "--output-fmt cram,version=3.0"
-                samtools_view_args    = "--output-fmt cram,version=3.0"
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
                 hifitrimmer_args      = ""
@@ -96,7 +90,6 @@ nextflow_workflow {
                 )
                 input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
                 input[4] = true
-                input[5] = 'cram'
                 """
             }
         }
@@ -104,16 +97,14 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.trimmed_cram.size() == 3 },
                 { assert workflow.out.trimmed_fastx.size() == 3 }, // hifitrimmer always output fastx
-                { assert workflow.out.untrimmed_cram.size() == 0 },
                 { assert workflow.out.untrimmed_fastx.size() == 0 },
+                { assert workflow.out.untrimmed_bam.size() == 0 },
                 {
                     assert snapshot(
                         workflow.out.untrimmed_fastx,
                         workflow.out.trimmed_fastx,
-                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
-                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_bam.collect{ meta, bam_file -> bam(bam_file, stringency: "silent").getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
@@ -132,7 +123,7 @@ nextflow_workflow {
         }
     }
 
-    test("acropora cervicornis - non-uli - pbmarkdup - trim - cram") {
+    test("acropora cervicornis - non-uli - pbmarkdup - trim") {
 
         when {
             params {
@@ -140,10 +131,6 @@ nextflow_workflow {
                 pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
                 samtools_fastq_args   = "-F 0x200 -nt"
                 samtools_fasta_args   = ""
-                fq2bam_args           = ""
-                fq2cram_args          = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args   = "--output-fmt cram,version=3.0"
-                samtools_view_args    = "--output-fmt cram,version=3.0"
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
                 hifitrimmer_args      = ""
@@ -183,7 +170,6 @@ nextflow_workflow {
                 )
                 input[3] = []
                 input[4] = true
-                input[5] = 'cram'
                 """
             }
         }
@@ -191,16 +177,14 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.trimmed_cram.size() == 2 },
                 { assert workflow.out.trimmed_fastx.size() == 2 }, // hifitrimmer always output fastx
-                { assert workflow.out.untrimmed_cram.size() == 1 },
-                { assert workflow.out.untrimmed_fastx.size() == 0 },
+                { assert workflow.out.untrimmed_fastx.size() == 1 },
+                { assert workflow.out.untrimmed_bam.size() == 0 },
                 {
                     assert snapshot(
                         workflow.out.untrimmed_fastx,
                         workflow.out.trimmed_fastx,
-                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
-                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_bam.collect{ meta, bam_file -> bam(bam_file, stringency: "silent").getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
@@ -219,7 +203,7 @@ nextflow_workflow {
         }
     }
 
-    test("acropora cervicornis - uli - no pbmarkdup - no trim - fastx") {
+    test("acropora cervicornis - uli - no pbmarkdup - no trim") {
 
         when {
             params {
@@ -228,9 +212,6 @@ nextflow_workflow {
                 samtools_fastq_args   = "-F 0x200 -nt"
                 samtools_fasta_args   = ""
                 fq2bam_args           = ""
-                fq2cram_args          = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args   = "--output-fmt cram,version=3.0"
-                samtools_view_args    = "--output-fmt cram,version=3.0"
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
                 hifitrimmer_args      = "-f"
@@ -256,7 +237,6 @@ nextflow_workflow {
                 input[2] = []
                 input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
                 input[4] = false
-                input[5] = ''
                 """
             }
         }
@@ -264,16 +244,14 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.trimmed_cram.size() == 0 },
                 { assert workflow.out.trimmed_fastx.size() == 0 }, // hifitrimmer always output fastx
-                { assert workflow.out.untrimmed_cram.size() == 0 },
-                { assert workflow.out.untrimmed_fastx.size() == 3 },
+                { assert workflow.out.untrimmed_fastx.size() == 2 },
+                { assert workflow.out.untrimmed_bam.size() == 1 },
                 {
                     assert snapshot(
                         workflow.out.untrimmed_fastx,
                         workflow.out.trimmed_fastx,
-                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
-                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_bam.collect{ meta, bam_file -> bam(bam_file, stringency: "silent").getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
@@ -292,7 +270,7 @@ nextflow_workflow {
         }
     }
 
-    test("acropora cervicornis - uli - pbmarkdup - no trim - cram") {
+    test("acropora cervicornis - uli - pbmarkdup - no trim") {
 
         when {
             params {
@@ -300,10 +278,6 @@ nextflow_workflow {
                 pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
                 samtools_fastq_args   = "-F 0x200 -nt"
                 samtools_fasta_args   = ""
-                fq2bam_args           = ""
-                fq2cram_args          = "--output-fmt cram,version=3.0"
-                fq2cram_untrim_args   = "--output-fmt cram,version=3.0"
-                samtools_view_args    = "--output-fmt cram,version=3.0"
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
                 hifitrimmer_args      = "-f"
@@ -329,7 +303,6 @@ nextflow_workflow {
                 input[2] = []
                 input[3] = file(params.modules_testdata_base_path + 'resources/modules/pacbio_preprocess/pacbio_uli_adapter.fasta', checkIfExists: true)
                 input[4] = false
-                input[5] = 'cram'
                 """
             }
         }
@@ -337,16 +310,14 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.trimmed_cram.size() == 0 },
                 { assert workflow.out.trimmed_fastx.size() == 0 }, // hifitrimmer always output fastx
-                { assert workflow.out.untrimmed_cram.size() == 3 },
-                { assert workflow.out.untrimmed_fastx.size() == 0 },
+                { assert workflow.out.untrimmed_bam.size() == 1 },
+                { assert workflow.out.untrimmed_fastx.size() == 2 },
                 {
                     assert snapshot(
                         workflow.out.untrimmed_fastx,
                         workflow.out.trimmed_fastx,
-                        workflow.out.untrimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
-                        workflow.out.trimmed_cram.collect{ meta, cram -> bam(cram).getStatistics() }.sort(),
+                        workflow.out.untrimmed_bam.collect{ meta, bam_file -> bam(bam_file, stringency: "silent").getStatistics() }.sort(),
                         workflow.out.hifitrimmer_summary.collect{ meta, summary_file ->
                             [ meta, path(summary_file).json.tap { it.remove('run_info') } ]
                         },
