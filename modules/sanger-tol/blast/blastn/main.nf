@@ -1,4 +1,4 @@
-// Adapte from https://github.com/nf-core/modules/tree/master/modules/nf-core/blast/blastn
+// Adapted from https://github.com/nf-core/modules/tree/master/modules/nf-core/blast/blastn
 
 process BLAST_BLASTN {
     tag "$meta.id"
