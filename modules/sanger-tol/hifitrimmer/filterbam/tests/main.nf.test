@@ -1,0 +1,123 @@
+nextflow_process {
+
+
+    name "Test Process HIFITRIMMER_FILTERBAM"
+    script "../main.nf"
+    process "HIFITRIMMER_FILTERBAM"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "hifitrimmer"
+    tag "hifitrimmer/filterbam"
+    tag "nf-core/samtools/import"
+
+    config './nextflow.config'
+
+    test("hifi_trimmer filter_bam test - input bam") {
+
+        when {
+            params {
+                filter_bam_args    = "-f"
+            }
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true),          
+                        file(params.modules_testdata_base_path + 'resources/modules/hifitrimmer_filterbam/acropora_cervicornis_test.bed.gz', checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("hifi_trimmer filter_bam test - input fastq") {
+
+        when {
+            params {
+                filter_bam_args    = "-f"
+            }
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'resources/modules/hifitrimmer_filterbam/acropora_cervicornis_test.bed.gz', checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("hifi_trimmer filter_bam test - input fasta") {
+
+        when {
+            params {
+                filter_bam_args    = ""
+            }
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta.gz', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'resources/modules/hifitrimmer_filterbam/acropora_cervicornis_test.bed.gz', checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("hifi_trimmer test - stub") {
+
+        options "-stub"
+
+        when {
+
+            process {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fastq', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'resources/modules/hifitrimmer_filterbam/acropora_cervicornis_test.bed.gz', checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() },
+            )
+        }
+    }
+}
