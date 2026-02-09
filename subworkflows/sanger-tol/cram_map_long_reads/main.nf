@@ -51,7 +51,6 @@ workflow CRAM_MAP_LONG_READS {
     // Module: Index CRAM files without indexes
     //
     SAMTOOLS_INDEX(ch_cram_raw.no_index)
-    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions)
 
     ch_cram_indexed = ch_cram_raw.have_index
         .mix(
@@ -83,7 +82,6 @@ workflow CRAM_MAP_LONG_READS {
     // Module: Extract read groups from CRAM headers
     //
     SAMTOOLS_SPLITHEADER(ch_crams_meta_mod)
-    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
 
     ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
         .map { meta, rg_file ->
@@ -143,7 +141,6 @@ workflow CRAM_MAP_LONG_READS {
         ch_assemblies,
         false
     )
-    ch_versions = ch_versions.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.versions)
 
     emit:
     bam               = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
