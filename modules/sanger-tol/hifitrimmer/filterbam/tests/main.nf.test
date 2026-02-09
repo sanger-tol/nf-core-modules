@@ -24,7 +24,7 @@ nextflow_process {
                 input[0] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true),          
+                        file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.bam', checkIfExists: true),
                         file(params.modules_testdata_base_path + 'resources/modules/hifitrimmer_filterbam/acropora_cervicornis_test.bed.gz', checkIfExists: true)
                     ]
                 )
