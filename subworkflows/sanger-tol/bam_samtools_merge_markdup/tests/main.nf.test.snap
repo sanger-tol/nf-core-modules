@@ -16,14 +16,13 @@
             ],
             [
                 "test.bam.csi"
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T15:17:28.18906"
+        "timestamp": "2026-02-09T15:42:55.598432"
     },
     "Undibacterium unclassified - hap1 - markdup": {
         "content": [
@@ -50,13 +49,12 @@
                     },
                     "test.metrics:md5,7816ccaa9f01adce0ee1a5e620e933a1"
                 ]
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T15:17:47.835292"
+        "timestamp": "2026-02-09T15:43:16.774673"
     }
 }
