@@ -49,7 +49,6 @@ workflow PACBIO_PREPROCESS {
     //
     if ( val_pbmarkdup ) {
         PBMARKDUP( ch_input_for_md )
-        ch_versions = ch_versions.mix( PBMARKDUP.out.versions )
         pbmarkdup_stats = pbmarkdup_stats.mix( PBMARKDUP.out.log )
 
         ch_input_pre_trim = PBMARKDUP.out.markduped

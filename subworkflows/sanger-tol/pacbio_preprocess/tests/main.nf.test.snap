@@ -767,17 +767,14 @@
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
-                "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4"
+                "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-10T11:34:44.256754766"
+        "timestamp": "2026-02-10T14:51:02.273117612"
     },
     "acropora cervicornis - non-uli - pbmarkdup - trim": {
         "content": [
@@ -1231,10 +1228,7 @@
                 ]
             ],
             [
-                "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
-                "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4"
+                "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c"
             ]
         ],
         "meta": {
