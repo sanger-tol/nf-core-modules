@@ -1,0 +1,45 @@
+{
+    "kmercount - fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Meles_meles"
+                        },
+                        "GCA_922984935.2.subset.fasta:md5,c164b40eb7d4653d6dc701eb4d0857ab",
+                        "Meles_meles_kmer_counts.npy:md5,d9e854b144f9270cf140696df6840cee"
+                    ]
+                ],
+                "1": [
+                    [
+                        "KMERCOUNTER",
+                        "kmercounter",
+                        "K-mer counter 0.1.2"
+                    ]
+                ],
+                "npy": [
+                    [
+                        {
+                            "id": "Meles_meles"
+                        },
+                        "GCA_922984935.2.subset.fasta:md5,c164b40eb7d4653d6dc701eb4d0857ab",
+                        "Meles_meles_kmer_counts.npy:md5,d9e854b144f9270cf140696df6840cee"
+                    ]
+                ],
+                "versions_kmercounter": [
+                    [
+                        "KMERCOUNTER",
+                        "kmercounter",
+                        "K-mer counter 0.1.2"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-30T15:01:52.15887611"
+    }
+}
