@@ -14,17 +14,12 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/hifitrimmer/filterbam"
     tag "subworkflows/../../modules/nf-core/lima"
     tag "subworkflows/../../modules/nf-core/pbmarkdup"
-    tag "subworkflows/../../modules/nf-core/samtools/fasta"
-    tag "subworkflows/../../modules/nf-core/samtools/fastq"
-    tag "subworkflows/../../modules/nf-core/samtools/import"
-    tag "subworkflows/../../modules/nf-core/seqkit/fq2fa"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
         nfcoreInstall(
             "${launchDir}/library/",
             [
-                "blast/blastn",
                 "blast/makeblastdb",
                 "hifitrimmer/processblast",
                 "hifitrimmer/filterbam",
