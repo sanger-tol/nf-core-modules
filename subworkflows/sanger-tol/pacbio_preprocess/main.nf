@@ -120,7 +120,7 @@ workflow PACBIO_PREPROCESS {
     }
 
     ch_input_skip_trim_branch = ch_input_skip_trim
-        .branch { meta, reads
+        .branch { meta, reads ->
             bam: reads.name.endsWith('.bam')
                 return [ meta, reads ]
             fastx: true
