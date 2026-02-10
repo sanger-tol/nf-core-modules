@@ -1,5 +1,4 @@
-nextflow_process {
-
+nextflow_process {'
     name "Test Process TELOMERE_REGIONS"
     script "../main.nf"
     process "TELOMERE_REGIONS"
