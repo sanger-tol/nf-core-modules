@@ -17,13 +17,10 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     val_cool_bin      // val: cooler cload parameter
 
     main:
-    ch_versions = channel.empty()
-
     //
     // Module: Convert BAM to name-sorted BED
     //
     BEDTOOLS_BAMTOBEDSORT(ch_hic_bam)
-    ch_versions = ch_versions.mix(BEDTOOLS_BAMTOBEDSORT.out.versions)
 
     //
     // Module: Index input assemblies
@@ -46,7 +43,6 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
         }
 
     YAHS(ch_yahs_input)
-    ch_versions = ch_versions.mix(YAHS.out.versions)
 
     //
     // Module: Index output scaffolds
@@ -66,7 +62,6 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
         .combine(YAHS.out.binary, by: 0)
 
     YAHS_MAKEPAIRSFILE(ch_pairs_input)
-    ch_versions = ch_versions.mix(YAHS_MAKEPAIRSFILE.out.versions)
 
     //
     // Subworkflow: Create Hi-C contact maps for visualisation of scaffolding outputs
@@ -86,7 +81,6 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
         val_build_juicer,
         val_cool_bin
     )
-    ch_versions = ch_versions.mix(PAIRS_CREATE_CONTACT_MAPS.out.versions)
 
     emit:
     scaffolds_fasta   = YAHS.out.scaffolds_fasta
@@ -99,5 +93,4 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     pretext_png       = PAIRS_CREATE_CONTACT_MAPS.out.pretext_png
     cool              = PAIRS_CREATE_CONTACT_MAPS.out.cool
     hic               = PAIRS_CREATE_CONTACT_MAPS.out.hic
-    versions          = ch_versions
 }

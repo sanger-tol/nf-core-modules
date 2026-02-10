@@ -30,7 +30,6 @@ workflow BAM2COOL {
     BEDTOOLS_BAMTOBEDSORT(
         ch_bam_list_transposed
     )
-    ch_versions = ch_versions.mix(BEDTOOLS_BAMTOBEDSORT.out.versions)
 
     //
     // Generate paired contacts BED
@@ -68,7 +67,6 @@ workflow BAM2COOL {
         'pairs',
         val_bin_size
     )
-    ch_versions = ch_versions.mix(COOLER_CLOAD.out.versions)
 
     //
     // Collect all individual .cool files for merging
@@ -84,7 +82,6 @@ workflow BAM2COOL {
     COOLER_MERGE(
         ch_cool_files_for_merge
     )
-    ch_versions = ch_versions.mix(COOLER_MERGE.out.versions)
 
     //
     // Generate multi-resolution .mcool
@@ -92,7 +89,6 @@ workflow BAM2COOL {
     COOLER_ZOOMIFY(
         COOLER_MERGE.out.cool
     )
-    ch_versions = ch_versions.mix(COOLER_ZOOMIFY.out.versions)
 
     //
     // Emit final outputs
