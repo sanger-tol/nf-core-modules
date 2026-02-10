@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "yahs_makepairsfile"
 description: |
   Wrapper around the YaHS juicer_pre tool to create a valid sorted pairs file describing

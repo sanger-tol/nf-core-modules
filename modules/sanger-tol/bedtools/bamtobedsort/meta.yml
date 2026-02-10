@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "bedtools_bamtobedsort"
 description: |
   Streams a BAM file into bedtools bamToBed with samtools (with optional filtering), then sorts
