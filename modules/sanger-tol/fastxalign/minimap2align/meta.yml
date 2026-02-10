@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fastxalign_minimap2align"
 description: |
   Aligns a subset of sequencing reads from a FASTx file to a reference genome using minimap2. Can either

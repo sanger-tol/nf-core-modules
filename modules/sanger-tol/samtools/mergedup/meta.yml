@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "samtools_mergedup"
 description: Merge multiple fixmated, sorted SAM/BAM/CRAM and then mark
   duplicates
