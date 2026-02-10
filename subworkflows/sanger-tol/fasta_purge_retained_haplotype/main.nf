@@ -42,8 +42,6 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
         val_fastx_reads_per_chunk,
         false
     )
-    ch_versions = ch_versions.mix(FASTX_MAP_LONG_READS.out.versions)
-
     //
     // Module: Create read depth histogram
     //
