@@ -95,7 +95,6 @@ nextflow_workflow {
                     file(workflow.out.pretext_png.get(0).get(1)).getName(),
                     file(workflow.out.cool.get(0).get(1)).getName(),
                     file(workflow.out.hic.get(0).get(1)).getName(),
-                    workflow.out.versions
                 ).match() }
             )
         }
