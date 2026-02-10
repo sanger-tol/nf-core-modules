@@ -1,0 +1,103 @@
+nextflow_workflow {
+    name "Test Subworkflow PRETEXTMAP_SNAPSHOT_ANNOTATE"
+    script "../main.nf"
+    workflow "PRETEXTMAP_SNAPSHOT_ANNOTATE"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/pretextmap_snapshot_annotate"
+    tag "subworkflows/../../modules/nf-core/pretextmap"
+    tag "subworkflows/../../modules/nf-core/pretextsnapshot"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "pretextmap",
+                "pretextsnapshot"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("Undibacterium_unclassified - standard - fasta,fai,bam") {
+
+        when {
+
+            params {
+                pretextmap = "--sortby nosort --mapq 0"
+                snapshot = "--sequences '=full' --resolution 1440"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id: "test" ], // meta map
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa.fai', checkIfExists: true)
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id: "test" ], // meta map
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.2.bam', checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("Undibacterium_unclassified - hires - fasta,fai,bam") {
+
+        when {
+
+            params {
+                pretextmap = "--sortby nosort --highRes --mapq 0"
+                snapshot = "--sequences '=full' --resolution 3840"
+            }
+
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id: "test" ], // meta map
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa.fai', checkIfExists: true)
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id: "test" ], // meta map
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.2.bam', checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+}

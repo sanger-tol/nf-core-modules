@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "pretextmap_snapshot_annotate"
+description: |
+    Create a pretext file from fasta, fai and a mapped bam. Generate a png/jpeg/bmap of the pretext and then annotate it with chromosome names.
+keywords:
+    - pretext
+    - bam
+    - annotate
+components:
+    - pretextmap:
+        git_remote: https://github.com/nf-core/modules.git
+    - pretextsnapshot:
+        git_remote: https://github.com/nf-core/modules.git
+
+input:
+  - ch_reference:
+      type: file
+      description: |
+          Input channel containing the reference fasta and index file.
+      structure:
+          - meta:
+              type: map
+              description: Metadata Map
+          - fasta:
+              type: file
+              description: Reference fasta file
+              pattern: "*.fn?a(asta)"
+          - fai:
+              type: file
+              description: Reference fasta index file
+              pattern: "*.fai"
+  - ch_mapped_bam:
+      type: file
+      description: |
+          Input channel containing HiC mapped reads in bam format.
+          Structure: [ val(meta), path(bam) ]
+      pattern: "*.bam"
+
+output:
+    - pretext_file:
+        type: file
+        description: |
+            Channel containing the final pretext file
+            Structure: [ val(meta), path(bam) ]
+        pattern: "*.pretext"
+    - pretext_pngs:
+        type: file
+        description: |
+            Channel containing the snapshot image
+        pattern: "*.{jpeg,png,bmp}"
+
+authors:
+    - "@DLBPointon"
+maintainers:
+    - "@DLBPointon"

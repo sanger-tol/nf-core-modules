@@ -1,0 +1,136 @@
+{
+    "Undibacterium_unclassified - standard - fasta,fai,bam": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.pretext:md5,8f08a6a334491a371cde5ce1ffd6637e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test_FullMap.png:md5,44f963f078641051e67ff8d411f1db9e",
+                            "test_h1tg000001l.png:md5,23849dcdf62f6f21430249ea33a5c33a",
+                            "test_h1tg000002l.png:md5,fa3a3330ed54e7b27807e311454338ab",
+                            "test_h1tg000003l.png:md5,b114d64304257c42c6ebb5f26583e68a",
+                            "test_h1tg000004l.png:md5,92c55410cc3e899e8dd451d7eade71ae",
+                            "test_h1tg000005l.png:md5,f7920000a172ca89d2b6e16857c6589b",
+                            "test_h1tg000006l.png:md5,6e2aa10ee07c04acb4c66b2d1d8f7336",
+                            "test_h1tg000007l.png:md5,97e2c18070bdffb4763e7cae1b95649f",
+                            "test_h1tg000008l.png:md5,f0646d67162b9a844844038208fd5b89",
+                            "test_h1tg000009l.png:md5,43bae63d6bd7ecdd4407a4ef00592c0f",
+                            "test_h1tg000010l.png:md5,73da7956bc572e221dc3c76ffc455913"
+                        ]
+                    ]
+                ],
+                "pretext_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.pretext:md5,8f08a6a334491a371cde5ce1ffd6637e"
+                    ]
+                ],
+                "pretext_pngs": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test_FullMap.png:md5,44f963f078641051e67ff8d411f1db9e",
+                            "test_h1tg000001l.png:md5,23849dcdf62f6f21430249ea33a5c33a",
+                            "test_h1tg000002l.png:md5,fa3a3330ed54e7b27807e311454338ab",
+                            "test_h1tg000003l.png:md5,b114d64304257c42c6ebb5f26583e68a",
+                            "test_h1tg000004l.png:md5,92c55410cc3e899e8dd451d7eade71ae",
+                            "test_h1tg000005l.png:md5,f7920000a172ca89d2b6e16857c6589b",
+                            "test_h1tg000006l.png:md5,6e2aa10ee07c04acb4c66b2d1d8f7336",
+                            "test_h1tg000007l.png:md5,97e2c18070bdffb4763e7cae1b95649f",
+                            "test_h1tg000008l.png:md5,f0646d67162b9a844844038208fd5b89",
+                            "test_h1tg000009l.png:md5,43bae63d6bd7ecdd4407a4ef00592c0f",
+                            "test_h1tg000010l.png:md5,73da7956bc572e221dc3c76ffc455913"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-10T16:56:04.225732281"
+    },
+    "Undibacterium_unclassified - hires - fasta,fai,bam": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.pretext:md5,8f08a6a334491a371cde5ce1ffd6637e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test_FullMap.png:md5,44f963f078641051e67ff8d411f1db9e",
+                            "test_h1tg000001l.png:md5,23849dcdf62f6f21430249ea33a5c33a",
+                            "test_h1tg000002l.png:md5,fa3a3330ed54e7b27807e311454338ab",
+                            "test_h1tg000003l.png:md5,b114d64304257c42c6ebb5f26583e68a",
+                            "test_h1tg000004l.png:md5,92c55410cc3e899e8dd451d7eade71ae",
+                            "test_h1tg000005l.png:md5,f7920000a172ca89d2b6e16857c6589b",
+                            "test_h1tg000006l.png:md5,6e2aa10ee07c04acb4c66b2d1d8f7336",
+                            "test_h1tg000007l.png:md5,97e2c18070bdffb4763e7cae1b95649f",
+                            "test_h1tg000008l.png:md5,f0646d67162b9a844844038208fd5b89",
+                            "test_h1tg000009l.png:md5,43bae63d6bd7ecdd4407a4ef00592c0f",
+                            "test_h1tg000010l.png:md5,73da7956bc572e221dc3c76ffc455913"
+                        ]
+                    ]
+                ],
+                "pretext_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.pretext:md5,8f08a6a334491a371cde5ce1ffd6637e"
+                    ]
+                ],
+                "pretext_pngs": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test_FullMap.png:md5,44f963f078641051e67ff8d411f1db9e",
+                            "test_h1tg000001l.png:md5,23849dcdf62f6f21430249ea33a5c33a",
+                            "test_h1tg000002l.png:md5,fa3a3330ed54e7b27807e311454338ab",
+                            "test_h1tg000003l.png:md5,b114d64304257c42c6ebb5f26583e68a",
+                            "test_h1tg000004l.png:md5,92c55410cc3e899e8dd451d7eade71ae",
+                            "test_h1tg000005l.png:md5,f7920000a172ca89d2b6e16857c6589b",
+                            "test_h1tg000006l.png:md5,6e2aa10ee07c04acb4c66b2d1d8f7336",
+                            "test_h1tg000007l.png:md5,97e2c18070bdffb4763e7cae1b95649f",
+                            "test_h1tg000008l.png:md5,f0646d67162b9a844844038208fd5b89",
+                            "test_h1tg000009l.png:md5,43bae63d6bd7ecdd4407a4ef00592c0f",
+                            "test_h1tg000010l.png:md5,73da7956bc572e221dc3c76ffc455913"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-10T17:00:17.776560541"
+    }
+}
