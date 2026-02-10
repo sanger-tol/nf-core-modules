@@ -8,7 +8,7 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/pacbio_preprocess"
-    tag "subworkflows/../../modules/nf-core/blast/blastn"
+    tag "blast/blastn"
     tag "subworkflows/../../modules/nf-core/blast/makeblastdb"
     tag "subworkflows/../../modules/nf-core/hifitrimmer/processblast"
     tag "subworkflows/../../modules/nf-core/hifitrimmer/filterbam"
@@ -29,11 +29,7 @@ nextflow_workflow {
                 "hifitrimmer/processblast",
                 "hifitrimmer/filterbam",
                 "lima",
-                "pbmarkdup",
-                "samtools/fasta",
-                "samtools/fastq",
-                "samtools/import",
-                "seqkit/fq2fa"
+                "pbmarkdup"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
@@ -45,8 +41,6 @@ nextflow_workflow {
             params {
                 lima_args             = "--hifi-preset SYMMETRIC-ADAPTERS"
                 pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
-                samtools_fastq_args   = "-F 0x200 -nt"
-                samtools_fasta_args   = ""
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
                 hifitrimmer_args      = ""
@@ -129,8 +123,6 @@ nextflow_workflow {
             params {
                 lima_args             = "--hifi-preset SYMMETRIC-ADAPTERS"
                 pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
-                samtools_fastq_args   = "-F 0x200 -nt"
-                samtools_fasta_args   = ""
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
                 hifitrimmer_args      = ""
@@ -209,8 +201,6 @@ nextflow_workflow {
             params {
                 lima_args             = "--hifi-preset SYMMETRIC-ADAPTERS"
                 pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
-                samtools_fastq_args   = "-F 0x200 -nt"
-                samtools_fasta_args   = ""
                 fq2bam_args           = ""
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
@@ -276,8 +266,6 @@ nextflow_workflow {
             params {
                 lima_args             = "--hifi-preset SYMMETRIC-ADAPTERS"
                 pbmarkdup_args        = "--clobber --rmdup --log-level INFO"
-                samtools_fastq_args   = "-F 0x200 -nt"
-                samtools_fasta_args   = ""
                 makeblastdb_args      = "-dbtype nucl"
                 blastn_args           = '-task blastn -reward 1 -penalty -5 -gapopen 3 -gapextend 3 -dust no -soft_masking true -evalue 700 -searchsp 1750000000000 -outfmt "6 std qlen"'
                 hifitrimmer_args      = "-f"

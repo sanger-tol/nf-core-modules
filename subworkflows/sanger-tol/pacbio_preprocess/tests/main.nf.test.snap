@@ -688,19 +688,19 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.bed.gz:md5,c09824ea744da47e1190a207a24db950"
+                    "test_bam.txt.bed.gz:md5,c09824ea744da47e1190a207a24db950"
                 ],
                 [
                     {
                         "id": "test_fasta"
                     },
-                    "test_fasta.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
+                    "test_fasta.txt.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
                 ],
                 [
                     {
                         "id": "test_fastq"
                     },
-                    "test_fastq.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
+                    "test_fastq.txt.bed.gz:md5,cb45e59936b15a601ab41df4a32e30d6"
                 ]
             ],
             [
@@ -764,13 +764,9 @@
                 ]
             ],
             [
-                "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
                 "versions.yml:md5,69cee3cfe024119268f7e87888a6e077",
-                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
-                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
-                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
@@ -781,7 +777,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-07T03:06:31.350765342"
+        "timestamp": "2026-02-10T11:34:44.256754766"
     },
     "acropora cervicornis - non-uli - pbmarkdup - trim": {
         "content": [
@@ -1199,13 +1195,13 @@
                     {
                         "id": "test_bam"
                     },
-                    "test_bam.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
+                    "test_bam.txt.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
                 ],
                 [
                     {
                         "id": "test_fastq"
                     },
-                    "test_fastq.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
+                    "test_fastq.txt.bed.gz:md5,c88ccab95c5c4b9a71a1c659af74673e"
                 ]
             ],
             [
@@ -1235,9 +1231,6 @@
                 ]
             ],
             [
-                "versions.yml:md5,083b54aa36ff232027c5d3f51671c674",
-                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
-                "versions.yml:md5,aa6efcb46643784ffcfbcac839e34e87",
                 "versions.yml:md5,aed9e2e288889b37196c8d0fd980910c",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
                 "versions.yml:md5,b00f68e7242d9a60cc3fbecf25e97af4",
@@ -1248,7 +1241,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-07T03:13:14.100000139"
+        "timestamp": "2026-02-10T11:38:14.192138484"
     },
     "acropora cervicornis - uli - no pbmarkdup - no trim": {
         "content": [

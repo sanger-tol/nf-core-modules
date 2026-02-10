@@ -1,13 +1,9 @@
-include { BLAST_BLASTN                         } from '../../../modules/nf-core/blast/blastn/main'
+include { BLAST_BLASTN                         } from '../../../modules/sanger-tol/blast/blastn/main'
 include { BLAST_MAKEBLASTDB                    } from '../../../modules/nf-core/blast/makeblastdb/main'
 include { HIFITRIMMER_PROCESSBLAST             } from '../../../modules/nf-core/hifitrimmer/processblast/main'
 include { HIFITRIMMER_FILTERBAM                } from '../../../modules/nf-core/hifitrimmer/filterbam/main'
 include { LIMA                                 } from '../../../modules/nf-core/lima/main'
 include { PBMARKDUP                            } from '../../../modules/nf-core/pbmarkdup/main'
-include { SAMTOOLS_FASTA                       } from '../../../modules/nf-core/samtools/fasta/main'
-include { SAMTOOLS_FASTQ                       } from '../../../modules/nf-core/samtools/fastq/main'
-include { SAMTOOLS_IMPORT                      } from '../../../modules/nf-core/samtools/import/main'
-include { SEQKIT_FQ2FA                         } from '../../../modules/nf-core/seqkit/fq2fa/main'
 
 workflow PACBIO_PREPROCESS {
 
@@ -86,16 +82,6 @@ workflow PACBIO_PREPROCESS {
             .combine(ch_adapter_yaml, by: 0)
             .map { meta, reads, yaml -> [meta, reads] }
 
-        // Prepare reads for filter
-        ch_input_trim_branch = ch_input_to_trim
-            .branch { meta, reads -> def filename = reads.name
-                fasta: filename =~ /\.(fasta|fa|fna)(\.gz)?$/
-                    return [ meta, reads ]
-                fastq: filename =~ /\.(fastq|fq)(\.gz)?$/
-                    return [ meta, reads ]
-                bam: filename.endsWith('.bam')
-                    return [ meta, reads ]
-            }
         // Make adapter database
         BLAST_MAKEBLASTDB( val_adapter_fasta )
         ch_versions = ch_versions.mix( BLAST_MAKEBLASTDB.out.versions )
@@ -104,22 +90,13 @@ workflow PACBIO_PREPROCESS {
         // ADAPTER SEARCH WITH BLASTN
         //
         // Convert reads to FASTA for BLASTN
-        SEQKIT_FQ2FA ( ch_input_trim_branch.fastq )
-        ch_versions = ch_versions.mix( SEQKIT_FQ2FA.out.versions )
-        SAMTOOLS_FASTA ( ch_input_trim_branch.bam, false )
-
-        fasta_for_blast = ch_input_trim_branch.fasta
-            .mix( SEQKIT_FQ2FA.out.fasta )
-            .mix( SAMTOOLS_FASTA.out.other )
-
-        BLAST_BLASTN ( fasta_for_blast, BLAST_MAKEBLASTDB.out.db.collect(), [],[],[] )
-        ch_versions = ch_versions.mix ( BLAST_BLASTN.out.versions )
+        BLAST_BLASTN ( ch_input_to_trim, BLAST_MAKEBLASTDB.out.db.collect(), [],[],[] )
 
         //
         // PROCESS BLAST OUTPUT WITH HIFITRIMMER PROCESSBLAST
         //
         // Prepare input for Hifitimmer processblast
-        ch_input_processblast = BLAST_BLASTN.out.txt.combine( ch_adapter_yaml, by: 0 )
+        ch_input_processblast = BLAST_BLASTN.out.txtgz.combine( ch_adapter_yaml, by: 0 )
             .multiMap { meta, blastn, yaml ->
                 blastn: [ meta, blastn ]
                 yaml: [ meta, yaml ]
@@ -134,10 +111,7 @@ workflow PACBIO_PREPROCESS {
         // FILTER READS WITH HIFITRIMMER FILTERBAM
         //
         // Convert FASTA and FASTQ to BAM for hifitrimmer filtering
-        SAMTOOLS_IMPORT ( ch_input_trim_branch.fasta.mix( ch_input_trim_branch.fastq ) )
-        bam_for_hifitrimmer = SAMTOOLS_IMPORT.out.bam.mix( ch_input_trim_branch.bam )
-
-        ch_input_filterbam = bam_for_hifitrimmer.combine( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
+        ch_input_filterbam = ch_input_to_trim.combine( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
         HIFITRIMMER_FILTERBAM ( ch_input_filterbam )
 
         trimmed_fastx =  trimmed_fastx.mix( HIFITRIMMER_FILTERBAM.out.filtered )
