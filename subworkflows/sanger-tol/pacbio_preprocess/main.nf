@@ -120,8 +120,8 @@ workflow PACBIO_PREPROCESS {
     }
 
     ch_input_skip_trim_branch = ch_input_skip_trim
-        .branch { meta, reads -> def filename = reads.toString()
-            bam: filename.endsWith('.bam')
+        .branch { meta, reads
+            bam: reads.name.endsWith('.bam')
                 return [ meta, reads ]
             fastx: true
                 return [ meta, reads ]
