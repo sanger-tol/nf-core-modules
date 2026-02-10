@@ -24,14 +24,13 @@
                     },
                     "test.metrics:md5,7038a36e37a5b93331ffe618fe771795"
                 ]
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:13:50.200614"
+        "timestamp": "2026-02-10T10:43:38.748216"
     },
     "meles meles - bwamem2": {
         "content": [
@@ -58,14 +57,13 @@
                     },
                     "test.metrics:md5,51755ba7077cd444be19d1fd07569cb6"
                 ]
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:10:01.251323"
+        "timestamp": "2026-02-10T10:39:34.946622"
     },
     "meles meles - minimap2": {
         "content": [
@@ -92,14 +90,13 @@
                     },
                     "test.metrics:md5,bc737c10e07175ea468040b952538e50"
                 ]
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:13:06.81056"
+        "timestamp": "2026-02-10T10:42:47.872589"
     },
     "meles meles - zymo - bwamem2 - multiple samples - double files": {
         "content": [
@@ -144,14 +141,13 @@
                     },
                     "test.metrics:md5,75db11ef6694d30a041ce3ef5325dd19"
                 ]
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:11:30.424952"
+        "timestamp": "2026-02-10T10:41:09.214803"
     },
     "meles meles - multiple read groups - bwamem2": {
         "content": [
@@ -178,14 +174,13 @@
                     },
                     "test.metrics:md5,93c67967f457e5689c86e071339e9514"
                 ]
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:15:25.212781"
+        "timestamp": "2026-02-10T10:45:13.292929"
     },
     "meles meles - bwamem2 - multiple samples - meta mismatch": {
         "content": [
@@ -234,13 +229,12 @@
                     },
                     "test.metrics:md5,51755ba7077cd444be19d1fd07569cb6"
                 ]
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:12:29.599806"
+        "timestamp": "2026-02-10T10:42:06.647189"
     }
 }

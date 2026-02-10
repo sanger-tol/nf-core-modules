@@ -32,14 +32,13 @@
             [
                 "test1: no RG",
                 "test: SM:mMelMel3"
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:17:05.500107"
+        "timestamp": "2026-02-10T10:47:01.139642"
     },
     "meles meles - mismatch meta test": {
         "content": [
@@ -58,14 +57,13 @@
             ],
             [
                 "test.bam.csi"
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:17:47.299013"
+        "timestamp": "2026-02-10T10:47:43.460466"
     },
     "meles meles - PacBio Hifi test - double files": {
         "content": [
@@ -100,14 +98,13 @@
             [
                 "test1: SM:test1",
                 "test: SM:mMelMel3"
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:19:34.486845"
+        "timestamp": "2026-02-10T10:49:38.15479"
     },
     "meles meles - single test": {
         "content": [
@@ -126,13 +123,12 @@
             ],
             [
                 "test.bam.csi"
-            ],
-            null
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-10T09:16:12.212005"
+        "timestamp": "2026-02-10T10:45:59.557337"
     }
 }
