@@ -33,18 +33,13 @@
                 "test1: no RG",
                 "test: SM:mMelMel3"
             ],
-            [
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
-            ]
+            null
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T15:27:43.964726"
+        "timestamp": "2026-02-10T09:17:05.500107"
     },
     "meles meles - mismatch meta test": {
         "content": [
@@ -64,18 +59,13 @@
             [
                 "test.bam.csi"
             ],
-            [
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
-            ]
+            null
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T15:28:37.514236"
+        "timestamp": "2026-02-10T09:17:47.299013"
     },
     "meles meles - PacBio Hifi test - double files": {
         "content": [
@@ -111,19 +101,13 @@
                 "test1: SM:test1",
                 "test: SM:mMelMel3"
             ],
-            [
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
-            ]
+            null
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T15:31:01.204174"
+        "timestamp": "2026-02-10T09:19:34.486845"
     },
     "meles meles - single test": {
         "content": [
@@ -143,15 +127,12 @@
             [
                 "test.bam.csi"
             ],
-            [
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
-            ]
+            null
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T15:26:32.38806"
+        "timestamp": "2026-02-10T09:16:12.212005"
     }
 }
