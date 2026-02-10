@@ -10,8 +10,6 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
     val_mark_duplicates // boolean: mark duplicates on output bam
 
     main:
-    ch_versions = channel.empty()
-
     //
     // Module: Index assembly fastas
     //
@@ -55,14 +53,9 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
             ch_samtools_merge_input.fai,
             ch_samtools_merge_input.gzi,
         )
-        ch_versions    = ch_versions.mix(SAMTOOLS_MERGEDUP.out.versions)
 
-        ch_output_bam  = SAMTOOLS_MERGEDUP.out.bam
-            .mix(SAMTOOLS_MERGEDUP.out.cram)
-
-        ch_output_index = SAMTOOLS_MERGEDUP.out.csi
-            .mix(SAMTOOLS_MERGEDUP.out.crai)
-
+        ch_output_bam  = SAMTOOLS_MERGEDUP.out.bam.mix(SAMTOOLS_MERGEDUP.out.cram)
+        ch_output_index = SAMTOOLS_MERGEDUP.out.csi.mix(SAMTOOLS_MERGEDUP.out.crai)
         ch_output_metrics = SAMTOOLS_MERGEDUP.out.metrics
     } else {
         SAMTOOLS_MERGE(
@@ -72,12 +65,8 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
             ch_samtools_merge_input.gzi,
         )
 
-        ch_output_bam  = SAMTOOLS_MERGE.out.bam
-            .mix(SAMTOOLS_MERGE.out.cram)
-
-        ch_output_index = SAMTOOLS_MERGE.out.csi
-            .mix(SAMTOOLS_MERGE.out.crai)
-
+        ch_output_bam  = SAMTOOLS_MERGE.out.bam.mix(SAMTOOLS_MERGE.out.cram)
+        ch_output_index = SAMTOOLS_MERGE.out.csi.mix(SAMTOOLS_MERGE.out.crai)
         ch_output_metrics = channel.empty()
     }
 
@@ -85,5 +74,4 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
     bam       = ch_output_bam     // channel: [ val(meta), path(bam) ]
     bam_index = ch_output_index   // channel: [ val(meta), path(index) ]
     metrics   = ch_output_metrics // channel [ val(meta), path(stats) ]
-    versions  = ch_versions       // channel: [ versions.yml ]
 }
