@@ -67,8 +67,8 @@ workflow PACBIO_PREPROCESS {
         // Assign ch_input_skip_trimm to those without adapter yaml for trimming
         ch_input_skip_trim = ch_input_pre_trim
             .join(ch_adapter_yaml, by: 0, remainder: true)
-            .filter { meta, reads, yaml -> yaml == null }
-            .map { meta, reads, yaml -> [meta, reads ] }
+            .filter { meta, reads, yaml -> !yaml }
+            .map { meta, reads, yaml -> [meta, reads] }
 
         // Warning for skip trimming
         ch_input_skip_trim
