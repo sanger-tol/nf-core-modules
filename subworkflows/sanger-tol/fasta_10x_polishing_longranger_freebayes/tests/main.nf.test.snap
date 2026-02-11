@@ -7,8 +7,8 @@
                         "id": "test"
                     },
                     [
-                        "test.hap1.fa.gz:md5,d76ac8e0dd6565b8ea8032fbc0c55423",
-                        "test.hap2.fa.gz:md5,69e16ea33c28129e6175d30e04cff89c"
+                        "test.hap1.fa:md5,d76ac8e0dd6565b8ea8032fbc0c55423",
+                        "test.hap2.fa:md5,69e16ea33c28129e6175d30e04cff89c"
                     ]
                 ]
             ],
@@ -55,6 +55,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.0"
         },
-        "timestamp": "2026-02-06T18:06:06.163739145"
+        "timestamp": "2026-02-11T12:54:46.837451289"
     }
 }
