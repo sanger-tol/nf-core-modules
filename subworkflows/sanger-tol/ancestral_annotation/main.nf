@@ -15,7 +15,6 @@ workflow ANCESTRAL_ANNOTATION {
     main:
     ch_versions                     = channel.empty()
 
-
     //
     // MODULE: EXTRACTS ANCESTRALLY LINKED BUSCO GENES FROM FULL TABLE
     //
@@ -25,16 +24,13 @@ workflow ANCESTRAL_ANNOTATION {
     )
     ch_versions                     = ch_versions.mix(ANCESTRAL_EXTRACT.out.versions)
 
-
     //
     // MODULE: INDEX THE INPUT ASSEMBLY
     //
     SAMTOOLS_FAIDX(
-        reference,
-        [[],[]],
+        reference.map { meta, assembly -> [meta, assembly, []] },
         false
     )
-
 
     //
     // MODULE: PLOTS THE ANCESTRAL BUSCO GENES
@@ -44,7 +40,6 @@ workflow ANCESTRAL_ANNOTATION {
         SAMTOOLS_FAIDX.out.fai
     )
     ch_versions                     = ch_versions.mix(ANCESTRAL_PLOT.out.versions)
-
 
     emit:
     ancestral_png_plot              = ANCESTRAL_PLOT.out.png_plot           // channel: [   [id], file  ]
