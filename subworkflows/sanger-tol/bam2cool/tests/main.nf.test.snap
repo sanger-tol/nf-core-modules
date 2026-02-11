@@ -8,22 +8,16 @@
                 "test.mcool"
             ],
             [
-                "versions.yml:md5,2a9c4e16fde5e168c75b31ab7d8394e8",
                 "versions.yml:md5,520059ed04546fa5368615d48b806455",
                 "versions.yml:md5,520059ed04546fa5368615d48b806455",
-                "versions.yml:md5,6f50b763d693f23fcd0bd16d6a9e6b4f",
-                "versions.yml:md5,6f50b763d693f23fcd0bd16d6a9e6b4f",
                 "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb",
-                "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb",
-                "versions.yml:md5,a34b108502d60195e10c66fa4328da80",
-                "versions.yml:md5,c9e9eab6bd7469a5079f98254b3083e3",
-                "versions.yml:md5,c9e9eab6bd7469a5079f98254b3083e3"
+                "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.3"
         },
-        "timestamp": "2025-11-12T21:30:26.022352"
+        "timestamp": "2026-02-10T16:57:42.752077"
     }
 }
