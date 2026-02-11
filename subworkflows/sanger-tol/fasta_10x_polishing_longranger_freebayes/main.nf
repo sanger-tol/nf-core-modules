@@ -44,8 +44,7 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     // Module: Index combined assembly FASTA
     //
     SAMTOOLS_FAIDX(
-        CONCATENATE_ASSEMBLIES.out.file_out,
-        [[:], []],
+        CONCATENATE_ASSEMBLIES.out.file_out.map { meta, assembly -> [meta, assembly, []] },
         false)
 
     ch_assemblies_with_index = CONCATENATE_ASSEMBLIES.out.file_out.join(SAMTOOLS_FAIDX.out.fai)
