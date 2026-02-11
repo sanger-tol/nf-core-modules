@@ -42,7 +42,6 @@ workflow TELO_FINDER {
             [],
             true
         )
-        ch_versions     = ch_versions.mix(GAWK.out.versions)
 
         //
         // LOGIC: COLLECT FILES AND ITERATE THROUGH
