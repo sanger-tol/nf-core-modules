@@ -205,7 +205,6 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
         ch_polished_assemblies_to_separate,
         []
     )
-    ch_versions = ch_versions.mix(SEPARATE_HAPLOTYPES.out.versions)
 
     //
     // Logic: Take the split assemblies and re-orgnaise into [meta, [hap1, hap2, ... hapn]] format
