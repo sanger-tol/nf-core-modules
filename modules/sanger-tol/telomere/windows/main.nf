@@ -18,14 +18,10 @@ process TELOMERE_WINDOWS {
     task.ext.when == null || task.ext.when
 
     script:
-    // WARNING: This module includes the telomere.jar binary as a module binary in
-    // ${moduleDir}/resources/usr/bin/telomere.jar. To use this module, you will
-    // either have to copy this file to ${projectDir}/bin or set the option
+    // WARNING: This module includes the telomere.jar binary and its wrapper telomere_windows.sh
+    // as module binaries in ${moduleDir}/resources/usr/bin/. To use this module, you will
+    // either have to copy these two files to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true in your nextflow.config file.
-
-    if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "ERROR: The TELOMERE_WINDOWS module does not support Conda. Please use Docker / Singularity instead."
-    }
 
     def prefix      = task.ext.prefix ?: "${meta.id}"
     def args        = task.ext.args   ?: ""
@@ -36,19 +32,10 @@ process TELOMERE_WINDOWS {
     def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
 
-    // Use groovy to move through list of expected jar locations
-    // Error if not found.
-    def jar_locations = ["${moduleDir}/resources/usr/bin/telomere.jar", "${projectDir}/bin/telomere.jar", task.ext.jar]
-    def jar = jar_locations.find { path -> file(path).exists() }
-    if(!jar) {
-        log.error("ERROR: Could not locate a telomere JAR file!")
-    }
-
     """
-    java \\
+    telomere_windows.sh \\
         -Xmx${max_heap_size_mega}M \\
         -Xss${max_stack_size_mega}M \\
-        -cp ${jar} \\
         FindTelomereWindows $telomere \\
         $args \\
         > ${prefix}.windows
