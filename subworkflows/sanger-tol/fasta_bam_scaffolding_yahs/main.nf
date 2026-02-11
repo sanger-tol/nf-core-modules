@@ -26,8 +26,7 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     // Module: Index input assemblies
     //
     SAMTOOLS_FAIDX_CONTIGS(
-        ch_fasta,
-        [[],[]],
+        ch_fasta.map { meta, assembly -> [meta, assembly, []] },
         false
     )
 
@@ -48,8 +47,7 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     // Module: Index output scaffolds
     //
     SAMTOOLS_FAIDX_SCAFFOLDS(
-        YAHS.out.scaffolds_fasta,
-        [[],[]],
+        YAHS.out.scaffolds_fasta.map { meta, assembly -> [meta, assembly, []] },
         true
     )
 
