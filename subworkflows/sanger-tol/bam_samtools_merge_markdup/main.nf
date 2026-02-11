@@ -14,7 +14,7 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
     // Module: Index assembly fastas
     //
     SAMTOOLS_FAIDX(
-        ch_assemblies.map { meta, assembly -> [meta, assembly, []] }
+        ch_assemblies.map { meta, assembly -> [meta, assembly, []] },
         false
     )
 
