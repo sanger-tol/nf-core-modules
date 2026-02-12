@@ -68,7 +68,7 @@ workflow PACBIO_PREPROCESS {
 
         // Warning for skip trimming
         ch_input_skip_trim
-            .subscribe { _meta, _reads ->
+            .subscribe { _meta, reads ->
                 log.warn "No adapter YAML provided, skipping adapter trimming step for: ${reads}"
             }
 
@@ -80,7 +80,6 @@ workflow PACBIO_PREPROCESS {
 
         // Make adapter database
         BLAST_MAKEBLASTDB( val_adapter_fasta )
-        ch_versions = ch_versions.mix( BLAST_MAKEBLASTDB.out.versions )
 
         //
         // ADAPTER SEARCH WITH BLASTN
