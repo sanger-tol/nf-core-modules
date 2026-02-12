@@ -15,7 +15,6 @@ workflow PACBIO_PREPROCESS {
     val_pbmarkdup               // Options to run pbmarkdup
 
     main:
-    ch_versions = channel.empty()
     lima_reports = channel.empty()
     lima_summary = channel.empty()
     pbmarkdup_stats = channel.empty()
@@ -26,7 +25,6 @@ workflow PACBIO_PREPROCESS {
     //
     if ( val_uli_primers ) {
         LIMA( ch_reads, val_uli_primers )
-        ch_versions = ch_versions.mix( LIMA.out.versions )
 
         lima_reports = lima_reports.mix( LIMA.out.report )
         lima_summary = lima_summary.mix( LIMA.out.summary )
@@ -131,5 +129,4 @@ workflow PACBIO_PREPROCESS {
     hifitrimmer_bed     = hifitrimmer_bed                   // [meta, bed]
     hifitrimmer_summary = hifitrimmer_summary               // [meta, summary]
     pbmarkdup_stat      = pbmarkdup_stats                   // [meta, log]
-    versions            = ch_versions
 }
