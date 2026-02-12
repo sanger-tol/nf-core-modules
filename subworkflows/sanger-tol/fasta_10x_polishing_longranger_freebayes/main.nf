@@ -20,8 +20,6 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     val_sequences_per_polishing_chunk // integer: number of sequences per polishing chunk
 
     main:
-    ch_versions = channel.empty()
-
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
     //
@@ -53,7 +51,6 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     // Module: Generate references
     //
     LONGRANGER_MKREF(CONCATENATE_ASSEMBLIES.out.file_out)
-    ch_versions = ch_versions.mix(LONGRANGER_MKREF.out.versions)
 
     //
     // Module: map 10x reads to the merged assemblies
@@ -69,7 +66,6 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
         ch_longranger_input.reads,
         ch_longranger_input.reference,
     )
-    ch_versions = ch_versions.mix(LONGRANGER_ALIGN.out.versions)
 
     //
     // Logic: Extract coverage information from Longranger summary and
@@ -120,7 +116,6 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
         ch_freebayes_input.populations,
         ch_freebayes_input.cnv
     )
-    ch_versions = ch_versions.mix(FREEBAYES.out.versions)
 
     //
     // Module: Index Freebayes output
@@ -228,5 +223,4 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
     longranger_summary = LONGRANGER_ALIGN.out.csv
     merged_vcf = GATK4_MERGEVCFS.out.vcf
     merged_vcf_tbi = GATK4_MERGEVCFS.out.tbi
-    versions = ch_versions
 }
