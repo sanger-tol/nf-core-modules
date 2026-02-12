@@ -14,7 +14,7 @@ process LONGRANGER_ALIGN {
     tuple val(meta), path("${prefix}/outs/possorted_bam.bam")    , emit: bam
     tuple val(meta), path("${prefix}/outs/possorted_bam.bam.bai"), emit: bai
     tuple val(meta), path("${prefix}/outs/summary.csv")          , emit: csv
-    tuple val("${task.process}"), val('longranger'), eval('longranger align --version | sed "1!d;s/.*(\\(.*\\)).*/\\1/"'), emit: versions_longranger, topic: versions 
+    tuple val("${task.process}"), val('longranger'), eval('longranger align --version | sed "1!d;s/.*(\\(.*\\)).*/\\1/"'), emit: versions_longranger, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
