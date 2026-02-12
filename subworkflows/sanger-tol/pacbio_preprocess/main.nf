@@ -19,10 +19,7 @@ workflow PACBIO_PREPROCESS {
     lima_reports = channel.empty()
     lima_summary = channel.empty()
     pbmarkdup_stats = channel.empty()
-    untrimmed_cram = channel.empty()
-    untrimmed_fastx = channel.empty()
     trimmed_fastx = channel.empty()
-    trimmed_cram = channel.empty()
 
     //
     // DEMULTIPLEX WITH LIMA
@@ -60,18 +57,18 @@ workflow PACBIO_PREPROCESS {
     //
     // TRIMMING WITH HIFITRIMMER
     //
-    hifitrimmer_summary = Channel.empty()
-    hifitrimmer_bed = Channel.empty()
+    hifitrimmer_summary = channel.empty()
+    hifitrimmer_bed = channel.empty()
     if ( val_adapter_fasta ) {
         // Assign ch_input_skip_trimm to those without adapter yaml for trimming
         ch_input_skip_trim = ch_input_pre_trim
             .join(ch_adapter_yaml, by: 0, remainder: true)
-            .filter { meta, reads, yaml -> !yaml }
-            .map { meta, reads, yaml -> [meta, reads] }
+            .filter { _meta, _reads, yaml -> !yaml }
+            .map { meta, reads, _yaml -> [meta, reads] }
 
         // Warning for skip trimming
         ch_input_skip_trim
-            .subscribe { meta, reads ->
+            .subscribe { _meta, reads ->
                 log.warn "No adapter YAML provided, skipping adapter trimming step for: ${reads}"
             }
 
@@ -79,11 +76,10 @@ workflow PACBIO_PREPROCESS {
         // Combine adapter yaml to input reads, only those with adapter yaml will be used for trimming, skip those without
         ch_input_to_trim = ch_input_pre_trim
             .combine(ch_adapter_yaml, by: 0)
-            .map { meta, reads, yaml -> [meta, reads] }
+            .map { meta, reads, _yaml -> [meta, reads] }
 
         // Make adapter database
         BLAST_MAKEBLASTDB( val_adapter_fasta )
-        ch_versions = ch_versions.mix( BLAST_MAKEBLASTDB.out.versions )
 
         //
         // ADAPTER SEARCH WITH BLASTN
