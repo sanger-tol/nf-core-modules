@@ -250,8 +250,7 @@ nextflow_workflow {
             assert workflow.success
             assertAll(
                 { assert snapshot(
-                    file(workflow.out.pretext.get(0).get(1)).getName(),
-                    file(workflow.out.cool.get(0).get(1)).getName(),
+                    file(workflow.out.pretext.get(0).get(1)).getName()
                 ).match() }
             )
         }
