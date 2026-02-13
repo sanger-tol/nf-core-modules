@@ -1,12 +1,13 @@
 nextflow_process {
 
-    name "Test Process UNMASK"
+    name "Test Process MASK_UNMASK"
     script "../main.nf"
-    process "UNMASK"
+    process "MASK_UNMASK"
 
     tag "modules"
     tag "modules_sangertol"
-    tag "unmask"
+    tag "mask"
+    tag "mask/unmask"
 
     // Soft-masked Fasta file
     test("unmask - lower fasta") {

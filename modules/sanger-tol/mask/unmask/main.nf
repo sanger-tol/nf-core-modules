@@ -1,4 +1,4 @@
-process UNMASK {
+process MASK_UNMASK {
     tag "$meta.id"
     label 'process_single'
 

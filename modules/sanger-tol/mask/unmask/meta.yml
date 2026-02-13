@@ -1,4 +1,4 @@
-name: "unmask"
+name: mask_unmask
 description: |
   Remove all soft-masking from a Fasta file by turning all lower-case
   sequence characters to upper case.
