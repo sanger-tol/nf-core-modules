@@ -229,7 +229,6 @@ nextflow_workflow {
 
             params {
                 cooler_cload_args = '-0 -c1 2 -p1 3 -c2 4 -p2 5'
-                pretextsnapshot_args = '--sequences \"=full\"'
                 juicertools_args = "-r 20000"
             }
 
