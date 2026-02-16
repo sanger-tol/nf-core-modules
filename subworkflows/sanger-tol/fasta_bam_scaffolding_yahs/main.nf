@@ -9,13 +9,13 @@ include { PAIRS_CREATE_CONTACT_MAPS                  } from '../pairs_create_con
 workflow FASTA_BAM_SCAFFOLDING_YAHS {
 
     take:
-    ch_fasta           // [meta, assembly]
-    ch_hic_bam         // [meta, bam/bed]
-    val_build_pretext  // bool: build pretext map
-    val_build_snapshot // bool: build snapshot
-    val_build_cooler   // bool: build cooler
-    val_build_juicer   // bool: build juicer
-    val_cool_bin       // val: cooler cload parameter
+    ch_fasta                    // [meta, assembly]
+    ch_hic_bam                  // [meta, bam/bed]
+    val_build_pretext           // bool: build pretext map
+    val_create_pretext_snapshot // bool: build snapshot
+    val_build_cooler            // bool: build cooler
+    val_build_juicer            // bool: build juicer
+    val_cool_bin                // val: cooler cload parameter
 
     main:
     //
@@ -76,7 +76,7 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
         ch_contact_map_inputs.pairs,
         ch_contact_map_inputs.sizes,
         val_build_pretext,
-        val_build_snapshot,
+        val_create_pretext_snapshot,
         val_build_cooler,
         val_build_juicer,
         val_cool_bin
