@@ -1,4 +1,95 @@
 {
+    "bed with no sequence length provided for that meta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        null,
+                        null
+                    ]
+                ],
+                "combined": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        null,
+                        null
+                    ]
+                ],
+                "csi": [
+                    
+                ],
+                "gz": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "no_csi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "no_tbi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "tbi": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-16T16:46:11.46037993"
+    },
     "bed with short sequences (no tbi index)": {
         "content": [
             {

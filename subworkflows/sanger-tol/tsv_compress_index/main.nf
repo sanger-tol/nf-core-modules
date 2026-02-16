@@ -15,13 +15,16 @@ workflow TSV_COMPRESS_INDEX {
     // Try indexing the TSV file in two formats for maximum compatibility
     // but each has its own limitations
     tabix_selector = ch_compressed_tsv
-        .join(ch_max_seq_length)
+        .join(ch_max_seq_length, by: 0, remainder: true)
         .branch { meta, tsv, max_seq_length ->
+            lonely_max_length: tsv == null
+            [meta, max_seq_length]
+            no_index: max_seq_length == null || max_seq_length >= 2 ** 32
+            [meta, tsv]
             tbi_and_csi: max_seq_length < 2 ** 29
             [meta, tsv]
-            only_csi: max_seq_length < 2 ** 32
-            [meta, tsv]
-            no_index: true
+            only_csi: true
+            // 2**29 <= max_seq_length < 2**32
             [meta, tsv]
         }
 
