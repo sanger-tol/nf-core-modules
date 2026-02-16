@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
+name: "tsv_compress_index"
+description: Compress and index a TSV file that has regions coordinates, e.g. BED, GFF, VCF, etc
+keywords:
+  - compress
+  - index
+  - bgzip
+  - tsv
+  - bed
+  - bedgraph
+  - gff
+  - vcf
+components:
+  - tabix/bgzip:
+      git_remote: https://github.com/nf-core/modules.git
+  - tabix/tabix:
+      git_remote: https://github.com/nf-core/modules.git
+input:
+  - ch_tsv:
+      type: file
+      description: |
+        The input channel containing TSV files
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.{tsv,bed,gff,gtf,vcf}"
+  - ch_max_seq_length:
+      type: int
+      description: |
+        The length of the longest sequence/chromosome the TSV has got features on
+        Structure: [ val(meta), val(max_seq_length) ]
+output:
+  - bed_gz:
+      type: file
+      description: |
+        Channel containing bgzip-compressed TSV/region files (e.g. BED, VCF, GFF).
+        Structure: [ val(meta), path(tsv.gz) ]
+      pattern: "*.gz"
+  - bed_tbi:
+      type: file
+      description: |
+        Channel containing Tabix TBI index files for bgzip-compressed TSVs.
+        Structure: [ val(meta), path(tsv.gz.tbi) ]
+      pattern: "*.tbi"
+  - bed_csi:
+      type: file
+      description: |
+        Channel containing Tabix CSI index files for bgzip-compressed TSVs.
+        Structure: [ val(meta), path(tsv.gz.csi) ]
+      pattern: "*.csi"
+  - no_tbi:
+      type: file
+      description: |
+        Channel emitting compressed TSVs that could not be indexed with TBI
+        (e.g. due to size limitations). Downstream steps can handle these
+        separately.
+        Structure: [ val(meta), path(tsv.gz) ]
+      pattern: "*.gz"
+  - no_csi:
+      type: file
+      description: |
+        Channel emitting compressed TSVs that could not be indexed with CSI
+        (e.g. due to limits or other failures). Downstream steps can handle
+        these separately.
+        Structure: [ val(meta), path(tsv.gz) ]
+      pattern: "*.gz"
+  - combined:
+      type: file
+      description: |
+        Combined channel joining the compressed TSV with any available
+        indexes (TBI and/or CSI). Each item contains the compressed file and
+        zero or more corresponding index files.
+        Structure: [ val(meta), [ tsv.gz, tsv.gz.tbi?, tsv.gz.csi? ] ]
+      pattern: "*.gz"
+authors:
+  - "@muffato"
+maintainers:
+  - "@muffato"

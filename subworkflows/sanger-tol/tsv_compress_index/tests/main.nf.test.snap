@@ -1,0 +1,275 @@
+{
+    "bed with short sequences (no tbi index)": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        null,
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "combined": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        null,
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "csi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "gz": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "no_csi": [
+                    
+                ],
+                "no_tbi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "tbi": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-16T16:29:36.260034957"
+    },
+    "bed with short sequences": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.tbi:md5,0b587fdb9b47029ed082658fb78b68a6"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.tbi:md5,0b587fdb9b47029ed082658fb78b68a6",
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "combined": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.tbi:md5,0b587fdb9b47029ed082658fb78b68a6",
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "csi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "gz": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "no_csi": [
+                    
+                ],
+                "no_tbi": [
+                    
+                ],
+                "tbi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.tbi:md5,0b587fdb9b47029ed082658fb78b68a6"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-16T16:29:30.518680964"
+    },
+    "bed with extra long sequences (no index possible)": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        null,
+                        null
+                    ]
+                ],
+                "combined": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        null,
+                        null
+                    ]
+                ],
+                "csi": [
+                    
+                ],
+                "gz": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "no_csi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "no_tbi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0"
+                    ]
+                ],
+                "tbi": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-16T15:59:44.010311983"
+    }
+}

@@ -1,0 +1,142 @@
+nextflow_workflow {
+
+    name "Test Subworkflow TSV_COMPRESS_INDEX"
+    script "../main.nf"
+    workflow "TSV_COMPRESS_INDEX"
+    config "../nextflow.config"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/tsv_compress_index"
+    tag "subworkflows/../../modules/nf-core/tabix/bgzip"
+    tag "subworkflows/../../modules/nf-core/tabix/tabix"
+
+    test("bed with short sequences") {
+
+        setup {
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "tabix/bgzip",
+                    "tabix/tabix",
+                ]
+            )
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+        }
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Cantharis_rufa/analysis/icCanRufa1/read_mapping/pacbio/GCA_947369205.1.unmasked.pacbio.icCanRufa1_0_3.bed', checkIfExists: true),
+                ])
+                input[1] = channel.of([
+                    [ id:'test' ],
+                    60000,
+                ])
+                """
+            }
+        }
+
+        then {
+            assert workflow.success
+            assertAll(
+                { assert snapshot(
+                    workflow.out
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("bed with short sequences (no tbi index)") {
+
+        setup {
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "tabix/bgzip",
+                    "tabix/tabix",
+                ]
+            )
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+        }
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Cantharis_rufa/analysis/icCanRufa1/read_mapping/pacbio/GCA_947369205.1.unmasked.pacbio.icCanRufa1_0_3.bed', checkIfExists: true),
+                ])
+                input[1] = channel.of([
+                    [ id:'test' ],
+                    2**30,
+                ])
+                """
+            }
+        }
+
+        then {
+            assert workflow.success
+            assertAll(
+                { assert snapshot(
+                    workflow.out
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("bed with extra long sequences (no index possible)") {
+
+        setup {
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "tabix/bgzip",
+                    "tabix/tabix",
+                ]
+            )
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+        }
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Cantharis_rufa/analysis/icCanRufa1/read_mapping/pacbio/GCA_947369205.1.unmasked.pacbio.icCanRufa1_0_3.bed', checkIfExists: true),
+                ])
+                input[1] = channel.of([
+                    [ id:'test' ],
+                    2**34,
+                ])
+                """
+            }
+        }
+
+        then {
+            assert workflow.success
+            assertAll(
+                { assert snapshot(
+                    workflow.out
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+}
