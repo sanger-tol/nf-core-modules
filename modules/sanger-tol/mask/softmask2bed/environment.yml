@@ -5,3 +5,4 @@ channels:
   - bioconda
 dependencies:
   - bioconda::seqtk=1.4
+  - conda-forge::gzip=1.13

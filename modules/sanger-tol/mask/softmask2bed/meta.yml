@@ -28,7 +28,7 @@ input:
     - fasta:
         type: file
         description: Soft-masked Fasta file
-        pattern: "*.{fa,fasta}"
+        pattern: "*.{fa,fasta}(.gz)?"
         ontologies:
           - edam: "http://edamontology.org/format_1929" # FASTA
 output:

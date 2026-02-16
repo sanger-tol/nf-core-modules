@@ -20,13 +20,14 @@ process MASK_SOFTMASK2BED {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def input = fasta.extension == "gz" ? "<(zcat ${fasta})" : "${fasta}"
     // Use "seqtk seq" to convert all soft-masked regions (lowercase) to
     // hard-masked (N) regions, then use "seqtk gap" to report the gaps in BED
     // format. For this to work, I need to first replace all N in the input
     // sequences with a non-N (here A), so that only the masked regions are
     // reported in the output BED file.
     """
-    sed '/^[^>]/s/N/A/g' ${fasta} \\
+    sed '/^[^>]/s/N/A/g' ${input} \\
         | seqtk seq -x -n N \\
         | seqtk gap -l 1 - \\
         > ${prefix}.bed
