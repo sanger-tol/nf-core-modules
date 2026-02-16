@@ -9,8 +9,7 @@ nextflow_process {
     tag "mask"
     tag "mask/unmask"
 
-    // Soft-masked Fasta file
-    test("unmask - lower fasta") {
+    test("soft-masked") {
 
         when {
             process {
@@ -32,9 +31,30 @@ nextflow_process {
 
     }
 
+    test("soft-masked gzipped") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true),
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() },
+            )
+        }
+
+    }
+
     // This Fasta sequence is all upper case, but its title is lower case !
     // That's obviously a trap. The unmask process should not change anything.
-    test("unmask - upper fasta") {
+    test("hard-masked") {
 
         when {
             process {
@@ -51,6 +71,27 @@ nextflow_process {
             assert process.success
             assertAll(
                 { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+    test("hard-masked gzipped") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Cantharis_rufa/assembly/GCA_947369205.1_OX376310.1.fasta.gz', checkIfExists: true),
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() },
             )
         }
 
