@@ -167,34 +167,12 @@
     "hard-masked": {
         "content": [
             {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    [
-                        "MASK_SOFTMASK2BED",
-                        "softmask2bed",
-                        "1.0"
-                    ]
-                ],
-                "2": [
-                    [
-                        "MASK_SOFTMASK2BED",
-                        "seqtk",
-                        "1.4-r122"
-                    ]
-                ],
                 "bed": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed"
                     ]
                 ],
                 "versions_seqtk": [
@@ -217,39 +195,17 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-16T12:20:39.41177001"
+        "timestamp": "2026-02-16T21:35:49.40835372"
     },
     "hard-masked gzipped": {
         "content": [
             {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    [
-                        "MASK_SOFTMASK2BED",
-                        "softmask2bed",
-                        "1.0"
-                    ]
-                ],
-                "2": [
-                    [
-                        "MASK_SOFTMASK2BED",
-                        "seqtk",
-                        "1.4-r122"
-                    ]
-                ],
                 "bed": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed"
                     ]
                 ],
                 "versions_seqtk": [
@@ -272,6 +228,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-16T12:46:46.652851382"
+        "timestamp": "2026-02-16T21:35:53.8843071"
     }
 }

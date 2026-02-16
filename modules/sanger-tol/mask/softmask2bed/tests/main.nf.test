@@ -68,7 +68,13 @@ nextflow_process {
         then {
             assert process.success
             assertAll(
-                { assert snapshot(process.out).match() },
+                { assert snapshot([
+                    // Cannot test all of process.out the regular way because the output bed file
+                    // is (rightly) empty and the linter refuses MD5 checkums of empty files.
+                    bed: process.out.bed.collect { [it[0], file(it[1]).name] },
+                    versions_seqtk: process.out.versions_seqtk,
+                    versions_softmask2bed: process.out.versions_softmask2bed,
+                ]).match() },
                 { assert file(process.out.bed[0][1]).size() == 0 },
             )
         }
@@ -90,7 +96,13 @@ nextflow_process {
         then {
             assert process.success
             assertAll(
-                { assert snapshot(process.out).match() },
+                { assert snapshot([
+                    // Cannot test all of process.out the regular way because the output bed file
+                    // is (rightly) empty and the linter refuses MD5 checkums of empty files.
+                    bed: process.out.bed.collect { [it[0], file(it[1]).name] },
+                    versions_seqtk: process.out.versions_seqtk,
+                    versions_softmask2bed: process.out.versions_softmask2bed,
+                ]).match() },
                 { assert file(process.out.bed[0][1]).size() == 0 },
             )
         }
