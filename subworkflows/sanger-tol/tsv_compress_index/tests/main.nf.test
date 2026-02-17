@@ -3,7 +3,7 @@ nextflow_workflow {
     name "Test Subworkflow TSV_COMPRESS_INDEX"
     script "../main.nf"
     workflow "TSV_COMPRESS_INDEX"
-    config "../nextflow.config"
+    config "./nextflow.config"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
