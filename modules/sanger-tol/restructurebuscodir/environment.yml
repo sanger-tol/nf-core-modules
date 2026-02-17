@@ -4,4 +4,4 @@ channels:
   - conda-forge
 dependencies:
   - conda-forge::coreutils=9.5
-  - conda-forge::tar
+  - conda-forge::tar=1.35
