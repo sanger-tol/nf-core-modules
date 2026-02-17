@@ -23,7 +23,7 @@ input:
         Structure: [ val(meta), path(tsv) ]
       pattern: "*.{tsv,bed,gff,gtf,vcf}"
   - ch_max_seq_length:
-      type: int
+      type: integer
       description: |
         The length of the longest sequence/chromosome the TSV has got features on
         Structure: [ val(meta), val(max_seq_length) ]
@@ -68,7 +68,7 @@ output:
         Combined channel joining the compressed TSV with any available
         indexes (TBI and/or CSI). Each item contains the compressed file and
         zero or more corresponding index files.
-        Structure: [ val(meta), [ tsv.gz, tsv.gz.tbi?, tsv.gz.csi? ] ]
+        Structure: [ val(meta), path(tsv.gz), path(tsv.gz.tbi)?, path(tsv.gz.csi)? ]
       pattern: "*.gz"
 authors:
   - "@muffato"
