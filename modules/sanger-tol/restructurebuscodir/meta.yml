@@ -5,7 +5,17 @@ keywords:
   - busco
   - tar
   - genomics
-tools: []
+tools:
+  - coreutils:
+      description: |
+        GNU coreutils provides standard utilities such as paste and tr used during conversion.
+      homepage: https://www.gnu.org/software/coreutils/
+      licence: ["GPL-3.0-or-later"]
+  - tar:
+      description: |
+        GNU tape archive program
+      homepage: https://www.gnu.org/software/tar/
+      licence: ["GPL-3.0-or-later"]
 input:
   - - meta:
         type: map
