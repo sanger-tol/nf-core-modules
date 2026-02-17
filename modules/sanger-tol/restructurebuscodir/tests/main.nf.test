@@ -11,6 +11,7 @@ nextflow_process {
     test("busco dir all sequences") {
 
         setup {
+            // params.modules_testdata_base_path isn't available in the setup phase
             curlAndExtract("https://tolit.cog.sanger.ac.uk/test-data/resources/busco/modules.restructurebuscodir.GCA_922984935.2-carnivora_odb10-busco.tar.gz", "${launchDir}/module_output_seq")
         }
         when {
@@ -46,6 +47,7 @@ nextflow_process {
     test("busco dir tar'ed sequences") {
 
         setup {
+            // params.modules_testdata_base_path isn't available in the setup phase
             curlAndExtract("https://tolit.cog.sanger.ac.uk/test-data/resources/busco/modules.restructurebuscodir.GCA_963859965.1-lepidoptera_odb12-busco.tar.gz", "${launchDir}/module_output_tar")
         }
 
