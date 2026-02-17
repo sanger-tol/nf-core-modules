@@ -28,19 +28,19 @@ input:
         The length of the longest sequence/chromosome the TSV has got features on
         Structure: [ val(meta), val(max_seq_length) ]
 output:
-  - bed_gz:
+  - gz:
       type: file
       description: |
         Channel containing bgzip-compressed TSV/region files (e.g. BED, VCF, GFF).
         Structure: [ val(meta), path(tsv.gz) ]
       pattern: "*.gz"
-  - bed_tbi:
+  - tbi:
       type: file
       description: |
         Channel containing Tabix TBI index files for bgzip-compressed TSVs.
         Structure: [ val(meta), path(tsv.gz.tbi) ]
       pattern: "*.tbi"
-  - bed_csi:
+  - csi:
       type: file
       description: |
         Channel containing Tabix CSI index files for bgzip-compressed TSVs.

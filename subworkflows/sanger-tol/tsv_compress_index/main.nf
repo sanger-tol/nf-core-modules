@@ -4,7 +4,7 @@ include { TABIX_TABIX as TABIX_TABIX_TBI } from '../../../modules/nf-core/tabix/
 
 workflow TSV_COMPRESS_INDEX {
     take:
-    ch_tsv // channel: [ val(meta), [ tsv ] ]
+    ch_tsv // channel: [ val(meta), path(tsv) ]
     ch_max_seq_length // channel: [ val(meta), val(max_seq_length) ]
 
     main:
@@ -44,10 +44,10 @@ workflow TSV_COMPRESS_INDEX {
         .join(ch_csi, by: 0, remainder: true)
 
     emit:
-    gz       = ch_compressed_tsv // channel: [ val(meta), [ tsv.gz ] ]
-    tbi      = ch_tbi // channel: [ val(meta), [ tsv.gz.tbi ] ]
-    csi      = ch_csi // channel: [ val(meta), [ tsv.gz.csi ] ]
-    no_tbi   = no_tbi // channel: [ val(meta), [ tsv.gz ] ]
-    no_csi   = no_csi // channel: [ val(meta), [ tsv.gz ] ]
-    combined = ch_combined // channel: [ tsv.gz, tbi?, csi? ]
+    gz       = ch_compressed_tsv // channel: [ val(meta), path(tsv.gz) ]
+    tbi      = ch_tbi // channel: [ val(meta), path(tsv.gz.tbi) ]
+    csi      = ch_csi // channel: [ val(meta), path(tsv.gz.csi) ]
+    no_tbi   = no_tbi // channel: [ val(meta), path(tsv.gz) ]
+    no_csi   = no_csi // channel: [ val(meta), path(tsv.gz) ]
+    combined = ch_combined // channel: [ val(meta), path(tsv.gz), path(tsv.gz.tbi)?, path(tsv.gz.csi)? ]
 }
