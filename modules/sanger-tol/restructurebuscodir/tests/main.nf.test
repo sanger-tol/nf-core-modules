@@ -34,11 +34,18 @@ nextflow_process {
         }
 
         then {
+
+            def stable_outputs = getAllFilesFromDir(process.out.clean_busco_dir[0][1], include: ["*.tsv", "short_summary.*"])
+            def unstable_outputs = getAllFilesFromDir(process.out.clean_busco_dir[0][1], include: ["*.tar.gz"], relative: true)
+
             assert process.success
             assertAll(
-                { assert snapshot(
-                    process.out,
-                ).match() }
+                { assert snapshot([
+                    clean_busco_dir_meta: process.out.clean_busco_dir[0][0],
+                    clean_busco_dir_md5: stable_outputs,
+                    clean_busco_dir_lst: unstable_outputs,
+                    versions_restructurebuscodir: process.out.versions_restructurebuscodir
+                ]).match() }
             )
         }
 
