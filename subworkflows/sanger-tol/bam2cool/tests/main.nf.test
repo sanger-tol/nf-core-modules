@@ -46,14 +46,14 @@ nextflow_workflow {
                     [
                         [ id:'test' ],
                         [
-                            file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true),
-                            file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true)
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/analysis/hic_mapping/baUndUnlc1_hic_phased_hap2_merged.bam', checkIfExists: true)
                         ]
                     ]
                 )
                 input[1] = Channel.of([
                     [ id:'test' ],
-                    file('https://tolit.cog.sanger.ac.uk/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.genome', checkIfExists: false)
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.genome', checkIfExists: true)
                 ])
                 input[2] = 1000
                 """
