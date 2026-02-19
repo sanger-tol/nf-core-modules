@@ -1,11 +1,11 @@
-process UNMASK {
-    tag "$meta.id"
+process MASK_UNMASK {
+    tag "${meta.id}"
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/gawk:5.3.1' :
-        'biocontainers/gawk:5.3.1' }"
+    container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
+        ? 'https://depot.galaxyproject.org/singularity/gawk:5.3.1'
+        : 'biocontainers/gawk:5.3.1'}"
 
     input:
     tuple val(meta), path(fasta)
@@ -21,22 +21,19 @@ process UNMASK {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def input  = fasta.getExtension() == "gz" ? "<(zcat ${fasta})" : "${fasta}"
+    def input = fasta.extension == "gz" ? "<(zcat ${fasta})" : "${fasta}"
     """
     awk 'BEGIN { FS = " " } \\
         { if ( !/^>/ ) { print toupper(\$0) } \\
           else { print \$0 } }' \\
-        $args \\
+        ${args} \\
         ${input} \\
         > ${prefix}.unmasked.fa
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    echo $args
-
     touch ${prefix}.unmasked.fa
     """
 }
