@@ -12,9 +12,6 @@ nextflow_process {
 
     test("bed with short sequences") {
         when {
-            params {
-                module_args = '-p vcf'
-            }
             process {
                 """
                 input[0] = channel.of([
@@ -36,9 +33,6 @@ nextflow_process {
 
     test("bed with longsequences (no tbi index)") {
         when {
-            params {
-                module_args = '-p vcf --csi'
-            }
             process {
                 """
                 input[0] = channel.of([
@@ -62,9 +56,6 @@ nextflow_process {
     test("bed with extra long sequences (no index possible)") {
 
         when {
-            params {
-                module_args = '-p vcf --csi'
-            }
             process {
                 """
                 input[0] = channel.of([
@@ -89,9 +80,6 @@ nextflow_process {
         options "-stub"
 
         when {
-            params {
-                module_args = '-p vcf'
-            }
             process {
                 """
                 input[0] = channel.of([
