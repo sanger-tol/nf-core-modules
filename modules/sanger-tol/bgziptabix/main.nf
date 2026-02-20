@@ -34,7 +34,7 @@ process BGZIPTABIX {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     echo "" | gzip > ${prefix}.${input.extension}.gz
-    touch ${prefix}.${input.extension}.gzi
+    touch ${prefix}.${input.extension}.gz.gzi
     touch ${prefix}.${input.extension}.gz.tbi
     touch ${prefix}.${input.extension}.gz.csi
     """
