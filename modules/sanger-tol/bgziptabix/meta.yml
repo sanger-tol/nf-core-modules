@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/meta-schema.json
 name: "bgziptabix"
 description: bgzip a sorted tab-delimited genome file and then create tabix
-  indexes in TBI and CSI format. The maximum sequence length is required
-  because both tabix indexes only support coordinates up to a certain range.
+  indexes in TBI and CSI format when the coordinate / sequence length is within
+  the supported range of each index format.
 keywords:
   - bgzip
   - compress
