@@ -8,7 +8,7 @@
                             "id": "test"
                         },
                         "test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                        "test.bed.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -55,7 +55,7 @@
                             "id": "test"
                         },
                         "test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                        "test.bed.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.bed.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "tbi": [
@@ -86,7 +86,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-20T09:24:54.843774529"
+        "timestamp": "2026-02-20T10:35:01.49958593"
     },
     "bed with short sequences": {
         "content": [
