@@ -10,7 +10,7 @@ process TELOMERE_REGIONS {
 
     output:
     tuple val( meta ), path( "*.telomere" ) , emit: telomere
-    path "versions.yml"                     , emit: versions
+    tuple val("${task.process}"), val('find_telomere_regions'), val("1.0.0"), topic: versions, emit: versions_telomerewindows
 
     when:
     task.ext.when == null || task.ext.when
@@ -22,14 +22,8 @@ process TELOMERE_REGIONS {
     }
 
     def prefix          = task.ext.prefix ?: "${meta.id}"
-    def VERSION         = "1.0" // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     """
     find_telomere $reference $telomereseq > ${prefix}.telomere
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        find_telomere: ${VERSION}
-    END_VERSIONS
     """
 
     stub:
@@ -39,14 +33,8 @@ process TELOMERE_REGIONS {
     }
 
     def prefix          = task.ext.prefix ?: "${meta.id}"
-    def VERSION         = "1.0" // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     """
     touch ${prefix}.telomere
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        find_telomere: ${VERSION}
-    END_VERSIONS
     """
 
 }

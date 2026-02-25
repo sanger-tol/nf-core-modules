@@ -11,8 +11,8 @@ process TELOMERE_WINDOWS {
     tuple val(meta), path(telomere)
 
     output:
-    tuple val(meta), path("*.windows")    , emit: windows
-    path "versions.yml"                     , emit: versions
+    tuple val(meta), path("*.windows") , emit: windows
+    tuple val("${task.process}"), val('find_telomere_windows'), val("1.0.0"), topic: versions, emit: versions_telomerewindows
 
     when:
     task.ext.when == null || task.ext.when
@@ -25,7 +25,6 @@ process TELOMERE_WINDOWS {
 
     def prefix      = task.ext.prefix ?: "${meta.id}"
     def args        = task.ext.args   ?: ""
-    def VERSION     = "1.0" // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
 
     // Dynamically generate java mem needs based on task.memory
     // Taken from: nf-core/umicollapse
@@ -39,23 +38,12 @@ process TELOMERE_WINDOWS {
         FindTelomereWindows $telomere \\
         $args \\
         > ${prefix}.windows
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        telomere: $VERSION
-    END_VERSIONS
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def VERSION = "1.0" // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     """
     touch ${prefix}.windows
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        telomere: $VERSION
-    END_VERSIONS
     """
 
 }

@@ -45,14 +45,28 @@ output:
             File containing telomeric regions
           ontologies:
             - edam: "http://edamontology.org/format_3475" # TSV
+  versions_telomereregions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - telomere_regions:
+          type: string
+          description: The name of the module
+      - 1.0.0:
+          type: string
+          description: The version of the module
 
+topics:
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
-        ontologies:
-          - edam: http://edamontology.org/format_3750 # YAML
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - telomere_regions:
+          type: string
+          description: The name of the module
+      - 1.0.0:
+          type: string
+          description: The version of the module
 authors:
   - "@DLBPointon"
 maintainers:
