@@ -13,7 +13,7 @@ process TELOMERE_EXTRACT {
     output:
     tuple val(meta), path("*.bed")      , emit: bed
     tuple val(meta), path("*.bedgraph") , emit: bedgraph
-    tuple val("${task.process}"), val('telomere_extract'), eval("awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//'"), topic: versions, emit: versions_telomerewindows
+    tuple val("${task.process}"), val('telomere_extract'), eval("awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//'"), topic: versions, emit: versions_telomereextract
 
     when:
     task.ext.when == null || task.ext.when
