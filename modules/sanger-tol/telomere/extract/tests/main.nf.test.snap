@@ -41,7 +41,7 @@
                         "Cloeon_dipterum_telomere.bedgraph:md5,b62d187a03802d145039b88353aa3a2a"
                     ]
                 ],
-                "versions_telomerewindows": [
+                "versions_telomereextract": [
                     [
                         "TELOMERE_EXTRACT",
                         "telomere_extract",
@@ -54,7 +54,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-25T11:26:14.002672505"
+        "timestamp": "2026-02-25T11:56:21.812753542"
     },
     "Cloeon_dipterum - telomere - stub": {
         "content": [
@@ -98,7 +98,7 @@
                         "Cloeon_dipterum_telomere.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
-                "versions_telomerewindows": [
+                "versions_telomereextract": [
                     [
                         "TELOMERE_EXTRACT",
                         "telomere_extract",
@@ -111,6 +111,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-25T11:26:19.801771918"
+        "timestamp": "2026-02-25T11:56:27.303144813"
     }
 }
