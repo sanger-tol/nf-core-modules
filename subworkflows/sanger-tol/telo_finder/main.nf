@@ -14,8 +14,6 @@ workflow TELO_FINDER {
     val_split_telomere  // bool
 
     main:
-    ch_versions         = channel.empty()
-
 
     //
     // MODULE: FINDS THE TELOMERIC SEQEUNCE IN REFERENCE
@@ -24,7 +22,6 @@ workflow TELO_FINDER {
         ch_reference,
         ch_telomereseq
     )
-    ch_versions         = ch_versions.mix(TELOMERE_REGIONS.out.versions)
 
     ch_full_telomere = TELOMERE_REGIONS.out.telomere
         .map{ meta, file ->
@@ -80,7 +77,6 @@ workflow TELO_FINDER {
     TELOMERE_WINDOWS (
         ch_regions_for_extraction
     )
-    ch_versions         = ch_versions.mix(TELOMERE_WINDOWS.out.versions)
 
 
     //
@@ -99,7 +95,6 @@ workflow TELO_FINDER {
     TELOMERE_EXTRACT(
         ch_filtered_windows_for_extraction
     )
-    ch_versions         = ch_versions.mix(TELOMERE_EXTRACT.out.versions)
 
 
     //
@@ -121,5 +116,4 @@ workflow TELO_FINDER {
     emit:
     bed_file            = ch_telo_bedfiles          // Channel [meta, bed]
     bedgraph_file       = ch_telo_bedgraphs         // Channel [meta, [bedfiles]] - Used in pretext_graph
-    versions            = ch_versions
 }

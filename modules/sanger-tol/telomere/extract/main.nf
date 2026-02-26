@@ -13,7 +13,7 @@ process TELOMERE_EXTRACT {
     output:
     tuple val(meta), path("*.bed")      , emit: bed
     tuple val(meta), path("*.bedgraph") , emit: bedgraph
-    path "versions.yml"                 , emit: versions
+    tuple val("${task.process}"), val('telomere_extract'), eval("awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//'"), topic: versions, emit: versions_telomereextract
 
     when:
     task.ext.when == null || task.ext.when
@@ -27,11 +27,6 @@ process TELOMERE_EXTRACT {
         print \$2, \$4, \$5 >> "${prefix}_telomere.bed"
         print \$2, \$4, \$5, (((\$5-\$4)<0)?-(\$5-\$4):(\$5-\$4)) >> "${prefix}_telomere.bedgraph"
     }' ${telomere}
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        gawk: \$(awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//')
-    END_VERSIONS
     """
 
     stub:
@@ -39,10 +34,5 @@ process TELOMERE_EXTRACT {
     """
     touch ${prefix}_telomere.bed
     touch ${prefix}_telomere.bedgraph
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        gawk: \$(awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//')
-    END_VERSIONS
     """
 }
