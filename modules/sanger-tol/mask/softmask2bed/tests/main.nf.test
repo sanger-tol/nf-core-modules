@@ -25,6 +25,9 @@ nextflow_process {
             assert process.success
             assertAll(
                 { assert snapshot(process.out).match() },
+                // Explicit check: the module returns a non-empty output on soft-masked inputs.
+                // Keep it to signifiy the intent of the module, even though it is somewhat
+                // redundant with the file's checksum already checked in the snapshot.
                 { assert file(process.out.bed[0][1]).size() > 0 },
             )
         }
@@ -47,6 +50,9 @@ nextflow_process {
             assert process.success
             assertAll(
                 { assert snapshot(process.out).match() },
+                // Explicit check: the module returns a non-empty output on soft-masked inputs.
+                // Keep it to signifiy the intent of the module, even though it is somewhat
+                // redundant with the file's checksum already checked in the snapshot.
                 { assert file(process.out.bed[0][1]).size() > 0 },
             )
         }
