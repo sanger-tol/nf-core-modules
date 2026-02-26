@@ -27,11 +27,6 @@ process TELOMERE_EXTRACT {
         print \$2, \$4, \$5 >> "${prefix}_telomere.bed"
         print \$2, \$4, \$5, (((\$5-\$4)<0)?-(\$5-\$4):(\$5-\$4)) >> "${prefix}_telomere.bedgraph"
     }' ${telomere}
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        gawk: \$(awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//')
-    END_VERSIONS
     """
 
     stub:
@@ -39,10 +34,5 @@ process TELOMERE_EXTRACT {
     """
     touch ${prefix}_telomere.bed
     touch ${prefix}_telomere.bedgraph
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        gawk: \$(awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//')
-    END_VERSIONS
     """
 }
