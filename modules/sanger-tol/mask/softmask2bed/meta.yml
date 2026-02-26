@@ -1,19 +1,24 @@
-name: "unmask"
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "mask_softmask2bed"
 description: |
-  Remove all soft-masking from a Fasta file by turning all lower-case
-  sequence characters to upper case.
+  Find all soft-masked regions in a Fasta file and print their coordinates
+  in BED format
 keywords:
   - fasta
   - masking
+  - coordinates
   - genomics
 tools:
-  - gawk:
-      description: "GNU awk"
-      homepage: "https://www.gnu.org/software/gawk/"
-      documentation: "https://www.gnu.org/software/gawk/manual/"
-      tool_dev_url: "https://www.gnu.org/prep/ftp.html"
-      licence: ["GPL v3"]
-      identifier: ""
+  - seqtk:
+      description: Seqtk is a fast and lightweight tool for processing sequences in
+        the FASTA or FASTQ format. The seqtk seq command enables common transformation
+        operations on FASTA or FASTQ files.
+      homepage: https://github.com/lh3/seqtk
+      documentation: https://docs.csc.fi/apps/seqtk/
+      tool_dev_url: https://github.com/lh3/seqtk
+      licence:
+        - "MIT"
+      identifier: biotools:seqtk
 input:
   - - meta:
         type: map
@@ -22,51 +27,49 @@ input:
           e.g. `[ id:'sample1' ]`
     - fasta:
         type: file
-        description: Fasta file, possibly compressed
-        pattern: "*.fa(sta)?(.gz)?"
+        description: Soft-masked Fasta file
+        pattern: "*.{fa,fasta}(.gz)?"
         ontologies:
           - edam: "http://edamontology.org/format_1929" # FASTA
-
 output:
-  unmasked:
+  bed:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "*.unmasked.fa":
+      - "*.bed":
           type: file
-          description: Unmasked FASTA file
-          pattern: "*.unmasked.fa"
+          description: BED file of all soft-masked regions
+          pattern: "*.bed"
           ontologies:
-            - edam: "http://edamontology.org/format_1929" # FASTA
-  versions_unmask:
+            - edam: "http://edamontology.org/format_3584" # bedstrict
+  versions_softmask2bed:
     - - ${task.process}:
           type: string
           description: The name of the process
-      - unmask:
+      - softmask2bed:
           type: string
           description: The name of the tool
       - echo 1.0:
           type: eval
           description: The expression to obtain the version of the tool
-  versions_gawk:
+  versions_seqtk:
     - - ${task.process}:
           type: string
           description: The name of the process
-      - gawk:
+      - seqtk:
           type: string
           description: The name of the tool
-      - gawk --version | grep -o -E "[0-9]+(.[0-9]+)+" | head -n1:
+      - "seqtk 2>&1 | sed -n 's/^Version: //p'":
           type: eval
           description: The expression to obtain the version of the tool
-
 topics:
   versions:
     - - ${task.process}:
           type: string
           description: The name of the process
-      - unmask:
+      - softmask2bed:
           type: string
           description: The name of the tool
       - echo 1.0:
@@ -75,13 +78,12 @@ topics:
     - - ${task.process}:
           type: string
           description: The name of the process
-      - gawk:
+      - seqtk:
           type: string
           description: The name of the tool
-      - gawk --version | grep -o -E "[0-9]+(.[0-9]+)+" | head -n1:
+      - "seqtk 2>&1 | sed -n 's/^Version: //p'":
           type: eval
           description: The expression to obtain the version of the tool
-
 authors:
   - "@muffato"
 maintainers:
