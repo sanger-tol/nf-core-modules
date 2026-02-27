@@ -21,6 +21,11 @@ input:
       description: |
         Structure [ val(meta), path(fasta) ]
         Meta is the Groovy Map containing sample information
+  - val_run_samtools_dict:
+      type: boolean
+      description: |
+        Boolean flag to control creation of the SAMtools sequence dictionary.
+        If true, the `samtools dict` component is run; if false, no dictionary is generated.
 output:
   - fasta_gz:
       type: file
