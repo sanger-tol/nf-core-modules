@@ -39,6 +39,6 @@ workflow GAP_FINDER {
     )
 
     emit:
-    gap_file        = GAWK_GAP_LENGTH.out.output
+    gap_file        = GAWK.out.output
     gap_tabix       = TABIX_BGZIPTABIX.out.gz_index
 }
