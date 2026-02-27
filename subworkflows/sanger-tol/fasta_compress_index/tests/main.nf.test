@@ -14,7 +14,6 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/samtools/faidx"
     tag "subworkflows/../../modules/nf-core/samtools/dict"
     tag "subworkflows/../../modules/nf-core/tabix/bgzip"
-	tag "modules/nf-core/gunzip"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
