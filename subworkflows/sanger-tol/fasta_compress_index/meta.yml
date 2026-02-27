@@ -26,7 +26,7 @@ output:
       type: file
       description: |
         Structure: [ val(meta), path(genome.fa.gz) ]
-        Input Fasta file compressed with bgzip        
+        Input Fasta file compressed with bgzip
   - faidx:
       type: file
       description: |

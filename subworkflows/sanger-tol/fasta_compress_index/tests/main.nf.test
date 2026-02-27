@@ -60,7 +60,7 @@ nextflow_workflow {
                     [ id:'test' ],
                     file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
                 ]
-                input[1] = true 
+                input[1] = true
                 """
             }
         }
