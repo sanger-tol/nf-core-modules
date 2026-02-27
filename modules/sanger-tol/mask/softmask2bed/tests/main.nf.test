@@ -26,7 +26,7 @@ nextflow_process {
             assertAll(
                 { assert snapshot(process.out).match() },
                 // Explicit check: the module returns a non-empty output on soft-masked inputs.
-                // Keep it to signifiy the intent of the module, even though it is somewhat
+                // Keep it to signify the intent of the module, even though it is somewhat
                 // redundant with the file's checksum already checked in the snapshot.
                 { assert file(process.out.bed[0][1]).size() > 0 },
             )
@@ -51,7 +51,7 @@ nextflow_process {
             assertAll(
                 { assert snapshot(process.out).match() },
                 // Explicit check: the module returns a non-empty output on soft-masked inputs.
-                // Keep it to signifiy the intent of the module, even though it is somewhat
+                // Keep it to signify the intent of the module, even though it is somewhat
                 // redundant with the file's checksum already checked in the snapshot.
                 { assert file(process.out.bed[0][1]).size() > 0 },
             )
@@ -76,7 +76,7 @@ nextflow_process {
             assertAll(
                 { assert snapshot([
                     // Cannot test all of process.out the regular way because the output bed file
-                    // is (rightly) empty and the linter refuses MD5 checkums of empty files.
+                    // is (rightly) empty and the linter refuses MD5 checksums of empty files.
                     bed: process.out.bed.collect { [it[0], file(it[1]).name] },
                     versions_seqtk: process.out.versions_seqtk,
                     versions_softmask2bed: process.out.versions_softmask2bed,
@@ -104,7 +104,7 @@ nextflow_process {
             assertAll(
                 { assert snapshot([
                     // Cannot test all of process.out the regular way because the output bed file
-                    // is (rightly) empty and the linter refuses MD5 checkums of empty files.
+                    // is (rightly) empty and the linter refuses MD5 checksums of empty files.
                     bed: process.out.bed.collect { [it[0], file(it[1]).name] },
                     versions_seqtk: process.out.versions_seqtk,
                     versions_softmask2bed: process.out.versions_softmask2bed,
