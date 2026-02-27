@@ -31,11 +31,9 @@ workflow FASTA_COMPRESS_INDEX {
     ch_sizes = SAMTOOLS_FAIDX.out.sizes.join(ch_sequence_map).map { _meta, path, ext_meta -> [ext_meta, path] }
 
     // Generate Samtools dictionary
+    ch_samtools_dict = channel.empty()
     if (val_run_samtools_dict) {
         ch_samtools_dict = SAMTOOLS_DICT(ch_fasta_gz).dict
-    }
-    else {
-        ch_samtools_dict = channel.empty()
     }
 
     emit:
