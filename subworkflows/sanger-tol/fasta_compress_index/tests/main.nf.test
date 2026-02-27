@@ -8,12 +8,12 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/fasta_compress_index"
-    tag "samtools/faidx"
+    tag "samtools/bgzip"
     tag "samtools/dict"
-    tag "tabix/bgzip"
-    tag "subworkflows/../../modules/nf-core/samtools/faidx"
+    tag "samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/samtools/bgzip"
     tag "subworkflows/../../modules/nf-core/samtools/dict"
-    tag "subworkflows/../../modules/nf-core/tabix/bgzip"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
@@ -22,7 +22,7 @@ nextflow_workflow {
             [
                 "samtools/faidx",
                 "samtools/dict",
-                "tabix/bgzip"
+                "samtools/bgzip"
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")

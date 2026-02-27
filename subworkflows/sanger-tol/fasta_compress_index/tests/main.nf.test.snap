@@ -10,7 +10,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                        "test.fasta.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
                     ]
                 ],
                 "1": [
@@ -21,7 +21,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                        "test.fasta.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
                     ]
                 ],
                 "2": [
@@ -35,7 +35,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                        "test.fasta.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
                     ]
                 ],
                 "4": [
@@ -46,7 +46,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                        "test.fasta.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
                     ]
                 ],
                 "dict": [
@@ -60,7 +60,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                        "test.fasta.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
                     ]
                 ],
                 "fasta_gz": [
@@ -71,7 +71,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                        "test.fasta.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
                     ]
                 ],
                 "gzi": [
@@ -82,7 +82,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                        "test.fasta.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
                     ]
                 ],
                 "sizes": [
@@ -93,7 +93,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                        "test.fasta.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
                     ]
                 ]
             }
@@ -102,7 +102,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-27T14:48:02.249979485"
+        "timestamp": "2026-02-27T17:19:43.573119355"
     },
     "Fasta, no samtools dict - stub": {
         "content": [
@@ -114,7 +114,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "1": [
@@ -124,7 +124,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "2": [
@@ -137,7 +137,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "4": [
@@ -147,7 +147,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "dict": [
@@ -160,7 +160,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "fasta_gz": [
@@ -170,7 +170,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "gzi": [
@@ -180,7 +180,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "sizes": [
@@ -190,7 +190,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ]
             }
@@ -199,7 +199,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-27T14:46:43.121935632"
+        "timestamp": "2026-02-27T17:25:20.245024652"
     },
     "Fasta, with samtools dict": {
         "content": [
@@ -212,7 +212,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                        "test.fasta.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
                     ]
                 ],
                 "1": [
@@ -223,7 +223,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                        "test.fasta.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
                     ]
                 ],
                 "2": [
@@ -234,7 +234,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.dict:md5,0d58e0ea945e40900daba4492fea6d14"
+                        "test.fasta.gz.dict:md5,0d58e0ea945e40900daba4492fea6d14"
                     ]
                 ],
                 "3": [
@@ -245,7 +245,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                        "test.fasta.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
                     ]
                 ],
                 "4": [
@@ -256,7 +256,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                        "test.fasta.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
                     ]
                 ],
                 "dict": [
@@ -267,7 +267,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.dict:md5,0d58e0ea945e40900daba4492fea6d14"
+                        "test.fasta.gz.dict:md5,0d58e0ea945e40900daba4492fea6d14"
                     ]
                 ],
                 "faidx": [
@@ -278,7 +278,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                        "test.fasta.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
                     ]
                 ],
                 "fasta_gz": [
@@ -289,7 +289,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                        "test.fasta.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
                     ]
                 ],
                 "gzi": [
@@ -300,7 +300,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                        "test.fasta.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
                     ]
                 ],
                 "sizes": [
@@ -311,7 +311,7 @@
                             "total_length": 120000,
                             "max_length": 100000
                         },
-                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                        "test.fasta.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
                     ]
                 ]
             }
@@ -320,7 +320,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-27T14:48:09.137060182"
+        "timestamp": "2026-02-27T17:22:36.74156757"
     },
     "Fasta, with samtools dict - stub": {
         "content": [
@@ -332,7 +332,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "1": [
@@ -342,7 +342,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "2": [
@@ -352,7 +352,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "3": [
@@ -362,7 +362,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "4": [
@@ -372,7 +372,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "dict": [
@@ -382,7 +382,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "faidx": [
@@ -392,7 +392,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "fasta_gz": [
@@ -402,7 +402,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "gzi": [
@@ -412,7 +412,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "sizes": [
@@ -422,7 +422,7 @@
                             "n_sequences": 0,
                             "total_length": 0
                         },
-                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ]
             }
@@ -431,6 +431,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-27T14:46:49.223163959"
+        "timestamp": "2026-02-27T17:27:58.280100183"
     }
 }
