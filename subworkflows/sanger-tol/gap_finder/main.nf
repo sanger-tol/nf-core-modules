@@ -21,20 +21,12 @@ workflow GAP_FINDER {
     )
 
 
-    // NOTE: BUILD THE GAWK FILE
-    ch_reorder_gap_file_awk = channel.of('''\
-    BEGIN { OFS = "\\t" } {
-        print $0, sqrt(($3-$2)*($3-$2))
-    }'''.stripIndent())
-        .collectFile(name: "reorder_gap_file_awk.awk", cache: true)
-        .collect()
-
     //
     // MODULE: ADD THE LENGTH OF GAP TO BED FILE - INPUT FOR PRETEXT MODULE
     //
     GAWK (
         SEQTK_CUTN.out.bed,
-        ch_reorder_gap_file_awk,
+        [],
         false
     )
 
