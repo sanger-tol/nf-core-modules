@@ -201,39 +201,6 @@
         },
         "timestamp": "2026-02-27T14:46:43.121935632"
     },
-    "Cloeon_dipterum genome - stub": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
-                ],
-                "gap_file": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-01-24T14:28:48.564506482"
-    },
     "Fasta, with samtools dict": {
         "content": [
             {
@@ -354,39 +321,6 @@
             "nextflow": "25.10.2"
         },
         "timestamp": "2026-02-27T14:48:09.137060182"
-    },
-    "Cloeon_dipterum genome [fasta]": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.gap.bedgraph:md5,25a0c7406035024fac941b1e900a0bd4"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
-                ],
-                "gap_file": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.gap.bedgraph:md5,25a0c7406035024fac941b1e900a0bd4"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-01-24T14:27:40.387925305"
     },
     "Fasta, with samtools dict - stub": {
         "content": [
