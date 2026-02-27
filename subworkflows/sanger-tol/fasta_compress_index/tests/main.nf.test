@@ -49,6 +49,10 @@ nextflow_workflow {
                 { assert snapshot(workflow.out).match() }
             )
         }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
     }
 
     test("Fasta, with samtools dict") {
@@ -70,6 +74,10 @@ nextflow_workflow {
                 { assert workflow.success },
                 { assert snapshot(workflow.out).match() }
             )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 
@@ -94,6 +102,10 @@ nextflow_workflow {
                 { assert snapshot(workflow.out).match() }
             )
         }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
     }
 
     test("Fasta, with samtools dict - stub") {
@@ -116,6 +128,10 @@ nextflow_workflow {
                 { assert workflow.success },
                 { assert snapshot(workflow.out).match() }
             )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 }
