@@ -1,0 +1,502 @@
+{
+    "Fasta, no samtools dict": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                    ]
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                    ]
+                ],
+                "dict": [
+                    
+                ],
+                "faidx": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                    ]
+                ],
+                "fasta_gz": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                    ]
+                ],
+                "gzi": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                    ]
+                ],
+                "sizes": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-27T14:48:02.249979485"
+    },
+    "Fasta, no samtools dict - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "dict": [
+                    
+                ],
+                "faidx": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fasta_gz": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "gzi": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "sizes": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-27T14:46:43.121935632"
+    },
+    "Cloeon_dipterum genome - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
+                ],
+                "gap_file": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-24T14:28:48.564506482"
+    },
+    "Fasta, with samtools dict": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.dict:md5,0d58e0ea945e40900daba4492fea6d14"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                    ]
+                ],
+                "dict": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.dict:md5,0d58e0ea945e40900daba4492fea6d14"
+                    ]
+                ],
+                "faidx": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.fai:md5,b06764409235a56937858f27d0fbcba1"
+                    ]
+                ],
+                "fasta_gz": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz:md5,98d5e780a6f3f2de9d39975b1da35770"
+                    ]
+                ],
+                "gzi": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.gzi:md5,f19039955fe3e557edfde4e1ada9c3aa"
+                    ]
+                ],
+                "sizes": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 2,
+                            "total_length": 120000,
+                            "max_length": 100000
+                        },
+                        "test.fa.gz.sizes:md5,b97484621ac24f30ef46ac296349bcc3"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-27T14:48:09.137060182"
+    },
+    "Cloeon_dipterum genome [fasta]": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,25a0c7406035024fac941b1e900a0bd4"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
+                ],
+                "gap_file": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.gap.bedgraph:md5,25a0c7406035024fac941b1e900a0bd4"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,929f4176dedc9856781d33262611dc9b"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-24T14:27:40.387925305"
+    },
+    "Fasta, with samtools dict - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "dict": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "faidx": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.fai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fasta_gz": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "gzi": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "sizes": [
+                    [
+                        {
+                            "id": "test",
+                            "n_sequences": 0,
+                            "total_length": 0
+                        },
+                        "test.fa.gz.sizes:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-27T14:46:49.223163959"
+    }
+}
