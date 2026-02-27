@@ -1,0 +1,209 @@
+
+🚀[1m nf-test 0.9.3[0m
+https://www.nf-test.com
+(c) 2021 - 2024 Lukas Forer and Sebastian Schoenherr
+
+Load .nf-test/plugins/nft-bam/0.6.0/nft-bam-0.6.0.jar
+Load .nf-test/plugins/nft-utils/0.0.8/nft-utils-0.0.8.jar
+Load .nf-test/plugins/nft-vcf/1.0.7/nft-vcf-1.0.7.jar
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/genome_statistics/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/genome_statistics/tests/../../../../modules/nf-core/fastk/fastk/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/fasta_bam_scaffolding_yahs/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/fasta_bam_scaffolding_yahs/tests/../../../../modules/nf-core/samtools/view/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/gap_finder/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/gap_finder/tests/../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/pairs_create_contact_maps/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/pairs_create_contact_maps/tests/../../../../modules/nf-core/gawk/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/ancestral_annotation/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/ancestral_annotation/tests/../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/telo_finder/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/telo_finder/tests/../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/../../../nf-core/yak/count/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/../../../nf-core/yak/count/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/mkref/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/mkref/tests/../../../../nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/align/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/align/tests/../../../../nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/telomere/regions/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/telomere/regions/tests/../../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/blast/blastn/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/blast/blastn/tests/../../../../nf-core/blast/makeblastdb/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/bwamem2alignhic/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/bwamem2alignhic/tests/../../../../nf-core/bwamem2/index/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2alignhic/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2alignhic/tests/../../../../nf-core/minimap2/index/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2align/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2align/tests/../../../../nf-core/minimap2/index/main.nf' not found.
+[33mNo tests to execute.[0m
+
+🚀[1m nf-test 0.9.3[0m
+https://www.nf-test.com
+(c) 2021 - 2024 Lukas Forer and Sebastian Schoenherr
+
+Load .nf-test/plugins/nft-bam/0.6.0/nft-bam-0.6.0.jar
+Load .nf-test/plugins/nft-utils/0.0.8/nft-utils-0.0.8.jar
+Load .nf-test/plugins/nft-vcf/1.0.7/nft-vcf-1.0.7.jar
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/genome_statistics/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/genome_statistics/tests/../../../../modules/nf-core/fastk/fastk/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/fasta_bam_scaffolding_yahs/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/fasta_bam_scaffolding_yahs/tests/../../../../modules/nf-core/samtools/view/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/gap_finder/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/gap_finder/tests/../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/pairs_create_contact_maps/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/pairs_create_contact_maps/tests/../../../../modules/nf-core/gawk/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/ancestral_annotation/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/ancestral_annotation/tests/../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/telo_finder/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/telo_finder/tests/../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/../../../nf-core/yak/count/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/../../../nf-core/yak/count/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/mkref/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/mkref/tests/../../../../nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/align/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/longranger/align/tests/../../../../nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/telomere/regions/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/telomere/regions/tests/../../../../../modules/nf-core/gunzip/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/blast/blastn/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/blast/blastn/tests/../../../../nf-core/blast/makeblastdb/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/bwamem2alignhic/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/bwamem2alignhic/tests/../../../../nf-core/bwamem2/index/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2alignhic/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2alignhic/tests/../../../../nf-core/minimap2/index/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2align/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2align/tests/../../../../nf-core/minimap2/index/main.nf' not found.
+
+[1mTest Subworkflow TELO_FINDER[0m
+
+  [1mTest[0m [aa08de8b] 'idFanCani4 - no split - fasta w/ index' 
+
+Creating a temporary nf-core library at /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test/tests/aa08de8bd4e85f3ca22f18658b22a996/library/
+Installing nf-core modules...
+Successfully installed module: gawk
+Successfully installed module: tabix/bgziptabix
+Successfully installed module: gunzip
+
+    > [33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
+    > N E X T F L O W  ~  version 25.10.2
+    > Unknown configuration profile: 'sanger'
+    [31mFAILED[0m (131.785s)
+
+  [31mAssertion failed: 
+  
+  2 of 2 assertions failed
+  [0m
+  [31mNextflow stdout:
+  
+  N E X T F L O W  ~  version 25.10.2
+  Nextflow stderr:
+  
+  [33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
+  Unknown configuration profile: 'sanger'
+  [0m
+
+  [1mTest[0m [aeed9320] 'idFanCani4 - split - fasta w/ index' 
+
+Creating a temporary nf-core library at /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test/tests/aeed9320f1e5c6332736d5abfc894d3b/library/
+Installing nf-core modules...
+[A[A[B[B[B
+🚀[1m nf-test 0.9.3[0m
+https://www.nf-test.com
+(c) 2021 - 2024 Lukas Forer and Sebastian Schoenherr
+
+Load .nf-test/plugins/nft-bam/0.6.0/nft-bam-0.6.0.jar
+Load .nf-test/plugins/nft-utils/0.0.8/nft-utils-0.0.8.jar
+Load .nf-test/plugins/nft-vcf/1.0.7/nft-vcf-1.0.7.jar
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/genome_statistics/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/genome_statistics/tests/../../../../modules/nf-core/fastk/fastk/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/fasta_bam_scaffolding_yahs/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/subworkflows/sanger-tol/fasta_bam_scaffolding_yahs/tests/../../../../modules/nf-core/samtools/view/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/../../../nf-core/yak/count/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/hifiasm/tests/../../../nf-core/yak/count/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/blast/blastn/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/blast/blastn/tests/../../../../nf-core/blast/makeblastdb/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/bwamem2alignhic/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/bwamem2alignhic/tests/../../../../nf-core/bwamem2/index/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2alignhic/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2alignhic/tests/../../../../nf-core/minimap2/index/main.nf' not found.
+Warning: Module /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2align/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/modules/sanger-tol/cramalign/minimap2align/tests/../../../../nf-core/minimap2/index/main.nf' not found.
+
+[1mTest Subworkflow TELO_FINDER[0m
+
+  [1mTest[0m [aa08de8b] 'idFanCani4 - no split - fasta w/ index' 
+
+Creating a temporary nf-core library at /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test/tests/aa08de8bd4e85f3ca22f18658b22a996/library/
+Installing nf-core modules...
+Successfully installed module: gawk
+Successfully installed module: tabix/bgziptabix
+Successfully installed module: gunzip
+
+    > [33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
+    > N E X T F L O W  ~  version 25.10.2
+    > Launching `/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test-aa08de8bd4e85f3ca22f18658b22a996.nf` [jovial_edison] DSL2 - revision: d5896d91e9
+    > Staging foreign file: https://tolit.cog.sanger.ac.uk/test-data/resources/modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz
+    > [89/88a592] Submitted process > GUNZIP (idFanCani4.subset_genome.fa.gz)
+    > [ae/00fd7c] Submitted process > TELO_FINDER:TELOMERE_REGIONS (idFanCani4)
+    > [a1/ca040f] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_0P)
+    > [de/472384] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_0P)
+    > [f3/d98e10] Submitted process > TELO_FINDER:TABIX_BGZIPTABIX (idFanCani4)
+    [32mPASSED[0m (202.746s)
+  [1mTest[0m [aeed9320] 'idFanCani4 - split - fasta w/ index' 
+
+Creating a temporary nf-core library at /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test/tests/aeed9320f1e5c6332736d5abfc894d3b/library/
+Installing nf-core modules...
+Successfully installed module: gawk
+Successfully installed module: tabix/bgziptabix
+Successfully installed module: gunzip
+
+    > [33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
+    > N E X T F L O W  ~  version 25.10.2
+    > Launching `/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test-aeed9320f1e5c6332736d5abfc894d3b.nf` [tiny_cray] DSL2 - revision: f9fb914b93
+    > Staging foreign file: https://tolit.cog.sanger.ac.uk/test-data/resources/modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz
+    > [aa/b9b38d] Submitted process > GUNZIP (idFanCani4.subset_genome.fa.gz)
+    > [c6/439e7f] Submitted process > TELO_FINDER:TELOMERE_REGIONS (idFanCani4)
+    > [68/98bf10] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_0P)
+    > [da/e3f4d7] Submitted process > TELO_FINDER:GAWK (idFanCani4)
+    > [dd/83bdc5] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_5P)
+    > [b5/6ee0c2] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_3P)
+    > [f8/478b86] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_0P)
+    > [78/79f916] Submitted process > TELO_FINDER:TABIX_BGZIPTABIX (idFanCani4)
+    > [0e/26b569] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_5P)
+    > [fe/089dd5] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_3P)
+    > [c4/3f8626] Submitted process > TELO_FINDER:TABIX_BGZIPTABIX (idFanCani4)
+    > [66/8880ee] Submitted process > TELO_FINDER:TABIX_BGZIPTABIX (idFanCani4)
+    [32mPASSED[0m (181.077s)
+  [1mTest[0m [f9d087ad] 'idFanCani4 - no split - fasta w/o index' 
+
+Creating a temporary nf-core library at /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test/tests/f9d087adc1af26c93c58ffbff5310b1c/library/
+Installing nf-core modules...
+Successfully installed module: gawk
+Successfully installed module: tabix/bgziptabix
+Successfully installed module: gunzip
+
+    > [33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
+    > N E X T F L O W  ~  version 25.10.2
+    > Launching `/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test-f9d087adc1af26c93c58ffbff5310b1c.nf` [determined_mclean] DSL2 - revision: 97c33373eb
+    > Staging foreign file: https://tolit.cog.sanger.ac.uk/test-data/resources/modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz
+    > [d3/7d9a4f] Submitted process > GUNZIP (idFanCani4.subset_genome.fa.gz)
+    > [b8/34cc35] Submitted process > TELO_FINDER:TELOMERE_REGIONS (idFanCani4)
+    > [28/e62e3b] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_0P)
+    > [8c/3361cc] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_0P)
+    [32mPASSED[0m (188.69s)
+  [1mTest[0m [204c9a81] 'idFanCani4 - split - fasta w/o index' 
+
+Creating a temporary nf-core library at /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test/tests/204c9a81c06f2725bdce18cfc12f49ad/library/
+Installing nf-core modules...
+Successfully installed module: gawk
+Successfully installed module: tabix/bgziptabix
+Successfully installed module: gunzip
+
+    > [33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
+    > N E X T F L O W  ~  version 25.10.2
+    > Launching `/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test-204c9a81c06f2725bdce18cfc12f49ad.nf` [desperate_becquerel] DSL2 - revision: 59ceec326b
+    > Staging foreign file: https://tolit.cog.sanger.ac.uk/test-data/resources/modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz
+    > [6b/f858db] Submitted process > GUNZIP (idFanCani4.subset_genome.fa.gz)
+    > [9c/85df21] Submitted process > TELO_FINDER:TELOMERE_REGIONS (idFanCani4)
+    > [70/efe055] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_0P)
+    > [cb/313a76] Submitted process > TELO_FINDER:GAWK (idFanCani4)
+    > [af/c17879] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_5P)
+    > [b4/17b23b] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_3P)
+    > [a6/542b76] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_0P)
+    > [04/93e6e7] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_5P)
+    > [2f/ef8c0c] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_3P)
+    [32mPASSED[0m (174.882s)
+  [1mTest[0m [a242b2a4] 'idFanCani4 - no split - fasta - stub w/o index' 
+
+Creating a temporary nf-core library at /nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test/tests/a242b2a4309f30289756491fb6ce6b54/library/
+Installing nf-core modules...
+Successfully installed module: gawk
+Successfully installed module: tabix/bgziptabix
+Successfully installed module: gunzip
+
+    > [33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
+    > N E X T F L O W  ~  version 25.10.2
+    > Launching `/nfs/treeoflife-01/teams/tola/users/we3/source/tol_modules/nf-core-modules/.nf-test-a242b2a4309f30289756491fb6ce6b54.nf` [loquacious_angela] DSL2 - revision: 97c33373eb
+    > Staging foreign file: https://tolit.cog.sanger.ac.uk/test-data/resources/modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz
+    > [69/7a302c] Submitted process > GUNZIP (idFanCani4.subset_genome.fa.gz)
+    > [f3/82f8e4] Submitted process > TELO_FINDER:TELOMERE_REGIONS (idFanCani4)
+    > [47/7c459f] Submitted process > TELO_FINDER:TELOMERE_WINDOWS (idFanCani4_0P)
+    > [3a/fbbc60] Submitted process > TELO_FINDER:TELOMERE_EXTRACT (idFanCani4_0P)
+    [32mPASSED[0m (187.325s)
+  Snapshots:
+    5 created [idFanCani4 - no split - fasta - stub w/o index, idFanCani4 - no split - fasta w/o index, idFanCani4 - no split - fasta w/ index, idFanCani4 - split - fasta w/o index, idFanCani4 - split - fasta w/ index]
+[33m    3 obsolete [idFanCani4 - no split - fasta - stub, idFanCani4 - no split - fasta, idFanCani4 - split - fasta][0m
+
+
+Snapshot Summary:
+  5 created
+[33m  3 obsolete[0m
+
+[1m[32mSUCCESS: [0m[0mExecuted 5 tests in 934.946s
+

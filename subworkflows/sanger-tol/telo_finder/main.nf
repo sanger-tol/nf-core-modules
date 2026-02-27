@@ -5,6 +5,8 @@ include { TELOMERE_REGIONS          } from '../../../modules/sanger-tol/telomere
 include { GAWK                      } from '../../../modules/nf-core/gawk/main'
 include { TELOMERE_WINDOWS          } from '../../../modules/sanger-tol/telomere/windows/main'
 include { TELOMERE_EXTRACT          } from '../../../modules/sanger-tol/telomere/extract/main'
+include { TABIX_BGZIPTABIX          } from '../../../modules/nf-core/tabix/bgziptabix'
+
 
 workflow TELO_FINDER {
 
@@ -12,6 +14,7 @@ workflow TELO_FINDER {
     ch_reference        // Channel [ val(meta), path(fasta) ]
     ch_telomereseq      // Channel.of( telomere sequence )
     val_split_telomere  // bool
+    val_run_bgzip       // bool
 
     main:
 
@@ -109,11 +112,20 @@ workflow TELO_FINDER {
         .map { meta, bedgraphs -> [ meta, bedgraphs.sort { file -> file.name } ] }
 
     ch_telo_bedfiles = TELOMERE_EXTRACT.out.bed
-        .map { meta, bedgraph ->
-            [ meta - meta.subMap("direction"), bedgraph ]
+        .map { meta, bed ->
+            [ meta - meta.subMap("direction"), bed ]
         }
 
+    //
+    // MODULE: BGZIP AND TABIX THE TELO BED FILES
+    //
+    TABIX_BGZIPTABIX (
+        ch_telo_bedfiles.filter{ meta, file -> val_run_bgzip}
+    )
+
     emit:
-    bed_file            = ch_telo_bedfiles          // Channel [meta, bed]
-    bedgraph_file       = ch_telo_bedgraphs         // Channel [meta, [bedfiles]] - Used in pretext_graph
+    bed_file        = ch_telo_bedfiles          // Channel [meta, bed]
+    bed_gz_tbi      = TABIX_BGZIPTABIX.out.gz_index  // Not used anymore
+    bedgraph_file   = ch_telo_bedgraphs         // Channel [meta, [bedfiles]] - Used in pretext_graph
+
 }
