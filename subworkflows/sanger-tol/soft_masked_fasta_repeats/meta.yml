@@ -14,8 +14,10 @@ input:
   - ch_fasta:
       type: file
       description: |
-        Structure [ val(meta), path(fasta) ]
+        Structure [ val(meta), path(fasta), val(max_seq_length) ]
         Meta is the Groovy Map containing sample information
+        Fasta is the input Fasta file and max_seq_length is the length of the longest sequence
+        (used to determine which tabix indexes are possible)
 output:
   - repeats:
       type: file
