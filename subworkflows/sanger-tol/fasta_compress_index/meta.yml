@@ -40,7 +40,7 @@ output:
   - dict:
       type: file
       description: |
-        Structure: [ val(meta), path(genome.fa.dict) ]
+        Structure: [ val(meta), path(genome.fa.gz.dict) ]
         Samtools sequence dictionary of the Fasta file (if requested)
   - gzi:
       type: file
