@@ -68,23 +68,12 @@
     "hard-masked": {
         "content": [
             {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
-                        "test.bed.gz.gzi:md5,c2cb56f4c5bf656faca0986e7eba0308",
-                        "test.bed.gz.tbi:md5,ec06685d85d15d8f118a789a9ccc42ad",
-                        "test.bed.gz.csi:md5,a76ffd9c2c19bc3100eecc93162f31d9"
-                    ]
-                ],
                 "repeats": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "test.bed.gz",
                         "test.bed.gz.gzi:md5,c2cb56f4c5bf656faca0986e7eba0308",
                         "test.bed.gz.tbi:md5,ec06685d85d15d8f118a789a9ccc42ad",
                         "test.bed.gz.csi:md5,a76ffd9c2c19bc3100eecc93162f31d9"
@@ -96,6 +85,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-27T16:09:33.962329183"
+        "timestamp": "2026-02-27T17:54:47.29734636"
     }
 }

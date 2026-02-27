@@ -47,8 +47,13 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot([
+                    // Cannot test the BED file because it is empty (but compressed)
+                    // Exclude it from the snapshot
+                    repeats: workflow.out.repeats.collect { [it[0], file(it[1]).name, it[2], it[3], it[4]] },
+                ]).match() },
+                // bgzip compresses empty files into 28 bytes
+                { assert file(workflow.out.repeats[0][1]).size() == 28 },
             )
         }
     }
