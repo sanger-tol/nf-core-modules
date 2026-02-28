@@ -1,0 +1,136 @@
+nextflow_workflow {
+
+    name "Test Subworkflow FASTA_COMPRESS_INDEX"
+    script "../main.nf"
+    config "./nextflow.config"
+    workflow "FASTA_COMPRESS_INDEX"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/fasta_compress_index"
+    tag "samtools/bgzip"
+    tag "samtools/dict"
+    tag "samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/samtools/bgzip"
+    tag "subworkflows/../../modules/nf-core/samtools/dict"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "samtools/faidx",
+                "samtools/dict",
+                "samtools/bgzip"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("Fasta, no samtools dict") {
+
+        when {
+            workflow {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ]
+                input[1] = false
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("Fasta, with samtools dict") {
+
+        when {
+            workflow {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ]
+                input[1] = true
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("Fasta, no samtools dict - stub") {
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ]
+                input[1] = false
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("Fasta, with samtools dict - stub") {
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ]
+                input[1] = true
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+}
