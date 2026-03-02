@@ -49,7 +49,7 @@ workflow TELO_FINDER {
         GAWK_SPLIT_TELOMERE (
             ch_full_telomere,
             ch_split_telomere,
-            true
+            false
         )
 
         //
