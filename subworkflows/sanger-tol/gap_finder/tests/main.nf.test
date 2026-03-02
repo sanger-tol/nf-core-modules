@@ -10,7 +10,9 @@ nextflow_workflow {
     tag "subworkflows/gap_finder"
     tag "seqtk/cutn"
     tag "gawk"
+    tag "tabix/bgziptabix"
     tag "subworkflows/../../modules/nf-core/gawk"
+    tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
     tag "subworkflows/../../modules/nf-core/seqtk/cutn"
 	tag "modules/nf-core/gunzip"
 
@@ -21,6 +23,7 @@ nextflow_workflow {
             [
                 "seqtk/cutn",
                 "gawk",
+                "tabix/bgziptabix",
                 "gunzip"
             ]
         )
@@ -39,7 +42,38 @@ nextflow_workflow {
         }
     }
 
-    test("Cloeon_dipterum genome [fasta]") {
+    test("Cloeon_dipterum genome [fasta] w/ index") {
+
+        when {
+
+            params {
+                gawk_args = "'BEGIN { OFS = \"\\t\" }{print \$0, sqrt((\$3-\$2)*(\$3-\$2))}'"
+                seqtk_args = "-n 1"
+                bgzip_args = "--csi"
+            }
+
+
+            workflow {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = true
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("Cloeon_dipterum genome [fasta] w/o index") {
 
         when {
 
@@ -52,6 +86,7 @@ nextflow_workflow {
             workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
+                input[1] = false
                 """
             }
         }
@@ -75,12 +110,14 @@ nextflow_workflow {
             params {
                 gawk_args = "'BEGIN { OFS = \"\\t\" }{print \$0, sqrt((\$3-\$2)*(\$3-\$2))}'"
                 seqtk_args = "-n 1"
+                bgzip_args = "--csi"
             }
 
 
             workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
+                input[1] = true
                 """
             }
         }

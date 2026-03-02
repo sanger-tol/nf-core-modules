@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
 name: "gap_finder"
 description: Generate a bed file containing gaps and their length
 keywords:
@@ -12,6 +12,8 @@ components:
       git_remote: https://github.com/nf-core/modules.git
   - gawk:
       git_remote: https://github.com/nf-core/modules.git
+  - tabix/bgziptabix:
+      git_remote: https://github.com/nf-core/modules.git
 
 input:
   - ch_reference:
@@ -20,16 +22,21 @@ input:
         Structure [ val(meta), path(reference) ]
         Meta is the Groovy Map containing sample information
         Reference is the fasta for analysis
+  - val_run_bgzip:
+      type: boolean
+      description: |
+        Control running of tabix with boolean
 output:
   - gap_file:
       type: file
       description: |
         Structure: [ val(meta), path(gap_file) ]
         Bed file containing gap location and lengths
-  - versions:
+  - gap_tabix:
       type: file
-      description: File containing software versions
-      pattern: "versions.yml"
+      description: |
+        Structure: [ val(meta), path(gap_tabix) ]
+        Tabix index for the gap file
 authors:
   - "@DLBPointon"
 maintainers:

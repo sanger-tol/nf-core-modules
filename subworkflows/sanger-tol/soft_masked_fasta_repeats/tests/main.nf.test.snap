@@ -1,0 +1,90 @@
+{
+    "fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                        "test.bed.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "test.bed.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "test.bed.gz.csi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "repeats": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                        "test.bed.gz.gzi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "test.bed.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "test.bed.gz.csi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-27T16:09:39.510225649"
+    },
+    "soft-masked": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,0b3132cdbe62acaca054d8a44b1c0044",
+                        "test.bed.gz.gzi:md5,53000c134440b371838a772f92c29a3c",
+                        "test.bed.gz.tbi:md5,6b9174ba46fb8fca8d55237b3e384a10",
+                        "test.bed.gz.csi:md5,ab73b8d18da9998a9bf58018453028e1"
+                    ]
+                ],
+                "repeats": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,0b3132cdbe62acaca054d8a44b1c0044",
+                        "test.bed.gz.gzi:md5,53000c134440b371838a772f92c29a3c",
+                        "test.bed.gz.tbi:md5,6b9174ba46fb8fca8d55237b3e384a10",
+                        "test.bed.gz.csi:md5,ab73b8d18da9998a9bf58018453028e1"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-27T16:09:25.130190745"
+    },
+    "hard-masked": {
+        "content": [
+            {
+                "repeats": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz",
+                        "test.bed.gz.gzi:md5,c2cb56f4c5bf656faca0986e7eba0308",
+                        "test.bed.gz.tbi:md5,ec06685d85d15d8f118a789a9ccc42ad",
+                        "test.bed.gz.csi:md5,a76ffd9c2c19bc3100eecc93162f31d9"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-27T17:54:47.29734636"
+    }
+}

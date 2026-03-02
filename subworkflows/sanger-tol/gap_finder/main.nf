@@ -2,16 +2,16 @@
 // GENERATE BED FILE OF GAPS AND LENGTH IN REFERENCE
 //
 
-include { SEQTK_CUTN    } from '../../../modules/nf-core/seqtk/cutn/main'
-include { GAWK          } from '../../../modules/nf-core/gawk/main'
+include { SEQTK_CUTN        } from '../../../modules/nf-core/seqtk/cutn/main'
+include { GAWK              } from '../../../modules/nf-core/gawk/main'
+include { TABIX_BGZIPTABIX  } from '../../../modules/nf-core/tabix/bgziptabix/main'
 
 workflow GAP_FINDER {
     take:
     ch_reference     // Channel [ val(meta), path(fasta) ]
+    val_run_bgzip    // val(boolean)
 
     main:
-    ch_versions     = channel.empty()
-
 
     //
     // MODULE: GENERATES A GAP SUMMARY FILE
@@ -29,10 +29,16 @@ workflow GAP_FINDER {
         [],
         false
     )
-    ch_versions     = ch_versions.mix( GAWK.out.versions )
 
+
+    //
+    // MODULE: BGZIP AND TABIX THE GAP FILE
+    //
+    TABIX_BGZIPTABIX (
+        SEQTK_CUTN.out.bed.filter{ meta, file -> val_run_bgzip}
+    )
 
     emit:
     gap_file        = GAWK.out.output
-    versions        = ch_versions
+    gap_tabix       = TABIX_BGZIPTABIX.out.gz_index
 }
