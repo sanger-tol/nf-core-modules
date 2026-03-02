@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/meta-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "bgziptabix"
 description: bgzip a sorted tab-delimited genome file and then create tabix
   indexes in TBI and CSI format when the coordinate / sequence length is within
