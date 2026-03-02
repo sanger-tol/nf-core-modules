@@ -33,7 +33,7 @@ workflow GAP_FINDER {
     //
     GAWK_GAP_LENGTH (
         SEQTK_CUTN.out.bed,
-        reformat_gaps.awk,
+        ch_reformat_gaps,
         false
     )
 
