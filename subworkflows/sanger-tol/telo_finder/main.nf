@@ -1,11 +1,11 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { TELOMERE_REGIONS          } from '../../../modules/sanger-tol/telomere/regions/main'
-include { GAWK                      } from '../../../modules/nf-core/gawk/main'
-include { TELOMERE_WINDOWS          } from '../../../modules/sanger-tol/telomere/windows/main'
-include { TELOMERE_EXTRACT          } from '../../../modules/sanger-tol/telomere/extract/main'
-include { TABIX_BGZIPTABIX          } from '../../../modules/nf-core/tabix/bgziptabix'
+include { TELOMERE_REGIONS              } from '../../../modules/sanger-tol/telomere/regions/main'
+include { GAWK as GAWK_SPLIT_TELOMERE   } from '../../../modules/nf-core/gawk/main'
+include { TELOMERE_WINDOWS              } from '../../../modules/sanger-tol/telomere/windows/main'
+include { TELOMERE_EXTRACT              } from '../../../modules/sanger-tol/telomere/extract/main'
+include { TABIX_BGZIPTABIX              } from '../../../modules/nf-core/tabix/bgziptabix'
 
 
 workflow TELO_FINDER {
@@ -37,9 +37,18 @@ workflow TELO_FINDER {
     //
     if (val_split_telomere) {
 
-        GAWK (
+        ch_split_telomere = channel.of('''\
+            BEGIN {
+                FS="\\t"; OFS="\\t"
+            } {
+                print > "direction."$3".telomere"
+            }'''.stripIndent())
+            .collectFile(name: "split_telomere.awk", cache: true)
+            .collect()
+
+        GAWK_SPLIT_TELOMERE (
             ch_full_telomere,
-            [],
+            ch_split_telomere,
             true
         )
 
@@ -52,7 +61,7 @@ workflow TELO_FINDER {
         //          THIS PRODUCES A TRIO OF CHANNELS: [meta], file
         //          FILTER FOR SIZE > 0 FOR SAFETY
         //
-        ch_regions_for_extraction = GAWK.out.output
+        ch_regions_for_extraction = GAWK_SPLIT_TELOMERE.out.output
             .flatMap { meta, files ->
                 files
                     .findAll { file -> file.size() > 0 }

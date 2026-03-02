@@ -46,7 +46,6 @@ nextflow_workflow {
     test("idFanCani4 - no split - fasta w/ index") {
         when {
             params {
-                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -76,7 +75,6 @@ nextflow_workflow {
     test("idFanCani4 - split - fasta w/ index") {
         when {
             params {
-                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -106,7 +104,6 @@ nextflow_workflow {
     test("idFanCani4 - no split - fasta w/o index") {
         when {
             params {
-                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -136,7 +133,6 @@ nextflow_workflow {
     test("idFanCani4 - split - fasta w/o index") {
         when {
             params {
-                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -166,7 +162,6 @@ nextflow_workflow {
     test("idFanCani4 - no split - fasta - stub w/o index") {
         when {
             params {
-                gawk_args       = "'BEGIN { FS=\"\\t\"; OFS=\"\\t\" } {print > \"direction.\"\$3\".split.telomere\"}'"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
