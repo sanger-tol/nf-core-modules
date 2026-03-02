@@ -23,7 +23,7 @@ workflow GAP_FINDER {
     ch_reformat_gaps = channel.of('''\
         BEGIN { OFS = "\\t" } {
             print $0, sqrt(($3-$2)*($3-$2))
-        }''''.stripIndent())
+        }'''.stripIndent())
         .collectFile(name: "reformat_gaps.awk", cache: true)
         .collect()
 
