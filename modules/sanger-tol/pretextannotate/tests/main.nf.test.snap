@@ -1,0 +1,110 @@
+{
+    "ilDryDodo1 - sizes, png": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "gif": [
+                    
+                ],
+                "png": [
+                    
+                ],
+                "tif": [
+                    
+                ],
+                "versions_pretextannotate": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-03T14:10:36.865401361"
+    },
+    "ilDryDodo1 - sizes, png - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1.gif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1.tif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "PRETEXTANNOTATE",
+                        "pretextannotate",
+                        "1.1.0"
+                    ]
+                ],
+                "gif": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1.gif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "png": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "tif": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1.tif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_pretextannotate": [
+                    [
+                        "PRETEXTANNOTATE",
+                        "pretextannotate",
+                        "1.1.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-03T14:10:44.901036365"
+    }
+}

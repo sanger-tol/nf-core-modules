@@ -1,0 +1,64 @@
+nextflow_process {
+
+    name "Test Process PRETEXTANNOTATE"
+    script "../main.nf"
+    process "PRETEXTANNOTATE"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "pretextannotate"
+
+    test("ilDryDodo1 - sizes, png") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "ilDryDodo1"],
+                    file(params.modules_testdata_base_path + 'resources/modules/pretextannotate/ilDryDodo1.1.sizes', checkIfExists: true)
+                ]
+
+                input[1] = [
+                    [id: "ilDryDodo1"],
+                    file(params.modules_testdata_base_path + 'resources/modules/pretextannotate/ilDryDodo1.1_normal_FullMap.png', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success               },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("ilDryDodo1 - sizes, png - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "ilDryDodo1"],
+                    file(params.modules_testdata_base_path + 'resources/modules/pretextannotate/ilDryDodo1.1.sizes', checkIfExists: true)
+                ]
+
+                input[1] = [
+                    [id: "ilDryDodo1"],
+                    file(params.modules_testdata_base_path + 'resources/modules/pretextannotate/ilDryDodo1.1_normal_FullMap.png', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success               },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}
