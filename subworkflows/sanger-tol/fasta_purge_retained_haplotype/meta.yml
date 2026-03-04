@@ -97,7 +97,7 @@ output:
         Channel containing the BED file describing regions to purge
 
         Structure: [ val(meta), path(bed) ]
-      pattern: "*.bed"
+      pattern: "*.bed.gz"
   - purgedups_log:
       type: file
       description: |
@@ -105,12 +105,6 @@ output:
 
         Structure: [ val(meta), path(log) ]
       pattern: "*.log"
-  - versions:
-      type: file
-      description: |
-        File containing software versions
-        Structure: [ path(versions.yml) ]
-      pattern: "versions.yml"
 authors:
   - "@prototaxites"
   - "@ksenia-krasheninnikova"
