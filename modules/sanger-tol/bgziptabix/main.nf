@@ -35,6 +35,8 @@ process BGZIPTABIX {
     def compress = "bgzip --threads ${task.cpus} --index ${args} --output ${output}"
     def do_tbi = tabix_tbi ? "1" : ""
     def do_csi = tabix_csi ? "1" : ""
+    // default to not checking the size
+    def msl = max_seq_length ?: 0
     """
     # Copied from the nf-core samtools/bgzip module
 
@@ -61,11 +63,11 @@ process BGZIPTABIX {
 
     if [[ "${do_tbi}" != "" ]]
     then
-        [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
+        [[ ${msl} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
     fi
     if [[ "${do_csi}" != "" ]]
     then
-        [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
+        [[ ${msl} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
     fi
     """
 
