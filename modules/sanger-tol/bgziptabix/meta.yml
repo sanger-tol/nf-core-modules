@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "bgziptabix"
-description: bgzip a sorted tab-delimited genome file and then create tabix
+description: bgzip a tab-delimited genome file and then create tabix
   indexes in TBI and CSI format when the coordinate / sequence length is within
   the supported range of each index format.
 keywords:
@@ -33,7 +33,7 @@ input:
           e.g. [ id:'test', single_end:false ]
     - input:
         type: file
-        description: Sorted tab-delimited genome file
+        description: Tab-delimited genome file
         ontologies: []
   - - column_numbers:
         type: string
@@ -47,7 +47,7 @@ input:
         type: string
         description: |
           Optional. GNU sort parameters to sort the (filtered) input file, e.g. '-k1,1 -k2,2n'
-          Pass a falsy value to skip sorting.
+          Must be provided for unsorted input files. Pass a falsy value to skip sorting.
     - extension:
         type: string
         description: |
