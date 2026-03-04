@@ -24,7 +24,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,02a78fc3b03eeca5209c6ee8488e49c0"
+                        "test.purge_dups.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "11": [
@@ -40,14 +40,6 @@
                             "HiFi.reads.fasta.4.test.paf.gz:md5,079e7fe688d10496d80d26f9ca614756"
                         ]
                     ]
-                ],
-                "12": [
-                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
-                    "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
-                    "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
-                    "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
-                    "versions.yml:md5,a68e25631af50931cf951142081c8bd7",
-                    "versions.yml:md5,bceaceffe8da91afbb66e351b6a9678d"
                 ],
                 "2": [
                     [
@@ -110,7 +102,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,1a05359a5687ed23c44889b1a919c5c6"
+                        "test.dups.bed.gz:md5,1a05359a5687ed23c44889b1a919c5c6"
                     ]
                 ],
                 "primary_reads_paf": [
@@ -149,7 +141,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,1a05359a5687ed23c44889b1a919c5c6"
+                        "test.dups.bed.gz:md5,1a05359a5687ed23c44889b1a919c5c6"
                     ]
                 ],
                 "purgedups_calcuts_cutoffs": [
@@ -181,7 +173,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,02a78fc3b03eeca5209c6ee8488e49c0"
+                        "test.purge_dups.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "purgedups_pbcstat_basecov": [
@@ -215,22 +207,14 @@
                         },
                         "test.paf:md5,23041dbef85279ee83e1822cc56f96a5"
                     ]
-                ],
-                "versions": [
-                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
-                    "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
-                    "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
-                    "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
-                    "versions.yml:md5,a68e25631af50931cf951142081c8bd7",
-                    "versions.yml:md5,bceaceffe8da91afbb66e351b6a9678d"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-02-10T10:31:59.906658"
+        "timestamp": "2026-03-04T15:35:54.314755"
     },
     "Undibacterium unclassified - hap1 only - hifi": {
         "content": [
@@ -257,7 +241,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,02a78fc3b03eeca5209c6ee8488e49c0"
+                        "test.purge_dups.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "11": [
@@ -273,14 +257,6 @@
                             "HiFi.reads.fasta.4.test.paf.gz:md5,079e7fe688d10496d80d26f9ca614756"
                         ]
                     ]
-                ],
-                "12": [
-                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
-                    "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
-                    "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
-                    "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
-                    "versions.yml:md5,a68e25631af50931cf951142081c8bd7",
-                    "versions.yml:md5,bceaceffe8da91afbb66e351b6a9678d"
                 ],
                 "2": [
                     [
@@ -343,7 +319,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,1a05359a5687ed23c44889b1a919c5c6"
+                        "test.dups.bed.gz:md5,1a05359a5687ed23c44889b1a919c5c6"
                     ]
                 ],
                 "primary_reads_paf": [
@@ -382,7 +358,7 @@
                         {
                             "id": "test"
                         },
-                        "test.dups.bed:md5,1a05359a5687ed23c44889b1a919c5c6"
+                        "test.dups.bed.gz:md5,1a05359a5687ed23c44889b1a919c5c6"
                     ]
                 ],
                 "purgedups_calcuts_cutoffs": [
@@ -414,7 +390,7 @@
                         {
                             "id": "test"
                         },
-                        "test.purge_dups.log:md5,02a78fc3b03eeca5209c6ee8488e49c0"
+                        "test.purge_dups.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "purgedups_pbcstat_basecov": [
@@ -448,21 +424,13 @@
                         },
                         "test.paf:md5,23041dbef85279ee83e1822cc56f96a5"
                     ]
-                ],
-                "versions": [
-                    "versions.yml:md5,1c00afbfdf7400eefdadeff3484ff5a8",
-                    "versions.yml:md5,6538edf27c63c29d6942c5b0a1c31c3c",
-                    "versions.yml:md5,65f957bbaf722197435a5107c6c6b128",
-                    "versions.yml:md5,77c810fac8a6f2edaaf050d96f063d99",
-                    "versions.yml:md5,a68e25631af50931cf951142081c8bd7",
-                    "versions.yml:md5,bceaceffe8da91afbb66e351b6a9678d"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-02-10T10:33:25.814243"
+        "timestamp": "2026-03-04T15:37:24.639982"
     }
 }
