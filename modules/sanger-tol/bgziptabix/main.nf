@@ -49,6 +49,7 @@ process BGZIPTABIX {
             else
               # Do nothing or just rename if the file was already compressed
               [[ "\$(basename ${input})" != "\$(basename ${output})" ]] && ln -s ${input} ${output}
+              [[ -e "${output}.gzi" ]] || bgzip --threads ${task.cpus} --reindex ${args} ${output}
             fi;;
         *gzip-compressed*)
             [[ "\$(basename ${input})" == "\$(basename ${output})" ]] && echo "Filename collision \$(basename ${input})" && exit 1
