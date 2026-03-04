@@ -41,11 +41,12 @@ input:
   - - column_numbers:
         type: string
         description: |
-          Columns to extract from the input file, in a format understood by `cut`
+          Optional. Columns to extract from the input file, in a format understood by `cut`
           e.g. '1-3,5'
     - header_lines:
         type: integer
-        description: Number of header lines to skip from the input file
+        description: |
+          Number of header lines to skip from the input file. Only considered when column_numbers
     - extension:
         type: string
         description: |
