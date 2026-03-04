@@ -8,8 +8,9 @@ process BGZIPTABIX {
         : 'community.wave.seqera.io/library/htslib:1.21--ff8e28a189fbecaa'}"
 
     input:
-    tuple val(meta), path(input), val(max_seq_length)
-    tuple val(column_numbers), val(header_lines), val(extension)
+    tuple val(meta), path(input)
+    tuple val(column_numbers), val(header_lines), val(sort_columns), val(extension)
+    tuple val(tabix_tbi), val(tabix_csi), val(max_seq_length)
 
     output:
     tuple val(meta), path("*.gz"), path("*.gzi"), emit: gz_index
@@ -25,12 +26,47 @@ process BGZIPTABIX {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def input_data = column_numbers ? "<(cut -f${column_numbers} ${input} | tail -n+${header_lines+1})" : input
     extension ?= input.extension
+    def output = "${prefix}.${extension}.gz"
+    def filter_cut = column_numbers ? "cut -f${column_numbers} | " : ""
+    def filter_tail = header_lines ? "tail -n+${header_lines + 1} | " : ""
+    def filter_sort = sort_columns ? "sort ${sort_columns} | " : ""
+    def filter = filter_cut + filter_tail + filter_sort
+    def compress = "bgzip --threads ${task.cpus} --index ${args} --output ${output}"
+    def do_tbi = tabix_tbi ? "1" : ""
+    def do_csi = tabix_csi ? "1" : ""
     """
-    bgzip --threads ${task.cpus} --index ${args} ${input_data} --output ${prefix}.${extension}.gz
-    [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
-    [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
+    # Copied from the nf-core samtools/bgzip module
+
+    FILE_TYPE=\$(htsfile ${input})
+    case "\$FILE_TYPE" in
+        *BGZF-compressed*)
+            if [[ "${filter}" != "" ]]
+            then
+              zcat ${input} | ${filter} ${compress}
+            else
+              # Do nothing or just rename if the file was already compressed
+              [[ "\$(basename ${input})" != "\$(basename ${output})" ]] && ln -s ${input} ${output}
+            fi;;
+        *gzip-compressed*)
+            [[ "\$(basename ${input})" == "\$(basename ${output})" ]] && echo "Filename collision (\$basename ${input})" && exit 1
+            zcat  ${input} | ${filter} ${compress};;
+        *bzip2-compressed*)
+            bzcat ${input} | ${filter} ${compress};;
+        *XZ-compressed*)
+            xzcat ${input} | ${filter} ${compress};;
+        *)
+            < ${input} ${filter} ${compress};;
+    esac
+
+    if [[ "${do_tbi}" != "" ]]
+    then
+        [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
+    fi
+    if [[ "${do_csi}" != "" ]]
+    then
+        [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
+    fi
     """
 
     stub:
