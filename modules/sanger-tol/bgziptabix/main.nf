@@ -51,7 +51,7 @@ process BGZIPTABIX {
               [[ "\$(basename ${input})" != "\$(basename ${output})" ]] && ln -s ${input} ${output}
             fi;;
         *gzip-compressed*)
-            [[ "\$(basename ${input})" == "\$(basename ${output})" ]] && echo "Filename collision (\$basename ${input})" && exit 1
+            [[ "\$(basename ${input})" == "\$(basename ${output})" ]] && echo "Filename collision \$(basename ${input})" && exit 1
             zcat  ${input} | ${filter} ${compress};;
         *bzip2-compressed*)
             bzcat ${input} | ${filter} ${compress};;
