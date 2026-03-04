@@ -64,21 +64,22 @@ process BGZIPTABIX {
 
     if [[ "${do_tbi}" != "" ]]
     then
-        [[ ${msl} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
+        [[ ${msl} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${output}
     fi
     if [[ "${do_csi}" != "" ]]
     then
-        [[ ${msl} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
+        [[ ${msl} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${output}
     fi
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     extension ?= input.extension
+    def output = "${prefix}.${extension}.gz"
     """
-    echo "" | gzip > ${prefix}.${extension}.gz
-    touch ${prefix}.${extension}.gz.gzi
-    touch ${prefix}.${extension}.gz.tbi
-    touch ${prefix}.${extension}.gz.csi
+    echo "" | gzip > ${output}
+    touch ${output}.gzi
+    touch ${output}.tbi
+    touch ${output}.csi
     """
 }
