@@ -35,22 +35,35 @@ input:
         type: file
         description: Sorted tab-delimited genome file
         ontologies: []
-    - max_seq_length:
-        type: integer
-        description: Maximum length (coordinate) of a sequence in this genome (TSV)
   - - column_numbers:
         type: string
         description: |
-          Columns to extract from the input file, in a format understood by `cut`
-          e.g. '1-3,5'
+          Optional. Columns to extract from the input file, in a format understood
+          by `cut`, e.g. '1-3,5'
     - header_lines:
         type: integer
-        description: Number of header lines to skip from the input file
+        description: Optional. Number of header lines to skip from the input file
+    - sort_columns:
+        type: string
+        description: |
+          Optional. GNU sort parameters to sort the (filtered) input file, e.g. '-k1,1 -k2,2n'
+          Pass a falsy value to skip sorting.
     - extension:
         type: string
         description: |
-          Extension to name the output file, in case it differs from the input
+          Optional. Extension to name the output file, in case it differs from the input
           file - for instance, turning a TSV into BED
+  - - tabix_tbi:
+        type: boolean
+        description: Set to true to generate a tabix index in TBI format
+    - tabix_csi:
+        type: boolean
+        description: Set to true to generate a tabix index in CSI format
+    - max_seq_length:
+        type: integer
+        description: |
+          Optional. Maximum length (coordinate) of a sequence in this genome.
+          Used to control TBI and CSI index generation on top of the above booleans.
 output:
   gz_index:
     - - meta:
