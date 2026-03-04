@@ -25,7 +25,7 @@ process BGZIPTABIX {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def input_data = column_numbers ? "<(cut -f${column_numbers} ${input} | tail -n+${header_lines+1})" : input
+    def input_data = column_numbers ? "<(cut -f${column_numbers} ${input} | tail -n+${header_lines + 1})" : input
     extension ?= input.extension
     """
     bgzip --threads ${task.cpus} --index ${args} ${input_data} --output ${prefix}.${extension}.gz
