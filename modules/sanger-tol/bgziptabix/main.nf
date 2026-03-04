@@ -26,7 +26,7 @@ process BGZIPTABIX {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    extension ?= input.extension
+    extension ?= (input.name - '.gz' - '.bz2' - '.xz' - '.lzma' - '.bgz').tokenize(".")[-1]
     def output = "${prefix}.${extension}.gz"
     def filter_cut = column_numbers ? "cut -f${column_numbers} | " : ""
     def filter_tail = header_lines ? "tail -n+${header_lines + 1} | " : ""
@@ -74,7 +74,7 @@ process BGZIPTABIX {
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    extension ?= input.extension
+    extension ?= (input.name - '.gz' - '.bz2' - '.xz' - '.lzma' - '.bgz').tokenize(".")[-1]
     def output = "${prefix}.${extension}.gz"
     """
     echo "" | gzip > ${output}
