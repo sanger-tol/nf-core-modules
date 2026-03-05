@@ -1,0 +1,68 @@
+name: "gnk_fastasort"
+description: |
+  Re-organise a fasta index into a preffered GenomeNote order
+keywords:
+  - gnk
+  - fastasort
+  - fai
+  - tsv
+tools:
+  - gnk_fastasort:
+      description: "Re-organise a fasta index into a preffered GenomeNote order"
+      homepage: "https://www.github.com/sanger-tol/gnk_fastasort/"
+      documentation: "https://www.github.com/sanger-tol/gnk_fastasort/"
+      tool_dev_url: "https://www.github.com/sanger-tol/gnk_fastasort/"
+      licence:
+        - "MIT"
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - index:
+        type: file
+        description: |
+          FAI or Sizes index files
+        ontologies: []
+output:
+  tsv:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.tsv":
+          type: file
+          description: |
+            A TSV of re-ordered scaffold names
+          ontologies:
+            - edam: "http://edamontology.org/format_3475"
+  versions_gnkfastasort:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - gnk_fastasort:
+          type: string
+          description: The name of the module
+      - fastasort -v | sed 's/fastasort. //g':
+          type: eval
+          description: The expression to obtain the version of the tool
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - gnk_fastasort:
+          type: string
+          description: The name of the module
+      - fastasort -v | sed 's/fastasort. //g':
+          type: eval
+          description: The expression to obtain the version of the tool
+
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
