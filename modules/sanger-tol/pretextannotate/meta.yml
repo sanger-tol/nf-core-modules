@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "pretextannotate"
 description: |
-    Annotate a pretextmap snapshot with chromosome names, numbers and genomelength
+  Annotate a pretextmap snapshot with chromosome names, numbers and genomelength
 keywords:
   - pretext
   - annotate
@@ -25,7 +25,7 @@ input:
     - sizes:
         type: file
         description: |
-            TSV containing chromosome names and lengths
+          TSV containing chromosome names and lengths
         pattern: "*.{genome,sizes}"
         ontologies: []
   - - meta1:
@@ -36,9 +36,10 @@ input:
     - snapshot:
         type: file
         description: |
-            A png snapshot of a pretext map
+          A png snapshot of a pretext map
         pattern: "*.png"
-        ontologies: []
+        ontologies:
+          - edam: "http://edamontology.org/format_3603"
 
 output:
   png:
@@ -50,9 +51,9 @@ output:
       - "*.png":
           type: file
           description: |
-              An annotated png containing a pretextmap and labels
+            An annotated png containing a pretextmap and labels
           ontologies:
-            - edam: "https://"
+            - edam: "http://edamontology.org/format_3603"
 
   gif:
     - - meta:
@@ -63,9 +64,9 @@ output:
       - "*.gif":
           type: file
           description: |
-              An annotated gif containing a pretextmap and labels
+            An annotated gif containing a pretextmap and labels
           ontologies:
-            - edam: "https://"
+            - edam: "http://edamontology.org/format_3467"
 
   tif:
     - - meta:
@@ -76,9 +77,9 @@ output:
       - "*.tif":
           type: file
           description: |
-              An annotated tif containing a pretextmap and labels
+            An annotated tif containing a pretextmap and labels
           ontologies:
-            - edam: "https://"
+            - edam: "http://edamontology.org/format_3591"
 
   versions_pretextannotate:
     - - ${task.process}:

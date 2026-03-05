@@ -3,28 +3,66 @@
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_annotated_pretext.png:md5,fce74c5236ecc60bd25954fabe68650d"
+                    ]
                 ],
                 "1": [
-                    
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_annotated_pretext.gif:md5,afcf8acda86f2a844e073de4c68b2ac6"
+                    ]
                 ],
                 "2": [
-                    
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_annotated_pretext.tif:md5,9542e0896b849ee63911db7bd27f9a2a"
+                    ]
                 ],
                 "3": [
-                    
+                    [
+                        "PRETEXTANNOTATE",
+                        "pretextannotate",
+                        "1.1.2"
+                    ]
                 ],
                 "gif": [
-                    
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_annotated_pretext.gif:md5,afcf8acda86f2a844e073de4c68b2ac6"
+                    ]
                 ],
                 "png": [
-                    
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_annotated_pretext.png:md5,fce74c5236ecc60bd25954fabe68650d"
+                    ]
                 ],
                 "tif": [
-                    
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_annotated_pretext.tif:md5,9542e0896b849ee63911db7bd27f9a2a"
+                    ]
                 ],
                 "versions_pretextannotate": [
-                    
+                    [
+                        "PRETEXTANNOTATE",
+                        "pretextannotate",
+                        "1.1.2"
+                    ]
                 ]
             }
         ],
@@ -32,7 +70,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-03T14:10:36.865401361"
+        "timestamp": "2026-03-05T11:19:41.865494834"
     },
     "ilDryDodo1 - sizes, png - stub": {
         "content": [
@@ -65,7 +103,7 @@
                     [
                         "PRETEXTANNOTATE",
                         "pretextannotate",
-                        "1.1.0"
+                        "1.1.2"
                     ]
                 ],
                 "gif": [
@@ -96,7 +134,7 @@
                     [
                         "PRETEXTANNOTATE",
                         "pretextannotate",
-                        "1.1.0"
+                        "1.1.2"
                     ]
                 ]
             }
@@ -105,6 +143,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-03T14:10:44.901036365"
+        "timestamp": "2026-03-05T11:19:49.177308616"
     }
 }

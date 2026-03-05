@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "gnk_fastasort"
 description: |
-    Annotate a pretextmap snapshot with chromosome names, numbers and genomelength
+  Annotate a pretextmap snapshot with chromosome names, numbers and genomelength
 keywords:
   - pretext
   - annotate
@@ -38,9 +38,9 @@ output:
       - "*.tsv":
           type: file
           description: |
-              A TSV of re-ordered scaffold names
+            A TSV of re-ordered scaffold names
           ontologies:
-            - edam: "https://"
+            - edam: "http://edamontology.org/format_3475"
 
   versions_gnkfastasort:
     - - ${task.process}:
