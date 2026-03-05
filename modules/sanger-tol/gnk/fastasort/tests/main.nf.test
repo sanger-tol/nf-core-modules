@@ -6,7 +6,8 @@ nextflow_process {
 
     tag "modules"
     tag "modules_sangertol"
-    tag "gnk_fastasort"
+    tag "gnk"
+    tag "gnk/fastasort"
 
     test("gfLaeSulp1.1 - index") {
 

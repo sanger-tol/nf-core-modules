@@ -1,20 +1,19 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "gnk_fastasort"
 description: |
-  Annotate a pretextmap snapshot with chromosome names, numbers and genomelength
+  Re-organise a fasta index into a preffered GenomeNote order
 keywords:
-  - pretext
-  - annotate
-  - png
-  - tif
-  - gif
+  - gnk
+  - fastasort
+  - fai
+  - tsv
 tools:
   - gnk_fastasort:
       description: "Re-organise a fasta index into a preffered GenomeNote order"
       homepage: "https://www.github.com/sanger-tol/gnk_fastasort/"
       documentation: "https://www.github.com/sanger-tol/gnk_fastasort/"
       tool_dev_url: "https://www.github.com/sanger-tol/gnk_fastasort/"
-      licence: ["MIT"]
+      licence:
+        - "MIT"
       identifier: ""
 input:
   - - meta:
@@ -25,8 +24,7 @@ input:
     - index:
         type: file
         description: |
-          FAI / Sizes file of an assembly
-        pattern: "*.{fai,sizes}"
+          FAI or Sizes index files
         ontologies: []
 output:
   tsv:
@@ -41,7 +39,6 @@ output:
             A TSV of re-ordered scaffold names
           ontologies:
             - edam: "http://edamontology.org/format_3475"
-
   versions_gnkfastasort:
     - - ${task.process}:
           type: string
@@ -52,17 +49,19 @@ output:
       - fastasort -v | sed 's/fastasort. //g':
           type: eval
           description: The expression to obtain the version of the tool
+
 topics:
   versions:
     - - ${task.process}:
           type: string
           description: The name of the process
-      - telomere_extract:
+      - gnk_fastasort:
           type: string
           description: The name of the module
       - fastasort -v | sed 's/fastasort. //g':
           type: eval
           description: The expression to obtain the version of the tool
+
 authors:
   - "@DLBPointon"
 maintainers:

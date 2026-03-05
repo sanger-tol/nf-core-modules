@@ -9,11 +9,11 @@ process GNK_FASTASORT {
         : 'community.wave.seqera.io/library/pip_gnk_fastasort:cfccd490e04b325e'}"
 
     input:
-    tuple val(meta), path(fai)
+    tuple val(meta), path(index)
 
     output:
     tuple val(meta), path("*.tsv"), emit: tsv
-    tuple val("${task.process}"), val('gnk_fastasort'), eval("fastasort -v | sed 's/fastasort. //g'"), topic: versions, emit: versions_pretextannotate
+    tuple val("${task.process}"), val('gnk_fastasort'), eval("fastasort -v | sed 's/fastasort. //g'"), topic: versions, emit: versions_gnkfastasort
 
     when:
     task.ext.when == null || task.ext.when
