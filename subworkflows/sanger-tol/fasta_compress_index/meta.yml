@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
+name: "fasta_compress_index"
+description: Compress and index a Fasta file in multiple formats
+keywords:
+  - fasta
+  - index
+  - faidx
+  - samtools
+  - bgzip
+components:
+  - samtools/bgzip:
+      git_remote: https://github.com/nf-core/modules.git
+  - samtools/dict:
+      git_remote: https://github.com/nf-core/modules.git
+  - samtools/faidx:
+      git_remote: https://github.com/nf-core/modules.git
+
+input:
+  - ch_fasta:
+      type: file
+      description: |
+        Structure [ val(meta), path(fasta) ]
+        Meta is the Groovy Map containing sample information
+  - val_run_samtools_dict:
+      type: boolean
+      description: |
+        Boolean flag to control creation of the SAMtools sequence dictionary.
+        If true, the `samtools dict` component is run; if false, no dictionary is generated.
+output:
+  - fasta_gz:
+      type: file
+      description: |
+        Structure: [ val(meta), path(genome.fa.gz) ]
+        Input Fasta file compressed with bgzip
+  - faidx:
+      type: file
+      description: |
+        Structure: [ val(meta), path(genome.fa.gz.fai) ]
+        Samtools faidx index of the Fasta file
+  - dict:
+      type: file
+      description: |
+        Structure: [ val(meta), path(genome.fa.gz.dict) ]
+        Samtools sequence dictionary of the Fasta file (if requested)
+  - gzi:
+      type: file
+      description: |
+        Structure: [ val(meta), path(genome.fa.gz.gzi) ]
+        Bgzip index of the Fasta file
+  - sizes:
+      type: file
+      description: |
+        Structure: [ val(meta), path(genome.fa.gz.sizes) ]
+        TSV file of all sequences and their sizes
+
+authors:
+  - "@muffato"
+maintainers:
+  - "@muffato"

@@ -1,0 +1,84 @@
+nextflow_workflow {
+
+    name "Test Subworkflow SOFT_MASKED_FASTA_REPEATS"
+    script "../main.nf"
+    config "./nextflow.config"
+    workflow "SOFT_MASKED_FASTA_REPEATS"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/soft_masked_fasta_repeats"
+    tag "mask/softmask2bed"
+    tag "bgziptabix"
+
+    test("soft-masked") {
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta', checkIfExists: true),
+                    1000
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+
+    test("hard-masked") {
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Acropora_cervicornis/genomic_data/m84093_241116_151316_s2.hifi_reads.bc2028.subset.fasta', checkIfExists: true),
+                    1000
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert snapshot([
+                    // Cannot test the BED file because it is empty (but compressed)
+                    // Exclude it from the snapshot
+                    repeats: workflow.out.repeats.collect { [it[0], file(it[1]).name, it[2], it[3], it[4]] },
+                ]).match() },
+                // bgzip compresses empty files into 28 bytes
+                { assert file(workflow.out.repeats[0][1]).size() == 28 },
+            )
+        }
+    }
+
+    test("fasta - stub") {
+
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta', checkIfExists: true),
+                    1000
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}
