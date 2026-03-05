@@ -60,7 +60,7 @@ topics:
       - telomere_extract:
           type: string
           description: The name of the module
-      - awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//':
+      - fastasort -v | sed 's/fastasort. //g':
           type: eval
           description: The expression to obtain the version of the tool
 authors:
