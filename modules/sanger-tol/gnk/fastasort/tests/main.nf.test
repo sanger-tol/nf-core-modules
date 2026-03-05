@@ -1,0 +1,54 @@
+nextflow_process {
+
+    name "Test Process GNK_FASTASORT"
+    script "../main.nf"
+    process "GNK_FASTASORT"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "gnk_fastasort"
+
+    test("gfLaeSulp1.1 - index") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "gfLaeSulp1.1"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success               },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("gfLaeSulp1.1 - index - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "gfLaeSulp1.1"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success               },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "gnk_fastasort"
+description: |
+    Annotate a pretextmap snapshot with chromosome names, numbers and genomelength
+keywords:
+  - pretext
+  - annotate
+  - png
+  - tif
+  - gif
+tools:
+  - gnk_fastasort:
+      description: "Re-organise a fasta index into a preffered GenomeNote order"
+      homepage: "https://www.github.com/sanger-tol/gnk_fastasort/"
+      documentation: "https://www.github.com/sanger-tol/gnk_fastasort/"
+      tool_dev_url: "https://www.github.com/sanger-tol/gnk_fastasort/"
+      licence: ["MIT"]
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - index:
+        type: file
+        description: |
+          FAI / Sizes file of an assembly
+        pattern: "*.{fai,sizes}"
+        ontologies: []
+output:
+  tsv:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.tsv":
+          type: file
+          description: |
+              A TSV of re-ordered scaffold names
+          ontologies:
+            - edam: "https://"
+
+  versions_gnkfastasort:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - gnk_fastasort:
+          type: string
+          description: The name of the module
+      - fastasort -v | sed 's/fastasort. //g':
+          type: eval
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - telomere_extract:
+          type: string
+          description: The name of the module
+      - awk -Wversion | sed '1!d; s/.*Awk //; s/,.*//':
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
