@@ -4,5 +4,6 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - pip::pretextannotate==1.1.2
   - pip==26.0.1
+  - pip:
+      - pretextannotate==1.1.2
