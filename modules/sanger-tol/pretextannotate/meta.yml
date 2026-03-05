@@ -52,7 +52,7 @@ output:
           description: |
               An annotated png containing a pretextmap and labels
           ontologies:
-            - edam: []
+            - edam: "https://"
 
   gif:
     - - meta:
@@ -65,7 +65,7 @@ output:
           description: |
               An annotated gif containing a pretextmap and labels
           ontologies:
-            - edam: []
+            - edam: "https://"
 
   tif:
     - - meta:
@@ -78,7 +78,7 @@ output:
           description: |
               An annotated tif containing a pretextmap and labels
           ontologies:
-            - edam: []
+            - edam: "https://"
 
   versions_pretextannotate:
     - - ${task.process}:

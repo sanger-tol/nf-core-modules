@@ -4,8 +4,8 @@ process PRETEXTANNOTATE {
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
-        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c2/c2ca9018fa704864aef1299a687fdb33619f1e673fad4c161ea672ff0588a80b/data'
-        : 'community.wave.seqera.io/library/pip_pretextannotate:d0a6a0f47835921c'}"
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/3c/3c63c935c52e8af4e4ba9ac16b4ade1ea5f176a373464faec9ab3f9feb3f7ebc/data'
+        : 'community.wave.seqera.io/library/pip_pretextannotate:1fe480fd3b9b3943'}"
 
     input:
     tuple val(meta),  path(sizes)
