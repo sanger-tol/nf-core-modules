@@ -43,7 +43,7 @@ workflow REPEAT_DENSITY {
     //
     // MODULE: USE USTAT OUTPUT TO EXTRACT REPEATS FROM FASTA
     //
-    ch_extract_repeats_awk = channel.of("""
+    ch_extract_repeats_awk = channel.of('''\
         BEGIN { FS = " - "; OFS = "\\t" }
         /^>/ {
             header = substr(\$0, 2)
@@ -51,7 +51,7 @@ workflow REPEAT_DENSITY {
         }
         {
             print header, \$1, \$2
-        }""".stripIndent())
+        }'''.stripIndent())
         .collectFile(name: "extract_repeats.awk", cache: true)
         .collect()
 
@@ -94,11 +94,11 @@ workflow REPEAT_DENSITY {
     // MODULE: FIXES IDS FOR REPEATS
     //
 
-    ch_rename_ids_awk = channel.of("""
+    ch_rename_ids_awk = channel.of('''\
         {
             gsub(/\./, "0")
             print
-        }""".stripIndent())
+        }'''.stripIndent())
         .collectFile(name: "rename_ids.awk", cache: true)
         .collect()
 
@@ -126,14 +126,14 @@ workflow REPEAT_DENSITY {
     //
     // MODULE: ADDS 4TH COLUMN TO BED FILE USED IN THE REPEAT DENSITY GRAPH
     //
-    ch_reformat_intersect_awk = channel.of("""
+    ch_reformat_intersect_awk = channel.of('''\
         function my_abs(x) {
             return x < 0 ? -x : x
         }
         {
             gsub(/\./, "0")
             printf "%s\t%.0f\n", \$0, my_abs(\$3 - \$2)
-        }""".stripIndent())
+        }'''.stripIndent())
         .collectFile(name: "reformat_intersect.awk", cache: true)
         .collect()
 
@@ -177,11 +177,11 @@ workflow REPEAT_DENSITY {
     //
     // MODULE: REPLACES . WITH 0 IN MAPPED FILE
     //
-    ch_replace_dots_awk = channel.of("""
+    ch_replace_dots_awk = channel.of('''\
         {
             gsub(/\./, "0")
             print
-        }""".stripIndent())
+        }'''.stripIndent())
         .collectFile(name: "replace_dots.awk", cache: true)
         .collect()
 

@@ -8,15 +8,15 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/repeat_density"
-    tag "windowmasker/ustat",
-    tag "windowmasker/mkcounts",
-    tag "bedtools/intersect",
-    tag "bedtools/makewindows",
-    tag "bedtools/map",
-    tag "ucsc/bedgraphtobigwig",
-    tag "gnu/sort",
-    tag "gawk",
-    tag "tabix/bgziptabix",
+    tag "windowmasker/ustat"
+    tag "windowmasker/mkcounts"
+    tag "bedtools/intersect"
+    tag "bedtools/makewindows"
+    tag "bedtools/map"
+    tag "ucsc/bedgraphtobigwig"
+    tag "gnu/sort"
+    tag "gawk"
+    tag "tabix/bgziptabix"
     tag "subworkflows/../../modules/nf-core/windowmasker/ustat"
     tag "subworkflows/../../modules/nf-core/windowmasker/mkcounts"
     tag "subworkflows/../../modules/nf-core/bedtools/intersect"
@@ -27,7 +27,6 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/gawk"
     tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
     tag "subworkflows/../../modules/nf-core/gunzip"
-    tag "modules/nf-core/gawk"
 	tag "modules/nf-core/gunzip"
 
     setup {
