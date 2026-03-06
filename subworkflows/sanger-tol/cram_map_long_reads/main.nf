@@ -36,14 +36,13 @@ workflow CRAM_MAP_LONG_READS {
         .map { meta, cram -> [ meta + [ cramfile: cram ], cram ] }
 
     ch_cram_raw = ch_crams_meta_mod
-        .branch { meta, cram ->
-            def cram_file = file(cram, checkIfExists: true)
-            def index = cram + ".crai"
-            have_index: file(index).exists()
-                return [ meta, cram_file, file(index, checkIfExists: true) ]
-            no_index: true
-                return [ meta, cram_file ]
-        }
+            .branch { meta, cram ->
+                def index = file(cram.toUriString() + ".crai")
+                have_index: index.exists()
+                    return [ meta, cram, index ]
+                no_index: true
+                    return [ meta, cram ]
+            }
 
     //
     // Module: Index CRAM files without indexes
@@ -127,7 +126,7 @@ workflow CRAM_MAP_LONG_READS {
             [key, bam]
         }
         .groupTuple(by: 0)
-        .map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
+        .map { key, bam -> [key.target, bam.sort { b -> b.getName() }] } // Get meta back out of groupKey
 
     //
     // Subworkflow: merge BAM files and mark duplicates
