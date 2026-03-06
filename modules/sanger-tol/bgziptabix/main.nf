@@ -8,7 +8,9 @@ process BGZIPTABIX {
         : 'community.wave.seqera.io/library/htslib:1.21--ff8e28a189fbecaa'}"
 
     input:
-    tuple val(meta), path(input), val(max_seq_length)
+    tuple val(meta), path(input)
+    tuple val(column_numbers), val(header_lines), val(sort_columns), val(extension)
+    tuple val(tabix_tbi), val(tabix_csi), val(max_seq_length)
 
     output:
     tuple val(meta), path("*.gz"), path("*.gzi"), emit: gz_index
@@ -24,18 +26,60 @@ process BGZIPTABIX {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    extension ?= (input.name - '.gz' - '.bz2' - '.xz' - '.lzma' - '.bgz').tokenize(".")[-1]
+    def output = "${prefix}.${extension}.gz"
+    def filter_cut = column_numbers ? "cut -f${column_numbers} | " : ""
+    def filter_tail = header_lines ? "tail -n+${header_lines + 1} | " : ""
+    def filter_sort = sort_columns ? "sort ${sort_columns} | " : ""
+    def filter = filter_cut + filter_tail + filter_sort
+    def compress = "bgzip --threads ${task.cpus} --index ${args} --output ${output}"
+    def do_tbi = tabix_tbi ? "1" : ""
+    def do_csi = tabix_csi ? "1" : ""
+    // default to not checking the size
+    def msl = max_seq_length ?: 0
     """
-    bgzip --threads ${task.cpus} --index ${args} ${input} --output ${prefix}.${input.extension}.gz
-    [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${input.extension}.gz
-    [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${input.extension}.gz
+    # Copied from the nf-core samtools/bgzip module
+
+    FILE_TYPE=\$(htsfile ${input})
+    case "\$FILE_TYPE" in
+        *BGZF-compressed*)
+            if [[ "${filter}" != "" ]]
+            then
+              zcat ${input} | ${filter} ${compress}
+            else
+              # Do nothing or just rename if the file was already compressed
+              [[ "\$(basename ${input})" != "\$(basename ${output})" ]] && ln -s ${input} ${output}
+              [[ -e "${output}.gzi" ]] || bgzip --threads ${task.cpus} --reindex ${args} ${output}
+            fi;;
+        *gzip-compressed*)
+            [[ "\$(basename ${input})" == "\$(basename ${output})" ]] && echo "Filename collision \$(basename ${input})" && exit 1
+            zcat  ${input} | ${filter} ${compress};;
+        *bzip2-compressed*)
+            bzcat ${input} | ${filter} ${compress};;
+        *XZ-compressed*)
+            xzcat ${input} | ${filter} ${compress};;
+        *)
+            < ${input} ${filter} ${compress};;
+    esac
+
+    if [[ "${do_tbi}" != "" ]]
+    then
+        [[ ${msl} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${output}
+    fi
+    if [[ "${do_csi}" != "" ]]
+    then
+        [[ ${msl} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${output}
+    fi
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    extension ?= (input.name - '.gz' - '.bz2' - '.xz' - '.lzma' - '.bgz').tokenize(".")[-1]
+    def output = "${prefix}.${extension}.gz"
     """
-    echo "" | gzip > ${prefix}.${input.extension}.gz
-    touch ${prefix}.${input.extension}.gz.gzi
-    touch ${prefix}.${input.extension}.gz.tbi
-    touch ${prefix}.${input.extension}.gz.csi
+    echo "" | gzip > ${output}
+    touch ${output}.gzi
+    touch ${output}.tbi
+    touch ${output}.csi
     """
 }
