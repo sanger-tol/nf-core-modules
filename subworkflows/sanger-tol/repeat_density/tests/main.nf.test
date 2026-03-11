@@ -131,6 +131,7 @@ nextflow_workflow {
             params {
                 bedtools_intersect_prefix = "test_INTERSECT"
                 bedtools_map_prefix = "test_MAP"
+                bedtools_map_args = "-c 4 -o sum"
                 bedtools_makewindows_prefix = "test_MAKEWINDOWS"
                 bedtools_makewindows_args = "-w 10000"
                 bedgraphtobw_prefix = "test_repeat_density"
