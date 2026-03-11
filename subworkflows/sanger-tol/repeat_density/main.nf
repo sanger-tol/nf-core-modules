@@ -46,11 +46,11 @@ workflow REPEAT_DENSITY {
     ch_extract_repeats_awk = channel.of('''\
         BEGIN { FS = " - "; OFS = "\\t" }
         /^>/ {
-            header = substr(\$0, 2)
+            header = substr($0, 2)
             next
         }
         {
-            print header, \$1, \$2
+            print header, $1, $2
         }'''.stripIndent())
         .collectFile(name: "extract_repeats.awk", cache: true)
         .collect()
@@ -93,10 +93,10 @@ workflow REPEAT_DENSITY {
     //
     // MODULE: FIXES IDS FOR REPEATS
     //
-
     ch_rename_ids_awk = channel.of('''\
+        BEGIN { }
         {
-            gsub(/\./, "0")
+            gsub(/\\./, "0")
             print
         }'''.stripIndent())
         .collectFile(name: "rename_ids.awk", cache: true)
@@ -131,8 +131,8 @@ workflow REPEAT_DENSITY {
             return x < 0 ? -x : x
         }
         {
-            gsub(/\./, "0")
-            printf "%s\t%.0f\n", \$0, my_abs(\$3 - \$2)
+            gsub(/\\./, "0")
+            printf "%s\\t%.0f\\n", $0, my_abs($3 - $2)
         }'''.stripIndent())
         .collectFile(name: "reformat_intersect.awk", cache: true)
         .collect()
@@ -165,7 +165,6 @@ workflow REPEAT_DENSITY {
         }
         .set { for_mapping }
 
-
     //
     // MODULE: MAPS THE REPEATS AGAINST THE REFERENCE GENOME
     //
@@ -179,7 +178,7 @@ workflow REPEAT_DENSITY {
     //
     ch_replace_dots_awk = channel.of('''\
         {
-            gsub(/\./, "0")
+            gsub(/\\./, "0")
             print
         }'''.stripIndent())
         .collectFile(name: "replace_dots.awk", cache: true)
