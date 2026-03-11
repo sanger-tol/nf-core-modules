@@ -53,8 +53,13 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert process.success },
+                {
+                    assert snapshot(
+                        process.out.png.collect { meta, image -> [meta, file(image).name] },
+                        process.out.findAll { key, val -> key.startsWith("versions") }
+                    ).match()
+                }
             )
         }
 
@@ -83,8 +88,13 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert process.success },
+                {
+                    assert snapshot(
+                        process.out.png.collect { meta, image -> [meta, file(image).name] },
+                        process.out.findAll { key, val -> key.startsWith("versions") }
+                    ).match()
+                }
             )
         }
 
@@ -114,8 +124,13 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert process.success },
+                {
+                    assert snapshot(
+                        process.out.png.collect { meta, image -> [meta, file(image).name] },
+                        process.out.findAll { key, val -> key.startsWith("versions") }
+                    ).match()
+                }
             )
         }
 
