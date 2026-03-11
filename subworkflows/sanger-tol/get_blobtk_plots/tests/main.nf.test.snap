@@ -1,0 +1,241 @@
+{
+    "ilCerPisi1.1 - online plots": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ]
+                ],
+                "blobtk_images": [
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,3acd989e799266386ece265c1214c9f9"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,1dd41fe93a5644b64817f8ceec461a5f"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-11T11:33:18.438537096"
+    },
+    "ilCerPisi1.1 - online plots - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "blobtk_images": [
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_BLOB_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_CHR_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ],
+                    [
+                        {
+                            "id": "ilCerPisi1_1"
+                        },
+                        "ilCerPisi1_1_GRID_VIEW.png:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-11T11:33:38.820478314"
+    },
+    "ilCerPisi1.1 - local plots": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "blobtk_images": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-11T11:22:07.762582444"
+    }
+}
