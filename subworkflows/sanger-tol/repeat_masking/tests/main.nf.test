@@ -9,10 +9,10 @@ nextflow_workflow {
     tag "subworkflows/repeat_masking"
     tag "windowmasker/ustat"
     tag "windowmasker/mkcounts"
-	tag "gunzip"
     tag "subworkflows/../../modules/nf-core/windowmasker/ustat"
     tag "subworkflows/../../modules/nf-core/windowmasker/mkcounts"
     tag "subworkflows/../../modules/nf-core/gunzip"
+    tag "nf-core/modules/gunzip"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
