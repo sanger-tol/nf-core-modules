@@ -15,7 +15,12 @@ nextflow_workflow {
     tag "ucsc/bedgraphtobigwig"
     tag "gnu/sort"
     tag "gawk"
+    tag "gunzip"
     tag "tabix/bgziptabix"
+    tag "windowmasker/ustat"
+    tag "windowmasker/mkcounts"
+    tag "subworkflows/../../modules/nf-core/windowmasker/ustat"
+    tag "subworkflows/../../modules/nf-core/windowmasker/mkcounts"
     tag "subworkflows/../../modules/nf-core/bedtools/intersect"
     tag "subworkflows/../../modules/nf-core/bedtools/makewindows"
     tag "subworkflows/../../modules/nf-core/bedtools/map"
@@ -24,7 +29,6 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/gawk"
     tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
     tag "subworkflows/../../modules/nf-core/gunzip"
-	tag "modules/nf-core/gunzip"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
