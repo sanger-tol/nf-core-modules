@@ -30,8 +30,8 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/gawk"
     tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
     tag "subworkflows/../../modules/nf-core/gunzip"
-    tag "nf-core/modules/gunzip"
-    tag "nf-core/modules/gawk"
+    tag "modules/nf-core/gunzip"
+    tag "modules/nf-core/gawk"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
