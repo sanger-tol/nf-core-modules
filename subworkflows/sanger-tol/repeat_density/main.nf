@@ -1,10 +1,13 @@
 #!/usr/bin/env nextflow
 
 //
+// SANGER_TOL SUBWORKFLOWMODULE IMPORT BLOCK
+//
+include { REPEAT_MASKING                    } from '../repeat_masking/main'
+
+//
 // MODULE IMPORT BLOCK
 //
-include { WINDOWMASKER_USTAT                } from '../../../modules/nf-core/windowmasker/ustat/main'
-include { WINDOWMASKER_MKCOUNTS             } from '../../../modules/nf-core/windowmasker/mkcounts/main'
 include { BEDTOOLS_INTERSECT                } from '../../../modules/nf-core/bedtools/intersect/main'
 include { BEDTOOLS_MAKEWINDOWS              } from '../../../modules/nf-core/bedtools/makewindows/main'
 include { BEDTOOLS_MAP                      } from '../../../modules/nf-core/bedtools/map/main'
@@ -28,17 +31,10 @@ workflow REPEAT_DENSITY {
     //
     // MODULE: MARK UP THE REPEAT REGIONS OF THE REFERENCE GENOME
     //
-    WINDOWMASKER_MKCOUNTS (
+    REPEAT_MASKING (
         ch_reference
     )
 
-    //
-    // MODULE: CALCULATE THE STATISTICS OF THE MARKED UP REGIONS
-    //
-    WINDOWMASKER_USTAT(
-        WINDOWMASKER_MKCOUNTS.out.counts,
-        ch_reference
-    )
 
     //
     // MODULE: USE USTAT OUTPUT TO EXTRACT REPEATS FROM FASTA
@@ -56,7 +52,7 @@ workflow REPEAT_DENSITY {
         .collect()
 
     GAWK_EXTRACT_REPEATS(
-        WINDOWMASKER_USTAT.out.intervals,
+        REPEAT_MASKING.out.repeat_intervals,
         ch_extract_repeats_awk,
         false
     )
