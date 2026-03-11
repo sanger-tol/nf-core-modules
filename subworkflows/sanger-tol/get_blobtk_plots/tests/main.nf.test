@@ -8,7 +8,10 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/get_blobtk_plots"
-	tag "modules/nf-core/untar"
+    tag "modules/nf-core/blobtk/plot"
+    tag "modules/nf-core/untar"
+    tag "subworkflows/../../modules/nf-core/blobtk/plot"
+    tag "subworkflows/../../modules/nf-core/untar"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
@@ -53,11 +56,11 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert process.success },
+                { assert workflow.success },
                 {
                     assert snapshot(
-                        process.out.png.collect { meta, image -> [meta, file(image).name] },
-                        process.out.findAll { key, val -> key.startsWith("versions") }
+                        workflow.out.png.collect { meta, image -> [meta, file(image).name] },
+                        workflow.out.findAll { key, val -> key.startsWith("versions") }
                     ).match()
                 }
             )
@@ -88,11 +91,11 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert process.success },
+                { assert workflow.success },
                 {
                     assert snapshot(
-                        process.out.png.collect { meta, image -> [meta, file(image).name] },
-                        process.out.findAll { key, val -> key.startsWith("versions") }
+                        workflow.out.png.collect { meta, image -> [meta, file(image).name] },
+                        workflow.out.findAll { key, val -> key.startsWith("versions") }
                     ).match()
                 }
             )
@@ -124,11 +127,11 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert process.success },
+                { assert workflow.success },
                 {
                     assert snapshot(
-                        process.out.png.collect { meta, image -> [meta, file(image).name] },
-                        process.out.findAll { key, val -> key.startsWith("versions") }
+                        workflow.out.png.collect { meta, image -> [meta, file(image).name] },
+                        workflow.out.findAll { key, val -> key.startsWith("versions") }
                     ).match()
                 }
             )
