@@ -16,7 +16,7 @@ workflow GET_BLOBTK_PLOTS {
     //          as this is most likely to be adapted by the end user on personal taste.
     //          assembly_level for our purposes can be either 'chromosome' or 'assembled-molecule`
     //              - The first may include unlocalised units whilst the latter will not.
-    blobtk_arguments    = Channel.of(
+    blobtk_arguments    = channel.of(
         [
             name: "BLOB_VIEW",
             args: "-v blob"
@@ -40,11 +40,11 @@ workflow GET_BLOBTK_PLOTS {
     // LOGIC: combine all the input and split back out so that we have channels * btk_args
     //
     ch_blobtk_plot_input = fasta
-        .combine(btk_local_path.map{ [it] })
-        .combine(btk_online_path.map{ [it] })
+        .combine(btk_local_path.map{ btk_dir -> [btk_dir] })
+        .combine(btk_online_path.map{ btk_url -> [btk_url] })
         .combine(blobtk_arguments)
-        .multiMap { meta, fasta, local, online, btk_args ->
-            fasta: [meta, fasta]
+        .multiMap { meta, ref, local, online, btk_args ->
+            fasta: [meta, ref]
             local_path: local
             online_path: online
             args: btk_args
