@@ -3,8 +3,8 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { WINDOWMASKER_USTAT                } from '../../../modules/nf-core/windowmasker/ustat/main'
-include { WINDOWMASKER_MKCOUNTS             } from '../../../modules/nf-core/windowmasker/mkcounts/main'
+include { WINDOWMASKER_USTAT    } from '../../../modules/nf-core/windowmasker/ustat/main'
+include { WINDOWMASKER_MKCOUNTS } from '../../../modules/nf-core/windowmasker/mkcounts/main'
 
 workflow REPEAT_MASKING {
     take:
