@@ -3,7 +3,12 @@
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_repeat_density.bigWig:md5,fe21775b423447331bbd41ca7fafd0bf"
+                    ]
                 ],
                 "1": [
                     [
@@ -15,7 +20,12 @@
                     ]
                 ],
                 "repeat_density": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_repeat_density.bigWig:md5,fe21775b423447331bbd41ca7fafd0bf"
+                    ]
                 ],
                 "repeat_density_tabix": [
                     [
@@ -32,44 +42,22 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-06T17:04:04.113847005"
+        "timestamp": "2026-03-11T15:40:02.077109474"
     },
     "Undibacterium_unclassified genome - stub": {
         "content": [
             {
                 "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test_repeat_density.bigWig:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+                    
                 ],
                 "1": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "repden_test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                        "repden_test.bed.gz.csi:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+                    
                 ],
                 "repeat_density": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test_repeat_density.bigWig:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+                    
                 ],
                 "repeat_density_tabix": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "repden_test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                        "repden_test.bed.gz.csi:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+                    
                 ]
             }
         ],
@@ -77,6 +65,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-06T17:09:17.829983371"
+        "timestamp": "2026-03-11T15:41:04.867604114"
     }
 }

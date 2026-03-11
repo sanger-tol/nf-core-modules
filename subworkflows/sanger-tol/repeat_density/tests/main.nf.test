@@ -7,9 +7,8 @@ nextflow_workflow {
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
+    tag "subworkflows/repeat_masker"
     tag "subworkflows/repeat_density"
-    tag "windowmasker/ustat"
-    tag "windowmasker/mkcounts"
     tag "bedtools/intersect"
     tag "bedtools/makewindows"
     tag "bedtools/map"
@@ -17,8 +16,6 @@ nextflow_workflow {
     tag "gnu/sort"
     tag "gawk"
     tag "tabix/bgziptabix"
-    tag "subworkflows/../../modules/nf-core/windowmasker/ustat"
-    tag "subworkflows/../../modules/nf-core/windowmasker/mkcounts"
     tag "subworkflows/../../modules/nf-core/bedtools/intersect"
     tag "subworkflows/../../modules/nf-core/bedtools/makewindows"
     tag "subworkflows/../../modules/nf-core/bedtools/map"
@@ -34,8 +31,6 @@ nextflow_workflow {
         nfcoreInstall(
             "${launchDir}/library/",
             [
-                "windowmasker/ustat",
-                "windowmasker/mkcounts",
                 "bedtools/intersect",
                 "bedtools/makewindows",
                 "bedtools/map",
