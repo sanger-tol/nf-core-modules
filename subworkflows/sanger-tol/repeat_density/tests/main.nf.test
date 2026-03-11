@@ -35,6 +35,8 @@ nextflow_workflow {
         nfcoreInstall(
             "${launchDir}/library/",
             [
+                "windowmasker/ustat",
+                "windowmasker/mkcounts",
                 "bedtools/intersect",
                 "bedtools/makewindows",
                 "bedtools/map",
