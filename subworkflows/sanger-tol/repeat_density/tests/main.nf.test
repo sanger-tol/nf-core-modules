@@ -7,7 +7,8 @@ nextflow_workflow {
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
-    tag "subworkflows/repeat_masker"
+    tag "subworkflows/repeat_masking"
+    tag "subworkflows/feature_finder"
     tag "subworkflows/repeat_density"
     tag "bedtools/intersect"
     tag "bedtools/makewindows"

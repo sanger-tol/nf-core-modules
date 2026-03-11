@@ -1,17 +1,15 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
-name: "repeat_density"
-description: Generate a bigwig file containing repeat density graph
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
+name: "repeat_masking"
+description: Identify regions of repeats in a genome
 keywords:
   - repeat
-  - windowmaker
+  - masking
   - markup
   - statistics
 components:
   - windowmasker/ustat:
       git_remote: https://github.com/nf-core/modules.git
   - windowmasker/mkcounts:
-      git_remote: https://github.com/nf-core/modules.git
-  - gunzip:
       git_remote: https://github.com/nf-core/modules.git
 
 input:
