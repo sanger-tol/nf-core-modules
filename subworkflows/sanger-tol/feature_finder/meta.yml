@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
-name: "feature_finder"
+name: "feature_density"
 description: Generate a density file for a given feature type
 keywords:
   - feature

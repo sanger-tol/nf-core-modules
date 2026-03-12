@@ -1,14 +1,14 @@
 nextflow_workflow {
 
-    name "Test Subworkflow FEATURE_FINDER"
+    name "Test Subworkflow FEATURE_DENSITY"
     script "../main.nf"
     config "./nextflow.config"
-    workflow "FEATURE_FINDER"
+    workflow "FEATURE_DENSITY"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/repeat_masking"
-    tag "subworkflows/feature_finder"
+    tag "subworkflows/feature_density"
     tag "subworkflows/repeat_density"
     tag "bedtools/intersect"
     tag "bedtools/makewindows"

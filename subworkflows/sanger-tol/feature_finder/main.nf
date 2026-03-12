@@ -16,7 +16,7 @@ include { GAWK as GAWK_REFORMAT_INTERSECT   } from '../../../modules/nf-core/gaw
 include { TABIX_BGZIPTABIX                  } from '../../../modules/nf-core/tabix/bgziptabix'
 
 
-workflow FEATURE_FINDER {
+workflow FEATURE_DENSITY {
     take:
     intervals_file
     ch_chrom_sizes
