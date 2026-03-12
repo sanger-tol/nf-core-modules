@@ -4,7 +4,7 @@
 // SANGER_TOL SUBWORKFLOWMODULE IMPORT BLOCK
 //
 include { REPEAT_MASKING                    } from '../repeat_masking/main'
-include { FEATURE_FINDER                    } from '../feature_finder/main'
+include { FEATURE_DENSITY                   } from '../feature_density/main'
 
 //
 // MODULE IMPORT BLOCK
@@ -52,12 +52,12 @@ workflow REPEAT_DENSITY {
     // SUBWORKFLOW: FINDE FEATURE ACROSS GENOME AND OUTPUT A DENSITY FILE
     //              AND TABIX INDEX
     //
-    FEATURE_FINDER(
+    FEATURE_DENSITY(
         GAWK_EXTRACT_REPEATS.out.output,
         ch_chrom_sizes
     )
 
     emit:
-    repeat_density       = FEATURE_FINDER.out.density_file
-    repeat_density_tabix = FEATURE_FINDER.out.density_tabix
+    repeat_density       = FEATURE_DENSITY.out.density_file
+    repeat_density_tabix = FEATURE_DENSITY.out.density_tabix
 }

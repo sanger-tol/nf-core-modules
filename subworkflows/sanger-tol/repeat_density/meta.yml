@@ -7,7 +7,7 @@ keywords:
   - bigwig
 components:
   - repeat_masking
-  - feature_finder
+  - feature_density
   - gawk:
       git_remote: https://github.com/nf-core/modules.git
 
