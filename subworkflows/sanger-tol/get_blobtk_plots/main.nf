@@ -7,6 +7,7 @@ workflow GET_BLOBTK_PLOTS {
     fasta                    // channel: [meta], path/to/fasta
     btk_local_path           // channel: [path/to/dir]
     btk_online_path          // channel: https://online.repository_of_btk.datasets
+    val_blobtk_output_format // channel: "png" or "svg"
 
     main:
 
@@ -32,6 +33,10 @@ workflow GET_BLOBTK_PLOTS {
         [
             name: "GRID_CHR_VIEW",
             args: "-v blob --filter assembly_level=assembled-molecule --shape grid -w 0.01 -x position"
+        ],
+        [
+            name: "SNAIL_PLOT",
+            args: "-v snail"
         ]
     )
 
@@ -59,11 +64,14 @@ workflow GET_BLOBTK_PLOTS {
         ch_blobtk_plot_input.fasta,
         ch_blobtk_plot_input.local_path,
         ch_blobtk_plot_input.online_path,
-        ch_blobtk_plot_input.args
-    )
-    ch_images           = BLOBTK_PLOT.out.png.mix ( BLOBTK_PLOT.out.png )
+        val_blobtk_output_format,
 
+    )
+    ch_png_images           = BLOBTK_PLOT.out.png.mix ( BLOBTK_PLOT.out.png )
+
+    ch_svg_images           = BLOBTK_PLOT.out.svg.mix ( BLOBTK_PLOT.out.svg )
 
     emit:
-    blobtk_images       = ch_images
+    png_blobtk_images       = ch_png_images
+    svg_blobtk_images       = ch_svg_images
 }
