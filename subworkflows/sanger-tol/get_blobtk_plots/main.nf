@@ -4,9 +4,10 @@ include { BLOBTK_PLOT } from '../../../modules/nf-core/blobtk/plot/main'
 workflow GET_BLOBTK_PLOTS {
 
     take:
-    fasta                    // channel: [meta], path/to/fasta
-    btk_local_path           // channel: [path/to/dir]
-    btk_online_path          // channel: https://online.repository_of_btk.datasets
+    ch_fasta                    // channel: [meta], path/to/fasta
+    ch_btk_local_path           // channel: [path/to/dir]
+    ch_btk_online_path          // channel: https://online.repository_of_btk.datasets
+    ch_blobtk_output_format     // channel: "png" or "svg"
 
     main:
 
@@ -32,6 +33,10 @@ workflow GET_BLOBTK_PLOTS {
         [
             name: "GRID_CHR_VIEW",
             args: "-v blob --filter assembly_level=assembled-molecule --shape grid -w 0.01 -x position"
+        ],
+        [
+            name: "SNAIL_PLOT",
+            args: "-v snail"
         ]
     )
 
@@ -39,15 +44,17 @@ workflow GET_BLOBTK_PLOTS {
     //
     // LOGIC: combine all the input and split back out so that we have channels * btk_args
     //
-    ch_blobtk_plot_input = fasta
-        .combine(btk_local_path.map{ btk_dir -> [btk_dir] })
-        .combine(btk_online_path.map{ btk_url -> [btk_url] })
+    ch_blobtk_plot_input = ch_fasta
+        .combine(ch_btk_local_path.map{ btk_dir -> [btk_dir] })
+        .combine(ch_btk_online_path.map{ btk_url -> [btk_url] })
         .combine(blobtk_arguments)
-        .multiMap { meta, ref, local, online, btk_args ->
+        .combine(ch_blobtk_output_format)
+        .multiMap { meta, ref, local, online, btk_args, output_format ->
             fasta: [meta, ref]
             local_path: local
             online_path: online
             args: btk_args
+            format: output_format
         }
 
 
@@ -59,11 +66,17 @@ workflow GET_BLOBTK_PLOTS {
         ch_blobtk_plot_input.fasta,
         ch_blobtk_plot_input.local_path,
         ch_blobtk_plot_input.online_path,
-        ch_blobtk_plot_input.args
+        ch_blobtk_plot_input.args,
+        ch_blobtk_plot_input.format
     )
-    ch_images           = BLOBTK_PLOT.out.png.mix ( BLOBTK_PLOT.out.png )
 
+    png_channel             = channel.empty()
+    ch_png_images           = png_channel.mix(BLOBTK_PLOT.out.png)
+
+    svg_channel             = channel.empty()
+    ch_svg_images           = svg_channel.mix(BLOBTK_PLOT.out.svg)
 
     emit:
-    blobtk_images       = ch_images
+    png_blobtk_images       = ch_png_images
+    svg_blobtk_images       = ch_svg_images
 }
