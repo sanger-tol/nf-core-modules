@@ -48,11 +48,13 @@ workflow GET_BLOBTK_PLOTS {
         .combine(btk_local_path.map{ btk_dir -> [btk_dir] })
         .combine(btk_online_path.map{ btk_url -> [btk_url] })
         .combine(blobtk_arguments)
-        .multiMap { meta, ref, local, online, btk_args ->
+        .combine(val_blobtk_output_format)
+        .multiMap { meta, ref, local, online, btk_args, output_format ->
             fasta: [meta, ref]
             local_path: local
             online_path: online
             args: btk_args
+            format: output_format
         }
 
 
@@ -65,10 +67,14 @@ workflow GET_BLOBTK_PLOTS {
         ch_blobtk_plot_input.local_path,
         ch_blobtk_plot_input.online_path,
         ch_blobtk_plot_input.args,
-        val_blobtk_output_format
+        ch_blobtk_plot_input.format
     )
-    ch_png_images           = BLOBTK_PLOT.out.png.mix(BLOBTK_PLOT.out.png)
-    ch_svg_images           = BLOBTK_PLOT.out.svg.mix(BLOBTK_PLOT.out.svg)
+
+    png_channel             = channel.empty()
+    ch_png_images           = png_channel.mix(BLOBTK_PLOT.out.png)
+
+    svg_channel             = channel.empty()
+    ch_svg_images           = svg_channel.mix(BLOBTK_PLOT.out.svg)
 
     emit:
     png_blobtk_images       = ch_png_images
