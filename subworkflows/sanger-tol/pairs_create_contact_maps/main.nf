@@ -29,7 +29,9 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     // Module: Make a PNG of the PretextMap for fast viz
     //
     PRETEXTSNAPSHOT(
-        PRETEXTMAP.out.pretext.filter { val_create_pretext_snapshot }
+        PRETEXTMAP.out.pretext
+            .filter { val_create_pretext_snapshot }
+            .combine(ch_custom_order, by: 0)
     )
 
     //
