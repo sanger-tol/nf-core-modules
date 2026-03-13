@@ -123,6 +123,7 @@ nextflow_workflow {
                 ])
                 input[1] = channel.of([])
                 input[2] = channel.of("https://blobtoolkit.genomehubs.org/api/v1/dataset/id/CALUEP01")
+                input[3] = channel.of("png")
                 """
             }
         }
