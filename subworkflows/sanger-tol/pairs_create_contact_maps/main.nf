@@ -9,6 +9,7 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     take:
     ch_pairs                    // [meta, pairs]
     ch_chrom_sizes              // [meta, sizes]
+    ch_custom_order             // [meta, order]
     val_build_pretext           // bool: build pretext map
     val_create_pretext_snapshot // bool: build snapshot
     val_build_cooler            // bool: build cooler
