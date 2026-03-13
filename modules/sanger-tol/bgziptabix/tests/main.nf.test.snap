@@ -1,4 +1,320 @@
 {
+    "tsv to bed": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,1280050828c9d0401871239fb267a63f",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.tbi:md5,8fc7bc9e739aacaed7a26d7bf56844d2"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,8d36d8571b898909ff148b75ceae0f76"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ],
+                "csi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,8d36d8571b898909ff148b75ceae0f76"
+                    ]
+                ],
+                "gz_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,1280050828c9d0401871239fb267a63f",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "tbi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.tbi:md5,8fc7bc9e739aacaed7a26d7bf56844d2"
+                    ]
+                ],
+                "versions_bgzip": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "versions_tabix": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-04T10:58:07.794595226"
+    },
+    "bed with short sequences, csi not wanted": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.tbi:md5,0b587fdb9b47029ed082658fb78b68a6"
+                    ]
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ],
+                "csi": [
+                    
+                ],
+                "gz_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "tbi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.tbi:md5,0b587fdb9b47029ed082658fb78b68a6"
+                    ]
+                ],
+                "versions_bgzip": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "versions_tabix": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-04T11:30:32.180227544"
+    },
+    "bed with long sequences (no tbi index possible)": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ],
+                "csi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "gz_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "tbi": [
+                    
+                ],
+                "versions_bgzip": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "versions_tabix": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-20T09:24:43.967090807"
+    },
+    "bed with extra long sequences (no index possible at all)": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ],
+                "csi": [
+                    
+                ],
+                "gz_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "tbi": [
+                    
+                ],
+                "versions_bgzip": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "versions_tabix": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-02-20T09:24:49.457480224"
+    },
     "stub": {
         "content": [
             {
@@ -87,6 +403,85 @@
             "nextflow": "25.10.2"
         },
         "timestamp": "2026-02-20T10:35:01.49958593"
+    },
+    "bed with short sequences, tbi not wanted": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ],
+                "csi": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                    ]
+                ],
+                "gz_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "tbi": [
+                    
+                ],
+                "versions_bgzip": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.21"
+                    ]
+                ],
+                "versions_tabix": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.21"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-04T11:30:25.941990677"
     },
     "bed with short sequences": {
         "content": [
@@ -177,7 +572,7 @@
         },
         "timestamp": "2026-02-20T09:24:38.507500874"
     },
-    "bed with extra long sequences (no index possible)": {
+    "unsorted tsv to bed": {
         "content": [
             {
                 "0": [
@@ -185,88 +580,24 @@
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
-                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                        "test.bed.gz:md5,b719f380521e18ae93f81271b32e16a4",
+                        "test.bed.gz.gzi:md5,84f874f4c01d5373ccaeb202cc202469"
                     ]
                 ],
                 "1": [
-                    
-                ],
-                "2": [
-                    
-                ],
-                "3": [
-                    [
-                        "BGZIPTABIX",
-                        "bgzip",
-                        "1.21"
-                    ]
-                ],
-                "4": [
-                    [
-                        "BGZIPTABIX",
-                        "tabix",
-                        "1.21"
-                    ]
-                ],
-                "csi": [
-                    
-                ],
-                "gz_index": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
-                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                        "test.bed.gz.tbi:md5,a00cbdae1e2a61ee8e5210a8d86ce5f9"
                     ]
-                ],
-                "tbi": [
-                    
-                ],
-                "versions_bgzip": [
-                    [
-                        "BGZIPTABIX",
-                        "bgzip",
-                        "1.21"
-                    ]
-                ],
-                "versions_tabix": [
-                    [
-                        "BGZIPTABIX",
-                        "tabix",
-                        "1.21"
-                    ]
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-02-20T09:24:49.457480224"
-    },
-    "bed with longsequences (no tbi index)": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
-                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
-                    ]
-                ],
-                "1": [
-                    
                 ],
                 "2": [
                     [
                         {
                             "id": "test"
                         },
-                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                        "test.bed.gz.csi:md5,de444003c8fe1860e6dc54740a4077e0"
                     ]
                 ],
                 "3": [
@@ -288,7 +619,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bed.gz.csi:md5,90e33f210d5ab2da209131c7206df143"
+                        "test.bed.gz.csi:md5,de444003c8fe1860e6dc54740a4077e0"
                     ]
                 ],
                 "gz_index": [
@@ -296,12 +627,17 @@
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,a901da7299a5a3b4a88ec5961e9d27b0",
-                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                        "test.bed.gz:md5,b719f380521e18ae93f81271b32e16a4",
+                        "test.bed.gz.gzi:md5,84f874f4c01d5373ccaeb202cc202469"
                     ]
                 ],
                 "tbi": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.gz.tbi:md5,a00cbdae1e2a61ee8e5210a8d86ce5f9"
+                    ]
                 ],
                 "versions_bgzip": [
                     [
@@ -323,6 +659,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-20T09:24:43.967090807"
+        "timestamp": "2026-03-04T11:30:58.431878893"
     }
 }
