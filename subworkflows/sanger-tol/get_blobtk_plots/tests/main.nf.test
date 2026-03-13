@@ -60,7 +60,7 @@ nextflow_workflow {
                 { assert workflow.success },
                 {
                     assert snapshot(
-                        workflow.out.blobtk_images.collect { meta, image -> [meta, file(image).name] },
+                        workflow.out.png_blobtk_images.collect { meta, image -> [meta, file(image).name] },
                         workflow.out.findAll { key, val -> key.startsWith("versions") }
                     ).match()
                 }
@@ -96,7 +96,7 @@ nextflow_workflow {
                 { assert workflow.success },
                 {
                     assert snapshot(
-                        workflow.out.blobtk_images.collect { meta, image -> [meta, file(image).name] },
+                        workflow.out.svg_blobtk_images.collect { meta, image -> [meta, file(image).name] },
                         workflow.out.findAll { key, val -> key.startsWith("versions") }
                     ).match()
                 }
@@ -133,7 +133,7 @@ nextflow_workflow {
                 { assert workflow.success },
                 {
                     assert snapshot(
-                        workflow.out.blobtk_images.collect { meta, image -> [meta, file(image).name] },
+                        workflow.out.png_blobtk_images.collect { meta, image -> [meta, file(image).name] },
                         workflow.out.findAll { key, val -> key.startsWith("versions") }
                     ).match()
                 }

@@ -64,12 +64,11 @@ workflow GET_BLOBTK_PLOTS {
         ch_blobtk_plot_input.fasta,
         ch_blobtk_plot_input.local_path,
         ch_blobtk_plot_input.online_path,
-        val_blobtk_output_format,
-
+        ch_blobtk_plot_input.args,
+        val_blobtk_output_format
     )
-    ch_png_images           = BLOBTK_PLOT.out.png.mix ( BLOBTK_PLOT.out.png )
-
-    ch_svg_images           = BLOBTK_PLOT.out.svg.mix ( BLOBTK_PLOT.out.svg )
+    ch_png_images           = BLOBTK_PLOT.out.png.mix(BLOBTK_PLOT.out.png)
+    ch_svg_images           = BLOBTK_PLOT.out.svg.mix(BLOBTK_PLOT.out.svg)
 
     emit:
     png_blobtk_images       = ch_png_images
