@@ -4,10 +4,10 @@ include { BLOBTK_PLOT } from '../../../modules/nf-core/blobtk/plot/main'
 workflow GET_BLOBTK_PLOTS {
 
     take:
-    fasta                    // channel: [meta], path/to/fasta
-    btk_local_path           // channel: [path/to/dir]
-    btk_online_path          // channel: https://online.repository_of_btk.datasets
-    val_blobtk_output_format // channel: "png" or "svg"
+    ch_fasta                    // channel: [meta], path/to/fasta
+    ch_btk_local_path           // channel: [path/to/dir]
+    ch_btk_online_path          // channel: https://online.repository_of_btk.datasets
+    ch_blobtk_output_format     // channel: "png" or "svg"
 
     main:
 
@@ -44,11 +44,11 @@ workflow GET_BLOBTK_PLOTS {
     //
     // LOGIC: combine all the input and split back out so that we have channels * btk_args
     //
-    ch_blobtk_plot_input = fasta
-        .combine(btk_local_path.map{ btk_dir -> [btk_dir] })
-        .combine(btk_online_path.map{ btk_url -> [btk_url] })
+    ch_blobtk_plot_input = ch_fasta
+        .combine(ch_btk_local_path.map{ btk_dir -> [btk_dir] })
+        .combine(ch_btk_online_path.map{ btk_url -> [btk_url] })
         .combine(blobtk_arguments)
-        .combine(val_blobtk_output_format)
+        .combine(ch_blobtk_output_format)
         .multiMap { meta, ref, local, online, btk_args, output_format ->
             fasta: [meta, ref]
             local_path: local
