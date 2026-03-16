@@ -24,7 +24,7 @@ input:
       type: string
       description: |
         URL of online Blobtoolkit datasets to use for plotting
-  - val_blobtk_output_format:
+  - ch_blobtk_output_format:
       type: string,
       description: |
         Output format for BlobTK plots (png or svg)
