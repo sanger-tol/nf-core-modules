@@ -232,8 +232,9 @@ nextflow_workflow {
         when {
 
             params {
-                cooler_cload_args = '-0 -c1 2 -p1 3 -c2 4 -p2 5'
+                cooler_cload_args = "-0 -c1 2 -p1 3 -c2 4 -p2 5"
                 juicertools_args = "-r 20000"
+                pretextsnapshot_args = ""
             }
 
             workflow {
@@ -277,6 +278,7 @@ nextflow_workflow {
             params {
                 cooler_cload_args = '-0 -c1 2 -p1 3 -c2 4 -p2 5'
                 juicertools_args = "-r 20000"
+                pretextsnapshot_args = '--sequences \"=full\"'
             }
 
             workflow {
