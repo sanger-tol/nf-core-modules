@@ -28,10 +28,15 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     //
     // Module: Make a PNG of the PretextMap for fast viz
     //
+    def snapshot_input = PRETEXTMAP.out.pretext
+        .filter { val_create_pretext_snapshot }
+        .combine(ch_custom_order)
+        .map { meta, file, meta2, file2 ->
+            [meta, file, file2]
+        }
+
     PRETEXTSNAPSHOT(
-        PRETEXTMAP.out.pretext
-            .filter { val_create_pretext_snapshot }
-            .combine(ch_custom_order, by: 0)
+        snapshot_input
     )
 
     //
