@@ -25,6 +25,7 @@ process GNK_FASTASORT {
     """
     fastasort \\
         --index ${index} \\
+        --output ${prefix} \\
         ${args}
     """
 
