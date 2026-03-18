@@ -6,4 +6,4 @@ channels:
 dependencies:
   - pip==26.0.1
   - pip:
-      - gnk_fastasort==0.1.0
+      - gnk_fastasort==0.1.2
