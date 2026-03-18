@@ -33,7 +33,7 @@ input:
 
         Structure: [ val(meta), path(sizes) ]
       pattern: "*.{sizes,tsv}"
-  - ch_custom_order:
+  - ch_pretext_snapshot_order_file:
       type: file
       description: |
         Input custom order file - a txt file of new line separated chromosome names.

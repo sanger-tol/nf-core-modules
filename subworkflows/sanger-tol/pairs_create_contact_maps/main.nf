@@ -7,14 +7,14 @@ include { PRETEXTSNAPSHOT                            } from '../../../modules/nf
 
 workflow PAIRS_CREATE_CONTACT_MAPS {
     take:
-    ch_pairs                    // [meta, pairs]
-    ch_chrom_sizes              // [meta, sizes]
-    ch_custom_order             // [meta, order]
-    val_build_pretext           // bool: build pretext map
-    val_create_pretext_snapshot // bool: build snapshot
-    val_build_cooler            // bool: build cooler
-    val_build_juicer            // bool: build juicer
-    val_cool_bin                // val: cooler cload parameter
+    ch_pairs                        // [meta, pairs]
+    ch_chrom_sizes                  // [meta, sizes]
+    ch_pretext_snapshot_order_file  // [meta, order]
+    val_build_pretext               // bool: build pretext map
+    val_create_pretext_snapshot     // bool: build snapshot
+    val_build_cooler                // bool: build cooler
+    val_build_juicer                // bool: build juicer
+    val_cool_bin                    // val: cooler cload parameter
 
     main:
     //
@@ -30,7 +30,9 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     //
     def snapshot_input = PRETEXTMAP.out.pretext
         .filter { val_create_pretext_snapshot }
-        .combine(ch_custom_order, by: 0)
+        .combine(ch_pretext_snapshot_order_file, by: 0)
+        .map { meta, pairs, order -> tuple(meta, pairs, order) }
+
 
     PRETEXTSNAPSHOT(
         snapshot_input
