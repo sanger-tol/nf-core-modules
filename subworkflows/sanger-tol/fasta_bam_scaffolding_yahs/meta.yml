@@ -29,6 +29,12 @@ input:
         Channel containing BAM files of Hi-C reads mapped to each assembly.
         Structure: [ val(meta), path(bam) ]
       pattern: "*.{bam/cram/sam}"
+  - ch_custom_order:
+      type: file
+      description: |
+        Channel containing custom order file - a txt file of new line separated scaffold names.
+        Structure: [ val(meta), path(order) ]
+      pattern: "*.{txt}"
   - val_build_pretext:
       type: boolean
       description: Build a PretextMap contact map
