@@ -30,10 +30,7 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     //
     def snapshot_input = PRETEXTMAP.out.pretext
         .filter { val_create_pretext_snapshot }
-        .combine(ch_custom_order)
-        .map { meta, file, meta2, file2 ->
-            [meta, file, file2]
-        }
+        .combine(ch_custom_order, by: 0)
 
     PRETEXTSNAPSHOT(
         snapshot_input
