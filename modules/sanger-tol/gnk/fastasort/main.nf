@@ -20,7 +20,6 @@ process GNK_FASTASORT {
 
     script:
     def args    = task.ext.args     ?: ""
-    def prefix  = task.ext.prefix   ?: "${meta.id}"
 
     """
     fastasort \\
@@ -30,8 +29,7 @@ process GNK_FASTASORT {
 
 
     stub:
-    def prefix  = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.tsv
+    touch ${meta.id}.tsv
     """
 }
