@@ -11,7 +11,6 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     take:
     ch_fasta                    // [meta, assembly]
     ch_hic_bam                  // [meta, bam/bed]
-    ch_custom_order             // [meta, order]
     val_build_pretext           // bool: build pretext map
     val_create_pretext_snapshot // bool: build snapshot
     val_build_cooler            // bool: build cooler
@@ -68,7 +67,7 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     //
     ch_contact_map_inputs = YAHS_MAKEPAIRSFILE.out.pairs
         .combine(SAMTOOLS_FAIDX_SCAFFOLDS.out.sizes, by: 0)
-        .multiMap { meta, pairs, sizes, order ->
+        .multiMap { meta, pairs, sizes ->
             pairs: [ meta, pairs ]
             sizes: [ meta, sizes ]
             order: [ meta, [] ]
