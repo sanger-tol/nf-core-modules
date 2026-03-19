@@ -28,7 +28,7 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     //
     // Module: Make a PNG of the PretextMap for fast viz
     //
-    def ch_snapshot_input = PRETEXTMAP.out.pretext
+   ch_snapshot_input = PRETEXTMAP.out.pretext
         .join(ch_pretext_snapshot_order_file, remainder: true, by: 0)
         .map { meta, pretext, order ->
             tuple(meta, pretext, order ?: [])
