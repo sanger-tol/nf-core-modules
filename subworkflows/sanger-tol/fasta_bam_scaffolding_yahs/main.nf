@@ -67,14 +67,15 @@ workflow FASTA_BAM_SCAFFOLDING_YAHS {
     //
     ch_contact_map_inputs = YAHS_MAKEPAIRSFILE.out.pairs
         .combine(SAMTOOLS_FAIDX_SCAFFOLDS.out.sizes, by: 0)
-        .multiMap { meta, pairs, sizes ->
-            pairs: [ meta, pairs ]
-            sizes: [ meta, sizes ]
+        .multiMap { meta, pairs_file, sizes_file ->
+            pairs: [ meta, pairs_file ]
+            sizes: [ meta, sizes_file ]
         }
 
     PAIRS_CREATE_CONTACT_MAPS(
         ch_contact_map_inputs.pairs,
         ch_contact_map_inputs.sizes,
+        channel.empty(),
         val_build_pretext,
         val_create_pretext_snapshot,
         val_build_cooler,
