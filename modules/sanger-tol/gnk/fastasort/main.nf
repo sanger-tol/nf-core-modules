@@ -5,8 +5,8 @@ process GNK_FASTASORT {
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
-        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/f7/f7570c98be77c9ca032c4b9abd1adfbc8a908db3d2662b9e0e8199f389250fff/data'
-        : 'community.wave.seqera.io/library/pip_gnk_fastasort:cfccd490e04b325e'}"
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/30/308db3849b816a57ea2a8b1234c440948f57d428e5dffa6ec88cc46b23af1364/data'
+        : 'community.wave.seqera.io/library/pip_gnk-fastasort:6f54e70aa0811c1a'}"
 
     input:
     tuple val(meta), path(index)
