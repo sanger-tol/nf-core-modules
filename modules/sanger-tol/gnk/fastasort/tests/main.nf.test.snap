@@ -1,45 +1,4 @@
 {
-    "ilDryDodo1 - index - stub": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "ilDryDodo1"
-                        },
-                        "ilDryDodo1.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    [
-                        "GNK_FASTASORT",
-                        "gnk_fastasort",
-                        "1.0.0"
-                    ]
-                ],
-                "tsv": [
-                    [
-                        {
-                            "id": "ilDryDodo1"
-                        },
-                        "ilDryDodo1.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "versions_gnkfastasort": [
-                    [
-                        "GNK_FASTASORT",
-                        "gnk_fastasort",
-                        "1.0.0"
-                    ]
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-03-05T10:48:19.792748174"
-    },
     "gfLaeSulp1.1 - index": {
         "content": [
             {
@@ -48,14 +7,14 @@
                         {
                             "id": "gfLaeSulp1.1"
                         },
-                        "GCA_927399515_reordered.tsv:md5,9e683a21789e2035fadb4bf713fa2210"
+                        "gfLaeSulp1.1_reordered.tsv:md5,9e683a21789e2035fadb4bf713fa2210"
                     ]
                 ],
                 "1": [
                     [
                         "GNK_FASTASORT",
                         "gnk_fastasort",
-                        "1.0.0"
+                        "0.1.2"
                     ]
                 ],
                 "tsv": [
@@ -63,14 +22,14 @@
                         {
                             "id": "gfLaeSulp1.1"
                         },
-                        "GCA_927399515_reordered.tsv:md5,9e683a21789e2035fadb4bf713fa2210"
+                        "gfLaeSulp1.1_reordered.tsv:md5,9e683a21789e2035fadb4bf713fa2210"
                     ]
                 ],
                 "versions_gnkfastasort": [
                     [
                         "GNK_FASTASORT",
                         "gnk_fastasort",
-                        "1.0.0"
+                        "0.1.2"
                     ]
                 ]
             }
@@ -96,7 +55,7 @@
                     [
                         "GNK_FASTASORT",
                         "gnk_fastasort",
-                        "1.0.0"
+                        "0.1.2"
                     ]
                 ],
                 "tsv": [
@@ -111,7 +70,7 @@
                     [
                         "GNK_FASTASORT",
                         "gnk_fastasort",
-                        "1.0.0"
+                        "0.1.2"
                     ]
                 ]
             }
