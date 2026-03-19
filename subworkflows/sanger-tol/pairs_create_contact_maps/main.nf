@@ -28,14 +28,16 @@ workflow PAIRS_CREATE_CONTACT_MAPS {
     //
     // Module: Make a PNG of the PretextMap for fast viz
     //
-    def snapshot_input = PRETEXTMAP.out.pretext
-        .filter { val_create_pretext_snapshot }
-        .combine(ch_pretext_snapshot_order_file, by: 0)
-        .map { meta, pairs, order -> tuple(meta, pairs, order) }
+    def ch_snapshot_input = PRETEXTMAP.out.pretext
+        .join(ch_pretext_snapshot_order_file, remainder: true, by: 0)
+        .map { meta, pretext, order ->
+            tuple(meta, pretext, order ?: [])
+        }
+        .filter { _meta, pretext, _order ->  val_create_pretext_snapshot && pretext }
 
 
     PRETEXTSNAPSHOT(
-        snapshot_input
+        ch_snapshot_input
     )
 
     //
