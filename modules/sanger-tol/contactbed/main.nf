@@ -13,7 +13,6 @@ process CONTACTBED {
     output:
     tuple val(meta), path("*.bed"), emit: bed
     tuple val("${task.process}"), val('coreutils'), eval('ls --version | sed -n "s/ls (GNU coreutils) //p"'), emit: versions_coreutils, topic: versions
-    tuple val("${task.process}"), val('gawk'), eval('gawk --version | grep -o -E "[0-9]+(.[0-9]+)+" | head -n1'), emit: versions_gawk, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
