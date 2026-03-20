@@ -15,7 +15,7 @@
                     [
                         "GENERATE_CONTACTS_INDEX",
                         "coreutils",
-                        "8.30"
+                        "9.5"
                     ]
                 ],
                 "contacts_with_index": [
@@ -31,12 +31,12 @@
                     [
                         "GENERATE_CONTACTS_INDEX",
                         "coreutils",
-                        "8.30"
+                        "9.5"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-03-20T14:01:09.594875",
+        "timestamp": "2026-03-20T14:31:32.602657",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -58,7 +58,7 @@
                     [
                         "GENERATE_CONTACTS_INDEX",
                         "coreutils",
-                        "8.30"
+                        "9.5"
                     ]
                 ],
                 "contacts_with_index": [
@@ -74,12 +74,12 @@
                     [
                         "GENERATE_CONTACTS_INDEX",
                         "coreutils",
-                        "8.30"
+                        "9.5"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-03-20T14:01:13.028511",
+        "timestamp": "2026-03-20T14:31:37.586629",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

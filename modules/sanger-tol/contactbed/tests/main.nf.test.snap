@@ -14,7 +14,14 @@
                     [
                         "CONTACTBED",
                         "coreutils",
-                        "8.30"
+                        "9.5"
+                    ]
+                ],
+                "2": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
                     ]
                 ],
                 "bed": [
@@ -29,12 +36,19 @@
                     [
                         "CONTACTBED",
                         "coreutils",
-                        "8.30"
+                        "9.5"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-03-20T14:12:37.075519",
+        "timestamp": "2026-03-20T14:31:10.342391",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -55,7 +69,14 @@
                     [
                         "CONTACTBED",
                         "coreutils",
-                        "8.30"
+                        "9.5"
+                    ]
+                ],
+                "2": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
                     ]
                 ],
                 "bed": [
@@ -70,12 +91,19 @@
                     [
                         "CONTACTBED",
                         "coreutils",
-                        "8.30"
+                        "9.5"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-03-20T14:12:33.908406",
+        "timestamp": "2026-03-20T14:31:06.513504",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

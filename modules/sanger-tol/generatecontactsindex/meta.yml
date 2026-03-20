@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "generate_contacts_index"
 description: |
   Generates a TSV index file from contacts BED file by sorting and extracting unique contact positions.
@@ -28,7 +29,7 @@ input:
           Contacts BED file to generate index for.
         pattern: "*.bed"
         ontologies:
-          - edam: http://edamontology.org/format_3003
+          - edam: http://edamontology.org/format_3003 # BED
 output:
   contacts_with_index:
     - - meta:
@@ -42,14 +43,14 @@ output:
             Input contacts BED file (passed through).
           pattern: "*.bed"
           ontologies:
-            - edam: http://edamontology.org/format_3003
+            - edam: http://edamontology.org/format_3003 # BED
       - "*.index.tsv":
           type: file
           description: |
             Path to index TSV file of the contacts.
           pattern: "*.index.tsv"
           ontologies:
-            - edam: http://edamontology.org/format_3475
+            - edam: http://edamontology.org/format_3475 # TSV
   versions_coreutils:
     - - ${task.process}:
           type: string
