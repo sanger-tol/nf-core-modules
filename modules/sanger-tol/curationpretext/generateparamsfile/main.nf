@@ -11,15 +11,13 @@ process CURATIONPRETEXT_GENERATEPARAMSFILE {
     val cpretext_extra_opts
 
     output:
-    tuple val(meta), path("${prefix}.curationpretext_params_file.json"), emit: json_params_file
-    path("versions.yml")                                               , emit: versions
+    tuple val(meta), path("*.json"), emit: json_params_file
+    tuple val("${task.process}"), val('curationpretext_generateparamsfile'), val('1.0.0'), emit: versions_curationpretextgenerateparamsfile, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
 
     exec:
-    def VERSION = "1.0.0"
-
     prefix = task.ext.prefix ?: "${meta.id}"
 
     def cpretext_inputs = cpretext_extra_opts + [
@@ -29,11 +27,7 @@ process CURATIONPRETEXT_GENERATEPARAMSFILE {
         'teloseq': telomere_motif,
         'aligner': aligner,
     ].findAll { kv -> kv.value } // filter out falsy values (null, false, "", [], etc)
+
     def jsonBuilder = new groovy.json.JsonBuilder(cpretext_inputs)
     file("${task.workDir}/${prefix}.curationpretext_params_file.json").text = jsonBuilder.toPrettyString()
-
-    file("${task.workDir}/versions.yml").text = """\
-        CURATIONPRETEXT_GENERATEPARAMSFILE:
-            curationpretext_generateparamsfile: ${VERSION}
-        """.stripIndent()
 }

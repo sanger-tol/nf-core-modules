@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "generate_contacts_index"
 description: |
   Generates a TSV index file from contacts BED file by sorting and extracting unique contact positions.
@@ -14,7 +14,9 @@ tools:
         GNU coreutils provides basic file, shell and text manipulation utilities.
       homepage: https://www.gnu.org/software/coreutils/
       documentation: https://www.gnu.org/software/coreutils/manual/
-      licence: ["GPL v3.0"]
+      licence:
+        - "GPL v3.0"
+      identifier: ""
 input:
   - - meta:
         type: map
@@ -27,7 +29,7 @@ input:
           Contacts BED file to generate index for.
         pattern: "*.bed"
         ontologies:
-          - edam: http://edamontology.org/format_3003
+          - edam: http://edamontology.org/format_3003 # BED
 output:
   contacts_with_index:
     - - meta:
@@ -41,7 +43,7 @@ output:
             Input contacts BED file (passed through).
           pattern: "*.bed"
           ontologies:
-            - edam: http://edamontology.org/format_3003
+            - edam: http://edamontology.org/format_3003 # BED
       - "*.index.tsv":
           type: file
           description: |
@@ -49,13 +51,27 @@ output:
           pattern: "*.index.tsv"
           ontologies:
             - edam: http://edamontology.org/format_3475 # TSV
+  versions_coreutils:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - coreutils:
+          type: string
+          description: The name of the tool
+      - ls --version | sed -n "s/ls (GNU coreutils) //p":
+          type: eval
+          description: The expression to obtain the version of the tool
+topics:
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
-        ontologies:
-          - edam: http://edamontology.org/format_3750 # YAML
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - coreutils:
+          type: string
+          description: The name of the tool
+      - ls --version | sed -n "s/ls (GNU coreutils) //p":
+          type: eval
+          description: The expression to obtain the version of the tool
 authors:
   - "@sanger-tol"
 maintainers:
