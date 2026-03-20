@@ -26,7 +26,7 @@ input:
           Collection of *.fasta.gz formatted longread data
         pattern: "[*.{fasta.gz,fa.gz}]"
         ontologies:
-          - edam: "http://edamontology.org/format_3989"
+          - edam: "http://edamontology.org/format_3989" # FASTA
   - - meta2:
         type: map
         description: |
@@ -38,7 +38,7 @@ input:
           Collection of *.fasta.gz formatted longread data
         pattern: "[*.{fasta.gz,fa.gz}]"
         ontologies:
-          - edam: "http://edamontology.org/format_3989"
+          - edam: "http://edamontology.org/format_3989" # FASTA
   - - meta3:
         type: map
         description: |
@@ -50,7 +50,7 @@ input:
           Collection of *.fasta.gz formatted longread data
         pattern: "[*.{fasta.gz,fa.gz}]"
         ontologies:
-          - edam: "http://edamontology.org/format_3989"
+          - edam: "http://edamontology.org/format_3989" # FASTA
     - illumina_layout:
         type: string
         description: |
