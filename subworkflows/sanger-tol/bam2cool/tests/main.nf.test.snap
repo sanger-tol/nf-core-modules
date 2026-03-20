@@ -6,18 +6,12 @@
             ],
             [
                 "test.mcool"
-            ],
-            [
-                "versions.yml:md5,520059ed04546fa5368615d48b806455",
-                "versions.yml:md5,520059ed04546fa5368615d48b806455",
-                "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb",
-                "versions.yml:md5,7930faaa0d466f166bbf4bb65f4399bb"
             ]
         ],
+        "timestamp": "2026-03-20T14:03:26.473952",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-10T16:57:42.752077"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

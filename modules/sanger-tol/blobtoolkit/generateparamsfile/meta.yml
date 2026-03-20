@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "BLOBTOOLKIT_GENERATEPARAMSFILE"
 description: Generate a params file in json format for sanger-tol/blobtoolkit
 keywords:
@@ -26,53 +25,45 @@ input:
           Input assembly fasta file
         pattern: "[*.{fasta,fa,fna}]"
         ontologies:
-          - edam: "http://edamontology.org/format_1929" # FASTA
-
+          - edam: "http://edamontology.org/format_1929"
   - blastp:
       type: file
       description: |
         The Uniprot Diamond Protein Database for BlastP (aligning proteins to a protein database)
       pattern: "*.dmnd"
       ontologies: []
-
   - blastn:
       type: directory
       description: |
         The NCBI Nucleotide database path for BlastN (aligning nucleotides to a nucleotide database)
       ontologies: []
-
   - blastx:
       type: file
       description: |
         The Uniprot Diamond Protein Database path for BlastX (aligning nucleotides to a protein database)
       pattern: "*.dmnd"
       ontologies: []
-
   - tax_dump:
       type: directory
       description: |
         Directory of the NCBI tax dump database
       ontologies: []
-
   - busco_lineages:
       type: string
       description: |
         CSV list of odb's to run in blobtoolkit
       ontologies: []
-
   - taxon:
       type: integer
       description: |
         Target organisms taxid
       pattern: "[0-9].*"
       ontologies: []
-
   - btk_extra_opts:
       type: map
       description: |
         Map of extra arguments for blobtoolkit
       ontologies: []
-
 output:
   json_params_file:
     - - meta:
@@ -80,17 +71,32 @@ output:
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "${prefix}.blobtoolkit_params_file.json":
+      - "*.json":
           type: file
           description: CSV samplesheet required for Blobtoolkit
           ontologies:
-            - edam: "http://edamontology.org/format_3464" # JSON
+            - edam: "http://edamontology.org/format_3464"
+  versions_blobtoolkitgenerateparamsfile:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - blobtoolkit_generateparamsfile:
+          type: string
+          description: The name of the tool
+      - 1.0.0:
+          type: string
+          description: The expression to obtain the version of the tool
+topics:
   versions:
-    - "versions.yml":
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
-
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - blobtoolkit_generateparamsfile:
+          type: string
+          description: The name of the tool
+      - 1.0.0:
+          type: string
+          description: The expression to obtain the version of the tool
 authors:
   - "@mahesh-panchal"
   - "@DLBPointon"

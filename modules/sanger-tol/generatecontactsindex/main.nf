@@ -12,7 +12,7 @@ process GENERATE_CONTACTS_INDEX {
 
     output:
     tuple val(meta), path(contacts), path("*.index.tsv"), emit: contacts_with_index
-    path "versions.yml", emit: versions
+    tuple val("${task.process}"), val('coreutils'), eval('ls --version | sed -n "s/ls (GNU coreutils) //p"'), emit: versions_coreutils, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -22,25 +22,16 @@ process GENERATE_CONTACTS_INDEX {
     """
     # Create index TSV file from contacts
     # Index typically contains unique contact pairs or sorted positions
-    cut -f1,2 ${contacts} | LC_ALL=C sort -k1,1 -k2,2n -u -S ${task.memory.toGiga()}G > ${prefix}.index.tsv
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        sort: "coreutils 9.5"
-        cut: "coreutils 9.5"
-        uniq: "coreutils 9.5"
-    END_VERSIONS
+    cut -f1,2 ${contacts} |\\
+    LC_ALL=C sort \\
+        -k1,1 -k2,2n \\
+        -u -S ${task.memory.toGiga()}G \\
+        > ${prefix}.index.tsv
     """
 
     stub:
+    prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${meta.id}.index.tsv
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        sort: "coreutils 9.5"
-        cut: "coreutils 9.5"
-        uniq: "coreutils 9.5"
-    END_VERSIONS
+    touch ${prefix}.index.tsv
     """
 }

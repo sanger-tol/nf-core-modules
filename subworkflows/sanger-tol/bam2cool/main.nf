@@ -13,9 +13,6 @@ workflow BAM2COOL {
     val_bin_size    // integer: bin size for cooler
 
     main:
-
-    ch_versions = channel.empty()
-
     ch_bam_list_transposed = ch_bam_list
         .flatMap { meta, bams ->
             if (!(bams instanceof List)) {
@@ -37,7 +34,6 @@ workflow BAM2COOL {
     CONTACTBED(
         BEDTOOLS_BAMTOBEDSORT.out.sorted_bed
     )
-    ch_versions = ch_versions.mix(CONTACTBED.out.versions)
 
     //
     // Generate index file from contacts
@@ -45,7 +41,6 @@ workflow BAM2COOL {
     GENERATE_CONTACTS_INDEX(
         CONTACTBED.out.bed
     )
-    ch_versions = ch_versions.mix(GENERATE_CONTACTS_INDEX.out.versions)
 
     //
     // Generate individual .cool files
@@ -96,5 +91,4 @@ workflow BAM2COOL {
     emit:
     merged_cool     = COOLER_MERGE.out.cool
     mcool           = COOLER_ZOOMIFY.out.mcool
-    versions        = ch_versions
 }

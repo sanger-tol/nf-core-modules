@@ -13,8 +13,6 @@ workflow ANCESTRAL_ANNOTATION {
     busco_full_table     // Channel: [ meta, busco_dir ]
 
     main:
-    ch_versions                     = channel.empty()
-
     //
     // MODULE: EXTRACTS ANCESTRALLY LINKED BUSCO GENES FROM FULL TABLE
     //
@@ -22,7 +20,6 @@ workflow ANCESTRAL_ANNOTATION {
         busco_full_table,
         ancestral_table
     )
-    ch_versions                     = ch_versions.mix(ANCESTRAL_EXTRACT.out.versions)
 
     //
     // MODULE: INDEX THE INPUT ASSEMBLY
@@ -39,7 +36,6 @@ workflow ANCESTRAL_ANNOTATION {
         ANCESTRAL_EXTRACT.out.comp_location,
         SAMTOOLS_FAIDX.out.fai
     )
-    ch_versions                     = ch_versions.mix(ANCESTRAL_PLOT.out.versions)
 
     emit:
     ancestral_png_plot              = ANCESTRAL_PLOT.out.png_plot           // channel: [   [id], file  ]
@@ -47,6 +43,4 @@ workflow ANCESTRAL_ANNOTATION {
     ancestral_complete_location     = ANCESTRAL_EXTRACT.out.comp_location   // channel: [   [id], file  ]
     ancestral_duplicate_location    = ANCESTRAL_EXTRACT.out.dup_location    // channel: [   [id], file  ]
     ancestral_summary               = ANCESTRAL_EXTRACT.out.summary         // channel: [   [id], file  ]
-    versions                        = ch_versions                           // channel: [ versions.yml  ]
-
 }

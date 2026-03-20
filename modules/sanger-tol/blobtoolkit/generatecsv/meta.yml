@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "BLOBTOOLKIT_GENERATECSV"
 description: Generate a samplesheet csv for sanger-tol/blobtoolkit
 keywords:
@@ -55,7 +54,6 @@ input:
         type: string
         description: |
           Layout of input data "SINGLE" or "PAIRED"
-
 output:
   csv:
     - - new_meta:
@@ -63,17 +61,32 @@ output:
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "${prefix}.samplesheet.csv":
+      - ${prefix}.samplesheet.csv:
           type: file
           description: CSV samplesheet required for Blobtoolkit
           ontologies:
-            - edam: "http://edamontology.org/format_3752" # CSV
+            - edam: "http://edamontology.org/format_3752"
+  versions_blobtoolkitgeneratecsv:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - blobtoolkit_generatecsv:
+          type: string
+          description: The name of the tool
+      - 1.0.0:
+          type: string
+          description: The expression to obtain the version of the tool
+topics:
   versions:
-    - "versions.yml":
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
-
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - blobtoolkit_generatecsv:
+          type: string
+          description: The name of the tool
+      - 1.0.0:
+          type: string
+          description: The expression to obtain the version of the tool
 authors:
   - "@mahesh-panchal"
   - "@DLBPointon"

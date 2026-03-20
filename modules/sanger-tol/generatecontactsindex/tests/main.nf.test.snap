@@ -12,7 +12,11 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,c2928e823d0da95d6388c7558facc0be"
+                    [
+                        "GENERATE_CONTACTS_INDEX",
+                        "coreutils",
+                        "8.30"
+                    ]
                 ],
                 "contacts_with_index": [
                     [
@@ -23,16 +27,20 @@
                         "test.index.tsv:md5,7852cc79aaf1d8282bde8ff2bf89b5af"
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,c2928e823d0da95d6388c7558facc0be"
+                "versions_coreutils": [
+                    [
+                        "GENERATE_CONTACTS_INDEX",
+                        "coreutils",
+                        "8.30"
+                    ]
                 ]
             }
         ],
+        "timestamp": "2026-03-20T14:01:09.594875",
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2025-11-11T19:42:25.85157003"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "Undibacterium unclassified - contacts bed - stub": {
         "content": [
@@ -47,7 +55,11 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,c2928e823d0da95d6388c7558facc0be"
+                    [
+                        "GENERATE_CONTACTS_INDEX",
+                        "coreutils",
+                        "8.30"
+                    ]
                 ],
                 "contacts_with_index": [
                     [
@@ -58,15 +70,19 @@
                         "test.index.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
-                "versions": [
-                    "versions.yml:md5,c2928e823d0da95d6388c7558facc0be"
+                "versions_coreutils": [
+                    [
+                        "GENERATE_CONTACTS_INDEX",
+                        "coreutils",
+                        "8.30"
+                    ]
                 ]
             }
         ],
+        "timestamp": "2026-03-20T14:01:13.028511",
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2025-11-11T19:42:31.404828515"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }
