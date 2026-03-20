@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "ancestral_extract"
 description: |
   Extracts ancestrally linked busco genes from a busco full table file.
@@ -39,7 +40,7 @@ input:
           A reference TSV containing ancestrally linked genes.
         pattern: "*.tsv"
         ontologies:
-          - edam: http://edamontology.org/format_3475
+          - edam: http://edamontology.org/format_3475 # TSV
 output:
   comp_location:
     - - meta:
@@ -52,7 +53,7 @@ output:
           description: |
             TSV containing complete busco's thought to be ancestrally linked.
           ontologies:
-            - edam: http://edamontology.org/format_3475
+            - edam: http://edamontology.org/format_3475 # TSV
   dup_location:
     - - meta:
           type: map
@@ -64,7 +65,7 @@ output:
           description: |
             TSV containing duplicated busco's thought to be ancestrally linked.
           ontologies:
-            - edam: http://edamontology.org/format_3475
+            - edam: http://edamontology.org/format_3475 # TSV
   summary:
     - - meta:
           type: map
@@ -76,7 +77,7 @@ output:
           description: |
             TSV containing a complete summary of results.
           ontologies:
-            - edam: http://edamontology.org/format_3003
+            - edam: http://edamontology.org/format_3003 # BED
   versions_python:
     - - ${task.process}:
           type: string

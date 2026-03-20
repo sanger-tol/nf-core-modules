@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "contactbed"
 description: |
   Converts BED file to contacts BED format using shell utilities.
@@ -33,7 +34,7 @@ input:
           BED file to convert to contacts format.
         pattern: "*.bed"
         ontologies:
-          - edam: http://edamontology.org/format_3003
+          - edam: http://edamontology.org/format_3003 # BED
 output:
   bed:
     - - meta:
@@ -47,7 +48,7 @@ output:
             Contacts BED file generated from the input BED file.
           pattern: "*.bed"
           ontologies:
-            - edam: http://edamontology.org/format_3003
+            - edam: http://edamontology.org/format_3003  BED
   versions_coreutils:
     - - ${task.process}:
           type: string

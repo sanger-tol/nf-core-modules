@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "BLOBTOOLKIT_GENERATEPARAMSFILE"
 description: Generate a params file in json format for sanger-tol/blobtoolkit
 keywords:
@@ -73,9 +74,9 @@ output:
             e.g. `[ id:'sample1' ]`
       - "*.json":
           type: file
-          description: CSV samplesheet required for Blobtoolkit
+          description: JSON params file required for Blobtoolkit
           ontologies:
-            - edam: "http://edamontology.org/format_3464"
+            - edam: "http://edamontology.org/format_3464" # JSON
   versions_blobtoolkitgenerateparamsfile:
     - - ${task.process}:
           type: string
