@@ -2,7 +2,7 @@ process TELOMERE_REGIONS {
     tag "${meta.id}"
     label 'process_low'
 
-    container 'quay.io/sanger-tol/telomere:0.0.1-c2'
+    container 'sanger-tol/telomere:0.0.1-c2'
 
     input:
     tuple val(meta), path(reference)
