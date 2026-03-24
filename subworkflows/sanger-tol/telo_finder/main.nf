@@ -18,6 +18,8 @@ workflow TELO_FINDER {
 
     main:
 
+    if G > 30% then flip else pass
+
     //
     // MODULE: FINDS THE TELOMERIC SEQEUNCE IN REFERENCE
     //
@@ -77,28 +79,34 @@ workflow TELO_FINDER {
             }
             .mix(ch_full_telomere)
 
-
     } else {
-        ch_regions_for_extraction  = ch_full_telomere
+
+        //
+        // MODULE: GENERATES A WINDOWS FILE FROM THE ABOVE
+        //         THIS ACTS AS VALIDATION OF THE WHOLE TELOMERIC DATASET
+        //
+        TELOMERE_WINDOWS (
+            ch_full_telomere
+        )
+
+        ch_regions_for_extraction = TELOMERE_WINDOWS.out.windows
     }
 
 
-    //
-    // MODULE: GENERATES A WINDOWS FILE FROM THE ABOVE
-    //
-    TELOMERE_WINDOWS (
-        ch_regions_for_extraction
-    )
 
+
+    // <-- Move telo split logic here _after_ the validation in windows rather than before
+    // <-- This causes issues with the model Windows uses based on repeat levels in x region
 
     //
     // LOGIC: OUTPUT CAN HAVE SIZE 0 WHICH BREAKS gawk IN EXTRACT
     //        FILTER OUT THE 0 SIZE FILES
     //
-    ch_filtered_windows_for_extraction = TELOMERE_WINDOWS.out.windows
+    ch_filtered_windows_for_extraction = ch_regions_for_extraction
         .filter { _meta, file ->
             file.size() > 0
         }
+
 
     //
     // MODULE: EXTRACT TELOMERE DATA FROM FIND_TELOMERE
@@ -124,6 +132,7 @@ workflow TELO_FINDER {
         .map { meta, bed ->
             [ meta - meta.subMap("direction"), bed ]
         }
+
 
     //
     // MODULE: BGZIP AND TABIX THE TELO BED FILES
