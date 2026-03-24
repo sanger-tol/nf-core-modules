@@ -80,29 +80,27 @@ workflow TELO_FINDER {
             .mix(ch_full_telomere)
 
     } else {
-
-        //
-        // MODULE: GENERATES A WINDOWS FILE FROM THE ABOVE
-        //         THIS ACTS AS VALIDATION OF THE WHOLE TELOMERIC DATASET
-        //
-        TELOMERE_WINDOWS (
-            ch_full_telomere
-        )
-
-        ch_regions_for_extraction = TELOMERE_WINDOWS.out.windows
+        ch_regions_for_extraction  = ch_full_telomere
     }
 
 
-
-
-    // <-- Move telo split logic here _after_ the validation in windows rather than before
-    // <-- This causes issues with the model Windows uses based on repeat levels in x region
+    //
+    // MODULE: GENERATES A WINDOWS FILE FROM THE ABOVE
+    //         THIS ONLY HAPPENS ON WHOLE TELOMERIC FILES
+    //
+    TELOMERE_WINDOWS (
+        ch_regions_for_extraction.filter { meta, file -> meta.direction == 0 }
+    )
 
     //
-    // LOGIC: OUTPUT CAN HAVE SIZE 0 WHICH BREAKS gawk IN EXTRACT
+    // LOGIC: MIX THE FILES FROM THE TWO CHANNELS
+    //        REMOVE WHOLE TELOMERE FROM THE UNVALIDATED TRACK ALSO
+    //        OUTPUT CAN HAVE SIZE 0 WHICH BREAKS gawk IN EXTRACT
     //        FILTER OUT THE 0 SIZE FILES
     //
-    ch_filtered_windows_for_extraction = ch_regions_for_extraction
+    ch_final_telomere_files = ch_regions_for_extraction
+        .filter { meta, _file -> meta.direction != 0 }
+        .mix(TELOMERE_WINDOWS.out.windows)
         .filter { _meta, file ->
             file.size() > 0
         }
@@ -113,7 +111,7 @@ workflow TELO_FINDER {
     //         AND REFORMAT INTO BEDGRAPH FILE
     //
     TELOMERE_EXTRACT(
-        ch_filtered_windows_for_extraction
+        ch_final_telomere_files
     )
 
 
