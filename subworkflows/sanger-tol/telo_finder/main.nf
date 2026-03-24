@@ -18,7 +18,7 @@ workflow TELO_FINDER {
 
     main:
 
-    if G > 30% then flip else pass
+    //if G > 30% then flip else pass
 
     //
     // MODULE: FINDS THE TELOMERIC SEQEUNCE IN REFERENCE
