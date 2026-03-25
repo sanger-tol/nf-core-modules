@@ -39,10 +39,10 @@ process BLAST_BLASTN {
     }
 
     // Convert input to fasta if needed
-    def args1 = task.ext.args1 ?: ""
     def args2 = task.ext.args2 ?: ""
-    def input_content = (input.name.endsWith('bam') || input.name.endsWith('cram')) ? "<(samtools fasta ${args1} --threads ${task.cpus} ${input})" :
-                    (input.name ==~ /.*\.(fastq|fq)(\.gz)?$/) ? "<(seqkit fq2fa ${args2} -j ${task.cpus} ${input})" :
+    def args3 = task.ext.args3 ?: ""
+    def input_content = (input.name.endsWith('bam') || input.name.endsWith('cram')) ? "<(samtools fasta ${args2} --threads ${task.cpus} ${input})" :
+                    (input.name ==~ /.*\.(fastq|fq)(\.gz)?$/) ? "<(seqkit fq2fa ${args3} -j ${task.cpus} ${input})" :
                     fasta_name
 
 
