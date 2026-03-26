@@ -89,7 +89,7 @@ workflow TELO_FINDER {
     //         THIS ONLY HAPPENS ON WHOLE TELOMERIC FILES
     //
     TELOMERE_WINDOWS (
-        ch_regions_for_extraction.filter { meta, file -> meta.direction == 0 }
+        ch_regions_for_extraction.filter { meta, _file -> meta.direction == 0 }
     )
 
     //
