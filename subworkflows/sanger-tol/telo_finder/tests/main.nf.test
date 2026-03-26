@@ -59,7 +59,7 @@ nextflow_workflow {
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
                     [ id: "motifs" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motifs.fasta', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = false
                 input[3] = true
@@ -92,7 +92,7 @@ nextflow_workflow {
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
                     [ id: "motifs" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motifs.fasta', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = true
                 input[3] = true
@@ -125,7 +125,7 @@ nextflow_workflow {
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
                     [ id: "motifs" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motifs.fasta', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = false
                 input[3] = false
@@ -158,7 +158,7 @@ nextflow_workflow {
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
                     [ id: "motifs" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motifs.fasta', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = true
                 input[3] = false
@@ -191,7 +191,7 @@ nextflow_workflow {
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
                     [ id: "motifs" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motifs.fasta', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = false
                 input[3] = false
