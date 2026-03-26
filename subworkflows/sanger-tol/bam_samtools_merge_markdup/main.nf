@@ -59,7 +59,7 @@ workflow BAM_SAMTOOLS_MERGE_MARKDUP {
         )
 
         ch_output_bam  = SAMTOOLS_MERGE.out.bam.mix(SAMTOOLS_MERGE.out.cram)
-        ch_output_index = SAMTOOLS_MERGE.out.csi.mix(SAMTOOLS_MERGE.out.crai)
+        ch_output_index = SAMTOOLS_MERGE.out.index
         ch_output_metrics = channel.empty()
     }
 
