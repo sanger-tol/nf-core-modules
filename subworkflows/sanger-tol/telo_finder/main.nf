@@ -1,6 +1,7 @@
 //
 // MODULE IMPORT BLOCK
 //
+include { BIOAWK                        } from '../../../modules/nf-core/bioawk/main'
 include { TELOMERE_REGIONS              } from '../../../modules/sanger-tol/telomere/regions/main'
 include { GAWK as GAWK_SPLIT_TELOMERE   } from '../../../modules/nf-core/gawk/main'
 include { TELOMERE_WINDOWS              } from '../../../modules/sanger-tol/telomere/windows/main'
@@ -12,20 +13,42 @@ workflow TELO_FINDER {
 
     take:
     ch_reference        // Channel [ val(meta), path(fasta) ]
-    ch_telomereseq      // Channel.of( telomere sequence )
+    ch_telomereseq      // Channel [ val(meta), path(fasta) ]
     val_split_telomere  // bool
     val_run_bgzip       // bool
 
     main:
 
-    //if G > 30% then flip else pass
+    //
+    // MODULE: BIOAWK CONVERT THE MOTIF INTO THE 5 PRIME DIRECTION
+    //         IF PROVIDED IN THE 3 PRIME DIRECTION
+    //         IF MOTIF HAS A G CONTENT OF > 30% IT IS IN THE 3 PRIME
+    //
+    BIOAWK(
+        ch_telomereseq,
+        "tsv"
+    )
+
+
+    //
+    // LOGIC: READ LINE 2 OF THE OUTPUT FILE
+    //
+    corrected_telomere = BIOAWK.out.output
+        .map { _meta, file ->
+            def lines = file.toFile().readLines()
+            // Lines from bioawk are:
+            // corrected_sequence  G_count  G_percentage  reversed?  original_sequence
+            lines[0].split('\t')[0]
+        }
+        .filter { it != null }
+
 
     //
     // MODULE: FINDS THE TELOMERIC SEQEUNCE IN REFERENCE
     //
     TELOMERE_REGIONS (
         ch_reference,
-        ch_telomereseq
+        corrected_telomere
     )
 
     ch_full_telomere = TELOMERE_REGIONS.out.telomere
@@ -89,7 +112,7 @@ workflow TELO_FINDER {
     //         THIS ONLY HAPPENS ON WHOLE TELOMERIC FILES
     //
     TELOMERE_WINDOWS (
-        ch_regions_for_extraction.filter { meta, file -> meta.direction == 0 }
+        ch_regions_for_extraction.filter { meta, _file -> meta.direction == 0 }
     )
 
     //
@@ -140,8 +163,9 @@ workflow TELO_FINDER {
     )
 
     emit:
-    bed_file        = ch_telo_bedfiles          // Channel [meta, bed]
-    bed_gz_tbi      = TABIX_BGZIPTABIX.out.gz_index  // Not used anymore
-    bedgraph_file   = ch_telo_bedgraphs         // Channel [meta, [bedfiles]] - Used in pretext_graph
+    telomere_summary    = BIOAWK.out.output             // Channel [meta, tsv]
+    bed_file            = ch_telo_bedfiles              // Channel [meta, bed]
+    bed_gz_tbi          = TABIX_BGZIPTABIX.out.gz_index // Channel [meta, index]
+    bedgraph_file       = ch_telo_bedgraphs             // Channel [meta, [bedfiles]] - Used in pretext_graph
 
 }
