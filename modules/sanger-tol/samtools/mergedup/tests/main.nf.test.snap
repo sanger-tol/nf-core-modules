@@ -28,7 +28,7 @@
                     [
                         "SAMTOOLS_MERGEDUP",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ],
                 "bam": [
@@ -57,7 +57,7 @@
                     [
                         "SAMTOOLS_MERGEDUP",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ]
             }
@@ -66,7 +66,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-26T12:05:37.946449461"
+        "timestamp": "2026-03-26T13:35:35.929174703"
     },
     "sarscov2 - bam": {
         "content": [
@@ -85,15 +85,15 @@
                     [
                         "SAMTOOLS_MERGEDUP",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
+            "nextflow": "25.10.2"
         },
-        "timestamp": "2026-02-09T15:16:36.500954"
+        "timestamp": "2026-03-26T13:35:29.612516094"
     }
 }
