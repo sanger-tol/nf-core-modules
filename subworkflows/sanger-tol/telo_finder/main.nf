@@ -31,31 +31,43 @@ workflow TELO_FINDER {
 
 
     //
-    // LOGIC: READ LINE 2 OF THE OUTPUT FILE
+    // LOGIC: READ LINES OF THE OUTPUT FILE
+    //        RETURN THE FIRST SEGMENT OF LINE
+    //        LINE IS EQUAL TO:
+    //        corrected_sequence  G_count  G_percentage  reversed?  original_sequence
     //
-    corrected_telomere = BIOAWK.out.output
-        .map { _meta, file ->
+    ch_corrected_telomere = BIOAWK.out.output
+        .map { meta, file ->
             def lines = file.toFile().readLines()
-            // Lines from bioawk are:
-            // corrected_sequence  G_count  G_percentage  reversed?  original_sequence
-            lines[0].split('\t')[0]
+            tuple(meta, lines[0].split('\t')[0])
         }
-        .filter { it != null }
+
+
+    // NOTE: COMBINE CHANNELS TO ENSURE TELOMERE IS FOR X REFERENCE
+    matched_channels = ch_reference
+        .combine(ch_corrected_telomere)
+        .multiMap { meta, ref, telomere ->
+            reference_ch: [meta, ref]
+            telomere_ch: telomere
+        }
 
 
     //
     // MODULE: FINDS THE TELOMERIC SEQEUNCE IN REFERENCE
     //
     TELOMERE_REGIONS (
-        ch_reference,
-        corrected_telomere
+        matched_channels.reference_ch,
+        matched_channels.telomere_ch
     )
 
+
+    // NOTE: TAG THE DIRECTION OF THE TELOMERE AS 0 == WHOLE DATASET
     ch_full_telomere = TELOMERE_REGIONS.out.telomere
         .map{ meta, file ->
             def new_meta = meta + [direction: 0]
             [new_meta, file]
         }
+
 
     //
     // MODULE: SPLIT THE TELOMERE FILE INTO 5' and 3' FILES
