@@ -14,8 +14,7 @@ process SAMTOOLS_MERGEDUP {
     output:
     tuple val(meta), path("*.bam")      , emit: bam,  optional: true
     tuple val(meta), path("*.cram")     , emit: cram, optional: true
-    tuple val(meta), path("*.csi")      , emit: csi,  optional: true
-    tuple val(meta), path("*.crai")     , emit: crai, optional: true
+    tuple val(meta), path("*.{csi,crai}"), emit: index, optional: true
     tuple val(meta), path("*.metrics")  , emit: metrics
     tuple val("${task.process}"), val('samtools'), eval('samtools version | sed "1!d;s/.* //"'), emit: versions_samtools, topic: versions
 
