@@ -122,7 +122,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             ch_mapping_inputs.slices
         )
 
-        ch_mapped_bams = CRAMALIGN_BWAMEM2ALIGNHIC.out.bam
+        ch_mapped_crams = CRAMALIGN_BWAMEM2ALIGNHIC.out.cram
     } else if(val_aligner == "minimap2") {
         //
         // MODULE: generate minimap2 mmi file
@@ -144,28 +144,28 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             ch_mapping_inputs.slices
         )
 
-        ch_mapped_bams = CRAMALIGN_MINIMAP2ALIGNHIC.out.bam
+        ch_mapped_crams = CRAMALIGN_MINIMAP2ALIGNHIC.out.cram
     } else {
         error("Unsupported aligner: ${val_aligner}")
     }
 
     //
-    // Logic: Prepare input for merging bams.
+    // Logic: Prepare input for merging crams.
     //        We use the ch_n_cram_chunks to set a groupKey so that
-    //        we emit groups downstream ASAP once all bams have been made
+    //        we emit groups downstream ASAP once all crams have been made
     //
-    ch_merge_input = ch_mapped_bams
+    ch_merge_input = ch_mapped_crams
         .combine(ch_n_cram_chunks, by: 0)
-        .map { meta, bam, n_chunks ->
+        .map { meta, cram, n_chunks ->
             def key = groupKey(meta, n_chunks)
-            [key, bam]
+            [key, cram]
         }
         .groupTuple(by: 0)
-        .map { key, bam -> [key.target, bam.sort { b -> b.getName() }] }
+        .map { key, cram -> [key.target, cram.sort { b -> b.getName() }] }
 
 
     //
-    // Subworkflow: merge BAM files and mark duplicates
+    // Subworkflow: merge CRAM files and mark duplicates
     //
     BAM_SAMTOOLS_MERGE_MARKDUP(
         ch_merge_input,
@@ -174,7 +174,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     )
 
     emit:
-    bam               = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
-    bam_index         = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
-    bam_markdup_stats = BAM_SAMTOOLS_MERGE_MARKDUP.out.metrics
+    cram               = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
+    cram_index         = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
+    cram_markdup_stats = BAM_SAMTOOLS_MERGE_MARKDUP.out.metrics
 }
