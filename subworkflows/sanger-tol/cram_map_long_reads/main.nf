@@ -51,7 +51,7 @@ workflow CRAM_MAP_LONG_READS {
 
     ch_cram_indexed = ch_cram_raw.have_index
         .mix(
-            ch_cram_raw.no_index.join(SAMTOOLS_INDEX.out.crai)
+            ch_cram_raw.no_index.join(SAMTOOLS_INDEX.out.index)
         )
 
     // Module: Process the cram index files to determine how many
