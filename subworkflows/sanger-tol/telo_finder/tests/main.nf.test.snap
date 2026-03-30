@@ -5,9 +5,9 @@
                 "0": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ],
                 "1": [
@@ -55,9 +55,9 @@
                 "telomere_summary": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ]
             }
@@ -66,7 +66,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-26T12:18:37.726692775"
+        "timestamp": "2026-03-30T14:28:02.582772623"
     },
     "idFanCani4 - no split - fasta w/o index": {
         "content": [
@@ -74,9 +74,9 @@
                 "0": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ],
                 "1": [
@@ -124,9 +124,9 @@
                 "telomere_summary": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ]
             }
@@ -135,7 +135,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-26T12:16:40.416549675"
+        "timestamp": "2026-03-30T14:25:52.915832969"
     },
     "idFanCani4 - no split - fasta w/ index": {
         "content": [
@@ -143,9 +143,9 @@
                 "0": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ],
                 "1": [
@@ -205,9 +205,9 @@
                 "telomere_summary": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ]
             }
@@ -216,7 +216,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-26T12:14:38.428454891"
+        "timestamp": "2026-03-30T14:23:41.71430176"
     },
     "idFanCani4 - split - fasta w/o index": {
         "content": [
@@ -224,9 +224,9 @@
                 "0": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ],
                 "1": [
@@ -302,9 +302,9 @@
                 "telomere_summary": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ]
             }
@@ -313,7 +313,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-26T12:17:39.018723616"
+        "timestamp": "2026-03-30T14:26:55.994519841"
     },
     "idFanCani4 - split - fasta w/ index": {
         "content": [
@@ -321,9 +321,9 @@
                 "0": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ],
                 "1": [
@@ -439,9 +439,9 @@
                 "telomere_summary": [
                     [
                         {
-                            "id": "motifs"
+                            "id": "idFanCani4"
                         },
-                        "motifs.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
+                        "idFanCani4.tsv:md5,1d21c8f15931e62f3a505dd961ae55f4"
                     ]
                 ]
             }
@@ -450,6 +450,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2026-03-26T12:15:42.255250176"
+        "timestamp": "2026-03-30T14:24:47.513675438"
     }
 }

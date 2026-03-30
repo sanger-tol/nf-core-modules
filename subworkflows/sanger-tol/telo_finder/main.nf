@@ -19,6 +19,22 @@ workflow TELO_FINDER {
 
     main:
 
+    // NOTE: BIOAWK PROGRAM TO RETURN A TAB DELIMITED FILE CONTAINING:
+    //       corrected_sequence  G_count  G_percentage  reversed?  original_sequence
+    ch_bioawk_program = channel.of('''\
+        BEGIN { OFS = "\\t" } {
+            sequence = toupper($seq);
+            copy_seq = sequence;
+            g_count = gsub(/G/, "", sequence);
+            g_percent = 100*g_count/length(copy_seq);
+            rev = (g_percent > 30);
+            final_sequence = rev ? revcomp($seq) : $seq;
+            printf "%s\\t%d\\t%.2f\\t%s\\t%s\\n", final_sequence, g_count, g_percent, (rev ? "true" : "false"), copy_seq
+        }'''.stripIndent())
+        .collectFile(name: "bioawk_getdata.awk", cache: true)
+        .collect()
+
+
     //
     // MODULE: BIOAWK CONVERT THE MOTIF INTO THE 5 PRIME DIRECTION
     //         IF PROVIDED IN THE 3 PRIME DIRECTION
@@ -26,15 +42,15 @@ workflow TELO_FINDER {
     //
     BIOAWK(
         ch_telomereseq,
+        ch_bioawk_program,
+        false,
         "tsv"
     )
 
 
     //
     // LOGIC: READ LINES OF THE OUTPUT FILE
-    //        RETURN THE FIRST SEGMENT OF LINE
-    //        LINE IS EQUAL TO:
-    //        corrected_sequence  G_count  G_percentage  reversed?  original_sequence
+    //        RETURN THE FIRST SEGMENT OF LINE "corrected_sequence"
     //
     ch_corrected_telomere = BIOAWK.out.output
         .map { meta, file ->
@@ -45,7 +61,7 @@ workflow TELO_FINDER {
 
     // NOTE: COMBINE CHANNELS TO ENSURE TELOMERE IS FOR X REFERENCE
     matched_channels = ch_reference
-        .combine(ch_corrected_telomere)
+        .combine(ch_corrected_telomere, by: 0)
         .multiMap { meta, ref, telomere ->
             reference_ch: [meta, ref]
             telomere_ch: telomere
@@ -88,6 +104,7 @@ workflow TELO_FINDER {
             ch_split_telomere,
             true
         )
+
 
         //
         // LOGIC: COLLECT FILES AND ITERATE THROUGH

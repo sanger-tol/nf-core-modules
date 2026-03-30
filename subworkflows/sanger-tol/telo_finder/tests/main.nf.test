@@ -49,7 +49,7 @@ nextflow_workflow {
     test("idFanCani4 - no split - fasta w/ index") {
         when {
             params {
-                bioawk_command = "-c fastx \'{s = toupper(\$seq); copy_s = s; g = gsub(/G/, \"\", s); pct = 100*g/length(copy_s); rev = (pct > 30); out = rev ? revcomp(\$seq) : \$seq; printf \"%s\\t%d\\t%.2f\\t%s\\t%s\\n\", out, g, pct, (rev ? \"true\" : \"false\"), copy_s }\'"
+                bioawk_command = "-c fastx"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -58,7 +58,7 @@ nextflow_workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
-                    [ id: "motifs" ],
+                    [ id:"idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = false
@@ -82,7 +82,7 @@ nextflow_workflow {
     test("idFanCani4 - split - fasta w/ index") {
         when {
             params {
-                bioawk_command = "-c fastx \'{s = toupper(\$seq); copy_s = s; g = gsub(/G/, \"\", s); pct = 100*g/length(copy_s); rev = (pct > 30); out = rev ? revcomp(\$seq) : \$seq; printf \"%s\\t%d\\t%.2f\\t%s\\t%s\\n\", out, g, pct, (rev ? \"true\" : \"false\"), copy_s }\'"
+                bioawk_command = "-c fastx"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -91,7 +91,7 @@ nextflow_workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
-                    [ id: "motifs" ],
+                    [ id:"idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = true
@@ -115,7 +115,7 @@ nextflow_workflow {
     test("idFanCani4 - no split - fasta w/o index") {
         when {
             params {
-                bioawk_command = "-c fastx \'{s = toupper(\$seq); copy_s = s; g = gsub(/G/, \"\", s); pct = 100*g/length(copy_s); rev = (pct > 30); out = rev ? revcomp(\$seq) : \$seq; printf \"%s\\t%d\\t%.2f\\t%s\\t%s\\n\", out, g, pct, (rev ? \"true\" : \"false\"), copy_s }\'"
+                bioawk_command = "-c fastx"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -124,7 +124,7 @@ nextflow_workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
-                    [ id: "motifs" ],
+                    [ id: "idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = false
@@ -148,7 +148,7 @@ nextflow_workflow {
     test("idFanCani4 - split - fasta w/o index") {
         when {
             params {
-                bioawk_command = "-c fastx \'{s = toupper(\$seq); copy_s = s; g = gsub(/G/, \"\", s); pct = 100*g/length(copy_s); rev = (pct > 30); out = rev ? revcomp(\$seq) : \$seq; printf \"%s\\t%d\\t%.2f\\t%s\\t%s\\n\", out, g, pct, (rev ? \"true\" : \"false\"), copy_s }\'"
+                bioawk_command = "-c fastx"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -157,7 +157,7 @@ nextflow_workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
-                    [ id: "motifs" ],
+                    [ id:"idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = true
@@ -181,7 +181,7 @@ nextflow_workflow {
     test("idFanCani4 - no split - fasta - stub w/o index") {
         when {
             params {
-                bioawk_command = "-c fastx \'{s = toupper(\$seq); copy_s = s; g = gsub(/G/, \"\", s); pct = 100*g/length(copy_s); rev = (pct > 30); out = rev ? revcomp(\$seq) : \$seq; printf \"%s\\t%d\\t%.2f\\t%s\\t%s\\n\", out, g, pct, (rev ? \"true\" : \"false\"), copy_s }\'"
+                bioawk_command = "-c fastx"
                 windows_percent = "99.9"
                 bgzip_args       = "--csi"
             }
@@ -190,7 +190,7 @@ nextflow_workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
                 input[1] = [
-                    [ id: "motifs" ],
+                    [ id:"idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
                 ]
                 input[2] = false
