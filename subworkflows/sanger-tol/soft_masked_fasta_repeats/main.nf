@@ -18,7 +18,7 @@ workflow SOFT_MASKED_FASTA_REPEATS {
     ch_bed_with_seq_length = ch_bed
         .join(ch_fasta_sequence_length)
         .map { meta, bed, _fasta, max_seq_length -> [meta, bed, max_seq_length] }
-    BGZIPTABIX(ch_bed_with_seq_length)
+    BGZIPTABIX(ch_bed_with_seq_length, ["", "", ""])
 
     ch_repeats = BGZIPTABIX.out.gz_index
         .join(BGZIPTABIX.out.tbi, by: 0, remainder: true)
