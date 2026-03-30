@@ -29,7 +29,7 @@ input:
       description: |
         Structure [ val(meta), path(telomere_motif) ]
         Meta is the Groovy Map containing sample information
-        A string containing the DNA sequence of a telomere motif
+        A fasta formatted file containing the DNA sequence of a telomere motif
   - val_split_telomere:
       type: boolean
       description: |
