@@ -27,7 +27,7 @@ input:
   - ch_telomereseq:
       type: file
       description: |
-        Structure [ val(meta), path(reference) ]
+        Structure [ val(meta), path(telomere_motif) ]
         Meta is the Groovy Map containing sample information
         A string containing the DNA sequence of a telomere motif
   - val_split_telomere:
