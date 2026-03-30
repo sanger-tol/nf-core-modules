@@ -13,7 +13,7 @@ process CRAMALIGN_MINIMAP2ALIGN {
     tuple val(chunkn), val(range)
 
     output:
-    tuple val(meta), path("*.bam"), emit: bam
+    tuple val(meta), path("*.cram"), emit: cram
     tuple val("${task.process}"), val('minimap2'), eval('minimap2 --version | sed "s/minimap2 //g"'), emit: versions_minimap2, topic: versions
     tuple val("${task.process}"), val('samtools'), eval('samtools --version | head -1 | sed -e "s/samtools //"'), emit: versions_samtools, topic: versions
 
@@ -40,12 +40,12 @@ process CRAMALIGN_MINIMAP2ALIGN {
         samtools fastq ${args2} - |  \\
         minimap2 -t${task.cpus} ${args3} ${index} ${rg_arg} - | \\
         ${post_filter} \\
-        samtools sort ${args5} -@${task.cpus} -T ${prefix}_sort_tmp -o ${prefix}.bam -
+        samtools sort ${args5} -@${task.cpus} -T ${prefix}_sort_tmp --reference ${reference} -o ${prefix}.cram -
     """
 
     stub:
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
-    touch ${prefix}.bam
+    touch ${prefix}.cram
     """
 }

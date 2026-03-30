@@ -33,7 +33,7 @@
                         {
                             "id": "test"
                         },
-                        "35528_2%231_subset.cram.1.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "35528_2%231_subset.cram.1.test.cram:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -50,12 +50,12 @@
                         "1.22.1"
                     ]
                 ],
-                "bam": [
+                "cram": [
                     [
                         {
                             "id": "test"
                         },
-                        "35528_2%231_subset.cram.1.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "35528_2%231_subset.cram.1.test.cram:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions_bwamem2": [
@@ -76,9 +76,9 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nextflow": "25.10.2"
         },
-        "timestamp": "2026-01-15T14:27:17.465643"
+        "timestamp": "2026-03-19T13:31:01.974887493"
     },
     "meles meles - no readgroup lines": {
         "content": [

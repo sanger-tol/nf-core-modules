@@ -13,7 +13,7 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
     tuple val(chunkn), val(range)
 
     output:
-    tuple val(meta), path("*.bam"), emit: bam
+    tuple val(meta), path("*.cram"), emit: cram
     tuple val("${task.process}"), val('minimap2'), eval('minimap2 --version | sed "s/minimap2 //g"'), emit: versions_minimap2, topic: versions
     tuple val("${task.process}"), val('gawk'), eval('gawk --version | grep -o -E "[0-9]+(\\.[0-9]+)+" | head -n1'), emit: versions_gawk, topic: versions
     tuple val("${task.process}"), val('filter_five_end.pl'), eval('echo 1.0'), emit: versions_filterfiveend, topic: versions
@@ -62,12 +62,12 @@ process CRAMALIGN_MINIMAP2ALIGNHIC {
         ' |\\
         samtools fixmate ${args4} - - |\\
         samtools view -h ${args5} |\\
-        samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.bam -
+        samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp --reference ${reference} -o ${prefix}.cram -
     """
 
     stub:
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
-    touch ${prefix}.bam
+    touch ${prefix}.cram
     """
 }
