@@ -10,7 +10,7 @@ workflow FASTX_MAP_LONG_READS {
     ch_assemblies             // Channel [meta, assembly]
     ch_fasta                  // Channel [meta, fasta] OR [meta, [fasta1, fasta2, ..., fasta_n]]
     val_reads_per_fasta_chunk // integer: Number of reads per FASTA chunk for mapping
-    val_output_bam            // boolean: if true output alignments in BAM format
+    val_output_cram           // boolean: if true output alignments in BAM format
 
     main:
     //
@@ -81,7 +81,7 @@ workflow FASTX_MAP_LONG_READS {
         ch_fasta_with_slices.fastx,
         ch_fasta_with_slices.reference,
         ch_fasta_with_slices.slices,
-        val_output_bam
+        val_output_cram
     )
 
     //
@@ -101,35 +101,35 @@ workflow FASTX_MAP_LONG_READS {
     // Logic: Group all BAM files together for merging, using a groupKey to
     //        output when reaching the expected count of PAF files
     //
-    ch_merge_input = FASTXALIGN_MINIMAP2ALIGN.out.bam
+    ch_merge_input = FASTXALIGN_MINIMAP2ALIGN.out.cram
         .combine(ch_n_fasta_chunks, by: 0)
-        .map { meta, bam, n_chunks ->
+        .map { meta, cram, n_chunks ->
             def key = groupKey(meta, n_chunks)
-            [key, bam]
+            [key, cram]
         }
-        .groupTuple(by: 0, sort: { bam -> bam.getName() } )
-        .map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
+        .groupTuple(by: 0, sort: { cram -> cram.getName() } )
+        .map { key, cram -> [key.target, cram] } // Get meta back out of groupKey
 
     //
     // Logic: Wrap this in the conditional so we don't unnecessarily run
-    //        samtools faidx if no bam output
+    //        samtools faidx if no cram output
     //
-    ch_output_bam       = channel.empty()
-    ch_output_bam_index = channel.empty()
+    ch_output_cram       = channel.empty()
+    ch_output_cram_index = channel.empty()
 
-    if(val_output_bam) {
+    if(val_output_cram) {
         BAM_SAMTOOLS_MERGE_MARKDUP(
             ch_merge_input,
             ch_assemblies,
             false
         )
 
-        ch_output_bam       = ch_output_bam.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam)
-        ch_output_bam_index = ch_output_bam.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index)
+        ch_output_cram       = ch_output_cram.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam)
+        ch_output_cram_index = ch_output_cram.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index)
     }
 
     emit:
-    bam       = ch_output_bam
-    bam_index = ch_output_bam_index
-    paf       = ch_grouped_paf
+    cram       = ch_output_cram
+    cram_index = ch_output_cram_index
+    paf        = ch_grouped_paf
 }

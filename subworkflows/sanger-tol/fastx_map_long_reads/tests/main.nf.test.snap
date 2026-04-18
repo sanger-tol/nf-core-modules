@@ -1,5 +1,5 @@
 {
-    "Undibacterium unclassified - Meles meles - fasta - bam - double files": {
+    "Undibacterium unclassified - Meles meles - fasta - cram - double files": {
         "content": [
             [
                 {
@@ -36,31 +36,6 @@
         },
         "timestamp": "2026-02-10T10:38:20.394754"
     },
-    "Undibacterium unclassified - fasta - bam": {
-        "content": [
-            [
-                {
-                    "maxReadLength": 26402,
-                    "minReadLength": 0,
-                    "meanReadLength": 7644,
-                    "maxQuality": 60,
-                    "minQuality": 0,
-                    "meanQuality": 54,
-                    "readCount": 1038,
-                    "duplicateReadCount": 0,
-                    "sorted": false
-                }
-            ],
-            [
-                "test.bam"
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.3"
-        },
-        "timestamp": "2026-02-10T10:36:33.71967"
-    },
     "Undibacterium unclassified - fasta - paf": {
         "content": [
             [
@@ -83,5 +58,30 @@
             "nextflow": "25.10.3"
         },
         "timestamp": "2026-02-10T10:36:03.255886"
+    },
+    "Undibacterium unclassified - fasta - cram": {
+        "content": [
+            [
+                {
+                    "maxReadLength": 26402,
+                    "minReadLength": 0,
+                    "meanReadLength": 7644,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 54,
+                    "readCount": 1038,
+                    "duplicateReadCount": 0,
+                    "sorted": false
+                }
+            ],
+            [
+                "test.cram"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-04-18T11:14:07.679399445"
     }
 }
