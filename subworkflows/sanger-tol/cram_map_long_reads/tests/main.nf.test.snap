@@ -26,19 +26,19 @@
                 }
             ],
             [
-                "test1.bam.csi",
-                "test.bam.csi"
+                "test1.cram.crai",
+                "test.cram.crai"
             ],
             [
                 "test1: no RG",
                 "test: SM:mMelMel3"
             ]
         ],
-        "timestamp": "2026-03-06T10:54:38.332646",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        }
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-04-18T09:16:11.01531781"
     },
     "meles meles - mismatch meta test": {
         "content": [
@@ -56,14 +56,14 @@
                 }
             ],
             [
-                "test.bam.csi"
+                "test.cram.crai"
             ]
         ],
-        "timestamp": "2026-03-06T10:55:33.006003",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        }
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-04-18T09:17:26.406108354"
     },
     "meles meles - PacBio Hifi test - double files": {
         "content": [
@@ -92,19 +92,19 @@
                 }
             ],
             [
-                "test1.bam.csi",
-                "test.bam.csi"
+                "test1.cram.crai",
+                "test.cram.crai"
             ],
             [
                 "test1: SM:test1",
                 "test: SM:mMelMel3"
             ]
         ],
-        "timestamp": "2026-03-06T10:57:56.387344",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        }
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-04-18T09:20:29.290734588"
     },
     "meles meles - single test": {
         "content": [
@@ -122,13 +122,13 @@
                 }
             ],
             [
-                "test.bam.csi"
+                "test.cram.crai"
             ]
         ],
-        "timestamp": "2026-03-06T10:53:26.260999",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        }
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-04-18T09:14:31.827689301"
     }
 }

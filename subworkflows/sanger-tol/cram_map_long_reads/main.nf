@@ -115,18 +115,18 @@ workflow CRAM_MAP_LONG_READS {
     )
 
     //
-    // Logic: Prepare input for merging bams.
+    // Logic: Prepare input for merging crams.
     //        We use the ch_n_cram_chunks to set a groupKey so that
-    //        we emit groups downstream ASAP once all bams have been made
+    //        we emit groups downstream ASAP once all crams have been made
     //
-    ch_merge_input = CRAMALIGN_MINIMAP2ALIGN.out.bam
+    ch_merge_input = CRAMALIGN_MINIMAP2ALIGN.out.cram
         .combine(ch_n_cram_chunks, by: 0)
-        .map { meta, bam, n_chunks ->
+        .map { meta, cram, n_chunks ->
             def key = groupKey(meta, n_chunks)
-            [key, bam]
+            [key, cram]
         }
         .groupTuple(by: 0)
-        .map { key, bam -> [key.target, bam.sort { b -> b.getName() }] } // Get meta back out of groupKey
+        .map { key, cram -> [key.target, cram.sort { b -> b.getName() }] } // Get meta back out of groupKey
 
     //
     // Subworkflow: merge BAM files and mark duplicates
@@ -138,6 +138,6 @@ workflow CRAM_MAP_LONG_READS {
     )
 
     emit:
-    bam               = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
-    bam_index         = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
+    cram              = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
+    cram_index        = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
 }
