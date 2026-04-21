@@ -15,7 +15,7 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/purgedups/histplot"
     tag "subworkflows/../../modules/nf-core/purgedups/purgedups"
     tag "subworkflows/../../modules/nf-core/purgedups/calcuts"
-    tag "subworkflows/../../modules/nf-core/cat/cat"
+    tag "subworkflows/../../modules/nf-core/find/concatenate"
 
     config "./nextflow.config"
 
@@ -24,7 +24,7 @@ nextflow_workflow {
         nfcoreInstall(
             "${launchDir}/library/",
             [
-                "cat/cat",
+                "find/concatenate",
                 "minimap2/align",
                 "minimap2/index",
                 "samtools/index",
