@@ -116,10 +116,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--inkscape",
         default="inkscape",
-        help=(
-            "Path or command name for the Inkscape executable. Defaults to 'inkscape', "
-            "which is looked up on $PATH."
-        ),
+        help=("Path or command name for the Inkscape executable. Defaults to 'inkscape', which is looked up on $PATH."),
     )
 
     args = parser.parse_args()
@@ -135,9 +132,7 @@ def parse_args() -> argparse.Namespace:
     args.config = args.pipeline_dir / args.config
     args.output_dir = args.pipeline_dir / args.output_dir
     if not args.config.exists() and (args.name is None or args.org is None):
-        parser.error(
-            f"Metadata file not found and overrides are incomplete: {args.config}"
-        )
+        parser.error(f"Metadata file not found and overrides are incomplete: {args.config}")
 
     return args
 
@@ -189,9 +184,7 @@ def resolve_project_metadata(
     org = org_override or config_org
     name = name_override or config_name
     if org is None or name is None:
-        raise ValueError(
-            "Both org and name must be provided, either via .nf-core.yml or CLI overrides"
-        )
+        raise ValueError("Both org and name must be provided, either via .nf-core.yml or CLI overrides")
     return org, name
 
 
@@ -210,9 +203,7 @@ def measure_text_width(
 ) -> float:
     probe_padding = int(max(4, round(font_size * 2.0)))
     probe_baseline = int(max(4, round(font_size * 2.0)))
-    probe_width = int(
-        max(probe_padding * 2 + 16, round(font_size * max(len(text), 1) * 2.2))
-    )
+    probe_width = int(max(probe_padding * 2 + 16, round(font_size * max(len(text), 1) * 2.2)))
     probe_height = int(max(probe_padding * 2 + 16, round(font_size * 4.0)))
 
     probe_svg = (
@@ -257,9 +248,7 @@ def escape_xml(text: str) -> str:
     )
 
 
-def set_svg_dimensions(
-    root: ET.Element, view_width: float, view_height: float, img_height: str | None
-) -> None:
+def set_svg_dimensions(root: ET.Element, view_width: float, view_height: float, img_height: str | None) -> None:
     if img_height:
         height_value, unit = parse_number_with_unit(img_height)
         width_value = height_value * (view_width / view_height)
@@ -324,12 +313,8 @@ def update_logo_text(
 
     name_node.text = name
 
-    original_width = measure_text_width(
-        original_name, font_size, font_family, font_weight, inkscape_cmd
-    )
-    new_width = measure_text_width(
-        name, font_size, font_family, font_weight, inkscape_cmd
-    )
+    original_width = measure_text_width(original_name, font_size, font_family, font_weight, inkscape_cmd)
+    new_width = measure_text_width(name, font_size, font_family, font_weight, inkscape_cmd)
     text_x = float(name_node.attrib["x"])
     image_x = float(image_node.attrib["x"])
     image_width = float(image_node.attrib["width"])
