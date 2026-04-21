@@ -260,7 +260,7 @@ def set_svg_dimensions(root: ET.Element, view_width: float, view_height: float, 
     root.attrib["height"] = format_float(view_height)
 
 
-def apply_mode_style(tree: ET.ElementTree[ET.Element], mode: str, name: str) -> None:
+def apply_mode_style(tree: ET.ElementTree, mode: str, name: str) -> None:
     root = tree.getroot()
     root.attrib["aria-label"] = f"Logo for {name} ({mode})"
 
