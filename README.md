@@ -1,5 +1,10 @@
 # sanger-tol/nf-core-modules
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/sanger-tol-nf-core-modules_logo_dark.svg">
+  <img alt="sanger-tol/genomeassembly" src="docs/images/sanger-tol-nf-core-modules_logo_light.svg">
+</picture>
+
 Adapted from [nf-core/modules/README.md](https://github.com/nf-core/modules/blob/master/README.md)
 
 [![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A521.10.3-23aa62.svg?labelColor=000000)](https://www.nextflow.io/)
