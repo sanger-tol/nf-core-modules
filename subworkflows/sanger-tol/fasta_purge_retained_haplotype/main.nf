@@ -23,6 +23,16 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
 
     main:
     //
+    // Logic: validate that input assemblies are unzipped
+    //
+    ch_assemblies
+        .subscribe { meta, hap1, hap2 ->
+            if (hap1.getExtension() == "gz" || (hap2 && hap2.getExtension() == "gz")) {
+                error("Error: Input assemblies to FASTA_PURGE_RETAINED_HAPLOTYPE must be unzipped!")
+            }
+        }
+
+    //
     // Logic: split assemblies into primary and alternate
     //
     ch_assemblies_split = ch_assemblies
