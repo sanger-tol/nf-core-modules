@@ -29,7 +29,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     // either have to copy this file to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true
     // in your nextflow.config file.
-    def args1       = task.ext.args1  ?: ''
+    def args1       = task.ext.args  ?: ''
     def args2       = task.ext.args2  ?: ''
     def args3       = task.ext.args3  ?: ''
     def prefix      = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
