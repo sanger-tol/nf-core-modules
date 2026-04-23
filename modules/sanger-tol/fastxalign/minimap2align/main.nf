@@ -29,7 +29,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     // either have to copy this file to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true
     // in your nextflow.config file.
-    def args1       = task.ext.args  ?: ''
+    def args       = task.ext.args  ?: ''
     def args2       = task.ext.args2  ?: ''
     def args3       = task.ext.args3  ?: ''
     def prefix      = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
@@ -38,7 +38,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def bam_output  = bam_format      ? "-a | ${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
     """
     slice_fasta.py slice ${fastx} ${range[0]} ${range[1]} | \\
-        minimap2 -t${task.cpus} ${args1} ${index} - \\
+        minimap2 -t${task.cpus} ${args} ${index} - \\
         ${bam_output}
     """
 
