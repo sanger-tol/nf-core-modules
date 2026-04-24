@@ -23,7 +23,8 @@ repos:
       - id: end-of-file-fixer
         exclude: |
           (?x)^(
-              .*\.snap$
+              .*\.snap$|
+              .*\.svg$
           )$
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
