@@ -47,12 +47,6 @@ output:
         Channel containing multi-resolution cooler file
         Structure: [ val(meta), path(mcool) ]
       pattern: "*.mcool"
-  - versions:
-      type: file
-      description: |
-        File containing software versions
-        Structure: [ path(versions.yml) ]
-      pattern: "versions.yml"
 authors:
   - "@yumisims"
 maintainers:

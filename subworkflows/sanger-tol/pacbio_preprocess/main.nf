@@ -128,5 +128,5 @@ workflow PACBIO_PREPROCESS {
     lima_summary        = lima_summary                      // [meta, summary]
     hifitrimmer_bed     = hifitrimmer_bed                   // [meta, bed]
     hifitrimmer_summary = hifitrimmer_summary               // [meta, summary]
-    pbmarkdup_stat      = pbmarkdup_stats                   // [meta, log]
+    pbmarkdup_stats     = pbmarkdup_stats                   // [meta, log]
 }
