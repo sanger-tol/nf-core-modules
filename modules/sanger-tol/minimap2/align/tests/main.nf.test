@@ -5,7 +5,7 @@ nextflow_process {
     process "MINIMAP2_ALIGN"
 
     tag "modules"
-    tag "modules_nfcore"
+    tag "modules_sangertol"
     tag "minimap2"
     tag "minimap2/align"
 

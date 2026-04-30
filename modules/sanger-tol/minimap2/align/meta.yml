@@ -51,6 +51,9 @@ input:
       description: |
         Write CIGAR with >65535 ops at the CG tag. This is recommended when
         doing XYZ (https://github.com/lh3/minimap2#working-with-65535-cigar-operations)
+  - bed_bool:
+      type: boolean
+      description: Specify that output should be in BED format
 output:
   paf:
     - - meta:
@@ -73,6 +76,17 @@ output:
           type: file
           description: Alignment in BAM format
           pattern: "*.bam"
+          ontologies: []
+  bed:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.bed":
+          type: file
+          description: Alignment intervals in BED format
+          pattern: "*.bed"
           ontologies: []
   index:
     - - meta:
