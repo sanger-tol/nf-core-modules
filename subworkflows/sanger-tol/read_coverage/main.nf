@@ -39,7 +39,6 @@ workflow READ_COVERAGE {
 
     // 3. Run minimap2 and emit one BED per read file
     MINIMAP2_ALIGN ( ch_align_split.reads, ch_align_split.reference, false, [], false, false, true )
-    ch_versions = ch_versions.mix(MINIMAP2_ALIGN.out.versions_minimap2)
 
     // Group per-sample PAF/BED outputs into lists for downstream concatenation
     ch_paf_bed_grouped = MINIMAP2_ALIGN.out.bed
