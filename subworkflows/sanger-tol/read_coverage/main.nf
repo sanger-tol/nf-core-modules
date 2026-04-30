@@ -35,7 +35,7 @@ workflow READ_COVERAGE {
             ch_reference.map { meta2, reference -> tuple(meta2.id, meta2, reference) },
             by: 0
         )
-        .multiMap { _, meta, read_file, meta2, reference ->
+        .multiMap { sample_id, meta, read_file, meta2, reference ->
             reads: tuple(meta, read_file)
             reference: tuple(meta2, reference)
         }
