@@ -155,6 +155,5 @@ nextflow_workflow {
 
         cleanup {
             nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }        
-    }
+        }
 }
