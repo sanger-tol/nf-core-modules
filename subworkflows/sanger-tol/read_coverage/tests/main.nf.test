@@ -60,21 +60,15 @@ nextflow_workflow {
             }
         }
 
-         then {
+        then {
+            assert workflow.success
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(
-                    workflow.out.bigwig.collect { file(it.get(1)).getName() },
-                    workflow.out.bedgraph.collect { file(it.get(1)).getName() }
-                ).match()
-                }
+                { assert snapshot(workflow.out.bigwig, workflow.out.bedgraph).match() }
             )
         }
 
         cleanup {
-            if (this.metaClass.respondsTo(this, "nfcoreUnlink", String, String)) {
-                nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-            }
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 
@@ -109,21 +103,15 @@ nextflow_workflow {
             }
         }
 
-         then {
+        then {
+            assert workflow.success
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(
-                    workflow.out.bigwig.collect { file(it.get(1)).getName() },
-                    workflow.out.bedgraph.collect { file(it.get(1)).getName() }
-                ).match()
-                }
+                { assert snapshot(workflow.out.bigwig, workflow.out.bedgraph).match() }
             )
         }
 
         cleanup {
-            if (this.metaClass.respondsTo(this, "nfcoreUnlink", String, String)) {
-                nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-            }
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
         }
     }
 
@@ -158,21 +146,15 @@ nextflow_workflow {
             }
         }
 
-         then {
+        then {
+            assert workflow.success
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(
-                    workflow.out.bigwig.collect { file(it.get(1)).getName() },
-                    workflow.out.bedgraph.collect { file(it.get(1)).getName() }
-                ).match()
-                }
+                { assert snapshot(workflow.out.bigwig, workflow.out.bedgraph).match() }
             )
         }
 
         cleanup {
-            if (this.metaClass.respondsTo(this, "nfcoreUnlink", String, String)) {
-                nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-            }
-        }
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }        
     }
 }
