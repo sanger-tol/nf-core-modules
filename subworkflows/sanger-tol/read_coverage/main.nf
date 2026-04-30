@@ -10,7 +10,6 @@ workflow READ_COVERAGE {
     ch_reads      // channel: [ val(meta), [ path(reads) ] ]
     ch_reference  // channel: [ val(meta2), path(fasta) ]
     ch_chromsizes // channel: [ path(chromsizes) ]
-    save_bedgraph // boolean: true/false (Default: false)
 
     main:
     ch_versions = Channel.empty()
@@ -19,25 +18,39 @@ workflow READ_COVERAGE {
     //    Accept both:
     //      - [meta, path(read)]
     //      - [meta, [path(read1), path(read2), ...]]
-    ch_reads_for_align = ch_reads
+    // 1. Normalise reads and pair each read with its matching reference (by meta id)
+    ch_reads
         .map { meta, reads ->
             def read_list = (reads instanceof List) ? reads : [reads]
             tuple(meta, read_list)
         }
         .flatMap { meta, read_list ->
-            read_list.collect { read_file -> tuple(meta, read_file) }
+            read_list.withIndex().collect { read_file, idx ->
+                def meta_with_read_idx = meta + [read_idx: idx]
+                tuple(meta_with_read_idx, read_file)
+            }
         }
+        .map { meta, read_file -> tuple(meta.id, meta, read_file) }
+        .combine(
+            ch_reference.map { meta2, reference -> tuple(meta2.id, meta2, reference) },
+            by: 0
+        )
+        .multiMap { _, meta, read_file, meta2, reference ->
+            reads: tuple(meta, read_file)
+            reference: tuple(meta2, reference)
+        }
+        .set { ch_align_split }
 
-    // 2. Run patched minimap2 and emit one BED per read file
-    MINIMAP2_ALIGN ( ch_reads_for_align, ch_reference, false, [], false, false, true )
-    ch_paf_bed = MINIMAP2_ALIGN.out.bed
+    // 3. Run minimap2 and emit one BED per read file
+    MINIMAP2_ALIGN ( ch_align_split.reads, ch_align_split.reference, false, [], false, false, true )
+    ch_versions = ch_versions.mix(MINIMAP2_ALIGN.out.versions_minimap2)
 
     // Group per-sample PAF/BED outputs into lists for downstream concatenation
-    ch_paf_bed_grouped = ch_paf_bed
+    ch_paf_bed_grouped = MINIMAP2_ALIGN.out.bed
         .groupTuple(by: 0)
         .map { meta, paf_bed_files -> [ meta, paf_bed_files.sort { f -> f.name } ] }
 
-    // 3. Merge all per-read BED outputs into one BED per sample
+    // 4. Merge all per-read BED outputs into one BED per sample
     FIND_CONCATENATE(ch_paf_bed_grouped)
     ch_versions = ch_versions.mix(FIND_CONCATENATE.out.versions_find)
     ch_versions = ch_versions.mix(FIND_CONCATENATE.out.versions_pigz)
@@ -46,7 +59,7 @@ workflow READ_COVERAGE {
     BEDTOOLS_SORT(FIND_CONCATENATE.out.file_out, [])
     ch_versions = ch_versions.mix(BEDTOOLS_SORT.out.versions_bedtools)
 
-    // 4. Generate BedGraph from merged, sorted BED
+    // 5. Generate BedGraph from merged, sorted BED
     // Then call the module
     BEDTOOLS_GENOMECOV (
         BEDTOOLS_SORT.out.sorted.map { meta, bed -> [meta, bed, 1] },
@@ -56,7 +69,7 @@ workflow READ_COVERAGE {
     )
     ch_versions = ch_versions.mix(BEDTOOLS_GENOMECOV.out.versions_bedtools)
 
-    // 5. Convert to BigWig (Compulsory)
+    // 6. Convert to BigWig (Compulsory)
     UCSC_BEDGRAPHTOBIGWIG (
         BEDTOOLS_GENOMECOV.out.genomecov,
         ch_chromsizes
@@ -65,6 +78,6 @@ workflow READ_COVERAGE {
 
     emit:
     bigwig         = UCSC_BEDGRAPHTOBIGWIG.out.bigwig
-    bedgraph       = save_bedgraph ? BEDTOOLS_GENOMECOV.out.genomecov : Channel.empty()
+    bedgraph       = BEDTOOLS_GENOMECOV.out.genomecov
     versions       = ch_versions
 }

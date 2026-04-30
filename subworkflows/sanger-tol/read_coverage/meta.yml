@@ -30,12 +30,6 @@ input:
         Structure: [ val(meta), path(reads) ] or [ val(meta), [ path(reads1), path(reads2), ... ] ]
       pattern: "*.{fasta.gz,fastq.gz,fa.gz,fq.gz}"
 output:
-  - merged_bed:
-      type: file
-      description: |
-        Per-sample merged BED file from all MINIMAP2_ALIGN BED outputs.
-        Structure: [ val(meta), path(merged_bed) ]
-      pattern: "*.merged.bed"
   - bigwig:
       type: file
       description: |

@@ -56,7 +56,6 @@ nextflow_workflow {
                 input[2] = Channel.of(
                     file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome.chrom.sizes', checkIfExists: true)
                 )
-                input[3] = true
                 """
             }
         }
@@ -79,7 +78,7 @@ nextflow_workflow {
         }
     }
 
-    test("Escherichia - illumina read fastq optional bedgraph") {
+    test("Escherichia - illumina read fastq") {
 
         when {
             params {
@@ -106,7 +105,6 @@ nextflow_workflow {
                 input[2] = Channel.of(
                     file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome.chrom.sizes', checkIfExists: true)
                 )
-                input[3] = false
                 """
             }
         }
@@ -115,7 +113,8 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    workflow.out.bigwig.collect { file(it.get(1)).getName() }
+                    workflow.out.bigwig.collect { file(it.get(1)).getName() },
+                    workflow.out.bedgraph.collect { file(it.get(1)).getName() }
                 ).match()
                 }
             )
@@ -155,7 +154,6 @@ nextflow_workflow {
                 input[2] = Channel.of(
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.genome', checkIfExists: true)
                 )
-                input[3] = true
                 """
             }
         }
