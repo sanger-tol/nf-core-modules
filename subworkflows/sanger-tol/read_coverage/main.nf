@@ -69,5 +69,4 @@ workflow READ_COVERAGE {
     emit:
     bigwig         = UCSC_BEDGRAPHTOBIGWIG.out.bigwig
     bedgraph       = BEDTOOLS_GENOMECOV.out.genomecov
-    versions       = ch_versions
 }
