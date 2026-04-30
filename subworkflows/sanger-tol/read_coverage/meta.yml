@@ -10,7 +10,6 @@ keywords:
   - fasta
 components:
   - minimap2/align:
-      git_remote: https://github.com/nf-core/modules.git
   - find/concatenate:
       git_remote: https://github.com/nf-core/modules.git
   - bedtools/sort
