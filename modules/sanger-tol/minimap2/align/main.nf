@@ -66,4 +66,3 @@ process MINIMAP2_ALIGN {
     ${bam_index}
     """
 }
-

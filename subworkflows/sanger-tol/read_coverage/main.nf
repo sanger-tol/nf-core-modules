@@ -49,7 +49,7 @@ workflow READ_COVERAGE {
 
     // 4. Generate BedGraph from merged, sorted BED
     // Then call the module
-    BEDTOOLS_GENOMECOV ( 
+    BEDTOOLS_GENOMECOV (
         BEDTOOLS_SORT.out.sorted.map { meta, bed -> [meta, bed, 1] },
         ch_chromsizes,
         'bedgraph',
@@ -58,9 +58,9 @@ workflow READ_COVERAGE {
     ch_versions = ch_versions.mix(BEDTOOLS_GENOMECOV.out.versions_bedtools)
 
     // 5. Convert to BigWig (Compulsory)
-    UCSC_BEDGRAPHTOBIGWIG ( 
-        BEDTOOLS_GENOMECOV.out.genomecov, 
-        ch_chromsizes 
+    UCSC_BEDGRAPHTOBIGWIG (
+        BEDTOOLS_GENOMECOV.out.genomecov,
+        ch_chromsizes
     )
     ch_versions = ch_versions.mix(UCSC_BEDGRAPHTOBIGWIG.out.versions_ucsc)
 
