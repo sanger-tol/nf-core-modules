@@ -11,7 +11,7 @@ keywords:
 components:
   - minimap2/align:
       git_remote: https://github.com/nf-core/modules.git
-  - cat/cat:
+  - find/concatenate:
       git_remote: https://github.com/nf-core/modules.git
   - bedtools/genomecov
   - ucsc/bedgraphtobigwig
@@ -29,18 +29,6 @@ input:
         Structure: [ val(meta), path(reads) ] or [ val(meta), [ path(reads1), path(reads2), ... ] ]
       pattern: "*.{fasta.gz,fastq.gz,fa.gz,fq.gz}"
 output:
-  - paf_bed:
-      type: file
-      description: |
-        Per-read-file PAF/BED output from MINIMAP2_ALIGN.
-        Structure: [ val(meta), path(paf_or_bed) ]
-      pattern: "*.{paf,bed,paf.gz,bed.gz}"
-  - paf_bed_grouped:
-      type: file
-      description: |
-        Per-sample grouped PAF/BED output list from MINIMAP2_ALIGN.
-        Structure: [ val(meta), [ path(paf_or_bed1), path(paf_or_bed2), ... ] ]
-      pattern: "*.{paf,bed,paf.gz,bed.gz}"
   - merged_bed:
       type: file
       description: |

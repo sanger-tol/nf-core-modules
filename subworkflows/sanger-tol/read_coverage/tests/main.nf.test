@@ -8,47 +8,146 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/read_coverage"
-    tag "subworkflows/../../modules/nf-core/minimap2/align"
-    tag "subworkflows/../../modules/nf-core/cat/cat"
+    tag "subworkflows/../../modules/sanger-tol/minimap2/align"
+    tag "subworkflows/../../modules/nf-core/find/concatenate"
     tag "subworkflows/../../modules/nf-core/bedtools/genomecov"
     tag "subworkflows/../../modules/nf-core/ucsc/bedgraphtobigwig"
 
     setup {
-        nfcoreInitialise("${launchDir}/library/")
-        nfcoreInstall(
-            "${launchDir}/library/",
-            [
-                "minimap2/align",
-                "cat/cat",
-                "bedtools/genomecov",
-                "ucsc/bedgraphtobigwig"
-            ]
-        )
-        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "bedtools/sort",
+                    "find/concatenate",
+                    "bedtools/genomecov",
+                    "ucsc/bedgraphtobigwig"
+                ]
+            )
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
-    test("meles meles - hifi fastq.gz - multiple read files") {
+    test("Escherichia - ont read fastq") {
 
         when {
             params {
-                minimap2_args = "-x map-hifi"
+                minimap2_align_args = "-x map-ont"
+                bedtools_genomecov_args = "-bg"
             }
-
             workflow {
                 """
                 input[0] = Channel.of(
                     [
-                        [ id:'test' ],
+                        [ id:'test', readtype:'ont' ],
                         [
-                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200910_173211.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.5000.fastq.gz', checkIfExists: true),
-                            file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.fastq.gz', checkIfExists: true)
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true)
                         ]
                     ]
                 )
                 input[1] = Channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome.fasta.gz', checkIfExists: true)
+                    ]
+                )
+                input[2] = Channel.of(
+                    file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome.chrom.sizes', checkIfExists: true)
+                )
+                input[3] = true
+                """
+            }
+        }
+
+         then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.bigwig.collect { file(it.get(1)).getName() },
+                    workflow.out.bedgraph.collect { file(it.get(1)).getName() }
+                ).match()
+                }
+            )
+        }
+
+        cleanup {
+            if (this.metaClass.respondsTo(this, "nfcoreUnlink", String, String)) {
+                nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+            }
+        }
+    }
+
+    test("Escherichia - illumina read fastq optional bedgraph") {
+
+        when {
+            params {
+                minimap2_align_args = "-x sr"
+                bedtools_genomecov_args = "-bg"
+            }
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test', readtype:'ont' ],
+                        [
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/illumina/illumina.fastq.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/illumina/illumina.fastq.gz', checkIfExists: true)
+                        ]
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome.fasta.gz', checkIfExists: true)
+                    ]
+                )
+                input[2] = Channel.of(
+                    file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome.chrom.sizes', checkIfExists: true)
+                )
+                input[3] = false
+                """
+            }
+        }
+
+         then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.bigwig.collect { file(it.get(1)).getName() }
+                ).match()
+                }
+            )
+        }
+
+        cleanup {
+            if (this.metaClass.respondsTo(this, "nfcoreUnlink", String, String)) {
+                nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+            }
+        }
+    }
+
+    test("baUndUnlc1 - hifi read fasta") {
+
+        when {
+            params {
+                minimap2_align_args = "-x map-hifi"
+                bedtools_genomecov_args = "-bg"
+            }
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test', readtype:'hifi' ],
+                        [
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true)
+                        ]
+                    ]
+                )
+                input[1] = Channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap2.p_ctg.fa.gz', checkIfExists: true)
                     ]
                 )
                 input[2] = Channel.of(
@@ -59,27 +158,21 @@ nextflow_workflow {
             }
         }
 
-        then {
+         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.paf_bed.size() == 2 },
-                { assert workflow.out.paf_bed_grouped.size() == 1 },
-                { assert workflow.out.merged_bed.size() == 1 },
-                { assert workflow.out.bedgraph.size() == 1 },
-                { assert workflow.out.bigwig.size() == 1 },
-                {
-                    assert snapshot(
-                        workflow.out.paf_bed.collect { file(it.get(1)).getName() }.sort(),
-                        workflow.out.merged_bed.collect { file(it.get(1)).getName() },
-                        workflow.out.bedgraph.collect { file(it.get(1)).getName() },
-                        workflow.out.bigwig.collect { file(it.get(1)).getName() }
-                    ).match()
+                { assert snapshot(
+                    workflow.out.bigwig.collect { file(it.get(1)).getName() },
+                    workflow.out.bedgraph.collect { file(it.get(1)).getName() }
+                ).match()
                 }
             )
         }
 
         cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+            if (this.metaClass.respondsTo(this, "nfcoreUnlink", String, String)) {
+                nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+            }
         }
     }
 }
