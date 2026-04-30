@@ -8,8 +8,10 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/read_coverage"
+    tag "minimap2/align"
     tag "subworkflows/../../modules/sanger-tol/minimap2/align"
     tag "subworkflows/../../modules/nf-core/find/concatenate"
+    tag "subworkflows/../../modules/nf-core/bedtools/sort"
     tag "subworkflows/../../modules/nf-core/bedtools/genomecov"
     tag "subworkflows/../../modules/nf-core/ucsc/bedgraphtobigwig"
 
