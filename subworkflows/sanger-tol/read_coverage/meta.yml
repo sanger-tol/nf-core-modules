@@ -44,12 +44,6 @@ output:
         Coverage bedGraph output generated from MINIMAP2_ALIGN outputs.
         Structure: [ val(meta), path(bedgraph) ]
       pattern: "*.bedgraph"
-  - versions:
-      type: file
-      description: |
-        File containing software versions
-        Structure: [ path(versions.yml) ]
-      pattern: "versions.yml"
 authors:
   - "@yumisims"
 maintainers:

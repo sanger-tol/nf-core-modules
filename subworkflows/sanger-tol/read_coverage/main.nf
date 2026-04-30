@@ -64,10 +64,8 @@ workflow READ_COVERAGE {
         BEDTOOLS_GENOMECOV.out.genomecov,
         ch_chromsizes
     )
-    ch_versions = ch_versions.mix(UCSC_BEDGRAPHTOBIGWIG.out.versions_ucsc)
 
     emit:
     bigwig         = UCSC_BEDGRAPHTOBIGWIG.out.bigwig
     bedgraph       = BEDTOOLS_GENOMECOV.out.genomecov
-    versions       = ch_versions
 }
