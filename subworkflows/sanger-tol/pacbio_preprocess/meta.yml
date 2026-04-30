@@ -97,12 +97,6 @@ output:
         pbmarkdup duplicate marking statistics (if val_uli_primers provided).
         Structure: [ val(meta), path(log) ]
       pattern: "*.log"
-  - versions:
-      type: file
-      description: |
-        File containing software versions.
-        Structure: [ path(versions.yml) ]
-      pattern: "versions.yml"
 authors:
   - "@sainsachiko"
 maintainers:
