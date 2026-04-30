@@ -58,7 +58,6 @@ workflow READ_COVERAGE {
         'bedgraph',
         true
     )
-    ch_versions = ch_versions.mix(BEDTOOLS_GENOMECOV.out.versions_bedtools)
 
     // 6. Convert to BigWig (Compulsory)
     UCSC_BEDGRAPHTOBIGWIG (
