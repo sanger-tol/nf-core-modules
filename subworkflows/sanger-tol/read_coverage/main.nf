@@ -49,7 +49,6 @@ workflow READ_COVERAGE {
     FIND_CONCATENATE(ch_paf_bed_grouped)
 
     BEDTOOLS_SORT(FIND_CONCATENATE.out.file_out, [])
-    ch_versions = ch_versions.mix(BEDTOOLS_SORT.out.versions_bedtools)
 
     // 5. Generate BedGraph from merged, sorted BED
     // Then call the module
