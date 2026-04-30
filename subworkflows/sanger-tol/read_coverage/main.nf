@@ -47,9 +47,6 @@ workflow READ_COVERAGE {
 
     // 4. Merge all per-read BED outputs into one BED per sample
     FIND_CONCATENATE(ch_paf_bed_grouped)
-    ch_versions = ch_versions.mix(FIND_CONCATENATE.out.versions_find)
-    ch_versions = ch_versions.mix(FIND_CONCATENATE.out.versions_pigz)
-    ch_versions = ch_versions.mix(FIND_CONCATENATE.out.versions_coreutils)
 
     BEDTOOLS_SORT(FIND_CONCATENATE.out.file_out, [])
     ch_versions = ch_versions.mix(BEDTOOLS_SORT.out.versions_bedtools)
