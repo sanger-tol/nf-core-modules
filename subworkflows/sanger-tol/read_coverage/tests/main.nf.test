@@ -9,6 +9,7 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/read_coverage"
     tag "minimap2/align"
+    tag "find/concatenate"
     tag "subworkflows/../../modules/sanger-tol/minimap2/align"
     tag "subworkflows/../../modules/sanger-tol/find/concatenate"
     tag "subworkflows/../../modules/nf-core/bedtools/genomecov"
