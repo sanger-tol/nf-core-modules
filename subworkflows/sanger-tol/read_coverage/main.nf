@@ -1,6 +1,5 @@
 include { MINIMAP2_ALIGN     } from '../../../modules/sanger-tol/minimap2/align/main'
-include { FIND_CONCATENATE   } from '../../../modules/nf-core/find/concatenate/main'
-include { BEDTOOLS_SORT      } from '../../../modules/nf-core/bedtools/sort/main'
+include { FIND_CONCATENATE   } from '../../../modules/sanger-tol/find/concatenate/main'
 include { BEDTOOLS_GENOMECOV } from '../../../modules/nf-core/bedtools/genomecov/main'
 include { UCSC_BEDGRAPHTOBIGWIG } from '../../../modules/nf-core/ucsc/bedgraphtobigwig/main'
 
@@ -44,17 +43,13 @@ workflow READ_COVERAGE {
         .groupTuple(by: 0)
         .map { meta, paf_bed_files -> [ meta, paf_bed_files.sort { f -> f.name } ] }
 
-    // 4. Merge all per-read BED outputs into one BED per sample
-    FIND_CONCATENATE(ch_paf_bed_grouped)
-
-    // 5. Sort bed
-    // 5. Sort bed
-    BEDTOOLS_SORT(FIND_CONCATENATE.out.file_out, [])
+    // 4. Merge all per-read BED outputs into one BED per sample and sort it
+    FIND_CONCATENATE(ch_paf_bed_grouped, true)
 
     // 5. Generate BedGraph from merged, sorted BED
     // Then call the module
     BEDTOOLS_GENOMECOV (
-        BEDTOOLS_SORT.out.sorted.map { meta, bed -> [meta, bed, 1] },
+        FIND_CONCATENATE.out.file_out.map { meta, bed -> [meta, bed, 1] },
         ch_chromsizes,
         'bedgraph',
         true

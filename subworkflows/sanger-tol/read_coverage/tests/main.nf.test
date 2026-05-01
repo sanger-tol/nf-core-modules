@@ -10,8 +10,7 @@ nextflow_workflow {
     tag "subworkflows/read_coverage"
     tag "minimap2/align"
     tag "subworkflows/../../modules/sanger-tol/minimap2/align"
-    tag "subworkflows/../../modules/nf-core/find/concatenate"
-    tag "subworkflows/../../modules/nf-core/bedtools/sort"
+    tag "subworkflows/../../modules/sanger-tol/find/concatenate"
     tag "subworkflows/../../modules/nf-core/bedtools/genomecov"
     tag "subworkflows/../../modules/nf-core/ucsc/bedgraphtobigwig"
 
@@ -20,7 +19,6 @@ nextflow_workflow {
             nfcoreInstall(
                 "${launchDir}/library/",
                 [
-                    "bedtools/sort",
                     "find/concatenate",
                     "bedtools/genomecov",
                     "ucsc/bedgraphtobigwig"
