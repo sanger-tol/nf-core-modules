@@ -12,7 +12,6 @@ workflow READ_COVERAGE {
     ch_chromsizes // channel: [ path(chromsizes) ]
 
     main:
-    ch_versions = channel.empty()
 
     // 1. Normalise read input to one tuple per read file
     //    Accept both:
