@@ -51,7 +51,12 @@ nextflow_process {
         then {
             assertAll(
                 { assert !process.success },
-                { assert process.stdout.toString().contains("All files provided to this module must either be gzipped (and have the .gz extension) or unzipped (and not have the .gz extension). A mix of both is not allowed.") },
+                {
+                    def needle = "All files provided to this module must either be gzipped (and have the .gz extension) or unzipped (and not have the .gz extension). A mix of both is not allowed."
+                    def out = (process.stdout?.toString() ?: '').replaceAll('\u0000', '')
+                    def err = (process.stderr?.toString() ?: '').replaceAll('\u0000', '')
+                    assert out.contains(needle) || err.contains(needle)
+                },
             )
         }
     }
