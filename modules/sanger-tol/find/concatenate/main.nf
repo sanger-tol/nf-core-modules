@@ -9,7 +9,7 @@ process FIND_CONCATENATE {
 
     input:
     tuple val(meta), path(files_in, stageAs: 'to_concatenate/*', arity: '1..*')
-    val sort_bed
+    val sort
 
     output:
     tuple val(meta), path("${prefix}"), emit: file_out
