@@ -2,13 +2,11 @@ process TELOMERE_WINDOWS {
     tag "${meta.id}"
     label 'process_low'
 
-    conda "bioconda::java-jdk=8.0.112"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/java-jdk:8.0.112--1' :
-        'biocontainers/java-jdk:8.0.112--1' }"
+    container 'sanger-tol/telomere:0.0.1-c3'
 
     input:
     tuple val(meta), path(telomere)
+    val split
 
     output:
     tuple val(meta), path("*.windows") , emit: windows
@@ -18,13 +16,13 @@ process TELOMERE_WINDOWS {
     task.ext.when == null || task.ext.when
 
     script:
-    // WARNING: This module includes the telomere.jar binary and its wrapper telomere_windows.sh
-    // as module binaries in ${moduleDir}/resources/usr/bin/. To use this module, you will
-    // either have to copy these two files to ${projectDir}/bin or set the option
-    // nextflow.enable.moduleBinaries = true in your nextflow.config file.
-
+   
     def prefix      = task.ext.prefix ?: "${meta.id}"
-    def args        = task.ext.args   ?: ""
+    def jar_override = task.ext.telomere_jar ?: ''
+    def thresholds  = task.ext.args ?: '99.9 0.1'
+    def split_opt   = split ? '--split ' : ''
+    // Non-split mode prints windows to stdout; --split writes *.fwd.windows / *.rev.windows (see FindTelomereWindows.java)
+    def stdout_redirect = split ? '' : "> ${prefix}.windows"
 
     // Dynamically generate java mem needs based on task.memory
     // Taken from: nf-core/umicollapse
@@ -32,18 +30,52 @@ process TELOMERE_WINDOWS {
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
 
     """
-    telomere_windows.sh \\
+    TELOMERE_JAR="${jar_override}"
+    if [ -z "\$TELOMERE_JAR" ]; then
+        if [ -f telomere.jar ]; then
+            TELOMERE_JAR=telomere.jar
+        elif [ -f /opt/telomere/telomere.jar ]; then
+            TELOMERE_JAR=/opt/telomere/telomere.jar
+        else
+            _ft=\$(command -v find_telomere 2>/dev/null || true)
+            if [ -n "\$_ft" ]; then
+                _bin=\$(readlink -f "\$_ft" 2>/dev/null || readlink "\$_ft" 2>/dev/null || echo "\$_ft")
+                _dir=\$(dirname "\$_bin")
+                if [ -f "\$_dir/telomere.jar" ]; then
+                    TELOMERE_JAR="\$_dir/telomere.jar"
+                fi
+            fi
+        fi
+        if [ -z "\$TELOMERE_JAR" ] && [ -n "\${VGP_PIPELINE:-}" ] && [ -f "\${VGP_PIPELINE}/telomere/telomere.jar" ]; then
+            TELOMERE_JAR="\${VGP_PIPELINE}/telomere/telomere.jar"
+        fi
+        if [ -z "\$TELOMERE_JAR" ] && [ -f /usr/local/share/telomere/telomere.jar ]; then
+            TELOMERE_JAR=/usr/local/share/telomere/telomere.jar
+        fi
+    fi
+    if [ -z "\$TELOMERE_JAR" ] || [ ! -f "\$TELOMERE_JAR" ]; then
+        echo "TELOMERE_WINDOWS: could not locate telomere.jar (set process ext.telomere_jar or VGP_PIPELINE)" >&2
+        exit 1
+    fi
+
+    java \\
         -Xmx${max_heap_size_mega}M \\
         -Xss${max_stack_size_mega}M \\
-        FindTelomereWindows $telomere \\
-        $args \\
-        > ${prefix}.windows
+        -cp "\$TELOMERE_JAR" \\
+        FindTelomereWindows \\
+        ${split_opt}${telomere} \\
+        ${thresholds} \\
+        ${stdout_redirect}
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.windows
+    if ${split}; then
+        touch ${prefix}.fwd.windows ${prefix}.rev.windows
+    else
+        touch ${prefix}.windows
+    fi
     """
 
 }

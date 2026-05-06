@@ -2,9 +2,8 @@
 // MODULE IMPORT BLOCK
 //
 include { BIOAWK                        } from '../../../modules/nf-core/bioawk/main'
-include { TELOMERE_REGIONS              } from '../../../modules/sanger-tol/telomere/regions/main'
+include { FINDTELOMERE                  } from '../../../modules/sanger-tol/telomere/findtelomere/main'
 include { GAWK as GAWK_SPLIT_TELOMERE   } from '../../../modules/nf-core/gawk/main'
-include { TELOMERE_WINDOWS              } from '../../../modules/sanger-tol/telomere/windows/main'
 include { TELOMERE_EXTRACT              } from '../../../modules/sanger-tol/telomere/extract/main'
 include { TABIX_BGZIPTABIX              } from '../../../modules/nf-core/tabix/bgziptabix'
 
@@ -13,39 +12,12 @@ workflow TELO_FINDER {
 
     take:
     ch_reference        // Channel [ val(meta), path(fasta) ]
-    ch_telomereseq      // Channel [ val(meta), path(fasta) ]
+    ch_telomereseq      // Channel [ val(meta), value(telomere_motif) ]
     val_split_telomere  // bool
     val_run_bgzip       // bool
 
     main:
 
-    // NOTE: BIOAWK PROGRAM TO RETURN A TAB DELIMITED FILE CONTAINING:
-    //       corrected_sequence  G_count  G_percentage  reversed?  original_sequence
-    ch_bioawk_program = channel.of('''\
-        BEGIN { OFS = "\\t" } {
-            sequence = toupper($seq);
-            copy_seq = sequence;
-            g_count = gsub(/G/, "", sequence);
-            g_percent = 100*g_count/length(copy_seq);
-            rev = (g_percent > 30);
-            final_sequence = rev ? revcomp($seq) : $seq;
-            printf "%s\\t%d\\t%.2f\\t%s\\t%s\\n", final_sequence, g_count, g_percent, (rev ? "true" : "false"), copy_seq
-        }'''.stripIndent())
-        .collectFile(name: "bioawk_getdata.awk", cache: true)
-        .collect()
-
-
-    //
-    // MODULE: BIOAWK CONVERT THE MOTIF INTO THE 5 PRIME DIRECTION
-    //         IF PROVIDED IN THE 3 PRIME DIRECTION
-    //         IF MOTIF HAS A G CONTENT OF > 30% IT IS IN THE 3 PRIME
-    //
-    BIOAWK(
-        ch_telomereseq,
-        ch_bioawk_program,
-        false,
-        "tsv"
-    )
 
 
     //
@@ -71,14 +43,15 @@ workflow TELO_FINDER {
     //
     // MODULE: FINDS THE TELOMERIC SEQEUNCE IN REFERENCE
     //
-    TELOMERE_REGIONS (
+    FINDTELOMERE (
         matched_channels.reference_ch,
-        matched_channels.telomere_ch
+        matched_channels.telomere_ch,
+        false
     )
 
 
     // NOTE: TAG THE DIRECTION OF THE TELOMERE AS 0 == WHOLE DATASET
-    ch_full_telomere = TELOMERE_REGIONS.out.telomere
+    ch_full_telomere = FINDTELOMERE.out.telomere
         .map{ meta, file ->
             def new_meta = meta + [direction: 0]
             [new_meta, file]
@@ -136,13 +109,8 @@ workflow TELO_FINDER {
     }
 
 
-    //
-    // MODULE: GENERATES A WINDOWS FILE FROM THE ABOVE
-    //         THIS ONLY HAPPENS ON WHOLE TELOMERIC FILES
-    //
-    TELOMERE_WINDOWS (
-        ch_regions_for_extraction.filter { meta, _file -> meta.direction == 0 }
-    )
+    ch_whole_windows = FINDTELOMERE.out.windows
+        .map { meta, file -> [meta + [direction: 0], file] }
 
     //
     // LOGIC: MIX THE FILES FROM THE TWO CHANNELS
@@ -152,7 +120,7 @@ workflow TELO_FINDER {
     //
     ch_final_telomere_files = ch_regions_for_extraction
         .filter { meta, _file -> meta.direction != 0 }
-        .mix(TELOMERE_WINDOWS.out.windows)
+        .mix(ch_whole_windows)
         .filter { _meta, file ->
             file.size() > 0
         }

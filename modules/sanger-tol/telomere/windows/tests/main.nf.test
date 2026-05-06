@@ -17,6 +17,7 @@ nextflow_process {
         when {
             params {
                 telomere_window_cut = 99.9
+                telomere_window_frac = 0.1
             }
 
             process {
@@ -25,6 +26,7 @@ nextflow_process {
                     [ id: "idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.telomere', checkIfExists: true)
                 ]
+                input[1] = false
                 """
             }
         }
@@ -48,6 +50,7 @@ nextflow_process {
                     [ id: "idFanCani4" ],
                     file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.telomere', checkIfExists: true)
                 ]
+                input[1] = false
                 """
             }
         }

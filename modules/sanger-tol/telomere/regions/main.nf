@@ -1,8 +1,8 @@
-process TELOMERE_REGIONS {
+process FIND_TELOMERE {
     tag "${meta.id}"
     label 'process_low'
 
-    container 'sanger-tol/telomere:0.0.1-c2'
+    container 'sanger-tol/telomere:0.0.1-c3'
 
     input:
     tuple val(meta), path(reference)
@@ -23,7 +23,7 @@ process TELOMERE_REGIONS {
 
     def prefix          = task.ext.prefix ?: "${meta.id}"
     """
-    find_telomere $reference $telomereseq > ${prefix}.telomere
+    find_telomere $reference $telomereseq | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
     """
 
     stub:

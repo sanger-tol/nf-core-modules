@@ -1,6 +1,20 @@
 name: "telomere_windows"
 description: |
-  Identify windows of the telomere file which maybe true telomeric sites
+  Identify windows of the telomere file which maybe true telomeric sites.
+  Wraps [FindTelomereWindows](https://github.com/sanger-tol/telomere/blob/main/FindTelomereWindows.java) (`java -cp telomere.jar FindTelomereWindows`).
+
+  **Without `--split` (`split: false`):** positional arguments are `<in> <identity> [threshold]`.
+  `<identity>` is a percentage (e.g. `99.9` → internally divided by 100). If `[threshold]` is omitted,
+  the program uses default `0.4`, then applies the identity-based adjustment described in the tool.
+  Window lines are written to **stdout**; this module redirects them to `${prefix}.windows`.
+
+  **With `--split` (`split: true`):** invocation is `--split <in> <identity> [threshold]`.
+  If `[threshold]` is omitted, default is `0.05` before the same identity adjustment. The program writes
+  **two files**: `<stem>.fwd.windows` and `<stem>.rev.windows`, where `<stem>` is the input path with a
+  trailing `.telomere` removed (otherwise the full input basename). Stdout redirection is not used.
+
+  Override `<identity> [threshold]` via process `ext.args` (default `99.9 0.1`).
+  `telomere.jar` is resolved like in `telomere/findtelomere`, or set explicitly via `process.ext.telomere_jar`.
 keywords:
   - telomere
   - windows
@@ -27,6 +41,10 @@ input:
         pattern: "*.telomere"
         ontologies:
           - edam: "http://edamontology.org/format_3475"
+    - split:
+        type: boolean
+        description: |
+          When true, pass `--split` before the telomere path (split-mode invocation).
 output:
   windows:
     - - meta:

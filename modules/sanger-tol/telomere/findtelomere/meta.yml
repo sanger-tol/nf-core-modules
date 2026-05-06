@@ -1,0 +1,164 @@
+name: "findtelomere"
+description: |
+  Run the core steps of the [`sanger-tol/telomere`](https://github.com/sanger-tol/telomere) toolkit:
+
+  - `find_telomere`: scan a FASTA assembly for a telomeric repeat motif on both strands and emit motif-hit
+    intervals (reformatted by this module into a BED6-like `*.telomere` file).
+  - `FindTelomereWindows`: summarise motif-hit density in sliding windows along scaffolds.
+
+  The default container (`sanger-tol/telomere`) bundles `find_telomere`, `telomere.jar` and a JVM.
+  Conda is not supported.
+
+  `FindTelomereWindows` requires `telomere.jar` on the Java classpath. The module resolves it automatically
+  (task dir `telomere.jar`, `/opt/telomere/telomere.jar`, alongside the resolved `find_telomere` binary,
+  `$VGP_PIPELINE/telomere/telomere.jar`, or `/usr/local/share/telomere/telomere.jar`). Override via
+  `process.ext.telomere_jar` if needed.
+keywords:
+  - telomere
+  - regions
+  - windows
+  - motif
+tools:
+  - find_telomere:
+      description: |
+        Scan the assembly for a telomeric repeat motif (default `TTAGGG`) on both strands and report runs
+        of the motif and its reverse complement.
+      homepage: https://github.com/sanger-tol/telomere
+      documentation: https://github.com/sanger-tol/telomere
+      licence:
+        - "BSD-3-Clause"
+      identifier: ""
+  - FindTelomereWindows:
+      description: |
+        Slide windows along scaffolds and flag regions where telomeric hits exceed a density threshold
+        (optionally adjusted by sequencing identity).
+      homepage: https://github.com/sanger-tol/telomere
+      documentation: https://github.com/sanger-tol/telomere/blob/main/FindTelomereWindows.java
+      licence:
+        - "BSD-3-Clause"
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - reference:
+        type: file
+        description: |
+          Assembly for telomere.
+        pattern: "*.{fa,fna,fasta}"
+        ontologies:
+          - edam: http://edamontology.org/format_1929
+  - telomereseq:
+      type: string
+      description: |
+        A string containing the DNA sequence of a telomere motif
+      ontologies: []
+  - split_windows:
+      type: boolean
+      description: |
+        When true, run `FindTelomereWindows --split`, producing `<prefix>.fwd.windows` and
+        `<prefix>.rev.windows`. When false, produce a single `<prefix>.windows` output.
+        See [`sanger-tol/telomere`](https://github.com/sanger-tol/telomere) for details.
+output:
+  telomere:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.telomere":
+          type: file
+          description: |
+            Motif-hit intervals produced by `find_telomere`, reformatted to a BED6-like table.
+          ontologies:
+            - edam: "http://edamontology.org/format_3475"
+  telomere_bed_fwd:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.fwd.telomere.bed":
+          type: file
+          description: |
+            Forward-orientation telomeric intervals produced by `find_telomere` (BED6-like).
+            The filename stem follows the reference basename (e.g. `GCA_*.fasta.gz.fwd.telomere.bed`).
+          ontologies:
+            - edam: "http://edamontology.org/format_3003"
+  telomere_bed_rev:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.rev.telomere.bed":
+          type: file
+          description: |
+            Reverse-orientation telomeric intervals produced by `find_telomere` (BED6-like).
+            The filename stem follows the reference basename (e.g. `GCA_*.fasta.gz.rev.telomere.bed`).
+          ontologies:
+            - edam: "http://edamontology.org/format_3003"
+  windows:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.windows":
+          type: file
+          description: |
+            Telomere density windows from FindTelomereWindows (non-split mode; `split_windows: false`).
+          ontologies:
+            - edam: "http://edamontology.org/format_3475"
+  windows_fwd:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.fwd.windows":
+          type: file
+          description: |
+            Forward windows from FindTelomereWindows (`--split` mode; `split_windows: true`).
+          ontologies:
+            - edam: "http://edamontology.org/format_3475"
+  windows_rev:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.rev.windows":
+          type: file
+          description: |
+            Reverse windows from FindTelomereWindows (`--split` mode; `split_windows: true`).
+          ontologies:
+            - edam: "http://edamontology.org/format_3475"
+  versions_findtelomere:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - find_telomere:
+          type: string
+          description: The name of the module
+      - 1.0.0:
+          type: string
+          description: The version of the module
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - find_telomere:
+          type: string
+          description: The name of the module
+      - 1.0.0:
+          type: string
+          description: The version of the module
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
