@@ -34,10 +34,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-02T13:52:18.186444729"
+        "timestamp": "2026-05-06T11:41:14.451046164"
     },
     "test_cat_unzipped_unzipped": {
         "content": [
@@ -75,10 +75,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-02T13:52:35.53127823"
+        "timestamp": "2026-05-06T11:41:26.762342395"
     },
     "test_cat_zipped_zipped": {
         "content": [
@@ -116,10 +116,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-02T13:52:44.453969964"
+        "timestamp": "2026-05-06T11:41:33.080777703"
     },
     "test_cat_zipped_unzipped": {
         "content": [
@@ -157,10 +157,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-02T13:52:53.409540994"
+        "timestamp": "2026-05-06T11:41:39.835846179"
     },
     "test_cat_one_file_unzipped_zipped": {
         "content": [
@@ -198,10 +198,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-02T13:53:10.670054965"
+        "timestamp": "2026-05-06T11:41:52.843587872"
     },
     "test_cat_unzipped_zipped": {
         "content": [
@@ -239,9 +239,9 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.2",
+            "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-02T13:53:01.807148482"
+        "timestamp": "2026-05-06T11:41:46.33567835"
     }
 }

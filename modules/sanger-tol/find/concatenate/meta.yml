@@ -34,7 +34,7 @@ input:
         description: List of either compressed or uncompressed files
         pattern: "*"
         ontologies: []
-  - sort_bed:
+  - sort:
       type: boolean
       description: Sort concatenated BED output by chrom/start if true
 output:
@@ -111,5 +111,7 @@ topics:
           description: The expression to obtain the version of the tool
 authors:
   - "@BioWilko"
+  - "@yumisims"
 maintainers:
   - "@BioWilko"
+  - "@yumisims"

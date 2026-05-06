@@ -33,6 +33,9 @@ process MINIMAP2_ALIGN {
     def args3 = task.ext.args3 ?: ''
     def args4 = task.ext.args4 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    if( bam_format && bed_bool ) {
+        error("Error: minimap2/align only supports one output format at a time. Set either bam_format=true or bed_bool=true, not both.")
+    }
     def bam_index = bam_index_extension ? "${prefix}.bam##idx##${prefix}.bam.${bam_index_extension} --write-index" : "${prefix}.bam"
     def bam_output = bam_format ? "-a | samtools sort -@ ${task.cpus-1} -o ${bam_index} ${args2}" : bed_bool ? "| awk 'BEGIN{OFS=\"\\t\"} {print \$6, \$8, \$9, \$1, \$12, \$5}' > ${prefix}.bed" : "-o ${prefix}.paf"
     def cigar_paf = cigar_paf_format && !bam_format ? "-c" : ''
@@ -58,6 +61,9 @@ process MINIMAP2_ALIGN {
     def output_file = bam_format ? "${prefix}.bam" : bed_bool ? "${prefix}.bed" : "${prefix}.paf"
     def bam_index = bam_index_extension ? "touch ${prefix}.bam.${bam_index_extension}" : ""
     def bam_input = "${reads.extension}".matches('sam|bam|cram')
+    if( bam_format && bed_bool ) {
+        error("Error: minimap2/align only supports one output format at a time. Set either bam_format=true or bed_bool=true, not both.")
+    }
     if(bam_input && !reference) {
         error("Error: minimap2/align BAM input mode requires reference!")
 	}

@@ -22,6 +22,8 @@ process FIND_CONCATENATE {
 
     script:
     def args = task.ext.args ?: ""
+    def args2 = task.ext.args2 ?: "-k1,1 -k2,2n -T ."
+    def is_gz = { f -> f.toString().endsWith('.gz') || f.name.endsWith('.gz') }
 
     // | input     | output     | command1 | command2 |
     // |-----------|------------|----------|----------|
@@ -37,16 +39,16 @@ process FIND_CONCATENATE {
     // Use input file ending as default for output file
     prefix = task.ext.prefix ?: "${meta.id}${file_extensions[0]}"
 
-    if (files_in.any{ file -> file.name.endsWith('.gz')} && !files_in.every{ file -> file.name.endsWith('.gz') }) {
+    if (files_in.any{ file -> is_gz(file) } && !files_in.every{ file -> is_gz(file) }) {
         error("All files provided to this module must either be gzipped (and have the .gz extension) or unzipped (and not have the .gz extension). A mix of both is not allowed.")
     }
 
-    in_zip = files_in[0].name.endsWith('.gz')
+    in_zip = is_gz(files_in[0])
     out_zip = task.ext.prefix ? task.ext.prefix.endsWith('.gz') : file_extensions[0].endsWith('.gz')
 
     out_fname = in_zip && out_zip ? prefix : prefix.endsWith('.gz') ? prefix.replace('.gz', '') : prefix
     // Sorting in-place is only possible when we materialize an uncompressed output file.
-    sort_cmd = (sort_bed && !(in_zip && out_zip)) ? "LC_ALL=C sort -k1,1 -k2,2n -T . -o ${out_fname} ${out_fname}" : ""
+    sort_cmd = (sort && !(in_zip && out_zip)) ? "LC_ALL=C sort ${args2} -o ${out_fname} ${out_fname}" : ""
 
     cmd1 = in_zip && !out_zip ? "pigz -cd -p ${task.cpus}" : "cat"
     cmd2 = !in_zip && out_zip ? "pigz -p ${task.cpus} ${args} ${out_fname}" : ""
@@ -64,7 +66,7 @@ process FIND_CONCATENATE {
     stub:
     prefix = task.ext.prefix ?: "${meta.id}"
 
-    if (files_in.any{ file -> file.name.endsWith('.gz')} && !files_in.every{ file -> file.name.endsWith('.gz') }) {
+    if (files_in.any{ file -> is_gz(file) } && !files_in.every{ file -> is_gz(file) }) {
         error("All files provided to this module must either be gzipped (and have the .gz extension) or unzipped (and not have the .gz extension). A mix of both is not allowed.")
     }
 
