@@ -23,7 +23,6 @@ process FIND_CONCATENATE {
     script:
     def args = task.ext.args ?: ""
     def args2 = task.ext.args2 ?: "-k1,1 -k2,2n -T ."
-    def is_gz = { f -> f.toString().endsWith('.gz') || f.name.endsWith('.gz') }
 
     // | input     | output     | command1 | command2 |
     // |-----------|------------|----------|----------|
@@ -39,11 +38,11 @@ process FIND_CONCATENATE {
     // Use input file ending as default for output file
     prefix = task.ext.prefix ?: "${meta.id}${file_extensions[0]}"
 
-    if (files_in.any{ file -> is_gz(file) } && !files_in.every{ file -> is_gz(file) }) {
+    if (files_in.any{ file -> file.toString().endsWith('.gz')} && !files_in.every{ file -> file.toString().endsWith('.gz') }) {
         error("All files provided to this module must either be gzipped (and have the .gz extension) or unzipped (and not have the .gz extension). A mix of both is not allowed.")
     }
 
-    in_zip = is_gz(files_in[0])
+    in_zip = files_in[0].toString().endsWith('.gz')
     out_zip = task.ext.prefix ? task.ext.prefix.endsWith('.gz') : file_extensions[0].endsWith('.gz')
 
     out_fname = in_zip && out_zip ? prefix : prefix.endsWith('.gz') ? prefix.replace('.gz', '') : prefix
@@ -66,7 +65,7 @@ process FIND_CONCATENATE {
     stub:
     prefix = task.ext.prefix ?: "${meta.id}"
 
-    if (files_in.any{ file -> is_gz(file) } && !files_in.every{ file -> is_gz(file) }) {
+    if (files_in.any{ file -> file.toString().endsWith('.gz')} && !files_in.every{ file -> file.toString().endsWith('.gz') }) {
         error("All files provided to this module must either be gzipped (and have the .gz extension) or unzipped (and not have the .gz extension). A mix of both is not allowed.")
     }
 

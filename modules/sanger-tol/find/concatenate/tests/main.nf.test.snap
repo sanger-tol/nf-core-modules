@@ -37,7 +37,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-06T11:41:14.451046164"
+        "timestamp": "2026-05-06T11:53:37.197599173"
     },
     "test_cat_unzipped_unzipped": {
         "content": [
@@ -78,7 +78,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-06T11:41:26.762342395"
+        "timestamp": "2026-05-06T11:53:49.66398346"
     },
     "test_cat_zipped_zipped": {
         "content": [
@@ -119,7 +119,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-06T11:41:33.080777703"
+        "timestamp": "2026-05-06T11:53:56.002254412"
     },
     "test_cat_zipped_unzipped": {
         "content": [
@@ -160,7 +160,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-06T11:41:39.835846179"
+        "timestamp": "2026-05-06T11:54:02.536747489"
     },
     "test_cat_one_file_unzipped_zipped": {
         "content": [
@@ -201,7 +201,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-06T11:41:52.843587872"
+        "timestamp": "2026-05-06T11:54:15.348774411"
     },
     "test_cat_unzipped_zipped": {
         "content": [
@@ -242,6 +242,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-06T11:41:46.33567835"
+        "timestamp": "2026-05-06T11:54:09.093812312"
     }
 }
