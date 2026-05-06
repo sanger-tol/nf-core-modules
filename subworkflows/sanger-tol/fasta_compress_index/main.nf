@@ -14,7 +14,8 @@ workflow FASTA_COMPRESS_INDEX {
     main:
 
     // Compress the Fasta file
-    ch_compressed_fasta = SAMTOOLS_BGZIP(ch_fasta).fasta
+    SAMTOOLS_BGZIP(ch_fasta, [])
+    ch_compressed_fasta = SAMTOOLS_BGZIP.out.output
 
     // Generate .gzi and .fai index files, and chromosome size file
     ch_fasta_with_dummy_fai = ch_compressed_fasta.map { meta, fasta -> [meta, fasta, []] }
