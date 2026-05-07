@@ -2,7 +2,7 @@ process FINDTELOMERE {
     tag "${meta.id}"
     label 'process_low'
 
-    container 'quay.io/sanger-tol/telomere:0.0.2-c1'
+    container 'sanger-tol/telomere:0.0.2-c1'
 
     input:
     tuple val(meta), path(reference), val(telomereseq)
@@ -15,12 +15,7 @@ process FINDTELOMERE {
     tuple val( meta ), path( "*.windows" )     , optional: true, emit: windows
     tuple val( meta ), path( "*.fwd.windows" ) , optional: true, emit: windows_fwd
     tuple val( meta ), path( "*.rev.windows" ) , optional: true, emit: windows_rev
-    tuple val("${task.process}"), val('java'), eval("java -version 2>&1 | head -n 1 | cut -d '\"' -f2"), topic: versions, emit: versions_java
-    /*
-     * Avoid calling `find_telomere --version`: some builds treat `--version` as an input filename and
-     * will create `--version.*.telomere.bed` side-effects in the workdir.
-     */
-    tuple val("${task.process}"), val('find_telomere'), eval("find_telomere 2>&1 | head -n 1 || true"), topic: versions, emit: versions_findtelomere
+    path "versions.yml" , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -48,6 +43,14 @@ process FINDTELOMERE {
         ${split_opt}${prefix}.telomere \\
         ${window_args} \\
         ${stdout_redirect}
+
+    JAVA_VER=\$(java -version 2>&1 | head -n 1 | cut -d '"' -f2 || true)
+    FT_VER=\$(find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//' || true)
+    cat > versions.yml <<EOF
+    "${task.process}":
+      java: "\$JAVA_VER"
+      find_telomere: "\$FT_VER"
+    EOF
     """
 
     stub:
@@ -67,6 +70,12 @@ process FINDTELOMERE {
     else
         printf "stub\\n" > ${prefix}.windows
     fi
+
+    cat > versions.yml <<'EOF'
+    "${task.process}":
+      java: "stub"
+      find_telomere: "stub"
+    EOF
     """
 
 }
