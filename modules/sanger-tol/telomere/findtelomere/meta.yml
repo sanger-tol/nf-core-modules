@@ -15,7 +15,7 @@ description: |
   `process.ext.telomere_jar` if needed.
 keywords:
   - telomere
-  - regions
+  - findtelomere
   - windows
   - motif
 tools:
@@ -33,7 +33,7 @@ tools:
         Slide windows along scaffolds and flag regions where telomeric hits exceed a density threshold
         (optionally adjusted by sequencing identity).
       homepage: https://github.com/sanger-tol/telomere
-      documentation: https://github.com/sanger-tol/telomere/blob/main/FindTelomereWindows.java
+      documentation: https://github.com/sanger-tol/telomere
       licence:
         - "BSD-3-Clause"
       identifier: ""
@@ -50,11 +50,11 @@ input:
         pattern: "*.{fa,fna,fasta}"
         ontologies:
           - edam: http://edamontology.org/format_1929
-  - telomereseq:
-      type: string
-      description: |
-        A string containing the DNA sequence of a telomere motif
-      ontologies: []
+    - telomereseq:
+        type: string
+        description: |
+          A string containing the DNA sequence of a telomere motif
+        ontologies: []
   - split_windows:
       type: boolean
       description: |
@@ -136,29 +136,7 @@ output:
             Reverse windows from FindTelomereWindows (`--split` mode; `split_windows: true`).
           ontologies:
             - edam: "http://edamontology.org/format_3475"
-  versions_findtelomere:
-    - - ${task.process}:
-          type: string
-          description: The name of the process
-      - find_telomere:
-          type: string
-          description: The name of the module
-      - 1.0.0:
-          type: string
-          description: The version of the module
-
-topics:
-  versions:
-    - - ${task.process}:
-          type: string
-          description: The name of the process
-      - find_telomere:
-          type: string
-          description: The name of the module
-      - 1.0.0:
-          type: string
-          description: The version of the module
 authors:
-  - "@DLBPointon"
+  - "@yumisims"
 maintainers:
-  - "@DLBPointon"
+  - "@yumisims"

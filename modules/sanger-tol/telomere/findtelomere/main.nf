@@ -13,10 +13,9 @@ process FINDTELOMERE {
     tuple val( meta ), path( "*.telomere" ) , emit: telomere
     tuple val( meta ), path( "*.fwd.telomere.bed" )  , optional: true, emit: telomere_bed_fwd
     tuple val( meta ), path( "*.rev.telomere.bed" )  , optional: true, emit: telomere_bed_rev
-    tuple val( meta ), path( "${prefix}.windows" )     , optional: true, emit: windows
-    tuple val( meta ), path( "${prefix}.fwd.windows" ) , optional: true, emit: windows_fwd
-    tuple val( meta ), path( "${prefix}.rev.windows" ) , optional: true, emit: windows_rev
-    tuple val("${task.process}"), val('find_telomere'), val("1.0.0"), topic: versions, emit: versions_findtelomere
+    tuple val( meta ), path( "*.windows" )     , optional: true, emit: windows
+    tuple val( meta ), path( "*.fwd.windows" ) , optional: true, emit: windows_fwd
+    tuple val( meta ), path( "*.rev.windows" ) , optional: true, emit: windows_rev
 
     when:
     task.ext.when == null || task.ext.when
@@ -36,23 +35,6 @@ process FINDTELOMERE {
     def max_stack_size_mega = 999
     """
     find_telomere $reference $telomereseq | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
-
-    # Prefer strand/orientation-separated BEDs produced by find_telomere itself (if present).
-    # Expected filenames are based on the reference filename.
-    BED_STEM="$(basename "$reference")"
-    # Always provide a non-split BED copy of the telomere output
-    cp ${prefix}.telomere ${prefix}.telomere.bed
-
-    if [ ! -f "${BED_STEM}.fwd.telomere.bed" ] || [ ! -f "${BED_STEM}.rev.telomere.bed" ]; then
-        # Fallback: split the BED6-like output by strand/orientation (column 6).
-        awk \
-            -v fwd_out="${BED_STEM}.fwd.telomere.bed" \
-            -v rev_out="${BED_STEM}.rev.telomere.bed" \
-            'BEGIN{OFS="\\t"} { s=\\$6; sl=tolower(s); if (sl ~ /^fwd$/ || s == "+") print > fwd_out; else if (sl ~ /^rev$/ || s == "-") print > rev_out }' \
-            ${prefix}.telomere
-        : > "${BED_STEM}.fwd.telomere.bed"
-        : > "${BED_STEM}.rev.telomere.bed"
-    fi
 
     TELOMERE_JAR="${jar_override}"
     if [ -z "\$TELOMERE_JAR" ]; then
@@ -103,7 +85,6 @@ process FINDTELOMERE {
     def bed_stem        = reference.getName()
     """
     touch ${prefix}.telomere
-    touch ${prefix}.telomere.bed
     touch ${bed_stem}.fwd.telomere.bed ${bed_stem}.rev.telomere.bed
     if ${split_windows}; then
         touch ${prefix}.fwd.windows ${prefix}.rev.windows

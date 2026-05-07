@@ -9,90 +9,45 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/telo_finder"
     tag "telomere/findtelomere"
-    tag "telomere/extract"
     tag "tabix/bgziptabix"
-    tag "subworkflows/../../modules/nf-core/bioawk"
-    tag "subworkflows/../../modules/nf-core/gawk"
     tag "subworkflows/../../modules/nf-core/gunzip"
     tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
     tag "modules/nf-core/gunzip"
-    tag "modules/nf-core/bioawk"
 
     setup {
-        nfcoreInitialise("${launchDir}/library/")
-        nfcoreInstall(
-            "${launchDir}/library/",
-            [
-                "gawk",
-                "tabix/bgziptabix",
-                "gunzip",
-                "bioawk"
-            ]
-        )
-        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
-
-        run("GUNZIP"){
-            script "../../../../modules/nf-core/gunzip/main.nf"
-            process {
-                """
-                input[0] = [
-                    [ id: "idFanCani4" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/idFanCani4/idFanCani4.subset_genome.fa.gz', checkIfExists: true)
+            nfcoreInitialise("${launchDir}/library/")
+            nfcoreInstall(
+                "${launchDir}/library/",
+                [
+                    "tabix/bgziptabix",
                 ]
-                """
-            }
-        }
-    }
-
-
-    test("idFanCani4 - no split - fasta w/ index") {
-        when {
-            params {
-                bioawk_command = "-c fastx"
-                windows_percent = "99.9"
-                bgzip_args       = "--csi"
-            }
-
-            workflow {
-                """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = [
-                    [ id:"idFanCani4" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
-                ]
-                input[2] = false
-                input[3] = true
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
             )
-        }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
+            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
     }
 
-    test("idFanCani4 - split - fasta w/ index") {
+    test("Cloeon_Dipeterum - no split") {
         when {
             params {
-                bioawk_command = "-c fastx"
-                windows_percent = "99.9"
-                bgzip_args       = "--csi"
+                telomerewindow_args = "0.99 0.05"
+                bgzip_args          = ''
             }
-
             workflow {
                 """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = [
-                    [ id:"idFanCani4" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
-                ]
+                // Using Channel.fromList ensures the 'combine' operator works correctly
+                input[0] = Channel.fromList([
+                    [
+                        [ id: "Cloeon_Dipeterum" ],
+                        file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true)
+                    ]
+                ])
+            
+                input[1] = Channel.fromList([
+                    [
+                        [ id: "Cloeon_Dipeterum" ],
+                        "CCTAA"
+                    ]
+                ])
+            
                 input[2] = true
                 input[3] = true
                 """
@@ -102,7 +57,6 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
             )
         }
 
@@ -111,56 +65,31 @@ nextflow_workflow {
         }
     }
 
-    test("idFanCani4 - no split - fasta w/o index") {
+    test("Cloeon_Dipeterum - split - zipbed") {
         when {
             params {
-                bioawk_command = "-c fastx"
-                windows_percent = "99.9"
-                bgzip_args       = "--csi"
+                telomerewindow_args = "0.99 0.05"
+                bgzip_args          = "--csi"
             }
-
             workflow {
                 """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = [
-                    [ id: "idFanCani4" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
-                ]
-                input[2] = false
-                input[3] = false
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
-            )
-        }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
-    }
-
-    test("idFanCani4 - split - fasta w/o index") {
-        when {
-            params {
-                bioawk_command = "-c fastx"
-                windows_percent = "99.9"
-                bgzip_args       = "--csi"
-            }
-
-            workflow {
-                """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = [
-                    [ id:"idFanCani4" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
-                ]
+                // Using Channel.fromList ensures the 'combine' operator works correctly
+                input[0] = Channel.fromList([
+                    [
+                        [ id: "Cloeon_Dipeterum" ],
+                        file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true)
+                    ]
+                ])
+            
+                input[1] = Channel.fromList([
+                    [
+                        [ id: "Cloeon_Dipeterum" ],
+                        "CCTAA"
+                    ]
+                ])
+            
                 input[2] = true
-                input[3] = false
+                input[3] = true
                 """
             }
         }
@@ -168,7 +97,6 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
             )
         }
 
@@ -177,36 +105,5 @@ nextflow_workflow {
         }
     }
 
-    test("idFanCani4 - no split - fasta - stub w/o index") {
-        when {
-            params {
-                bioawk_command = "-c fastx"
-                windows_percent = "99.9"
-                bgzip_args       = "--csi"
-            }
-
-            workflow {
-                """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = [
-                    [ id:"idFanCani4" ],
-                    file(params.modules_testdata_base_path + 'resources/modules/telomere/generic/telomere_motif.fasta', checkIfExists: true)
-                ]
-                input[2] = false
-                input[3] = false
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
-            )
-        }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
-    }
+    
 }

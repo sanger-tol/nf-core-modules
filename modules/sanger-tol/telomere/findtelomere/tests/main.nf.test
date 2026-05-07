@@ -16,11 +16,10 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id: "Cloeon_Dipeterum" ],
-                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true),
+                    "CCTAA"
                 ]
-
-                input[1] = "CCTAA"
-                input[2] = false
+                input[1] = false
                 """
             }
         }
@@ -40,11 +39,10 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id: "Cloeon_Dipeterum" ],
-                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true),
+                    "CCTAA"
                 ]
-
-                input[1] = "CCTAA"
-                input[2] = true
+                input[1] = true
                 """
             }
         }
@@ -66,11 +64,10 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id: "Cloeon_Dipeterum" ],
-                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Cloeon_dipterum/assembly/release/ieCloDipt1.1/insdc/GCA_949628265.1.fasta.gz', checkIfExists: true),
+                    "CCTAA"
                 ]
-
-                input[1] = "CCTAA"
-                input[2] = false
+                input[1] = false
                 """
             }
         }
