@@ -44,7 +44,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.telomere":
+      - ".telomere":
           type: file
           description: Motif-hit intervals
           pattern: "*.telomere"
@@ -52,7 +52,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.fwd.telomere.bed":
+      - ".fwd.telomere.bed":
           type: file
           description: Forward telomeric intervals
           pattern: "*.fwd.telomere.bed"
@@ -60,7 +60,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.rev.telomere.bed":
+      - ".rev.telomere.bed":
           type: file
           description: Reverse telomeric intervals
           pattern: "*.rev.telomere.bed"
@@ -68,7 +68,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.windows":
+      - ".windows":
           type: file
           description: Telomere density windows
           pattern: "*.windows"
@@ -76,7 +76,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.fwd.windows":
+      - ".fwd.windows":
           type: file
           description: Forward windows
           pattern: "*.fwd.windows"
@@ -84,15 +84,28 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.rev.windows":
+      - ".rev.windows":
           type: file
           description: Reverse windows
           pattern: "*.rev.windows"
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
+    - - ${task.process}:
+          type: string
+          description: The process name
+      - versions.yml:
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process name
+      - versions.yml:
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
 authors:
   - "@yumisims"
 maintainers:
