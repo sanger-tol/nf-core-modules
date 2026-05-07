@@ -6,13 +6,12 @@ description: |
     intervals (reformatted by this module into a BED6-like `*.telomere` file).
   - `FindTelomereWindows`: summarise motif-hit density in sliding windows along scaffolds.
 
-  The default container (`sanger-tol/telomere`) bundles `find_telomere`, `telomere.jar` and a JVM.
+  The default container (`quay.io/sanger-tol/telomere`) bundles `find_telomere`, `telomere.jar` and a JVM.
   Conda is not supported.
 
   `FindTelomereWindows` requires `telomere.jar` on the Java classpath. The module resolves it automatically
   (task dir `telomere.jar`, `/opt/telomere/telomere.jar`, alongside the resolved `find_telomere` binary,
-  `$VGP_PIPELINE/telomere/telomere.jar`, or `/usr/local/share/telomere/telomere.jar`). Override via
-  `process.ext.telomere_jar` if needed.
+  `$VGP_PIPELINE/telomere/telomere.jar`, or `/usr/local/share/telomere/telomere.jar`).
 keywords:
   - telomere
   - findtelomere

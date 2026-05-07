@@ -2,7 +2,7 @@ process FINDTELOMERE {
     tag "${meta.id}"
     label 'process_low'
 
-    container 'sanger-tol/telomere:0.0.2-c1'
+    container 'quay.io/sanger-tol/telomere:0.0.2-c1'
 
     input:
     tuple val(meta), path(reference), val(telomereseq)
@@ -15,6 +15,12 @@ process FINDTELOMERE {
     tuple val( meta ), path( "*.windows" )     , optional: true, emit: windows
     tuple val( meta ), path( "*.fwd.windows" ) , optional: true, emit: windows_fwd
     tuple val( meta ), path( "*.rev.windows" ) , optional: true, emit: windows_rev
+    tuple val("${task.process}"), val('java'), eval("java -version 2>&1 | head -n 1 | cut -d '\"' -f2"), topic: versions, emit: versions_java
+    /*
+     * Avoid calling `find_telomere --version`: some builds treat `--version` as an input filename and
+     * will create `--version.*.telomere.bed` side-effects in the workdir.
+     */
+    tuple val("${task.process}"), val('find_telomere'), eval("find_telomere 2>&1 | head -n 1 || true"), topic: versions, emit: versions_findtelomere
 
     when:
     task.ext.when == null || task.ext.when
@@ -26,7 +32,6 @@ process FINDTELOMERE {
     }
 
     def prefix          = task.ext.prefix ?: "${meta.id}"
-    def jar_override    = task.ext.telomere_jar ?: ''
     def window_args     = task.ext.args ?: '99.9 0.1'
     def split_opt       = split_windows ? '--split ' : ''
     def stdout_redirect = split_windows ? '' : "> ${prefix}.windows"
@@ -35,7 +40,7 @@ process FINDTELOMERE {
     """
     find_telomere $reference $telomereseq | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
 
-    TELOMERE_JAR="${jar_override}"
+    TELOMERE_JAR=""
     if [ -z "\$TELOMERE_JAR" ]; then
         if [ -f telomere.jar ]; then
             TELOMERE_JAR=telomere.jar
@@ -59,7 +64,7 @@ process FINDTELOMERE {
         fi
     fi
     if [ -z "\$TELOMERE_JAR" ] || [ ! -f "\$TELOMERE_JAR" ]; then
-        echo "FINDTELOMERE: could not locate telomere.jar for FindTelomereWindows (set process ext.telomere_jar or VGP_PIPELINE)" >&2
+        echo "FINDTELOMERE: could not locate telomere.jar for FindTelomereWindows " >&2
         exit 1
     fi
 
@@ -81,14 +86,15 @@ process FINDTELOMERE {
     }
 
     def prefix          = task.ext.prefix ?: "${meta.id}"
-    def bed_stem        = reference.getName()
     """
-    touch ${prefix}.telomere
-    touch ${bed_stem}.fwd.telomere.bed ${bed_stem}.rev.telomere.bed
+    printf "stub\\n" > ${prefix}.telomere
+    printf "stub\\n" > ${prefix}.fwd.telomere.bed
+    printf "stub\\n" > ${prefix}.rev.telomere.bed
     if ${split_windows}; then
-        touch ${prefix}.fwd.windows ${prefix}.rev.windows
+        printf "stub\\n" > ${prefix}.fwd.windows
+        printf "stub\\n" > ${prefix}.rev.windows
     else
-        touch ${prefix}.windows
+        printf "stub\\n" > ${prefix}.windows
     fi
     """
 

@@ -25,13 +25,25 @@ workflow TELO_FINDER {
         ? FINDTELOMERE.out.windows_fwd.mix(FINDTELOMERE.out.windows_rev)
         : FINDTELOMERE.out.windows
 
-    ch_beds_windows_for_zip = FINDTELOMERE.out.telomere_bed_fwd
-        .mix(FINDTELOMERE.out.telomere_bed_rev)
-        .mix(ch_windows_for_zip)
+    if (zip_bed) {
+        ch_beds_windows_for_zip_raw = FINDTELOMERE.out.telomere_bed_fwd
+            .mix(FINDTELOMERE.out.telomere_bed_rev)
+            .mix(ch_windows_for_zip)
 
-    TABIX_BGZIPTABIX(
-        ch_beds_windows_for_zip.filter { _meta, _file -> zip_bed }
-    )
+        /*
+         * Optional `path` outputs can arrive as an empty list when the glob matches nothing.
+         * TABIX_BGZIPTABIX expects a single `path`, so normalise to (meta, path) tuples only.
+         */
+        ch_beds_windows_for_zip = ch_beds_windows_for_zip_raw
+            .flatMap { meta, item ->
+                def items = (item instanceof List) ? item : [ item ]
+                items
+                    .findAll { it != null }
+                    .collect { file -> tuple(meta, file) }
+            }
+
+        TABIX_BGZIPTABIX(ch_beds_windows_for_zip)
+    }
 
     emit:
     telomere         = FINDTELOMERE.out.telomere
@@ -40,6 +52,6 @@ workflow TELO_FINDER {
     windows          = val_split_telomere ? Channel.empty()              : FINDTELOMERE.out.windows
     windows_fwd      = val_split_telomere ? FINDTELOMERE.out.windows_fwd : Channel.empty()
     windows_rev      = val_split_telomere ? FINDTELOMERE.out.windows_rev : Channel.empty()
-    gz_index         = TABIX_BGZIPTABIX.out.gz_index
+    gz_index         = zip_bed ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()
 
 }
