@@ -40,35 +40,6 @@ process FINDTELOMERE {
     """
     find_telomere $reference $telomereseq | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
 
-    TELOMERE_JAR=""
-    if [ -z "\$TELOMERE_JAR" ]; then
-        if [ -f telomere.jar ]; then
-            TELOMERE_JAR=telomere.jar
-        elif [ -f /opt/telomere/telomere.jar ]; then
-            TELOMERE_JAR=/opt/telomere/telomere.jar
-        else
-            _ft=\$(command -v find_telomere 2>/dev/null || true)
-            if [ -n "\$_ft" ]; then
-                _bin=\$(readlink -f "\$_ft" 2>/dev/null || readlink "\$_ft" 2>/dev/null || echo "\$_ft")
-                _dir=\$(dirname "\$_bin")
-                if [ -f "\$_dir/telomere.jar" ]; then
-                    TELOMERE_JAR="\$_dir/telomere.jar"
-                fi
-            fi
-        fi
-        if [ -z "\$TELOMERE_JAR" ] && [ -n "\${VGP_PIPELINE:-}" ] && [ -f "\${VGP_PIPELINE}/telomere/telomere.jar" ]; then
-            TELOMERE_JAR="\${VGP_PIPELINE}/telomere/telomere.jar"
-        fi
-        if [ -z "\$TELOMERE_JAR" ] && [ -f /usr/local/share/telomere/telomere.jar ]; then
-            TELOMERE_JAR=/usr/local/share/telomere/telomere.jar
-        fi
-    fi
-    if [ -z "\$TELOMERE_JAR" ] || [ ! -f "\$TELOMERE_JAR" ]; then
-        echo "FINDTELOMERE: could not locate telomere.jar for FindTelomereWindows " >&2
-        exit 1
-    fi
-
-    # java on PATH comes from the container image; failures are usually wrong/missing -cp (telomere.jar), not missing JVM
     java \\
         -Xmx${max_heap_size_mega}M \\
         -Xss${max_stack_size_mega}M \\
