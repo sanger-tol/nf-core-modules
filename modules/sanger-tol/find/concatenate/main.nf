@@ -9,7 +9,7 @@ process FIND_CONCATENATE {
 
     input:
     tuple val(meta), path(files_in, stageAs: 'to_concatenate/*', arity: '1..*')
-    val sort_bed
+    val sort
 
     output:
     tuple val(meta), path("${prefix}"), emit: file_out
@@ -22,6 +22,7 @@ process FIND_CONCATENATE {
 
     script:
     def args = task.ext.args ?: ""
+    def args2 = task.ext.args2 ?: "-k1,1 -k2,2n -T ."
 
     // | input     | output     | command1 | command2 |
     // |-----------|------------|----------|----------|
@@ -46,7 +47,7 @@ process FIND_CONCATENATE {
 
     out_fname = in_zip && out_zip ? prefix : prefix.endsWith('.gz') ? prefix.replace('.gz', '') : prefix
     // Sorting in-place is only possible when we materialize an uncompressed output file.
-    sort_cmd = (sort_bed && !(in_zip && out_zip)) ? "LC_ALL=C sort -k1,1 -k2,2n -o ${out_fname} ${out_fname}" : ""
+    sort_cmd = (sort && !(in_zip && out_zip)) ? "LC_ALL=C sort ${args2} -o ${out_fname} ${out_fname}" : ""
 
     cmd1 = in_zip && !out_zip ? "pigz -cd -p ${task.cpus}" : "cat"
     cmd2 = !in_zip && out_zip ? "pigz -p ${task.cpus} ${args} ${out_fname}" : ""

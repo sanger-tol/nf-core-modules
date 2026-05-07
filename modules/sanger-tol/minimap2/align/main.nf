@@ -4,9 +4,9 @@ process MINIMAP2_ALIGN {
 
     // Note: the versions here need to match the versions used in the mulled container below and minimap2/index
     conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/66/66dc96eff11ab80dfd5c044e9b3425f52d818847b9c074794cf0c02bfa781661/data' :
-        'community.wave.seqera.io/library/minimap2_samtools:33bb43c18d22e29c' }"
+    container "${ workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container ?
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/37/37671219cfd244eb9b33db9345d3543ffd83037419a1c57f4648aace493ec2c2/data' :
+        'community.wave.seqera.io/library/minimap2_samtools:b09096fc890429ce' }"
 
     input:
     tuple val(meta), path(reads)
@@ -33,8 +33,11 @@ process MINIMAP2_ALIGN {
     def args3 = task.ext.args3 ?: ''
     def args4 = task.ext.args4 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def bam_index = (bam_index_extension instanceof String && bam_index_extension) ? "--write-index -o ${prefix}.bam##idx##${prefix}.bam.${bam_index_extension}" : "-o ${prefix}.bam"
-    def bam_output = bam_format ? "-a | samtools sort -@ ${task.cpus} ${bam_index} ${args2}" : bed_bool ? "| awk 'BEGIN{OFS=\"\\t\"} {print \$6, \$8, \$9, \$1, \$12, \$5}' > ${prefix}.bed" : "-o ${prefix}.paf"
+    if( bam_format && bed_bool ) {
+        error("Error: minimap2/align only supports one output format at a time. Set either bam_format=true or bed_bool=true, not both.")
+    }
+    def bam_index = bam_index_extension ? "${prefix}.bam##idx##${prefix}.bam.${bam_index_extension} --write-index" : "${prefix}.bam"
+    def bam_output = bam_format ? "-a | samtools sort -@ ${task.cpus-1} -o ${bam_index} ${args2}" : bed_bool ? "| awk 'BEGIN{OFS=\"\\t\"} {print \$6, \$8, \$9, \$1, \$12, \$5}' > ${prefix}.bed" : "-o ${prefix}.paf"
     def cigar_paf = cigar_paf_format && !bam_format ? "-c" : ''
     def set_cigar_bam = cigar_bam && bam_format ? "-L" : ''
     def bam_input = "${reads.extension}".matches('sam|bam|cram')
@@ -58,6 +61,9 @@ process MINIMAP2_ALIGN {
     def output_file = bam_format ? "${prefix}.bam" : bed_bool ? "${prefix}.bed" : "${prefix}.paf"
     def bam_index = bam_index_extension ? "touch ${prefix}.bam.${bam_index_extension}" : ""
     def bam_input = "${reads.extension}".matches('sam|bam|cram')
+    if( bam_format && bed_bool ) {
+        error("Error: minimap2/align only supports one output format at a time. Set either bam_format=true or bed_bool=true, not both.")
+    }
     if(bam_input && !reference) {
         error("Error: minimap2/align BAM input mode requires reference!")
 	}
