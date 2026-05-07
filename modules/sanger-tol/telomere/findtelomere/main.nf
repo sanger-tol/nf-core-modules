@@ -43,7 +43,7 @@ process FINDTELOMERE {
     java \\
         -Xmx${max_heap_size_mega}M \\
         -Xss${max_stack_size_mega}M \\
-        -cp "\$TELOMERE_JAR" \\
+        -cp /opt/telomere/telomere.jar \\
         FindTelomereWindows \\
         ${split_opt}${prefix}.telomere \\
         ${window_args} \\
