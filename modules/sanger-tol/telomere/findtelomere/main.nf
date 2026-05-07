@@ -2,7 +2,7 @@ process FINDTELOMERE {
     tag "${meta.id}"
     label 'process_low'
 
-    container 'sanger-tol/telomere:0.0.2-c1'
+    container 'quay.io/sanger-tol/telomere:0.0.2-c1'
 
     input:
     tuple val(meta), path(reference), val(telomereseq)
@@ -15,7 +15,7 @@ process FINDTELOMERE {
     tuple val( meta ), path( "*.windows" )     , optional: true, emit: windows
     tuple val( meta ), path( "*.fwd.windows" ) , optional: true, emit: windows_fwd
     tuple val( meta ), path( "*.rev.windows" ) , optional: true, emit: windows_rev
-    path "versions.yml" , emit: versions
+    tuple val("${task.process}"), path("versions.yml"), topic: versions, emit: versions
 
     when:
     task.ext.when == null || task.ext.when
