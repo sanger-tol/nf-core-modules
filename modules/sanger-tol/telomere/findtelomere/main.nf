@@ -5,8 +5,7 @@ process FINDTELOMERE {
     container 'sanger-tol/telomere:0.0.2-c1'
 
     input:
-    tuple val(meta), path(reference)
-    val telomereseq
+    tuple val(meta), path(reference), val(telomereseq)
     val split_windows
 
     output:

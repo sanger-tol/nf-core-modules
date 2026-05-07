@@ -19,11 +19,7 @@ workflow TELO_FINDER {
         .combine(ch_telomereseq, by: 0)
         .map { meta, reference, telomereseq -> tuple(meta, reference, telomereseq) }
 
-    FINDTELOMERE(
-        ch_joined.map{ meta, fasta, motif -> [meta, fasta] }, 
-        ch_joined.map{ meta, fasta, motif -> motif },         
-        val_split_telomere                                    
-        )
+    FINDTELOMERE(ch_joined, val_split_telomere)
 
     ch_windows_for_zip = val_split_telomere
         ? FINDTELOMERE.out.windows_fwd.mix(FINDTELOMERE.out.windows_rev)
