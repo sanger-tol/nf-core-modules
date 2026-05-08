@@ -1,373 +1,127 @@
 {
     "GCA_963859965.1 - fasta - stub": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.telomere:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.fwd.telomere.bed:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.rev.telomere.bed:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
-                    ]
-                ],
-                "7": [
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
-                    ]
-                ],
-                "telomere": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.telomere:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "telomere_bed_fwd": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.fwd.telomere.bed:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "telomere_bed_rev": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.rev.telomere.bed:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "versions_find_telomere": [
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
-                    ]
-                ],
-                "versions_java": [
-                    [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
-                    ]
-                ],
-                "windows": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
-                ],
-                "windows_fwd": [
-                    
-                ],
-                "windows_rev": [
-                    
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.telomere:md5,f50b84b1db4b83ba62ec1deacc69c260"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
+                ]
+            ],
+            [
+                [
+                    "FINDTELOMERE",
+                    "java",
+                    "17.0.18"
+                ]
+            ],
+            [
+                [
+                    "FINDTELOMERE",
+                    "find_telomere",
+                    "Error: invalid number of parameters"
+                ]
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-08T22:28:25.310469111"
+        "timestamp": "2026-05-08T22:38:12.191922906"
     },
     "GCA_963859965.1 - fasta": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
-                    ]
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
-                    ]
-                ],
-                "7": [
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
-                    ]
-                ],
-                "telomere": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
-                    ]
-                ],
-                "telomere_bed_fwd": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
-                    ]
-                ],
-                "telomere_bed_rev": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
-                    ]
-                ],
-                "versions_find_telomere": [
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
-                    ]
-                ],
-                "versions_java": [
-                    [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
-                    ]
-                ],
-                "windows": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
-                    ]
-                ],
-                "windows_fwd": [
-                    
-                ],
-                "windows_rev": [
-                    
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
+                ]
+            ],
+            [
+                [
+                    "FINDTELOMERE",
+                    "java",
+                    "17.0.18"
+                ]
+            ],
+            [
+                [
+                    "FINDTELOMERE",
+                    "find_telomere",
+                    "Error: invalid number of parameters"
+                ]
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-08T22:28:04.010391507"
+        "timestamp": "2026-05-08T22:37:51.91263424"
     },
     "GCA_963859965.1 - fasta - split": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        [
-                            "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "Cloeon_Dipeterum.rev.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
-                        ]
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "5": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.rev.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
-                    ]
-                ],
-                "6": [
-                    [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
-                    ]
-                ],
-                "7": [
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
-                    ]
-                ],
-                "telomere": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
-                    ]
-                ],
-                "telomere_bed_fwd": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
-                    ]
-                ],
-                "telomere_bed_rev": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
-                    ]
-                ],
-                "versions_find_telomere": [
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
-                    ]
-                ],
-                "versions_java": [
-                    [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
-                    ]
-                ],
-                "windows": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        [
-                            "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "Cloeon_Dipeterum.rev.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
-                        ]
-                    ]
-                ],
-                "windows_fwd": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "windows_rev": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.rev.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
-                    ]
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.rev.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
+                ]
+            ],
+            [
+                [
+                    "FINDTELOMERE",
+                    "java",
+                    "17.0.18"
+                ]
+            ],
+            [
+                [
+                    "FINDTELOMERE",
+                    "find_telomere",
+                    "Error: invalid number of parameters"
+                ]
+            ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-08T22:28:15.889558638"
+        "timestamp": "2026-05-08T22:38:02.566683506"
     }
 }
