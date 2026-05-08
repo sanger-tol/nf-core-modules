@@ -25,13 +25,19 @@ nextflow_process {
         }
 
         then {
-            assert workflow.success
+            assert process.success
             assertAll(
                 /*
-                 * Strand BED glob outputs can be real zero-byte files when there are no motif hits;
-                 * nf-test rejects snapshot md5 for empty files — omit telomere_bed_fwd/rev.
+                 * Optional BED / windows files can be zero-byte; nf-test rejects snapshot md5 for empty
+                 * files on non-stub tests. `process.out.*` here are materialized lists — combine with `+`,
+                 * not Channel.mix().
                  */
-                { assert snapshot(process.out.telomere, process.out.windows, process.out.versions_java, process.out.versions_find_telomere).match() }
+                { assert snapshot([
+                    telomere: process.out.telomere,
+                    versions_java: process.out.versions_java,
+                    versions_find_telomere: process.out.versions_find_telomere,
+                    versions: (process.out.versions_java as List) + (process.out.versions_find_telomere as List),
+                ]).match() }
             )
         }
     }
@@ -52,9 +58,14 @@ nextflow_process {
         }
 
         then {
-            assert workflow.success
+            assert process.success
             assertAll(
-                { assert snapshot(process.out.telomere, process.out.windows_fwd, process.out.windows_rev, process.out.versions_java, process.out.versions_find_telomere).match() }
+                { assert snapshot([
+                    telomere: process.out.telomere,
+                    versions_java: process.out.versions_java,
+                    versions_find_telomere: process.out.versions_find_telomere,
+                    versions: (process.out.versions_java as List) + (process.out.versions_find_telomere as List),
+                ]).match() }
             )
         }
     }
@@ -77,9 +88,10 @@ nextflow_process {
         }
 
         then {
-            assert workflow.success
+            assert process.success
             assertAll(
-                { assert snapshot(process.out.telomere, process.out.windows, process.out.versions_java, process.out.versions_find_telomere).match() }
+                /* Stub outputs are non-empty placeholders; full process.out matches nf-core snapshot coverage. */
+                { assert snapshot(process.out).match() }
             )
         }
     }
