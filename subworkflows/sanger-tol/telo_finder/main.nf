@@ -49,9 +49,9 @@ workflow TELO_FINDER {
     telomere         = FINDTELOMERE.out.telomere
     telomere_bed_fwd = FINDTELOMERE.out.telomere_bed_fwd
     telomere_bed_rev = FINDTELOMERE.out.telomere_bed_rev
-    windows          = val_split_telomere ? Channel.empty()              : FINDTELOMERE.out.windows
-    windows_fwd      = val_split_telomere ? FINDTELOMERE.out.windows_fwd : Channel.empty()
-    windows_rev      = val_split_telomere ? FINDTELOMERE.out.windows_rev : Channel.empty()
+    windows          = FINDTELOMERE.out.windows
+    windows_fwd      = FINDTELOMERE.out.windows_fwd
+    windows_rev      = FINDTELOMERE.out.windows_rev
     gz_index         = zip_bed ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()
 
 }
