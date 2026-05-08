@@ -1,7 +1,7 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { FINDTELOMERE   } from '../../../modules/sanger-tol/telomere/findtelomere/main'
+include { FINDTELOMERE    } from '../../../modules/sanger-tol/telomere/findtelomere/main'
 include { TABIX_BGZIPTABIX } from '../../../modules/nf-core/tabix/bgziptabix/main'
 
 
