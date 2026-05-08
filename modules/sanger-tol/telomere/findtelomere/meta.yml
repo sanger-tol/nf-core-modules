@@ -95,7 +95,7 @@ output:
       - java:
           type: string
           description: The tool name
-      - "java -version 2>&1 | head -n 1 | cut -d '\"' -f2":
+      - 'java -version 2>&1 | head -n 1 | cut -d ''"'' -f2':
           type: eval
           description: The expression to obtain the version of the tool
   versions_find_telomere:
@@ -117,7 +117,7 @@ topics:
       - java:
           type: string
           description: The tool name
-      - "java -version 2>&1 | head -n 1 | cut -d '\"' -f2":
+      - 'java -version 2>&1 | head -n 1 | cut -d ''"'' -f2':
           type: eval
           description: The expression to obtain the version of the tool
     - - ${task.process}:
