@@ -9,57 +9,45 @@ process FINDTELOMERE {
     val split_windows
 
     output:
-    tuple val( meta ), path( "*.telomere" ) , emit: telomere
-    tuple val( meta ), path( "*.fwd.telomere.bed" )  , optional: true, emit: telomere_bed_fwd
-    tuple val( meta ), path( "*.rev.telomere.bed" )  , optional: true, emit: telomere_bed_rev
-    tuple val( meta ), path( "*.windows" )     , optional: true, emit: windows
-    tuple val( meta ), path( "*.fwd.windows" ) , optional: true, emit: windows_fwd
-    tuple val( meta ), path( "*.rev.windows" ) , optional: true, emit: windows_rev
-    tuple val("${task.process}"), path("versions.yml"), topic: versions, emit: versions
+    tuple val(meta), path("*.telomere"), emit: telomere
+    tuple val(meta), path("*.fwd.telomere.bed"), emit: telomere_bed_fwd, optional: true
+    tuple val(meta), path("*.rev.telomere.bed"), emit: telomere_bed_rev, optional: true
+    tuple val(meta), path("*.windows"), emit: windows, optional: true
+    tuple val(meta), path("*.fwd.windows"), emit: windows_fwd, optional: true
+    tuple val(meta), path("*.rev.windows"), emit: windows_rev, optional: true
+    tuple val("${task.process}"), val('java'), eval("java -version 2>&1 | head -n 1 | cut -d '\"' -f2"), topic: versions, emit: versions_java
+    tuple val("${task.process}"), val('find_telomere'), eval("find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'"), topic: versions, emit: versions_find_telomere
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
-
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
-
-    def prefix          = task.ext.prefix ?: "${meta.id}"
-    def window_args     = task.ext.args ?: '99.9 0.1'
-    def split_opt       = split_windows ? '--split ' : ''
+    def args = task.ext.args ?: '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}'
+    def args2 = task.ext.args2 ?: '-Xmx4096M -Xss999M'
+    def args3 = task.ext.args3 ?: '99.9 0.1'
+    def prefix = task.ext.prefix ?: "${meta.id}"
+    def split_opt = split_windows ? '--split ' : ''
     def stdout_redirect = split_windows ? '' : "> ${prefix}.windows"
-    def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
-    def max_stack_size_mega = 999
     """
-    find_telomere $reference $telomereseq | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
+    find_telomere $reference $telomereseq | awk '${args}' - > ${prefix}.telomere
 
     java \\
-        -Xmx${max_heap_size_mega}M \\
-        -Xss${max_stack_size_mega}M \\
+        ${args2} \\
         -cp /opt/telomere/telomere.jar \\
         FindTelomereWindows \\
         ${split_opt}${prefix}.telomere \\
-        ${window_args} \\
+        ${args3} \\
         ${stdout_redirect}
-
-    JAVA_VER=\$(java -version 2>&1 | head -n 1 | cut -d '"' -f2 || true)
-    FT_VER=\$(find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//' || true)
-    cat > versions.yml <<EOF
-    "${task.process}":
-      java: "\$JAVA_VER"
-      find_telomere: "\$FT_VER"
-    EOF
     """
 
     stub:
-
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
-
-    def prefix          = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
     printf "stub\\n" > ${prefix}.telomere
     printf "stub\\n" > ${prefix}.fwd.telomere.bed
@@ -70,12 +58,6 @@ process FINDTELOMERE {
     else
         printf "stub\\n" > ${prefix}.windows
     fi
-
-    cat > versions.yml <<'EOF'
-    "${task.process}":
-      java: "stub"
-      find_telomere: "stub"
-    EOF
     """
 
 }

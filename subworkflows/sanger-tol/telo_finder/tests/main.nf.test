@@ -2,8 +2,8 @@ nextflow_workflow {
 
     name "Test Subworkflow TELO_FINDER"
     script "../main.nf"
-    config "./nextflow.config"
     workflow "TELO_FINDER"
+    config "./nextflow.config"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
@@ -53,8 +53,9 @@ nextflow_workflow {
         }
 
         then {
+            assert workflow.success
             assertAll(
-                { assert workflow.success },
+                { assert snapshot(workflow.out.telomere, workflow.out.telomere_bed_fwd, workflow.out.telomere_bed_rev, workflow.out.windows).match() }
             )
         }
 
@@ -93,8 +94,9 @@ nextflow_workflow {
         }
 
         then {
+            assert workflow.success
             assertAll(
-                { assert workflow.success },
+                { assert snapshot(workflow.out.telomere, workflow.out.telomere_bed_fwd, workflow.out.telomere_bed_rev, workflow.out.windows_fwd, workflow.out.windows_rev, workflow.out.gz_index).match() }
             )
         }
 

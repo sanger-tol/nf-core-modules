@@ -30,7 +30,7 @@ input:
       description: |
         When true, run `FindTelomereWindows` in `--split` mode (`*.fwd.windows`, `*.rev.windows`).
         When false, emit a single `*.windows` file.
-  - zip_bed:
+  - val_zip_bed:
       type: boolean
       description: |
         When true, run `tabix/bgziptabix` on strand telomere BED outputs and all windows files from
@@ -63,8 +63,8 @@ output:
   - gz_index:
       type: file
       description: |
-        `[ val(meta), path(*.gz), path(*.{tbi,csi}) ]` per bgzip/tabixed file when `zip_bed` is true
-        (from `TABIX_BGZIPTABIX.out.gz_index`); empty when `zip_bed` is false.
+        `[ val(meta), path(*.gz), path(*.{tbi,csi}) ]` per bgzip/tabixed file when `val_zip_bed` is true
+        (from `TABIX_BGZIPTABIX.out.gz_index`); empty when `val_zip_bed` is false.
 
 authors:
   - "@yumisims"

@@ -88,24 +88,47 @@ output:
           type: file
           description: Reverse windows
           pattern: "*.rev.windows"
-  versions:
+  versions_java:
     - - ${task.process}:
           type: string
-          description: The process name
-      - versions.yml:
-          type: file
-          description: File containing software versions
-          pattern: "versions.yml"
+          description: The process the versions were collected from
+      - java:
+          type: string
+          description: The tool name
+      - "java -version 2>&1 | head -n 1 | cut -d '\"' -f2":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_find_telomere:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - find_telomere:
+          type: string
+          description: The tool name
+      - "find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'":
+          type: eval
+          description: The expression to obtain the version of the tool
 
 topics:
   versions:
     - - ${task.process}:
           type: string
-          description: The process name
-      - versions.yml:
-          type: file
-          description: File containing software versions
-          pattern: "versions.yml"
+          description: The process the versions were collected from
+      - java:
+          type: string
+          description: The tool name
+      - "java -version 2>&1 | head -n 1 | cut -d '\"' -f2":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - find_telomere:
+          type: string
+          description: The tool name
+      - "find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'":
+          type: eval
+          description: The expression to obtain the version of the tool
 authors:
   - "@yumisims"
 maintainers:

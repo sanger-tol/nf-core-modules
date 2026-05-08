@@ -8,10 +8,10 @@ include { TABIX_BGZIPTABIX } from '../../../modules/nf-core/tabix/bgziptabix/mai
 workflow TELO_FINDER {
 
     take:
-    ch_reference        // Channel [ val(meta), path(fasta) ]
-    ch_telomereseq      // Channel [ val(meta), val(telomere_motif) ]
-    val_split_telomere  // bool
-    zip_bed             // bool — bgzip + tabix strand *.telomere.bed and windows outputs
+    ch_reference           // Channel [ val(meta), path(fasta) ]
+    ch_telomereseq         // Channel [ val(meta), val(telomere_motif) ]
+    val_split_telomere     // bool
+    val_zip_bed            // bool — bgzip + tabix strand *.telomere.bed and windows outputs
 
     main:
 
@@ -25,21 +25,20 @@ workflow TELO_FINDER {
         ? FINDTELOMERE.out.windows_fwd.mix(FINDTELOMERE.out.windows_rev)
         : FINDTELOMERE.out.windows
 
-    if (zip_bed) {
+    if (val_zip_bed) {
         ch_beds_windows_for_zip_raw = FINDTELOMERE.out.telomere_bed_fwd
             .mix(FINDTELOMERE.out.telomere_bed_rev)
             .mix(ch_windows_for_zip)
 
         /*
-         * Optional `path` outputs can arrive as an empty list when the glob matches nothing.
-         * TABIX_BGZIPTABIX expects a single `path`, so normalise to (meta, path) tuples only.
+         * Optional outputs normally omit emissions when a glob matches nothing. When a glob yields
+         * multiple paths, `item` may be a list — TABIX_BGZIPTABIX expects one path per channel element,
+         * so expand to (meta, path) tuples.
          */
         ch_beds_windows_for_zip = ch_beds_windows_for_zip_raw
             .flatMap { meta, item ->
                 def items = (item instanceof List) ? item : [ item ]
-                items
-                    .findAll { it != null }
-                    .collect { file -> tuple(meta, file) }
+                items.collect { file -> tuple(meta, file) }
             }
 
         TABIX_BGZIPTABIX(ch_beds_windows_for_zip)
@@ -52,6 +51,6 @@ workflow TELO_FINDER {
     windows          = FINDTELOMERE.out.windows
     windows_fwd      = FINDTELOMERE.out.windows_fwd
     windows_rev      = FINDTELOMERE.out.windows_rev
-    gz_index         = zip_bed ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()
+    gz_index         = val_zip_bed ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()
 
 }
