@@ -112,11 +112,63 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-08T22:44:38.901222654"
+        "timestamp": "2026-05-11T14:24:01.241161423"
     },
     "GCA_963859965.1 - fasta": {
         "content": [
             {
+                "0": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
+                    ]
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    [
+                        "FINDTELOMERE",
+                        "java",
+                        "17.0.18"
+                    ]
+                ],
+                "7": [
+                    [
+                        "FINDTELOMERE",
+                        "find_telomere",
+                        "Error: invalid number of parameters"
+                    ]
+                ],
                 "telomere": [
                     [
                         {
@@ -125,11 +177,20 @@
                         "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
                     ]
                 ],
-                "versions_java": [
+                "telomere_bed_fwd": [
                     [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
+                    ]
+                ],
+                "telomere_bed_rev": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
                     ]
                 ],
                 "versions_find_telomere": [
@@ -139,17 +200,26 @@
                         "Error: invalid number of parameters"
                     ]
                 ],
-                "versions": [
+                "versions_java": [
                     [
                         "FINDTELOMERE",
                         "java",
                         "17.0.18"
-                    ],
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
                     ]
+                ],
+                "windows": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
+                    ]
+                ],
+                "windows_fwd": [
+                    
+                ],
+                "windows_rev": [
+                    
                 ]
             }
         ],
@@ -157,7 +227,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-08T22:44:16.189819281"
+        "timestamp": "2026-05-11T14:23:39.608330711"
     },
     "GCA_963859965.1 - fasta - split": {
         "content": [
@@ -202,6 +272,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-05-08T22:44:29.171953925"
+        "timestamp": "2026-05-11T14:23:51.541812267"
     }
 }
