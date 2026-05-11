@@ -25,22 +25,25 @@ process FINDTELOMERE {
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
-    def args = task.ext.args ?: ''
-    def args2 = task.ext.args2 ?: "-Xmx${(task.memory.toMega() * 0.9).intValue()}M -Xss999M"
-    def args3 = task.ext.args3 ?: '99.9 0.1'
+
+    def args = task.ext.args ?: '99.9 0.1'
     def prefix = task.ext.prefix ?: "${meta.id}"
     def split_opt = split_windows ? '--split ' : ''
-    def stdout_redirect = split_windows ? '' : "> ${prefix}.windows"
+    def args2 = task.ext.args2 != null ? task.ext.args2 : (split_windows ? '' : "> ${prefix}.windows")
+    def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
+    def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
+
     """
-    find_telomere ${args} ${reference} ${telomereseq} | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
+    find_telomere ${reference} ${telomereseq} | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
 
     java \\
-        ${args2} \\
+        -Xmx${max_heap_size_mega}M \\
+        -Xss${max_stack_size_mega}M  \\
         -cp /opt/telomere/telomere.jar \\
         FindTelomereWindows \\
         ${split_opt}${prefix}.telomere \\
-        ${args3} \\
-        ${stdout_redirect}
+        ${args} \\
+        ${args2}
     """
 
     stub:
