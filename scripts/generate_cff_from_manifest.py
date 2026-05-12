@@ -151,6 +151,12 @@ def build_cff(pipeline_obj):
     set_if_set(content, "doi", pipeline_obj.nf_config.get("manifest.doi"))
 
     contributors = get_contributors(pipeline_obj)
+    log.debug("Parsed contributors: %s", contributors)
+    if not contributors:
+        log.error("Empty list of contributors in manifest of nextflow.config")
+        return
+    log.info(f"Found {len(contributors)} contributors")
+
     authors = []
     for contributor in contributors:
         log.debug(f"Adding author: {contributor}")
