@@ -37,7 +37,7 @@ def get_contributors(pipeline_obj):
     for key in ["name", "affiliation", "github", "contribution", "orcid", "email"]:
         # All dictionary keys need to be quoted
         contributors_str = contributors_str.replace(f"{key}:", f'"{key}":')
-    # Use curly brackes for dictionaries
+    # Use curly braces for dictionaries
     contributors_str = contributors_str.replace("], [", "}, {").replace("[[", "[{").replace("]]", "}]")
     contributors = json.loads(contributors_str)
 
@@ -54,7 +54,7 @@ def get_contributors(pipeline_obj):
 
         for author in contributors:
             if "name" not in author:
-                log.error(f"No name  field for author: {author}")
+                log.error(f"No name field for author: {author}")
                 sys.exit(1)
 
             progress_bar.update(bump_progress, advance=1, name=author["name"])
@@ -98,7 +98,7 @@ def set_if_set(d, k, v):
 ##### End of shared functions #####
 
 message = (
-    "If you use this software, please cite it using the metadata from this file and all references from CITATIONS.md ."
+    "If you use this software, please cite it using the metadata from this file and all references from CITATIONS.md."
 )
 
 
