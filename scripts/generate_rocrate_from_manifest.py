@@ -31,7 +31,7 @@ def get_contributors(pipeline_obj):
 
     # Grab the contributor list and convert to JSON
     contributors_str = pipeline_obj.nf_config["manifest.contributors"]
-    log.debug("manifest.contributors", contributors_str)
+    log.debug("manifest.contributors: %s", contributors_str)
     # JSON uses double quotes, not single quotes
     contributors_str = contributors_str.replace("'", '"')
     for key in ["name", "affiliation", "github", "contribution", "orcid", "email"]:
@@ -165,7 +165,7 @@ class SangerToLROCrate(ROCrate):
             return
 
         contributors = get_contributors(self.pipeline_obj)
-        log.debug("Parsed contributors", contributors)
+        log.debug("Parsed contributors: %s", contributors)
         if not contributors:
             log.error("Empty list of contributors in manifest of nextflow.config")
             return
