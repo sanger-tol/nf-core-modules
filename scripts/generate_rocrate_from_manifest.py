@@ -1,4 +1,4 @@
-#!/software/treeoflife/conda/users/envs/tol/nf-core_3.2/bin/python3
+#!/software/treeoflife/conda/users/envs/tol/nf-core_3.3/bin/python3
 
 """
 Read the pipeline manifest and generate the ro-crate-metadata.json file
