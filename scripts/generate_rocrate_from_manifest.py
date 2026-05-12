@@ -12,15 +12,16 @@ from pathlib import Path
 
 import requests
 import rich_click as click
-from rich.progress import BarColumn, Progress
 import rocrate.rocrate
+from rich.progress import BarColumn, Progress
 from rocrate.model.person import Person
 
-from nf_core.pipelines.rocrate import ROCrate, CustomNextflowCrateBuilder
+from nf_core.pipelines.rocrate import CustomNextflowCrateBuilder, ROCrate
 
 log = logging.getLogger(__name__)
 
 ##### Shared functions to read and transform the manifest #####
+
 
 # Read and parse the manifest
 def get_contributors(pipeline_obj):
@@ -28,14 +29,14 @@ def get_contributors(pipeline_obj):
         log.error("No contributors field in manifest of nextflow.config")
         return
 
-    # Grab the contributor list and convert to JSON 
+    # Grab the contributor list and convert to JSON
     contributors_str = pipeline_obj.nf_config["manifest.contributors"]
     log.debug("manifest.contributors", contributors_str)
     # JSON uses double quotes, not single quotes
     contributors_str = contributors_str.replace("'", '"')
     for key in ["name", "affiliation", "github", "contribution", "orcid", "email"]:
         # All dictionary keys need to be quoted
-        contributors_str = contributors_str.replace(f"{key}:", f"\"{key}\":")
+        contributors_str = contributors_str.replace(f"{key}:", f'"{key}":')
     # Use curly brackes for dictionaries
     contributors_str = contributors_str.replace("], [", "}, {").replace("[[", "[{").replace("]]", "}]")
     contributors = json.loads(contributors_str)
@@ -49,12 +50,9 @@ def get_contributors(pipeline_obj):
         disable=os.environ.get("HIDE_PROGRESS", None) is not None,
     )
     with progress_bar:
-        bump_progress = progress_bar.add_task(
-            "Searching for author emails", total=len(contributors), name=""
-        )
+        bump_progress = progress_bar.add_task("Searching for author emails", total=len(contributors), name="")
 
         for author in contributors:
-
             if "name" not in author:
                 log.error(f"No name  field for author: {author}")
                 sys.exit(1)
@@ -88,6 +86,7 @@ def get_contributors(pipeline_obj):
 
     return contributors
 
+
 # Only update the dictionary if there's a value
 def set_if_set(d, k, v):
     if v is not None:
@@ -95,17 +94,22 @@ def set_if_set(d, k, v):
         if sv:
             d[k] = sv
 
+
 ##### End of shared functions #####
 
 # Future-proof the script
 # nf-core 3.3 defines the expected CI as nf-test.yml but not all our
 # pipelines will immediately use nf-test, so revert to ci.yml if needed
 orig_build_method = CustomNextflowCrateBuilder.build
+
+
 def new_build_method(self, workflow, *args, **kwargs):
     ci_workflow = kwargs["ci_workflow"]
     if not (workflow.parent / ".github" / "workflows" / ci_workflow).exists():
         kwargs["ci_workflow"] = "ci.yml"
     return orig_build_method(self, workflow, *args, **kwargs)
+
+
 CustomNextflowCrateBuilder.build = new_build_method
 
 
@@ -119,12 +123,22 @@ class SangerToLROCrate(ROCrate):
         super().make_workflow_rocrate()
 
         # Link to the pipelines website instead of the nf-core website
-        self.crate.mainEntity["url"] = [self.crate.mainEntity["url"][0], self.crate.mainEntity["url"][1].replace("https://nf-co.re/sanger-tol", "https://pipelines.tol.sanger.ac.uk")]
+        self.crate.mainEntity["url"] = [
+            self.crate.mainEntity["url"][0],
+            self.crate.mainEntity["url"][1].replace(
+                "https://nf-co.re/sanger-tol", "https://pipelines.tol.sanger.ac.uk"
+            ),
+        ]
 
         # Change the Organization object and relink sdPublisher
         self.crate.delete("https://nf-co.re/")
         self.crate.add_jsonld(
-            {"@id": "https://pipelines.tol.sanger.ac.uk/", "@type": "Organization", "name": "Sanger Tree of Life programme", "url": "https://pipelines.tol.sanger.ac.uk/"}
+            {
+                "@id": "https://pipelines.tol.sanger.ac.uk/",
+                "@type": "Organization",
+                "name": "Sanger Tree of Life programme",
+                "url": "https://pipelines.tol.sanger.ac.uk/",
+            }
         )
         self.crate.mainEntity["sdPublisher"] = {"@id": "https://pipelines.tol.sanger.ac.uk/"}
 
@@ -141,7 +155,6 @@ class SangerToLROCrate(ROCrate):
         log.debug(f"Adding topics: {topics}")
         self.crate.mainEntity["keywords"] = topics
 
-
     def add_main_authors(self, wf_file: rocrate.model.entity.Entity) -> None:
         """
         Add workflow contributors to the crate using author information from the Nextflow manifest
@@ -154,12 +167,11 @@ class SangerToLROCrate(ROCrate):
         contributors = get_contributors(self.pipeline_obj)
         log.debug("Parsed contributors", contributors)
         if not contributors:
-            log.error("Empty list of contributors in manifest of nextflow.config")                
+            log.error("Empty list of contributors in manifest of nextflow.config")
             return
         log.info(f"Found {len(contributors)} contributors")
 
         for author in contributors:
-
             # Mandatory fields
             for field in ["contribution", "orcid"]:
                 if field not in author:
@@ -172,7 +184,7 @@ class SangerToLROCrate(ROCrate):
             set_if_set(properties, "url", author.get("github"))
             set_if_set(properties, "email", author.get("email"))
 
-            author_entitity = self.crate.add( Person(self.crate, author["orcid"], properties=properties) )
+            author_entitity = self.crate.add(Person(self.crate, author["orcid"], properties=properties))
             for mode in author["contribution"]:
                 wf_file.append_to(mode, author_entitity)
 
@@ -189,6 +201,7 @@ def rocrate(pipeline_dir):
     pipeline_dir = Path(pipeline_dir)
     rocrate_obj = SangerToLROCrate(pipeline_dir)
     rocrate_obj.create_rocrate(json_path=pipeline_dir)
+
 
 if __name__ == "__main__":
     rocrate()
