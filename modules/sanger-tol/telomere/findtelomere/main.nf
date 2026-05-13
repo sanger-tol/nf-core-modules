@@ -26,15 +26,16 @@ process FINDTELOMERE {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
 
-    def args = task.ext.args ?: '99.9 0.1'
+    def args = task.ext.args ?: ''
+    def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     def split_opt = split_windows ? '--split ' : ''
-    def args2 = task.ext.args2 != null ? task.ext.args2 : (split_windows ? '' : "> ${prefix}.windows")
+    def split_windows_output = split_windows ? '' : "> ${prefix}.windows"
     def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
 
     """
-    find_telomere ${reference} ${telomereseq} | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
+    find_telomere ${args} ${reference} ${telomereseq} | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
 
     java \\
         -Xmx${max_heap_size_mega}M \\
@@ -42,15 +43,15 @@ process FINDTELOMERE {
         -cp /opt/telomere/telomere.jar \\
         FindTelomereWindows \\
         ${split_opt}${prefix}.telomere \\
-        ${args} \\
-        ${args2}
+        ${args2} \\
+        ${split_windows_output}
     """
 
     stub:
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix
     """
     printf "stub\\n" > ${prefix}.telomere
     printf "stub\\n" > ${prefix}.fwd.telomere.bed

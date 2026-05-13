@@ -9,9 +9,15 @@ nextflow_process {
     tag "telomere"
     tag "telomere/findtelomere"
 
+    config "./nextflow.config"
+
     test("GCA_963859965.1 - fasta") {
 
         when {
+            params {
+                    find_telomere_args      = ""
+                    java_args               = "99.9 0.05"
+            }
             process {
                 """
                 input[0] = [
@@ -35,6 +41,10 @@ nextflow_process {
     test("GCA_963859965.1 - fasta - split") {
 
         when {
+            params {
+                    find_telomere_args      = ""
+                    java_args               = "99.9 0.05"
+            }
             process {
                 """
                 input[0] = [
@@ -50,12 +60,8 @@ nextflow_process {
         then {
             assert process.success
             assertAll(
-                { assert snapshot([
-                    telomere: process.out.telomere,
-                    versions_java: process.out.versions_java,
-                    versions_find_telomere: process.out.versions_find_telomere,
-                    versions: (process.out.versions_java as List) + (process.out.versions_find_telomere as List),
-                ]).match() }
+                { assert process.success },
+                { assert snapshot(process.out).match() }
             )
         }
     }
@@ -65,6 +71,10 @@ nextflow_process {
         options "-stub"
 
         when {
+            params {
+                    find_telomere_args      = ""
+                    java_args               = "99.9 0.05"
+            }
             process {
                 """
                 input[0] = [
