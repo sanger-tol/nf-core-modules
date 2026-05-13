@@ -26,7 +26,8 @@ nextflow_workflow {
     test("Cloeon_Dipeterum - no split") {
         when {
             params {
-                telomerewindow_args = "0.99 0.05"
+                find_telomere_args  = ''
+                java_args           = "0.99 0.05"
                 bgzip_args          = ''
             }
             workflow {
@@ -67,7 +68,8 @@ nextflow_workflow {
     test("Cloeon_Dipeterum - split - zipbed") {
         when {
             params {
-                telomerewindow_args = "0.99 0.05"
+                find_telomere_args  = ''
+                java_args           = "0.99 0.05"
                 bgzip_args          = "--csi"
             }
             workflow {

@@ -52,11 +52,12 @@ process FINDTELOMERE {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
     def prefix = task.ext.prefix
+    def split_opt = split_windows ? '--split ' : ''
     """
     printf "stub\\n" > ${prefix}.telomere
     printf "stub\\n" > ${prefix}.fwd.telomere.bed
     printf "stub\\n" > ${prefix}.rev.telomere.bed
-    if ${split_windows}; then
+    if [ -n "${split_opt}" ]; then
         printf "stub\\n" > ${prefix}.fwd.windows
         printf "stub\\n" > ${prefix}.rev.windows
     else
