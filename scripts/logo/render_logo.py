@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/software/treeoflife/conda/users/envs/tol/nf-core_4.0/bin/python3
 
 import argparse
 import re
