@@ -1,6 +1,8 @@
-#!/usr/bin/env python3
+#!/software/treeoflife/conda/users/envs/tol/nf-core_4.0/bin/python3
 
 import argparse
+import os
+import platform
 import re
 import shutil
 import subprocess
@@ -365,15 +367,21 @@ def format_length(value: float, unit: str) -> str:
 
 def export_svg_to_png(inkscape_cmd: str, input_path: Path, output_path: Path) -> None:
     """Run Inkscape to export an SVG file to a PNG file."""
-    subprocess.check_call(
-        [
-            inkscape_cmd,
-            str(input_path),
-            "--export-type=png",
-            "--export-filename",
-            str(output_path),
-        ]
-    )
+    cmd = [
+        inkscape_cmd,
+        str(input_path),
+        "--export-type=png",
+        "--export-filename",
+        str(output_path),
+    ]
+    # Only use dbus-run-session on Linux when no session bus exists
+    if (
+        platform.system() == "Linux"
+        and not os.environ.get("DBUS_SESSION_BUS_ADDRESS")
+        and shutil.which("dbus-run-session")
+    ):
+        cmd = ["dbus-run-session", "--", *cmd]
+    subprocess.check_call(cmd)
 
 
 def build_logo(
