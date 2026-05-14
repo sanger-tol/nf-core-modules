@@ -64,14 +64,14 @@ output:
           type: file
           description: Reverse telomeric intervals
           pattern: "*.rev.telomere.bed"
-  windows:
+  windows_all:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.windows":
+      - "*.all.windows":
           type: file
           description: Telomere density windows
-          pattern: "*.windows"
+          pattern: "*.all.windows"
   windows_fwd:
     - - meta:
           type: map

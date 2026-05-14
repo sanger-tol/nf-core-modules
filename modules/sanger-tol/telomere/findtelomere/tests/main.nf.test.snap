@@ -27,12 +27,7 @@
                     ]
                 ],
                 "3": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
+                    
                 ],
                 "4": [
                     
@@ -92,13 +87,8 @@
                         "17.0.18"
                     ]
                 ],
-                "windows": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                    ]
+                "windows_all": [
+                    
                 ],
                 "windows_fwd": [
                     
@@ -108,7 +98,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-13T15:55:04.473811575",
+        "timestamp": "2026-05-14T16:09:30.989751574",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -142,12 +132,7 @@
                     ]
                 ],
                 "3": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,eea26743865d264087fce91d92f5e1ed"
-                    ]
+                    
                 ],
                 "4": [
                     
@@ -207,13 +192,8 @@
                         "17.0.18"
                     ]
                 ],
-                "windows": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        "Cloeon_Dipeterum.windows:md5,eea26743865d264087fce91d92f5e1ed"
-                    ]
+                "windows_all": [
+                    
                 ],
                 "windows_fwd": [
                     
@@ -223,7 +203,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-13T15:54:39.402620829",
+        "timestamp": "2026-05-14T16:09:09.927283614",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -257,22 +237,14 @@
                     ]
                 ],
                 "3": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        [
-                            "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "Cloeon_Dipeterum.rev.windows:md5,3dadbb5a823186ad1a8f26e1d916ca11"
-                        ]
-                    ]
+                    
                 ],
                 "4": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
                     ]
                 ],
                 "5": [
@@ -280,7 +252,7 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows:md5,3dadbb5a823186ad1a8f26e1d916ca11"
+                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
                     ]
                 ],
                 "6": [
@@ -335,23 +307,15 @@
                         "17.0.18"
                     ]
                 ],
-                "windows": [
-                    [
-                        {
-                            "id": "Cloeon_Dipeterum"
-                        },
-                        [
-                            "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "Cloeon_Dipeterum.rev.windows:md5,3dadbb5a823186ad1a8f26e1d916ca11"
-                        ]
-                    ]
+                "windows_all": [
+                    
                 ],
                 "windows_fwd": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
                     ]
                 ],
                 "windows_rev": [
@@ -359,12 +323,12 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows:md5,3dadbb5a823186ad1a8f26e1d916ca11"
+                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-13T15:54:54.213448279",
+        "timestamp": "2026-05-14T16:09:21.993243886",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

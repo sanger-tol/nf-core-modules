@@ -48,10 +48,10 @@ output:
       type: file
       description: |
         `[ val(meta), path(*.rev.telomere.bed) ]` (optional if tool emits).
-  - windows:
+  - windows_all:
       type: file
       description: |
-        `[ val(meta), path(*.windows) ]` when `val_split_telomere` is false; otherwise empty.
+        `[ val(meta), path(*.all.windows) ]` when `val_split_telomere` is false; otherwise empty.
   - windows_fwd:
       type: file
       description: |

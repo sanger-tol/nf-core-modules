@@ -23,7 +23,7 @@ workflow TELO_FINDER {
 
     ch_windows_for_zip = val_split_telomere
         ? FINDTELOMERE.out.windows_fwd.mix(FINDTELOMERE.out.windows_rev)
-        : FINDTELOMERE.out.windows
+        : FINDTELOMERE.out.windows_all
 
     if (val_zip_bed) {
         ch_beds_windows_for_zip_raw = FINDTELOMERE.out.telomere_bed_fwd
@@ -48,7 +48,7 @@ workflow TELO_FINDER {
     telomere         = FINDTELOMERE.out.telomere
     telomere_bed_fwd = FINDTELOMERE.out.telomere_bed_fwd
     telomere_bed_rev = FINDTELOMERE.out.telomere_bed_rev
-    windows          = FINDTELOMERE.out.windows
+    windows_all      = FINDTELOMERE.out.windows_all
     windows_fwd      = FINDTELOMERE.out.windows_fwd
     windows_rev      = FINDTELOMERE.out.windows_rev
     gz_index         = val_zip_bed ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()

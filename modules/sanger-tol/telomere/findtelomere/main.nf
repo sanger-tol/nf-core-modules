@@ -12,7 +12,8 @@ process FINDTELOMERE {
     tuple val(meta), path("*.telomere"), emit: telomere
     tuple val(meta), path("*.fwd.telomere.bed"), emit: telomere_bed_fwd, optional: true
     tuple val(meta), path("*.rev.telomere.bed"), emit: telomere_bed_rev, optional: true
-    tuple val(meta), path("*.windows"), emit: windows, optional: true
+    // Use an exact basename: `*.all.windows` also matches `*.fwd.windows` / `*.rev.windows`, which breaks split-mode staging.
+    tuple val(meta), path("*.all.windows"), emit: windows_all, optional: true
     tuple val(meta), path("*.fwd.windows"), emit: windows_fwd, optional: true
     tuple val(meta), path("*.rev.windows"), emit: windows_rev, optional: true
     tuple val("${task.process}"), val('java'), eval("java -version 2>&1 | head -n 1 | cut -d '\"' -f2"), topic: versions, emit: versions_java
@@ -28,9 +29,9 @@ process FINDTELOMERE {
 
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    prefix = task.ext.prefix ?: "${meta.id}"
     def split_opt = split_windows ? '--split ' : ''
-    def split_windows_output = split_windows ? '' : "> ${prefix}.windows"
+    def split_windows_output = split_windows ? '' : "> ${prefix}.full.windows"
     def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
 
@@ -51,7 +52,7 @@ process FINDTELOMERE {
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
-    def prefix = task.ext.prefix
+    prefix = task.ext.prefix ?: "${meta.id}"
     def split_opt = split_windows ? '--split ' : ''
     """
     printf "stub\\n" > ${prefix}.telomere
@@ -61,7 +62,7 @@ process FINDTELOMERE {
         printf "stub\\n" > ${prefix}.fwd.windows
         printf "stub\\n" > ${prefix}.rev.windows
     else
-        printf "stub\\n" > ${prefix}.windows
+        printf "stub\\n" > ${prefix}.full.windows
     fi
     """
 

@@ -16,7 +16,7 @@ nextflow_process {
         when {
             params {
                     find_telomere_args      = ""
-                    java_args               = "99.9 0.05"
+                    java_args               = "99.9 0.01"
             }
             process {
                 """
@@ -43,7 +43,7 @@ nextflow_process {
         when {
             params {
                     find_telomere_args      = ""
-                    java_args               = "99.9 0.05"
+                    java_args               = "99.9 0.01"
             }
             process {
                 """
@@ -73,7 +73,7 @@ nextflow_process {
         when {
             params {
                     find_telomere_args      = ""
-                    java_args               = "99.9 0.05"
+                    java_args               = "99.9 0.01"
             }
             process {
                 """

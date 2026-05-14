@@ -27,7 +27,7 @@ nextflow_workflow {
         when {
             params {
                 find_telomere_args  = ''
-                java_args           = "0.99 0.05"
+                java_args           = "0.99 0.01"
                 bgzip_args          = ''
             }
             workflow {
@@ -69,7 +69,7 @@ nextflow_workflow {
         when {
             params {
                 find_telomere_args  = ''
-                java_args           = "0.99 0.05"
+                java_args           = "0.99 0.01"
                 bgzip_args          = "--csi"
             }
             workflow {
