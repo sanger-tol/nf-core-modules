@@ -35,6 +35,8 @@ If you are already in the pipeline directory, this is equivalent:
 
 ```bash
 /software/treeoflife/bin/render_logo.py --pipeline-dir .
+# or
+/software/treeoflife/bin/render_logo.py
 ```
 
 If `.nf-core.yml` is missing or you want to override its values, supply the name
@@ -83,6 +85,16 @@ Write output somewhere other than `docs/images` within the pipeline directory:
 /software/treeoflife/bin/render_logo.py \
   --pipeline-dir /path/to/pipeline \
   --output-dir assets/logo
+```
+
+Run on your laptop with your own Inkscape installation
+(assumes you are in an environment with all dependencies installed,
+cf [requirements.txt](https://github.com/sanger-tol/nf-core-modules/blob/main/scripts/logo/requirements.txt)).
+
+```bash
+python3 /path/to/sanger-tol/nf-core-modules/scripts/logo/render_logo.py \
+  --pipeline-dir /path/to/pipeline \
+  --inkscape /path/to/Applications/Inkscape.app/Contents/MacOS/inkscape
 ```
 
 Use a different metadata file under the same pipeline directory:
