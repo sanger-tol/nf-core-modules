@@ -25,5 +25,5 @@ workflow SOFT_MASKED_FASTA_REPEATS {
         .join(BGZIPTABIX.out.csi, by: 0, remainder: true)
 
     emit:
-    repeats = ch_repeats // channel: [ meta, bed.gz, bed.gz.gzi, tbi?, csi? ]
+    ch_repeats // channel: [ meta, bed.gz, bed.gz.gzi, tbi?, csi? ]
 }
