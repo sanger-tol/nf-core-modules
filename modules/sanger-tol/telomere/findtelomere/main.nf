@@ -43,7 +43,7 @@ process FINDTELOMERE {
         -Xss${max_stack_size_mega}M  \\
         -cp /opt/telomere/telomere.jar \\
         FindTelomereWindows \\
-        ${split_opt}${prefix}.telomere \\
+        ${split_opt} ${prefix}.telomere \\
         ${args2} \\
         ${split_windows_output}
     """
