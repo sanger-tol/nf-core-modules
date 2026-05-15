@@ -27,7 +27,12 @@
                     ]
                 ],
                 "3": [
-                    
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.all.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
+                    ]
                 ],
                 "4": [
                     
@@ -88,7 +93,12 @@
                     ]
                 ],
                 "windows_all": [
-                    
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.all.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
+                    ]
                 ],
                 "windows_fwd": [
                     
@@ -98,7 +108,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-14T16:27:49.773772168",
+        "timestamp": "2026-05-15T21:14:18.188388633",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -132,7 +142,12 @@
                     ]
                 ],
                 "3": [
-                    
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
+                    ]
                 ],
                 "4": [
                     
@@ -193,7 +208,12 @@
                     ]
                 ],
                 "windows_all": [
-                    
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
+                    ]
                 ],
                 "windows_fwd": [
                     
@@ -203,7 +223,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-14T16:27:28.997271919",
+        "timestamp": "2026-05-15T21:13:51.376072459",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -328,7 +348,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-14T16:27:41.292270492",
+        "timestamp": "2026-05-15T21:14:06.826084817",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
