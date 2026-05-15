@@ -29,9 +29,9 @@ process FINDTELOMERE {
 
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
-    prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     def split_opt = split_windows ? '--split' : ''
-    def split_windows_output = split_windows ? '' : "> ${prefix}.full.windows"
+    def split_windows_output = split_windows ? '' : "> ${prefix}.all.windows"
     def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
 
@@ -52,7 +52,7 @@ process FINDTELOMERE {
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
-    prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     def split_opt = split_windows ? '--split ' : ''
     """
     printf "stub\\n" > ${prefix}.telomere
@@ -62,7 +62,7 @@ process FINDTELOMERE {
         printf "stub\\n" > ${prefix}.fwd.windows
         printf "stub\\n" > ${prefix}.rev.windows
     else
-        printf "stub\\n" > ${prefix}.full.windows
+        printf "stub\\n" > ${prefix}.all.windows
     fi
     """
 
