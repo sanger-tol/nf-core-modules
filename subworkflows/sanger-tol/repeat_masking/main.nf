@@ -28,5 +28,5 @@ workflow REPEAT_MASKING {
     )
 
     emit:
-    repeat_intervals = WINDOWMASKER_USTAT.out.intervals
+    WINDOWMASKER_USTAT.out.intervals
 }
