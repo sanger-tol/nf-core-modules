@@ -30,7 +30,7 @@ process FINDTELOMERE {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     prefix = task.ext.prefix ?: "${meta.id}"
-    def split_opt = split_windows ? '--split ' : ''
+    def split_opt = split_windows ? '--split' : ''
     def split_windows_output = split_windows ? '' : "> ${prefix}.full.windows"
     def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
