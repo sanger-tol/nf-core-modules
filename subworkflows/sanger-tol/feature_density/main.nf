@@ -72,16 +72,19 @@ workflow FEATURE_DENSITY {
     //
     // MODULE: SORTS THE ABOVE BED FILES
     //
+    ch_files_to_sort_a = GAWK_RENAME_IDS.out.output.map { meta, file -> tuple(meta, file, "intersect") }
     GNU_SORT_A (
-        GAWK_RENAME_IDS.out.output      // Intersect file
+        ch_files_to_sort_a  // Intersect file
     )
 
+    ch_files_to_sort_b = ch_chrom_sizes.map { meta, file -> tuple(meta, file, "sorted") }
     GNU_SORT_B (
-        ch_chrom_sizes                  // Genome file - Will not run unless genome file is sorted to
+        ch_files_to_sort_b  // Genome file - Will not run unless genome file is sorted to
     )
 
+    ch_files_to_sort_c = BEDTOOLS_MAKEWINDOWS.out.bed.map { meta, file -> tuple(meta, file, "bins") }
     GNU_SORT_C (
-        BEDTOOLS_MAKEWINDOWS.out.bed    // Windows file
+        ch_files_to_sort_c  // Windows file
     )
 
     //
