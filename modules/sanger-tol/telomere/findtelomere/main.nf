@@ -17,7 +17,8 @@ process FINDTELOMERE {
     tuple val(meta), path("*.fwd.windows"), emit: windows_fwd, optional: true
     tuple val(meta), path("*.rev.windows"), emit: windows_rev, optional: true
     tuple val("${task.process}"), val('java'), eval("java -version 2>&1 | head -n 1 | cut -d '\"' -f2"), topic: versions, emit: versions_java
-    tuple val("${task.process}"), val('find_telomere'), eval("find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'"), topic: versions, emit: versions_find_telomere
+    // find_telomere has no --version; pin to container tag (bump when `container` changes)
+    tuple val("${task.process}"), val('find_telomere'), val('0.0.2'), topic: versions, emit: versions_find_telomere
 
     when:
     task.ext.when == null || task.ext.when

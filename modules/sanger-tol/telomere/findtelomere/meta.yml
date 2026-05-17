@@ -105,9 +105,9 @@ output:
       - find_telomere:
           type: string
           description: The tool name
-      - "find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'":
-          type: eval
-          description: The expression to obtain the version of the tool
+      - "0.0.2-c1":
+          type: string
+          description: Pinned to the sanger-tol/telomere container tag (find_telomere has no version CLI)
 
 topics:
   versions:
@@ -126,9 +126,9 @@ topics:
       - find_telomere:
           type: string
           description: The tool name
-      - "find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'":
-          type: eval
-          description: The expression to obtain the version of the tool
+      - "0.0.2-c1":
+          type: string
+          description: Pinned to the sanger-tol/telomere container tag (find_telomere has no version CLI)
 authors:
   - "@yumisims"
 maintainers:

@@ -51,7 +51,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "telomere": [
@@ -82,7 +82,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "versions_java": [
@@ -108,7 +108,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-15T21:14:18.188388633",
+        "timestamp": "2026-05-17T21:20:48.724877703",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -166,7 +166,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "telomere": [
@@ -197,7 +197,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "versions_java": [
@@ -223,7 +223,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-15T21:13:51.376072459",
+        "timestamp": "2026-05-17T21:20:22.041583336",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -286,7 +286,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "telomere": [
@@ -317,7 +317,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "versions_java": [
@@ -348,7 +348,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-15T21:14:06.826084817",
+        "timestamp": "2026-05-17T21:20:36.264611013",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
