@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
+name: "busco_gene"
+description: |
+  Assess a genome FASTA with BUSCO using a chosen lineage and optional local lineage database path,
+  then emit BUSCO gene coordinates as three bedGraph-style tables (Complete, Duplicated, Fragmented).
+keywords:
+  - busco
+  - bedgraph
+  - qc
+  - completeness
+components:
+  - busco/fulltabletogenebedgraph
+  - busco/busco:
+      git_remote: https://github.com/nf-core/modules.git
+input:
+  - ch_fasta:
+      type: file
+      description: |
+        Input assembly FASTA (optionally gzipped).
+        Structure: [ val(meta), path(fasta) ]
+      pattern: "*.{fa,fsta,fna,fasta}{,.gz}"
+  - ch_busco_lineage:
+      type: string
+      description: |
+        BUSCO lineage dataset name (for example bacteria_odb10) aligned by meta with ch_fasta.
+        Structure: [ val(meta), val(lineage_string) ]
+  - val_busco_lineages_path:
+      type: path
+      description: |
+        Directory passed to BUSCO as --download_path (pre-downloaded lineages). Use an empty Groovy list `[]`
+        to let BUSCO download datasets instead.
+output:
+  - complete_bedgraph:
+      type: file
+      description: |
+        BUSCO Complete hits as tab-separated sequence, start, end, score (`complete_buscos.bedgraph`).
+        Structure: [ val(meta), path(complete_buscos.bedgraph) ]
+      pattern: "complete_buscos.bedgraph"
+  - duplicated_bedgraph:
+      type: file
+      description: |
+        BUSCO Duplicated hits (`duplicated_buscos.bedgraph`).
+        Structure: [ val(meta), path(duplicated_buscos.bedgraph) ]
+      pattern: "duplicated_buscos.bedgraph"
+  - fragmented_bedgraph:
+      type: file
+      description: |
+        BUSCO Fragmented hits (`fragmented_buscos.bedgraph`).
+        Structure: [ val(meta), path(fragmented_buscos.bedgraph) ]
+      pattern: "fragmented_buscos.bedgraph"
+  - full_table:
+      type: file
+      description: BUSCO full_table.tsv when BUSCO completes successfully.
+      pattern: "full_table.tsv"
+  - busco_dir:
+      type: directory
+      description: BUSCO output directory tree for the sample.
+  - batch_summary:
+      type: file
+      description: BUSCO batch_summary.txt derived output.
+  - short_summaries_txt:
+      type: file
+      description: BUSCO short_summary *.txt files when produced.
+  - short_summaries_json:
+      type: file
+      description: BUSCO short_summary *.json files when produced.
+  - busco_log:
+      type: file
+      description: BUSCO run log when produced.
+  - versions:
+      type: file
+      description: |
+        Mixed software version tuples from BUSCO and the converter process (versions topic).
+      pattern: "versions.yml"
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"

@@ -1,0 +1,204 @@
+{
+    "bacteria full_table": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "complete_buscos.bedgraph:md5,10b93a62d5670e34a85f139f6b25c66d"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "duplicated_buscos.bedgraph:md5,9d1454bbf855f36226ce872ea39452df"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "fragmented_buscos.bedgraph:md5,fadc2173a9b0b7c230edcf46a829fb2b"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "python",
+                        "3.13.13"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "pandas",
+                        "3.0.3"
+                    ]
+                ],
+                "5": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "busco_fulltable_to_bedgraph",
+                        "1.0.0"
+                    ]
+                ],
+                "complete_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "complete_buscos.bedgraph:md5,10b93a62d5670e34a85f139f6b25c66d"
+                    ]
+                ],
+                "duplicated_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "duplicated_buscos.bedgraph:md5,9d1454bbf855f36226ce872ea39452df"
+                    ]
+                ],
+                "fragmented_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "fragmented_buscos.bedgraph:md5,fadc2173a9b0b7c230edcf46a829fb2b"
+                    ]
+                ],
+                "versions_busco_fulltable_to_bedgraph": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "busco_fulltable_to_bedgraph",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_pandas": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "pandas",
+                        "3.0.3"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "python",
+                        "3.13.13"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-18T19:15:49.564430336",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "bacteria full_table - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "python",
+                        "3.13.13"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "pandas",
+                        "3.0.3"
+                    ]
+                ],
+                "5": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "busco_fulltable_to_bedgraph",
+                        "1.0.0"
+                    ]
+                ],
+                "complete_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "duplicated_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fragmented_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_busco_fulltable_to_bedgraph": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "busco_fulltable_to_bedgraph",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_pandas": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "pandas",
+                        "3.0.3"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "python",
+                        "3.13.13"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-18T19:16:02.461410421",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

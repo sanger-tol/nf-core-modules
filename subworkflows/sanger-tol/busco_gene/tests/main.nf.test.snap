@@ -1,0 +1,13 @@
+{
+    "bacteroides_fragilis genome fasta.gz \u2014 bacteria_odb10": {
+        "content": [
+            null,
+            null
+        ],
+        "timestamp": "2026-05-18T19:28:23.251631101",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
