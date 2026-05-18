@@ -28,5 +28,5 @@ workflow SOFT_MASKED_FASTA_REPEATS {
     repeats = ch_repeats
 
     emit:
-    repeats // channel: [ meta, bed.gz, bed.gz.gzi, tbi?, csi? ]
+    repeats = repeats // channel: [ meta, bed.gz, bed.gz.gzi, tbi?, csi? ]
 }
