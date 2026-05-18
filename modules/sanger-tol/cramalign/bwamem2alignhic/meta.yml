@@ -3,7 +3,7 @@ name: "cramalign_bwamem2alignhic"
 description: |
   Aligns a subset of Hi-C reads from a CRAM file to a reference genome using bwa-mem2,
   pipes the resulting alignments through samtools fixmate and samtools sort, outputting
-  an alignment in BAM format.
+  an alignment in CRAM format.
 keywords:
   - sort
   - alignment
@@ -72,18 +72,18 @@ input:
         type: list
         description: Start and end indices defining CRAM slices to align
 output:
-  bam:
+  cram:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "*.bam":
+      - "*.cram":
           type: file
-          description: BAM file of mapped Hi-C sequences
-          pattern: "*.bam"
+          description: CRAM file of mapped Hi-C sequences
+          pattern: "*.cram"
           ontologies:
-            - edam: "http://edamontology.org/format_2572" # BAM
+            - edam: "http://edamontology.org/format_3462" # CRAM
   versions_bwamem2:
     - - ${task.process}:
           type: string

@@ -3,7 +3,7 @@ name: "fastxalign_minimap2align"
 description: |
   Aligns a subset of sequencing reads from a FASTx file to a reference genome using minimap2. Can either
   output the alignment in PAF format, or alternatively will pipe the resulting alignments through
-  samtools view and samtools sort, outputting an alignment in BAM format.
+  samtools view and samtools sort, outputting an alignment in CRAM format.
 keywords:
   - align
   - fasta
@@ -78,20 +78,20 @@ input:
         type: list
         description: Start and end indices defining FASTA slices to align,
           0-indexed
-  - bam_format:
+  - cram_format:
       type: boolean
-      description: Output PAF format or BAM format alignments
+      description: Output PAF format or CRAM format alignments
 output:
-  bam:
+  cram:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "*.bam":
+      - "*.cram":
           type: file
-          description: BAM file of mapped sequences
-          pattern: "*.bam"
+          description: CRAM file of mapped sequences
+          pattern: "*.cram"
           ontologies:
             - edam: "http://edamontology.org/format_2572"
   paf:

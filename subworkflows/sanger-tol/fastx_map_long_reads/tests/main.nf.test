@@ -61,7 +61,7 @@ nextflow_workflow {
         }
     }
 
-    test("Undibacterium unclassified - fasta - bam") {
+    test("Undibacterium unclassified - fasta - cram") {
 
         when {
 
@@ -81,11 +81,13 @@ nextflow_workflow {
             }
         }
         then {
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa'
             assert workflow.success
             assertAll(
                 { assert snapshot(
-                    workflow.out.bam.collect { bam(it.get(1)).getStatistics() },
-                    workflow.out.bam_index.collect { file(it.get(1)).getName() },
+                    workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() },
+                    workflow.out.cram_index.collect { file(it.get(1)).getName() },
                 ).match() }
             )
         }
@@ -94,7 +96,7 @@ nextflow_workflow {
         }
     }
 
-    test("Undibacterium unclassified - Meles meles - fasta - bam - double files") {
+    test("Undibacterium unclassified - Meles meles - fasta - cram - double files") {
 
         when {
 
@@ -130,11 +132,12 @@ nextflow_workflow {
         }
 
         then {
+            // TODO: insert the Fasta files (there are two !)
             assert workflow.success
             assertAll(
                 { assert snapshot(
-                    workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                    workflow.out.bam_index.collect { file(it.get(1)).getName() }.sort(),
+                    workflow.out.cram.collect { bam(it.get(1)).getStatistics() }.sort(),
+                    workflow.out.cram_index.collect { file(it.get(1)).getName() }.sort(),
                 ).match() }
             )
         }

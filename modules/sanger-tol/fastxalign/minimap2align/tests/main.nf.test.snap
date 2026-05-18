@@ -1,5 +1,5 @@
 {
-    "Undibacterium_unclassified - fasta - bam out - filter": {
+    "Undibacterium_unclassified - fasta - cram out - filter": {
         "content": [
             {
                 "maxReadLength": 26308,
@@ -40,9 +40,9 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T16:40:48.934235"
+        "timestamp": "2026-04-13T09:21:30.464725869"
     },
-    "sarscov2 - bam - stub": {
+    "sarscov2 - cram - stub": {
         "content": [
             {
                 "0": [
@@ -50,7 +50,7 @@
                         {
                             "id": "test"
                         },
-                        "HiFi.reads.fasta.0.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "HiFi.reads.fasta.0.test.cram:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -82,12 +82,12 @@
                         "2.30-r1287"
                     ]
                 ],
-                "bam": [
+                "cram": [
                     [
                         {
                             "id": "test"
                         },
-                        "HiFi.reads.fasta.0.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "HiFi.reads.fasta.0.test.cram:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "paf": [
@@ -125,9 +125,9 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T16:41:04.114202"
+        "timestamp": "2026-04-13T09:14:28.767123325"
     },
-    "Undibacterium_unclassified - fasta - bam out - no filter": {
+    "Undibacterium_unclassified - fasta - cram out - no filter": {
         "content": [
             {
                 "maxReadLength": 26308,
@@ -168,7 +168,7 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T16:40:40.802654"
+        "timestamp": "2026-04-13T09:21:22.879309064"
     },
     "Undibacterium_unclassified - fasta - paf out": {
         "content": [
@@ -205,7 +205,7 @@
                         "2.30-r1287"
                     ]
                 ],
-                "bam": [
+                "cram": [
                     
                 ],
                 "paf": [
@@ -243,6 +243,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.3"
         },
-        "timestamp": "2026-02-09T16:40:57.327797"
+        "timestamp": "2026-04-13T09:14:22.596178402"
     }
 }

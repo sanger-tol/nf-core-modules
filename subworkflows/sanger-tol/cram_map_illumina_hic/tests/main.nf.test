@@ -74,14 +74,17 @@ nextflow_workflow {
         }
 
         then {
+            // Fasta file for cram verification with nft-bam. Can't use params
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 1 },
+                { assert workflow.out.cram.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam_markdup_stats,
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram_markdup_stats,
                     ).match()
                 }
             )
@@ -138,14 +141,18 @@ nextflow_workflow {
         }
 
         then {
+            // Fasta file for cram verification with nft-bam. Can't use params
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta1 = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
+            def fasta2 = fasta_base + 'Zymo_D6311_Metagenome/assembly/xyTesTing1_metamdbg.contigs.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 2 },
+                { assert workflow.out.cram.size() == 2 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam_markdup_stats,
+                        workflow.out.cram.collect { cram(it.get(1), file(it.get(1)).getName().contains("GCA_922984935.2") ? fasta1 : fasta2).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram_markdup_stats,
                     ).match()
                 }
             )
@@ -207,19 +214,22 @@ nextflow_workflow {
         }
 
         then {
+            // Fasta file for cram verification with nft-bam. Can't use params
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 2 },
+                { assert workflow.out.cram.size() == 2 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam.collect {
-                            def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram.collect {
+                            def rg = cram(it.get(1), fasta).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
                             def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
                             return "${it[0].id}: ${sm}"
                         }.sort(),
-                        workflow.out.bam_markdup_stats,
+                        workflow.out.cram_markdup_stats,
                     ).match()
                 }
             )
@@ -264,14 +274,17 @@ nextflow_workflow {
         }
 
         then {
+            // Fasta file for cram verification with nft-bam. Can't use params
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 1 },
+                { assert workflow.out.cram.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam_markdup_stats,
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram_markdup_stats,
                     ).match()
                 }
             )
@@ -318,14 +331,17 @@ nextflow_workflow {
         }
 
         then {
+            // Fasta file for cram verification with nft-bam. Can't use params
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Biemna_sp_UH_2024/assembly/release/GCA_965654295.1/insdc/GCA_965654295.1.fa'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 1 },
+                { assert workflow.out.cram.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam_markdup_stats,
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram_markdup_stats,
                     ).match()
                 }
             )
@@ -371,14 +387,17 @@ nextflow_workflow {
         }
 
         then {
+            // Fasta file for cram verification with nft-bam. Can't use params
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Biemna_sp_UH_2024/assembly/release/GCA_965654295.1/insdc/GCA_965654295.1.fa'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 1 },
+                { assert workflow.out.cram.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam_markdup_stats,
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram_markdup_stats,
                     ).match()
                 }
             )

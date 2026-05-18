@@ -65,13 +65,15 @@ nextflow_workflow {
         }
 
         then {
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 1 },
+                { assert workflow.out.cram.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
                     ).match()
                 }
             )
@@ -122,15 +124,17 @@ nextflow_workflow {
         }
 
         then {
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 2 },
+                { assert workflow.out.cram.size() == 2 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam.collect {
-                            def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram.collect {
+                            def rg = cram(it.get(1), fasta).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
                             def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
                             return "${it[0].id}: ${sm}"
                         }.sort(),
@@ -184,13 +188,15 @@ nextflow_workflow {
         }
 
         then {
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 1 },
+                { assert workflow.out.cram.size() == 1 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
                     ).match()
                 }
             )
@@ -244,15 +250,17 @@ nextflow_workflow {
         }
 
         then {
+            def fasta_base = 'https://tolit.cog.sanger.ac.uk/test-data/'
+            def fasta = fasta_base + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta'
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.bam.size() == 2 },
+                { assert workflow.out.cram.size() == 2 },
                 {
                     assert snapshot(
-                        workflow.out.bam.collect { bam(it.get(1)).getStatistics() }.sort(),
-                        workflow.out.bam_index.collect { file(it.get(1)).getName() },
-                        workflow.out.bam.collect {
-                            def rg = bam(it.get(1)).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
+                        workflow.out.cram.collect { cram(it.get(1), fasta).getStatistics() }.sort(),
+                        workflow.out.cram_index.collect { file(it.get(1)).getName() },
+                        workflow.out.cram.collect {
+                            def rg = cram(it.get(1), fasta).getHeader().toString().split(", ").findAll { it.startsWith('@RG') }
                             def sm = rg ? rg[0].split('\t').findAll { it.contains('SM') }[0] : 'no RG'
                             return "${it[0].id}: ${sm}"
                         }.sort(),

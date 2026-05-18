@@ -11,10 +11,10 @@ process FASTXALIGN_MINIMAP2ALIGN {
     tuple val(meta),  path(fastx), path(fxi)
     tuple val(meta2), path(index), path(reference)
     tuple val(chunkn), val(range)
-    val bam_format
+    val cram_format
 
     output:
-    tuple val(meta), path("*.bam")   , emit: bam, optional: true
+    tuple val(meta), path("*.cram")  , emit: cram, optional: true
     tuple val(meta), path("*.paf.gz"), emit: paf, optional: true
     tuple val("${task.process}"), val('slice_fasta.py'), eval('slice_fasta.py --version'), emit: versions_slice_fasta, topic: versions
     tuple val("${task.process}"), val('samtools'), eval('samtools version | sed "1!d;s/.* //"'), emit: versions_samtools, topic: versions
@@ -34,18 +34,19 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def args3       = task.ext.args3  ?: ''
     def prefix      = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
     def post_filter = args2 ? "samtools view -h ${args2} - |" : ''
-    def sort_bam    = "samtools sort -@ ${task.cpus > 1 ? task.cpus - 1 : 1} -o ${prefix}.bam -T ${prefix}_sort_tmp ${args3} -"
-    def bam_output  = bam_format      ? "-a | ${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
+    def fasta       = reference       ?: index
+    def sort_cram   = "samtools sort -@ ${task.cpus > 1 ? task.cpus - 1 : 1} -o ${prefix}.cram --reference ${fasta} -T ${prefix}_sort_tmp ${args3} -"
+    def cram_output = cram_format     ? "-a | ${post_filter} ${sort_cram}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
     """
     slice_fasta.py slice ${fastx} ${range[0]} ${range[1]} | \\
         minimap2 -t${task.cpus} ${args} ${index} - \\
-        ${bam_output}
+        ${cram_output}
     """
 
     stub:
     def prefix  = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
     """
-    touch ${prefix}.bam
+    touch ${prefix}.cram
     echo "" | gzip > ${prefix}.paf.gz
     """
 }
