@@ -9,7 +9,7 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/busco_gene"
     tag "subworkflows/../../modules/nf-core/busco/busco"
-    tag "busco/fulltabletogenebedgraph"
+    tag "busco/buscofulltabletogenebedgraph"
     tag "tabix/bgziptabix"
     tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
 
