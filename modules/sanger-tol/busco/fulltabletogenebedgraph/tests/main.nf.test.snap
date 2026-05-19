@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                        "test.complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
                     ]
                 ],
                 "1": [
@@ -15,7 +15,7 @@
                         {
                             "id": "test"
                         },
-                        "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                        "test.duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
                     ]
                 ],
                 "2": [
@@ -23,21 +23,21 @@
                         {
                             "id": "test"
                         },
-                        "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                        "test.fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
                     ]
                 ],
                 "3": [
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "python",
-                        "3.13.13"
+                        "3.12.3"
                     ]
                 ],
                 "4": [
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "pandas",
-                        "3.0.3"
+                        "2.2.1"
                     ]
                 ],
                 "5": [
@@ -52,7 +52,7 @@
                         {
                             "id": "test"
                         },
-                        "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                        "test.complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
                     ]
                 ],
                 "duplicated_bedgraph": [
@@ -60,7 +60,7 @@
                         {
                             "id": "test"
                         },
-                        "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                        "test.duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
                     ]
                 ],
                 "fragmented_bedgraph": [
@@ -68,7 +68,7 @@
                         {
                             "id": "test"
                         },
-                        "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                        "test.fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
                     ]
                 ],
                 "versions_busco_fulltable_to_bedgraph": [
@@ -82,19 +82,19 @@
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "pandas",
-                        "3.0.3"
+                        "2.2.1"
                     ]
                 ],
                 "versions_python": [
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "python",
-                        "3.13.13"
+                        "3.12.3"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-19T15:19:08.552247611",
+        "timestamp": "2026-05-19T22:35:24.109353076",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -108,7 +108,7 @@
                         {
                             "id": "test"
                         },
-                        "complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -116,7 +116,7 @@
                         {
                             "id": "test"
                         },
-                        "duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "2": [
@@ -124,21 +124,21 @@
                         {
                             "id": "test"
                         },
-                        "fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "3": [
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "python",
-                        "3.13.13"
+                        "3.12.3"
                     ]
                 ],
                 "4": [
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "pandas",
-                        "3.0.3"
+                        "2.2.1"
                     ]
                 ],
                 "5": [
@@ -153,7 +153,7 @@
                         {
                             "id": "test"
                         },
-                        "complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "duplicated_bedgraph": [
@@ -161,7 +161,7 @@
                         {
                             "id": "test"
                         },
-                        "duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "fragmented_bedgraph": [
@@ -169,7 +169,7 @@
                         {
                             "id": "test"
                         },
-                        "fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions_busco_fulltable_to_bedgraph": [
@@ -183,19 +183,19 @@
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "pandas",
-                        "3.0.3"
+                        "2.2.1"
                     ]
                 ],
                 "versions_python": [
                     [
                         "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
                         "python",
-                        "3.13.13"
+                        "3.12.3"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-19T15:19:19.354692433",
+        "timestamp": "2026-05-19T22:35:37.575475671",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

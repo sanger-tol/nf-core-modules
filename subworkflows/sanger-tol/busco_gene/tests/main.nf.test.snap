@@ -6,7 +6,7 @@
                     {
                         "id": "test"
                     },
-                    "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                    "test.complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
                 ]
             ],
             [
@@ -14,7 +14,7 @@
                     {
                         "id": "test"
                     },
-                    "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                    "test.duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
                 ]
             ],
             [
@@ -22,7 +22,7 @@
                     {
                         "id": "test"
                     },
-                    "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                    "test.fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
                 ]
             ],
             [
@@ -34,7 +34,7 @@
                 ]
             ]
         ],
-        "timestamp": "2026-05-19T15:22:12.049036108",
+        "timestamp": "2026-05-19T22:38:27.502353328",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -47,7 +47,7 @@
                     {
                         "id": "test"
                     },
-                    "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                    "test.complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
                 ]
             ],
             [
@@ -55,7 +55,7 @@
                     {
                         "id": "test"
                     },
-                    "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                    "test.duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
                 ]
             ],
             [
@@ -63,7 +63,7 @@
                     {
                         "id": "test"
                     },
-                    "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                    "test.fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
                 ]
             ],
             [
@@ -90,7 +90,7 @@
                 ]
             ]
         ],
-        "timestamp": "2026-05-19T15:24:05.362407886",
+        "timestamp": "2026-05-19T22:40:15.554011235",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

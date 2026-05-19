@@ -37,27 +37,27 @@ input:
       type: boolean
       description: |
         When true, run `tabix/bgziptabix` on each of the three bedGraph outputs
-        (`complete_buscos.bedgraph`, `duplicated_buscos.bedgraph`, `fragmented_buscos.bedgraph`).
+        (`{prefix}.complete_buscos.bedgraph`, `{prefix}.duplicated_buscos.bedgraph`, `{prefix}.fragmented_buscos.bedgraph`).
         When false, `gz_index` is an empty channel.
 output:
   - complete_bedgraph:
       type: file
       description: |
-        BUSCO Complete hits as tab-separated sequence, start, end, score (`complete_buscos.bedgraph`).
-        Structure: [ val(meta), path(complete_buscos.bedgraph) ]
-      pattern: "complete_buscos.bedgraph"
+        BUSCO Complete hits as tab-separated sequence, start, end, score (`{prefix}.complete_buscos.bedgraph`).
+        Structure: [ val(meta), path(prefix.complete_buscos.bedgraph) ]
+      pattern: "*.complete_buscos.bedgraph"
   - duplicated_bedgraph:
       type: file
       description: |
-        BUSCO Duplicated hits (`duplicated_buscos.bedgraph`).
-        Structure: [ val(meta), path(duplicated_buscos.bedgraph) ]
-      pattern: "duplicated_buscos.bedgraph"
+        BUSCO Duplicated hits (`{prefix}.duplicated_buscos.bedgraph`).
+        Structure: [ val(meta), path(prefix.duplicated_buscos.bedgraph) ]
+      pattern: "*.duplicated_buscos.bedgraph"
   - fragmented_bedgraph:
       type: file
       description: |
-        BUSCO Fragmented hits (`fragmented_buscos.bedgraph`).
-        Structure: [ val(meta), path(fragmented_buscos.bedgraph) ]
-      pattern: "fragmented_buscos.bedgraph"
+        BUSCO Fragmented hits (`{prefix}.fragmented_buscos.bedgraph`).
+        Structure: [ val(meta), path(prefix.fragmented_buscos.bedgraph) ]
+      pattern: "*.fragmented_buscos.bedgraph"
   - full_table:
       type: file
       description: BUSCO full_table.tsv when BUSCO completes successfully.

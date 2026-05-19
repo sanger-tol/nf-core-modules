@@ -1,35 +1,26 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fulltabletogenebedgraph"
 description: |
-  Parse BUSCO genome-mode full_table.tsv with pandas, write three bedGraph-style files
-  (Complete, Duplicated, Fragmented), sorted like `sort -k1,1 -k2,2n` (sequence, numeric start); score is 100.
+  Parse BUSCO genome-mode full_table.tsv and write three prefixed bedGraph files
+  (Complete, Duplicated, Fragmented), sorted by sequence and numeric start; score is 100.
 keywords:
   - busco
   - bedgraph
   - genome
 tools:
-  - "python":
-      description: Runs the converter script (provided by the Wave container / conda environment).
-      homepage: "https://www.python.org/"
-      documentation: "https://docs.python.org/3/"
-      licence: ["PSF-2.0"]
-  - "pandas":
+  - busco_fulltable_to_bedgraph:
       description: |
-        Reads BUSCO full_table.tsv rows into dataframes for grouping by status.
-        Provided by conda (`environment.yml`) or `community.wave.seqera.io/library/pip_pandas`.
-      homepage: "https://pandas.pydata.org/"
-      documentation: "https://pandas.pydata.org/docs/"
-      licence: ["BSD-3-Clause"]
-  - "busco_fulltable_to_bedgraph":
-      description: Converts BUSCO full_table.tsv genomic coordinates into sorted per-status bedGraph files.
-      homepage: "https://github.com/sanger-tol/nf-core-modules"
-      documentation: "https://github.com/sanger-tol/nf-core-modules"
-      licence: ["MIT"]
+        Convert BUSCO full_table.tsv genomic coordinates into sorted per-status bedGraph files.
+        Output filenames use `task.ext.prefix` (default `meta.id`), e.g. `sample.complete_buscos.bedgraph`.
+      homepage: https://github.com/sanger-tol/nf-core-modules
+      documentation: https://github.com/sanger-tol/nf-core-modules
+      licence:
+        - "MIT"
+      identifier: ""
 input:
   - - meta:
         type: map
         description: |
-          Groovy map containing sample information
+          Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
     - full_table:
         type: file
@@ -39,92 +30,86 @@ output:
   complete_bedgraph:
     - - meta:
           type: map
-          description: |
-            Groovy map containing sample information
-            e.g. `[ id:'sample1' ]`
-      - "complete_buscos.bedgraph":
+          description: Groovy Map containing sample information
+      - "*.complete_buscos.bedgraph":
           type: file
-          description: Intervals for BUSCO status Complete (sequence, start, end, score).
-          pattern: "complete_buscos.bedgraph"
+          description: Intervals for BUSCO status Complete (sequence, start, end, score)
+          pattern: "*.complete_buscos.bedgraph"
   duplicated_bedgraph:
     - - meta:
           type: map
-          description: |
-            Groovy map containing sample information
-            e.g. `[ id:'sample1' ]`
-      - "duplicated_buscos.bedgraph":
+          description: Groovy Map containing sample information
+      - "*.duplicated_buscos.bedgraph":
           type: file
-          description: Intervals for BUSCO status Duplicated (sequence, start, end, score).
-          pattern: "duplicated_buscos.bedgraph"
+          description: Intervals for BUSCO status Duplicated (sequence, start, end, score)
+          pattern: "*.duplicated_buscos.bedgraph"
   fragmented_bedgraph:
     - - meta:
           type: map
-          description: |
-            Groovy map containing sample information
-            e.g. `[ id:'sample1' ]`
-      - "fragmented_buscos.bedgraph":
+          description: Groovy Map containing sample information
+      - "*.fragmented_buscos.bedgraph":
           type: file
-          description: Intervals for BUSCO status Fragmented (sequence, start, end, score).
-          pattern: "fragmented_buscos.bedgraph"
+          description: Intervals for BUSCO status Fragmented (sequence, start, end, score)
+          pattern: "*.fragmented_buscos.bedgraph"
   versions_python:
     - - ${task.process}:
           type: string
-          description: Name of the process
+          description: The process the versions were collected from
       - python:
           type: string
-          description: Name of the tool
-      - python -c "import sys; print(sys.version.split()[0])":
+          description: The tool name
+      - 'python -c "import sys; print(sys.version.split()[0])"':
           type: eval
-          description: The expression to obtain the version of Python
+          description: The expression to obtain the version of the tool
   versions_pandas:
     - - ${task.process}:
           type: string
-          description: Name of the process
+          description: The process the versions were collected from
       - pandas:
           type: string
-          description: Name of the package
-      - python -c "import pandas as pd; print(pd.__version__)":
+          description: The tool name
+      - 'python -c "import pandas as pd; print(pd.__version__)"':
           type: eval
-          description: The expression to obtain the version of pandas
+          description: The expression to obtain the version of the tool
   versions_busco_fulltable_to_bedgraph:
     - - ${task.process}:
           type: string
-          description: Name of the process
+          description: The process the versions were collected from
       - busco_fulltable_to_bedgraph:
           type: string
-          description: Name of the script
-      - python ${moduleDir}/resources/usr/bin/busco_fulltable_to_bedgraph --version | sed 's/^.* //':
+          description: The tool name
+      - "python ${moduleDir}/resources/usr/bin/busco_fulltable_to_bedgraph --version | sed 's/^.* //'":
           type: eval
-          description: The expression to obtain the version of the converter script
+          description: The expression to obtain the version of the tool
 topics:
   versions:
     - - ${task.process}:
           type: string
-          description: Name of the process
+          description: The process the versions were collected from
       - python:
           type: string
-          description: Name of the tool
-      - python -c "import sys; print(sys.version.split()[0])":
+          description: The tool name
+      - 'python -c "import sys; print(sys.version.split()[0])"':
           type: eval
-          description: The expression to obtain the version of Python
+          description: The expression to obtain the version of the tool
     - - ${task.process}:
           type: string
-          description: Name of the process
+          description: The process the versions were collected from
       - pandas:
           type: string
-          description: Name of the package
-      - python -c "import pandas as pd; print(pd.__version__)":
+          description: The tool name
+      - 'python -c "import pandas as pd; print(pd.__version__)"':
           type: eval
-          description: The expression to obtain the version of pandas
+          description: The expression to obtain the version of the tool
     - - ${task.process}:
           type: string
-          description: Name of the process
+          description: The process the versions were collected from
       - busco_fulltable_to_bedgraph:
           type: string
-          description: Name of the script
-      - python ${moduleDir}/resources/usr/bin/busco_fulltable_to_bedgraph --version | sed 's/^.* //':
+          description: The tool name
+      - "python ${moduleDir}/resources/usr/bin/busco_fulltable_to_bedgraph --version | sed 's/^.* //'":
           type: eval
-          description: The expression to obtain the version of the converter script
+          description: The expression to obtain the version of the tool
 authors:
   - "@yumisims"
 maintainers:
