@@ -1,10 +1,96 @@
 {
     "bacteroides_fragilis genome fasta.gz \u2014 bacteria_odb10": {
         "content": [
-            null,
-            null
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test-bacteria_odb10-busco.batch_summary.txt:md5,12e911830d66bab6dbf3523ac4392597"
+                ]
+            ]
         ],
-        "timestamp": "2026-05-18T19:28:23.251631101",
+        "timestamp": "2026-05-19T15:22:12.049036108",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "bacteroides_fragilis genome fasta.gz \u2014 bacteria_odb10 \u2014 zip bedgraph": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.bedgraph.gz:md5,b2a016d8d143f256a3c8332c7dec85f9",
+                    "test.bedgraph.gz.csi:md5,2e12ff3a655065770043e434334c2ddd"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.bedgraph.gz:md5,d6b0ea096c33c45a1aba7c7cae205f4e",
+                    "test.bedgraph.gz.csi:md5,3b1021f3ea5ab6296b271eb255a2f0b3"
+                ],
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.bedgraph.gz:md5,f55e6e10b9715ba8133cea5d3a70480d",
+                    "test.bedgraph.gz.csi:md5,c54b0677c9f5f571102883031601b1ef"
+                ]
+            ]
+        ],
+        "timestamp": "2026-05-19T15:24:05.362407886",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

@@ -2,7 +2,6 @@ process BUSCO_FULLTABLE_TO_GENE_BEDGRAPH {
     tag "${meta.id}"
     label 'process_single'
      
-    conda "${moduleDir}/environment.yml"
     container "docker://amancevice/pandas:latest"
 
     input:

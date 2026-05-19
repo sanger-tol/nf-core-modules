@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "complete_buscos.bedgraph:md5,10b93a62d5670e34a85f139f6b25c66d"
+                        "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
                     ]
                 ],
                 "1": [
@@ -15,7 +15,7 @@
                         {
                             "id": "test"
                         },
-                        "duplicated_buscos.bedgraph:md5,9d1454bbf855f36226ce872ea39452df"
+                        "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
                     ]
                 ],
                 "2": [
@@ -23,7 +23,7 @@
                         {
                             "id": "test"
                         },
-                        "fragmented_buscos.bedgraph:md5,fadc2173a9b0b7c230edcf46a829fb2b"
+                        "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
                     ]
                 ],
                 "3": [
@@ -52,7 +52,7 @@
                         {
                             "id": "test"
                         },
-                        "complete_buscos.bedgraph:md5,10b93a62d5670e34a85f139f6b25c66d"
+                        "complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
                     ]
                 ],
                 "duplicated_bedgraph": [
@@ -60,7 +60,7 @@
                         {
                             "id": "test"
                         },
-                        "duplicated_buscos.bedgraph:md5,9d1454bbf855f36226ce872ea39452df"
+                        "duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
                     ]
                 ],
                 "fragmented_bedgraph": [
@@ -68,7 +68,7 @@
                         {
                             "id": "test"
                         },
-                        "fragmented_buscos.bedgraph:md5,fadc2173a9b0b7c230edcf46a829fb2b"
+                        "fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
                     ]
                 ],
                 "versions_busco_fulltable_to_bedgraph": [
@@ -94,7 +94,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-18T19:15:49.564430336",
+        "timestamp": "2026-05-19T15:19:08.552247611",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -195,7 +195,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-18T19:16:02.461410421",
+        "timestamp": "2026-05-19T15:19:19.354692433",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

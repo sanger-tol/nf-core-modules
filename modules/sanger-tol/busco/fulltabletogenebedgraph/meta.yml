@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "fulltabletogenebedgraph"
 description: |
-  Parse BUSCO genome-mode full_table.tsv with pandas and write three tab-separated bedGraph-style files:
-  Complete, Duplicated, and Fragmented BUSCO hits (columns sequence, start, end, score), matching the embedded Python script.
+  Parse BUSCO genome-mode full_table.tsv with pandas, write three bedGraph-style files
+  (Complete, Duplicated, Fragmented), sorted like `sort -k1,1 -k2,2n` (sequence, numeric start); score is 100.
 keywords:
   - busco
   - bedgraph
@@ -21,7 +21,7 @@ tools:
       documentation: "https://pandas.pydata.org/docs/"
       licence: ["BSD-3-Clause"]
   - "busco_fulltable_to_bedgraph":
-      description: Converts BUSCO full_table.tsv genomic coordinates into per-status bedGraph files.
+      description: Converts BUSCO full_table.tsv genomic coordinates into sorted per-status bedGraph files.
       homepage: "https://github.com/sanger-tol/nf-core-modules"
       documentation: "https://github.com/sanger-tol/nf-core-modules"
       licence: ["MIT"]

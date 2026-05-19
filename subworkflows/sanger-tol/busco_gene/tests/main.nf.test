@@ -10,6 +10,8 @@ nextflow_workflow {
     tag "subworkflows/busco_gene"
     tag "subworkflows/../../modules/nf-core/busco/busco"
     tag "busco/fulltabletogenebedgraph"
+    tag "tabix/bgziptabix"
+    tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
@@ -17,6 +19,7 @@ nextflow_workflow {
             "${launchDir}/library/",
             [
                 "busco/busco",
+                "tabix/bgziptabix",
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
@@ -33,14 +36,57 @@ nextflow_workflow {
                 ])
                 input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
                 input[2] = []
+                input[3] = false
                 """
             }
         }
 
-       then {
-            assert workflow.success
+        then {
             assertAll(
-                { assert snapshot(workflow.out.bigwig, workflow.out.bedgraph).match() }
+                { assert workflow.success },
+                { assert path(workflow.out.complete_bedgraph.get(0).get(1)).readLines().findAll { it.trim() }.size() > 0 },
+                { assert snapshot(
+                    workflow.out.complete_bedgraph,
+                    workflow.out.duplicated_bedgraph,
+                    workflow.out.fragmented_bedgraph,
+                    workflow.out.batch_summary
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("bacteroides_fragilis genome fasta.gz — bacteria_odb10 — zip bedgraph") {
+
+        when {
+            params {
+                bgzip_args = '--csi'
+            }
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true),
+                ])
+                input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
+                input[2] = []
+                input[3] = true
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.complete_bedgraph,
+                    workflow.out.duplicated_bedgraph,
+                    workflow.out.fragmented_bedgraph,
+                    workflow.out.gz_index
+                ).match() }
             )
         }
 

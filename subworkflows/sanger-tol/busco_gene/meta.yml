@@ -3,14 +3,18 @@ name: "busco_gene"
 description: |
   Assess a genome FASTA with BUSCO using a chosen lineage and optional local lineage database path,
   then emit BUSCO gene coordinates as three bedGraph-style tables (Complete, Duplicated, Fragmented).
+  Optionally bgzip/tabix those bedGraph files.
 keywords:
   - busco
   - bedgraph
   - qc
   - completeness
+  - tabix
 components:
   - busco/fulltabletogenebedgraph
   - busco/busco:
+      git_remote: https://github.com/nf-core/modules.git
+  - tabix/bgziptabix:
       git_remote: https://github.com/nf-core/modules.git
 input:
   - ch_fasta:
@@ -29,6 +33,12 @@ input:
       description: |
         Directory passed to BUSCO as --download_path (pre-downloaded lineages). Use an empty Groovy list `[]`
         to let BUSCO download datasets instead.
+  - val_zip_bedgraph:
+      type: boolean
+      description: |
+        When true, run `tabix/bgziptabix` on each of the three bedGraph outputs
+        (`complete_buscos.bedgraph`, `duplicated_buscos.bedgraph`, `fragmented_buscos.bedgraph`).
+        When false, `gz_index` is an empty channel.
 output:
   - complete_bedgraph:
       type: file
@@ -67,6 +77,11 @@ output:
   - busco_log:
       type: file
       description: BUSCO run log when produced.
+  - gz_index:
+      type: file
+      description: |
+        `[ val(meta), path(*.gz), path(*.{tbi,csi}) ]` per bgzip/tabixed bedGraph when `val_zip_bedgraph` is true;
+        empty when false.
   - versions:
       type: file
       description: |

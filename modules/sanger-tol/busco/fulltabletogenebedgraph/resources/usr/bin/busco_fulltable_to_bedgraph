@@ -72,13 +72,16 @@ def main():
     df = df[df["status"].isin(STATUS_MAP)].copy()
     df["start"] = pd.to_numeric(df["start"], errors="coerce")
     df["end"]   = pd.to_numeric(df["end"],   errors="coerce")
-    df["score"] = pd.to_numeric(df["score"], errors="coerce")
-    df.dropna(subset=["start", "end", "score"], inplace=True)
+    df.dropna(subset=["start", "end"], inplace=True)
     df[["start", "end"]] = df[["start", "end"]].astype(int)
-    df["score"] = df["score"].astype(int)
+    df["score"] = 100
 
     for status, filename in STATUS_MAP.items():
-        subset = df[df["status"] == status][BEDGRAPH_COLS]
+        # Equivalent to: sort -k1,1 -k2,2n (sequence, then numeric start)
+        subset = (
+            df[df["status"] == status][BEDGRAPH_COLS]
+            .sort_values(by=["sequence", "start"], kind="mergesort")
+        )
         outpath = f"{args.outdir}/{filename}"
         subset.to_csv(outpath, sep="\t", index=False, header=False)
         print(f"{status}: {len(subset)} entries → {outpath}")

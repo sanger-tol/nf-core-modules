@@ -2,8 +2,9 @@
 // Run BUSCO in genome mode on a FASTA assembly, then split gene coordinates from
 // full_table.tsv into Complete / Duplicated / Fragmented bedGraph-style tables (sequence, start, end, score).
 //
-include { BUSCO_BUSCO                         } from '../../../modules/nf-core/busco/busco/main'
+include { BUSCO_BUSCO                      } from '../../../modules/nf-core/busco/busco/main'
 include { BUSCO_FULLTABLE_TO_GENE_BEDGRAPH } from '../../../modules/sanger-tol/busco/fulltabletogenebedgraph/main'
+include { TABIX_BGZIPTABIX                 } from '../../../modules/nf-core/tabix/bgziptabix/main'
 
 
 workflow BUSCO_GENE {
@@ -12,6 +13,7 @@ workflow BUSCO_GENE {
     ch_fasta                  // channel: [ val(meta), path(fasta) ]
     ch_busco_lineage          // channel: [ val(meta), val(lineage_string) ]
     val_busco_lineages_path   // value: path to local BUSCO lineage DB (--download_path). Use [] to download.
+    val_zip_bedgraph          // bool — bgzip + tabix the three *.bedgraph outputs
 
     main:
 
@@ -33,14 +35,29 @@ workflow BUSCO_GENE {
 
     BUSCO_FULLTABLE_TO_GENE_BEDGRAPH(BUSCO_BUSCO.out.full_table)
 
+    if (val_zip_bedgraph) {
+        ch_bedgraphs_for_zip_raw = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.complete_bedgraph
+            .mix(BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.duplicated_bedgraph)
+            .mix(BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.fragmented_bedgraph)
+
+        ch_bedgraphs_for_zip = ch_bedgraphs_for_zip_raw
+            .flatMap { meta, item ->
+                def items = (item instanceof List) ? item : [ item ]
+                items.collect { file -> tuple(meta, file) }
+            }
+
+        TABIX_BGZIPTABIX(ch_bedgraphs_for_zip)
+    }
+
     emit:
-    complete_bedgraph      = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.complete_bedgraph      // channel: [ val(meta), path(complete_buscos.bedgraph) ]
-    duplicated_bedgraph    = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.duplicated_bedgraph    // channel: [ val(meta), path(duplicated_buscos.bedgraph) ]
-    fragmented_bedgraph    = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.fragmented_bedgraph    // channel: [ val(meta), path(fragmented_buscos.bedgraph) ]
-    full_table             = BUSCO_BUSCO.out.full_table                                   // channel: [ val(meta), path(full_table.tsv) ]
+    complete_bedgraph      = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.complete_bedgraph
+    duplicated_bedgraph    = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.duplicated_bedgraph
+    fragmented_bedgraph    = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.fragmented_bedgraph
+    full_table             = BUSCO_BUSCO.out.full_table
     busco_dir              = BUSCO_BUSCO.out.busco_dir
     batch_summary          = BUSCO_BUSCO.out.batch_summary
     short_summaries_txt    = BUSCO_BUSCO.out.short_summaries_txt
     short_summaries_json   = BUSCO_BUSCO.out.short_summaries_json
     busco_log              = BUSCO_BUSCO.out.log
+    gz_index               = val_zip_bedgraph ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()
 }
