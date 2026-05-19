@@ -1,8 +1,8 @@
 nextflow_process {
 
-    name "Test Process BUSCO_FULLTABLE_TO_GENE_BEDGRAPH"
+    name "Test Process BUSCOFULLTABLETOGENEBEDGRAPH"
     script "../main.nf"
-    process "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH"
+    process "BUSCOFULLTABLETOGENEBEDGRAPH"
 
     tag "modules"
     tag "modules_sangertol"

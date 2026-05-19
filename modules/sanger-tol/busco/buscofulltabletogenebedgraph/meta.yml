@@ -1,4 +1,4 @@
-name: "fulltabletogenebedgraph"
+name: "buscofulltabletogenebedgraph"
 description: |
   Parse BUSCO genome-mode full_table.tsv and write three prefixed bedGraph files
   (Complete, Duplicated, Fragmented), sorted by sequence and numeric start; score is 100.
@@ -7,7 +7,7 @@ keywords:
   - bedgraph
   - genome
 tools:
-  - fulltabletogenebedgraph:
+  - buscofulltabletogenebedgraph:
       description: |
         Convert BUSCO full_table.tsv genomic coordinates into sorted per-status bedGraph files.
         Output filenames use `task.ext.prefix` (default `meta.id`), e.g. `sample.complete_buscos.bedgraph`.

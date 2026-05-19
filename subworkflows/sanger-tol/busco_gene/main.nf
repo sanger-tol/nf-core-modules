@@ -3,7 +3,7 @@
 // full_table.tsv into Complete / Duplicated / Fragmented bedGraph-style tables (sequence, start, end, score).
 //
 include { BUSCO_BUSCO                      } from '../../../modules/nf-core/busco/busco/main'
-include { BUSCOFULLTABLETOGENEBEDGRAPH     } from '../../../modules/sanger-tol/busco/fulltabletogenebedgraph/main'
+include { BUSCOFULLTABLETOGENEBEDGRAPH     } from '../../../modules/sanger-tol/busco/buscofulltabletogenebedgraph/main'
 include { TABIX_BGZIPTABIX                 } from '../../../modules/nf-core/tabix/bgziptabix/main'
 
 

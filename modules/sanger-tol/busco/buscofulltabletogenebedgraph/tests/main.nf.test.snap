@@ -28,21 +28,21 @@
                 ],
                 "3": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
                 ],
                 "4": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "5": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph",
                         "1.0.0"
                     ]
@@ -73,28 +73,28 @@
                 ],
                 "versions_busco_fulltable_to_bedgraph": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph",
                         "1.0.0"
                     ]
                 ],
                 "versions_pandas": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "versions_python": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-19T22:55:30.823354692",
+        "timestamp": "2026-05-19T23:23:19.336062894",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -129,21 +129,21 @@
                 ],
                 "3": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
                 ],
                 "4": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "5": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph",
                         "1.0.0"
                     ]
@@ -174,28 +174,28 @@
                 ],
                 "versions_busco_fulltable_to_bedgraph": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph",
                         "1.0.0"
                     ]
                 ],
                 "versions_pandas": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "versions_python": [
                     [
-                        "BUSCO_FULLTABLE_TO_GENE_BEDGRAPH",
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-19T22:55:45.87697454",
+        "timestamp": "2026-05-19T23:23:33.952209077",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
