@@ -11,8 +11,7 @@ keywords:
   - fasta
   - tabix
 components:
-  - findtelomere
-  - sanger-tol/telomere/findtelomere
+  - telomere/findtelomere
   - tabix/bgziptabix:
       git_remote: https://github.com/nf-core/modules.git
 input:
