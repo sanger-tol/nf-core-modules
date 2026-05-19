@@ -26,7 +26,8 @@ nextflow_workflow {
     test("Cloeon_Dipeterum - no split") {
         when {
             params {
-                telomerewindow_args = "0.99 0.05"
+                find_telomere_args  = ''
+                java_args           = "99.9 0.01"
                 bgzip_args          = ''
             }
             workflow {
@@ -53,9 +54,9 @@ nextflow_workflow {
         }
 
         then {
-            assert workflow.success
             assertAll(
-                { assert snapshot(workflow.out.telomere, workflow.out.telomere_bed_fwd, workflow.out.telomere_bed_rev, workflow.out.windows).match() }
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
             )
         }
 
@@ -67,7 +68,8 @@ nextflow_workflow {
     test("Cloeon_Dipeterum - split - zipbed") {
         when {
             params {
-                telomerewindow_args = "0.99 0.05"
+                find_telomere_args  = ''
+                java_args           = "99.9 0.01"
                 bgzip_args          = "--csi"
             }
             workflow {
@@ -94,9 +96,9 @@ nextflow_workflow {
         }
 
         then {
-            assert workflow.success
             assertAll(
-                { assert snapshot(workflow.out.telomere, workflow.out.telomere_bed_fwd, workflow.out.telomere_bed_rev, workflow.out.windows_fwd, workflow.out.windows_rev, workflow.out.gz_index).match() }
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
             )
         }
 

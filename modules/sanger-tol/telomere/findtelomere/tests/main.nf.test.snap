@@ -31,7 +31,7 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
+                        "Cloeon_Dipeterum.all.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
                     ]
                 ],
                 "4": [
@@ -51,7 +51,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "telomere": [
@@ -82,7 +82,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "versions_java": [
@@ -92,12 +92,12 @@
                         "17.0.18"
                     ]
                 ],
-                "windows": [
+                "windows_all": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
+                        "Cloeon_Dipeterum.all.windows:md5,f50b84b1db4b83ba62ec1deacc69c260"
                     ]
                 ],
                 "windows_fwd": [
@@ -108,7 +108,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-11T18:56:22.316730338",
+        "timestamp": "2026-05-17T22:02:47.355970575",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -146,7 +146,7 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
+                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
                     ]
                 ],
                 "4": [
@@ -166,7 +166,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "telomere": [
@@ -197,7 +197,7 @@
                     [
                         "FINDTELOMERE",
                         "find_telomere",
-                        "Error: invalid number of parameters"
+                        "0.0.2"
                     ]
                 ],
                 "versions_java": [
@@ -207,12 +207,12 @@
                         "17.0.18"
                     ]
                 ],
-                "windows": [
+                "windows_all": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.windows:md5,d57ebb3deb7d210ec936e506b56fd361"
+                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
                     ]
                 ],
                 "windows_fwd": [
@@ -223,7 +223,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-11T18:56:03.708262981",
+        "timestamp": "2026-05-17T22:02:21.449101738",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -232,12 +232,92 @@
     "GCA_963859965.1 - fasta - split": {
         "content": [
             {
+                "0": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
+                    ]
+                ],
+                "6": [
+                    [
+                        "FINDTELOMERE",
+                        "java",
+                        "17.0.18"
+                    ]
+                ],
+                "7": [
+                    [
+                        "FINDTELOMERE",
+                        "find_telomere",
+                        "0.0.2"
+                    ]
+                ],
                 "telomere": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
                         "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
+                    ]
+                ],
+                "telomere_bed_fwd": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
+                    ]
+                ],
+                "telomere_bed_rev": [
+                    [
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
+                    ]
+                ],
+                "versions_find_telomere": [
+                    [
+                        "FINDTELOMERE",
+                        "find_telomere",
+                        "0.0.2"
                     ]
                 ],
                 "versions_java": [
@@ -247,28 +327,28 @@
                         "17.0.18"
                     ]
                 ],
-                "versions_find_telomere": [
+                "windows_all": [
+                    
+                ],
+                "windows_fwd": [
                     [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
                     ]
                 ],
-                "versions": [
+                "windows_rev": [
                     [
-                        "FINDTELOMERE",
-                        "java",
-                        "17.0.18"
-                    ],
-                    [
-                        "FINDTELOMERE",
-                        "find_telomere",
-                        "Error: invalid number of parameters"
+                        {
+                            "id": "Cloeon_Dipeterum"
+                        },
+                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-11T18:56:14.295862554",
+        "timestamp": "2026-05-17T22:02:36.591639642",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

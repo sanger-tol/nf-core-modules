@@ -33,6 +33,7 @@ input:
         type: file
         description: Assembly for telomere.
         pattern: "*.{fa,fna,fasta}"
+        ontologies: []
     - telomereseq:
         type: string
         description: DNA sequence of a telomere motif
@@ -48,6 +49,7 @@ output:
           type: file
           description: Motif-hit intervals
           pattern: "*.telomere"
+          ontologies: []
   telomere_bed_fwd:
     - - meta:
           type: map
@@ -56,6 +58,7 @@ output:
           type: file
           description: Forward telomeric intervals
           pattern: "*.fwd.telomere.bed"
+          ontologies: []
   telomere_bed_rev:
     - - meta:
           type: map
@@ -64,14 +67,16 @@ output:
           type: file
           description: Reverse telomeric intervals
           pattern: "*.rev.telomere.bed"
-  windows:
+          ontologies: []
+  windows_all:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.windows":
+      - "*.all.windows":
           type: file
           description: Telomere density windows
-          pattern: "*.windows"
+          pattern: "*.all.windows"
+          ontologies: []
   windows_fwd:
     - - meta:
           type: map
@@ -80,6 +85,7 @@ output:
           type: file
           description: Forward windows
           pattern: "*.fwd.windows"
+          ontologies: []
   windows_rev:
     - - meta:
           type: map
@@ -88,6 +94,7 @@ output:
           type: file
           description: Reverse windows
           pattern: "*.rev.windows"
+          ontologies: []
   versions_java:
     - - ${task.process}:
           type: string
@@ -95,7 +102,7 @@ output:
       - java:
           type: string
           description: The tool name
-      - 'java -version 2>&1 | head -n 1 | cut -d ''"'' -f2':
+      - java -version 2>&1 | head -n 1 | cut -d '"' -f2:
           type: eval
           description: The expression to obtain the version of the tool
   versions_find_telomere:
@@ -105,10 +112,9 @@ output:
       - find_telomere:
           type: string
           description: The tool name
-      - "find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'":
-          type: eval
+      - 0.0.2:
+          type: string
           description: The expression to obtain the version of the tool
-
 topics:
   versions:
     - - ${task.process}:
@@ -117,7 +123,7 @@ topics:
       - java:
           type: string
           description: The tool name
-      - 'java -version 2>&1 | head -n 1 | cut -d ''"'' -f2':
+      - java -version 2>&1 | head -n 1 | cut -d '"' -f2:
           type: eval
           description: The expression to obtain the version of the tool
     - - ${task.process}:
@@ -126,8 +132,8 @@ topics:
       - find_telomere:
           type: string
           description: The tool name
-      - "find_telomere 2>&1 | head -n 1 | sed 's/^[[:space:]]*//'":
-          type: eval
+      - 0.0.2:
+          type: string
           description: The expression to obtain the version of the tool
 authors:
   - "@yumisims"

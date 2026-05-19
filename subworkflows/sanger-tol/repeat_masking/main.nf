@@ -27,6 +27,9 @@ workflow REPEAT_MASKING {
         ch_reference
     )
 
-    emit:
+    // Rename the channel for the emit:
     repeat_intervals = WINDOWMASKER_USTAT.out.intervals
+
+    emit:
+    repeat_intervals
 }
