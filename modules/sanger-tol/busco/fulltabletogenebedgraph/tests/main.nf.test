@@ -6,6 +6,7 @@ nextflow_process {
 
     tag "modules"
     tag "modules_sangertol"
+    tag "busco"
     tag "busco/fulltabletogenebedgraph"
 
     config "./nextflow.config"

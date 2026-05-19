@@ -3,7 +3,7 @@
 // full_table.tsv into Complete / Duplicated / Fragmented bedGraph-style tables (sequence, start, end, score).
 //
 include { BUSCO_BUSCO                      } from '../../../modules/nf-core/busco/busco/main'
-include { BUSCO_FULLTABLE_TO_GENE_BEDGRAPH } from '../../../modules/sanger-tol/busco/fulltabletogenebedgraph/main'
+include { BUSCOFULLTABLETOGENEBEDGRAPH     } from '../../../modules/sanger-tol/busco/fulltabletogenebedgraph/main'
 include { TABIX_BGZIPTABIX                 } from '../../../modules/nf-core/tabix/bgziptabix/main'
 
 
@@ -33,12 +33,12 @@ workflow BUSCO_GENE {
         true
     )
 
-    BUSCO_FULLTABLE_TO_GENE_BEDGRAPH(BUSCO_BUSCO.out.full_table)
+    BUSCOFULLTABLETOGENEBEDGRAPH(BUSCO_BUSCO.out.full_table)
 
     if (val_zip_bedgraph) {
-        ch_bedgraphs_for_zip_raw = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.complete_bedgraph
-            .mix(BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.duplicated_bedgraph)
-            .mix(BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.fragmented_bedgraph)
+        ch_bedgraphs_for_zip_raw = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
+            .mix(BUSCOFULLTABLETOGENEBEDGRAPH.out.duplicated_bedgraph)
+            .mix(BUSCOFULLTABLETOGENEBEDGRAPH.out.fragmented_bedgraph)
 
         ch_bedgraphs_for_zip = ch_bedgraphs_for_zip_raw
             .flatMap { meta, item ->
@@ -50,9 +50,9 @@ workflow BUSCO_GENE {
     }
 
     emit:
-    complete_bedgraph      = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.complete_bedgraph
-    duplicated_bedgraph    = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.duplicated_bedgraph
-    fragmented_bedgraph    = BUSCO_FULLTABLE_TO_GENE_BEDGRAPH.out.fragmented_bedgraph
+    complete_bedgraph      = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
+    duplicated_bedgraph    = BUSCOFULLTABLETOGENEBEDGRAPH.out.duplicated_bedgraph
+    fragmented_bedgraph    = BUSCOFULLTABLETOGENEBEDGRAPH.out.fragmented_bedgraph
     full_table             = BUSCO_BUSCO.out.full_table
     busco_dir              = BUSCO_BUSCO.out.busco_dir
     batch_summary          = BUSCO_BUSCO.out.batch_summary
