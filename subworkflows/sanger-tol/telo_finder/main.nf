@@ -51,6 +51,6 @@ workflow TELO_FINDER {
     windows_all      = FINDTELOMERE.out.windows_all
     windows_fwd      = FINDTELOMERE.out.windows_fwd
     windows_rev      = FINDTELOMERE.out.windows_rev
-    gz_index         = val_zip_bed ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()
+    gz_index         = val_zip_bed ? TABIX_BGZIPTABIX.out.gz_index : channel.empty()
 
 }
