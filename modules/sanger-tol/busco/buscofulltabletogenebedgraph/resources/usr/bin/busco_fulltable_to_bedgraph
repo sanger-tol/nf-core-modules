@@ -35,7 +35,7 @@ __version__ = "1.0.0"
 BUSCO_COLS = ["busco_id", "status", "sequence", "start", "end", "strand", "score", "length", "ortho_url", "description"]
 BEDGRAPH_COLS = ["sequence", "start", "end", "score"]
 STATUS_SUFFIX = {
-    "Complete":   "complete_buscos.bedgraph",
+    "Complete": "complete_buscos.bedgraph",
     "Duplicated": "duplicated_buscos.bedgraph",
     "Fragmented": "fragmented_buscos.bedgraph",
 }
@@ -55,7 +55,9 @@ def parse_args():
     )
     p.add_argument("full_table", nargs="?", help="Path to BUSCO full_table.tsv")
     p.add_argument("-o", "--outdir", default=".", help="Output directory (default: .)")
-    p.add_argument("--prefix", default="", help="Output filename prefix (e.g. sample → sample.complete_buscos.bedgraph)")
+    p.add_argument(
+        "--prefix", default="", help="Output filename prefix (e.g. sample → sample.complete_buscos.bedgraph)"
+    )
     return p.parse_args()
 
 
@@ -76,17 +78,14 @@ def main():
 
     df = df[df["status"].isin(STATUS_SUFFIX)].copy()
     df["start"] = pd.to_numeric(df["start"], errors="coerce")
-    df["end"]   = pd.to_numeric(df["end"],   errors="coerce")
+    df["end"] = pd.to_numeric(df["end"], errors="coerce")
     df.dropna(subset=["start", "end"], inplace=True)
     df[["start", "end"]] = df[["start", "end"]].astype(int)
     df["score"] = 100
 
     for status, suffix in STATUS_SUFFIX.items():
         # Equivalent to: sort -k1,1 -k2,2n (sequence, then numeric start)
-        subset = (
-            df[df["status"] == status][BEDGRAPH_COLS]
-            .sort_values(by=["sequence", "start"], kind="mergesort")
-        )
+        subset = df[df["status"] == status][BEDGRAPH_COLS].sort_values(by=["sequence", "start"], kind="mergesort")
         filename = bedgraph_filename(args.prefix, suffix)
         outpath = f"{args.outdir}/{filename}"
         subset.to_csv(outpath, sep="\t", index=False, header=False)
