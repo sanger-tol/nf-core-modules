@@ -16,7 +16,7 @@ process BUSCOFULLTABLETOGENEBEDGRAPH {
     tuple val(meta), path("*.fragmented_buscos.bedgraph"), emit: fragmented_bedgraph
     tuple val("${task.process}"), val('python'), eval('python -c "import sys; print(sys.version.split()[0])"'), topic: versions, emit: versions_python
     tuple val("${task.process}"), val('pandas'), eval('python -c "import pandas as pd; print(pd.__version__)"'), topic: versions, emit: versions_pandas
-    tuple val("${task.process}"), val('busco_fulltable_to_bedgraph'), eval("busco_fulltable_to_bedgraph --version | sed 's/^.* //'"), topic: versions, emit: versions_busco_fulltable_to_bedgraph
+    tuple val("${task.process}"), val('busco_fulltable_to_bedgraph.py'), eval("busco_fulltable_to_bedgraph.py --version | sed 's/^.* //'"), topic: versions, emit: versions_busco_fulltable_to_bedgraph
 
     when:
     task.ext.when == null || task.ext.when
@@ -25,7 +25,7 @@ process BUSCOFULLTABLETOGENEBEDGRAPH {
     def args   = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    busco_fulltable_to_bedgraph \\
+    busco_fulltable_to_bedgraph.py \\
         ${full_table} \\
         -o . \\
         --prefix ${prefix} \\
