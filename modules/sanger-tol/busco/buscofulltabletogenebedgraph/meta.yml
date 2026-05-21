@@ -83,9 +83,9 @@ output:
     - - ${task.process}:
           type: string
           description: The process the versions were collected from
-      - busco_fulltable_to_bedgraph:
+      - busco_fulltable_to_bedgraph.py:
           type: string
-          description: The tool name
+          description: The name of the tool
       - busco_fulltable_to_bedgraph.py --version | sed 's/^.* //':
           type: eval
           description: The expression to obtain the version of the tool
@@ -112,10 +112,10 @@ topics:
     - - ${task.process}:
           type: string
           description: The process the versions were collected from
-      - busco_fulltable_to_bedgraph:
+      - busco_fulltable_to_bedgraph.py:
           type: string
-          description: The tool name
-      - busco_fulltable_to_bedgraph --version | sed 's/^.* //':
+          description: The name of the tool
+      - busco_fulltable_to_bedgraph.py --version | sed 's/^.* //':
           type: eval
           description: The expression to obtain the version of the tool
 authors:
