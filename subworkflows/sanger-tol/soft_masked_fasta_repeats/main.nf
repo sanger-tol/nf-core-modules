@@ -24,9 +24,7 @@ workflow SOFT_MASKED_FASTA_REPEATS {
         .join(BGZIPTABIX.out.tbi, by: 0, remainder: true)
         .join(BGZIPTABIX.out.csi, by: 0, remainder: true)
 
-    // Rename the channel for the emit:
-    repeats = ch_repeats
-
     emit:
-    repeats // channel: [ meta, bed.gz, bed.gz.gzi, tbi?, csi? ]
+    repeats = ch_repeats // channel: [ meta, bed.gz, bed.gz.gzi, tbi?, csi? ]
+    _dummy  = channel.empty()  // To force the workflow to use named outputs under "out"
 }
