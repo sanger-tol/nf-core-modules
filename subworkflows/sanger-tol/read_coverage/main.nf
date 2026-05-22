@@ -27,9 +27,9 @@ workflow READ_COVERAGE {
             }
         }
         .combine(ch_reference)
-        .multiMap { meta, read_file, _meta2, reference ->
+        .multiMap { meta, read_file, meta2, reference ->
             reads: tuple(meta, read_file)
-            reference: tuple(meta, reference)
+            reference: tuple(meta2, reference)
         }
         .set { ch_align_split }
 
@@ -37,7 +37,15 @@ workflow READ_COVERAGE {
     //
     // MODULE: Run minimap2 and emit one BED per read file
     //
-    MINIMAP2_ALIGN ( ch_align_split.reads, ch_align_split.reference, false, [], false, false, true )
+    MINIMAP2_ALIGN (
+        ch_align_split.reads,
+        ch_align_split.reference,
+        false,
+        [],
+        false,
+        false,
+        true
+    )
 
     // NOTE: Group per-sample PAF/BED outputs into lists for downstream concatenation
     ch_paf_bed_grouped = MINIMAP2_ALIGN.out.bed
@@ -50,13 +58,15 @@ workflow READ_COVERAGE {
     //
     FIND_CONCATENATE(ch_paf_bed_grouped, true)
 
+    find_concat_out = FIND_CONCATENATE.out.file_out
+        .map{ meta, bed -> [meta.subMap('id', 'strandedness'), bed, 1] }
+
 
     //
     // MODULE: Generate BedGraph from merged, sorted BED
-    //  - ISSUE WHY IS THE OUTPUT BEGRAPHS COL 1 RENAMED TO 'genome' INSTEAD OF SCAFFOLD NAME
     //
     BEDTOOLS_GENOMECOV (
-        FIND_CONCATENATE.out.file_out.map { meta, bed -> [meta, bed, 1] },
+        find_concat_out,
         ch_chromsizes,
         'bedgraph',
         true
@@ -70,6 +80,7 @@ workflow READ_COVERAGE {
         BEDTOOLS_GENOMECOV.out.genomecov,
         ch_chromsizes
     )
+
 
     emit:
     bigwig         = UCSC_BEDGRAPHTOBIGWIG.out.bigwig
