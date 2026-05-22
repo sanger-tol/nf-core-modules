@@ -1,0 +1,84 @@
+{
+    "gfAmaRube1 - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_corrected.agp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "PRETEXT2ASM",
+                        "tola-agp-tpf-utils",
+                        "1.3.3"
+                    ]
+                ],
+                "correctedagp": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_corrected.agp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_agp_tpf_utils": [
+                    [
+                        "PRETEXT2ASM",
+                        "tola-agp-tpf-utils",
+                        "1.3.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-22T21:30:47.427142385",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "gfAmaRube1 - fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_corrected.hap1.1.primary.curated.agp:md5,baa7b7d844ca75b46bcce4a7459678d7"
+                    ]
+                ],
+                "1": [
+                    [
+                        "PRETEXT2ASM",
+                        "tola-agp-tpf-utils",
+                        "1.3.3"
+                    ]
+                ],
+                "correctedagp": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_corrected.hap1.1.primary.curated.agp:md5,baa7b7d844ca75b46bcce4a7459678d7"
+                    ]
+                ],
+                "versions_agp_tpf_utils": [
+                    [
+                        "PRETEXT2ASM",
+                        "tola-agp-tpf-utils",
+                        "1.3.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-22T21:30:39.935608306",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
