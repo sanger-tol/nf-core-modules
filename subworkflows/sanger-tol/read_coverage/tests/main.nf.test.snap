@@ -2,46 +2,88 @@
     "baUndUnlc1 - hifi read fasta": {
         "content": [
             [
-                
+                [
+                    {
+                        "id": "test",
+                        "readtype": "hifi",
+                        "read_idx": 0
+                    },
+                    "test.bigWig:md5,e1747a716a231069ae45a9356bb7be5e"
+                ]
             ],
             [
-                
+                [
+                    {
+                        "id": "test",
+                        "readtype": "hifi",
+                        "read_idx": 0
+                    },
+                    "test.bedgraph:md5,c053e96552c59d67f6fb88d942783509"
+                ]
             ]
         ],
+        "timestamp": "2026-05-22T13:47:15.066412197",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-05-06T12:06:54.284993518"
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
     },
     "Escherichia - illumina read fastq": {
         "content": [
             [
-                
+                [
+                    {
+                        "id": "test",
+                        "readtype": "ont",
+                        "read_idx": 1
+                    },
+                    "test.bigWig:md5,8f03967094d0daa0edce73845882e95f"
+                ]
             ],
             [
-                
+                [
+                    {
+                        "id": "test",
+                        "readtype": "ont",
+                        "read_idx": 1
+                    },
+                    "test.bedgraph:md5,256aa8cf92fc977122c20225d0a14e70"
+                ]
             ]
         ],
+        "timestamp": "2026-05-22T13:45:53.365039557",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-05-06T12:06:15.385731952"
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
     },
     "Escherichia - ont read fastq": {
         "content": [
             [
-                
+                [
+                    {
+                        "id": "test",
+                        "readtype": "ont",
+                        "read_idx": 1
+                    },
+                    "test.bigWig:md5,2baba9b790622cebfd445b352422b635"
+                ]
             ],
             [
-                
+                [
+                    {
+                        "id": "test",
+                        "readtype": "ont",
+                        "read_idx": 1
+                    },
+                    "test.bedgraph:md5,842aed3a7c5534169756df78ab440ce4"
+                ]
             ]
         ],
+        "timestamp": "2026-05-22T13:44:29.847185244",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-05-06T12:05:35.267083165"
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
     }
 }
