@@ -59,5 +59,5 @@ workflow BUSCO_GENE {
     short_summaries_txt    = BUSCO_BUSCO.out.short_summaries_txt
     short_summaries_json   = BUSCO_BUSCO.out.short_summaries_json
     busco_log              = BUSCO_BUSCO.out.log
-    gz_index               = val_zip_bedgraph ? TABIX_BGZIPTABIX.out.gz_index : Channel.empty()
+    gz_index               = val_zip_bedgraph ? TABIX_BGZIPTABIX.out.gz_index : channel.empty()
 }
