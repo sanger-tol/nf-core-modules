@@ -1,7 +1,7 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { PRETEXT_TO_ASM  } from '../../../modules/local/pretext_to_asm'
+include { PRETEXT2ASM  } from '../../../modules/local/pretext2asm'
 include { JUICERC         } from '../../../modules/local/juicerc'
 include { MAKE_HEADER     } from '../../../modules/local/make_header'
 include { MAKE_PAIRS      } from '../../../modules/local/make_pairs'
@@ -32,12 +32,11 @@ workflow ZIPPYPRETEXT {
     //
     // MODULE: GENERATE CORRECT AGP FILE
     //
-    PRETEXT_TO_ASM (
+    PRETEXT2ASM (
         ch_zippy_inputs.fasta,
         ch_zippy_inputs.agp
     )
-    ch_correctedagp = PRETEXT_TO_ASM.out.correctedagp
-    ch_versions = ch_versions.mix(PRETEXT_TO_ASM.out.versions.first())
+    ch_correctedagp = PRETEXT2ASM.out.correctedagp
 
     PRETEXT_TO_ASM.out.correctedagp.map{ agpid, agp -> agp}.set{agp}
 
@@ -56,7 +55,6 @@ workflow ZIPPYPRETEXT {
             tuple(meta, outlog)
         }
         .set { ch_outlog }
-    ch_versions  = ch_versions.mix(JUICERC.out.versions.first())
 
     //
     // MODULE: GENERATE HEADER
@@ -65,7 +63,6 @@ workflow ZIPPYPRETEXT {
         ch_outlog
     )
     MAKE_HEADER.out.header.map{ header_id, header -> header}.set{ch_header}
-    ch_versions  = ch_versions.mix(MAKE_HEADER.out.versions.first())
 
     //
     // MODULE: GENERATE PAIR FILE BY COMBINING HEADER AND NEW ALIGNMENT FILE
@@ -75,7 +72,6 @@ workflow ZIPPYPRETEXT {
         ch_header
     )
     ch_pairs = MAKE_PAIRS.out.pairs
-    ch_versions  = ch_versions.mix(MAKE_PAIRS.out.versions.first())
 
     //
     // MODULE: GENERATE NEW PRETEXT FILE

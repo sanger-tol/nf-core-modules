@@ -15,7 +15,7 @@ components:
   - buscofulltabletogenebedgraph
   - busco/busco:
       git_remote: https://github.com/nf-core/modules.git
-  - tabix/bgziptabix:
+  - htslib/bgziptabix:
       git_remote: https://github.com/nf-core/modules.git
 input:
   - ch_fasta:
@@ -37,7 +37,7 @@ input:
   - val_zip_bedgraph:
       type: boolean
       description: |
-        When true, run `tabix/bgziptabix` on each of the three bedGraph outputs
+        When true, run `htslib/bgziptabix` on each of the three bedGraph outputs
         (`{prefix}.complete_buscos.bedgraph`, `{prefix}.duplicated_buscos.bedgraph`, `{prefix}.fragmented_buscos.bedgraph`).
         When false, `gz_index` is an empty channel.
 output:

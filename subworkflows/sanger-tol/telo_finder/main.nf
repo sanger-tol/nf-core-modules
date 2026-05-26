@@ -1,8 +1,8 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { FINDTELOMERE    } from '../../../modules/sanger-tol/telomere/findtelomere/main'
-include { TABIX_BGZIPTABIX } from '../../../modules/nf-core/tabix/bgziptabix/main'
+include { FINDTELOMERE       } from '../../../modules/sanger-tol/telomere/findtelomere/main'
+include { HTSLIB_BGZIPTABIX  } from '../../../modules/nf-core/htslib/bgziptabix/main'
 
 
 workflow TELO_FINDER {
@@ -32,17 +32,29 @@ workflow TELO_FINDER {
 
         /*
          * Optional outputs normally omit emissions when a glob matches nothing. When a glob yields
-         * multiple paths, `item` may be a list — TABIX_BGZIPTABIX expects one path per channel element,
+         * multiple paths, `item` may be a list — HTSLIB_BGZIPTABIX expects one path per channel element,
          * so expand to (meta, path) tuples.
          */
         ch_beds_windows_for_zip = ch_beds_windows_for_zip_raw
             .flatMap { meta, item ->
                 def items = (item instanceof List) ? item : [ item ]
-                items.collect { file -> tuple(meta, file) }
+                items.collect { file -> tuple(meta, file, [], []) }
             }
 
-        TABIX_BGZIPTABIX(ch_beds_windows_for_zip)
+        HTSLIB_BGZIPTABIX(
+            ch_beds_windows_for_zip,
+            'compress',
+            true,
+            ''
+        )
     }
+
+    ch_gz_index = val_zip_bed
+        ? HTSLIB_BGZIPTABIX.out.output
+            .combine(HTSLIB_BGZIPTABIX.out.index)
+            .filter { meta, gz, _meta2, idx -> idx.name.startsWith(gz.name) }
+            .map { meta, gz, _meta2, idx -> tuple(meta, gz, idx) }
+        : Channel.empty()
 
     emit:
     telomere         = FINDTELOMERE.out.telomere
@@ -51,6 +63,6 @@ workflow TELO_FINDER {
     windows_all      = FINDTELOMERE.out.windows_all
     windows_fwd      = FINDTELOMERE.out.windows_fwd
     windows_rev      = FINDTELOMERE.out.windows_rev
-    gz_index         = val_zip_bed ? TABIX_BGZIPTABIX.out.gz_index : channel.empty()
+    gz_index         = ch_gz_index
 
 }
