@@ -59,7 +59,7 @@ workflow READ_COVERAGE {
     FIND_CONCATENATE(ch_paf_bed_grouped, true)
 
     find_concat_out = FIND_CONCATENATE.out.file_out
-        .map{ meta, bed -> [meta.subMap('id', 'strandedness'), bed, 1] }
+        .map{ meta, bed -> [[id: meta.id], bed, 1] }
 
 
     //
