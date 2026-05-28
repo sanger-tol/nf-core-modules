@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "NCBIDATASETS_SUMMARISE_GENOME"
+description: |
+  A tool to collect summarised genome assembly data using NCBI Datasets.
+keywords:
+  - assembly
+  - summary
+  - ncbi_datasets
+  - download
+tools:
+  - "datasets":
+      description: |
+        NCBI Datasets is a resource that lets you easily gather data from across NCBI databases.
+        You can use it to find and download sequence, annotation, and metadata for genes and
+        genomes using our command-line interface (CLI) tools or NCBI Datasets web interface.
+      homepage: "https://github.com/ncbi/datasets"
+      documentation: "https://github.com/ncbi/datasets"
+      tool_dev_url: "https://github.com/ncbi/datasets"
+      licence: ["MIT"]
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - fasta:
+        type: file
+        description: Assembly fasta file
+        pattern: "*.{fa,fasta,fna}"
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
+output:
+  summary:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.json":
+          type: file
+          description: JSON file containing assembly statistics
+          pattern: "*.{json}"
+          ontologies:
+            - edam: "http://edamontology.org/format_3464" # JSON
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - Python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_datasets:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - datasets:
+          type: string
+          description: Name of the tool
+      - "datasets --version | sed 's/^.*datasets version. //'":
+          type: eval
+          description: The expression to obtain the version of the tool
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - Python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - datasets:
+          type: string
+          description: Name of the tool
+      - "datasets --version | sed 's/^.*datasets version. //'":
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"

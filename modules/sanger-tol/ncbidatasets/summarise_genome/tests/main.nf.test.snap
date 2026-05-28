@@ -1,0 +1,112 @@
+{
+    "homo_sapiens - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "python",
+                        ""
+                    ]
+                ],
+                "2": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "datasets",
+                        "16.22.1"
+                    ]
+                ],
+                "summary": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_datasets": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "datasets",
+                        "16.22.1"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "python",
+                        ""
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-28T14:38:29.852977476",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
+    },
+    "homo_sapiens - fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.json:md5,e33518828030b62ec1357e2002414d33"
+                    ]
+                ],
+                "1": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "python",
+                        ""
+                    ]
+                ],
+                "2": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "datasets",
+                        "16.22.1"
+                    ]
+                ],
+                "summary": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.json:md5,e33518828030b62ec1357e2002414d33"
+                    ]
+                ],
+                "versions_datasets": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "datasets",
+                        "16.22.1"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "NCBIDATASETS_SUMMARISE_GENOME",
+                        "python",
+                        ""
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-28T14:38:24.356576926",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
+    }
+}
