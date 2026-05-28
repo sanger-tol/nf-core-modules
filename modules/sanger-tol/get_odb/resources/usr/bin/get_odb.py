@@ -62,25 +62,32 @@ def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, bas
     # Get the ODB version from the file name
     odb_version = get_odb_version(lineage_tax_ids)
 
-    # Include the basal lineages if needed, if all_ancestral_lineages is False, then we assume the user only wants lineage of best fit.
-    odb_arr: list[str] = odb_arr + [ i for i in basal_lineages if not all_ancestral_lineages]
 
     # If all_ancestral_lineages is True, return all ancestral ODB lineages, otherwise return the closest ODB lineage
+    # In this case we can add the basal lineages
     if all_ancestral_lineages:
-        odb_val =  [ i + odb_version for i in odb_arr]
+        odb_val =  [ lineage + odb_version for lineage in odb_arr]
+        odb_val = odb_val + [
+            lineage + odb_version
+            for lineage in basal_lineages
+            if lineage not in odb_arr
+        ]
     else:
         # The most recent [-1] OBD10/ODB12 lineage is selected
+        # In this case we only want the closest lineage, so we exclude the basal lineages
         odb_val = odb_arr[-1] + odb_version
 
     out_dir = os.path.dirname(file_out)
     make_dir(out_dir)
 
     with open(file_out, "w") as fout:
-        print("busco_lineage", odb_val, sep=",", file=fout)
+        for lineage in odb_val:
+            print("busco_lineage", lineage, sep=",", file=fout)
 
 
 def main(args=None):
     args = parse_args(args)
+
     get_odb(
         args.NCBI_SUMMARY_JSON,
         args.LINEAGE_TAX_IDS,
@@ -91,4 +98,4 @@ def main(args=None):
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
