@@ -3,8 +3,10 @@ process NCBIDATASETS_SUMMARISE_GENOME {
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
+    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/65/65bfaf0aeeed8b31e36bd8effe70d1afb8fab6768e015fe25834dfa3449a7fb6/data'
+        : 'community.wave.seqera.io/library/ncbi-datasets-cli_python:9f4299728bfbaaa1' }"
 
-    container "docker.io/biocontainers/ncbi-datasets-cli:16.22.1_cv1"
 
     errorStrategy { sleep(Math.pow(2, task.attempt) * 30 as long); return 'retry' }
 
@@ -13,7 +15,7 @@ process NCBIDATASETS_SUMMARISE_GENOME {
 
     output:
     tuple val(meta), path("*.json"), emit: summary
-    tuple val("${task.process}"), val('python'), eval('Python --version | sed "s/Python //"'), emit: versions_python, topic: versions
+    tuple val("${task.process}"), val('python'), eval('python --version | sed "s/Python //"'), emit: versions_python, topic: versions
     tuple val("${task.process}"), val("datasets"), eval("datasets --version | sed 's/^.*datasets version. //'"), emit: versions_datasets, topic: versions
 
     when:

@@ -5,3 +5,4 @@ channels:
   - bioconda
 dependencies:
   - conda-forge::ncbi-datasets-cli=16.22.1
+  - conda-forge::python=3.14.5

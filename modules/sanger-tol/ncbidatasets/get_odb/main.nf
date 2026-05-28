@@ -14,7 +14,7 @@ process NCBIDATASETS_GET_ODB {
 
     output:
     tuple val(meta), path("*.busco_odb.csv"), emit: csv
-    tuple val("${task.process}"), val('python'), eval('Python --version | sed "s/Python //"'), emit: versions_python, topic: versions
+    tuple val("${task.process}"), val('python'), eval('python --version | sed "s/Python //"'), emit: versions_python, topic: versions
     tuple val("${task.process}"), val('get_odb.py'), eval('get_odb.py --version | cut -d" " -f2'), emit: versions_get_odb, topic: versions
 
     when:

@@ -49,7 +49,7 @@ output:
       - python:
           type: string
           description: Name of the tool
-      - Python --version | sed "s/Python //":
+      - python --version | sed "s/Python //":
           type: eval
           description: The expression to obtain the version of the tool
   versions_datasets:
@@ -71,7 +71,7 @@ topics:
       - python:
           type: string
           description: Name of the tool
-      - Python --version | sed "s/Python //":
+      - python --version | sed "s/Python //":
           type: eval
           description: The expression to obtain the version of the tool
     - - ${task.process}:

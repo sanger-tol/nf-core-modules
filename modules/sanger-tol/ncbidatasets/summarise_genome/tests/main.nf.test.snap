@@ -14,7 +14,7 @@
                     [
                         "NCBIDATASETS_SUMMARISE_GENOME",
                         "python",
-                        ""
+                        "3.14.5"
                     ]
                 ],
                 "2": [
@@ -43,12 +43,12 @@
                     [
                         "NCBIDATASETS_SUMMARISE_GENOME",
                         "python",
-                        ""
+                        "3.14.5"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-28T14:38:29.852977476",
+        "timestamp": "2026-05-28T16:37:44.222624577",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.2"
@@ -69,7 +69,7 @@
                     [
                         "NCBIDATASETS_SUMMARISE_GENOME",
                         "python",
-                        ""
+                        "3.14.5"
                     ]
                 ],
                 "2": [
@@ -98,12 +98,12 @@
                     [
                         "NCBIDATASETS_SUMMARISE_GENOME",
                         "python",
-                        ""
+                        "3.14.5"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-28T14:38:24.356576926",
+        "timestamp": "2026-05-28T16:37:37.82371039",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.2"
