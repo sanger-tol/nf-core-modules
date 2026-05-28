@@ -14,9 +14,7 @@ def parse_args(args=None):
     description = "Get ODB database value using NCBI API and BUSCO configuration file"
 
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument(
-        "--ncbi_summary_json", help="NCBI entry for this assembly for this assembly (in JSON)."
-    )
+    parser.add_argument("--ncbi_summary_json", help="NCBI entry for this assembly for this assembly (in JSON).")
     parser.add_argument("--lineage_tax_ids", help="Mapping between BUSCO lineages and taxon IDs.")
     parser.add_argument("--file_out", help="Output CSV file.")
     parser.add_argument(
@@ -39,16 +37,6 @@ def make_dir(path):
         os.makedirs(path, exist_ok=True)
 
 
-def get_odb_version(file_name):
-    match file_name:
-        case _ if "odb10" in file_name:
-            return "_odb10"
-        case _ if "odb12" in file_name:
-            return "_odb12"
-        case _:
-            sys.exit("Not a recognised ODB")
-
-
 def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, basal_lineages):
     # Read the mapping between the BUSCO lineages and their taxon_id
 
@@ -58,7 +46,15 @@ def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, bas
     }
 
     current_working_dir = os.path.dirname(os.path.realpath(__file__))
-    with open(current_working_dir + "/" + mapping[lineage_tax_ids]["file"]) as file_in:
+
+    # Get the mapping file for the ODB version, if not in the dict then crash with not supported message
+    mapping_file = (
+        f"{current_working_dir}/{mapping[lineage_tax_ids]['file']}"
+        if lineage_tax_ids in mapping
+        else sys.exit("Not a recognised ODB")
+    )
+
+    with open(mapping_file) as file_in:
         lineage_tax_ids_dict = {}
         for line in file_in:
             arr = line.split()
@@ -74,11 +70,7 @@ def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, bas
     ancestor_taxon_ids = response["taxonomy_nodes"][0]["taxonomy"]["lineage"]
 
     # Do the intersection to find the ancestors that have a BUSCO lineage
-    odb_arr = [
-        lineage_tax_ids_dict[taxon_id]
-        for taxon_id in ancestor_taxon_ids
-        if taxon_id in lineage_tax_ids_dict
-    ]
+    odb_arr = [lineage_tax_ids_dict[taxon_id] for taxon_id in ancestor_taxon_ids if taxon_id in lineage_tax_ids_dict]
 
     # Get the ODB version from the file name
     odb_version: str = mapping[lineage_tax_ids]["version"]
@@ -87,16 +79,12 @@ def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, bas
     # In this case we can add the basal lineages
     if all_ancestral_lineages:
         odb_val: list[str] = [lineage + odb_version for lineage in odb_arr]
-        odb_val: list[str] = odb_val + [
-            lineage + odb_version for lineage in basal_lineages if lineage not in odb_arr
-        ]
+        odb_val: list[str] = odb_val + [lineage + odb_version for lineage in basal_lineages if lineage not in odb_arr]
     else:
         # The most recent [-1] OBD10/ODB12 lineage is selected
         # In this case we only want the closest lineage, so we exclude the basal lineages
+        # Force it into a list so that it isn't mangled by the interating print statement
         odb_val: list[str] = [odb_arr[-1] + odb_version]
-
-    print("Lineages list: " + str(odb_arr))
-    print("Lineages list final: " + str(odb_val))
 
     out_dir = os.path.dirname(file_out)
     make_dir(out_dir)
