@@ -25,8 +25,9 @@ process RESTRUCTUREBUSCODIR {
     [ -e "${batch_summary}" ]      && ln -s ../${batch_summary}      ${lineage}/${prefix}.short_summary.tsv
     [ -e "${short_summary_txt}" ]  && ln -s ../${short_summary_txt}  ${lineage}/${prefix}.short_summary.txt
     [ -e "${short_summary_json}" ] && ln -s ../${short_summary_json} ${lineage}/${prefix}.short_summary.json
-    [ -e "${full_table}" ]         && ln -s ../${full_table}         ${lineage}/${prefix}.full_table.tsv
-    [ -e "${missing_busco_list}" ] && ln -s ../${missing_busco_list} ${lineage}/${prefix}.missing_busco_list.tsv
+
+    [ -e "${full_table}" ]         && gzip -c < ${full_table}         > ${lineage}/${prefix}.full_table.tsv.gz
+    [ -e "${missing_busco_list}" ] && gzip -c < ${missing_busco_list} > ${lineage}/${prefix}.missing_busco_list.tsv.gz
 
     if [ -e "${seq_dir}/single_copy_busco_sequences" ]
     then
@@ -50,6 +51,8 @@ process RESTRUCTUREBUSCODIR {
     touch ${lineage}/${prefix}.short_summary.json
     touch ${lineage}/${prefix}.full_table.tsv
     touch ${lineage}/${prefix}.missing_busco_list.tsv
+    gzip ${lineage}/${prefix}.full_table.tsv
+    gzip ${lineage}/${prefix}.missing_busco_list.tsv
     tar -czf ${lineage}/${prefix}.single_copy_busco_sequences.tar.gz -T /dev/null
     tar -czf ${lineage}/${prefix}.multi_copy_busco_sequences.tar.gz  -T /dev/null
     tar -czf ${lineage}/${prefix}.fragmented_busco_sequences.tar.gz  -T /dev/null
