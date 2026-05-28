@@ -2,14 +2,14 @@ process NCBIDATASETS_GET_ODB {
     tag "${meta.id}"
     label 'process_single'
 
-    conda "conda-forge::requests=2.26.0"
+    conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
-        ? 'https://depot.galaxyproject.org/singularity/requests:2.26.0'
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/34/34a3fbdf8feee942542033e0c6961cd1efb0f4b2d4ec580982c653a74a73949d/data'
         : 'community.wave.seqera.io/library/requests:2.34.2--26550d4c3ba1cb75' }"
 
     input:
     tuple val(meta), path(ncbi_summary)
-    path lineage_tax_ids
+    val lineage_tax_ids
     val all_ancestral_lineages
 
     output:
@@ -23,16 +23,18 @@ process NCBIDATASETS_GET_ODB {
     script:
     def args    = task.ext.args ?: ''
     def prefix  = task.ext.prefix ?: "${meta.id}"
+    def all_lineages = all_ancestral_lineages ? "--all_ancestral_lineages" : ""
     """
     get_odb.py \\
         --ncbi_summary_json ${ncbi_summary} \\
         --lineage_tax_ids ${lineage_tax_ids} \\
-        --all_ancestral_lineages ${all_ancestral_lineages} \\
+        ${all_lineages} \\
         ${args} \\
-        ${prefix}.busco_odb.csv
+        --file_out ${prefix}.busco_odb.csv
     """
 
     stub:
+    def prefix  = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.busco_odb.csv
     """

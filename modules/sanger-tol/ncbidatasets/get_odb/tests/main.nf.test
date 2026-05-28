@@ -1,0 +1,86 @@
+nextflow_process {
+
+    name "Test Process NCBIDATASETS_GET_ODB"
+    script "../main.nf"
+    process "NCBIDATASETS_GET_ODB"
+    tag "modules"
+    tag "modules_sangertol"
+    tag "ncbidatasets"
+    tag "ncbidatasets/get_odb"
+    tag "ncbidatasets/summarise_genome"
+
+    config "./nextflow.config"
+
+    setup {
+        run("NCBIDATASETS_SUMMARISE_GENOME") {
+            script "../../summarise_genome/main.nf"
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id:'GCA_000001405.15' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ])
+                """
+            }
+        }
+    }
+
+    test( "homo_sapiens - fasta - specific ODB" ) {
+        when {
+            process {
+                """
+                input[0] = NCBIDATASETS_SUMMARISE_GENOME.out.summary
+                input[1] = "odb10"
+                input[2] = false
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test( "homo_sapiens - fasta - all ancestral ODBs " ) {
+        when {
+            process {
+                """
+                input[0] = NCBIDATASETS_SUMMARISE_GENOME.out.summary
+                input[1] = "odb10"
+                input[2] = true
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test( "homo_sapiens - fasta - stub" ) {
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = NCBIDATASETS_SUMMARISE_GENOME.out.summary
+                input[1] = "odb10"
+                input[2] = false
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

@@ -51,7 +51,14 @@ def get_odb_version(file_name):
 
 def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, basal_lineages):
     # Read the mapping between the BUSCO lineages and their taxon_id
-    with open(lineage_tax_ids) as file_in:
+
+    mapping: dict[str, dict[str, str]] = {
+        "odb10": {"file": "odb10_mapping.tsv", "version": "_odb10"},
+        "odb12": {"file": "odb12_mapping.tsv", "version": "_odb12"},
+    }
+
+    current_working_dir = os.path.dirname(os.path.realpath(__file__))
+    with open(current_working_dir + "/" + mapping[lineage_tax_ids]["file"]) as file_in:
         lineage_tax_ids_dict = {}
         for line in file_in:
             arr = line.split()
@@ -74,19 +81,22 @@ def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, bas
     ]
 
     # Get the ODB version from the file name
-    odb_version = get_odb_version(lineage_tax_ids)
+    odb_version: str = mapping[lineage_tax_ids]["version"]
 
     # If all_ancestral_lineages is True, return all ancestral ODB lineages, otherwise return the closest ODB lineage
     # In this case we can add the basal lineages
     if all_ancestral_lineages:
-        odb_val = [lineage + odb_version for lineage in odb_arr]
-        odb_val = odb_val + [
+        odb_val: list[str] = [lineage + odb_version for lineage in odb_arr]
+        odb_val: list[str] = odb_val + [
             lineage + odb_version for lineage in basal_lineages if lineage not in odb_arr
         ]
     else:
         # The most recent [-1] OBD10/ODB12 lineage is selected
         # In this case we only want the closest lineage, so we exclude the basal lineages
-        odb_val = odb_arr[-1] + odb_version
+        odb_val: list[str] = [odb_arr[-1] + odb_version]
+
+    print("Lineages list: " + str(odb_arr))
+    print("Lineages list final: " + str(odb_val))
 
     out_dir = os.path.dirname(file_out)
     make_dir(out_dir)
