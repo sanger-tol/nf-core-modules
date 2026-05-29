@@ -28,15 +28,18 @@ nextflow_process {
 
     test( "homo_sapiens - fasta - specific ODB" ) {
         setup {
-            def fake_file = new File("${launchDir}/fake_path/lineages/mamalian_odb10/")
+            def fake_file = new File("${launchDir}/fake_odb/lineages/mamalian_odb10/")
             fake_file.mkdirs()
         }
 
         when {
+            params {
+                fake_odb_path = "${launchDir}/fake_odb"
+            }
             process {
                 """
                 input[0] = NCBIDATASETS_SUMMARISE_GENOME.out.summary
-                input[1] = "${launchDir}/fake_path/"
+                input[1] = file(params.fake_odb_path, checkIfExists: true)
                 input[2] = "odb10"
                 input[3] = "specified"
                 input[4] = "mamalian"
@@ -54,20 +57,21 @@ nextflow_process {
 
     test( "homo_sapiens - fasta - all ancestral ODBs" ) {
         setup {
-
             def odb_list = [ "bacteria_odb10", "archaea_odb10", "eukaryota_odb10", "euarchontoglires_odb10", "eutheria_odb10" ]
-
             for (i in odb_list) {
-                def fake_file = new File("${launchDir}/fake_path/lineages/${i}/")
+                def fake_file = new File("${launchDir}/fake_odb/lineages/${i}/")
                 fake_file.mkdirs()
             }
         }
 
         when {
+            params {
+                fake_odb_path = "${launchDir}/fake_odb"
+            }
             process {
                 """
                 input[0] = NCBIDATASETS_SUMMARISE_GENOME.out.summary
-                input[1] = "${launchDir}/fake_path/"
+                input[1] = file(params.fake_odb_path, checkIfExists: true)
                 input[2] = "odb10"
                 input[3] = "ancestral_and_basal"
                 input[4] = []
@@ -87,15 +91,18 @@ nextflow_process {
         options "-stub"
 
         setup {
-            def fake_file = new File("${launchDir}/fake_path/lineages/mamalian_odb10/")
+            def fake_file = new File("${launchDir}/fake_odb/lineages/mamalian_odb10/")
             fake_file.mkdirs()
         }
 
         when {
+            params {
+                fake_odb_path = "${launchDir}/fake_odb"
+            }
             process {
                 """
                 input[0] = NCBIDATASETS_SUMMARISE_GENOME.out.summary
-                input[1] = "${launchDir}/fake_path/"
+                input[1] = file(params.fake_odb_path, checkIfExists: true)
                 input[2] = "odb10"
                 input[3] = []
                 input[4] = []

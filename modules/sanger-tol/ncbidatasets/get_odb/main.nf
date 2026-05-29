@@ -26,7 +26,7 @@ process NCBIDATASETS_GET_ODB {
     def args            = task.ext.args ?: ''
     def prefix          = task.ext.prefix ?: "${meta.id}"
     valid_mode          = mode ? "--mode ${mode}" : ""
-    formatted_lineages  = specified_lineages && mode.contains("specified") ? "--specified_lineages " + specified_lineages.tokenize(',').join(' ') : ""
+    formatted_lineages  = specified_lineages && mode?.contains("specified") ? "--specified_lineages " + specified_lineages.tokenize(',').join(' ') : ""
     """
     get_odb.py \\
         --ncbi_summary_json ${ncbi_summary} \\

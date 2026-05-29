@@ -32,10 +32,12 @@ def parse_args(args=None):
         ],
         default="best",
     )
-    parser.add_argument("--specified_lineages", help="Specified lineages ODBs to use", nargs="+", default=None)
+    parser.add_argument(
+        "--specified_lineages", help="Specified lineage ODBs to use. Minus the _odb{int}", nargs="+", default=None
+    )
     parser.add_argument(
         "--basal_lineages",
-        help="Lineages considered ancestral for ODB selection.",
+        help="Basal lineages for BUSCO analysis",
         nargs="+",
         default=["bacteria", "archaea", "eukaryota"],
     )

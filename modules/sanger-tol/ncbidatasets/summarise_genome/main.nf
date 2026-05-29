@@ -8,7 +8,7 @@ process NCBIDATASETS_SUMMARISE_GENOME {
         : 'community.wave.seqera.io/library/ncbi-datasets-cli_python:9f4299728bfbaaa1' }"
 
 
-    errorStrategy { sleep(Math.pow(2, task.attempt) * 30 as long); return 'retry' }
+    errorStrategy { sleep((long) (Math.pow(2, task.attempt) * 30 * 1000)); return 'retry' }
 
     input:
     tuple val(meta), path(fasta)
