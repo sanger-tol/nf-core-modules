@@ -27,13 +27,19 @@ input:
         pattern: "*.json"
         ontologies:
           - edam: "http://edamontology.org/format_3464" # JSON
-  - lineage_tax_ids:
+  - odb_dir:
+      type: directory
+      description: Directory containing the ODB lineage data. Do not include the lineage subdirectory.
+  - odb_version:
       type: string
       description: Whether the user wants to use odb10 or odb12.
       pattern: "^(odb10|odb12)$"
-  - all_ancestral_lineages:
-      type: boolean
-      description: Whether the user wants to use all ancestral lineages or just best fit.
+  - mode:
+      type: string
+      description: Mode of operation, "specified", "specified_and_basal", "basal_only", "best", "best_and_basal", "ancestral" and "ancestral_and_basal".
+  - specified_lineages:
+      type: string
+      description: CSV list of specifiied lineages by user.
 output:
   csv:
     - - meta:
