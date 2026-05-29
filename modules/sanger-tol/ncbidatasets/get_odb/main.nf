@@ -9,8 +9,10 @@ process NCBIDATASETS_GET_ODB {
 
     input:
     tuple val(meta), path(ncbi_summary)
-    val lineage_tax_ids
-    val all_ancestral_lineages
+    path odb_dir
+    val odb_version
+    val mode
+    val specified_lineages
 
     output:
     tuple val(meta), path("*.busco_odb.csv"), emit: csv
@@ -21,20 +23,23 @@ process NCBIDATASETS_GET_ODB {
     task.ext.when == null || task.ext.when
 
     script:
-    def args    = task.ext.args ?: ''
-    def prefix  = task.ext.prefix ?: "${meta.id}"
-    def all_lineages = all_ancestral_lineages ? "--all_ancestral_lineages" : ""
+    def args            = task.ext.args ?: ''
+    def prefix          = task.ext.prefix ?: "${meta.id}"
+    valid_mode          = mode ? "--mode ${mode}" : ""
+    formatted_lineages  = specified_lineages && mode.contains("specified") ? "--specified_lineages " + specified_lineages.tokenize(',').join(' ') : ""
     """
     get_odb.py \\
         --ncbi_summary_json ${ncbi_summary} \\
-        --lineage_tax_ids ${lineage_tax_ids} \\
-        ${all_lineages} \\
+        --odb_version ${odb_version} \\
+        --odb_dir ${odb_dir} \\
+        ${valid_mode} \\
+        --file_out ${prefix}.busco_odb.csv \\
         ${args} \\
-        --file_out ${prefix}.busco_odb.csv
+        ${formatted_lineages}
     """
 
     stub:
-    def prefix  = task.ext.prefix ?: "${meta.id}"
+    def prefix          = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.busco_odb.csv
     """

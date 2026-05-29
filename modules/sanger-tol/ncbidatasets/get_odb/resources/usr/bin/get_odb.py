@@ -15,13 +15,24 @@ def parse_args(args=None):
 
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument("--ncbi_summary_json", help="NCBI entry for this assembly for this assembly (in JSON).")
-    parser.add_argument("--lineage_tax_ids", help="Mapping between BUSCO lineages and taxon IDs.")
+    parser.add_argument("--odb_version", help="Version of ODB to use", choices=["odb10", "odb12"])
     parser.add_argument("--file_out", help="Output CSV file.")
+    parser.add_argument("--odb_dir", help="Directory containing ODB files (Excluding the lineage subdirectory).")
     parser.add_argument(
-        "--all_ancestral_lineages",
-        help="A boolean flag to include all ancestral lineages or just the best",
-        action="store_true",
+        "--mode",
+        help="Mode for ODB selection criteria",
+        choices=[
+            "ancestral",
+            "ancestral_and_basal",
+            "best",
+            "best_and_basal",
+            "basal_only",
+            "specified",
+            "specified_and_basal",
+        ],
+        default="best",
     )
+    parser.add_argument("--specified_lineages", help="Specified lineages ODBs to use", nargs="+", default=None)
     parser.add_argument(
         "--basal_lineages",
         help="Lineages considered ancestral for ODB selection.",
@@ -29,7 +40,14 @@ def parse_args(args=None):
         default=["bacteria", "archaea", "eukaryota"],
     )
     parser.add_argument("--version", action="version", version="%(prog)s 1.3")
-    return parser.parse_args(args)
+
+    # Quick input validation
+    output_args = parser.parse_args(args)
+
+    if output_args.mode in ["specified", "specified_and_basal"] and (output_args.specified_lineages is None):
+        parser.error("--specified_lineages is required when mode is 'specified' or 'specified_and_basal'.")
+
+    return output_args
 
 
 def make_dir(path):
@@ -37,33 +55,25 @@ def make_dir(path):
         os.makedirs(path, exist_ok=True)
 
 
-def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, basal_lineages):
+def get_taxid(ncbi_summary: str) -> str:
+    """
+    Get taxon_id of the species from the NCBI summary JSON file.
+    """
+    with open(ncbi_summary) as file_in:
+        data = json.load(file_in)
+    return data["reports"][0]["organism"]["tax_id"]
+
+
+def get_odb(mode, ncbi_summary, odb_path, file_out, basal_lineages, mapping_file, odb_string):
+
     # Read the mapping between the BUSCO lineages and their taxon_id
-
-    mapping: dict[str, dict[str, str]] = {
-        "odb10": {"file": "odb10_mapping.tsv", "version": "_odb10"},
-        "odb12": {"file": "odb12_mapping.tsv", "version": "_odb12"},
-    }
-
-    current_working_dir = os.path.dirname(os.path.realpath(__file__))
-
-    # Get the mapping file for the ODB version, if not in the dict then crash with not supported message
-    mapping_file = (
-        f"{current_working_dir}/{mapping[lineage_tax_ids]['file']}"
-        if lineage_tax_ids in mapping
-        else sys.exit("Not a recognised ODB")
-    )
-
     with open(mapping_file) as file_in:
         lineage_tax_ids_dict = {}
         for line in file_in:
             arr = line.split()
             lineage_tax_ids_dict[int(arr[0])] = arr[1]
 
-    # Get the taxon_id of this species / assembly
-    with open(ncbi_summary) as file_in:
-        data = json.load(file_in)
-    tax_id = data["reports"][0]["organism"]["tax_id"]
+    tax_id = get_taxid(ncbi_summary)
 
     # Using API, get the taxon_ids of all parents
     response = requests.get(NCBI_TAXONOMY_API % tax_id).json()
@@ -72,38 +82,121 @@ def get_odb(ncbi_summary, lineage_tax_ids, file_out, all_ancestral_lineages, bas
     # Do the intersection to find the ancestors that have a BUSCO lineage
     odb_arr = [lineage_tax_ids_dict[taxon_id] for taxon_id in ancestor_taxon_ids if taxon_id in lineage_tax_ids_dict]
 
-    # Get the ODB version from the file name
-    odb_version: str = mapping[lineage_tax_ids]["version"]
-
-    # If all_ancestral_lineages is True, return all ancestral ODB lineages, otherwise return the closest ODB lineage
-    # In this case we can add the basal lineages
-    if all_ancestral_lineages:
-        odb_val: list[str] = [lineage + odb_version for lineage in odb_arr]
-        odb_val: list[str] = odb_val + [lineage + odb_version for lineage in basal_lineages if lineage not in odb_arr]
-    else:
+    if mode in ["ancestral", "ancestral_and_basal"]:
+        # if user has requested ancestral lineages, return all of them up the tree
+        odb_val: list[str] = [validate_lineage(lineage + odb_string, odb_path) for lineage in odb_arr]
+    elif mode in ["best", "best_and_basal"]:
         # The most recent [-1] OBD10/ODB12 lineage is selected
         # In this case we only want the closest lineage, so we exclude the basal lineages
         # Force it into a list so that it isn't mangled by the interating print statement
-        odb_val: list[str] = [odb_arr[-1] + odb_version]
+        odb_val: list[str] = [validate_lineage(odb_arr[-1] + odb_string, odb_path)]
 
-    out_dir = os.path.dirname(file_out)
-    make_dir(out_dir)
+    if mode in ["ancestral_and_basal", "best_and_basal"]:
+        # Add basals if the user wants them.
+        odb_val: list[str] = odb_val + [lineage for lineage in basal_lineages if lineage not in odb_arr]
 
+    make_dir(os.path.dirname(file_out))
+
+    print_out(odb_val, file_out)
+
+
+def print_out(lineage_list, file_out):
+    """
+    Print the lineage list to the output file.
+    One line per lineage
+    """
     with open(file_out, "w") as fout:
-        for lineage in odb_val:
+        for lineage in lineage_list:
             print("busco_lineage", lineage, sep=",", file=fout)
+
+
+def validate_lineage(lineage: str, lineages_path: str) -> str:
+    """
+    Validate that the lineage exists in the lineage path.
+    """
+    if not os.path.exists(lineages_path + "/lineages/" + lineage):
+        raise FileNotFoundError(f"Lineage {lineage} not found in {lineages_path}")
+
+    return lineage
+
+
+def get_specific_odbs(
+    lineage_path,
+    specified_lineages,
+    odb_version,
+    file_out=None,
+    basal_lineages=[],
+):
+    """
+    User provided lineages will have the ODB
+    """
+    specified_odbs = [validate_lineage(i + odb_version, lineage_path) for i in specified_lineages]
+
+    print_out(specified_odbs + basal_lineages, file_out)
+
+
+def get_mapping_file(odb_version: str):
+    """
+    Get the mapping file for the ODB version.
+    """
+    current_working_dir = os.path.dirname(os.path.realpath(__file__))
+
+    cwd = current_working_dir + "/../assets/"
+
+    mapping: dict[str, dict[str, str]] = {
+        "odb10": {"file": "mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt", "version": "_odb10"},
+        "odb12": {"file": "mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt", "version": "_odb12"},
+    }
+
+    odb_version_string: str = mapping[odb_version]["version"]
+
+    mapping_file = (
+        f"{cwd}/{mapping[odb_version]['file']}" if odb_version in mapping else sys.exit("Not a recognised ODB")
+    )
+
+    return mapping_file, odb_version_string
 
 
 def main(args=None):
     args = parse_args(args)
 
-    get_odb(
-        args.ncbi_summary_json,
-        args.lineage_tax_ids,
-        args.file_out,
-        args.all_ancestral_lineages,
-        args.basal_lineages,
-    )
+    mapping_file, odb_version_string = get_mapping_file(args.odb_version)
+
+    if "basal" in args.mode:
+        new_basal_lineages: list[str] = [
+            validate_lineage(i + odb_version_string, args.odb_dir) for i in args.basal_lineages
+        ]
+    else:
+        new_basal_lineages = []
+
+    if args.specified_lineages is not None and args.mode in ["specified", "specified_and_basal"]:
+        get_specific_odbs(
+            args.odb_dir,
+            args.specified_lineages,
+            odb_version_string,
+            args.file_out,
+            new_basal_lineages if args.mode == "specified_and_basal" else [],
+        )
+
+    if args.mode in ["ancestral", "ancestral_and_basal", "best", "best_and_basal"]:
+        get_odb(
+            args.mode,
+            args.ncbi_summary_json,
+            args.odb_dir,
+            args.file_out,
+            new_basal_lineages if "basal" in args.mode else [],
+            mapping_file,
+            odb_version_string,
+        )
+
+    if args.mode == "basal_only":
+        get_specific_odbs(
+            args.lineage_path,
+            args.basal_lineages,
+            odb_version_string,
+            args.file_out,
+            None,
+        )
 
 
 if __name__ == "__main__":
