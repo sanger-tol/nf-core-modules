@@ -66,7 +66,7 @@ def get_taxid(ncbi_summary: str) -> str:
     return data["reports"][0]["organism"]["tax_id"]
 
 
-def get_odb(mode, ncbi_summary, odb_path, file_out, basal_lineages, mapping_file, odb_string):
+def get_odb(mode, ncbi_summary, odb_path, basal_lineages, mapping_file, odb_string):
 
     # Read the mapping between the BUSCO lineages and their taxon_id
     with open(mapping_file) as file_in:
@@ -97,9 +97,7 @@ def get_odb(mode, ncbi_summary, odb_path, file_out, basal_lineages, mapping_file
         # Add basals if the user wants them.
         odb_val: list[str] = odb_val + [lineage for lineage in basal_lineages if lineage not in odb_arr]
 
-    make_dir(os.path.dirname(file_out))
-
-    print_out(odb_val, file_out)
+    return odb_val
 
 
 def print_out(lineage_list, file_out):
@@ -126,7 +124,6 @@ def get_specific_odbs(
     lineage_path,
     specified_lineages,
     odb_version,
-    file_out=None,
     basal_lineages=[],
 ):
     """
@@ -134,7 +131,7 @@ def get_specific_odbs(
     """
     specified_odbs = [validate_lineage(i + odb_version, lineage_path) for i in specified_lineages]
 
-    print_out(specified_odbs + basal_lineages, file_out)
+    return specified_odbs + basal_lineages
 
 
 def get_mapping_file(odb_version: str):
@@ -172,33 +169,34 @@ def main(args=None):
         new_basal_lineages = []
 
     if args.specified_lineages is not None and args.mode in ["specified", "specified_and_basal"]:
-        get_specific_odbs(
+        lineage_list = get_specific_odbs(
             args.odb_dir,
             args.specified_lineages,
             odb_version_string,
-            args.file_out,
             new_basal_lineages if args.mode == "specified_and_basal" else [],
         )
 
     if args.mode in ["ancestral", "ancestral_and_basal", "best", "best_and_basal"]:
-        get_odb(
+        lineage_list = get_odb(
             args.mode,
             args.ncbi_summary_json,
             args.odb_dir,
-            args.file_out,
             new_basal_lineages if "basal" in args.mode else [],
             mapping_file,
             odb_version_string,
         )
 
     if args.mode == "basal_only":
-        get_specific_odbs(
+        lineage_list = get_specific_odbs(
             args.lineage_path,
             args.basal_lineages,
             odb_version_string,
-            args.file_out,
             None,
         )
+
+    make_dir(os.path.dirname(args.file_out))
+
+    print_out(lineage_list, args.file_out)
 
 
 if __name__ == "__main__":
