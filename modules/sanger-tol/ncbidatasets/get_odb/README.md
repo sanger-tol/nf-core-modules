@@ -17,7 +17,7 @@ Modified by Damon-Lee Pointon (dp24)
 │           └── get_odb.py
 ├── tests
 │   ├── main.nf.test
-│   ├── main.nf.snapshot
+│   ├── main.nf.test.snap
 │   └── nextflow.config
 │
 ├── environment.yml

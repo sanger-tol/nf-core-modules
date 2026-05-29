@@ -43,7 +43,7 @@ output:
             e.g. `[ id:'sample1' ]`
       - "*.busco_odb.csv":
           type: file
-          description: JSON file containing assembly statistics
+          description: CSV file containing relevant ODB lineages for the assembly
           pattern: "*.busco_odb.csv"
           ontologies:
             - edam: "http://edamontology.org/format_3307" # CSV
