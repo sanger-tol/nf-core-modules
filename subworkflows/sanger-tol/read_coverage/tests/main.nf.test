@@ -21,8 +21,7 @@ nextflow_workflow {
                 "${launchDir}/library/",
                 [
                     "bedtools/genomecov",
-                    "ucsc/bedgraphtobigwig",
-                    "minimap2/align"
+                    "ucsc/bedgraphtobigwig"
                 ]
             )
             nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
