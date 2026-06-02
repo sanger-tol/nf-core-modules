@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "contactbed"
 description: |
   Converts BED file to contacts BED format using shell utilities.
@@ -12,12 +12,9 @@ tools:
       description: |
         GNU coreutils provides standard utilities such as paste and tr used during conversion.
       homepage: https://www.gnu.org/software/coreutils/
-      licence: ["GPL v3.0"]
-  - awk:
-      description: |
-        AWK is used to transform BED records into the contacts format.
-      homepage: https://gnu.org/software/gawk/
-      licence: ["GPL v3.0"]
+      licence:
+        - "GPL v3.0"
+      identifier: ""
 input:
   - - meta:
         type: map
@@ -30,7 +27,7 @@ input:
           BED file to convert to contacts format.
         pattern: "*.bed"
         ontologies:
-          - edam: http://edamontology.org/format_3003
+          - edam: http://edamontology.org/format_3003 # BED
 output:
   bed:
     - - meta:
@@ -44,14 +41,47 @@ output:
             Contacts BED file generated from the input BED file.
           pattern: "*.bed"
           ontologies:
-            - edam: http://edamontology.org/format_3003
+            - edam: http://edamontology.org/format_3003 # BED
+  versions_coreutils:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - coreutils:
+          type: string
+          description: The name of the tool
+      - ls --version | sed -n "s/ls (GNU coreutils) //p":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_gawk:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - gawk:
+          type: string
+          description: The name of the tool
+      - gawk --version | grep -o -E "[0-9]+(.[0-9]+)+" | head -n1:
+          type: eval
+          description: The expression to obtain the version of the tool
+topics:
   versions:
-    - versions.yml:
-        type: file
-        description: File containing software versions
-        pattern: "versions.yml"
-        ontologies:
-          - edam: http://edamontology.org/format_3750 # YAML
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - coreutils:
+          type: string
+          description: The name of the tool
+      - ls --version | sed -n "s/ls (GNU coreutils) //p":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - gawk:
+          type: string
+          description: The name of the tool
+      - gawk --version | grep -o -E "[0-9]+(.[0-9]+)+" | head -n1:
+          type: eval
+          description: The expression to obtain the version of the tool
 authors:
   - "@sanger-tol"
 maintainers:

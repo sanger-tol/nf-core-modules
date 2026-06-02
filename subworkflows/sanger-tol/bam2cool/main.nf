@@ -13,9 +13,6 @@ workflow BAM2COOL {
     val_bin_size    // integer: bin size for cooler
 
     main:
-
-    ch_versions = channel.empty()
-
     ch_bam_list_transposed = ch_bam_list
         .flatMap { meta, bams ->
             if (!(bams instanceof List)) {
@@ -30,7 +27,6 @@ workflow BAM2COOL {
     BEDTOOLS_BAMTOBEDSORT(
         ch_bam_list_transposed
     )
-    ch_versions = ch_versions.mix(BEDTOOLS_BAMTOBEDSORT.out.versions)
 
     //
     // Generate paired contacts BED
@@ -38,7 +34,6 @@ workflow BAM2COOL {
     CONTACTBED(
         BEDTOOLS_BAMTOBEDSORT.out.sorted_bed
     )
-    ch_versions = ch_versions.mix(CONTACTBED.out.versions)
 
     //
     // Generate index file from contacts
@@ -46,7 +41,6 @@ workflow BAM2COOL {
     GENERATE_CONTACTS_INDEX(
         CONTACTBED.out.bed
     )
-    ch_versions = ch_versions.mix(GENERATE_CONTACTS_INDEX.out.versions)
 
     //
     // Generate individual .cool files
@@ -68,14 +62,14 @@ workflow BAM2COOL {
         'pairs',
         val_bin_size
     )
-    ch_versions = ch_versions.mix(COOLER_CLOAD.out.versions)
 
     //
     // Collect all individual .cool files for merging
     //
     ch_cool_files_for_merge = COOLER_CLOAD.out.cool
         .map { meta, cool -> [ meta - meta.subMap("bam_idx"), cool ] }
-        .groupTuple(by: 0, sort: { it.getName() })
+        .groupTuple(by: 0)
+        .map { meta, cool_files -> [ meta, cool_files.sort { file -> file.name } ] }
 
     //
     // Merge individual .cool files
@@ -83,7 +77,6 @@ workflow BAM2COOL {
     COOLER_MERGE(
         ch_cool_files_for_merge
     )
-    ch_versions = ch_versions.mix(COOLER_MERGE.out.versions)
 
     //
     // Generate multi-resolution .mcool
@@ -91,7 +84,6 @@ workflow BAM2COOL {
     COOLER_ZOOMIFY(
         COOLER_MERGE.out.cool
     )
-    ch_versions = ch_versions.mix(COOLER_ZOOMIFY.out.versions)
 
     //
     // Emit final outputs
@@ -99,5 +91,4 @@ workflow BAM2COOL {
     emit:
     merged_cool     = COOLER_MERGE.out.cool
     mcool           = COOLER_ZOOMIFY.out.mcool
-    versions        = ch_versions
 }

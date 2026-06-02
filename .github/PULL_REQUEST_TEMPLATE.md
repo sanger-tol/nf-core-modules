@@ -24,6 +24,7 @@ Closes #XXX <!-- If this PR fixes an issue, please link it here! -->
 - [ ] Follow the naming conventions.
 - [ ] Follow the parameters requirements.
 - [ ] Follow the input/output options guidelines.
+- [ ] If you've added or modified a sub-workflow, ensure all sub-analyses are emitted as individual channels. Outputs may also be collected together by analysis type or input sample, for instance to support downstream analysis or publishing.
 - [ ] Add a resource `label`
 - [ ] Use BioConda and BioContainers if possible to fulfil software requirements.
 - Ensure that the test works with either Docker / Singularity. Conda CI tests can be quite flaky:

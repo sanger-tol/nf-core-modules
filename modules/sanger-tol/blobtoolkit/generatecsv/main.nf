@@ -8,16 +8,14 @@ process BLOBTOOLKIT_GENERATECSV {
     tuple val(meta3),   path(illumina_files), val(illumina_layout)
 
     output:
-    tuple val(new_meta),    path("${prefix}.samplesheet.csv")   , emit: csv
-    path("versions.yml")                                        , emit: versions
+    tuple val(new_meta), path("${prefix}.samplesheet.csv"), emit: csv
+    // Note: Manually bump version number when updating module
+    tuple val("${task.process}"), val('blobtoolkit_generatecsv'), val('1.0.0'), emit: versions_blobtoolkitgeneratecsv, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
 
     exec:
-    // Note: Manually bump version number when updating module
-    def VERSION       = "1.0.0"
-
     // CHECK META.ID, IF 1 NOT SET THEN TRY NEXT
     sample_id = meta.id ?: meta2.id ?: meta3.id
     new_meta = [id: sample_id]
@@ -43,9 +41,4 @@ process BLOBTOOLKIT_GENERATECSV {
       }
 
     file(task.workDir.resolve("${prefix}.samplesheet.csv")).text = samplesheet_entries.join("\n")
-
-    file("${task.workDir}/versions.yml").text = """\
-        BLOBTOOLKIT_GENERATECSV:
-            blobtoolkit_generatecsv: ${VERSION}
-        """.stripIndent()
 }

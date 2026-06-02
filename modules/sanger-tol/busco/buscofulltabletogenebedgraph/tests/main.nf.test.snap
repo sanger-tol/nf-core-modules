@@ -1,0 +1,204 @@
+{
+    "bacteria full_table": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "python",
+                        "3.12.3"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "pandas",
+                        "2.2.1"
+                    ]
+                ],
+                "5": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "busco_fulltable_to_bedgraph.py",
+                        "1.0.0"
+                    ]
+                ],
+                "complete_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.complete_buscos.bedgraph:md5,f55e6e10b9715ba8133cea5d3a70480d"
+                    ]
+                ],
+                "duplicated_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.duplicated_buscos.bedgraph:md5,b2a016d8d143f256a3c8332c7dec85f9"
+                    ]
+                ],
+                "fragmented_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fragmented_buscos.bedgraph:md5,d6b0ea096c33c45a1aba7c7cae205f4e"
+                    ]
+                ],
+                "versions_busco_fulltable_to_bedgraph": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "busco_fulltable_to_bedgraph.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_pandas": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "pandas",
+                        "2.2.1"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "python",
+                        "3.12.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-21T10:50:25.247334017",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "bacteria full_table - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "python",
+                        "3.12.3"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "pandas",
+                        "2.2.1"
+                    ]
+                ],
+                "5": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "busco_fulltable_to_bedgraph.py",
+                        "1.0.0"
+                    ]
+                ],
+                "complete_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.complete_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "duplicated_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.duplicated_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fragmented_bedgraph": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fragmented_buscos.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_busco_fulltable_to_bedgraph": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "busco_fulltable_to_bedgraph.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_pandas": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "pandas",
+                        "2.2.1"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "python",
+                        "3.12.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-21T10:50:40.497490679",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

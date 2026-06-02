@@ -5,8 +5,9 @@
         "modules/sanger-tol/telomere",
         "subworkflows/sanger-tol/ancestral",
         "subworkflows/sanger-tol/fasta_purge_retained_haplotype",
-        "subworkflows/sanger-tol/telo_finder"
+        "subworkflows/sanger-tol/telo_finder",
+        "subworkflows/sanger-tol/fasta_10x_polishing_longranger_freebayes"
     ],
-    "docker": ["modules/sanger-tol/longranger"],
+    "docker": ["modules/sanger-tol/longranger", "subworkflows/sanger-tol/fasta_10x_polishing_longranger_freebayes"],
     "singularity": []
 }

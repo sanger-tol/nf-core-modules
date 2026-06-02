@@ -14,8 +14,6 @@ workflow CRAM_MAP_LONG_READS {
     val_cram_chunk_size     // integer: Number of CRAM slices per chunk for mapping
 
     main:
-    ch_versions = channel.empty()
-
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
     //
@@ -38,24 +36,22 @@ workflow CRAM_MAP_LONG_READS {
         .map { meta, cram -> [ meta + [ cramfile: cram ], cram ] }
 
     ch_cram_raw = ch_crams_meta_mod
-        .branch { meta, cram ->
-            def cram_file = file(cram, checkIfExists: true)
-            def index = cram + ".crai"
-            have_index: file(index).exists()
-                return [ meta, cram_file, file(index, checkIfExists: true) ]
-            no_index: true
-                return [ meta, cram_file ]
-        }
+            .branch { meta, cram ->
+                def index = file(cram.toUriString() + ".crai")
+                have_index: index.exists()
+                    return [ meta, cram, index ]
+                no_index: true
+                    return [ meta, cram ]
+            }
 
     //
     // Module: Index CRAM files without indexes
     //
     SAMTOOLS_INDEX(ch_cram_raw.no_index)
-    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions)
 
     ch_cram_indexed = ch_cram_raw.have_index
         .mix(
-            ch_cram_raw.no_index.join(SAMTOOLS_INDEX.out.crai)
+            ch_cram_raw.no_index.join(SAMTOOLS_INDEX.out.index)
         )
 
     // Module: Process the cram index files to determine how many
@@ -65,7 +61,6 @@ workflow CRAM_MAP_LONG_READS {
         ch_cram_indexed,
         val_cram_chunk_size
     )
-    ch_versions = ch_versions.mix(CRAMALIGN_GENCRAMCHUNKS.out.versions)
 
     //
     // Logic: Count the total number of cram chunks for downstream grouping
@@ -83,7 +78,6 @@ workflow CRAM_MAP_LONG_READS {
     // Module: Extract read groups from CRAM headers
     //
     SAMTOOLS_SPLITHEADER(ch_crams_meta_mod)
-    ch_versions = ch_versions.mix(SAMTOOLS_SPLITHEADER.out.versions)
 
     ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
         .map { meta, rg_file ->
@@ -104,7 +98,6 @@ workflow CRAM_MAP_LONG_READS {
     // MODULE: generate minimap2 mmi file
     //
     MINIMAP2_INDEX(ch_assemblies)
-    ch_versions = ch_versions.mix(MINIMAP2_INDEX.out.versions)
 
     ch_mapping_inputs = ch_cram_rg
         .combine(ch_assemblies, by: 0)
@@ -133,7 +126,7 @@ workflow CRAM_MAP_LONG_READS {
             [key, bam]
         }
         .groupTuple(by: 0)
-        .map { key, bam -> [key.target, bam] } // Get meta back out of groupKey
+        .map { key, bam -> [key.target, bam.sort { b -> b.getName() }] } // Get meta back out of groupKey
 
     //
     // Subworkflow: merge BAM files and mark duplicates
@@ -143,10 +136,8 @@ workflow CRAM_MAP_LONG_READS {
         ch_assemblies,
         false
     )
-    ch_versions = ch_versions.mix(BAM_SAMTOOLS_MERGE_MARKDUP.out.versions)
 
     emit:
     bam               = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam
     bam_index         = BAM_SAMTOOLS_MERGE_MARKDUP.out.bam_index
-    versions          = ch_versions
 }

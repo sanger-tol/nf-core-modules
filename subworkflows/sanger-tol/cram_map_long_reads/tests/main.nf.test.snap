@@ -32,21 +32,13 @@
             [
                 "test1: no RG",
                 "test: SM:mMelMel3"
-            ],
-            [
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
             ]
         ],
+        "timestamp": "2026-03-06T10:54:38.332646",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2026-01-15T14:50:39.842338"
+            "nextflow": "25.10.4"
+        }
     },
     "meles meles - mismatch meta test": {
         "content": [
@@ -65,21 +57,13 @@
             ],
             [
                 "test.bam.csi"
-            ],
-            [
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
             ]
         ],
+        "timestamp": "2026-03-06T10:55:33.006003",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2026-01-15T14:51:21.337013"
+            "nextflow": "25.10.4"
+        }
     },
     "meles meles - PacBio Hifi test - double files": {
         "content": [
@@ -114,23 +98,13 @@
             [
                 "test1: SM:test1",
                 "test: SM:mMelMel3"
-            ],
-            [
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
             ]
         ],
+        "timestamp": "2026-03-06T10:57:56.387344",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2026-01-15T14:53:03.800306"
+            "nextflow": "25.10.4"
+        }
     },
     "meles meles - single test": {
         "content": [
@@ -149,17 +123,12 @@
             ],
             [
                 "test.bam.csi"
-            ],
-            [
-                "versions.yml:md5,8e21446c65646b95062bd55328d6f726",
-                "versions.yml:md5,be4d3d855b43aa0e9e99f54298de977f",
-                "versions.yml:md5,fb2c6f7e4307336407aaa8bcc2e9119a"
             ]
         ],
+        "timestamp": "2026-03-06T10:53:26.260999",
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
-        },
-        "timestamp": "2026-01-15T14:49:45.599328"
+            "nextflow": "25.10.4"
+        }
     }
 }

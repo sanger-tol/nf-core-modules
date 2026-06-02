@@ -1,5 +1,10 @@
 # sanger-tol/nf-core-modules
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/sanger-tol-nf-core-modules_logo_dark.svg">
+  <img alt="sanger-tol/genomeassembly" src="docs/images/sanger-tol-nf-core-modules_logo_light.svg">
+</picture>
+
 Adapted from [nf-core/modules/README.md](https://github.com/nf-core/modules/blob/master/README.md)
 
 [![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A521.10.3-23aa62.svg?labelColor=000000)](https://www.nextflow.io/)
@@ -17,6 +22,7 @@ An nf-core modules repository hosting Nextflow DSL2 modules for the Sanger Tree 
   - [Writing cross-organisation sub-workflows](#writing-cross-organisation-sub-workflows)
   - [Testing cross-organisation sub-workflows](#testing-cross-organisation-sub-workflows)
   - [Using cross-organisation sub-workflows in pipelines](#using-cross-organisation-sub-workflows-in-pipelines)
+- [Maintenance](#maintenance)
 - [Citation](#citation)
 - [Template](#template)
 
@@ -365,6 +371,34 @@ Pipelines need a few modifications to work seamlessly with cross-organisation su
    +modules/sanger-tol/** linguist-generated
    +subworkflows/sanger-tol/** linguist-generated
    ```
+
+## Maintenance
+
+We aim to stay in sync with the upstream nf-core/modules repository in terms of guidelines, schemas, CI, etc.
+This is done by regularly comparing the core files found in both repositories.
+
+For those who know how to exit vim, here is a for loop that runs `vimdiff` over all files
+
+```
+cd /path/to/nf-core/modules
+for i in $(git ls-files | grep -v '^modules/nf-core/' | grep -v '^subworkflows/nf-core/'); do [[ -e /path/to/sanger-tol/modules/$i ]] && vimdiff $i /path/to/sanger-tol/modules/$i; done
+```
+
+![Exit with `:q!`](https://i.programmerhumor.io/2025/07/f6b01d87b8b74d245801f7226ab83a61815082926468e68d5e0c04ca77fb1e48.jpeg)
+
+We need to preserve these differences:
+
+- Our repository is `sanger-tol/nf-core-modules`, not `nf-core/modules`.
+- We need to install nf-core/tools in `nf-test-action` to support the installation of dependent modules.
+  We then need an extra checkout of nf-core/modules and link it across.
+- Our main branch is `main`, not `master`.
+- We only use the `ubuntu-latest` runner.
+- We have a different copyright statement.
+- I haven't introduced `=` in nf-test configs because I don't think it is necessary.
+- The sub-workflow schema needs to allow for object dependencies. That's what allows defining the git remote.
+- We have a different base path for our test data.
+
+_And_ consider those when importing new code and configuration !
 
 ## Citation
 

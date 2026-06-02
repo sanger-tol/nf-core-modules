@@ -12,8 +12,6 @@ workflow GENOME_STATISTICS {
     val_busco_lineage_directory // path: path to local busco lineages directory - optional
 
     main:
-    ch_versions = channel.empty()
-
     //
     // Logic: rolling check of assembly meta objects to detect duplicates
     //
@@ -55,7 +53,6 @@ workflow GENOME_STATISTICS {
         [[],[]],             // exclude bed
         [[],[]]              // instructions
     )
-    ch_versions = ch_versions.mix(GFASTATS.out.versions)
 
     //
     // Module: Assess assembly using BUSCO.
@@ -76,7 +73,6 @@ workflow GENOME_STATISTICS {
         [],                                // busco config
         true                               // clean intermediates
     )
-    ch_versions = ch_versions.mix(BUSCO_BUSCO.out.versions)
 
     //
     // Module: assess kmer completeness/QV using MerquryFK
@@ -95,17 +91,44 @@ workflow GENOME_STATISTICS {
         ch_merquryfk_asm_input.pat
     )
 
+    //
+    // Logic: Join all the outputs into a single map for ease of
+    // publishing with workflow outputs
+    //
+    ch_statistics_output = ASMSTATS.out.stats
+        .mix(GFASTATS.out.assembly_summary)
+        .map { meta, stats -> [meta - meta.subMap("_hap"), stats] }
+        .groupTuple(size: 4)
+        .map { meta, out -> [meta, out.flatten().sort { f -> f.getName() }] }
+
+    ch_busco_output = BUSCO_BUSCO.out.batch_summary
+        .mix(BUSCO_BUSCO.out.short_summaries_txt)
+        .mix(BUSCO_BUSCO.out.short_summaries_json)
+        .mix(BUSCO_BUSCO.out.log)
+        .mix(BUSCO_BUSCO.out.busco_dir)
+        .groupTuple(size: 5)
+        .map { meta, out -> [meta, out.flatten().sort { f -> f.getName() }] }
+
+    ch_merqury_output = MERQURYFK_MERQURYFK.out.qv
+        .mix(MERQURYFK_MERQURYFK.out.stats)
+        .mix(MERQURYFK_MERQURYFK.out.phased_block_stats)
+        .mix(MERQURYFK_MERQURYFK.out.images)
+        .groupTuple()
+        .map { meta, out -> [meta, out.flatten().sort { f -> f.getName() }] }
+
     emit:
-    asmstats             = ASMSTATS.out.stats
-    gfastats             = GFASTATS.out.assembly_summary
-    busco_batch_summary  = BUSCO_BUSCO.out.batch_summary
-    busco_summary_txt    = BUSCO_BUSCO.out.short_summaries_txt
-    busco_summary_json   = BUSCO_BUSCO.out.short_summaries_json
-    busco_log            = BUSCO_BUSCO.out.log
-    busco_directory      = BUSCO_BUSCO.out.busco_dir
-    merqury_qv           = MERQURYFK_MERQURYFK.out.qv
-    merqury_completeness = MERQURYFK_MERQURYFK.out.stats
-    merqury_phased_stats = MERQURYFK_MERQURYFK.out.phased_block_stats
-    merqury_images       = MERQURYFK_MERQURYFK.out.images
-    versions             = ch_versions
+    stats                    = ch_statistics_output
+    asmstats                 = ASMSTATS.out.stats
+    gfastats                 = GFASTATS.out.assembly_summary
+    busco                    = ch_busco_output
+    busco_batch_summary      = BUSCO_BUSCO.out.batch_summary
+    busco_summary_txt        = BUSCO_BUSCO.out.short_summaries_txt
+    busco_summary_json       = BUSCO_BUSCO.out.short_summaries_json
+    busco_log                = BUSCO_BUSCO.out.log
+    busco_directory          = BUSCO_BUSCO.out.busco_dir
+    merqury                  = ch_merqury_output
+    merqury_qv               = MERQURYFK_MERQURYFK.out.qv
+    merqury_completeness     = MERQURYFK_MERQURYFK.out.stats
+    merqury_phased_stats     = MERQURYFK_MERQURYFK.out.phased_block_stats
+    merqury_images           = MERQURYFK_MERQURYFK.out.images
 }

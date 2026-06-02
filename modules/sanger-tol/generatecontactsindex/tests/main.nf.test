@@ -19,7 +19,7 @@ nextflow_process {
                 input[0] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file('https://tolit.cog.sanger.ac.uk/test-data/Allolobophora_molleri/analysis/sorted.bed', checkIfExists: false)
+                        file(params.modules_testdata_base_path + 'Allolobophora_molleri/analysis/sorted.bed', checkIfExists: true)
                     ]
                 )
                 """
@@ -46,7 +46,7 @@ nextflow_process {
                 input[0] = Channel.of(
                     [
                         [ id:'test' ], // meta map
-                        file('https://tolit.cog.sanger.ac.uk/test-data/Allolobophora_molleri/analysis/sorted.bed', checkIfExists: false)
+                        file(params.modules_testdata_base_path + 'Allolobophora_molleri/analysis/sorted.bed', checkIfExists: true)
                     ]
                 )
                 """

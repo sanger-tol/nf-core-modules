@@ -1,130 +1,56 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { TELOMERE_REGIONS          } from '../../../modules/sanger-tol/telomere/regions/main'
-include { GAWK                      } from '../../../modules/nf-core/gawk/main'
-include { TELOMERE_WINDOWS          } from '../../../modules/sanger-tol/telomere/windows/main'
-include { TELOMERE_EXTRACT          } from '../../../modules/sanger-tol/telomere/extract/main'
+include { FINDTELOMERE    } from '../../../modules/sanger-tol/telomere/findtelomere/main'
+include { TABIX_BGZIPTABIX } from '../../../modules/nf-core/tabix/bgziptabix/main'
+
 
 workflow TELO_FINDER {
 
     take:
-    ch_reference        // Channel [ val(meta), path(fasta) ]
-    ch_telomereseq      // Channel.of( telomere sequence )
-    val_split_telomere  // bool
+    ch_reference           // Channel [ val(meta), path(fasta) ]
+    ch_telomereseq         // Channel [ val(meta), val(telomere_motif) ]
+    val_split_telomere     // bool
+    val_zip_bed            // bool — bgzip + tabix strand *.telomere.bed and windows outputs
 
     main:
-    ch_versions         = channel.empty()
 
+    ch_joined = ch_reference
+        .combine(ch_telomereseq, by: 0)
+        .map { meta, reference, telomereseq -> tuple(meta, reference, telomereseq) }
 
-    //
-    // MODULE: FINDS THE TELOMERIC SEQEUNCE IN REFERENCE
-    //
-    TELOMERE_REGIONS (
-        ch_reference,
-        ch_telomereseq
-    )
-    ch_versions         = ch_versions.mix(TELOMERE_REGIONS.out.versions)
+    FINDTELOMERE(ch_joined, val_split_telomere)
 
-    TELOMERE_REGIONS.out.telomere
-        .map{ meta, file ->
-            def new_meta = meta + [direction: 0]
-            [new_meta, file]
-        }
-        .set { ch_full_telomere }
+    ch_windows_for_zip = val_split_telomere
+        ? FINDTELOMERE.out.windows_fwd.mix(FINDTELOMERE.out.windows_rev)
+        : FINDTELOMERE.out.windows_all
 
-    //
-    // MODULE: SPLIT THE TELOMERE FILE INTO 5' and 3' FILES
-    //
-    if (val_split_telomere) {
+    if (val_zip_bed) {
+        ch_beds_windows_for_zip_raw = FINDTELOMERE.out.telomere_bed_fwd
+            .mix(FINDTELOMERE.out.telomere_bed_rev)
+            .mix(ch_windows_for_zip)
 
-        GAWK (
-            ch_full_telomere,
-            [],
-            true
-        )
-        ch_versions     = ch_versions.mix(GAWK.out.versions)
-
-        //
-        // LOGIC: COLLECT FILES AND ITERATE THROUGH
-        //          ADD DIRECTION BASED ON:
-        //              0: FULL TELOMERE FILE
-        //              3: FOR 3Prime DIRECTION
-        //              5: For 5Prime DIRECTION
-        //          THIS PRODUCES A TRIO OF CHANNELS: [meta], file
-        //          FILTER FOR SIZE > 0 FOR SAFETY
-        //
-        GAWK.out.output
-            .flatMap { meta, files ->
-                files
-                    .findAll { file -> file.size() > 0 }
-                    .collect { file ->
-                        if (file.name.contains("direction.0")) {
-                            [meta + [direction: 5], file]
-                        } else if (file.name.contains("direction.1")) {
-                            [meta + [direction: 3], file]
-                        } else {
-                            error("Unexpected file name pattern in TELOMERE_REGIONS split output: ${file.name}")
-                        }
-                    }
+        /*
+         * Optional outputs normally omit emissions when a glob matches nothing. When a glob yields
+         * multiple paths, `item` may be a list — TABIX_BGZIPTABIX expects one path per channel element,
+         * so expand to (meta, path) tuples.
+         */
+        ch_beds_windows_for_zip = ch_beds_windows_for_zip_raw
+            .flatMap { meta, item ->
+                def items = (item instanceof List) ? item : [ item ]
+                items.collect { file -> tuple(meta, file) }
             }
-            .mix(ch_full_telomere)
-            .set { ch_regions_for_extraction }
 
-
-    } else {
-        ch_regions_for_extraction  = ch_full_telomere
+        TABIX_BGZIPTABIX(ch_beds_windows_for_zip)
     }
 
-
-    //
-    // MODULE: GENERATES A WINDOWS FILE FROM THE ABOVE
-    //
-    TELOMERE_WINDOWS (
-        ch_regions_for_extraction
-    )
-    ch_versions         = ch_versions.mix(TELOMERE_WINDOWS.out.versions)
-
-
-    //
-    // LOGIC: OUTPUT CAN HAVE SIZE 0 WHICH BREAKS gawk IN EXTRACT
-    //        FILTER OUT THE 0 SIZE FILES
-    //
-    TELOMERE_WINDOWS.out.windows
-        .filter { _meta, file ->
-            file.size() > 0
-        }
-        .set { ch_filtered_windows_for_extraction  }
-
-    //
-    // MODULE: EXTRACT TELOMERE DATA FROM FIND_TELOMERE
-    //         AND REFORMAT INTO BEDGRAPH FILE
-    //
-    TELOMERE_EXTRACT(
-        ch_filtered_windows_for_extraction
-    )
-    ch_versions         = ch_versions.mix(TELOMERE_EXTRACT.out.versions)
-
-
-    //
-    // LOGIC: CLEAN OUTPUT CHANNEL INTO
-    //        [meta, [bedgraph_list]]
-    //
-    TELOMERE_EXTRACT.out.bedgraph
-        .map { meta, bedgraph ->
-            [ meta - meta.subMap("direction"), bedgraph ]
-        }
-        .groupTuple(by: 0, sort: { it.getName() })
-        .set { ch_telo_bedgraphs }
-
-    TELOMERE_EXTRACT.out.bed
-        .map { meta, bedgraph ->
-            [ meta - meta.subMap("direction"), bedgraph ]
-        }
-        .set { ch_telo_bedfiles }
-
     emit:
-    bed_file            = ch_telo_bedfiles          // Channel [meta, bed]
-    bedgraph_file       = ch_telo_bedgraphs         // Channel [meta, [bedfiles]] - Used in pretext_graph
-    versions            = ch_versions
+    telomere         = FINDTELOMERE.out.telomere
+    telomere_bed_fwd = FINDTELOMERE.out.telomere_bed_fwd
+    telomere_bed_rev = FINDTELOMERE.out.telomere_bed_rev
+    windows_all      = FINDTELOMERE.out.windows_all
+    windows_fwd      = FINDTELOMERE.out.windows_fwd
+    windows_rev      = FINDTELOMERE.out.windows_rev
+    gz_index         = val_zip_bed ? TABIX_BGZIPTABIX.out.gz_index : channel.empty()
+
 }

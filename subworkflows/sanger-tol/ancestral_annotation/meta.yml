@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/refs/heads/main/subworkflows/yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
 name: "ancestral_annotation"
 description: Generate ancestral linkage plots against an input assembly
 keywords:
@@ -58,10 +58,6 @@ output:
       description: |
         Structure: [ val(meta), path(summary) ]
         TSV file containing a summary of all data.
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
 authors:
   - "@DLBPointon"
 maintainers:

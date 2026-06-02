@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
+name: "soft_masked_fasta_repeats"
+description: Extract the position of the repeats from a soft-masked Fasta file into a BED file, and compress and index it with tabix.
+keywords:
+  - fasta
+  - bed
+  - bgzip
+  - tabix
+components:
+  - mask/softmask2bed
+  - bgziptabix
+
+input:
+  - ch_fasta:
+      type: file
+      description: |
+        Structure [ val(meta), path(fasta), val(max_seq_length) ]
+        Meta is the Groovy Map containing sample information
+        Fasta is the input Fasta file and max_seq_length is the length of the longest sequence
+        (used to determine which tabix indexes are possible)
+output:
+  - repeats:
+      type: file
+      description: |
+        Structure: [ val(meta), path(bed.gz), path(bed.gz.gzi), path(tbi)?, path(csi)? ]
+
+authors:
+  - "@muffato"
+maintainers:
+  - "@muffato"
