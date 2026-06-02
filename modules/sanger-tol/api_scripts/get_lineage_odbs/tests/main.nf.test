@@ -1,0 +1,155 @@
+nextflow_process {
+
+    name "Test Process API_SCRIPTS_GET_LINEAGE_ODBS"
+    script "../main.nf"
+    process "API_SCRIPTS_GET_LINEAGE_ODBS"
+    tag "modules"
+    tag "modules_sangertol"
+    tag "api_scripts"
+    tag "api_scripts/get_lineage_odb"
+
+    config "./nextflow.config"
+
+    test( "homo_sapiens - fasta - specific ODB" ) {
+        setup {
+            def fake_file = new File("${launchDir}/fake_odb/lineages/mammalia_odb10/")
+            fake_file.mkdirs()
+        }
+
+        when {
+            params {
+                fake_odb_path = "${launchDir}/fake_odb"
+            }
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id:'GCA_000001405.15' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ])
+                input[1] = file(params.fake_odb_path, checkIfExists: true)
+                input[2] = "odb10"
+                input[3] = 9606
+                input[4] = "specified"
+                input[5] = "mammalia"
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test( "homo_sapiens - fasta - all ancestral ODBs" ) {
+        setup {
+            def odb_list = [
+                "bacteria_odb10", "archaea_odb10", "eukaryota_odb10", "euarchontoglires_odb10", "eutheria_odb10",
+                "bacteria_odb12", "archaea_odb12", "eukaryota_odb12", "euarchontoglires_odb12", "eutheria_odb12", "tetrapoda_odb12", "mammalia_odb12", "primates_odb12", "vertebrata_odb12", "metazoa_odb12"
+                ]
+            for (i in odb_list) {
+                def fake_file = new File("${launchDir}/fake_odb/lineages/${i}/")
+                fake_file.mkdirs()
+            }
+        }
+
+        when {
+            params {
+                fake_odb_path = "${launchDir}/fake_odb"
+            }
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id:'GCA_000001405.15' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ])
+                input[1] = file(params.fake_odb_path, checkIfExists: true)
+                input[2] = "all"
+                input[3] = 9606
+                input[4] = "ancestral_and_basal"
+                input[5] = []
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test( "homo_sapiens - fasta - all ancestral odb10" ) {
+        setup {
+            def odb_list = [ "bacteria_odb10", "archaea_odb10", "eukaryota_odb10", "euarchontoglires_odb10", "eutheria_odb10" ]
+            for (i in odb_list) {
+                def fake_file = new File("${launchDir}/fake_odb/lineages/${i}/")
+                fake_file.mkdirs()
+            }
+        }
+
+        when {
+            params {
+                fake_odb_path = "${launchDir}/fake_odb"
+            }
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id:'GCA_000001405.15' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ])
+                input[1] = file(params.fake_odb_path, checkIfExists: true)
+                input[2] = "odb10"
+                input[3] = 9606
+                input[4] = "ancestral_and_basal"
+                input[5] = []
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test( "homo_sapiens - fasta - stub" ) {
+        options "-stub"
+
+        setup {
+            def fake_file = new File("${launchDir}/fake_odb/lineages/mamalian_odb10/")
+            fake_file.mkdirs()
+        }
+
+        when {
+            params {
+                fake_odb_path = "${launchDir}/fake_odb"
+            }
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id:'GCA_000001405.15' ],
+                    file(params.nfcore_modules_testdata_base_path + 'genomics/homo_sapiens/scramble/test.fa', checkIfExists: true),
+                ])
+                input[1] = file(params.fake_odb_path, checkIfExists: true)
+                input[2] = "odb10"
+                input[3] = 9606
+                input[4] = []
+                input[5] = []
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}
