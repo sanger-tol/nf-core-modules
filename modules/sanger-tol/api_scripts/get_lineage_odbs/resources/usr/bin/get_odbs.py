@@ -229,7 +229,7 @@ def main(args=None):
         all_lineages.extend(lineage_list)
 
     # Sort the list by the odb version so it looks nicer
-    all_lineages = sorted(list(set(all_lineages)), key=lambda s: int(s.split("_odb")[1]))
+    all_lineages = sorted(list(set(all_lineages)))
 
     make_dir(os.path.dirname(args.file_out))
     print_out(all_lineages, args.file_out)

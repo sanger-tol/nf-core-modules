@@ -7,7 +7,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,6f116bf618119ef33baf0e3097064831"
+                        "GCA_000001405.15.busco_odb.csv:md5,0fb44b9ed4b812e9b995f1aaed348690"
                     ]
                 ],
                 "1": [
@@ -29,7 +29,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,6f116bf618119ef33baf0e3097064831"
+                        "GCA_000001405.15.busco_odb.csv:md5,0fb44b9ed4b812e9b995f1aaed348690"
                     ]
                 ],
                 "versions_get_odb": [
@@ -48,7 +48,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-02T11:00:38.246952836",
+        "timestamp": "2026-06-02T11:06:21.579811741",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.2"
@@ -172,7 +172,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,a8bc936932f8a781c745a4b8e04d8410"
+                        "GCA_000001405.15.busco_odb.csv:md5,f2be20b3d72d7c00e139554b074a9a6c"
                     ]
                 ],
                 "1": [
@@ -194,7 +194,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,a8bc936932f8a781c745a4b8e04d8410"
+                        "GCA_000001405.15.busco_odb.csv:md5,f2be20b3d72d7c00e139554b074a9a6c"
                     ]
                 ],
                 "versions_get_odb": [
@@ -213,7 +213,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-02T11:00:30.646147254",
+        "timestamp": "2026-06-02T11:06:14.861601409",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.2"

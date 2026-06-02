@@ -21,12 +21,12 @@ input:
         description: |
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
-    - ncbi_summary:
+    - fasta:
         type: file
         description: Assembly summary file
-        pattern: "*.json"
+        pattern: "*.(fasta|fa|fna)$"
         ontologies:
-          - edam: "http://edamontology.org/format_3464" # JSON
+          - edam: "http://edamontology.org/format_3464" # FASTA
   - odb_dir:
       type: directory
       description: Directory containing the ODB lineage data. Do not include the lineage subdirectory.
@@ -34,9 +34,14 @@ input:
       type: string
       description: Whether the user wants to use odb10 or odb12.
       pattern: "^(odb10|odb12|all)$"
+  - taxid:
+      type: integer
+      description: Taxonomic ID of the assembly.
+      pattern: "^[0-9]+$"
   - mode:
       type: string
       description: Mode of operation, "specified", "specified_and_basal", "basal_only", "best", "best_and_basal", "ancestral" and "ancestral_and_basal".
+      pattern: "^(specified|specified_and_basal|basal_only|best|best_and_basal|ancestral|ancestral_and_basal)$"
   - specified_lineages:
       type: string
       description: CSV list of specifiied lineages by user.
@@ -67,10 +72,10 @@ output:
     - - ${task.process}:
           type: string
           description: Name of the process
-      - get_odb.py:
+      - get_odbs.py:
           type: string
           description: Name of the tool
-      - get_odb.py --version | cut -d" " -f2:
+      - get_odbs.py --version | cut -d" " -f2:
           type: eval
           description: The expression to obtain the version of the tool
 
@@ -88,10 +93,10 @@ topics:
     - - ${task.process}:
           type: string
           description: Name of the process
-      - get_odb.py:
+      - get_odbs.py:
           type: string
           description: Name of the tool
-      - get_odb.py --version | cut -d" " -f2:
+      - get_odbs.py --version | cut -d" " -f2:
           type: eval
           description: The expression to obtain the version of the tool
 authors:
