@@ -6,7 +6,7 @@ nextflow_process {
     tag "modules"
     tag "modules_sangertol"
     tag "api_scripts"
-    tag "api_scripts/get_lineage_odb"
+    tag "api_scripts/get_lineage_odbs"
 
     config "./nextflow.config"
 

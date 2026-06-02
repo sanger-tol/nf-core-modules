@@ -26,7 +26,7 @@ input:
         description: Assembly summary file
         pattern: "*.(fasta|fa|fna)$"
         ontologies:
-          - edam: "http://edamontology.org/format_3464" # FASTA
+          - edam: "http://edamontology.org/format_1929" # FASTA
   - odb_dir:
       type: directory
       description: Directory containing the ODB lineage data. Do not include the lineage subdirectory.
