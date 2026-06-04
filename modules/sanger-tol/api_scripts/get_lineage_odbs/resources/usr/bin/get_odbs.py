@@ -143,10 +143,15 @@ def print_out(lineage_list, file_out):
 def validate_lineage(lineage: str, lineages_path: str) -> str:
     """
     Validate that the lineage exists in the lineage path.
+    IF path is given, if not then we assume that the user want to run busco in ONLINE mode which means we can't validate local ODBs.
     """
-    if not os.path.exists(lineages_path + "/lineages/" + lineage):
-        raise FileNotFoundError(f"Lineage {lineage} not found in {lineages_path}")
-
+    if lineages_path:
+        if not os.path.exists(lineages_path + "/lineages/" + lineage):
+            raise FileNotFoundError(f"Lineage {lineage} not found in {lineages_path}")
+    else:
+        print(
+            "Skipping validation of ODB files, as odb_dir not provided (indicates your probably wanting busco to run in online mode"
+        )
     return lineage
 
 

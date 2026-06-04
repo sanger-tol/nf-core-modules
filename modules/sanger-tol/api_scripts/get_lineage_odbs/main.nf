@@ -26,13 +26,14 @@ process API_SCRIPTS_GET_LINEAGE_ODBS {
     script:
     def args            = task.ext.args ?: ''
     def prefix          = task.ext.prefix ?: "${meta.id}"
+    def odb_dir_path    = odb_dir ? "--odb_dir ${odb_dir}" : ""
     valid_mode          = mode ? "--mode ${mode}" : ""
     formatted_lineages  = specified_lineages && mode?.contains("specified") ? "--specified_lineages " + specified_lineages.tokenize(',').join(' ') : ""
     """
     get_odbs.py \\
         --taxid ${taxid} \\
         --odb_version ${odb_version} \\
-        --odb_dir ${odb_dir} \\
+        ${odb_dir_path} \\
         ${valid_mode} \\
         --file_out ${prefix}.busco_odb.csv \\
         ${args} \\
