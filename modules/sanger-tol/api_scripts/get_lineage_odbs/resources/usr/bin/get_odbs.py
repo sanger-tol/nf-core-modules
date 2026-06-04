@@ -165,7 +165,6 @@ def get_specific_odbs(
     User provided lineages will have the ODB
     """
     specified_odbs = [validate_lineage(i + odb_version, lineage_path) for i in specified_lineages]
-
     return specified_odbs + basal_lineages
 
 
@@ -228,7 +227,7 @@ def main(args=None):
                 args.odb_dir,
                 args.basal_lineages,
                 odb_version_string,
-                None,
+                new_basal_lineages,
             )
 
         all_lineages.extend(lineage_list)
