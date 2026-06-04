@@ -78,7 +78,7 @@ nextflow_workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
                 input[1] = channel.value("988087")
-                input[2] = channel.value("basal")
+                input[2] = channel.value("basal_only")
                 input[3] = channel.value([])
                 input[4] = channel.value("odb10")
                 input[5] = channel.value([])
