@@ -148,12 +148,11 @@ def validate_lineage(lineage: str, lineages_path: str) -> str:
     if lineages_path:
         if not os.path.exists(lineages_path + "/lineages/" + lineage):
             raise FileNotFoundError(f"Lineage {lineage} not found in {lineages_path}")
-        return lineage
     else:
         print(
             "Skipping validation of ODB files, as odb_dir not provided (indicates your probably wanting busco to run in online mode"
         )
-        return lineage
+    return lineage
 
 
 def get_specific_odbs(
@@ -235,8 +234,6 @@ def main(args=None):
 
     # Sort the list by the odb version so it looks nicer
     all_lineages = sorted(list(set(all_lineages)))
-
-    print(all_lineages)
 
     make_dir(os.path.dirname(args.file_out))
     print_out(all_lineages, args.file_out)
