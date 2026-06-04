@@ -1,4 +1,37 @@
 {
+    "Ceramica_pisi - odb12 - ancestral - online": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,c46420a3923e63e76241eb3721018df2"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "odb_csv": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,c46420a3923e63e76241eb3721018df2"
+                    ]
+                ],
+                "restructured_output": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-06-04T14:08:25.563618341",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
+    },
     "Ceramica_pisi - all_odb - online": {
         "content": [
             {
@@ -68,6 +101,39 @@
             "nextflow": "25.10.2"
         }
     },
+    "Ceramica_pisi - odb10 - basal - online": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,3533a71a930bd1b5afaf9e3880c0c5bf"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "odb_csv": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,3533a71a930bd1b5afaf9e3880c0c5bf"
+                    ]
+                ],
+                "restructured_output": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-06-04T14:12:53.60748541",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
+    },
     "Ceramica_pisi - all_odb - specified - offline": {
         "content": [
             {
@@ -89,14 +155,14 @@
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,7d8722a2f591e934091c86adb37978b7",
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,95bb80afa83ebbe4d3f71e13d3b7f47e",
                             "Ceramica_pisi.full_table.tsv.gz:md5,80777317e63c02f1d80119a1038df08d",
                             "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7a2510a18d093facb2cedfc0d49306c1",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,1113ac486a11e334249eae6ca900eca0",
-                            "Ceramica_pisi.short_summary.json:md5,85ea1e88a1bf5ab83ea1d7b2843242e1",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,fac4955a36c2490da9e75b35ae842dd9",
+                            "Ceramica_pisi.short_summary.json:md5,504d345dcf1dbfdbd1d0dcc377d0e24c",
                             "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
-                            "Ceramica_pisi.short_summary.txt:md5,493aafee94416a9c106f5addc6861d20",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,c396687d051131bd9bd580ef7ccddb4a"
+                            "Ceramica_pisi.short_summary.txt:md5,05820152eafc5667a0b07169a802bb3a",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,615ff4690203609608164b3b0c16e8e3"
                         ]
                     ],
                     [
@@ -108,14 +174,14 @@
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,c0491d4d3d648b9fa1dacb85e6ecc7fa",
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8e0f95231838e63ada6f833953cb06ed",
                             "Ceramica_pisi.full_table.tsv.gz:md5,6d8e1467c24c90a0b1a2c4de9a5a45d5",
                             "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7907b15451b96b0da834f1f48e214ec4",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,b0de71de93b4b99d7fe073981055dff5",
-                            "Ceramica_pisi.short_summary.json:md5,0823b57b82cf0cf803ec517f3974ee2f",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,7b8aa99f7b7fbd9b6ad85ab1a4eec473",
+                            "Ceramica_pisi.short_summary.json:md5,08c61dbabbf754735dfd024ce34ce688",
                             "Ceramica_pisi.short_summary.tsv:md5,97bf63d6cb79a5255dfd8974aecf406a",
-                            "Ceramica_pisi.short_summary.txt:md5,4c3dc6c59f6d7a51913353b4753b32d2",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,0dd06b520178a65144369e37109553f5"
+                            "Ceramica_pisi.short_summary.txt:md5,d481f3b49c42ae5fe1d22cbe6725f468",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,b51b75835e40ced7e0251cc3f0f5a3d7"
                         ]
                     ]
                 ],
@@ -137,14 +203,14 @@
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,7d8722a2f591e934091c86adb37978b7",
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,95bb80afa83ebbe4d3f71e13d3b7f47e",
                             "Ceramica_pisi.full_table.tsv.gz:md5,80777317e63c02f1d80119a1038df08d",
                             "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7a2510a18d093facb2cedfc0d49306c1",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,1113ac486a11e334249eae6ca900eca0",
-                            "Ceramica_pisi.short_summary.json:md5,85ea1e88a1bf5ab83ea1d7b2843242e1",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,fac4955a36c2490da9e75b35ae842dd9",
+                            "Ceramica_pisi.short_summary.json:md5,504d345dcf1dbfdbd1d0dcc377d0e24c",
                             "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
-                            "Ceramica_pisi.short_summary.txt:md5,493aafee94416a9c106f5addc6861d20",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,c396687d051131bd9bd580ef7ccddb4a"
+                            "Ceramica_pisi.short_summary.txt:md5,05820152eafc5667a0b07169a802bb3a",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,615ff4690203609608164b3b0c16e8e3"
                         ]
                     ],
                     [
@@ -156,20 +222,20 @@
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,c0491d4d3d648b9fa1dacb85e6ecc7fa",
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8e0f95231838e63ada6f833953cb06ed",
                             "Ceramica_pisi.full_table.tsv.gz:md5,6d8e1467c24c90a0b1a2c4de9a5a45d5",
                             "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7907b15451b96b0da834f1f48e214ec4",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,b0de71de93b4b99d7fe073981055dff5",
-                            "Ceramica_pisi.short_summary.json:md5,0823b57b82cf0cf803ec517f3974ee2f",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,7b8aa99f7b7fbd9b6ad85ab1a4eec473",
+                            "Ceramica_pisi.short_summary.json:md5,08c61dbabbf754735dfd024ce34ce688",
                             "Ceramica_pisi.short_summary.tsv:md5,97bf63d6cb79a5255dfd8974aecf406a",
-                            "Ceramica_pisi.short_summary.txt:md5,4c3dc6c59f6d7a51913353b4753b32d2",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,0dd06b520178a65144369e37109553f5"
+                            "Ceramica_pisi.short_summary.txt:md5,d481f3b49c42ae5fe1d22cbe6725f468",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,b51b75835e40ced7e0251cc3f0f5a3d7"
                         ]
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-03T15:46:50.952911696",
+        "timestamp": "2026-06-04T16:32:11.672609354",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.2"

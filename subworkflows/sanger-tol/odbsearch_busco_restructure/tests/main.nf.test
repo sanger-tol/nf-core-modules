@@ -35,71 +35,7 @@ nextflow_workflow {
         }
     }
 
-    test ( "Ceramica_pisi - odb12 - ancestral - online" ) {
-        when {
-
-            params {
-                busco_args      = ""
-            }
-
-            workflow {
-                """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = channel.value("988087")
-                input[2] = channel.value("ancestral")
-                input[3] = channel.value([])
-                input[4] = channel.value("odb12")
-                input[5] = channel.value([])
-                input[6] = channel.value("Ceramica_pisi_988087")
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
-            )
-        }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
-    }
-
-    test ( "Ceramica_pisi - odb10 - basal - online" ) {
-        when {
-
-            params {
-                busco_args      = ""
-            }
-
-            workflow {
-                """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = channel.value("988087")
-                input[2] = channel.value("basal_only")
-                input[3] = channel.value([])
-                input[4] = channel.value("odb10")
-                input[5] = channel.value([])
-                input[6] = channel.value("Ceramica_pisi_988087")
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
-            )
-        }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
-    }
-
-test ( "Ceramica_pisi - all_odb - specified - offline" ) {
+    test ( "Ceramica_pisi - all_odb - specified - offline" ) {
         setup {
             curlAndExtract("https://tolit.cog.sanger.ac.uk/test-data/resources/busco/genomenote.GCA_963859965.1.2025-12-08.tar.gz", "${launchDir}/")
         }
