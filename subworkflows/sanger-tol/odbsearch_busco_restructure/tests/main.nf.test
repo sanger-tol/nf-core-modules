@@ -1,0 +1,137 @@
+nextflow_workflow {
+
+    name "Test Subworkflow ODBSEARCH_BUSCO_RESTRUCTURE"
+    script "../main.nf"
+    config "./nextflow.config"
+    workflow "ODBSEARCH_BUSCO_RESTRUCTURE"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/odbsearch_busco_restructure"
+    tag "api_scripts/get_lineage_odb"
+    tag "restructurebuscodir"
+    tag "busco/busco"
+    tag "modules/nf-core/gunzip"
+    tag "subworkflows/../modules/nf-core/gunzip"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            ["gunzip"]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        run("GUNZIP"){
+            script "../../../../modules/nf-core/gunzip/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id: "Ceramica_pisi" ],
+                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true)
+                ]
+                """
+            }
+        }
+    }
+
+    test ( "Ceramica_pisi - odb12 - ancestral - online" ) {
+        when {
+
+            params {
+                busco_args      = ""
+            }
+
+            workflow {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = channel.value("988087")
+                input[2] = channel.value("ancestral")
+                input[3] = channel.value([])
+                input[4] = channel.value("odb12")
+                input[5] = channel.value([])
+                input[6] = channel.value("Ceramica_pisi_988087")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test ( "Ceramica_pisi - odb10 - basal - online" ) {
+        when {
+
+            params {
+                busco_args      = ""
+            }
+
+            workflow {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = channel.value("988087")
+                input[2] = channel.value("basal")
+                input[3] = channel.value([])
+                input[4] = channel.value("odb10")
+                input[5] = channel.value([])
+                input[6] = channel.value("Ceramica_pisi_988087")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+test ( "Ceramica_pisi - all_odb - specified - offline" ) {
+        setup {
+            curlAndExtract("https://tolit.cog.sanger.ac.uk/test-data/resources/busco/genomenote.GCA_963859965.1.2025-12-08.tar.gz", "${launchDir}/")
+        }
+
+        when {
+
+            params {
+                odb_path   = "${launchDir}/genomenote.GCA_963859965.1.2025-12-08"
+            }
+
+            workflow {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = channel.value("988087")
+                input[2] = channel.value("specified")
+                input[3] = file(params.odb_path, checkIfExists: true)
+                input[4] = channel.value("all")
+                input[5] = channel.value("lepidoptera")
+                input[6] = channel.value("Ceramica_pisi_988087")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+}

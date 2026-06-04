@@ -1,0 +1,201 @@
+{
+    "Ceramica_pisi - all_odb - online": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,a04e7c59cb5ed5eaa0d32bb552f5d418"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "archaea_odb10",
+                            "taxid": "988087",
+                            "outdir": "Ceramica_pisi_988087",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,090d3cde02ebc23fca90920792cce6f2",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,b0607e822efeed58214e0b1040870c31",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,211c27b09cb9562baa416070a15f0e23",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,0eac0b1d029759a366df5457209b4aba",
+                            "Ceramica_pisi.short_summary.json:md5,b138b1a60e8c62718ee10bae3e5d8a97",
+                            "Ceramica_pisi.short_summary.tsv:md5,2dbdbe2a7be1eec1d2940d3e01585194",
+                            "Ceramica_pisi.short_summary.txt:md5,95e223324a4d24286b2ffc5d0e8030fc",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,00f5f5505d050ae4a522fab2e5cfac6a"
+                        ]
+                    ]
+                ],
+                "odb_csv": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,a04e7c59cb5ed5eaa0d32bb552f5d418"
+                    ]
+                ],
+                "restructured_output": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "archaea_odb10",
+                            "taxid": "988087",
+                            "outdir": "Ceramica_pisi_988087",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,090d3cde02ebc23fca90920792cce6f2",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,b0607e822efeed58214e0b1040870c31",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,211c27b09cb9562baa416070a15f0e23",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,0eac0b1d029759a366df5457209b4aba",
+                            "Ceramica_pisi.short_summary.json:md5,b138b1a60e8c62718ee10bae3e5d8a97",
+                            "Ceramica_pisi.short_summary.tsv:md5,2dbdbe2a7be1eec1d2940d3e01585194",
+                            "Ceramica_pisi.short_summary.txt:md5,95e223324a4d24286b2ffc5d0e8030fc",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,00f5f5505d050ae4a522fab2e5cfac6a"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-03T15:45:47.640736163",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
+    },
+    "Ceramica_pisi - all_odb - specified - offline": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,1788ea0e42b2b32b1337e8fd307f6ffd"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "Ceramica_pisi_988087",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,7d8722a2f591e934091c86adb37978b7",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,80777317e63c02f1d80119a1038df08d",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7a2510a18d093facb2cedfc0d49306c1",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,1113ac486a11e334249eae6ca900eca0",
+                            "Ceramica_pisi.short_summary.json:md5,85ea1e88a1bf5ab83ea1d7b2843242e1",
+                            "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
+                            "Ceramica_pisi.short_summary.txt:md5,493aafee94416a9c106f5addc6861d20",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,c396687d051131bd9bd580ef7ccddb4a"
+                        ]
+                    ],
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb12",
+                            "taxid": "988087",
+                            "outdir": "Ceramica_pisi_988087",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,c0491d4d3d648b9fa1dacb85e6ecc7fa",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,6d8e1467c24c90a0b1a2c4de9a5a45d5",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7907b15451b96b0da834f1f48e214ec4",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,b0de71de93b4b99d7fe073981055dff5",
+                            "Ceramica_pisi.short_summary.json:md5,0823b57b82cf0cf803ec517f3974ee2f",
+                            "Ceramica_pisi.short_summary.tsv:md5,97bf63d6cb79a5255dfd8974aecf406a",
+                            "Ceramica_pisi.short_summary.txt:md5,4c3dc6c59f6d7a51913353b4753b32d2",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,0dd06b520178a65144369e37109553f5"
+                        ]
+                    ]
+                ],
+                "odb_csv": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,1788ea0e42b2b32b1337e8fd307f6ffd"
+                    ]
+                ],
+                "restructured_output": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "Ceramica_pisi_988087",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,7d8722a2f591e934091c86adb37978b7",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,80777317e63c02f1d80119a1038df08d",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7a2510a18d093facb2cedfc0d49306c1",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,1113ac486a11e334249eae6ca900eca0",
+                            "Ceramica_pisi.short_summary.json:md5,85ea1e88a1bf5ab83ea1d7b2843242e1",
+                            "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
+                            "Ceramica_pisi.short_summary.txt:md5,493aafee94416a9c106f5addc6861d20",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,c396687d051131bd9bd580ef7ccddb4a"
+                        ]
+                    ],
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb12",
+                            "taxid": "988087",
+                            "outdir": "Ceramica_pisi_988087",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,c0491d4d3d648b9fa1dacb85e6ecc7fa",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,6d8e1467c24c90a0b1a2c4de9a5a45d5",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7907b15451b96b0da834f1f48e214ec4",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,b0de71de93b4b99d7fe073981055dff5",
+                            "Ceramica_pisi.short_summary.json:md5,0823b57b82cf0cf803ec517f3974ee2f",
+                            "Ceramica_pisi.short_summary.tsv:md5,97bf63d6cb79a5255dfd8974aecf406a",
+                            "Ceramica_pisi.short_summary.txt:md5,4c3dc6c59f6d7a51913353b4753b32d2",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,0dd06b520178a65144369e37109553f5"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-03T15:46:50.952911696",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
+    },
+    "Ceramica_pisi - all_odb": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "odb_csv": [
+                    
+                ],
+                "restructured_output": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-06-02T22:46:38.628993993",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.2"
+        }
+    }
+}
