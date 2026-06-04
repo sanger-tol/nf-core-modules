@@ -51,12 +51,10 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
             [ new_meta, ref ]
         }
 
+
     //
     // MODULE: Run BUSCO search
     //
-    val_odb_dir.view{"val_odb_dir: ${it}"}
-    val_odb_dir.first().view{"val_odb_first: ${it}"}
-
     BUSCO_BUSCO(
         ch_busco_input,
         'genome',
