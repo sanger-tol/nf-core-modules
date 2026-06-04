@@ -1,5 +1,5 @@
 include { API_SCRIPTS_GET_LINEAGE_ODBS  } from "../../../modules/sanger-tol/api_scripts/get_lineage_odbs"
-include { BUSCO_BUSCO                   } from '../../../modules/nf-core/busco/busco/main'
+include { BUSCO_BUSCO                   } from '../../../modules/sanger-tol/busco/busco/main'
 include { RESTRUCTUREBUSCODIR           } from '../../../modules/sanger-tol/restructurebuscodir/main'
 
 workflow ODBSEARCH_BUSCO_RESTRUCTURE {
