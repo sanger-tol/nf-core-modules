@@ -1,4 +1,4 @@
-#!/software/treeoflife/conda/users/envs/tol/nf-core_4.0/bin/python3
+#!/usr/bin/env python3
 
 """
 Read the pipeline manifest and generate the CITATION.cff file
