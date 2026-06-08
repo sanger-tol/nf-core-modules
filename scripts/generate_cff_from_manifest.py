@@ -183,7 +183,7 @@ def build_cff(pipeline_obj):
         set_if_set(author, "family-names", family)
         authors.append(author)
     # Authors ordered by alphabetical order
-    authors.sort(key=operator.itemgetter("family-names", ""))
+    authors.sort(key=operator.itemgetter("family-names"))
     content["authors"] = authors
     return content
 
