@@ -88,7 +88,7 @@ topics:
     - - ${task.process}:
           type: string
           description: Name of the process
-      - get_odbs.py:
+      - get_odbs:
           type: string
           description: Name of the tool
       - get_odbs.py --version | cut -d" " -f2:
