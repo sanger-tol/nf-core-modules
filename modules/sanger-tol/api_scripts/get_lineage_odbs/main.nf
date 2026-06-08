@@ -17,7 +17,7 @@ process API_SCRIPTS_GET_LINEAGE_ODBS {
     output:
     tuple val(meta), path("*.busco_odb.csv"), emit: csv
     tuple val("${task.process}"), val('python'), eval('python --version | sed "s/Python //"'), emit: versions_python, topic: versions
-    tuple val("${task.process}"), val('get_odbs.py'), eval('get_odbs.py --version | cut -d" " -f2'), emit: versions_get_odb, topic: versions
+    tuple val("${task.process}"), val('get_odbs'), eval('get_odbs.py --version | cut -d" " -f2'), emit: versions_get_odb, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -41,6 +41,6 @@ process API_SCRIPTS_GET_LINEAGE_ODBS {
     stub:
     def prefix          = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.busco_odb.csv
+    echo "busco_lineage,eukaryota_odb10,ancestral" > ${prefix}.busco_odb.csv
     """
 }

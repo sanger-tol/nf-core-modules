@@ -27,21 +27,16 @@ input:
         pattern: "*.(fasta|fa|fna)$"
         ontologies:
           - edam: "http://edamontology.org/format_1929" # FASTA
-  - odb_dir:
+  - odb_directory:
       type: directory
       description: Directory containing the ODB lineage data. Do not include the lineage subdirectory.
-  - odb_version:
-      type: string
-      description: Whether the user wants to use odb10 or odb12.
-      pattern: "^(odb10|odb12|all)$"
+  - mapping_directory:
+      type: directory
+      description: Directory containing the ODB lineage mapping data, these exist as txt files of taxid to lineage.
   - taxid:
       type: integer
       description: Taxonomic ID of the assembly.
       pattern: "^[0-9]+$"
-  - mode:
-      type: string
-      description: Mode of operation, "specified", "specified_and_basal", "basal_only", "best", "best_and_basal", "ancestral" and "ancestral_and_basal".
-      pattern: "^(specified|specified_and_basal|basal_only|latest|latest_and_basal|ancestral|ancestral_and_basal)$"
   - specified_lineages:
       type: string
       description: CSV list of specifiied lineages by user.

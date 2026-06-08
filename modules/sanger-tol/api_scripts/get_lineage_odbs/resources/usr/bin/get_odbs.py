@@ -221,7 +221,7 @@ def validate_lineage(lineage: dict, lineages_path: str):
             error_lineages.append(y["odb"])
         else:
             print(
-                f"Skipping validation of {lineage}, odb_dir not provided (indicates your probably wanting busco to run in online mode)"
+                f"Skipping validation of {y['odb']}, odb_dir not provided (indicates your probably wanting busco to run in online mode)"
             )
 
     if len(error_lineages) > 0:

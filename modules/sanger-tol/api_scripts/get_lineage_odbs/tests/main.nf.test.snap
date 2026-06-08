@@ -20,7 +20,7 @@
                 "2": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "get_odbs",
                         "2.0"
                     ]
                 ],
@@ -35,7 +35,7 @@
                 "versions_get_odb": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "get_odbs",
                         "2.0"
                     ]
                 ],
@@ -48,7 +48,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-05T16:15:08.579235322",
+        "timestamp": "2026-06-08T10:35:07.384106687",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -62,7 +62,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "GCA_000001405.15.busco_odb.csv:md5,c92c1a86039c80eb77158deca226df65"
                     ]
                 ],
                 "1": [
@@ -75,7 +75,7 @@
                 "2": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "get_odbs",
                         "2.0"
                     ]
                 ],
@@ -84,13 +84,13 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "GCA_000001405.15.busco_odb.csv:md5,c92c1a86039c80eb77158deca226df65"
                     ]
                 ],
                 "versions_get_odb": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "get_odbs",
                         "2.0"
                     ]
                 ],
@@ -103,7 +103,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-05T16:19:17.941685184",
+        "timestamp": "2026-06-08T10:39:02.744583733",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -130,7 +130,7 @@
                 "2": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "get_odbs",
                         "2.0"
                     ]
                 ],
@@ -145,7 +145,7 @@
                 "versions_get_odb": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "get_odbs",
                         "2.0"
                     ]
                 ],
@@ -158,7 +158,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-08T10:17:39.909871184",
+        "timestamp": "2026-06-08T10:35:15.250321527",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
