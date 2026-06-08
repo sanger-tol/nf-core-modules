@@ -1,5 +1,5 @@
 {
-    "homo_sapiens - fasta - all ancestral odb10": {
+    "homo_sapiens - fasta - basal and mammalia odb10": {
         "content": [
             {
                 "0": [
@@ -7,7 +7,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,0fb44b9ed4b812e9b995f1aaed348690"
+                        "GCA_000001405.15.busco_odb.csv:md5,019cf1d67980047ac0d57ac40454cdd5"
                     ]
                 ],
                 "1": [
@@ -20,8 +20,8 @@
                 "2": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
+                        "get_odbs",
+                        "2.0"
                     ]
                 ],
                 "csv": [
@@ -29,14 +29,14 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,0fb44b9ed4b812e9b995f1aaed348690"
+                        "GCA_000001405.15.busco_odb.csv:md5,019cf1d67980047ac0d57ac40454cdd5"
                     ]
                 ],
                 "versions_get_odb": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
+                        "get_odbs",
+                        "2.0"
                     ]
                 ],
                 "versions_python": [
@@ -48,10 +48,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-02T11:06:21.579811741",
+        "timestamp": "2026-06-08T14:16:16.462776503",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
+            "nextflow": "25.10.4"
         }
     },
     "homo_sapiens - fasta - stub": {
@@ -62,7 +62,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "GCA_000001405.15.busco_odb.csv:md5,c92c1a86039c80eb77158deca226df65"
                     ]
                 ],
                 "1": [
@@ -75,8 +75,8 @@
                 "2": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
+                        "get_odbs",
+                        "2.0"
                     ]
                 ],
                 "csv": [
@@ -84,14 +84,14 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "GCA_000001405.15.busco_odb.csv:md5,c92c1a86039c80eb77158deca226df65"
                     ]
                 ],
                 "versions_get_odb": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
+                        "get_odbs",
+                        "2.0"
                     ]
                 ],
                 "versions_python": [
@@ -103,13 +103,13 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-02T11:00:45.690796029",
+        "timestamp": "2026-06-08T10:39:02.744583733",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
+            "nextflow": "25.10.4"
         }
     },
-    "homo_sapiens - fasta - specific ODB": {
+    "homo_sapiens - fasta - 10/12 ancestral ODBs": {
         "content": [
             {
                 "0": [
@@ -117,7 +117,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,fac5b6239758d55cc86f12bd693ec4f4"
+                        "GCA_000001405.15.busco_odb.csv:md5,b1642a91209438cf6475ec487c9447bb"
                     ]
                 ],
                 "1": [
@@ -130,8 +130,8 @@
                 "2": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
+                        "get_odbs",
+                        "2.0"
                     ]
                 ],
                 "csv": [
@@ -139,14 +139,14 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,fac5b6239758d55cc86f12bd693ec4f4"
+                        "GCA_000001405.15.busco_odb.csv:md5,b1642a91209438cf6475ec487c9447bb"
                     ]
                 ],
                 "versions_get_odb": [
                     [
                         "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
+                        "get_odbs",
+                        "2.0"
                     ]
                 ],
                 "versions_python": [
@@ -158,65 +158,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-02T11:00:22.559928189",
+        "timestamp": "2026-06-08T14:16:25.339729365",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
-        }
-    },
-    "homo_sapiens - fasta - all ancestral ODBs": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "GCA_000001405.15"
-                        },
-                        "GCA_000001405.15.busco_odb.csv:md5,f2be20b3d72d7c00e139554b074a9a6c"
-                    ]
-                ],
-                "1": [
-                    [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "python",
-                        "3.14.5"
-                    ]
-                ],
-                "2": [
-                    [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
-                    ]
-                ],
-                "csv": [
-                    [
-                        {
-                            "id": "GCA_000001405.15"
-                        },
-                        "GCA_000001405.15.busco_odb.csv:md5,f2be20b3d72d7c00e139554b074a9a6c"
-                    ]
-                ],
-                "versions_get_odb": [
-                    [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "get_odbs.py",
-                        "1.3"
-                    ]
-                ],
-                "versions_python": [
-                    [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
-                        "python",
-                        "3.14.5"
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-06-02T11:06:14.861601409",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
+            "nextflow": "25.10.4"
         }
     }
 }
