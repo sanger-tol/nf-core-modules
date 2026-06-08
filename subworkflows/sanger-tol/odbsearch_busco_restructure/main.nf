@@ -7,9 +7,9 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     ch_reference            // tuple([meta], reference)
     val_taxid               // val(9606)
     val_mode                // val("ancestral_and_basal")
-    val_odb_dir             // val(path to lineages folder)
-    val_odb_version         // val(odb10|odb12|all)
-    val_odb_override        // val("mammalia")
+    val_odb_directory       // val(path to lineages folder)
+    val_mapping_directory   // val(path to mapping folder)
+    val_specified_lineages  // val("mammalia")
     val_output_dir          // val(output directory)
 
     main:
@@ -19,11 +19,10 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     //
     API_SCRIPTS_GET_LINEAGE_ODBS (
         ch_reference,
-        val_odb_dir,
-        val_odb_version,
+        val_odb_directory,
+        val_mapping_directory,
         val_taxid,
-        val_mode,
-        val_odb_override
+        val_specified_lineages
     )
 
 
