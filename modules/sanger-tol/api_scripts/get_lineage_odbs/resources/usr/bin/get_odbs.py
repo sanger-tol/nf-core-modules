@@ -37,7 +37,12 @@ def parse_args(args=None):
         action="append",
     )
     parser.add_argument("--debug", help="Debug mode.", action="store_true", default=False)
-
+    parser.add_argument(
+        "--print_output",
+        help="Print output to stdout. Doesn't print the full debug log.",
+        action="store_true",
+        default=False,
+    )
     parser.add_argument(
         "--extra_lineages", help="Specified lineage ODBs to use. Minus the _odb{int}", nargs="+", default=None
     )
@@ -171,7 +176,9 @@ def get_odb(mode, taxid, basal_lineages, extra_lineages, lineage_tax_ids_dict, o
     if "basal" in mode:
         for basal in basal_lineages:
             for x, y in lineage_tax_ids_dict.items():
+                print(f"Checking {y['lineage']} against {basal}")
                 if basal == y["lineage"]:
+                    print(f"Found {y['lineage']} for {y['taxid']}")
                     if f"{y['taxid']}_{basal}{odb_string}" not in master_list.keys():
                         master_list[f"{y['taxid']}_{basal}{odb_string}"] = {
                             "odb": basal + odb_string,
@@ -196,18 +203,18 @@ def get_odb(mode, taxid, basal_lineages, extra_lineages, lineage_tax_ids_dict, o
     return master_list
 
 
-def print_out(lineage_list, file_out, debug):
+def print_out(lineage_list, file_out, debug, print_output):
     """
     Print the lineage list to the output file.
     One line per lineage
     """
     with open(file_out, "w") as fout:
         for item_code, data in lineage_list.items():
-            line = f"busco_lineage,{data['odb']},{data['class']}\n"
-            if debug:
+            line = f"busco_lineage,{data['odb']},{data['class']}"
+            if debug or print_output:
                 print(line)
 
-            fout.write(line)
+            fout.write(f"{line}\n")
 
 
 def validate_lineage(lineage: dict, lineages_path: str):
@@ -244,6 +251,8 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool):
             if f"_{odb_placeholder}" in str(file):
                 (print("Found", file) if debug else None)
                 mapping_files.append((str(file), f"_{odb}"))
+
+    print(f"Found {mapping_files}")
 
     return mapping_files
 
@@ -288,7 +297,7 @@ def main(args=None):
 
     validate_lineage(all_lineages, args.odb_dir)
     make_dir(os.path.dirname(args.file_out))
-    print_out(all_lineages, args.file_out, args.debug)
+    print_out(all_lineages, args.file_out, args.debug, args.print_output)
 
 
 if __name__ == "__main__":
