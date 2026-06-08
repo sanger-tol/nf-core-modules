@@ -31,4 +31,4 @@ Modified by Damon-Lee Pointon (dp24)
 ODB mapping files are provided by the [BUSCO](https://busco.ezlab.org/) project at the `busco-data.ezlab.org` data repo:
 
 - [mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt](https://busco-data.ezlab.org/v5/data/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt) - Created 2019-12-16
-- [mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt](https://busco-data.ezlab.org/v5/data/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt) - Created 2025-01-15
+- [mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt](https://busco-data.ezlab.org/v5/data/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt) - Created 2025-01-15 - Sanger-tol version of the file adds `bacteria` and `archaea`

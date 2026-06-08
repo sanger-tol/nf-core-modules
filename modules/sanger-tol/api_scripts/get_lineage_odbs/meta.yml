@@ -41,7 +41,7 @@ input:
   - mode:
       type: string
       description: Mode of operation, "specified", "specified_and_basal", "basal_only", "best", "best_and_basal", "ancestral" and "ancestral_and_basal".
-      pattern: "^(specified|specified_and_basal|basal_only|best|best_and_basal|ancestral|ancestral_and_basal)$"
+      pattern: "^(specified|specified_and_basal|basal_only|latest|latest_and_basal|ancestral|ancestral_and_basal)$"
   - specified_lineages:
       type: string
       description: CSV list of specifiied lineages by user.

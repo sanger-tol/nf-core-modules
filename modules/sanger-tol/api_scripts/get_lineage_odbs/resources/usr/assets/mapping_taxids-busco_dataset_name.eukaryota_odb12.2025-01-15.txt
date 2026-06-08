@@ -125,3 +125,5 @@
 4751	fungi
 33208	metazoa
 2759	eukaryota
+2	bacteria
+2157	archaea
