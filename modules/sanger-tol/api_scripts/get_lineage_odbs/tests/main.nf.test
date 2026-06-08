@@ -8,6 +8,37 @@ nextflow_process {
     tag "api_scripts"
     tag "api_scripts/get_lineage_odbs"
 
+    setup {
+        // Download mapping files once for all tests
+        def mapping_dir = new File("${launchDir}/mapping_files/")
+        def raw_mapping_dir = new File("${launchDir}/raw_mapping_files/")
+        mapping_dir.mkdirs()
+        raw_mapping_dir.mkdirs()
+
+        def all_mapping_files = [
+            "archaea_odb10.2019-12-16", "bacteria_odb10.2019-12-16", "eukaryota_odb10.2019-12-16",
+            "archaea_odb12.2024-11-15", "bacteria_odb12.2024-11-15", "eukaryota_odb12.2025-01-15",
+        ]
+
+        all_mapping_files.each { file_spec ->
+            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.${file_spec}.txt.tar.gz", "${launchDir}/raw_mapping_files")
+        }
+
+        // Concatenate by version
+        ['odb10', 'odb12'].each { version ->
+            def version_files = all_mapping_files.findAll { it.contains(version) }
+            if (version_files) {
+                def firstDate = version_files[0].split('\\.')[1]
+                def cmd = ['bash', '-c', "cat ${launchDir}/raw_mapping_files/*${version}* > ${launchDir}/mapping_files/${version}_mapping_file.${firstDate}.txt"]
+                def proc = cmd.execute()
+                proc.waitFor()
+                if (proc.exitValue() != 0) {
+                    throw new RuntimeException("Error - failed to cat ${version}_mapping_file: ${proc.err.text}")
+                }
+            }
+        }
+    }
+
     test( "homo_sapiens - fasta - basal and mammalia odb10" ) {
         config "./basal_and_mammalia.config"
         setup {
@@ -18,10 +49,6 @@ nextflow_process {
                 def fake_file = new File("${launchDir}/fake_odb/lineages/${i}/")
                 fake_file.mkdirs()
             }
-
-            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt.tar.gz", "${launchDir}/mapping_files")
-            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt.tar.gz", "${launchDir}/mapping_files")
-
         }
 
         when {
@@ -65,10 +92,6 @@ nextflow_process {
                 def fake_file = new File("${launchDir}/fake_odb/lineages/${i}/")
                 fake_file.mkdirs()
             }
-
-            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt.tar.gz", "${launchDir}/mapping_files")
-            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt.tar.gz", "${launchDir}/mapping_files")
-
         }
 
         when {
@@ -105,10 +128,6 @@ nextflow_process {
         setup {
             def fake_file = new File("${launchDir}/fake_odb/lineages/mamalian_odb10/")
             fake_file.mkdirs()
-
-            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt.tar.gz", "${launchDir}/mapping_files")
-            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt.tar.gz", "${launchDir}/mapping_files")
-
         }
 
         when {

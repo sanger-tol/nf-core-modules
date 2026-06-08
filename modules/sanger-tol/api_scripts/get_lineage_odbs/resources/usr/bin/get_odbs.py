@@ -244,7 +244,7 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool):
     mapping_files = []
     odb_version_list = ["odb10", "odb12", "odb12.2"] if "all" in odb_version else odb_version
 
-    for file in Path(mapping_dir).glob("mapping_taxids-busco_dataset_name.eukaryota_*.txt"):
+    for file in Path(mapping_dir).glob("*.txt"):
         for odb in odb_version_list:
             # There is no odb12.2 mapping file as of 5th June 2026
             odb_placeholder = "odb12" if odb == "odb12.2" else odb
