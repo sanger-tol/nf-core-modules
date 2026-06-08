@@ -176,9 +176,7 @@ def get_odb(mode, taxid, basal_lineages, extra_lineages, lineage_tax_ids_dict, o
     if "basal" in mode:
         for basal in basal_lineages:
             for x, y in lineage_tax_ids_dict.items():
-                print(f"Checking {y['lineage']} against {basal}")
                 if basal == y["lineage"]:
-                    print(f"Found {y['lineage']} for {y['taxid']}")
                     if f"{y['taxid']}_{basal}{odb_string}" not in master_list.keys():
                         master_list[f"{y['taxid']}_{basal}{odb_string}"] = {
                             "odb": basal + odb_string,
@@ -248,7 +246,7 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool):
         for odb in odb_version_list:
             # There is no odb12.2 mapping file as of 5th June 2026
             odb_placeholder = "odb12" if odb == "odb12.2" else odb
-            if f"_{odb_placeholder}" in str(file):
+            if f"{odb_placeholder}" in str(file):
                 (print("Found", file) if debug else None)
                 mapping_files.append((str(file), f"_{odb}"))
 
