@@ -39,6 +39,7 @@ To make the `odb10` merged mapping file, the below files must be merged into a s
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt.tar.gz"
 
 To make the `odb12` merged mapping file, the below files must be merged into a single file such as `mapping_files/odb12_mapping_file.txt`:
+
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.archaea_odb12.2024-11-15.txt.tar.gz"
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.bacteria_odb12.2024-11-15.txt.tar.gz"
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2024-11-15.txt.tar.gz"
