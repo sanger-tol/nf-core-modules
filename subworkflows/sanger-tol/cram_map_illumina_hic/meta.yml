@@ -6,6 +6,7 @@ keywords:
   - hic
   - align
   - bam
+  - cram
 components:
   - cramalign/gencramchunks
   - cramalign/bwamem2alignhic
@@ -41,20 +42,26 @@ input:
       description: Size of chunk to split CRAM files into
   - val_mark_duplicates:
       type: boolean
-      description: Whether to mark duplicates on the merged BAM or not
+      description: Whether to mark duplicates on the merged CRAM or not
 output:
-  - bam:
+  - cram:
       type: file
       description: |
-        Channel containing the BAM files describing Hi-C alignments to the input assemblies
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.bam"
-  - bam_index:
+        Channel containing the CRAM files describing Hi-C alignments to the input assemblies
+        Structure: [ val(meta), path(cram) ]
+      pattern: "*.cram"
+  - cram_index:
       type: file
       description: |
-        Channel containing the indexes for the output BAM
-        Structure: [ val(meta), path(bam) ]
+        Channel containing the indexes for the output CRAM
+        Structure: [ val(meta), path(cram) ]
       pattern: "*.{bai,csi,crai}"
+  - cram_markdup_stats:
+      type: file
+      description: |
+        Channel containing the duplicate-marking metrics, if selected
+        Structure: [ val(meta), path(metrics) ]
+      pattern: "*.metrics"
 authors:
   - "@prototaxites"
 maintainers:

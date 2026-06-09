@@ -6,7 +6,7 @@ keywords:
   - pacbio
   - ont
   - align
-  - bam
+  - cram
 components:
   - cramalign/gencramchunks
   - cramalign/minimap2align
@@ -36,12 +36,18 @@ input:
       description: Size of chunk to split CRAM files into
 
 output:
-  - bam:
+  - cram:
       type: file
       description: |
-        Channel containing the BAM files describing long-read alignments to the input assemblies
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.bam"
+        Channel containing the CRAM files describing long-read alignments to the input assemblies
+        Structure: [ val(meta), path(cram) ]
+      pattern: "*.cram"
+  - cram_index:
+      type: file
+      description: |
+        Channel containing the index file(s) for the CRAM files
+        Structure: [ val(meta), path(index) ]
+      pattern: "*.{csi,crai}"
 authors:
   - "@prototaxites"
   - "@sainsachiko"

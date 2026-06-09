@@ -13,7 +13,7 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
     tuple val(chunkn), val(range)
 
     output:
-    tuple val(meta), path("*.bam"), emit: bam
+    tuple val(meta), path("*.cram"), emit: cram
     tuple val("${task.process}"), val('bwamem2'), eval('bwa-mem2 version 2>| grep -o -E "[0-9]+(\\.[0-9]+)+"'), emit: versions_bwamem2, topic: versions
     tuple val("${task.process}"), val('samtools'), eval('samtools --version | head -1 | sed -e "s/samtools //"'), emit: versions_samtools, topic: versions
 
@@ -46,12 +46,12 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
         bwa-mem2 mem ${args3} -t ${task.cpus} \${INDEX} ${rg_arg} - |\\
         samtools fixmate ${args4} - - |\\
         samtools view -h ${args5} |\\
-        samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.bam -
+        samtools sort ${args6} -@${task.cpus} -T ${prefix}_tmp --reference ${reference} -o ${prefix}.cram -
     """
 
     stub:
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
-    touch ${prefix}.bam
+    touch ${prefix}.cram
     """
 }
