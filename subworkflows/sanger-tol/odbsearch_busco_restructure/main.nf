@@ -4,13 +4,13 @@ include { RESTRUCTUREBUSCODIR           } from '../../../modules/sanger-tol/rest
 
 workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     take:
-    ch_reference            // tuple([meta], reference)
-    val_taxid               // val(9606)
-    val_mode                // val("ancestral_and_basal")
-    val_odb_directory       // val(path to lineages folder)
-    val_mapping_directory   // val(path to mapping folder)
-    val_specified_lineages  // val("mammalia")
-    val_output_dir          // val(output directory)
+    ch_reference                // tuple([meta], reference)
+    val_odb_directory           // val(path to lineages folder)
+    val_mapping_directory       // val(path to mapping folder)
+    val_taxid                   // val(9606)
+    val_specified_lineages      // val("mammalia")
+    val_output_dir              // val(output directory)
+    val_restructure_busco_dir   // val(boolean)
 
     main:
 
@@ -39,10 +39,10 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         .transpose() // Convert to [meta, odbs] pairs from [meta, [odb_list]]
         .map { meta, odb -> [ meta.id, meta, odb ] }
         .combine(
-            ch_reference.map { meta, ref -> [ meta.id, ref ] }, // Normalise the fasta so we can combine easier
+            ch_reference.map { meta, ref -> [ meta.id, meta, ref ] }, // Normalise the fasta so we can combine easier
             by: 0
         )
-        .map { id, meta, odb, ref -> [ meta, odb, ref ] }
+        .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }
         .combine( val_taxid )
         .combine( val_output_dir )
         .map { meta, odb, ref, tax_id, outdir_location ->
@@ -58,7 +58,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         ch_busco_input,
         'genome',
         ch_busco_input.map { meta, _fasta -> meta.lineage },
-        val_odb_dir,
+        val_odb_directory,
         [],
         []
     )
@@ -67,7 +67,6 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     //
     // MODULE: Tidy up the BUSCO output directories before publication
     //
-
     busco_out_to_restructure = BUSCO_BUSCO.out.batch_summary
         .join(BUSCO_BUSCO.out.short_summaries_txt, remainder: true)
         .join(BUSCO_BUSCO.out.short_summaries_json, remainder: true)
@@ -79,11 +78,15 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         }
 
     RESTRUCTUREBUSCODIR(
-        busco_out_to_restructure,
+        busco_out_to_restructure.filter {
+            _meta, _lineage, _batch, _txt, _json, _full, _missing, _dir -> val_restructure_busco_dir
+        }
     )
 
 
     emit:
     odb_csv             = API_SCRIPTS_GET_LINEAGE_ODBS.out.csv
+    busco_full_table    = BUSCO_BUSCO.out.full_table
+    busco_output        = BUSCO_BUSCO.out.busco_dir
     restructured_output = RESTRUCTUREBUSCODIR.out.clean_busco_dir
 }

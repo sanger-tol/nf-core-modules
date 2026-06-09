@@ -2,7 +2,6 @@ nextflow_workflow {
 
     name "Test Subworkflow ODBSEARCH_BUSCO_RESTRUCTURE"
     script "../main.nf"
-    config "./nextflow.config"
     workflow "ODBSEARCH_BUSCO_RESTRUCTURE"
 
     tag "subworkflows"
@@ -33,28 +32,110 @@ nextflow_workflow {
                 """
             }
         }
+
+        // Download mapping files once for all tests
+        def mapping_dir = new File("${launchDir}/mapping_files/")
+        def raw_mapping_dir = new File("${launchDir}/raw_mapping_files/")
+        mapping_dir.mkdirs()
+        raw_mapping_dir.mkdirs()
+
+        def all_mapping_files = [
+            "archaea_odb10.2019-12-16", "bacteria_odb10.2019-12-16", "eukaryota_odb10.2019-12-16",
+        ]
+
+        all_mapping_files.each { file_spec ->
+            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.${file_spec}.txt.tar.gz", "${launchDir}/raw_mapping_files")
+        }
+
+        // Concatenate by version
+        ['odb10', 'odb12'].each { version ->
+            def version_files = all_mapping_files.findAll { it.contains(version) }
+            if (version_files) {
+                def firstDate = version_files[0].split('\\.')[1]
+                def cmd = ['bash', '-c', "cat ${launchDir}/raw_mapping_files/*${version}* > ${launchDir}/mapping_files/${version}_mapping_file.${firstDate}.txt"]
+                def proc = cmd.execute()
+                proc.waitFor()
+                if (proc.exitValue() != 0) {
+                    throw new RuntimeException("Error - failed to cat ${version}_mapping_file: ${proc.err.text}")
+                }
+            }
+        }
     }
 
-    test ( "Ceramica_pisi - all_odb - specified - offline" ) {
+    test ( "Ceramica_pisi - odb10 basal + lepidoptera - offline" ) {
+        config "./offline_basal.config"
         setup {
-            curlAndExtract("https://tolit.cog.sanger.ac.uk/test-data/resources/busco/genomenote.GCA_963859965.1.2025-12-08.tar.gz", "${launchDir}/")
+
+            def odb_list = [
+                "bacteria_odb10", "archaea_odb10", "eukaryota_odb10", "lepidoptera_odb10",
+            ]
+            for (i in odb_list) {
+                def fake_file = new File("${launchDir}/fake_odb/lineages/${i}/")
+                fake_file.mkdirs()
+            }
         }
 
         when {
 
             params {
-                odb_path   = "${launchDir}/genomenote.GCA_963859965.1.2025-12-08"
+                odb_path   = "${launchDir}/fake_odb"
+                mapping_path = "${launchDir}/mapping_files"
             }
 
             workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
-                input[1] = channel.value("988087")
-                input[2] = channel.value("specified")
-                input[3] = file(params.odb_path, checkIfExists: true)
-                input[4] = channel.value("all")
-                input[5] = channel.value("lepidoptera")
-                input[6] = channel.value("Ceramica_pisi_988087")
+                input[1] = Channel.value(file(params.odb_path, checkIfExists: true, type: 'dir'))
+                input[2] = Channel.value(file(params.mapping_path, checkIfExists: true, type: 'dir'))
+                input[3] = Channel.value("988087")
+                input[4] = Channel.value("lepidoptera")
+                input[5] = Channel.value("OUTPUT")
+                input[6] = Channel.value(true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test ( "Ceramica_pisi - odb12 - ancestral - online" ) {
+        config "./online_ancestral.config"
+        setup {
+
+            def odb_list = [
+                "eukaryota_odb10", "lepidoptera_odb10",
+            ]
+            for (i in odb_list) {
+                def fake_file = new File("${launchDir}/fake_odb/lineages/${i}/")
+                fake_file.mkdirs()
+            }
+        }
+
+        when {
+
+            params {
+                odb_path   = "${launchDir}/fake_odb"
+                mapping_path = "${launchDir}/mapping_files"
+            }
+
+            workflow {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = Channel.value([])
+                input[2] = Channel.value(file(params.mapping_path, checkIfExists: true, type: 'dir'))
+                input[3] = Channel.value("988087")
+                input[4] = Channel.value([])
+                input[5] = Channel.value("OUTPUT")
+                input[6] = Channel.value(false)
                 """
             }
         }
