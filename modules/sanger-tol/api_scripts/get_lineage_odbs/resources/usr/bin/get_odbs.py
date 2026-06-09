@@ -250,7 +250,8 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool):
                 (print("Found", file) if debug else None)
                 mapping_files.append((str(file), f"_{odb}"))
 
-    print(f"Found {mapping_files}")
+    if len(mapping_files) == 0:
+        raise FileNotFoundError(f"No mapping files found in {mapping_dir} for odb version(s) {odb_version}")
 
     return mapping_files
 
