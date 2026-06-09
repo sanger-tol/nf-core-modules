@@ -21,9 +21,9 @@ process BUSCO_BUSCO {
     path config_file
     val clean_intermediates
 
+
     output:
     tuple val(meta), path("*-busco.batch_summary.txt"), emit: batch_summary
-    tuple val(meta), path("*-busco.batch_summary.failed.txt"), emit: batch_summary_failed, optional: true
     tuple val(meta), path("short_summary.*.txt"), emit: short_summaries_txt, optional: true
     tuple val(meta), path("short_summary.*.json"), emit: short_summaries_json, optional: true
     tuple val(meta), path("*-busco.log"), emit: log, optional: true
@@ -51,20 +51,14 @@ process BUSCO_BUSCO {
     def busco_lineage = lineage in ['auto', 'auto_prok', 'auto_euk']
         ? lineage.replaceFirst('auto', '--auto-lineage').replaceAll('_', '-')
         : "--lineage_dataset ${lineage}"
-    def busco_lineage_dir = busco_lineages_path ? "--download_path ${busco_lineages_path}" : ''
+    def busco_lineage_dir = busco_lineages_path ? "--download_path ${busco_lineages_path} --offline" : ''
     def intermediate_files = [
         './*-busco/*/auto_lineage',
         './*-busco/*/**/{miniprot,hmmer,.bbtools}_output',
         './*-busco/*/prodigal_output/predicted_genes/tmp/',
     ]
     def clean_cmd = clean_intermediates ? "rm -fr ${intermediate_files.join(' ')}" : ''
-
-    def bbtools_memory_preferred = task.memory * 0.25
-    def bbtools_memory_minimum = 120.Mb
-    def bbtools_memory = bbtools_memory_preferred > bbtools_memory_minimum ? "${bbtools_memory_preferred.toGiga()}g" : "${bbtools_memory_minimum.toMega()}m"
     """
-    export BUSCO_BBTOOLS_MEMORY=${bbtools_memory}
-
     # Fix Augustus for Apptainer
     ENV_AUGUSTUS=/opt/conda/etc/conda/activate.d/augustus.sh
     set +u
@@ -112,12 +106,19 @@ process BUSCO_BUSCO {
     find . -xtype l -delete
 
     # Move files to avoid staging/publishing issues
-    grep -v 'Run failed; check logs' ${prefix}-busco/batch_summary.txt > ${prefix}-busco.batch_summary.txt
+    mv ${prefix}-busco/batch_summary.txt ${prefix}-busco.batch_summary.txt
     mv ${prefix}-busco/*/short_summary.*.{json,txt} . || echo "Short summaries were not available: No genes were found."
     mv ${prefix}-busco/logs/busco.log ${prefix}-busco.log
 
-    if grep -q 'Run failed; check logs' ${prefix}-busco/batch_summary.txt; then
-        grep 'Run failed; check logs' ${prefix}-busco/batch_summary.txt > ${prefix}-busco.batch_summary.failed.txt
+    if grep 'Run failed; check logs' ${prefix}-busco.batch_summary.txt > /dev/null
+    then
+        if grep -Fx 'Sequence too long (max 32000000 permitted).' ${prefix}-busco.log > /dev/null
+        then
+            echo "Prodigal can't run on this genome. Skipping it"
+        else
+            echo "Busco run failed"
+            exit 1
+        fi
     fi
     """
 
