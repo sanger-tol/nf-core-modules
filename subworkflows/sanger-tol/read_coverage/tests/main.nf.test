@@ -32,7 +32,7 @@ nextflow_workflow {
         when {
             params {
                 minimap2_align_args = "-x map-ont"
-                bedtools_genomecov_args = "-bg"
+                bedtools_genomecov_args = "-bg -split"
             }
             workflow {
                 """
@@ -75,7 +75,7 @@ nextflow_workflow {
         when {
             params {
                 minimap2_align_args = "-x sr"
-                bedtools_genomecov_args = "-bg"
+                bedtools_genomecov_args = "-bg -split"
             }
             workflow {
                 """
@@ -118,7 +118,7 @@ nextflow_workflow {
         when {
             params {
                 minimap2_align_args = "-x map-hifi"
-                bedtools_genomecov_args = "-bg"
+                bedtools_genomecov_args = "-bg -split"
             }
             workflow {
                 """
