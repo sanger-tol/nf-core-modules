@@ -1,661 +1,4 @@
 {
-    "Ceramica_pisi - odb12 - latest - online": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    
-                ],
-                "3": [
-                    
-                ],
-                "busco_full_table": [
-                    
-                ],
-                "busco_output": [
-                    
-                ],
-                "odb_csv": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "restructured_output": [
-                    
-                ]
-            }
-        ],
-        "timestamp": "2026-06-09T11:58:34.81617056",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
-        }
-    },
-    "Ceramica_pisi - odb12 - ancestral - online": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,c46420a3923e63e76241eb3721018df2"
-                    ]
-                ],
-                "1": [
-                    
-                ],
-                "odb_csv": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,c46420a3923e63e76241eb3721018df2"
-                    ]
-                ],
-                "restructured_output": [
-                    
-                ]
-            }
-        ],
-        "timestamp": "2026-06-04T14:08:25.563618341",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
-        }
-    },
-    "Ceramica_pisi - odb10 basal + lepidoptera - offline": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,9cf45de7422d105159061d945afe9941"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "archaea_odb10",
-                            "taxid": "988087",
-                            "outdir": "OUTPUT",
-                            "genome_size": 59715277
-                        },
-                        "full_table.tsv:md5,43dafb9e3817c1411b23d45398d8d448"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "archaea_odb10",
-                            "taxid": "988087",
-                            "outdir": "OUTPUT",
-                            "genome_size": 59715277
-                        },
-                        [
-                            [
-                                [
-                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
-                                    "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
-                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,e93897095d83e64739e135506fc8d203",
-                                    "prodigal_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
-                                    "prodigal_out.log:md5,b61e777f85d044e31bf5832d560f2498"
-                                ],
-                                [
-                                    ".checkpoint:md5,30093a7bc88ea11bb703aeb59ae7340e",
-                                    [
-                                        "predicted.faa:md5,3ecfe6f190aac92eaaa3190013e3f466",
-                                        "predicted.fna:md5,1251d92597f63b5195d76db22c4f296a",
-                                        [
-                                            "prodigal_mode_single_code_11.faa:md5,bf05241b561d2d4a0ab9d7d92c835510",
-                                            "prodigal_mode_single_code_11.fna:md5,1251d92597f63b5195d76db22c4f296a",
-                                            "prodigal_mode_single_code_11_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
-                                            "prodigal_mode_single_code_11_out.log:md5,b61e777f85d044e31bf5832d560f2498"
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    [
-                                        ".checkpoint:md5,2a6a43a66d245b412d04c395147febd9"
-                                    ],
-                                    [
-                                        [
-                                            "99734at2157.faa:md5,448ddd90c767c028af9a402516ba2f2c",
-                                            "99734at2157.fna:md5,60439d4b292a0e6a6a19443a2feb8868"
-                                        ],
-                                        [
-                                            
-                                        ],
-                                        [
-                                            "110798at2157.faa:md5,43db943940d9067d1a4181e70135b6dc",
-                                            "110798at2157.fna:md5,d75cbe57a29fbc5768eec1f839e15453",
-                                            "66811at2157.faa:md5,42142cd77ed4e69f460c54cd7007a1b3",
-                                            "66811at2157.fna:md5,3d7cd6630d84d919f0ab5a622f4205f7"
-                                        ]
-                                    ],
-                                    "full_table.tsv:md5,43dafb9e3817c1411b23d45398d8d448",
-                                    [
-                                        ".checkpoint:md5,c20ccdeebb40c4fd69762eab26b29cce",
-                                        "101957at2157.out:md5,60e6301a1911e970ad48a38fe2338969",
-                                        "102178at2157.out:md5,172561bc716c1a4fe24e2290d9c24b53",
-                                        "102360at2157.out:md5,09f2c40c3d94699dbd2c8df9e486777b",
-                                        "10236at2157.out:md5,941400c62efb8a213d5f87574d3976b2",
-                                        "102399at2157.out:md5,61230b070b56499e90f19abf0931da11",
-                                        "103467at2157.out:md5,6cca8f8efe5851827feae3b7ae30ec34",
-                                        "104254at2157.out:md5,deaef723d7fa4230fb2b924676bda46e",
-                                        "104636at2157.out:md5,cf0643d1f52a503bc663087af4be2a20",
-                                        "104702at2157.out:md5,7ba9467d98a997b7ae7a3dc62352c3d7",
-                                        "104786at2157.out:md5,918442af458f220f3046439d3a470a38",
-                                        "105095at2157.out:md5,5ae48c8d82cc445a45c6c6819cd85778",
-                                        "105165at2157.out:md5,7a2f7a8a25be194ae8300c27f8807a6e",
-                                        "105421at2157.out:md5,883152c488e6ddc2bea6176b5a84dda7",
-                                        "105604at2157.out:md5,7552981a3fe5b35870cc236f23118754",
-                                        "105851at2157.out:md5,7c6850ad62b7d0ce4397ac77b40cd122",
-                                        "106462at2157.out:md5,6d7a10cfa4643e4e545186d967d15b10",
-                                        "106603at2157.out:md5,0515ed7b7c8542813ab28537cc1258fc",
-                                        "107015at2157.out:md5,0cc661eca3a3ce48fcef67e8d03159bb",
-                                        "107212at2157.out:md5,e1f10454b1b3728d0d8014b26dd5e393",
-                                        "107993at2157.out:md5,b8e3f62037b659ca5ca08136cdd48f5f",
-                                        "108145at2157.out:md5,855bf9560037e4d1be6825cce4017915",
-                                        "108717at2157.out:md5,dfdb426c050a0c2fcc45a510ee2c4af3",
-                                        "109335at2157.out:md5,da325f7bc36bf742102bc6772cbdca21",
-                                        "110798at2157.out:md5,49218307c53b0f814c3287126978ac77",
-                                        "111803at2157.out:md5,1b12c7add4cf0252e32f8e853b8abe01",
-                                        "112466at2157.out:md5,e8d0ff60c5f954b00ca92a54d3476e54",
-                                        "112720at2157.out:md5,e7db40a56808ceaa2d94afc510257d61",
-                                        "113971at2157.out:md5,d891aec571e935157a90510437c85ea2",
-                                        "114285at2157.out:md5,7d9b537867a0d03ecb2656ada77ed3b0",
-                                        "114541at2157.out:md5,93e86c31a5b0eb66fcf2ac0c0182f045",
-                                        "115384at2157.out:md5,1b46c163876b224950a135413d6af186",
-                                        "115425at2157.out:md5,b151e1c0909d9b58f60a4fba3e36e0db",
-                                        "115808at2157.out:md5,22826212c25fe3248c13e7a481fc57ec",
-                                        "115947at2157.out:md5,c2e4d0f23037e4baf51f1c7ec3bce1da",
-                                        "116294at2157.out:md5,3527c378988712c1e97b2e8f13e7ef67",
-                                        "116732at2157.out:md5,9964eb1c25269edfc0b6e3abb4cfcb5e",
-                                        "116879at2157.out:md5,8d509507a5f247eb66fa06c6fa8e658f",
-                                        "117225at2157.out:md5,9ecb55f1ac9eba743bd4abc477ca3a41",
-                                        "117241at2157.out:md5,4db8a2ce1bdac7540b1d15725e56c4dc",
-                                        "119044at2157.out:md5,bb8e49d7ecba8e24cfa5ff3e0f1371a3",
-                                        "119723at2157.out:md5,2df1a64b3eb8cc0d2f3bd540c5ebfc5c",
-                                        "121171at2157.out:md5,50bb2dbe0824b14d03025aff7bb9988c",
-                                        "121548at2157.out:md5,1e9e7fc9401eaa9e4020869ceb27bd83",
-                                        "121943at2157.out:md5,fe7f5e5602a92b05945ee74d373001a1",
-                                        "122290at2157.out:md5,8125fe6b394061297df82b3abb20c71d",
-                                        "123463at2157.out:md5,b08df012aa49973998c595b3728ce5d9",
-                                        "123503at2157.out:md5,ce1387b81d65610d630316a5bf5492f4",
-                                        "123853at2157.out:md5,eb8176ab652bf23f15fe214e63e570c6",
-                                        "123859at2157.out:md5,65306f59ad460a8ff4a87748f6788a1d",
-                                        "124073at2157.out:md5,b1c7048da29e19ff2530aa8b9bc56b7d",
-                                        "124429at2157.out:md5,eebbe8872e9d07584c235870d31f2cb9",
-                                        "124805at2157.out:md5,124ee94e6361b4726b6a070ef963d3d2",
-                                        "124913at2157.out:md5,7a5283f6f35aa2a6179716f096c50967",
-                                        "124973at2157.out:md5,6af0e0a68f80c5d0864ad0ca90c5be15",
-                                        "125162at2157.out:md5,56a66e938c1bf8a26babdaa08bc8d1eb",
-                                        "125788at2157.out:md5,5bcac9d202015383c678c73cf07d6976",
-                                        "126193at2157.out:md5,abee2681d70810e8cb40b94f2df81b31",
-                                        "127293at2157.out:md5,23ae7a83f990c32304dc9c5947a8fb27",
-                                        "128227at2157.out:md5,25048bcca9647febc7affd43e08a0bb2",
-                                        "128960at2157.out:md5,7320b4160002b69788f105d7d7881232",
-                                        "129321at2157.out:md5,c137230e98723581b7771df3f2db0e85",
-                                        "129447at2157.out:md5,2901c0747807f7780bb6203ae5e61e0a",
-                                        "129924at2157.out:md5,7e17470d23cd660a595b503d9d43694d",
-                                        "13010at2157.out:md5,7150708b049686f63c0c381dc1673f7b",
-                                        "130316at2157.out:md5,f75a1b912413f07385387048716ab1cc",
-                                        "130364at2157.out:md5,7adec53855f38bad1b65210aca069844",
-                                        "131584at2157.out:md5,897cfd51e9fb4ac7def6ae00f26100c8",
-                                        "13531at2157.out:md5,42cfca07a3a4d493c80481c7c30ff7e0",
-                                        "13565at2157.out:md5,4dc4e9860db4ede97cc8cc88bf80fcd2",
-                                        "14061at2157.out:md5,14ee1d3f41d05685617e0a13106cb2bd",
-                                        "14454at2157.out:md5,a96f5f5f4686c1630eac30a095599d6e",
-                                        "14889at2157.out:md5,df87e9adb0937fb2e801dea1edf459ce",
-                                        "1642at2157.out:md5,918647cc23cf44575fbbe1763e2ff100",
-                                        "17053at2157.out:md5,0b4606ca66f5bc2601f3551ab73873d7",
-                                        "17629at2157.out:md5,a4b170f05e0a733b28fc9a6f693a0943",
-                                        "18705at2157.out:md5,3c7aa1fdd2f02f98dc59939046dab3c5",
-                                        "19750at2157.out:md5,f8405f3e6dd9ae3d1125185dca1ab562",
-                                        "21317at2157.out:md5,20f4ab158857ce224b60b7f12a48f5a9",
-                                        "22545at2157.out:md5,7afe8f5dc3a5f58661e948a96211d0ab",
-                                        "22747at2157.out:md5,e9b592c8881e370d82c5bcdfefd5239e",
-                                        "22842at2157.out:md5,0f2416f918ae8e697200d2e7acfa4ed0",
-                                        "23182at2157.out:md5,24ecc85b05e44b1556738622dfaa05d5",
-                                        "23221at2157.out:md5,ab8136386383dff51037380c9f75abed",
-                                        "24257at2157.out:md5,0d2401675ac281539a818e609f4701e2",
-                                        "24288at2157.out:md5,9d376701cd7b669c0259167458a31902",
-                                        "25592at2157.out:md5,d9015d94239d93ff5febfb0f4003b939",
-                                        "25871at2157.out:md5,01a1a72ff6321b91bfe5973fd1cd53b9",
-                                        "29893at2157.out:md5,49c30386ae1da74288fe444e3027f346",
-                                        "30130at2157.out:md5,3667caf0616a8e4023c47b6774e38bdf",
-                                        "31316at2157.out:md5,cbe131e713d2c1204ad5036070e4f79c",
-                                        "31722at2157.out:md5,f3877f8ec6aab9d42d833284871ed932",
-                                        "32079at2157.out:md5,2544390267eb306920fcf1193f69ec8d",
-                                        "32191at2157.out:md5,e6504e9f9d4d764d7be4741be9c8c3a6",
-                                        "32623at2157.out:md5,2b0656ba5edde5f0d4852af848989800",
-                                        "35648at2157.out:md5,45e30c787fbde4f3fbbf1642d2f586fe",
-                                        "35861at2157.out:md5,db98819734719a08e0ee4a934c64e40d",
-                                        "36028at2157.out:md5,382d3cbadba408ca75432e8c8faf6a13",
-                                        "37207at2157.out:md5,6d464e43c5e7cacb4814fe7aa62fff27",
-                                        "37299at2157.out:md5,1f618eb2145a5faa0ada2d0ba2e71f8e",
-                                        "3905at2157.out:md5,af9b2b5536602f4a60b95c6a6ce50f59",
-                                        "39322at2157.out:md5,ebddb8248aa7a98b7c47a5b2ef6d32a4",
-                                        "41214at2157.out:md5,0d8b9ed8027bdc56ee4d72eca1813248",
-                                        "41305at2157.out:md5,2f3137fff8565f4db31aad20afe188c8",
-                                        "43727at2157.out:md5,52e5f16acdc1a9db1f8756212bc8f8e3",
-                                        "44076at2157.out:md5,7b3c5ae11e8e95343e9320334776be18",
-                                        "46017at2157.out:md5,7562eef1347b517b9e06dc5e19cbe6ea",
-                                        "47919at2157.out:md5,010ac4d10d4b5a123a622fe908ae0f2d",
-                                        "48934at2157.out:md5,56cf86c4e37c3831419bf553bb1e0deb",
-                                        "50844at2157.out:md5,684bc49682c53584cc1836ff714a4f58",
-                                        "51351at2157.out:md5,5450ed446d30f6dc94ee52cb0371769e",
-                                        "52427at2157.out:md5,0be6da97f3a831320fa8bad3d63602fd",
-                                        "54988at2157.out:md5,a29c10eb2e8b0d50a049b2018d8d76ec",
-                                        "55024at2157.out:md5,8ebf728a9229433ddc226830886dde0b",
-                                        "56027at2157.out:md5,613728839c11ec81f7f2f6bdc11d5e86",
-                                        "57545at2157.out:md5,0f8c7d009f4069d1faa5772456fadbd5",
-                                        "58019at2157.out:md5,57bc79b3cf26ad7eab043b36bc10456a",
-                                        "58022at2157.out:md5,7f044d5c57250009edabab73ce9c13cf",
-                                        "58340at2157.out:md5,ba24f3e8254b32f6274dd035f1c770d3",
-                                        "59062at2157.out:md5,14fbcdf1b95e8045590aeae9cc0445cd",
-                                        "59314at2157.out:md5,045a9d0249af649387e7e1cce153c635",
-                                        "59861at2157.out:md5,b44cd20b366028700340899b4719e1fa",
-                                        "60366at2157.out:md5,d19b31ba58c39ac7e920e9984ef34576",
-                                        "60670at2157.out:md5,292bd84bef2d746bec5f4382e6ccd59b",
-                                        "60954at2157.out:md5,2bf164a2c9c154924f3b1bf1ff45145b",
-                                        "61613at2157.out:md5,bf01a686928a6c26f60f5230735be979",
-                                        "61936at2157.out:md5,7b2357b31af1f753e388e448680ed852",
-                                        "62508at2157.out:md5,0a29a9f98433e52f931957faa69db2ac",
-                                        "63341at2157.out:md5,eedd99df38b82c3188ac8b729d2b0c17",
-                                        "64860at2157.out:md5,8cc742afb351938849768236588ac65e",
-                                        "65833at2157.out:md5,75c0e42c3d0053ed1ed9e92c66cd117c",
-                                        "6590at2157.out:md5,07e91f87cd6373596a26bf6f80a96d28",
-                                        "66209at2157.out:md5,3b4f3f6e4c2aaffafe51fcaa0a48a03b",
-                                        "66811at2157.out:md5,b28d5842fb17674e15f5867e15fa5d84",
-                                        "6736at2157.out:md5,f5fd7a08a4ead1b659a8f37a2306ac82",
-                                        "69351at2157.out:md5,0d549ba6fe14273a102717215f37d5a2",
-                                        "70269at2157.out:md5,1deee420c5a6dce74d36d2e5fd9d520c",
-                                        "7046at2157.out:md5,ead66cd2dd56862b6e814738c821c5ba",
-                                        "70525at2157.out:md5,123d606c13abb176c42e03c0af701bce",
-                                        "70865at2157.out:md5,031d3bd871f8f78233694cdb6c70f86d",
-                                        "72726at2157.out:md5,95c17a1e2a9a6dacebfc13a92e0e84e7",
-                                        "73593at2157.out:md5,749c8c8f5aa0ab1d1f8654604dc2fa39",
-                                        "74812at2157.out:md5,4063fd078a5a1c5b9780e8071b1657e9",
-                                        "75288at2157.out:md5,224486c5c477b5724e21714ea2e1938b",
-                                        "76134at2157.out:md5,e44d0e848390aa564924ef1c3d9edd49",
-                                        "76877at2157.out:md5,c67ce97d22c4d510e3173011038af738",
-                                        "7724at2157.out:md5,fe4fbe9c6e43b94ec88836de3c9ff80b",
-                                        "78046at2157.out:md5,b9254a4d52b6b33961772f70f950b6d4",
-                                        "7896at2157.out:md5,004afab9d77623bf16ae95d989dce75b",
-                                        "79065at2157.out:md5,34d5bc59c355a220bca560dee65a7dd8",
-                                        "79845at2157.out:md5,3fdd2fdea11267072bf21eaff2acb4f9",
-                                        "80498at2157.out:md5,d64917973b2510eae4fd69d58af38ce3",
-                                        "80501at2157.out:md5,252200515da13d3a6d735d857b3a96b4",
-                                        "80629at2157.out:md5,3fc9e8c5033dfe1a0464a9889810098e",
-                                        "82104at2157.out:md5,00eb7a3d516d0999bd7dd1806fba8dfa",
-                                        "82755at2157.out:md5,2fdfc21f2a91153968d517bd6a90471b",
-                                        "82853at2157.out:md5,861bdc24bf532a4f1c47c5eff905356c",
-                                        "83050at2157.out:md5,7bd61abfe9d5ac1b063ef567ac8e3b55",
-                                        "84219at2157.out:md5,8abd0bf3f4d5f4e1c1605eff28a4669c",
-                                        "84684at2157.out:md5,80a28ec4166f479305308681dd17bdeb",
-                                        "85023at2157.out:md5,ffb0f83e99de04a7c62039f4ea8efbad",
-                                        "85279at2157.out:md5,8e6337c59718b8772d2b51056a22a244",
-                                        "85293at2157.out:md5,540b74ba75bba481e657ff958eae5148",
-                                        "860at2157.out:md5,99494072b47cceb8876aebc2c544fa14",
-                                        "87367at2157.out:md5,d6d39e9860ea65243b14a83b14c3de06",
-                                        "87520at2157.out:md5,f8e146cfc760783dd4596755c6d895c1",
-                                        "88531at2157.out:md5,371c07e984281d08591629e3c3868a24",
-                                        "8899at2157.out:md5,057f324934e9903e140d256aa97f4f77",
-                                        "8922at2157.out:md5,7cbc1a36088950c6fa8950e71803d9c2",
-                                        "89321at2157.out:md5,f3ead2e9e3583bd7443cab5dfb283f34",
-                                        "89943at2157.out:md5,92e678044e7d79efb5a0db0e9de5ce04",
-                                        "90096at2157.out:md5,1f101b9212085a9a721d4bfdcf606973",
-                                        "90641at2157.out:md5,2d78db174f8bc81bdbe0ab1f4a170b50",
-                                        "90817at2157.out:md5,f4f687f296ecc821c7db8a52f12bc0a4",
-                                        "90882at2157.out:md5,a51eb6651f8847fcb2b554d3800876da",
-                                        "91154at2157.out:md5,7950c4b06ee62d9d1498d64e41f2d71b",
-                                        "91297at2157.out:md5,45a9b5542684e46b59e007d2c85f2bb3",
-                                        "91632at2157.out:md5,714c34154d23a44f75d09280f4fdd8df",
-                                        "91936at2157.out:md5,8c6f2afbfbfff8dbb01ab6072c917caf",
-                                        "92409at2157.out:md5,727429c70bf9fe94fa1d12789ecfa78c",
-                                        "92795at2157.out:md5,dfe3e129dfb03148e3c1590301155de0",
-                                        "93236at2157.out:md5,cfc85f26a883a2f19ff0bb3057996aaa",
-                                        "93256at2157.out:md5,11147b2edd17cece7511c11414e6b220",
-                                        "94875at2157.out:md5,0c569d40ebaaebf393f10eaa27071189",
-                                        "94889at2157.out:md5,8cfae70250c72e8c4f9f5bd463f6f0ec",
-                                        "95578at2157.out:md5,a6ad5c6b6f2bacb8f4eb4a9445ea2638",
-                                        "96138at2157.out:md5,81ae2fc1ff5655b614300e2d5571d589",
-                                        "97230at2157.out:md5,a0cd961a7f3cd15efff5b7130796142f",
-                                        "98179at2157.out:md5,7463584c5f817e6e8b94d9f0e12aec0e",
-                                        "98187at2157.out:md5,b0b2c83a93a0742ba9515c50df34c59c",
-                                        "98221at2157.out:md5,de07f5cfba36c1c011115b9e9996e428",
-                                        "98657at2157.out:md5,858a0a259677258dfffeec20427bfc40",
-                                        "99236at2157.out:md5,1eafe9e6adf898d374b83812d5383e77",
-                                        "99734at2157.out:md5,9b4538ee66545b94dbf5c9be9e8e63a7",
-                                        "99842at2157.out:md5,df1f3000f367de758edbd5bc8bd3378d"
-                                    ],
-                                    "missing_busco_list.tsv:md5,ce4ead2044dd11aa7920cac6f5dc525e",
-                                    "short_summary.json:md5,c3f18293be680ffc030208f59da21d4d",
-                                    "short_summary.txt:md5,a48be1d17c7ad2c83f0fdb35ed66aaed"
-                                ]
-                            ],
-                            "batch_summary.txt:md5,2dbdbe2a7be1eec1d2940d3e01585194",
-                            [
-                                
-                            ]
-                        ]
-                    ]
-                ],
-                "3": [
-                    
-                ],
-                "busco_full_table": [
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "archaea_odb10",
-                            "taxid": "988087",
-                            "outdir": "OUTPUT",
-                            "genome_size": 59715277
-                        },
-                        "full_table.tsv:md5,43dafb9e3817c1411b23d45398d8d448"
-                    ]
-                ],
-                "busco_output": [
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "archaea_odb10",
-                            "taxid": "988087",
-                            "outdir": "OUTPUT",
-                            "genome_size": 59715277
-                        },
-                        [
-                            [
-                                [
-                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
-                                    "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
-                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,e93897095d83e64739e135506fc8d203",
-                                    "prodigal_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
-                                    "prodigal_out.log:md5,b61e777f85d044e31bf5832d560f2498"
-                                ],
-                                [
-                                    ".checkpoint:md5,30093a7bc88ea11bb703aeb59ae7340e",
-                                    [
-                                        "predicted.faa:md5,3ecfe6f190aac92eaaa3190013e3f466",
-                                        "predicted.fna:md5,1251d92597f63b5195d76db22c4f296a",
-                                        [
-                                            "prodigal_mode_single_code_11.faa:md5,bf05241b561d2d4a0ab9d7d92c835510",
-                                            "prodigal_mode_single_code_11.fna:md5,1251d92597f63b5195d76db22c4f296a",
-                                            "prodigal_mode_single_code_11_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
-                                            "prodigal_mode_single_code_11_out.log:md5,b61e777f85d044e31bf5832d560f2498"
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    [
-                                        ".checkpoint:md5,2a6a43a66d245b412d04c395147febd9"
-                                    ],
-                                    [
-                                        [
-                                            "99734at2157.faa:md5,448ddd90c767c028af9a402516ba2f2c",
-                                            "99734at2157.fna:md5,60439d4b292a0e6a6a19443a2feb8868"
-                                        ],
-                                        [
-                                            
-                                        ],
-                                        [
-                                            "110798at2157.faa:md5,43db943940d9067d1a4181e70135b6dc",
-                                            "110798at2157.fna:md5,d75cbe57a29fbc5768eec1f839e15453",
-                                            "66811at2157.faa:md5,42142cd77ed4e69f460c54cd7007a1b3",
-                                            "66811at2157.fna:md5,3d7cd6630d84d919f0ab5a622f4205f7"
-                                        ]
-                                    ],
-                                    "full_table.tsv:md5,43dafb9e3817c1411b23d45398d8d448",
-                                    [
-                                        ".checkpoint:md5,c20ccdeebb40c4fd69762eab26b29cce",
-                                        "101957at2157.out:md5,60e6301a1911e970ad48a38fe2338969",
-                                        "102178at2157.out:md5,172561bc716c1a4fe24e2290d9c24b53",
-                                        "102360at2157.out:md5,09f2c40c3d94699dbd2c8df9e486777b",
-                                        "10236at2157.out:md5,941400c62efb8a213d5f87574d3976b2",
-                                        "102399at2157.out:md5,61230b070b56499e90f19abf0931da11",
-                                        "103467at2157.out:md5,6cca8f8efe5851827feae3b7ae30ec34",
-                                        "104254at2157.out:md5,deaef723d7fa4230fb2b924676bda46e",
-                                        "104636at2157.out:md5,cf0643d1f52a503bc663087af4be2a20",
-                                        "104702at2157.out:md5,7ba9467d98a997b7ae7a3dc62352c3d7",
-                                        "104786at2157.out:md5,918442af458f220f3046439d3a470a38",
-                                        "105095at2157.out:md5,5ae48c8d82cc445a45c6c6819cd85778",
-                                        "105165at2157.out:md5,7a2f7a8a25be194ae8300c27f8807a6e",
-                                        "105421at2157.out:md5,883152c488e6ddc2bea6176b5a84dda7",
-                                        "105604at2157.out:md5,7552981a3fe5b35870cc236f23118754",
-                                        "105851at2157.out:md5,7c6850ad62b7d0ce4397ac77b40cd122",
-                                        "106462at2157.out:md5,6d7a10cfa4643e4e545186d967d15b10",
-                                        "106603at2157.out:md5,0515ed7b7c8542813ab28537cc1258fc",
-                                        "107015at2157.out:md5,0cc661eca3a3ce48fcef67e8d03159bb",
-                                        "107212at2157.out:md5,e1f10454b1b3728d0d8014b26dd5e393",
-                                        "107993at2157.out:md5,b8e3f62037b659ca5ca08136cdd48f5f",
-                                        "108145at2157.out:md5,855bf9560037e4d1be6825cce4017915",
-                                        "108717at2157.out:md5,dfdb426c050a0c2fcc45a510ee2c4af3",
-                                        "109335at2157.out:md5,da325f7bc36bf742102bc6772cbdca21",
-                                        "110798at2157.out:md5,49218307c53b0f814c3287126978ac77",
-                                        "111803at2157.out:md5,1b12c7add4cf0252e32f8e853b8abe01",
-                                        "112466at2157.out:md5,e8d0ff60c5f954b00ca92a54d3476e54",
-                                        "112720at2157.out:md5,e7db40a56808ceaa2d94afc510257d61",
-                                        "113971at2157.out:md5,d891aec571e935157a90510437c85ea2",
-                                        "114285at2157.out:md5,7d9b537867a0d03ecb2656ada77ed3b0",
-                                        "114541at2157.out:md5,93e86c31a5b0eb66fcf2ac0c0182f045",
-                                        "115384at2157.out:md5,1b46c163876b224950a135413d6af186",
-                                        "115425at2157.out:md5,b151e1c0909d9b58f60a4fba3e36e0db",
-                                        "115808at2157.out:md5,22826212c25fe3248c13e7a481fc57ec",
-                                        "115947at2157.out:md5,c2e4d0f23037e4baf51f1c7ec3bce1da",
-                                        "116294at2157.out:md5,3527c378988712c1e97b2e8f13e7ef67",
-                                        "116732at2157.out:md5,9964eb1c25269edfc0b6e3abb4cfcb5e",
-                                        "116879at2157.out:md5,8d509507a5f247eb66fa06c6fa8e658f",
-                                        "117225at2157.out:md5,9ecb55f1ac9eba743bd4abc477ca3a41",
-                                        "117241at2157.out:md5,4db8a2ce1bdac7540b1d15725e56c4dc",
-                                        "119044at2157.out:md5,bb8e49d7ecba8e24cfa5ff3e0f1371a3",
-                                        "119723at2157.out:md5,2df1a64b3eb8cc0d2f3bd540c5ebfc5c",
-                                        "121171at2157.out:md5,50bb2dbe0824b14d03025aff7bb9988c",
-                                        "121548at2157.out:md5,1e9e7fc9401eaa9e4020869ceb27bd83",
-                                        "121943at2157.out:md5,fe7f5e5602a92b05945ee74d373001a1",
-                                        "122290at2157.out:md5,8125fe6b394061297df82b3abb20c71d",
-                                        "123463at2157.out:md5,b08df012aa49973998c595b3728ce5d9",
-                                        "123503at2157.out:md5,ce1387b81d65610d630316a5bf5492f4",
-                                        "123853at2157.out:md5,eb8176ab652bf23f15fe214e63e570c6",
-                                        "123859at2157.out:md5,65306f59ad460a8ff4a87748f6788a1d",
-                                        "124073at2157.out:md5,b1c7048da29e19ff2530aa8b9bc56b7d",
-                                        "124429at2157.out:md5,eebbe8872e9d07584c235870d31f2cb9",
-                                        "124805at2157.out:md5,124ee94e6361b4726b6a070ef963d3d2",
-                                        "124913at2157.out:md5,7a5283f6f35aa2a6179716f096c50967",
-                                        "124973at2157.out:md5,6af0e0a68f80c5d0864ad0ca90c5be15",
-                                        "125162at2157.out:md5,56a66e938c1bf8a26babdaa08bc8d1eb",
-                                        "125788at2157.out:md5,5bcac9d202015383c678c73cf07d6976",
-                                        "126193at2157.out:md5,abee2681d70810e8cb40b94f2df81b31",
-                                        "127293at2157.out:md5,23ae7a83f990c32304dc9c5947a8fb27",
-                                        "128227at2157.out:md5,25048bcca9647febc7affd43e08a0bb2",
-                                        "128960at2157.out:md5,7320b4160002b69788f105d7d7881232",
-                                        "129321at2157.out:md5,c137230e98723581b7771df3f2db0e85",
-                                        "129447at2157.out:md5,2901c0747807f7780bb6203ae5e61e0a",
-                                        "129924at2157.out:md5,7e17470d23cd660a595b503d9d43694d",
-                                        "13010at2157.out:md5,7150708b049686f63c0c381dc1673f7b",
-                                        "130316at2157.out:md5,f75a1b912413f07385387048716ab1cc",
-                                        "130364at2157.out:md5,7adec53855f38bad1b65210aca069844",
-                                        "131584at2157.out:md5,897cfd51e9fb4ac7def6ae00f26100c8",
-                                        "13531at2157.out:md5,42cfca07a3a4d493c80481c7c30ff7e0",
-                                        "13565at2157.out:md5,4dc4e9860db4ede97cc8cc88bf80fcd2",
-                                        "14061at2157.out:md5,14ee1d3f41d05685617e0a13106cb2bd",
-                                        "14454at2157.out:md5,a96f5f5f4686c1630eac30a095599d6e",
-                                        "14889at2157.out:md5,df87e9adb0937fb2e801dea1edf459ce",
-                                        "1642at2157.out:md5,918647cc23cf44575fbbe1763e2ff100",
-                                        "17053at2157.out:md5,0b4606ca66f5bc2601f3551ab73873d7",
-                                        "17629at2157.out:md5,a4b170f05e0a733b28fc9a6f693a0943",
-                                        "18705at2157.out:md5,3c7aa1fdd2f02f98dc59939046dab3c5",
-                                        "19750at2157.out:md5,f8405f3e6dd9ae3d1125185dca1ab562",
-                                        "21317at2157.out:md5,20f4ab158857ce224b60b7f12a48f5a9",
-                                        "22545at2157.out:md5,7afe8f5dc3a5f58661e948a96211d0ab",
-                                        "22747at2157.out:md5,e9b592c8881e370d82c5bcdfefd5239e",
-                                        "22842at2157.out:md5,0f2416f918ae8e697200d2e7acfa4ed0",
-                                        "23182at2157.out:md5,24ecc85b05e44b1556738622dfaa05d5",
-                                        "23221at2157.out:md5,ab8136386383dff51037380c9f75abed",
-                                        "24257at2157.out:md5,0d2401675ac281539a818e609f4701e2",
-                                        "24288at2157.out:md5,9d376701cd7b669c0259167458a31902",
-                                        "25592at2157.out:md5,d9015d94239d93ff5febfb0f4003b939",
-                                        "25871at2157.out:md5,01a1a72ff6321b91bfe5973fd1cd53b9",
-                                        "29893at2157.out:md5,49c30386ae1da74288fe444e3027f346",
-                                        "30130at2157.out:md5,3667caf0616a8e4023c47b6774e38bdf",
-                                        "31316at2157.out:md5,cbe131e713d2c1204ad5036070e4f79c",
-                                        "31722at2157.out:md5,f3877f8ec6aab9d42d833284871ed932",
-                                        "32079at2157.out:md5,2544390267eb306920fcf1193f69ec8d",
-                                        "32191at2157.out:md5,e6504e9f9d4d764d7be4741be9c8c3a6",
-                                        "32623at2157.out:md5,2b0656ba5edde5f0d4852af848989800",
-                                        "35648at2157.out:md5,45e30c787fbde4f3fbbf1642d2f586fe",
-                                        "35861at2157.out:md5,db98819734719a08e0ee4a934c64e40d",
-                                        "36028at2157.out:md5,382d3cbadba408ca75432e8c8faf6a13",
-                                        "37207at2157.out:md5,6d464e43c5e7cacb4814fe7aa62fff27",
-                                        "37299at2157.out:md5,1f618eb2145a5faa0ada2d0ba2e71f8e",
-                                        "3905at2157.out:md5,af9b2b5536602f4a60b95c6a6ce50f59",
-                                        "39322at2157.out:md5,ebddb8248aa7a98b7c47a5b2ef6d32a4",
-                                        "41214at2157.out:md5,0d8b9ed8027bdc56ee4d72eca1813248",
-                                        "41305at2157.out:md5,2f3137fff8565f4db31aad20afe188c8",
-                                        "43727at2157.out:md5,52e5f16acdc1a9db1f8756212bc8f8e3",
-                                        "44076at2157.out:md5,7b3c5ae11e8e95343e9320334776be18",
-                                        "46017at2157.out:md5,7562eef1347b517b9e06dc5e19cbe6ea",
-                                        "47919at2157.out:md5,010ac4d10d4b5a123a622fe908ae0f2d",
-                                        "48934at2157.out:md5,56cf86c4e37c3831419bf553bb1e0deb",
-                                        "50844at2157.out:md5,684bc49682c53584cc1836ff714a4f58",
-                                        "51351at2157.out:md5,5450ed446d30f6dc94ee52cb0371769e",
-                                        "52427at2157.out:md5,0be6da97f3a831320fa8bad3d63602fd",
-                                        "54988at2157.out:md5,a29c10eb2e8b0d50a049b2018d8d76ec",
-                                        "55024at2157.out:md5,8ebf728a9229433ddc226830886dde0b",
-                                        "56027at2157.out:md5,613728839c11ec81f7f2f6bdc11d5e86",
-                                        "57545at2157.out:md5,0f8c7d009f4069d1faa5772456fadbd5",
-                                        "58019at2157.out:md5,57bc79b3cf26ad7eab043b36bc10456a",
-                                        "58022at2157.out:md5,7f044d5c57250009edabab73ce9c13cf",
-                                        "58340at2157.out:md5,ba24f3e8254b32f6274dd035f1c770d3",
-                                        "59062at2157.out:md5,14fbcdf1b95e8045590aeae9cc0445cd",
-                                        "59314at2157.out:md5,045a9d0249af649387e7e1cce153c635",
-                                        "59861at2157.out:md5,b44cd20b366028700340899b4719e1fa",
-                                        "60366at2157.out:md5,d19b31ba58c39ac7e920e9984ef34576",
-                                        "60670at2157.out:md5,292bd84bef2d746bec5f4382e6ccd59b",
-                                        "60954at2157.out:md5,2bf164a2c9c154924f3b1bf1ff45145b",
-                                        "61613at2157.out:md5,bf01a686928a6c26f60f5230735be979",
-                                        "61936at2157.out:md5,7b2357b31af1f753e388e448680ed852",
-                                        "62508at2157.out:md5,0a29a9f98433e52f931957faa69db2ac",
-                                        "63341at2157.out:md5,eedd99df38b82c3188ac8b729d2b0c17",
-                                        "64860at2157.out:md5,8cc742afb351938849768236588ac65e",
-                                        "65833at2157.out:md5,75c0e42c3d0053ed1ed9e92c66cd117c",
-                                        "6590at2157.out:md5,07e91f87cd6373596a26bf6f80a96d28",
-                                        "66209at2157.out:md5,3b4f3f6e4c2aaffafe51fcaa0a48a03b",
-                                        "66811at2157.out:md5,b28d5842fb17674e15f5867e15fa5d84",
-                                        "6736at2157.out:md5,f5fd7a08a4ead1b659a8f37a2306ac82",
-                                        "69351at2157.out:md5,0d549ba6fe14273a102717215f37d5a2",
-                                        "70269at2157.out:md5,1deee420c5a6dce74d36d2e5fd9d520c",
-                                        "7046at2157.out:md5,ead66cd2dd56862b6e814738c821c5ba",
-                                        "70525at2157.out:md5,123d606c13abb176c42e03c0af701bce",
-                                        "70865at2157.out:md5,031d3bd871f8f78233694cdb6c70f86d",
-                                        "72726at2157.out:md5,95c17a1e2a9a6dacebfc13a92e0e84e7",
-                                        "73593at2157.out:md5,749c8c8f5aa0ab1d1f8654604dc2fa39",
-                                        "74812at2157.out:md5,4063fd078a5a1c5b9780e8071b1657e9",
-                                        "75288at2157.out:md5,224486c5c477b5724e21714ea2e1938b",
-                                        "76134at2157.out:md5,e44d0e848390aa564924ef1c3d9edd49",
-                                        "76877at2157.out:md5,c67ce97d22c4d510e3173011038af738",
-                                        "7724at2157.out:md5,fe4fbe9c6e43b94ec88836de3c9ff80b",
-                                        "78046at2157.out:md5,b9254a4d52b6b33961772f70f950b6d4",
-                                        "7896at2157.out:md5,004afab9d77623bf16ae95d989dce75b",
-                                        "79065at2157.out:md5,34d5bc59c355a220bca560dee65a7dd8",
-                                        "79845at2157.out:md5,3fdd2fdea11267072bf21eaff2acb4f9",
-                                        "80498at2157.out:md5,d64917973b2510eae4fd69d58af38ce3",
-                                        "80501at2157.out:md5,252200515da13d3a6d735d857b3a96b4",
-                                        "80629at2157.out:md5,3fc9e8c5033dfe1a0464a9889810098e",
-                                        "82104at2157.out:md5,00eb7a3d516d0999bd7dd1806fba8dfa",
-                                        "82755at2157.out:md5,2fdfc21f2a91153968d517bd6a90471b",
-                                        "82853at2157.out:md5,861bdc24bf532a4f1c47c5eff905356c",
-                                        "83050at2157.out:md5,7bd61abfe9d5ac1b063ef567ac8e3b55",
-                                        "84219at2157.out:md5,8abd0bf3f4d5f4e1c1605eff28a4669c",
-                                        "84684at2157.out:md5,80a28ec4166f479305308681dd17bdeb",
-                                        "85023at2157.out:md5,ffb0f83e99de04a7c62039f4ea8efbad",
-                                        "85279at2157.out:md5,8e6337c59718b8772d2b51056a22a244",
-                                        "85293at2157.out:md5,540b74ba75bba481e657ff958eae5148",
-                                        "860at2157.out:md5,99494072b47cceb8876aebc2c544fa14",
-                                        "87367at2157.out:md5,d6d39e9860ea65243b14a83b14c3de06",
-                                        "87520at2157.out:md5,f8e146cfc760783dd4596755c6d895c1",
-                                        "88531at2157.out:md5,371c07e984281d08591629e3c3868a24",
-                                        "8899at2157.out:md5,057f324934e9903e140d256aa97f4f77",
-                                        "8922at2157.out:md5,7cbc1a36088950c6fa8950e71803d9c2",
-                                        "89321at2157.out:md5,f3ead2e9e3583bd7443cab5dfb283f34",
-                                        "89943at2157.out:md5,92e678044e7d79efb5a0db0e9de5ce04",
-                                        "90096at2157.out:md5,1f101b9212085a9a721d4bfdcf606973",
-                                        "90641at2157.out:md5,2d78db174f8bc81bdbe0ab1f4a170b50",
-                                        "90817at2157.out:md5,f4f687f296ecc821c7db8a52f12bc0a4",
-                                        "90882at2157.out:md5,a51eb6651f8847fcb2b554d3800876da",
-                                        "91154at2157.out:md5,7950c4b06ee62d9d1498d64e41f2d71b",
-                                        "91297at2157.out:md5,45a9b5542684e46b59e007d2c85f2bb3",
-                                        "91632at2157.out:md5,714c34154d23a44f75d09280f4fdd8df",
-                                        "91936at2157.out:md5,8c6f2afbfbfff8dbb01ab6072c917caf",
-                                        "92409at2157.out:md5,727429c70bf9fe94fa1d12789ecfa78c",
-                                        "92795at2157.out:md5,dfe3e129dfb03148e3c1590301155de0",
-                                        "93236at2157.out:md5,cfc85f26a883a2f19ff0bb3057996aaa",
-                                        "93256at2157.out:md5,11147b2edd17cece7511c11414e6b220",
-                                        "94875at2157.out:md5,0c569d40ebaaebf393f10eaa27071189",
-                                        "94889at2157.out:md5,8cfae70250c72e8c4f9f5bd463f6f0ec",
-                                        "95578at2157.out:md5,a6ad5c6b6f2bacb8f4eb4a9445ea2638",
-                                        "96138at2157.out:md5,81ae2fc1ff5655b614300e2d5571d589",
-                                        "97230at2157.out:md5,a0cd961a7f3cd15efff5b7130796142f",
-                                        "98179at2157.out:md5,7463584c5f817e6e8b94d9f0e12aec0e",
-                                        "98187at2157.out:md5,b0b2c83a93a0742ba9515c50df34c59c",
-                                        "98221at2157.out:md5,de07f5cfba36c1c011115b9e9996e428",
-                                        "98657at2157.out:md5,858a0a259677258dfffeec20427bfc40",
-                                        "99236at2157.out:md5,1eafe9e6adf898d374b83812d5383e77",
-                                        "99734at2157.out:md5,9b4538ee66545b94dbf5c9be9e8e63a7",
-                                        "99842at2157.out:md5,df1f3000f367de758edbd5bc8bd3378d"
-                                    ],
-                                    "missing_busco_list.tsv:md5,ce4ead2044dd11aa7920cac6f5dc525e",
-                                    "short_summary.json:md5,c3f18293be680ffc030208f59da21d4d",
-                                    "short_summary.txt:md5,a48be1d17c7ad2c83f0fdb35ed66aaed"
-                                ]
-                            ],
-                            "batch_summary.txt:md5,2dbdbe2a7be1eec1d2940d3e01585194",
-                            [
-                                
-                            ]
-                        ]
-                    ]
-                ],
-                "odb_csv": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,9cf45de7422d105159061d945afe9941"
-                    ]
-                ],
-                "restructured_output": [
-                    
-                ]
-            }
-        ],
-        "timestamp": "2026-06-09T10:15:03.150932704",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
-        }
-    },
     "Ceramica_pisi - odb10 lepidoptera - offline": {
         "content": [
             {
@@ -694,15 +37,15 @@
                                     "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
                                     "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
                                     "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,7710bbcce6447c78d6655e6ad0a87568",
-                                    "miniprot_align_lepidoptera_odb10_err.log:md5,ca5de0fad5afdd68fe32bc37194720c3",
+                                    "hmmsearch_out.log:md5,4c35053a805d3c44f417f9d468403544",
+                                    "miniprot_align_lepidoptera_odb10_err.log:md5,4caa84074da67f102387b8db1a865844",
                                     "miniprot_align_lepidoptera_odb10_out.log:md5,e334f19b79fbbb7fc66bccd47247632f",
-                                    "miniprot_index_err.log:md5,2dc838a8c9c27b5f88b73f206fc85404",
+                                    "miniprot_index_err.log:md5,81557c76a6b3023116d1f0ecc1c93642",
                                     "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                                 ],
                                 [
                                     [
-                                        ".checkpoint:md5,4f8c6dd87fa7579ee5da71f0864004a0"
+                                        ".checkpoint:md5,1156c313d6f9ecea77a372d80eaaa588"
                                     ],
                                     [
                                         [
@@ -740,44 +83,44 @@
                                     ],
                                     "full_table.tsv:md5,3f9873ba2975559a4a0525ffc557a450",
                                     [
-                                        ".checkpoint:md5,5be0a5bc7e9ce2a4206be73526a35ec1",
-                                        "10056at7088.out:md5,f10cd734d48265fa2df03006b5f564ee",
-                                        "10178at7088.out:md5,82cdcddc20eb3127e464d741ea134cf6",
-                                        "10206at7088.out:md5,9e22b4db0bfcb134714b95ebba8cf8b3",
-                                        "10269at7088.out:md5,8dd246af7bcfd6278a85be5cd6a7006d",
-                                        "1027at7088.out:md5,ccfad0580912509c6da36ff979759a0e",
-                                        "10391at7088.out:md5,65743e13596ecd8b01440474fead8c40",
-                                        "10397at7088.out:md5,95b38aed00c6c76239a23ff75bdf3878",
-                                        "10562at7088.out:md5,0adc38ca281c91f4505ba30d8c581f42",
-                                        "10570at7088.out:md5,f6b2461c8e8af423da44b50352e305b0",
-                                        "10603at7088.out:md5,05b954833d00cfced46986a047893f69",
-                                        "10609at7088.out:md5,cc0a4fd11e582999f6cac3afce3162db",
-                                        "1436at7088.out:md5,f731dde2a5421c534497f6fee6335cc2",
-                                        "2885at7088.out:md5,0a10eacce3b5061357f8ecd20c9071a8"
+                                        ".checkpoint:md5,97e272d0cdd21bfa3e5ff0939bcc86a9",
+                                        "10056at7088.out:md5,4b5f4e955ab16c7d67e4895ad44a413e",
+                                        "10178at7088.out:md5,7cba9686a34eae6eebbf837256755b0e",
+                                        "10206at7088.out:md5,5555e10b7c4889af48758d6c0219a6de",
+                                        "10269at7088.out:md5,4721a678481170d47e4103fef565f809",
+                                        "1027at7088.out:md5,808c94991bcd60844d46afd152b4a1c9",
+                                        "10391at7088.out:md5,6fb99ab17df4227e4a74aca3af2ecc5a",
+                                        "10397at7088.out:md5,a323d1506abbb308c9773c14fa772474",
+                                        "10562at7088.out:md5,be08ac2ebbfdbfbd6ec9d79af05fb686",
+                                        "10570at7088.out:md5,8d94f521124c2107acf05ad6a9965043",
+                                        "10603at7088.out:md5,526309fbc5264f35261abcb1b72e1d47",
+                                        "10609at7088.out:md5,378027f456ba86dfc54c1a667a52c023",
+                                        "1436at7088.out:md5,48973d5cd5ca8882ab0e07186ee84572",
+                                        "2885at7088.out:md5,b94ebfac48a57b7aa8f250ae0c7ce57d"
                                     ],
                                     [
-                                        ".checkpoint:md5,795535f2fcc65e616a0ae27f21bf326d",
+                                        ".checkpoint:md5,3e392c061022c2d1b8f4b89b6d041ef1",
                                         "GCA_963859965.1_lepidoptera_odb10.gff:md5,e334f19b79fbbb7fc66bccd47247632f",
                                         "ref.mpi:md5,4fc0d7e42e19da835d5168d4225eb70f",
                                         [
-                                            "10056at7088.faa:md5,d3172d04e34081a9c9f53a11fe18f112",
+                                            "10056at7088.faa:md5,8e007d3a13fc9b3df5b7962a7baf820e",
                                             "10178at7088.faa:md5,073af8ca578f9cfdee2a838365141206",
                                             "10206at7088.faa:md5,92b0e710242a63b429e5e723df7b8377",
                                             "10269at7088.faa:md5,0ef5f7da20f9d95ef187c1a5108048d7",
-                                            "1027at7088.faa:md5,e9defa45a8d35c12d3e506c7fa016c88",
-                                            "10391at7088.faa:md5,3dc7f7e4fc482cd7b1bde1acd4305274",
+                                            "1027at7088.faa:md5,cdbc7b86d670c62d538d976858c3b33b",
+                                            "10391at7088.faa:md5,eb53cc4459fdb0a7590d21ccb10bf603",
                                             "10397at7088.faa:md5,cdebe7a904a17990e2a4442bf25d9dc0",
-                                            "10562at7088.faa:md5,0c12b8be96db5c5a32b7b0c946879701",
-                                            "10570at7088.faa:md5,b4d83c0e8fc6ea2952a309539b00a4d4",
+                                            "10562at7088.faa:md5,e66d3872765c4e3b822e73684706e03c",
+                                            "10570at7088.faa:md5,060cc68d11c995b983177d7dd6177884",
                                             "10603at7088.faa:md5,ae8d8edfdef29962069db6463406e19b",
                                             "10609at7088.faa:md5,53001051bdd788dd028786de7af4f783",
                                             "1436at7088.faa:md5,c6035248c98bae823bb2b5a12ec6a202",
-                                            "2885at7088.faa:md5,58abe55c0e8bf5775ab2ef735b2d301d"
+                                            "2885at7088.faa:md5,a097f9957e2721ddf93d00da3247ff05"
                                         ]
                                     ],
                                     "missing_busco_list.tsv:md5,d9d1dab64ced588b2bbeb67236d6790b",
-                                    "short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
-                                    "short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d"
+                                    "short_summary.json:md5,3f3d3afb686925c91fb600824c99be10",
+                                    "short_summary.txt:md5,ee6e3dab07c9a4d326ff0e90ce3a7a8f"
                                 ],
                                 [
                                     "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
@@ -799,14 +142,14 @@
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8069ed1577407999b6c4e11f305df6a4",
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,e482b45487518299d62b04fcaf74d5c5",
                             "Ceramica_pisi.full_table.tsv.gz:md5,3f9873ba2975559a4a0525ffc557a450",
                             "Ceramica_pisi.missing_busco_list.tsv.gz:md5,d9d1dab64ced588b2bbeb67236d6790b",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,4b33ae6246e40cca463cd2fc66725597",
-                            "Ceramica_pisi.short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,f5ed1f1181456e875af8218900a900ff",
+                            "Ceramica_pisi.short_summary.json:md5,3f3d3afb686925c91fb600824c99be10",
                             "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
-                            "Ceramica_pisi.short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,7fd8e45917dd70921c776ca37001a4ea"
+                            "Ceramica_pisi.short_summary.txt:md5,ee6e3dab07c9a4d326ff0e90ce3a7a8f",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,1234a8dea2da65387d354855a11957d5"
                         ]
                     ]
                 ],
@@ -837,15 +180,15 @@
                                     "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
                                     "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
                                     "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,7710bbcce6447c78d6655e6ad0a87568",
-                                    "miniprot_align_lepidoptera_odb10_err.log:md5,ca5de0fad5afdd68fe32bc37194720c3",
+                                    "hmmsearch_out.log:md5,4c35053a805d3c44f417f9d468403544",
+                                    "miniprot_align_lepidoptera_odb10_err.log:md5,4caa84074da67f102387b8db1a865844",
                                     "miniprot_align_lepidoptera_odb10_out.log:md5,e334f19b79fbbb7fc66bccd47247632f",
-                                    "miniprot_index_err.log:md5,2dc838a8c9c27b5f88b73f206fc85404",
+                                    "miniprot_index_err.log:md5,81557c76a6b3023116d1f0ecc1c93642",
                                     "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                                 ],
                                 [
                                     [
-                                        ".checkpoint:md5,4f8c6dd87fa7579ee5da71f0864004a0"
+                                        ".checkpoint:md5,1156c313d6f9ecea77a372d80eaaa588"
                                     ],
                                     [
                                         [
@@ -883,44 +226,44 @@
                                     ],
                                     "full_table.tsv:md5,3f9873ba2975559a4a0525ffc557a450",
                                     [
-                                        ".checkpoint:md5,5be0a5bc7e9ce2a4206be73526a35ec1",
-                                        "10056at7088.out:md5,f10cd734d48265fa2df03006b5f564ee",
-                                        "10178at7088.out:md5,82cdcddc20eb3127e464d741ea134cf6",
-                                        "10206at7088.out:md5,9e22b4db0bfcb134714b95ebba8cf8b3",
-                                        "10269at7088.out:md5,8dd246af7bcfd6278a85be5cd6a7006d",
-                                        "1027at7088.out:md5,ccfad0580912509c6da36ff979759a0e",
-                                        "10391at7088.out:md5,65743e13596ecd8b01440474fead8c40",
-                                        "10397at7088.out:md5,95b38aed00c6c76239a23ff75bdf3878",
-                                        "10562at7088.out:md5,0adc38ca281c91f4505ba30d8c581f42",
-                                        "10570at7088.out:md5,f6b2461c8e8af423da44b50352e305b0",
-                                        "10603at7088.out:md5,05b954833d00cfced46986a047893f69",
-                                        "10609at7088.out:md5,cc0a4fd11e582999f6cac3afce3162db",
-                                        "1436at7088.out:md5,f731dde2a5421c534497f6fee6335cc2",
-                                        "2885at7088.out:md5,0a10eacce3b5061357f8ecd20c9071a8"
+                                        ".checkpoint:md5,97e272d0cdd21bfa3e5ff0939bcc86a9",
+                                        "10056at7088.out:md5,4b5f4e955ab16c7d67e4895ad44a413e",
+                                        "10178at7088.out:md5,7cba9686a34eae6eebbf837256755b0e",
+                                        "10206at7088.out:md5,5555e10b7c4889af48758d6c0219a6de",
+                                        "10269at7088.out:md5,4721a678481170d47e4103fef565f809",
+                                        "1027at7088.out:md5,808c94991bcd60844d46afd152b4a1c9",
+                                        "10391at7088.out:md5,6fb99ab17df4227e4a74aca3af2ecc5a",
+                                        "10397at7088.out:md5,a323d1506abbb308c9773c14fa772474",
+                                        "10562at7088.out:md5,be08ac2ebbfdbfbd6ec9d79af05fb686",
+                                        "10570at7088.out:md5,8d94f521124c2107acf05ad6a9965043",
+                                        "10603at7088.out:md5,526309fbc5264f35261abcb1b72e1d47",
+                                        "10609at7088.out:md5,378027f456ba86dfc54c1a667a52c023",
+                                        "1436at7088.out:md5,48973d5cd5ca8882ab0e07186ee84572",
+                                        "2885at7088.out:md5,b94ebfac48a57b7aa8f250ae0c7ce57d"
                                     ],
                                     [
-                                        ".checkpoint:md5,795535f2fcc65e616a0ae27f21bf326d",
+                                        ".checkpoint:md5,3e392c061022c2d1b8f4b89b6d041ef1",
                                         "GCA_963859965.1_lepidoptera_odb10.gff:md5,e334f19b79fbbb7fc66bccd47247632f",
                                         "ref.mpi:md5,4fc0d7e42e19da835d5168d4225eb70f",
                                         [
-                                            "10056at7088.faa:md5,d3172d04e34081a9c9f53a11fe18f112",
+                                            "10056at7088.faa:md5,8e007d3a13fc9b3df5b7962a7baf820e",
                                             "10178at7088.faa:md5,073af8ca578f9cfdee2a838365141206",
                                             "10206at7088.faa:md5,92b0e710242a63b429e5e723df7b8377",
                                             "10269at7088.faa:md5,0ef5f7da20f9d95ef187c1a5108048d7",
-                                            "1027at7088.faa:md5,e9defa45a8d35c12d3e506c7fa016c88",
-                                            "10391at7088.faa:md5,3dc7f7e4fc482cd7b1bde1acd4305274",
+                                            "1027at7088.faa:md5,cdbc7b86d670c62d538d976858c3b33b",
+                                            "10391at7088.faa:md5,eb53cc4459fdb0a7590d21ccb10bf603",
                                             "10397at7088.faa:md5,cdebe7a904a17990e2a4442bf25d9dc0",
-                                            "10562at7088.faa:md5,0c12b8be96db5c5a32b7b0c946879701",
-                                            "10570at7088.faa:md5,b4d83c0e8fc6ea2952a309539b00a4d4",
+                                            "10562at7088.faa:md5,e66d3872765c4e3b822e73684706e03c",
+                                            "10570at7088.faa:md5,060cc68d11c995b983177d7dd6177884",
                                             "10603at7088.faa:md5,ae8d8edfdef29962069db6463406e19b",
                                             "10609at7088.faa:md5,53001051bdd788dd028786de7af4f783",
                                             "1436at7088.faa:md5,c6035248c98bae823bb2b5a12ec6a202",
-                                            "2885at7088.faa:md5,58abe55c0e8bf5775ab2ef735b2d301d"
+                                            "2885at7088.faa:md5,a097f9957e2721ddf93d00da3247ff05"
                                         ]
                                     ],
                                     "missing_busco_list.tsv:md5,d9d1dab64ced588b2bbeb67236d6790b",
-                                    "short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
-                                    "short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d"
+                                    "short_summary.json:md5,3f3d3afb686925c91fb600824c99be10",
+                                    "short_summary.txt:md5,ee6e3dab07c9a4d326ff0e90ce3a7a8f"
                                 ],
                                 [
                                     "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
@@ -950,26 +293,26 @@
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8069ed1577407999b6c4e11f305df6a4",
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,e482b45487518299d62b04fcaf74d5c5",
                             "Ceramica_pisi.full_table.tsv.gz:md5,3f9873ba2975559a4a0525ffc557a450",
                             "Ceramica_pisi.missing_busco_list.tsv.gz:md5,d9d1dab64ced588b2bbeb67236d6790b",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,4b33ae6246e40cca463cd2fc66725597",
-                            "Ceramica_pisi.short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,f5ed1f1181456e875af8218900a900ff",
+                            "Ceramica_pisi.short_summary.json:md5,3f3d3afb686925c91fb600824c99be10",
                             "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
-                            "Ceramica_pisi.short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,7fd8e45917dd70921c776ca37001a4ea"
+                            "Ceramica_pisi.short_summary.txt:md5,ee6e3dab07c9a4d326ff0e90ce3a7a8f",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,1234a8dea2da65387d354855a11957d5"
                         ]
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-09T12:28:36.094682579",
+        "timestamp": "2026-06-09T16:22:04.704072925",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
         }
     },
-    "Ceramica_pisi - all_odb - online": {
+    "Ceramica_pisi - odb12 - minimal basal - online": {
         "content": [
             {
                 "0": [
@@ -977,27 +320,567 @@
                         {
                             "id": "Ceramica_pisi"
                         },
-                        "Ceramica_pisi.busco_odb.csv:md5,a04e7c59cb5ed5eaa0d32bb552f5d418"
+                        "Ceramica_pisi.busco_odb.csv:md5,489908b299637165766651d451170324"
                     ]
                 ],
                 "1": [
                     [
                         {
                             "id": "Ceramica_pisi",
-                            "lineage": "archaea_odb10",
+                            "lineage": "archaea_odb12",
                             "taxid": "988087",
-                            "outdir": "Ceramica_pisi_988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        "full_table.tsv:md5,99ea1be263dbf4605fe594175dc030a0"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "archaea_odb12",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,090d3cde02ebc23fca90920792cce6f2",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,b0607e822efeed58214e0b1040870c31",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,211c27b09cb9562baa416070a15f0e23",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,0eac0b1d029759a366df5457209b4aba",
-                            "Ceramica_pisi.short_summary.json:md5,b138b1a60e8c62718ee10bae3e5d8a97",
-                            "Ceramica_pisi.short_summary.tsv:md5,2dbdbe2a7be1eec1d2940d3e01585194",
-                            "Ceramica_pisi.short_summary.txt:md5,95e223324a4d24286b2ffc5d0e8030fc",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,00f5f5505d050ae4a522fab2e5cfac6a"
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,f95c39e14246dd36304bca0e0e096e0f",
+                                    "prodigal_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
+                                    "prodigal_out.log:md5,b61e777f85d044e31bf5832d560f2498"
+                                ],
+                                [
+                                    ".checkpoint:md5,2c7a2612221f8b4a3e2f17527d08cc49",
+                                    [
+                                        "predicted.faa:md5,3ecfe6f190aac92eaaa3190013e3f466",
+                                        "predicted.fna:md5,1251d92597f63b5195d76db22c4f296a",
+                                        [
+                                            "prodigal_mode_single_code_11.faa:md5,bf05241b561d2d4a0ab9d7d92c835510",
+                                            "prodigal_mode_single_code_11.fna:md5,1251d92597f63b5195d76db22c4f296a",
+                                            "prodigal_mode_single_code_11_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
+                                            "prodigal_mode_single_code_11_out.log:md5,b61e777f85d044e31bf5832d560f2498"
+                                        ]
+                                    ]
+                                ],
+                                [
+                                    [
+                                        ".checkpoint:md5,982f7e1e20c6ebe800ef68de04b2a617"
+                                    ],
+                                    [
+                                        [
+                                            "9883at2157.faa:md5,448ddd90c767c028af9a402516ba2f2c",
+                                            "9883at2157.fna:md5,60439d4b292a0e6a6a19443a2feb8868"
+                                        ],
+                                        [
+                                            
+                                        ],
+                                        [
+                                            
+                                        ]
+                                    ],
+                                    "full_table.tsv:md5,99ea1be263dbf4605fe594175dc030a0",
+                                    [
+                                        ".checkpoint:md5,6ba99abbb941173a01249cf71fbe87dc",
+                                        "10058at2157.out:md5,806be1f0aa8e754359d55d9b2b8ae829",
+                                        "10073at2157.out:md5,42f524a7974bbe918984457774cb6f31",
+                                        "10127at2157.out:md5,615dcc57bd659f418e332bae163d8ed7",
+                                        "10348at2157.out:md5,9d3bd591804f76b380c37036c2159d90",
+                                        "10382at2157.out:md5,acbba5c3b19007713defff54a53eceb5",
+                                        "10429at2157.out:md5,487aa3c755fbfbca59ef548f17e821c9",
+                                        "10470at2157.out:md5,a7624c6d810aee181bea93bfbdde31cb",
+                                        "10536at2157.out:md5,027ee2d9c7068538fcceb0d909e27e0f",
+                                        "10567at2157.out:md5,b386d3987fa42b472e1f8f78422ce2d9",
+                                        "10698at2157.out:md5,2c71cdf81bc80834c9d376256460c2f6",
+                                        "10737at2157.out:md5,e7beeab8b3012243ec78724af1b75fa7",
+                                        "10899at2157.out:md5,59e3bddfbcaee07039c74d3a71887b98",
+                                        "10943at2157.out:md5,7a9627dead0e3ca77cb312e63ad10bd1",
+                                        "10981at2157.out:md5,1dc0656133bbfbb90d06e0245ec1809d",
+                                        "11138at2157.out:md5,5addc7a5bd5e01a10db5e83c7d72ab22",
+                                        "11309at2157.out:md5,d1363e706c9743dbcd075c8a57c3e5de",
+                                        "115235at2157.out:md5,f68433e1f567281e485602f104e5745f",
+                                        "11624at2157.out:md5,61f5b78e194fd962f7c55bc5c8cfb1a5",
+                                        "117390at2157.out:md5,3accc190c8f4d5445454796fa78d4dc9",
+                                        "11877at2157.out:md5,d76d9aa5cdc156234c76f16c4b0683fa",
+                                        "12054at2157.out:md5,cea8ac82528beaf99cd8de6b1edcfb88",
+                                        "129238at2157.out:md5,3f6c0096844d91879e21737a1a018138",
+                                        "14397at2157.out:md5,f743349838a6e4fae1a4c0e3a97fd025",
+                                        "146558at2157.out:md5,92c374a761a3570647f74964ef00867c",
+                                        "147673at2157.out:md5,4941d8d7768cc3d32ce286b18523f59d",
+                                        "15051at2157.out:md5,1f9f040fb15b25a6381dcb3997ab6d1e",
+                                        "15212at2157.out:md5,70dbc0fd140370bc95b0657ba3e8ab1a",
+                                        "15328at2157.out:md5,382a8ab673492eb1c21b793f8f1450a8",
+                                        "15447at2157.out:md5,23628d619ff1c7ad91dcc424a329142a",
+                                        "17644at2157.out:md5,11cef7bce17014a06814dbcb37fe4c5c",
+                                        "1798at2157.out:md5,381602f5dc8e5f3f4a7af56b52190c9c",
+                                        "19001at2157.out:md5,e2ffcff51cedee9ed096e8e8e13056bf",
+                                        "19013at2157.out:md5,18e045e9cdca61e7e0b72a15268b5c2a",
+                                        "1912at2157.out:md5,e8b67fec057c74c6c56e8be0e1b9291e",
+                                        "204488at2157.out:md5,41a5c898061e59d84a1b9b3beb761e0a",
+                                        "23569at2157.out:md5,0828e64da1d018ee39b0f2553b7c065f",
+                                        "23689at2157.out:md5,507ccf9b52fb406d54fdc3fc803b1ee9",
+                                        "24205at2157.out:md5,ab1a84ed86f8c0ff2c13b00a445e3048",
+                                        "24971at2157.out:md5,e5a7140b883e81ceea5c1749c4568531",
+                                        "25735at2157.out:md5,1124656b534f9bdb7fa3cc822664ec9a",
+                                        "25810at2157.out:md5,b97f3e63642e6a93aa0008017116b224",
+                                        "27149at2157.out:md5,b78e3964f3c51f01bbeb2518aee02927",
+                                        "275101at2157.out:md5,fdcebebb0f1e6de7e8754b484d2522fd",
+                                        "27533at2157.out:md5,39e74e7c1b7822d9df2ddad9883ca645",
+                                        "27944at2157.out:md5,07512cff4ac16a1cd36fb4d026483942",
+                                        "27972at2157.out:md5,44ebd0118e574a5d298705f576fa12d2",
+                                        "295712at2157.out:md5,402847d97e213522bdc0d6e4b7d23029",
+                                        "30537at2157.out:md5,75cd23a4751d295906b123e7a3e38354",
+                                        "30538at2157.out:md5,04f0bff12f00b7624f9c42f6029029f4",
+                                        "30559at2157.out:md5,99519a1d7515afecbd8eabeab53d2b0f",
+                                        "30639at2157.out:md5,ccaefd8f4a91e5a88fa9d369c8614fef",
+                                        "30658at2157.out:md5,e3277a81617ad969a63b6ce6010b24ff",
+                                        "30823at2157.out:md5,5612c54428d76fdb53959b3c24f4a191",
+                                        "30930at2157.out:md5,ae663ce2540d5bd8209bf760061f593a",
+                                        "30955at2157.out:md5,dd4bf935213d04b82e5d3cbc8350b3a2",
+                                        "30957at2157.out:md5,6ccf3612ce8370632e7d778a6b7f0b24",
+                                        "31129at2157.out:md5,99dc2a3d0f826fd2b71e5bab55d30ebf",
+                                        "31271at2157.out:md5,1efd7becb38ecc165d14d1310ae59d39",
+                                        "31300at2157.out:md5,98d0d2b04cfd3b1f699e8a25b64bee43",
+                                        "31424at2157.out:md5,34fe168b3b96f07d6a318e96c846a636",
+                                        "314984at2157.out:md5,bafd064fd4aa2441d3c53891537f708f",
+                                        "314at2157.out:md5,e80916faddbe96166c797e749f7ce7a5",
+                                        "32941at2157.out:md5,d893a204d9c2a3f6e19308a0085c079b",
+                                        "33049at2157.out:md5,b27494d34b90b6c41c82a44a9cb3588d",
+                                        "33250at2157.out:md5,54268a128435b8d1ef5af562b9abea5f",
+                                        "33582at2157.out:md5,39ecb466dab51b1a4f2393e5eb8d511f",
+                                        "33866at2157.out:md5,f848325f13c301fd863172e09af7cb65",
+                                        "34207at2157.out:md5,d685f9b978c1a59eca060daa108f3fbe",
+                                        "35104at2157.out:md5,799c507280edf1f97d6afb5fe637b967",
+                                        "35866at2157.out:md5,6c540a6b8315425bf927eb0ea8db6da6",
+                                        "35908at2157.out:md5,28e9557e092fc27927c0a6ae271196b7",
+                                        "36608at2157.out:md5,68c3ddda879e324fe7afb7e353bb845c",
+                                        "371736at2157.out:md5,1aa3f31f3cb9f962a5cf1716c34ce626",
+                                        "371754at2157.out:md5,7ac71a61bb21eaa0c504faa1b102b905",
+                                        "371797at2157.out:md5,b9163363cfd7880b5daa522e360f4b40",
+                                        "371812at2157.out:md5,c00d227d1d30a5e5445d425c95b468e0",
+                                        "371836at2157.out:md5,f996ab2c50c48ed43d39dcb39aedd880",
+                                        "371856at2157.out:md5,8b65873c54b82f7169d79c7d60646d80",
+                                        "371863at2157.out:md5,dd06b4805da1000a8cd595e906841ebd",
+                                        "371914at2157.out:md5,aaf283ab816a59989c76edfbee69dae8",
+                                        "371959at2157.out:md5,7195713aecb727a60d8019ec016d0788",
+                                        "371997at2157.out:md5,958680e8fce9649289bade741ad8471c",
+                                        "372008at2157.out:md5,628a3cfcc8059a216ee7ce5de244a64e",
+                                        "372011at2157.out:md5,9cc19e8fe63b4c06c93ccdb1d2ff81dd",
+                                        "372044at2157.out:md5,45699eda7df6fd60597b5e2e5119b3d0",
+                                        "372073at2157.out:md5,ae9940ae77b1631d1fbe35b68d95b07e",
+                                        "372100at2157.out:md5,bf898e677d5853068df772bd401ef317",
+                                        "372102at2157.out:md5,d8510c843be35c59319f3c6519ae65e0",
+                                        "372108at2157.out:md5,3129e68842c8b3644944e8959f76f67f",
+                                        "372127at2157.out:md5,09f18a9024b8768e4852e3c444cd391e",
+                                        "372134at2157.out:md5,598223c292114d9fc64ce85d0f9e86d7",
+                                        "372142at2157.out:md5,6a32f247dad5e1d08d0a6ce7f1f44dbf",
+                                        "372177at2157.out:md5,6ee772353d5bfd607174e47050f905c4",
+                                        "372178at2157.out:md5,6b483b7586a9df9e3552d4f8b602023a",
+                                        "372188at2157.out:md5,97f387690037c8a87d1d90b2d652ecec",
+                                        "372247at2157.out:md5,a615f948ba82e4fb88ceef6e836a97c1",
+                                        "372251at2157.out:md5,781778c607f5ddef0e34b8a49ac4337a",
+                                        "372305at2157.out:md5,3f568bc5439641bcfb467d06d5f95e0b",
+                                        "38155at2157.out:md5,d6815afc47a2b08f75b1d8603ccc995f",
+                                        "38238at2157.out:md5,68573af2209d6b69023dd1b0e507c9ae",
+                                        "39019at2157.out:md5,48d5ffa4163322adff48225a9b00d274",
+                                        "39139at2157.out:md5,e9a5b4ffcc7d08d116ab4eb5041883f7",
+                                        "39189at2157.out:md5,c33c47228f9740750bf1f31d316d2ff1",
+                                        "39992at2157.out:md5,d73af3841b6586aeb6be0ba4fa2ad9f3",
+                                        "4116at2157.out:md5,8eb1d2f51024fdeb6781ce1cf33755c5",
+                                        "43788at2157.out:md5,ee6603b5c29a48d5e37eec8bcaa529d1",
+                                        "44091at2157.out:md5,87b65193d16d8a2ca93992d23eef63ec",
+                                        "45138at2157.out:md5,e2d57e4ed419060007f66b830fe1bf26",
+                                        "45154at2157.out:md5,9d0a74eba40640f172f62f7a368567de",
+                                        "45195at2157.out:md5,3b4fe88d269a9ff88deb1090c15d309a",
+                                        "45346at2157.out:md5,517e3fd2965840e9c8d47a3de001603f",
+                                        "45383at2157.out:md5,62fe526f4d96b413a02110e1f063b9ba",
+                                        "45909at2157.out:md5,648cdf1eb3f6f77664a6b8612c9a03bd",
+                                        "46081at2157.out:md5,78ef152d690b21edc6e6721ccdae17b0",
+                                        "4696at2157.out:md5,696b3d7d9cd88c6b769bbfccb20eec0d",
+                                        "52456at2157.out:md5,bf0d3ed93c51161f606f32a54d693226",
+                                        "52479at2157.out:md5,43e21fefc90f05af5a8fb410c45569d3",
+                                        "52677at2157.out:md5,327344be47b930bfddb1f928848198c9",
+                                        "52769at2157.out:md5,92a6bdfccabe7d979c5ef53ce7b1852c",
+                                        "52849at2157.out:md5,511a9d7c6d7df23154b6f4992130940a",
+                                        "53273at2157.out:md5,6b43ae340bb8b2e531d15be52d641ba7",
+                                        "55506at2157.out:md5,87ef09b711950547b7bceee4fc3ab7e0",
+                                        "5615at2157.out:md5,220a9516e24f810b54c0aee46569f146",
+                                        "5619at2157.out:md5,7276c74219450b3696ab42ffe459df6b",
+                                        "56356at2157.out:md5,00eed35a395c3408b8f3ddb864566a20",
+                                        "5670at2157.out:md5,b8731d784d0fcf058118fe6fc22669e0",
+                                        "5718at2157.out:md5,4025346718bac53a3716d0934249714d",
+                                        "5866at2157.out:md5,80063b9f5c1d9f7227f07d64fc530dae",
+                                        "5877at2157.out:md5,df2c99d57cc7f32f010ab17cde0904e0",
+                                        "5935at2157.out:md5,6c6f08b70418fa743e4cc01390ab8580",
+                                        "5987at2157.out:md5,eb91a1d13adbb8a363da4d79d047c975",
+                                        "60264at2157.out:md5,f8486f9067124f8f552a78825809d22c",
+                                        "6075at2157.out:md5,cb0d880dabc75b70aa6c846a9c9118d1",
+                                        "6113at2157.out:md5,ecd3d2f8e0f09b124a1aabc9b8998490",
+                                        "6121at2157.out:md5,7c172546010f1b743af6288315efc7ad",
+                                        "6244at2157.out:md5,30526eaa95b888bbfd40c96af87f50b3",
+                                        "6290at2157.out:md5,aa0afb13ff731d23a3a2d5741ea66520",
+                                        "6295at2157.out:md5,7928e3d3a12c069430a389cf475b978a",
+                                        "6379at2157.out:md5,d572d4b26c4573d518b3fa630d7dd1f8",
+                                        "6533at2157.out:md5,5f4bf240ce4ee4b282019fdf7a407477",
+                                        "65493at2157.out:md5,6a83676c488dd0eab4f02f570dd7eebf",
+                                        "6575at2157.out:md5,dbae84eb570e29fc41298e75d637c7f2",
+                                        "65887at2157.out:md5,825ee23697c03c8f3dd1c37d511af161",
+                                        "6605at2157.out:md5,abd52bf031e55656dbb32d43aed9837b",
+                                        "6874at2157.out:md5,1748f31fc9f073af504659f1b0a217fd",
+                                        "7000at2157.out:md5,21c37842c290c33cbdc7908068612d7e",
+                                        "7144at2157.out:md5,881b7a3ec71485692717d9a1e71045f0",
+                                        "7146at2157.out:md5,f80dcb76985c5f1a6e10320edf749982",
+                                        "7259at2157.out:md5,6e53dbf9f0c314aefd5ce67777802b0c",
+                                        "7316at2157.out:md5,0c31e641670a25ebab8f50849c4629b0",
+                                        "7375at2157.out:md5,35dffb4c3aee65b0debf9e4405752ec2",
+                                        "7378at2157.out:md5,f6347e94a79ee750bb8c1c890afa47bd",
+                                        "7506at2157.out:md5,d426dcd37cf58aad597791aae8863260",
+                                        "7529at2157.out:md5,d472e1a5939eaf6d73cde9f8504bed56",
+                                        "7620at2157.out:md5,b52ab514c9895737550040232d4fc145",
+                                        "7668at2157.out:md5,4d251bd47c2b15a854bb70fc3cdaef1a",
+                                        "7751at2157.out:md5,478d4242d92894cdf5e23e94172aa49d",
+                                        "7792at2157.out:md5,ec41ed7b1bb2ca0759f2c056b45c28fd",
+                                        "7793at2157.out:md5,7032b2b000807c7cee0b186fb95c365d",
+                                        "7798at2157.out:md5,fc7126429d81f314f743347a80840813",
+                                        "7870at2157.out:md5,3ef7ef671279f899196c3555803c1883",
+                                        "7902at2157.out:md5,f8f0c53a7c17a83809be14ccd697c882",
+                                        "7912at2157.out:md5,96471ee4148eac5f7187d16adf02e096",
+                                        "7927at2157.out:md5,6c299711547056de1d8b188d32071092",
+                                        "8183at2157.out:md5,e9b9745da99039fc2091a45fe5650678",
+                                        "8293at2157.out:md5,3a35b868aa2fd11e90804bf0cd7c4b3a",
+                                        "8389at2157.out:md5,160f7889f81c2c9534217ebcc9787f56",
+                                        "84504at2157.out:md5,ced142c1b1eb2333f95200a1c6d61354",
+                                        "84643at2157.out:md5,3200952d0b80e439d02f752ffe0f6427",
+                                        "84794at2157.out:md5,3dd28bf106403fa461c63e7eff3a9121",
+                                        "8479at2157.out:md5,b12327d3d18cdb47fbea0b0c4c7e6df3",
+                                        "84933at2157.out:md5,d9b58d252ee3103e2a3b0e897b005f4c",
+                                        "8493at2157.out:md5,4974da79de4a52fd78829e833768b96e",
+                                        "85118at2157.out:md5,5bc8c746b49edd3379e73542acbb2519",
+                                        "85381at2157.out:md5,b94b23a00d809a6794117f51e01fff22",
+                                        "85892at2157.out:md5,d0dc2c8d4f36173f21e10170b54c85e0",
+                                        "8643at2157.out:md5,bc50311ab3262fa0d7304c945baacf35",
+                                        "8644at2157.out:md5,94a4af289b1039c7bb3bc7ecaffd4b9b",
+                                        "8656at2157.out:md5,fc170851b1d388d04a55d6b1c3ad111d",
+                                        "8658at2157.out:md5,7f0651edfa3c7a7ecd78186f8337b9b7",
+                                        "8659at2157.out:md5,2b07c8f32bb99f716703baad5bfe0659",
+                                        "8680at2157.out:md5,0a403025738f6510b1f0725abf1d97b0",
+                                        "8831at2157.out:md5,9291eacb475afd01f4432a9ae7b874a8",
+                                        "8842at2157.out:md5,837ddbc0528a056722c1437ac60cf711",
+                                        "8904at2157.out:md5,ed9e288d192aece9fe04d932cbfdd958",
+                                        "9089at2157.out:md5,8ad5b232a168bbf4e5532653cde3de78",
+                                        "9126at2157.out:md5,bbecf0b6a0ada7ec163a11240dc853c8",
+                                        "94124at2157.out:md5,1964dfb0597078d779d2d0bdc67cf4c1",
+                                        "9418at2157.out:md5,0050c8031f87c29ac6faab795c85e135",
+                                        "9465at2157.out:md5,3e7dd216235f7bf72fafd9b638ec7a1e",
+                                        "9473at2157.out:md5,699cf61b6524ce87d139d50543282808",
+                                        "9593at2157.out:md5,818909d402783d49edf6d303aa34124d",
+                                        "9863at2157.out:md5,6d426f7bb203e0d14dd21688c6b8321e",
+                                        "9883at2157.out:md5,a29169b0d54d5cd5d72abdc26f3a6798",
+                                        "9887at2157.out:md5,2ab5fffeaf48441346f6cafae248cd61"
+                                    ],
+                                    "missing_busco_list.tsv:md5,66b6b754309411ac42c08eb96461997c",
+                                    "short_summary.json:md5,1551fceb8aa16161ec472e425f2bece9",
+                                    "short_summary.txt:md5,ad8aa5ef0f00618de4108189698edfc0"
+                                ]
+                            ],
+                            [
+                                
+                            ]
+                        ]
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "archaea_odb12",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8621f6ee0415c0dacdcd86943ccbdc3b",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,99ea1be263dbf4605fe594175dc030a0",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,66b6b754309411ac42c08eb96461997c",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,b3724b8e0d8d19a19d5d4bc19507aa91",
+                            "Ceramica_pisi.short_summary.json:md5,1551fceb8aa16161ec472e425f2bece9",
+                            "Ceramica_pisi.short_summary.tsv:md5,cd2437be0bf26b8c1b87c94c901ddbed",
+                            "Ceramica_pisi.short_summary.txt:md5,ad8aa5ef0f00618de4108189698edfc0",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,13c2a25b960c873f822c63b4e9cfbfc8"
+                        ]
+                    ]
+                ],
+                "busco_full_table": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "archaea_odb12",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        "full_table.tsv:md5,99ea1be263dbf4605fe594175dc030a0"
+                    ]
+                ],
+                "busco_output": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "archaea_odb12",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        [
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,f95c39e14246dd36304bca0e0e096e0f",
+                                    "prodigal_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
+                                    "prodigal_out.log:md5,b61e777f85d044e31bf5832d560f2498"
+                                ],
+                                [
+                                    ".checkpoint:md5,2c7a2612221f8b4a3e2f17527d08cc49",
+                                    [
+                                        "predicted.faa:md5,3ecfe6f190aac92eaaa3190013e3f466",
+                                        "predicted.fna:md5,1251d92597f63b5195d76db22c4f296a",
+                                        [
+                                            "prodigal_mode_single_code_11.faa:md5,bf05241b561d2d4a0ab9d7d92c835510",
+                                            "prodigal_mode_single_code_11.fna:md5,1251d92597f63b5195d76db22c4f296a",
+                                            "prodigal_mode_single_code_11_err.log:md5,5de84d3b26699a1853d4dc9d593af40c",
+                                            "prodigal_mode_single_code_11_out.log:md5,b61e777f85d044e31bf5832d560f2498"
+                                        ]
+                                    ]
+                                ],
+                                [
+                                    [
+                                        ".checkpoint:md5,982f7e1e20c6ebe800ef68de04b2a617"
+                                    ],
+                                    [
+                                        [
+                                            "9883at2157.faa:md5,448ddd90c767c028af9a402516ba2f2c",
+                                            "9883at2157.fna:md5,60439d4b292a0e6a6a19443a2feb8868"
+                                        ],
+                                        [
+                                            
+                                        ],
+                                        [
+                                            
+                                        ]
+                                    ],
+                                    "full_table.tsv:md5,99ea1be263dbf4605fe594175dc030a0",
+                                    [
+                                        ".checkpoint:md5,6ba99abbb941173a01249cf71fbe87dc",
+                                        "10058at2157.out:md5,806be1f0aa8e754359d55d9b2b8ae829",
+                                        "10073at2157.out:md5,42f524a7974bbe918984457774cb6f31",
+                                        "10127at2157.out:md5,615dcc57bd659f418e332bae163d8ed7",
+                                        "10348at2157.out:md5,9d3bd591804f76b380c37036c2159d90",
+                                        "10382at2157.out:md5,acbba5c3b19007713defff54a53eceb5",
+                                        "10429at2157.out:md5,487aa3c755fbfbca59ef548f17e821c9",
+                                        "10470at2157.out:md5,a7624c6d810aee181bea93bfbdde31cb",
+                                        "10536at2157.out:md5,027ee2d9c7068538fcceb0d909e27e0f",
+                                        "10567at2157.out:md5,b386d3987fa42b472e1f8f78422ce2d9",
+                                        "10698at2157.out:md5,2c71cdf81bc80834c9d376256460c2f6",
+                                        "10737at2157.out:md5,e7beeab8b3012243ec78724af1b75fa7",
+                                        "10899at2157.out:md5,59e3bddfbcaee07039c74d3a71887b98",
+                                        "10943at2157.out:md5,7a9627dead0e3ca77cb312e63ad10bd1",
+                                        "10981at2157.out:md5,1dc0656133bbfbb90d06e0245ec1809d",
+                                        "11138at2157.out:md5,5addc7a5bd5e01a10db5e83c7d72ab22",
+                                        "11309at2157.out:md5,d1363e706c9743dbcd075c8a57c3e5de",
+                                        "115235at2157.out:md5,f68433e1f567281e485602f104e5745f",
+                                        "11624at2157.out:md5,61f5b78e194fd962f7c55bc5c8cfb1a5",
+                                        "117390at2157.out:md5,3accc190c8f4d5445454796fa78d4dc9",
+                                        "11877at2157.out:md5,d76d9aa5cdc156234c76f16c4b0683fa",
+                                        "12054at2157.out:md5,cea8ac82528beaf99cd8de6b1edcfb88",
+                                        "129238at2157.out:md5,3f6c0096844d91879e21737a1a018138",
+                                        "14397at2157.out:md5,f743349838a6e4fae1a4c0e3a97fd025",
+                                        "146558at2157.out:md5,92c374a761a3570647f74964ef00867c",
+                                        "147673at2157.out:md5,4941d8d7768cc3d32ce286b18523f59d",
+                                        "15051at2157.out:md5,1f9f040fb15b25a6381dcb3997ab6d1e",
+                                        "15212at2157.out:md5,70dbc0fd140370bc95b0657ba3e8ab1a",
+                                        "15328at2157.out:md5,382a8ab673492eb1c21b793f8f1450a8",
+                                        "15447at2157.out:md5,23628d619ff1c7ad91dcc424a329142a",
+                                        "17644at2157.out:md5,11cef7bce17014a06814dbcb37fe4c5c",
+                                        "1798at2157.out:md5,381602f5dc8e5f3f4a7af56b52190c9c",
+                                        "19001at2157.out:md5,e2ffcff51cedee9ed096e8e8e13056bf",
+                                        "19013at2157.out:md5,18e045e9cdca61e7e0b72a15268b5c2a",
+                                        "1912at2157.out:md5,e8b67fec057c74c6c56e8be0e1b9291e",
+                                        "204488at2157.out:md5,41a5c898061e59d84a1b9b3beb761e0a",
+                                        "23569at2157.out:md5,0828e64da1d018ee39b0f2553b7c065f",
+                                        "23689at2157.out:md5,507ccf9b52fb406d54fdc3fc803b1ee9",
+                                        "24205at2157.out:md5,ab1a84ed86f8c0ff2c13b00a445e3048",
+                                        "24971at2157.out:md5,e5a7140b883e81ceea5c1749c4568531",
+                                        "25735at2157.out:md5,1124656b534f9bdb7fa3cc822664ec9a",
+                                        "25810at2157.out:md5,b97f3e63642e6a93aa0008017116b224",
+                                        "27149at2157.out:md5,b78e3964f3c51f01bbeb2518aee02927",
+                                        "275101at2157.out:md5,fdcebebb0f1e6de7e8754b484d2522fd",
+                                        "27533at2157.out:md5,39e74e7c1b7822d9df2ddad9883ca645",
+                                        "27944at2157.out:md5,07512cff4ac16a1cd36fb4d026483942",
+                                        "27972at2157.out:md5,44ebd0118e574a5d298705f576fa12d2",
+                                        "295712at2157.out:md5,402847d97e213522bdc0d6e4b7d23029",
+                                        "30537at2157.out:md5,75cd23a4751d295906b123e7a3e38354",
+                                        "30538at2157.out:md5,04f0bff12f00b7624f9c42f6029029f4",
+                                        "30559at2157.out:md5,99519a1d7515afecbd8eabeab53d2b0f",
+                                        "30639at2157.out:md5,ccaefd8f4a91e5a88fa9d369c8614fef",
+                                        "30658at2157.out:md5,e3277a81617ad969a63b6ce6010b24ff",
+                                        "30823at2157.out:md5,5612c54428d76fdb53959b3c24f4a191",
+                                        "30930at2157.out:md5,ae663ce2540d5bd8209bf760061f593a",
+                                        "30955at2157.out:md5,dd4bf935213d04b82e5d3cbc8350b3a2",
+                                        "30957at2157.out:md5,6ccf3612ce8370632e7d778a6b7f0b24",
+                                        "31129at2157.out:md5,99dc2a3d0f826fd2b71e5bab55d30ebf",
+                                        "31271at2157.out:md5,1efd7becb38ecc165d14d1310ae59d39",
+                                        "31300at2157.out:md5,98d0d2b04cfd3b1f699e8a25b64bee43",
+                                        "31424at2157.out:md5,34fe168b3b96f07d6a318e96c846a636",
+                                        "314984at2157.out:md5,bafd064fd4aa2441d3c53891537f708f",
+                                        "314at2157.out:md5,e80916faddbe96166c797e749f7ce7a5",
+                                        "32941at2157.out:md5,d893a204d9c2a3f6e19308a0085c079b",
+                                        "33049at2157.out:md5,b27494d34b90b6c41c82a44a9cb3588d",
+                                        "33250at2157.out:md5,54268a128435b8d1ef5af562b9abea5f",
+                                        "33582at2157.out:md5,39ecb466dab51b1a4f2393e5eb8d511f",
+                                        "33866at2157.out:md5,f848325f13c301fd863172e09af7cb65",
+                                        "34207at2157.out:md5,d685f9b978c1a59eca060daa108f3fbe",
+                                        "35104at2157.out:md5,799c507280edf1f97d6afb5fe637b967",
+                                        "35866at2157.out:md5,6c540a6b8315425bf927eb0ea8db6da6",
+                                        "35908at2157.out:md5,28e9557e092fc27927c0a6ae271196b7",
+                                        "36608at2157.out:md5,68c3ddda879e324fe7afb7e353bb845c",
+                                        "371736at2157.out:md5,1aa3f31f3cb9f962a5cf1716c34ce626",
+                                        "371754at2157.out:md5,7ac71a61bb21eaa0c504faa1b102b905",
+                                        "371797at2157.out:md5,b9163363cfd7880b5daa522e360f4b40",
+                                        "371812at2157.out:md5,c00d227d1d30a5e5445d425c95b468e0",
+                                        "371836at2157.out:md5,f996ab2c50c48ed43d39dcb39aedd880",
+                                        "371856at2157.out:md5,8b65873c54b82f7169d79c7d60646d80",
+                                        "371863at2157.out:md5,dd06b4805da1000a8cd595e906841ebd",
+                                        "371914at2157.out:md5,aaf283ab816a59989c76edfbee69dae8",
+                                        "371959at2157.out:md5,7195713aecb727a60d8019ec016d0788",
+                                        "371997at2157.out:md5,958680e8fce9649289bade741ad8471c",
+                                        "372008at2157.out:md5,628a3cfcc8059a216ee7ce5de244a64e",
+                                        "372011at2157.out:md5,9cc19e8fe63b4c06c93ccdb1d2ff81dd",
+                                        "372044at2157.out:md5,45699eda7df6fd60597b5e2e5119b3d0",
+                                        "372073at2157.out:md5,ae9940ae77b1631d1fbe35b68d95b07e",
+                                        "372100at2157.out:md5,bf898e677d5853068df772bd401ef317",
+                                        "372102at2157.out:md5,d8510c843be35c59319f3c6519ae65e0",
+                                        "372108at2157.out:md5,3129e68842c8b3644944e8959f76f67f",
+                                        "372127at2157.out:md5,09f18a9024b8768e4852e3c444cd391e",
+                                        "372134at2157.out:md5,598223c292114d9fc64ce85d0f9e86d7",
+                                        "372142at2157.out:md5,6a32f247dad5e1d08d0a6ce7f1f44dbf",
+                                        "372177at2157.out:md5,6ee772353d5bfd607174e47050f905c4",
+                                        "372178at2157.out:md5,6b483b7586a9df9e3552d4f8b602023a",
+                                        "372188at2157.out:md5,97f387690037c8a87d1d90b2d652ecec",
+                                        "372247at2157.out:md5,a615f948ba82e4fb88ceef6e836a97c1",
+                                        "372251at2157.out:md5,781778c607f5ddef0e34b8a49ac4337a",
+                                        "372305at2157.out:md5,3f568bc5439641bcfb467d06d5f95e0b",
+                                        "38155at2157.out:md5,d6815afc47a2b08f75b1d8603ccc995f",
+                                        "38238at2157.out:md5,68573af2209d6b69023dd1b0e507c9ae",
+                                        "39019at2157.out:md5,48d5ffa4163322adff48225a9b00d274",
+                                        "39139at2157.out:md5,e9a5b4ffcc7d08d116ab4eb5041883f7",
+                                        "39189at2157.out:md5,c33c47228f9740750bf1f31d316d2ff1",
+                                        "39992at2157.out:md5,d73af3841b6586aeb6be0ba4fa2ad9f3",
+                                        "4116at2157.out:md5,8eb1d2f51024fdeb6781ce1cf33755c5",
+                                        "43788at2157.out:md5,ee6603b5c29a48d5e37eec8bcaa529d1",
+                                        "44091at2157.out:md5,87b65193d16d8a2ca93992d23eef63ec",
+                                        "45138at2157.out:md5,e2d57e4ed419060007f66b830fe1bf26",
+                                        "45154at2157.out:md5,9d0a74eba40640f172f62f7a368567de",
+                                        "45195at2157.out:md5,3b4fe88d269a9ff88deb1090c15d309a",
+                                        "45346at2157.out:md5,517e3fd2965840e9c8d47a3de001603f",
+                                        "45383at2157.out:md5,62fe526f4d96b413a02110e1f063b9ba",
+                                        "45909at2157.out:md5,648cdf1eb3f6f77664a6b8612c9a03bd",
+                                        "46081at2157.out:md5,78ef152d690b21edc6e6721ccdae17b0",
+                                        "4696at2157.out:md5,696b3d7d9cd88c6b769bbfccb20eec0d",
+                                        "52456at2157.out:md5,bf0d3ed93c51161f606f32a54d693226",
+                                        "52479at2157.out:md5,43e21fefc90f05af5a8fb410c45569d3",
+                                        "52677at2157.out:md5,327344be47b930bfddb1f928848198c9",
+                                        "52769at2157.out:md5,92a6bdfccabe7d979c5ef53ce7b1852c",
+                                        "52849at2157.out:md5,511a9d7c6d7df23154b6f4992130940a",
+                                        "53273at2157.out:md5,6b43ae340bb8b2e531d15be52d641ba7",
+                                        "55506at2157.out:md5,87ef09b711950547b7bceee4fc3ab7e0",
+                                        "5615at2157.out:md5,220a9516e24f810b54c0aee46569f146",
+                                        "5619at2157.out:md5,7276c74219450b3696ab42ffe459df6b",
+                                        "56356at2157.out:md5,00eed35a395c3408b8f3ddb864566a20",
+                                        "5670at2157.out:md5,b8731d784d0fcf058118fe6fc22669e0",
+                                        "5718at2157.out:md5,4025346718bac53a3716d0934249714d",
+                                        "5866at2157.out:md5,80063b9f5c1d9f7227f07d64fc530dae",
+                                        "5877at2157.out:md5,df2c99d57cc7f32f010ab17cde0904e0",
+                                        "5935at2157.out:md5,6c6f08b70418fa743e4cc01390ab8580",
+                                        "5987at2157.out:md5,eb91a1d13adbb8a363da4d79d047c975",
+                                        "60264at2157.out:md5,f8486f9067124f8f552a78825809d22c",
+                                        "6075at2157.out:md5,cb0d880dabc75b70aa6c846a9c9118d1",
+                                        "6113at2157.out:md5,ecd3d2f8e0f09b124a1aabc9b8998490",
+                                        "6121at2157.out:md5,7c172546010f1b743af6288315efc7ad",
+                                        "6244at2157.out:md5,30526eaa95b888bbfd40c96af87f50b3",
+                                        "6290at2157.out:md5,aa0afb13ff731d23a3a2d5741ea66520",
+                                        "6295at2157.out:md5,7928e3d3a12c069430a389cf475b978a",
+                                        "6379at2157.out:md5,d572d4b26c4573d518b3fa630d7dd1f8",
+                                        "6533at2157.out:md5,5f4bf240ce4ee4b282019fdf7a407477",
+                                        "65493at2157.out:md5,6a83676c488dd0eab4f02f570dd7eebf",
+                                        "6575at2157.out:md5,dbae84eb570e29fc41298e75d637c7f2",
+                                        "65887at2157.out:md5,825ee23697c03c8f3dd1c37d511af161",
+                                        "6605at2157.out:md5,abd52bf031e55656dbb32d43aed9837b",
+                                        "6874at2157.out:md5,1748f31fc9f073af504659f1b0a217fd",
+                                        "7000at2157.out:md5,21c37842c290c33cbdc7908068612d7e",
+                                        "7144at2157.out:md5,881b7a3ec71485692717d9a1e71045f0",
+                                        "7146at2157.out:md5,f80dcb76985c5f1a6e10320edf749982",
+                                        "7259at2157.out:md5,6e53dbf9f0c314aefd5ce67777802b0c",
+                                        "7316at2157.out:md5,0c31e641670a25ebab8f50849c4629b0",
+                                        "7375at2157.out:md5,35dffb4c3aee65b0debf9e4405752ec2",
+                                        "7378at2157.out:md5,f6347e94a79ee750bb8c1c890afa47bd",
+                                        "7506at2157.out:md5,d426dcd37cf58aad597791aae8863260",
+                                        "7529at2157.out:md5,d472e1a5939eaf6d73cde9f8504bed56",
+                                        "7620at2157.out:md5,b52ab514c9895737550040232d4fc145",
+                                        "7668at2157.out:md5,4d251bd47c2b15a854bb70fc3cdaef1a",
+                                        "7751at2157.out:md5,478d4242d92894cdf5e23e94172aa49d",
+                                        "7792at2157.out:md5,ec41ed7b1bb2ca0759f2c056b45c28fd",
+                                        "7793at2157.out:md5,7032b2b000807c7cee0b186fb95c365d",
+                                        "7798at2157.out:md5,fc7126429d81f314f743347a80840813",
+                                        "7870at2157.out:md5,3ef7ef671279f899196c3555803c1883",
+                                        "7902at2157.out:md5,f8f0c53a7c17a83809be14ccd697c882",
+                                        "7912at2157.out:md5,96471ee4148eac5f7187d16adf02e096",
+                                        "7927at2157.out:md5,6c299711547056de1d8b188d32071092",
+                                        "8183at2157.out:md5,e9b9745da99039fc2091a45fe5650678",
+                                        "8293at2157.out:md5,3a35b868aa2fd11e90804bf0cd7c4b3a",
+                                        "8389at2157.out:md5,160f7889f81c2c9534217ebcc9787f56",
+                                        "84504at2157.out:md5,ced142c1b1eb2333f95200a1c6d61354",
+                                        "84643at2157.out:md5,3200952d0b80e439d02f752ffe0f6427",
+                                        "84794at2157.out:md5,3dd28bf106403fa461c63e7eff3a9121",
+                                        "8479at2157.out:md5,b12327d3d18cdb47fbea0b0c4c7e6df3",
+                                        "84933at2157.out:md5,d9b58d252ee3103e2a3b0e897b005f4c",
+                                        "8493at2157.out:md5,4974da79de4a52fd78829e833768b96e",
+                                        "85118at2157.out:md5,5bc8c746b49edd3379e73542acbb2519",
+                                        "85381at2157.out:md5,b94b23a00d809a6794117f51e01fff22",
+                                        "85892at2157.out:md5,d0dc2c8d4f36173f21e10170b54c85e0",
+                                        "8643at2157.out:md5,bc50311ab3262fa0d7304c945baacf35",
+                                        "8644at2157.out:md5,94a4af289b1039c7bb3bc7ecaffd4b9b",
+                                        "8656at2157.out:md5,fc170851b1d388d04a55d6b1c3ad111d",
+                                        "8658at2157.out:md5,7f0651edfa3c7a7ecd78186f8337b9b7",
+                                        "8659at2157.out:md5,2b07c8f32bb99f716703baad5bfe0659",
+                                        "8680at2157.out:md5,0a403025738f6510b1f0725abf1d97b0",
+                                        "8831at2157.out:md5,9291eacb475afd01f4432a9ae7b874a8",
+                                        "8842at2157.out:md5,837ddbc0528a056722c1437ac60cf711",
+                                        "8904at2157.out:md5,ed9e288d192aece9fe04d932cbfdd958",
+                                        "9089at2157.out:md5,8ad5b232a168bbf4e5532653cde3de78",
+                                        "9126at2157.out:md5,bbecf0b6a0ada7ec163a11240dc853c8",
+                                        "94124at2157.out:md5,1964dfb0597078d779d2d0bdc67cf4c1",
+                                        "9418at2157.out:md5,0050c8031f87c29ac6faab795c85e135",
+                                        "9465at2157.out:md5,3e7dd216235f7bf72fafd9b638ec7a1e",
+                                        "9473at2157.out:md5,699cf61b6524ce87d139d50543282808",
+                                        "9593at2157.out:md5,818909d402783d49edf6d303aa34124d",
+                                        "9863at2157.out:md5,6d426f7bb203e0d14dd21688c6b8321e",
+                                        "9883at2157.out:md5,a29169b0d54d5cd5d72abdc26f3a6798",
+                                        "9887at2157.out:md5,2ab5fffeaf48441346f6cafae248cd61"
+                                    ],
+                                    "missing_busco_list.tsv:md5,66b6b754309411ac42c08eb96461997c",
+                                    "short_summary.json:md5,1551fceb8aa16161ec472e425f2bece9",
+                                    "short_summary.txt:md5,ad8aa5ef0f00618de4108189698edfc0"
+                                ]
+                            ],
+                            [
+                                
+                            ]
                         ]
                     ]
                 ],
@@ -1006,199 +889,36 @@
                         {
                             "id": "Ceramica_pisi"
                         },
-                        "Ceramica_pisi.busco_odb.csv:md5,a04e7c59cb5ed5eaa0d32bb552f5d418"
+                        "Ceramica_pisi.busco_odb.csv:md5,489908b299637165766651d451170324"
                     ]
                 ],
                 "restructured_output": [
                     [
                         {
                             "id": "Ceramica_pisi",
-                            "lineage": "archaea_odb10",
+                            "lineage": "archaea_odb12",
                             "taxid": "988087",
-                            "outdir": "Ceramica_pisi_988087",
+                            "outdir": "OUTPUT",
                             "genome_size": 59715277
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,090d3cde02ebc23fca90920792cce6f2",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,b0607e822efeed58214e0b1040870c31",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,211c27b09cb9562baa416070a15f0e23",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,0eac0b1d029759a366df5457209b4aba",
-                            "Ceramica_pisi.short_summary.json:md5,b138b1a60e8c62718ee10bae3e5d8a97",
-                            "Ceramica_pisi.short_summary.tsv:md5,2dbdbe2a7be1eec1d2940d3e01585194",
-                            "Ceramica_pisi.short_summary.txt:md5,95e223324a4d24286b2ffc5d0e8030fc",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,00f5f5505d050ae4a522fab2e5cfac6a"
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8621f6ee0415c0dacdcd86943ccbdc3b",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,99ea1be263dbf4605fe594175dc030a0",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,66b6b754309411ac42c08eb96461997c",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,b3724b8e0d8d19a19d5d4bc19507aa91",
+                            "Ceramica_pisi.short_summary.json:md5,1551fceb8aa16161ec472e425f2bece9",
+                            "Ceramica_pisi.short_summary.tsv:md5,cd2437be0bf26b8c1b87c94c901ddbed",
+                            "Ceramica_pisi.short_summary.txt:md5,ad8aa5ef0f00618de4108189698edfc0",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,13c2a25b960c873f822c63b4e9cfbfc8"
                         ]
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-03T15:45:47.640736163",
+        "timestamp": "2026-06-09T16:25:27.210821318",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
-        }
-    },
-    "Ceramica_pisi - odb10 - basal - online": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,3533a71a930bd1b5afaf9e3880c0c5bf"
-                    ]
-                ],
-                "1": [
-                    
-                ],
-                "odb_csv": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,3533a71a930bd1b5afaf9e3880c0c5bf"
-                    ]
-                ],
-                "restructured_output": [
-                    
-                ]
-            }
-        ],
-        "timestamp": "2026-06-04T14:12:53.60748541",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
-        }
-    },
-    "Ceramica_pisi - all_odb - specified - offline": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,1788ea0e42b2b32b1337e8fd307f6ffd"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "lepidoptera_odb10",
-                            "taxid": "988087",
-                            "outdir": "Ceramica_pisi_988087",
-                            "genome_size": 59715277
-                        },
-                        [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,95bb80afa83ebbe4d3f71e13d3b7f47e",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,80777317e63c02f1d80119a1038df08d",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7a2510a18d093facb2cedfc0d49306c1",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,fac4955a36c2490da9e75b35ae842dd9",
-                            "Ceramica_pisi.short_summary.json:md5,504d345dcf1dbfdbd1d0dcc377d0e24c",
-                            "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
-                            "Ceramica_pisi.short_summary.txt:md5,05820152eafc5667a0b07169a802bb3a",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,615ff4690203609608164b3b0c16e8e3"
-                        ]
-                    ],
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "lepidoptera_odb12",
-                            "taxid": "988087",
-                            "outdir": "Ceramica_pisi_988087",
-                            "genome_size": 59715277
-                        },
-                        [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8e0f95231838e63ada6f833953cb06ed",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,6d8e1467c24c90a0b1a2c4de9a5a45d5",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7907b15451b96b0da834f1f48e214ec4",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,7b8aa99f7b7fbd9b6ad85ab1a4eec473",
-                            "Ceramica_pisi.short_summary.json:md5,08c61dbabbf754735dfd024ce34ce688",
-                            "Ceramica_pisi.short_summary.tsv:md5,97bf63d6cb79a5255dfd8974aecf406a",
-                            "Ceramica_pisi.short_summary.txt:md5,d481f3b49c42ae5fe1d22cbe6725f468",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,b51b75835e40ced7e0251cc3f0f5a3d7"
-                        ]
-                    ]
-                ],
-                "odb_csv": [
-                    [
-                        {
-                            "id": "Ceramica_pisi"
-                        },
-                        "Ceramica_pisi.busco_odb.csv:md5,1788ea0e42b2b32b1337e8fd307f6ffd"
-                    ]
-                ],
-                "restructured_output": [
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "lepidoptera_odb10",
-                            "taxid": "988087",
-                            "outdir": "Ceramica_pisi_988087",
-                            "genome_size": 59715277
-                        },
-                        [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,95bb80afa83ebbe4d3f71e13d3b7f47e",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,80777317e63c02f1d80119a1038df08d",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7a2510a18d093facb2cedfc0d49306c1",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,fac4955a36c2490da9e75b35ae842dd9",
-                            "Ceramica_pisi.short_summary.json:md5,504d345dcf1dbfdbd1d0dcc377d0e24c",
-                            "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
-                            "Ceramica_pisi.short_summary.txt:md5,05820152eafc5667a0b07169a802bb3a",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,615ff4690203609608164b3b0c16e8e3"
-                        ]
-                    ],
-                    [
-                        {
-                            "id": "Ceramica_pisi",
-                            "lineage": "lepidoptera_odb12",
-                            "taxid": "988087",
-                            "outdir": "Ceramica_pisi_988087",
-                            "genome_size": 59715277
-                        },
-                        [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8e0f95231838e63ada6f833953cb06ed",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,6d8e1467c24c90a0b1a2c4de9a5a45d5",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,7907b15451b96b0da834f1f48e214ec4",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,7b8aa99f7b7fbd9b6ad85ab1a4eec473",
-                            "Ceramica_pisi.short_summary.json:md5,08c61dbabbf754735dfd024ce34ce688",
-                            "Ceramica_pisi.short_summary.tsv:md5,97bf63d6cb79a5255dfd8974aecf406a",
-                            "Ceramica_pisi.short_summary.txt:md5,d481f3b49c42ae5fe1d22cbe6725f468",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,b51b75835e40ced7e0251cc3f0f5a3d7"
-                        ]
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-06-04T16:32:11.672609354",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
-        }
-    },
-    "Ceramica_pisi - all_odb": {
-        "content": [
-            {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "odb_csv": [
-                    
-                ],
-                "restructured_output": [
-                    
-                ]
-            }
-        ],
-        "timestamp": "2026-06-02T22:46:38.628993993",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
+            "nextflow": "25.10.4"
         }
     }
 }

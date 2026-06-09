@@ -102,7 +102,7 @@ nextflow_workflow {
         }
     }
 
-    test ( "Ceramica_pisi - odb12 - latest - online" ) {
+    test ( "Ceramica_pisi - odb12 - minimal basal - online" ) {
         config "./online_ancestral.config"
 
         when {
@@ -118,7 +118,7 @@ nextflow_workflow {
                 input[1] = Channel.value([])
                 input[2] = Channel.value(file(params.mapping_path, checkIfExists: true, type: 'dir'))
                 input[3] = Channel.value("988087")
-                input[4] = Channel.value("archaea")
+                input[4] = Channel.value([])
                 input[5] = Channel.value("OUTPUT")
                 input[6] = Channel.value(false)
                 """
