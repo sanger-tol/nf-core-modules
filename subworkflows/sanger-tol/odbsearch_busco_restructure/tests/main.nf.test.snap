@@ -1,4 +1,49 @@
 {
+    "Ceramica_pisi - odb12 - latest - online": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "busco_full_table": [
+                    
+                ],
+                "busco_output": [
+                    
+                ],
+                "odb_csv": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "restructured_output": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-06-09T11:58:34.81617056",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
     "Ceramica_pisi - odb12 - ancestral - online": {
         "content": [
             {
@@ -606,6 +651,319 @@
             }
         ],
         "timestamp": "2026-06-09T10:15:03.150932704",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Ceramica_pisi - odb10 lepidoptera - offline": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,fa9e446c4f8a6dcff0d6b805dec821d2"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        "full_table.tsv:md5,3f9873ba2975559a4a0525ffc557a450"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        [
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,7710bbcce6447c78d6655e6ad0a87568",
+                                    "miniprot_align_lepidoptera_odb10_err.log:md5,ca5de0fad5afdd68fe32bc37194720c3",
+                                    "miniprot_align_lepidoptera_odb10_out.log:md5,e334f19b79fbbb7fc66bccd47247632f",
+                                    "miniprot_index_err.log:md5,2dc838a8c9c27b5f88b73f206fc85404",
+                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                                ],
+                                [
+                                    [
+                                        ".checkpoint:md5,4f8c6dd87fa7579ee5da71f0864004a0"
+                                    ],
+                                    [
+                                        [
+                                            "1436at7088.faa:md5,c6035248c98bae823bb2b5a12ec6a202",
+                                            "1436at7088.gff:md5,7b0e6dc7ff827dff2be5d1c1a90af3c8",
+                                            "2885at7088.faa:md5,c57667d7356d8de1b38cb2eeb0693617",
+                                            "2885at7088.gff:md5,11113c01f8596444f86ff7f6aeb33f20"
+                                        ],
+                                        [
+                                            "10056at7088.faa:md5,8e007d3a13fc9b3df5b7962a7baf820e",
+                                            "10056at7088.gff:md5,edc668f6174cb4361c53d6768638c473"
+                                        ],
+                                        [
+                                            "10178at7088.faa:md5,073af8ca578f9cfdee2a838365141206",
+                                            "10178at7088.gff:md5,3a5d7138e32cc54193a276b8d91b2fee",
+                                            "10206at7088.faa:md5,92b0e710242a63b429e5e723df7b8377",
+                                            "10206at7088.gff:md5,9bb705d84a103e7f75ccbdf2d1e6c46b",
+                                            "10269at7088.faa:md5,3a6d49c3cd45f8479b69894ed52feddd",
+                                            "10269at7088.gff:md5,f014f8d5ce4af042876bd07929c32056",
+                                            "1027at7088.faa:md5,cd258d08768358304fe39815ee4e0825",
+                                            "1027at7088.gff:md5,aee16251cd969e67dbe0371826c89aa3",
+                                            "10391at7088.faa:md5,a84a920aa4fb0c96cf263f6882ab70e5",
+                                            "10391at7088.gff:md5,375bb31821d25e5759acb2dc02cf0c40",
+                                            "10397at7088.faa:md5,cdebe7a904a17990e2a4442bf25d9dc0",
+                                            "10397at7088.gff:md5,dbb319af09b1bb9d7052b7a786f9aec8",
+                                            "10562at7088.faa:md5,a42a6372f4505e6de2c0f02d39968f43",
+                                            "10562at7088.gff:md5,c5db4d2c89c0917c609fce7df7ff05d3",
+                                            "10570at7088.faa:md5,9665a69691c12009d0d29bcf58d4750d",
+                                            "10570at7088.gff:md5,8cb97afe5299a4d318402f2c80617e50",
+                                            "10603at7088.faa:md5,ae8d8edfdef29962069db6463406e19b",
+                                            "10603at7088.gff:md5,08a20eaecc7d01e62100f8cc517dfc0a",
+                                            "10609at7088.faa:md5,d723bf23df0c5cae69225fc24ffd12ef",
+                                            "10609at7088.gff:md5,61b96ad82ed334053d33d2172580d0a9"
+                                        ]
+                                    ],
+                                    "full_table.tsv:md5,3f9873ba2975559a4a0525ffc557a450",
+                                    [
+                                        ".checkpoint:md5,5be0a5bc7e9ce2a4206be73526a35ec1",
+                                        "10056at7088.out:md5,f10cd734d48265fa2df03006b5f564ee",
+                                        "10178at7088.out:md5,82cdcddc20eb3127e464d741ea134cf6",
+                                        "10206at7088.out:md5,9e22b4db0bfcb134714b95ebba8cf8b3",
+                                        "10269at7088.out:md5,8dd246af7bcfd6278a85be5cd6a7006d",
+                                        "1027at7088.out:md5,ccfad0580912509c6da36ff979759a0e",
+                                        "10391at7088.out:md5,65743e13596ecd8b01440474fead8c40",
+                                        "10397at7088.out:md5,95b38aed00c6c76239a23ff75bdf3878",
+                                        "10562at7088.out:md5,0adc38ca281c91f4505ba30d8c581f42",
+                                        "10570at7088.out:md5,f6b2461c8e8af423da44b50352e305b0",
+                                        "10603at7088.out:md5,05b954833d00cfced46986a047893f69",
+                                        "10609at7088.out:md5,cc0a4fd11e582999f6cac3afce3162db",
+                                        "1436at7088.out:md5,f731dde2a5421c534497f6fee6335cc2",
+                                        "2885at7088.out:md5,0a10eacce3b5061357f8ecd20c9071a8"
+                                    ],
+                                    [
+                                        ".checkpoint:md5,795535f2fcc65e616a0ae27f21bf326d",
+                                        "GCA_963859965.1_lepidoptera_odb10.gff:md5,e334f19b79fbbb7fc66bccd47247632f",
+                                        "ref.mpi:md5,4fc0d7e42e19da835d5168d4225eb70f",
+                                        [
+                                            "10056at7088.faa:md5,d3172d04e34081a9c9f53a11fe18f112",
+                                            "10178at7088.faa:md5,073af8ca578f9cfdee2a838365141206",
+                                            "10206at7088.faa:md5,92b0e710242a63b429e5e723df7b8377",
+                                            "10269at7088.faa:md5,0ef5f7da20f9d95ef187c1a5108048d7",
+                                            "1027at7088.faa:md5,e9defa45a8d35c12d3e506c7fa016c88",
+                                            "10391at7088.faa:md5,3dc7f7e4fc482cd7b1bde1acd4305274",
+                                            "10397at7088.faa:md5,cdebe7a904a17990e2a4442bf25d9dc0",
+                                            "10562at7088.faa:md5,0c12b8be96db5c5a32b7b0c946879701",
+                                            "10570at7088.faa:md5,b4d83c0e8fc6ea2952a309539b00a4d4",
+                                            "10603at7088.faa:md5,ae8d8edfdef29962069db6463406e19b",
+                                            "10609at7088.faa:md5,53001051bdd788dd028786de7af4f783",
+                                            "1436at7088.faa:md5,c6035248c98bae823bb2b5a12ec6a202",
+                                            "2885at7088.faa:md5,58abe55c0e8bf5775ab2ef735b2d301d"
+                                        ]
+                                    ],
+                                    "missing_busco_list.tsv:md5,d9d1dab64ced588b2bbeb67236d6790b",
+                                    "short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
+                                    "short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d"
+                                ],
+                                [
+                                    "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
+                                ]
+                            ],
+                            [
+                                
+                            ]
+                        ]
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8069ed1577407999b6c4e11f305df6a4",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,3f9873ba2975559a4a0525ffc557a450",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,d9d1dab64ced588b2bbeb67236d6790b",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,4b33ae6246e40cca463cd2fc66725597",
+                            "Ceramica_pisi.short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
+                            "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
+                            "Ceramica_pisi.short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,7fd8e45917dd70921c776ca37001a4ea"
+                        ]
+                    ]
+                ],
+                "busco_full_table": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        "full_table.tsv:md5,3f9873ba2975559a4a0525ffc557a450"
+                    ]
+                ],
+                "busco_output": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        [
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,835412253c30af4352a70961cb197cda",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,7710bbcce6447c78d6655e6ad0a87568",
+                                    "miniprot_align_lepidoptera_odb10_err.log:md5,ca5de0fad5afdd68fe32bc37194720c3",
+                                    "miniprot_align_lepidoptera_odb10_out.log:md5,e334f19b79fbbb7fc66bccd47247632f",
+                                    "miniprot_index_err.log:md5,2dc838a8c9c27b5f88b73f206fc85404",
+                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                                ],
+                                [
+                                    [
+                                        ".checkpoint:md5,4f8c6dd87fa7579ee5da71f0864004a0"
+                                    ],
+                                    [
+                                        [
+                                            "1436at7088.faa:md5,c6035248c98bae823bb2b5a12ec6a202",
+                                            "1436at7088.gff:md5,7b0e6dc7ff827dff2be5d1c1a90af3c8",
+                                            "2885at7088.faa:md5,c57667d7356d8de1b38cb2eeb0693617",
+                                            "2885at7088.gff:md5,11113c01f8596444f86ff7f6aeb33f20"
+                                        ],
+                                        [
+                                            "10056at7088.faa:md5,8e007d3a13fc9b3df5b7962a7baf820e",
+                                            "10056at7088.gff:md5,edc668f6174cb4361c53d6768638c473"
+                                        ],
+                                        [
+                                            "10178at7088.faa:md5,073af8ca578f9cfdee2a838365141206",
+                                            "10178at7088.gff:md5,3a5d7138e32cc54193a276b8d91b2fee",
+                                            "10206at7088.faa:md5,92b0e710242a63b429e5e723df7b8377",
+                                            "10206at7088.gff:md5,9bb705d84a103e7f75ccbdf2d1e6c46b",
+                                            "10269at7088.faa:md5,3a6d49c3cd45f8479b69894ed52feddd",
+                                            "10269at7088.gff:md5,f014f8d5ce4af042876bd07929c32056",
+                                            "1027at7088.faa:md5,cd258d08768358304fe39815ee4e0825",
+                                            "1027at7088.gff:md5,aee16251cd969e67dbe0371826c89aa3",
+                                            "10391at7088.faa:md5,a84a920aa4fb0c96cf263f6882ab70e5",
+                                            "10391at7088.gff:md5,375bb31821d25e5759acb2dc02cf0c40",
+                                            "10397at7088.faa:md5,cdebe7a904a17990e2a4442bf25d9dc0",
+                                            "10397at7088.gff:md5,dbb319af09b1bb9d7052b7a786f9aec8",
+                                            "10562at7088.faa:md5,a42a6372f4505e6de2c0f02d39968f43",
+                                            "10562at7088.gff:md5,c5db4d2c89c0917c609fce7df7ff05d3",
+                                            "10570at7088.faa:md5,9665a69691c12009d0d29bcf58d4750d",
+                                            "10570at7088.gff:md5,8cb97afe5299a4d318402f2c80617e50",
+                                            "10603at7088.faa:md5,ae8d8edfdef29962069db6463406e19b",
+                                            "10603at7088.gff:md5,08a20eaecc7d01e62100f8cc517dfc0a",
+                                            "10609at7088.faa:md5,d723bf23df0c5cae69225fc24ffd12ef",
+                                            "10609at7088.gff:md5,61b96ad82ed334053d33d2172580d0a9"
+                                        ]
+                                    ],
+                                    "full_table.tsv:md5,3f9873ba2975559a4a0525ffc557a450",
+                                    [
+                                        ".checkpoint:md5,5be0a5bc7e9ce2a4206be73526a35ec1",
+                                        "10056at7088.out:md5,f10cd734d48265fa2df03006b5f564ee",
+                                        "10178at7088.out:md5,82cdcddc20eb3127e464d741ea134cf6",
+                                        "10206at7088.out:md5,9e22b4db0bfcb134714b95ebba8cf8b3",
+                                        "10269at7088.out:md5,8dd246af7bcfd6278a85be5cd6a7006d",
+                                        "1027at7088.out:md5,ccfad0580912509c6da36ff979759a0e",
+                                        "10391at7088.out:md5,65743e13596ecd8b01440474fead8c40",
+                                        "10397at7088.out:md5,95b38aed00c6c76239a23ff75bdf3878",
+                                        "10562at7088.out:md5,0adc38ca281c91f4505ba30d8c581f42",
+                                        "10570at7088.out:md5,f6b2461c8e8af423da44b50352e305b0",
+                                        "10603at7088.out:md5,05b954833d00cfced46986a047893f69",
+                                        "10609at7088.out:md5,cc0a4fd11e582999f6cac3afce3162db",
+                                        "1436at7088.out:md5,f731dde2a5421c534497f6fee6335cc2",
+                                        "2885at7088.out:md5,0a10eacce3b5061357f8ecd20c9071a8"
+                                    ],
+                                    [
+                                        ".checkpoint:md5,795535f2fcc65e616a0ae27f21bf326d",
+                                        "GCA_963859965.1_lepidoptera_odb10.gff:md5,e334f19b79fbbb7fc66bccd47247632f",
+                                        "ref.mpi:md5,4fc0d7e42e19da835d5168d4225eb70f",
+                                        [
+                                            "10056at7088.faa:md5,d3172d04e34081a9c9f53a11fe18f112",
+                                            "10178at7088.faa:md5,073af8ca578f9cfdee2a838365141206",
+                                            "10206at7088.faa:md5,92b0e710242a63b429e5e723df7b8377",
+                                            "10269at7088.faa:md5,0ef5f7da20f9d95ef187c1a5108048d7",
+                                            "1027at7088.faa:md5,e9defa45a8d35c12d3e506c7fa016c88",
+                                            "10391at7088.faa:md5,3dc7f7e4fc482cd7b1bde1acd4305274",
+                                            "10397at7088.faa:md5,cdebe7a904a17990e2a4442bf25d9dc0",
+                                            "10562at7088.faa:md5,0c12b8be96db5c5a32b7b0c946879701",
+                                            "10570at7088.faa:md5,b4d83c0e8fc6ea2952a309539b00a4d4",
+                                            "10603at7088.faa:md5,ae8d8edfdef29962069db6463406e19b",
+                                            "10609at7088.faa:md5,53001051bdd788dd028786de7af4f783",
+                                            "1436at7088.faa:md5,c6035248c98bae823bb2b5a12ec6a202",
+                                            "2885at7088.faa:md5,58abe55c0e8bf5775ab2ef735b2d301d"
+                                        ]
+                                    ],
+                                    "missing_busco_list.tsv:md5,d9d1dab64ced588b2bbeb67236d6790b",
+                                    "short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
+                                    "short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d"
+                                ],
+                                [
+                                    "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
+                                ]
+                            ],
+                            [
+                                
+                            ]
+                        ]
+                    ]
+                ],
+                "odb_csv": [
+                    [
+                        {
+                            "id": "Ceramica_pisi"
+                        },
+                        "Ceramica_pisi.busco_odb.csv:md5,fa9e446c4f8a6dcff0d6b805dec821d2"
+                    ]
+                ],
+                "restructured_output": [
+                    [
+                        {
+                            "id": "Ceramica_pisi",
+                            "lineage": "lepidoptera_odb10",
+                            "taxid": "988087",
+                            "outdir": "OUTPUT",
+                            "genome_size": 59715277
+                        },
+                        [
+                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,8069ed1577407999b6c4e11f305df6a4",
+                            "Ceramica_pisi.full_table.tsv.gz:md5,3f9873ba2975559a4a0525ffc557a450",
+                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,d9d1dab64ced588b2bbeb67236d6790b",
+                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,4b33ae6246e40cca463cd2fc66725597",
+                            "Ceramica_pisi.short_summary.json:md5,77d6d6fa53347dac4045c155a29e855c",
+                            "Ceramica_pisi.short_summary.tsv:md5,2701aee387024b393ca08f54d724df37",
+                            "Ceramica_pisi.short_summary.txt:md5,432dc7b58385c975085a201c3fe5d86d",
+                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,7fd8e45917dd70921c776ca37001a4ea"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-09T12:28:36.094682579",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
