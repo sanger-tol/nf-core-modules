@@ -1,5 +1,5 @@
 {
-    "gfAmaRube1 - fasta - stub": {
+    "gfAmaRube1 - bin - stub": {
         "content": [
             {
                 "0": [
@@ -7,40 +7,40 @@
                         {
                             "id": "test"
                         },
-                        "test_corrected.agp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test_alignment.pairs.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "1": [
                     [
-                        "PRETEXT2ASM",
-                        "tola-agp-tpf-utils",
-                        "1.3.3"
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
                     ]
                 ],
-                "correctedagp": [
+                "pairs": [
                     [
                         {
                             "id": "test"
                         },
-                        "test_corrected.agp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test_alignment.pairs.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
-                "versions_agp_tpf_utils": [
+                "versions_pretext_makepairs": [
                     [
-                        "PRETEXT2ASM",
-                        "tola-agp-tpf-utils",
-                        "1.3.3"
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-08T22:12:16.152992805",
+        "timestamp": "2026-06-08T22:27:02.715399238",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
         }
     },
-    "gfAmaRube1 - fasta": {
+    "gfAmaRube1 - bin": {
         "content": [
             {
                 "0": [
@@ -48,34 +48,34 @@
                         {
                             "id": "test"
                         },
-                        "test_corrected.hap1.1.primary.curated.agp:md5,baa7b7d844ca75b46bcce4a7459678d7"
+                        "test_alignment.pairs.gz:md5,a79cff0b32469f85083b04af1e3b6d79"
                     ]
                 ],
                 "1": [
                     [
-                        "PRETEXT2ASM",
-                        "tola-agp-tpf-utils",
-                        "1.3.3"
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
                     ]
                 ],
-                "correctedagp": [
+                "pairs": [
                     [
                         {
                             "id": "test"
                         },
-                        "test_corrected.hap1.1.primary.curated.agp:md5,baa7b7d844ca75b46bcce4a7459678d7"
+                        "test_alignment.pairs.gz:md5,a79cff0b32469f85083b04af1e3b6d79"
                     ]
                 ],
-                "versions_agp_tpf_utils": [
+                "versions_pretext_makepairs": [
                     [
-                        "PRETEXT2ASM",
-                        "tola-agp-tpf-utils",
-                        "1.3.3"
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-08T22:12:07.188873106",
+        "timestamp": "2026-06-08T22:26:48.332853372",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

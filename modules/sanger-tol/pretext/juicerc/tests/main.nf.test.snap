@@ -1,0 +1,124 @@
+{
+    "gfAmaRube1 - bin - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment_sorted.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "juicercout.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "2": [
+                    [
+                        "JUICERC",
+                        "juicer_pre",
+                        "1.2"
+                    ]
+                ],
+                "3": [
+                    [
+                        "JUICERC",
+                        "juicerc",
+                        "1.2"
+                    ]
+                ],
+                "alignment": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment_sorted.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "outlog": [
+                    "juicercout.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "versions_juicer_pre": [
+                    [
+                        "JUICERC",
+                        "juicer_pre",
+                        "1.2"
+                    ]
+                ],
+                "versions_juicerc": [
+                    [
+                        "JUICERC",
+                        "juicerc",
+                        "1.2"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-08T22:17:40.178199833",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "gfAmaRube1 - bin": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment_sorted.txt:md5,3e00a447c0a514c7ae7e77d95ef2bddf"
+                    ]
+                ],
+                "1": [
+                    "juicercout.log:md5,5a5c2dbe538ca3c64709a35afc9739ae"
+                ],
+                "2": [
+                    [
+                        "JUICERC",
+                        "juicer_pre",
+                        "1.2"
+                    ]
+                ],
+                "3": [
+                    [
+                        "JUICERC",
+                        "juicerc",
+                        "1.2"
+                    ]
+                ],
+                "alignment": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment_sorted.txt:md5,3e00a447c0a514c7ae7e77d95ef2bddf"
+                    ]
+                ],
+                "outlog": [
+                    "juicercout.log:md5,5a5c2dbe538ca3c64709a35afc9739ae"
+                ],
+                "versions_juicer_pre": [
+                    [
+                        "JUICERC",
+                        "juicer_pre",
+                        "1.2"
+                    ]
+                ],
+                "versions_juicerc": [
+                    [
+                        "JUICERC",
+                        "juicerc",
+                        "1.2"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-08T22:17:26.600118364",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

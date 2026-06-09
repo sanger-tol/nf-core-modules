@@ -13,7 +13,8 @@ tools:
       description: |
         Utilities for Tree of Life AGP and TPF assembly files. This module runs
         `pretext-to-asm` to remap a PretextView AGP onto the input assembly.
-        Output filename uses `task.ext.prefix` (default `meta.id`), e.g. `sample_corrected.agp`.
+        Output filename uses `task.ext.prefix` (default `meta.id`), e.g.
+        `sample_corrected.hap1.1.primary.curated.agp` when haplotype tags are present.
       homepage: https://github.com/sanger-tol/agp-tpf-utils
       documentation: https://github.com/sanger-tol/agp-tpf-utils
       tool_dev_url: https://github.com/sanger-tol/agp-tpf-utils
@@ -42,10 +43,10 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*_corrected.agp":
+      - "*_corrected*.agp":
           type: file
           description: Corrected AGP assembly coordinates after Pretext curation
-          pattern: "*_corrected.agp"
+          pattern: "*_corrected*.agp"
           ontologies: []
   versions_agp_tpf_utils:
     - - ${task.process}:

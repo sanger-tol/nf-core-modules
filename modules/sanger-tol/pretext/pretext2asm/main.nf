@@ -10,7 +10,7 @@ process PRETEXT2ASM {
 
 
     output:
-    tuple val(meta), path("*_corrected.agp"), emit: correctedagp
+    tuple val(meta), path("${meta.id}_corrected*.agp"), emit: correctedagp
     // tola-agp-tpf-utils has no CLI --version; pin to container tag (bump when `container` changes)
     tuple val("${task.process}"), val('tola-agp-tpf-utils'), val('1.3.3'), topic: versions, emit: versions_agp_tpf_utils
 
