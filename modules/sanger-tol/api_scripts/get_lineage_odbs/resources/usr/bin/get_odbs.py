@@ -131,32 +131,32 @@ def get_http_request_json(url: str):
     return response.json()
 
 
-def goat_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> dict[str, BuscoLineage]:
+def goat_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> list[BuscoLineage]:
     response = get_http_request_json(GOAT_API.substitute(taxid=taxid))
     data = response["results"][0]["result"]["lineage"]
     query_tax_list = [int(taxid["taxon_id"]) for taxid in data]
 
-    return {
-        lineage_tax_ids_dict[taxon_id].lineage: lineage_tax_ids_dict[taxon_id]
+    return [
+        lineage_tax_ids_dict[taxon_id]
         for taxon_id in query_tax_list
         if taxon_id in lineage_tax_ids_dict
-    }
+    ]
 
 
-def ena_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> dict[str, BuscoLineage]:
+def ena_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> list[BuscoLineage]:
     ena_response = get_http_request_json(ENA_API.substitute(taxid=taxid))
     lineage_name = [lineage.lower() for lineage in ena_response["lineage"].split(";")]
     odb_lineage_names = [tax_lin.lineage for tax_lin in lineage_tax_ids_dict.values()]
 
-    return {
-        lineage_tax_ids_dict[y.taxid].lineage: lineage_tax_ids_dict[y.taxid]
+    return [
+        lineage_tax_ids_dict[y.taxid]
         for i in set(lineage_name + odb_lineage_names)
-        for _x, y in lineage_tax_ids_dict.items()
+        for y in lineage_tax_ids_dict.values()
         if y.lineage == i
-    }
+    ]
 
 
-def get_lineage_data(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> dict[str, BuscoLineage]:
+def get_lineage_data(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> list[BuscoLineage]:
     """
     Get lineage data for a given taxid
     """
@@ -186,14 +186,13 @@ def get_odb(
     """
     Read the mapping between the BUSCO lineages and their taxon_id
     """
-    odb_dict: dict[str, BuscoLineage] = get_lineage_data(taxid, lineage_db.by_taxid())
-    first_lin = odb_dict[list(odb_dict)[0]]
+    ancestral_lineages = get_lineage_data(taxid, lineage_db.by_taxid())
 
     master_list = BuscoSelection()
 
     if "ancestral" in mode:
-        for lineage in odb_dict.values():
-            if lineage == first_lin:
+        for i, lineage in enumerate(ancestral_lineages):
+            if i == 0:
                 classification = "latest"
             elif "basal" in mode and lineage.lineage in basal_lineages:
                 classification = "basal"
@@ -202,7 +201,7 @@ def get_odb(
             master_list.add_lineage(lineage, classification, odb_string)
 
     if "latest" in mode:
-        master_list.add_lineage(first_lin, "latest", odb_string)
+        master_list.add_lineage(ancestral_lineages[0], "latest", odb_string)
 
     if "basal" in mode:
         for basal in basal_lineages:
