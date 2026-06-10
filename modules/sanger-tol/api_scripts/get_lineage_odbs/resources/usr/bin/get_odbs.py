@@ -187,12 +187,13 @@ def get_odb(
     Read the mapping between the BUSCO lineages and their taxon_id
     """
     odb_dict: dict[str, BuscoLineage] = get_lineage_data(taxid, lineage_db.by_taxid())
+    first_lin = odb_dict[list(odb_dict)[0]]
 
     master_list = BuscoSelection()
 
     if "ancestral" in mode:
         for lineage in odb_dict.values():
-            if lineage == odb_dict[list(odb_dict)[0]]:
+            if lineage == first_lin:
                 classification = "latest"
             elif "basal" in mode and lineage.lineage in basal_lineages:
                 classification = "basal"
@@ -201,7 +202,6 @@ def get_odb(
             master_list.add_lineage(lineage, classification, odb_string)
 
     if "latest" in mode:
-        first_lin = odb_dict[list(odb_dict)[0]]
         master_list.add_lineage(first_lin, "latest", odb_string)
 
     if "basal" in mode:
