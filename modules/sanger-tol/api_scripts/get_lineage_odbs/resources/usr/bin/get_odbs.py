@@ -48,12 +48,6 @@ class BuscoSelection:
     def add_lineage(self, lineage: BuscoLineage, classification: str, odb_string: str):
         self.selections.setdefault(f"{lineage.lineage}{odb_string}", classification)
 
-    def combine(self, other: "BuscoSelection"):
-        self.selections.update(other.selections)
-
-    def __iter__(self):
-        return iter(self.selections.items())
-
 
 def parse_args(args=None):
     description = "Get ODB database value using NCBI API and BUSCO configuration file"
@@ -227,7 +221,7 @@ def print_out(lineage_list: BuscoSelection, file_out: str, debug: bool):
     One line per lineage
     """
     with open(file_out, "w") as fout:
-        for odb_string, classification in lineage_list:
+        for odb_string, classification in lineage_list.selections.items():
             line = f"{odb_string},{classification}"
             if debug:
                 print(line)
@@ -241,7 +235,7 @@ def check_offline_availability(selected_buscos: BuscoSelection, lineages_path: s
     IF path is given, if not then we assume that the user want to run busco in ONLINE mode which means we can't validate local ODBs.
     """
     error_lineages = []
-    for odb_string, classification in selected_buscos:
+    for odb_string in selected_buscos.selections:
         if not os.path.exists(os.path.join(lineages_path, "lineages", odb_string)):
             error_lineages.append(odb_string)
 
@@ -323,7 +317,7 @@ def main(args=None):
             args.debug,
         )
 
-        all_lineages.combine(lineage_list)
+        all_lineages.selections.update(lineage_list.selections)
 
     if args.odb_dir:
         check_offline_availability(all_lineages, args.odb_dir)
