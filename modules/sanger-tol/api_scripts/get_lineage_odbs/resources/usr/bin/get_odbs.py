@@ -243,14 +243,8 @@ def validate_lineage(lineage: dict[str, BuscoSelection], lineages_path: str):
     """
     error_lineages = []
     for data in lineage.values():
-        if lineages_path:
-            error_lineages.append(data.odb_string) if not os.path.exists(
-                os.path.join(lineages_path, "lineages", data.odb_string)
-            ) else None
-        else:
-            print(
-                f"Skipping validation of {data.odb_string}, odb_dir not provided (indicates your probably wanting busco to run in online mode)"
-            )
+        if not os.path.exists(os.path.join(lineages_path, "lineages", data.odb_string)):
+            error_lineages.append(data.odb_string)
 
     if len(error_lineages) > 0:
         raise FileNotFoundError(f"Lineages {error_lineages} not found in {lineages_path}")
@@ -319,7 +313,11 @@ def main(args=None):
 
         all_lineages.update(lineage_list.items())
 
-    validate_lineage(all_lineages, args.odb_dir)
+    if args.odb_dir:
+        validate_lineage(all_lineages, args.odb_dir)
+    else:
+        print("Skipping validation, odb_dir not provided (indicates your probably wanting busco to run in online mode)")
+
     make_dir(os.path.dirname(args.file_out))
     print_out(all_lineages, args.file_out, args.debug or args.print_output)
 
