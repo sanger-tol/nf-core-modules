@@ -34,19 +34,20 @@ def parse_args(args=None):
     description = "Get ODB database value using NCBI API and BUSCO configuration file"
 
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument("--taxid", help="TaxID for the species to retrieve ODBs for.", type=int)
+    parser.add_argument("--taxid", help="TaxID for the species to retrieve ODBs for.", type=int, required=True)
     parser.add_argument(
         "--odb_version",
         help="Version of ODB to use",
         choices=["odb10", "odb12", "odb12.2", "all"],
         action="append",
     )
-    parser.add_argument("--file_out", help="Output CSV file.")
+    parser.add_argument("--file_out", help="Output CSV file.", type=str, required=True)
     parser.add_argument("--odb_dir", help="Directory containing ODB files (Excluding the lineage subdirectory).")
     parser.add_argument(
         "--mapping_dir",
         help="Directory containing mapping files (BUSCO taxid to lineage mapping txt files).",
         type=str,
+        required=True,
     )
     parser.add_argument(
         "--mode",
@@ -75,6 +76,9 @@ def parse_args(args=None):
 
     # Quick input validation
     output_args = parser.parse_args(args)
+
+    if not output_args.odb_version:
+        parser.error("At least one --odb_version must be specified.")
 
     if all(["ancestral", "latest"]) in output_args.mode:
         parser.error("Cannot use 'ancestral' and 'latest' at the same time.")
