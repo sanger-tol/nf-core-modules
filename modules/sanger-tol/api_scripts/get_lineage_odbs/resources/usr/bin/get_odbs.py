@@ -33,8 +33,9 @@ def parse_args(args=None):
     parser.add_argument(
         "--mode",
         help="Mode for ODB selection criteria",
-        choices=["ancestral", "basal", "latest"],
+        choices=["ancestral", "basal", "latest", "none"],
         action="append",
+        default=["none"],
     )
     parser.add_argument("--debug", help="Debug mode.", action="store_true", default=False)
     parser.add_argument(
