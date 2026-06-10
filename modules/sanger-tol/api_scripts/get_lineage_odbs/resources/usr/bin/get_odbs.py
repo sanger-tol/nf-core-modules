@@ -181,7 +181,6 @@ def get_odb(
     extra_lineages: list[str],
     lineage_db: BuscoDatabase,
     odb_string: str,
-    debug: bool,
 ) -> BuscoSelection:
     """
     Read the mapping between the BUSCO lineages and their taxon_id
@@ -215,9 +214,6 @@ def get_odb(
         for lineage in extra_lineages:
             lin = lineage_db.validate_and_get(lineage)
             master_list.add_lineage(lin, "extra", odb_string)
-
-    if debug:
-        print(master_list)
 
     return master_list
 
@@ -312,8 +308,10 @@ def main(args=None):
             args.extra_lineages,
             mapping_data,
             odb_version_string,
-            args.debug,
         )
+
+        if args.debug:
+            print(odb_version_string, lineage_list)
 
         all_lineages.selections.update(lineage_list.selections)
 
