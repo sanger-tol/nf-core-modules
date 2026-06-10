@@ -46,12 +46,10 @@ class BuscoDatabase:
 
 
 # A class to hold the selected ODB lineages and their classifications (ancestral, basal, latest, extra)
-class BuscoSelection:
-    def __init__(self):
-        self.selections: dict[str, str] = dict()
-
+class BuscoSelection(dict[str, str]):
+    # Convenient method to add a lineage to the selection
     def add_lineage(self, lineage: BuscoLineage, classification: str, odb_string: str):
-        self.selections.setdefault(f"{lineage.lineage}{odb_string}", classification)
+        self.setdefault(f"{lineage.lineage}{odb_string}", classification)
 
 
 def parse_args(args=None):
@@ -214,7 +212,7 @@ def print_out(lineage_list: BuscoSelection, file_out: str, debug: bool):
     One line per lineage
     """
     with open(file_out, "w") as fout:
-        for odb_string, classification in lineage_list.selections.items():
+        for odb_string, classification in lineage_list.items():
             line = f"{odb_string},{classification}"
             if debug:
                 print(line)
@@ -228,7 +226,7 @@ def check_offline_availability(selected_buscos: BuscoSelection, lineages_path: s
     IF path is given, if not then we assume that the user want to run busco in ONLINE mode which means we can't validate local ODBs.
     """
     error_lineages = []
-    for odb_string in selected_buscos.selections:
+    for odb_string in selected_buscos:
         if not os.path.exists(os.path.join(lineages_path, "lineages", odb_string)):
             error_lineages.append(odb_string)
 
@@ -303,7 +301,7 @@ def main(args=None):
         if args.debug:
             print(odb_version_string, lineage_list)
 
-        all_lineages.selections.update(lineage_list.selections)
+        all_lineages.update(lineage_list)
 
     if args.odb_dir:
         check_offline_availability(all_lineages, args.odb_dir)
