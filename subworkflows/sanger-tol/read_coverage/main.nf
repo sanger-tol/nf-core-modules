@@ -12,11 +12,9 @@ workflow READ_COVERAGE {
 
     main:
 
-    // 1. Normalise read input to one tuple per read file
-    //    Accept both:
-    //      - [meta, path(read)]
-    //      - [meta, [path(read1), path(read2), ...]]
-    // 1. Normalise reads and pair each read with its matching reference (by meta id)
+    //
+    // MODULE: Normalise reads and pair each read with its matching reference (by meta id)
+    //
     ch_reads
         .map { meta, reads ->
             def read_list = (reads instanceof List) ? reads : [reads]
@@ -28,38 +26,61 @@ workflow READ_COVERAGE {
                 tuple(meta_with_read_idx, read_file)
             }
         }
-        .combine(ch_reference, by: 0)
-        .multiMap { _sample_id, meta, read_file, meta2, reference ->
+        .combine(ch_reference)
+        .multiMap { meta, read_file, meta2, reference ->
             reads: tuple(meta, read_file)
             reference: tuple(meta2, reference)
         }
         .set { ch_align_split }
 
-    // 3. Run minimap2 and emit one BED per read file
-    MINIMAP2_ALIGN ( ch_align_split.reads, ch_align_split.reference, false, [], false, false, true )
 
-    // Group per-sample PAF/BED outputs into lists for downstream concatenation
+    //
+    // MODULE: Run minimap2 and emit one BED per read file
+    //
+    MINIMAP2_ALIGN (
+        ch_align_split.reads,
+        ch_align_split.reference,
+        false,
+        [],
+        false,
+        false,
+        true
+    )
+
+    // NOTE: Group per-sample PAF/BED outputs into lists for downstream concatenation
     ch_paf_bed_grouped = MINIMAP2_ALIGN.out.bed
         .groupTuple(by: 0)
         .map { meta, paf_bed_files -> [ meta, paf_bed_files.sort { f -> f.name } ] }
 
-    // 4. Merge all per-read BED outputs into one BED per sample and sort it
+
+    //
+    // MODULE: Merge all per-read BED outputs into one BED per sample and sort it
+    //
     FIND_CONCATENATE(ch_paf_bed_grouped, true)
 
-    // 5. Generate BedGraph from merged, sorted BED
-    // Then call the module
+    find_concat_out = FIND_CONCATENATE.out.file_out
+        .map{ meta, bed -> [[id: meta.id], bed, 1] }
+
+
+    //
+    // MODULE: Generate BedGraph from merged, sorted BED
+    //
     BEDTOOLS_GENOMECOV (
-        FIND_CONCATENATE.out.file_out.map { meta, bed -> [meta, bed, 1] },
+        find_concat_out,
         ch_chromsizes,
         'bedgraph',
         true
     )
 
-    // 6. Convert to BigWig (Compulsory)
+
+    //
+    // MODULE: Convert to BigWig (Compulsory)
+    //
     UCSC_BEDGRAPHTOBIGWIG (
         BEDTOOLS_GENOMECOV.out.genomecov,
         ch_chromsizes
     )
+
 
     emit:
     bigwig         = UCSC_BEDGRAPHTOBIGWIG.out.bigwig
