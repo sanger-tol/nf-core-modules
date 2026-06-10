@@ -83,7 +83,7 @@ output:
       - juicerc:
           type: string
           description: The tool name
-      - 1.2:
+      - "1.2":
           type: string
           description: The expression to obtain the version of the tool
 topics:
@@ -103,7 +103,7 @@ topics:
       - juicerc:
           type: string
           description: The tool name
-      - 1.2:
+      - "1.2":
           type: string
           description: The expression to obtain the version of the tool
 authors:
