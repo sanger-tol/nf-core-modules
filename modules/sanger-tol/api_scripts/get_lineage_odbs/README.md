@@ -10,9 +10,7 @@ Modified by Damon-Lee Pointon (dp24)
 .
 ├── resources
 │   └── usr
-│       └── assets
-│       │   ├── mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt
-│       │   └── mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt
+│       ├── assets
 │       └── bin
 │           └── get_odbs.py
 ├── tests
