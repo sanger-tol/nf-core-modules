@@ -41,6 +41,6 @@ process API_SCRIPTS_GET_LINEAGE_ODBS {
     stub:
     def prefix          = task.ext.prefix ?: "${meta.id}"
     """
-    echo "busco_lineage,eukaryota_odb10,ancestral" > ${prefix}.busco_odb.csv
+    touch ${prefix}.busco_odb.csv
     """
 }
