@@ -53,7 +53,7 @@ output:
       - pretext_makepairs:
           type: string
           description: The tool name
-      - 1.0.0:
+      - "1.0.0":
           type: string
           description: The expression to obtain the version of the tool
 topics:
@@ -64,7 +64,7 @@ topics:
       - pretext_makepairs:
           type: string
           description: The tool name
-      - 1.0.0:
+      - "1.0.0":
           type: string
           description: The expression to obtain the version of the tool
 authors:
