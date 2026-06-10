@@ -2,10 +2,12 @@
     "conda": [
         "modules/sanger-tol/ancestral",
         "modules/sanger-tol/longranger",
+        "modules/sanger-tol/pretext",
         "modules/sanger-tol/telomere",
         "subworkflows/sanger-tol/ancestral",
         "subworkflows/sanger-tol/fasta_purge_retained_haplotype",
         "subworkflows/sanger-tol/telo_finder",
+        "subworkflows/sanger-tol/zippypretext",
         "subworkflows/sanger-tol/fasta_10x_polishing_longranger_freebayes"
     ],
     "docker": ["modules/sanger-tol/longranger", "subworkflows/sanger-tol/fasta_10x_polishing_longranger_freebayes"],
