@@ -3,7 +3,6 @@
 import argparse
 import os
 import sys
-from collections.abc import Container
 from dataclasses import dataclass
 from pathlib import Path
 from string import Template
@@ -38,6 +37,12 @@ class BuscoDatabase:
         if not hasattr(self, "_lineage_names_dict"):
             self._lineage_names_dict = {lineage.lineage: lineage for lineage in self.lineages}
         return self._lineage_names_dict
+
+    def validate_and_get(self, name: str) -> BuscoLineage:
+        try:
+            return self.by_lineage()[name]
+        except KeyError:
+            raise ValueError(f"Lineage {name} not found in mapping file.")
 
 
 # A class to hold the selected ODB lineages and their classifications (ancestral, basal, latest, extra)
@@ -200,14 +205,14 @@ def get_odb(
         master_list.add_lineage(first_lin, "latest", odb_string)
 
     if "basal" in mode:
-        validate_lineage_names(lineage_db.by_lineage(), basal_lineages)
         for basal in basal_lineages:
-            master_list.add_lineage(lineage_db.by_lineage()[basal], "basal", odb_string)
+            lin = lineage_db.validate_and_get(basal)
+            master_list.add_lineage(lin, "basal", odb_string)
 
     if extra_lineages:
-        validate_lineage_names(lineage_db.by_lineage(), extra_lineages)
         for lineage in extra_lineages:
-            master_list.add_lineage(lineage_db.by_lineage()[lineage], "extra", odb_string)
+            lin = lineage_db.validate_and_get(lineage)
+            master_list.add_lineage(lin, "extra", odb_string)
 
     if debug:
         print(master_list)
@@ -287,15 +292,6 @@ def read_mapping_file(mapping_file: str) -> BuscoDatabase:
                 )
             )
     return BuscoDatabase(lineages=lineages)
-
-
-def validate_lineage_names(valid_names: Container[str], lineages: list[str]):
-    """
-    Validate that the lineage names in the mapping file are valid.
-    """
-    for lineage in lineages:
-        if lineage not in valid_names:
-            raise ValueError(f"Lineage {lineage} not found in mapping file.")
 
 
 def main(args=None):
