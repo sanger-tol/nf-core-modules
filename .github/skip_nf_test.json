@@ -2,7 +2,8 @@
     "conda": [
         "modules/sanger-tol/ancestral",
         "modules/sanger-tol/longranger",
-        "modules/sanger-tol/pretext",
+        "modules/sanger-tol/pretext/pretext2asm",
+        "modules/sanger-tol/pretext/juicerc",
         "modules/sanger-tol/telomere",
         "subworkflows/sanger-tol/ancestral",
         "subworkflows/sanger-tol/fasta_purge_retained_haplotype",

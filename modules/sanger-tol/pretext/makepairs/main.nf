@@ -2,9 +2,10 @@ process PRETEXT_MAKEPAIRS {
     tag "$meta.id"
     label 'process_single'
 
-    container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
-        ? 'https://depot.galaxyproject.org/singularity/ubuntu:20.04'
-        : 'docker.io/ubuntu:20.04'}"
+    conda "${moduleDir}/environment.yml"
+    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data'
+        : 'community.wave.seqera.io/library/coreutils_grep_gzip_lbzip2_pruned:838ba80435a629f8'}"
 
     input:
     tuple val(meta), path(alignment), path(outlog)
@@ -18,24 +19,26 @@ process PRETEXT_MAKEPAIRS {
     task.ext.when == null || task.ext.when
 
     script:
-    if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "PRETEXT_MAKEPAIRS module does not support Conda. Please use Docker / Singularity instead."
-    }
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
     (
+        echo '## pairs format v1.0'
         grep PRE_C_SIZE ${outlog} \\
-            | awk '{print \$2"\\t"\$3}' \\
-            | awk 'BEGIN{print "## pairs format v1.0"} {print "#chromsize:\\t"\$1"\\t"\$2} END{print "#columns:\\treadID\\tchr1\\tpos1\\tchr2\\tpos2\\tstrand1\\tstrand2"}'
-        awk '{print ".\\t"\$2"\\t"\$3"\\t"\$6"\\t"\$7"\\t.\\t."}' ${alignment}
+            | tr -s ' ' '\\t' \\
+            | cut -f2,3 \\
+            | while IFS=\$'\\t' read -r chr size; do
+                printf '#chromsize:\\t%s\\t%s\\n' "\$chr" "\$size"
+            done
+        printf '#columns:\\treadID\\tchr1\\tpos1\\tchr2\\tpos2\\tstrand1\\tstrand2\\n'
+        cut -f2,3,6,7 ${alignment} \\
+            | while IFS=\$'\\t' read -r c1 p1 c2 p2; do
+                printf '.\\t%s\\t%s\\t%s\\t%s\\t.\\t.\\n' "\$c1" "\$p1" "\$c2" "\$p2"
+            done
     ) | gzip > ${prefix}_alignment.pairs.gz
     """
 
     stub:
-    if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "PRETEXT_MAKEPAIRS module does not support Conda. Please use Docker / Singularity instead."
-    }
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     echo "" | gzip > ${prefix}_alignment.pairs.gz

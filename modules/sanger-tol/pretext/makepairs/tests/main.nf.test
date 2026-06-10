@@ -8,46 +8,17 @@ nextflow_process {
     tag "modules_sangertol"
     tag "pretext"
     tag "pretext/makepairs"
-    tag "pretext/juicerc"
-    tag "pretext/pretext2asm"
 
-    test("gfAmaRube1 - bin") {
-
-        setup {
-            run("PRETEXT2ASM") {
-                script "../../pretext2asm/main.nf"
-                process {
-                    """
-                    input[0] = [
-                        [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true)
-                    ]
-                    input[1] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true)
-                    """
-                }
-            }
-
-            run("JUICERC") {
-                script "../../juicerc/main.nf"
-                process {
-                    """
-                    input[0] = [
-                        [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.bin', checkIfExists: true)
-                    ]
-                    input[1] = PRETEXT2ASM.out.correctedagp.map { meta, agp -> agp }
-                    input[2] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa.fai', checkIfExists: true)
-                    """
-                }
-            }
-        }
+    test("test - pairs") {
 
         when {
             process {
                 """
-                input[0] = JUICERC.out.alignment
-                    .combine(JUICERC.out.outlog)
-                    .map { meta, alignment, outlog -> tuple(meta, alignment, outlog) }
+                input[0] = [
+                    [ id:'test' ],
+                    file("${baseDir}/tests/data/test_alignment_sorted.txt"),
+                    file("${baseDir}/tests/data/juicercout.log")
+                ]
                 """
             }
         }
@@ -61,47 +32,18 @@ nextflow_process {
 
     }
 
-    test("gfAmaRube1 - bin - stub") {
+    test("test - pairs - stub") {
 
         options "-stub"
-
-        setup {
-            run("PRETEXT2ASM") {
-                options "-stub"
-                script "../../pretext2asm/main.nf"
-                process {
-                    """
-                    input[0] = [
-                        [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true)
-                    ]
-                    input[1] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true)
-                    """
-                }
-            }
-
-            run("JUICERC") {
-                options "-stub"
-                script "../../juicerc/main.nf"
-                process {
-                    """
-                    input[0] = [
-                        [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.bin', checkIfExists: true)
-                    ]
-                    input[1] = PRETEXT2ASM.out.correctedagp.map { meta, agp -> agp }
-                    input[2] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa.fai', checkIfExists: true)
-                    """
-                }
-            }
-        }
 
         when {
             process {
                 """
-                input[0] = JUICERC.out.alignment
-                    .combine(JUICERC.out.outlog)
-                    .map { meta, alignment, outlog -> tuple(meta, alignment, outlog) }
+                input[0] = [
+                    [ id:'test' ],
+                    file("${baseDir}/tests/data/test_alignment_sorted.txt"),
+                    file("${baseDir}/tests/data/juicercout.log")
+                ]
                 """
             }
         }
