@@ -26,7 +26,7 @@ nextflow_workflow {
             process {
                 """
                 input[0] = [
-                    [ id: "Ceramica_pisi" ],
+                    [ id: "Laetiporus_sulphureus" ],
                     file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true)
                 ]
                 """

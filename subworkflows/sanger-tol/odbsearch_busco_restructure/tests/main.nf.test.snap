@@ -5,15 +5,15 @@
                 "0": [
                     [
                         {
-                            "id": "Ceramica_pisi"
+                            "id": "Laetiporus_sulphureus"
                         },
-                        "Ceramica_pisi.busco_odb.csv:md5,9022465c11cfac0ca6507b98989067c6"
+                        "Laetiporus_sulphureus.busco_odb.csv:md5,9022465c11cfac0ca6507b98989067c6"
                     ]
                 ],
                 "1": [
                     [
                         {
-                            "id": "Ceramica_pisi",
+                            "id": "Laetiporus_sulphureus",
                             "lineage": "lepidoptera_odb10",
                             "lineage_rating": "extra",
                             "taxid": "5630",
@@ -26,7 +26,7 @@
                 "2": [
                     [
                         {
-                            "id": "Ceramica_pisi",
+                            "id": "Laetiporus_sulphureus",
                             "lineage": "lepidoptera_odb10",
                             "lineage_rating": "extra",
                             "taxid": "5630",
@@ -39,15 +39,15 @@
                                     "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
                                     "bbtools_out.log:md5,a371a4a93e67a29e92a16e4a55e8682b",
                                     "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,c9762bf7128843f71b6c13a62e3ddd7e",
-                                    "miniprot_align_lepidoptera_odb10_err.log:md5,23a56e770cac8159e41930592c4067d1",
+                                    "hmmsearch_out.log:md5,6e06099b02695718f5cda7eac30c9ace",
+                                    "miniprot_align_lepidoptera_odb10_err.log:md5,571be60b73e229dff4ecd46a6371b74a",
                                     "miniprot_align_lepidoptera_odb10_out.log:md5,e01e33226927115cd44a521fa9adfd66",
-                                    "miniprot_index_err.log:md5,6bb2c4bd385e6091114c982ed82fb27c",
+                                    "miniprot_index_err.log:md5,d352274cf944c25934b023253f161b80",
                                     "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                                 ],
                                 [
                                     [
-                                        ".checkpoint:md5,96dccb67390e2d10eb528f94c98c8d33"
+                                        ".checkpoint:md5,30252b044823a917389e331841bc431b"
                                     ],
                                     [
                                         [
@@ -66,30 +66,30 @@
                                     ],
                                     "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe",
                                     [
-                                        ".checkpoint:md5,e59c75a731ea0061b1044651f37f58ea",
-                                        "10001at7088.out:md5,77cdca5069cc6e1709a2243cf14038eb",
-                                        "10206at7088.out:md5,9dbbd858cddd49d2487d746d3a74d602",
-                                        "1027at7088.out:md5,16ffd6f36b33aec1f5efd8336cc22385",
-                                        "10391at7088.out:md5,f6d2365e3e7c964dade05b3ddbde8e03",
-                                        "1436at7088.out:md5,3d599c9607ed9f4d2b62ca932b26f0c8",
-                                        "2885at7088.out:md5,8de48a421cd71e1efa5df25c150b7b35"
+                                        ".checkpoint:md5,27f14357dc4c28c2a88911cc01dc3931",
+                                        "10001at7088.out:md5,acee386d4cd5677dc80b7505774d660a",
+                                        "10206at7088.out:md5,55cd326b1c5366ac14b415121493ebf1",
+                                        "1027at7088.out:md5,88709540ea80992153282f41a3917796",
+                                        "10391at7088.out:md5,8702439299301c829d22494d79288f35",
+                                        "1436at7088.out:md5,35e82e0c2eda33862a2cf5888e8f90d9",
+                                        "2885at7088.out:md5,ebb54cb8f119b30d3fea692746f97c26"
                                     ],
                                     [
-                                        ".checkpoint:md5,fe43751d3a1f3fecbab8505cdf8896c6",
+                                        ".checkpoint:md5,2821b958695316bdb5e4e8f4d039637e",
                                         "GCA_927399515.1_lepidoptera_odb10.gff:md5,e01e33226927115cd44a521fa9adfd66",
                                         "ref.mpi:md5,51d83c8365619a1dacd7b9d21cc60361",
                                         [
-                                            "10001at7088.faa:md5,f71e455a1b1908cda6c8be01b643fdc1",
+                                            "10001at7088.faa:md5,7054e7f02d19382502c83a8be29e9751",
                                             "10206at7088.faa:md5,4bde4abf57d59a9b4d159aeb82b13f6e",
-                                            "1027at7088.faa:md5,1ea676138798179e9c6b7179876d97a3",
+                                            "1027at7088.faa:md5,218814d0bed07f84a2edd2857ac66533",
                                             "10391at7088.faa:md5,1909e42f59f0765a0fdb6bbb0b602b8d",
                                             "1436at7088.faa:md5,b6797d664ececc34d281eb6da0394ce2",
-                                            "2885at7088.faa:md5,726aa9a91478abaf1ad0c725ce5ae466"
+                                            "2885at7088.faa:md5,a2984ca91de1a8b29448277b252749d2"
                                         ]
                                     ],
                                     "missing_busco_list.tsv:md5,9b7ada3a7d8261117955954215d69766",
-                                    "short_summary.json:md5,ec5a44a4b2837b36ddbd2206fc457c9a",
-                                    "short_summary.txt:md5,cbb0d25031a2277197ff615b93fc6336"
+                                    "short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
+                                    "short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1"
                                 ],
                                 [
                                     "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
@@ -104,7 +104,7 @@
                 "3": [
                     [
                         {
-                            "id": "Ceramica_pisi",
+                            "id": "Laetiporus_sulphureus",
                             "lineage": "lepidoptera_odb10",
                             "lineage_rating": "extra",
                             "taxid": "5630",
@@ -112,21 +112,21 @@
                             "genome_size": 37878768
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,e4528b2cadb18594620a033a41278744",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,625b82bf106baf06d90b63dcec3792fe",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,9b7ada3a7d8261117955954215d69766",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,fbfefb20c190d07e23a41a90c5180ad2",
-                            "Ceramica_pisi.short_summary.json:md5,ec5a44a4b2837b36ddbd2206fc457c9a",
-                            "Ceramica_pisi.short_summary.tsv:md5,1065660878ea4f1c44ace473668c1718",
-                            "Ceramica_pisi.short_summary.txt:md5,cbb0d25031a2277197ff615b93fc6336",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,5b4fe241f00128716be371388207bd65"
+                            "Laetiporus_sulphureus.fragmented_busco_sequences.tar.gz:md5,75b36929837f4576964f351c59a7c112",
+                            "Laetiporus_sulphureus.full_table.tsv.gz:md5,625b82bf106baf06d90b63dcec3792fe",
+                            "Laetiporus_sulphureus.missing_busco_list.tsv.gz:md5,9b7ada3a7d8261117955954215d69766",
+                            "Laetiporus_sulphureus.multi_copy_busco_sequences.tar.gz:md5,ab3dea8042fa55c4142b89c32f98d95b",
+                            "Laetiporus_sulphureus.short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
+                            "Laetiporus_sulphureus.short_summary.tsv:md5,1065660878ea4f1c44ace473668c1718",
+                            "Laetiporus_sulphureus.short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1",
+                            "Laetiporus_sulphureus.single_copy_busco_sequences.tar.gz:md5,605feb0a8036cfb6730f5c55a1b16691"
                         ]
                     ]
                 ],
                 "busco_full_table": [
                     [
                         {
-                            "id": "Ceramica_pisi",
+                            "id": "Laetiporus_sulphureus",
                             "lineage": "lepidoptera_odb10",
                             "lineage_rating": "extra",
                             "taxid": "5630",
@@ -139,7 +139,7 @@
                 "busco_output": [
                     [
                         {
-                            "id": "Ceramica_pisi",
+                            "id": "Laetiporus_sulphureus",
                             "lineage": "lepidoptera_odb10",
                             "lineage_rating": "extra",
                             "taxid": "5630",
@@ -152,15 +152,15 @@
                                     "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
                                     "bbtools_out.log:md5,a371a4a93e67a29e92a16e4a55e8682b",
                                     "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,c9762bf7128843f71b6c13a62e3ddd7e",
-                                    "miniprot_align_lepidoptera_odb10_err.log:md5,23a56e770cac8159e41930592c4067d1",
+                                    "hmmsearch_out.log:md5,6e06099b02695718f5cda7eac30c9ace",
+                                    "miniprot_align_lepidoptera_odb10_err.log:md5,571be60b73e229dff4ecd46a6371b74a",
                                     "miniprot_align_lepidoptera_odb10_out.log:md5,e01e33226927115cd44a521fa9adfd66",
-                                    "miniprot_index_err.log:md5,6bb2c4bd385e6091114c982ed82fb27c",
+                                    "miniprot_index_err.log:md5,d352274cf944c25934b023253f161b80",
                                     "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
                                 ],
                                 [
                                     [
-                                        ".checkpoint:md5,96dccb67390e2d10eb528f94c98c8d33"
+                                        ".checkpoint:md5,30252b044823a917389e331841bc431b"
                                     ],
                                     [
                                         [
@@ -179,30 +179,30 @@
                                     ],
                                     "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe",
                                     [
-                                        ".checkpoint:md5,e59c75a731ea0061b1044651f37f58ea",
-                                        "10001at7088.out:md5,77cdca5069cc6e1709a2243cf14038eb",
-                                        "10206at7088.out:md5,9dbbd858cddd49d2487d746d3a74d602",
-                                        "1027at7088.out:md5,16ffd6f36b33aec1f5efd8336cc22385",
-                                        "10391at7088.out:md5,f6d2365e3e7c964dade05b3ddbde8e03",
-                                        "1436at7088.out:md5,3d599c9607ed9f4d2b62ca932b26f0c8",
-                                        "2885at7088.out:md5,8de48a421cd71e1efa5df25c150b7b35"
+                                        ".checkpoint:md5,27f14357dc4c28c2a88911cc01dc3931",
+                                        "10001at7088.out:md5,acee386d4cd5677dc80b7505774d660a",
+                                        "10206at7088.out:md5,55cd326b1c5366ac14b415121493ebf1",
+                                        "1027at7088.out:md5,88709540ea80992153282f41a3917796",
+                                        "10391at7088.out:md5,8702439299301c829d22494d79288f35",
+                                        "1436at7088.out:md5,35e82e0c2eda33862a2cf5888e8f90d9",
+                                        "2885at7088.out:md5,ebb54cb8f119b30d3fea692746f97c26"
                                     ],
                                     [
-                                        ".checkpoint:md5,fe43751d3a1f3fecbab8505cdf8896c6",
+                                        ".checkpoint:md5,2821b958695316bdb5e4e8f4d039637e",
                                         "GCA_927399515.1_lepidoptera_odb10.gff:md5,e01e33226927115cd44a521fa9adfd66",
                                         "ref.mpi:md5,51d83c8365619a1dacd7b9d21cc60361",
                                         [
-                                            "10001at7088.faa:md5,f71e455a1b1908cda6c8be01b643fdc1",
+                                            "10001at7088.faa:md5,7054e7f02d19382502c83a8be29e9751",
                                             "10206at7088.faa:md5,4bde4abf57d59a9b4d159aeb82b13f6e",
-                                            "1027at7088.faa:md5,1ea676138798179e9c6b7179876d97a3",
+                                            "1027at7088.faa:md5,218814d0bed07f84a2edd2857ac66533",
                                             "10391at7088.faa:md5,1909e42f59f0765a0fdb6bbb0b602b8d",
                                             "1436at7088.faa:md5,b6797d664ececc34d281eb6da0394ce2",
-                                            "2885at7088.faa:md5,726aa9a91478abaf1ad0c725ce5ae466"
+                                            "2885at7088.faa:md5,a2984ca91de1a8b29448277b252749d2"
                                         ]
                                     ],
                                     "missing_busco_list.tsv:md5,9b7ada3a7d8261117955954215d69766",
-                                    "short_summary.json:md5,ec5a44a4b2837b36ddbd2206fc457c9a",
-                                    "short_summary.txt:md5,cbb0d25031a2277197ff615b93fc6336"
+                                    "short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
+                                    "short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1"
                                 ],
                                 [
                                     "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
@@ -217,15 +217,15 @@
                 "odb_csv": [
                     [
                         {
-                            "id": "Ceramica_pisi"
+                            "id": "Laetiporus_sulphureus"
                         },
-                        "Ceramica_pisi.busco_odb.csv:md5,9022465c11cfac0ca6507b98989067c6"
+                        "Laetiporus_sulphureus.busco_odb.csv:md5,9022465c11cfac0ca6507b98989067c6"
                     ]
                 ],
                 "restructured_output": [
                     [
                         {
-                            "id": "Ceramica_pisi",
+                            "id": "Laetiporus_sulphureus",
                             "lineage": "lepidoptera_odb10",
                             "lineage_rating": "extra",
                             "taxid": "5630",
@@ -233,20 +233,20 @@
                             "genome_size": 37878768
                         },
                         [
-                            "Ceramica_pisi.fragmented_busco_sequences.tar.gz:md5,e4528b2cadb18594620a033a41278744",
-                            "Ceramica_pisi.full_table.tsv.gz:md5,625b82bf106baf06d90b63dcec3792fe",
-                            "Ceramica_pisi.missing_busco_list.tsv.gz:md5,9b7ada3a7d8261117955954215d69766",
-                            "Ceramica_pisi.multi_copy_busco_sequences.tar.gz:md5,fbfefb20c190d07e23a41a90c5180ad2",
-                            "Ceramica_pisi.short_summary.json:md5,ec5a44a4b2837b36ddbd2206fc457c9a",
-                            "Ceramica_pisi.short_summary.tsv:md5,1065660878ea4f1c44ace473668c1718",
-                            "Ceramica_pisi.short_summary.txt:md5,cbb0d25031a2277197ff615b93fc6336",
-                            "Ceramica_pisi.single_copy_busco_sequences.tar.gz:md5,5b4fe241f00128716be371388207bd65"
+                            "Laetiporus_sulphureus.fragmented_busco_sequences.tar.gz:md5,75b36929837f4576964f351c59a7c112",
+                            "Laetiporus_sulphureus.full_table.tsv.gz:md5,625b82bf106baf06d90b63dcec3792fe",
+                            "Laetiporus_sulphureus.missing_busco_list.tsv.gz:md5,9b7ada3a7d8261117955954215d69766",
+                            "Laetiporus_sulphureus.multi_copy_busco_sequences.tar.gz:md5,ab3dea8042fa55c4142b89c32f98d95b",
+                            "Laetiporus_sulphureus.short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
+                            "Laetiporus_sulphureus.short_summary.tsv:md5,1065660878ea4f1c44ace473668c1718",
+                            "Laetiporus_sulphureus.short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1",
+                            "Laetiporus_sulphureus.single_copy_busco_sequences.tar.gz:md5,605feb0a8036cfb6730f5c55a1b16691"
                         ]
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-10T10:33:46.097633399",
+        "timestamp": "2026-06-10T10:45:18.8965775",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
