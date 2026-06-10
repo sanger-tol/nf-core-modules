@@ -3,7 +3,7 @@
 import argparse
 import os
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from string import Template
 
@@ -23,10 +23,16 @@ class BuscoLineage:
     lineage: str
 
 
+# A structure to hold the selected ODB lineages and their classifications (ancestral, basal, latest, extra)
+type BuscoSelection = dict[str, str]
+
+
 # All entries from a mapping file, with helper functions to index them
 @dataclass
 class BuscoDatabase:
+    odb_string: str
     lineages: list[BuscoLineage]
+    selection: BuscoSelection = field(default_factory=dict)
 
     def by_taxid(self) -> dict[int, BuscoLineage]:
         if not hasattr(self, "_lineage_tax_ids_dict"):
@@ -44,12 +50,9 @@ class BuscoDatabase:
         except KeyError:
             raise ValueError(f"Lineage {name} not found in mapping file.")
 
-
-# A class to hold the selected ODB lineages and their classifications (ancestral, basal, latest, extra)
-class BuscoSelection(dict[str, str]):
     # Convenient method to add a lineage to the selection
-    def add_lineage(self, lineage: BuscoLineage, classification: str, odb_string: str):
-        self.setdefault(f"{lineage.lineage}{odb_string}", classification)
+    def select_lineage(self, lineage: BuscoLineage, classification: str):
+        self.selection.setdefault(f"{lineage.lineage}{self.odb_string}", classification)
 
 
 def parse_args(args=None):
@@ -162,14 +165,13 @@ def get_lineage_data(taxid: int, busco_db: BuscoDatabase) -> list[BuscoLineage]:
             sys.exit(1)
 
 
-def get_odb(
+def select_odb(
     mode: list[str],
     taxid: int,
     basal_lineages: list[str],
     extra_lineages: list[str],
     busco_db: BuscoDatabase,
-    odb_string: str,
-) -> BuscoSelection:
+):
     """
     Read the mapping between the BUSCO lineages and their taxon_id
     """
@@ -177,8 +179,6 @@ def get_odb(
         ancestral_lineages = get_lineage_data(taxid, busco_db)
     else:
         ancestral_lineages = []
-
-    master_list = BuscoSelection()
 
     if "ancestral" in mode:
         for i, lineage in enumerate(ancestral_lineages):
@@ -188,22 +188,20 @@ def get_odb(
                 classification = "basal"
             else:
                 classification = "ancestral"
-            master_list.add_lineage(lineage, classification, odb_string)
+            busco_db.select_lineage(lineage, classification)
 
     if "latest" in mode:
-        master_list.add_lineage(ancestral_lineages[0], "latest", odb_string)
+        busco_db.select_lineage(ancestral_lineages[0], "latest")
 
     if "basal" in mode:
         for basal in basal_lineages:
             lin = busco_db.validate_and_get(basal)
-            master_list.add_lineage(lin, "basal", odb_string)
+            busco_db.select_lineage(lin, "basal")
 
     if extra_lineages:
         for lineage in extra_lineages:
             lin = busco_db.validate_and_get(lineage)
-            master_list.add_lineage(lin, "extra", odb_string)
-
-    return master_list
+            busco_db.select_lineage(lin, "extra")
 
 
 def print_out(lineage_list: BuscoSelection, file_out: str, debug: bool):
@@ -262,7 +260,7 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool) -> list[t
     return mapping_files
 
 
-def read_mapping_file(mapping_file: str) -> BuscoDatabase:
+def read_mapping_file(mapping_file: str, odb_string: str) -> BuscoDatabase:
     """
     Read the mapping file and return the database object containing
     the list of taxids and lineage names.
@@ -277,31 +275,30 @@ def read_mapping_file(mapping_file: str) -> BuscoDatabase:
                     lineage=arr[1],
                 )
             )
-    return BuscoDatabase(lineages=lineages)
+    return BuscoDatabase(odb_string=odb_string, lineages=lineages)
 
 
 def main(args=None):
     args = parse_args(args)
 
     mapping_files = get_mapping_file(args.mapping_dir, args.odb_version, args.debug)
-    all_lineages = BuscoSelection()
+    all_lineages: BuscoSelection = {}
 
     for mapping_file, odb_version_string in mapping_files:
-        mapping_data = read_mapping_file(mapping_file)
+        mapping_data = read_mapping_file(mapping_file, odb_version_string)
 
-        lineage_list = get_odb(
+        select_odb(
             args.mode,
             args.taxid,
             args.basal_lineages,
             args.extra_lineages,
             mapping_data,
-            odb_version_string,
         )
 
         if args.debug:
-            print(odb_version_string, lineage_list)
+            print(odb_version_string, mapping_data.selection)
 
-        all_lineages.update(lineage_list)
+        all_lineages.update(mapping_data.selection)
 
     if args.odb_dir:
         check_offline_availability(all_lineages, args.odb_dir)
