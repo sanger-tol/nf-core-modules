@@ -94,7 +94,7 @@ def make_dir(path):
         os.makedirs(path, exist_ok=True)
 
 
-def get_http_request_json(url):
+def get_http_request_json(url: str):
     """
     Robust wrapper for requests.get()
     """
@@ -164,7 +164,7 @@ def get_odb(
     """
     odb_dict: dict[str, BuscoLineage] = get_lineage_data(taxid, lineage_tax_ids_dict)
 
-    master_list = dict()
+    master_list: dict[str, BuscoSelection] = dict()
 
     if "ancestral" in mode:
         master_list.update(
@@ -236,7 +236,7 @@ def print_out(lineage_list: dict[str, BuscoSelection], file_out: str, debug: boo
             fout.write(f"{line}\n")
 
 
-def validate_lineage(lineage: dict[str, BuscoLineage], lineages_path: str):
+def validate_lineage(lineage: dict[str, BuscoSelection], lineages_path: str):
     """
     Validate that the lineage exists in the lineage path.
     IF path is given, if not then we assume that the user want to run busco in ONLINE mode which means we can't validate local ODBs.
@@ -302,7 +302,7 @@ def main(args=None):
     args = parse_args(args)
 
     mapping_files = get_mapping_file(args.mapping_dir, args.odb_version, args.debug)
-    all_lineages = dict()
+    all_lineages: dict[str, BuscoSelection] = dict()
 
     for mapping_file, odb_version_string in mapping_files:
         mapping_data = read_mapping_file(mapping_file, odb_version_string)
