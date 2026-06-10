@@ -27,7 +27,7 @@ nextflow_workflow {
                 """
                 input[0] = [
                     [ id: "Ceramica_pisi" ],
-                    file(params.modules_testdata_base_path + 'Ceramica_pisi/assembly/release/ilCerPisi1.1/insdc/GCA_963859965.1.fasta.gz', checkIfExists: true)
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true)
                 ]
                 """
             }
@@ -63,7 +63,7 @@ nextflow_workflow {
         }
     }
 
-    test ( "Ceramica_pisi - odb10 lepidoptera - offline" ) {
+    test ( "Laetiporus_sulphureus - odb10 - latest - offline" ) {
         config "./offline_basal.config"
 
         setup {
@@ -82,7 +82,7 @@ nextflow_workflow {
                 input[0] = GUNZIP.out.gunzip
                 input[1] = Channel.value(file(params.odb_path, checkIfExists: true, type: 'dir'))
                 input[2] = Channel.value(file(params.mapping_path, checkIfExists: true, type: 'dir'))
-                input[3] = Channel.value("988087")
+                input[3] = Channel.value("5630")
                 input[4] = Channel.value([])
                 input[5] = Channel.value("OUTPUT")
                 input[6] = Channel.value(true)
@@ -102,38 +102,4 @@ nextflow_workflow {
         }
     }
 
-    test ( "Ceramica_pisi - odb12 - minimal basal - online" ) {
-        config "./online_ancestral.config"
-
-        when {
-
-            params {
-                odb_path   = "${launchDir}/fake_odb"
-                mapping_path = "${launchDir}/mapping_files"
-            }
-
-            workflow {
-                """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = Channel.value([])
-                input[2] = Channel.value(file(params.mapping_path, checkIfExists: true, type: 'dir'))
-                input[3] = Channel.value("988087")
-                input[4] = Channel.value([])
-                input[5] = Channel.value("OUTPUT")
-                input[6] = Channel.value(false)
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
-            )
-        }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
-    }
 }

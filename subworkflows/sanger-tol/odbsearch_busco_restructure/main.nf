@@ -33,7 +33,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         .map { meta, csv ->
             def odbs = csv
                 .splitCsv( header: false )
-                .collect { row -> row[1] }
+                .collect { row -> [ row[1], row[2] ] }
             [ meta, odbs ]
         }
         .transpose() // Convert to [meta, odbs] pairs from [meta, [odb_list]]
@@ -46,7 +46,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         .combine( val_taxid )
         .combine( val_output_dir )
         .map { meta, odb, ref, tax_id, outdir_location ->
-            def new_meta = meta + [ lineage: odb, taxid: tax_id, outdir: outdir_location, genome_size: ref.size() ]
+            def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1], taxid: tax_id, outdir: outdir_location, genome_size: ref.size() ]
             [ new_meta, ref ]
         }
 
