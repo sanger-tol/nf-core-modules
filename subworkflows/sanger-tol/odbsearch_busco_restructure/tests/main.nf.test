@@ -93,7 +93,18 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(
+                    workflow.out.odb_csv,
+                    workflow.out.busco_full_table,
+                    workflow.out.busco_output.collect { meta, dir ->
+                        def files = []
+                        file(dir).eachFileRecurse { f -> files << f.getName() }
+                        files.sort()
+                    }.flatten().sort(),
+                    workflow.out.restructured_output.collect { meta, dir ->
+                        file(dir).list()
+                    }.flatten().sort(),
+                ).match() }
             )
         }
 

@@ -1,252 +1,90 @@
 {
     "Laetiporus_sulphureus - odb10 - latest - offline": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus"
-                        },
-                        "Laetiporus_sulphureus.busco_odb.csv:md5,9022465c11cfac0ca6507b98989067c6"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus",
-                            "lineage": "lepidoptera_odb10",
-                            "lineage_rating": "extra",
-                            "taxid": "5630",
-                            "outdir": "OUTPUT",
-                            "genome_size": 37878768
-                        },
-                        "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus",
-                            "lineage": "lepidoptera_odb10",
-                            "lineage_rating": "extra",
-                            "taxid": "5630",
-                            "outdir": "OUTPUT",
-                            "genome_size": 37878768
-                        },
-                        [
-                            [
-                                [
-                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
-                                    "bbtools_out.log:md5,a371a4a93e67a29e92a16e4a55e8682b",
-                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,6e06099b02695718f5cda7eac30c9ace",
-                                    "miniprot_align_lepidoptera_odb10_err.log:md5,571be60b73e229dff4ecd46a6371b74a",
-                                    "miniprot_align_lepidoptera_odb10_out.log:md5,e01e33226927115cd44a521fa9adfd66",
-                                    "miniprot_index_err.log:md5,d352274cf944c25934b023253f161b80",
-                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
-                                ],
-                                [
-                                    [
-                                        ".checkpoint:md5,30252b044823a917389e331841bc431b"
-                                    ],
-                                    [
-                                        [
-                                            
-                                        ],
-                                        [
-                                            "1027at7088.faa:md5,24653e6776446b7460e0ca7a501572f8",
-                                            "1027at7088.gff:md5,664a55660b8b6c0f26ff02d3c00d3e25"
-                                        ],
-                                        [
-                                            "10391at7088.faa:md5,51fdd3253c1a379d755acee4a34c1b25",
-                                            "10391at7088.gff:md5,e7da83e0bce43411441b2d441c6c3dba",
-                                            "2885at7088.faa:md5,e22e8d54d66d84ec417270c176cad042",
-                                            "2885at7088.gff:md5,3dfd2ecea7902e48ac2ffe984688f527"
-                                        ]
-                                    ],
-                                    "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe",
-                                    [
-                                        ".checkpoint:md5,27f14357dc4c28c2a88911cc01dc3931",
-                                        "10001at7088.out:md5,acee386d4cd5677dc80b7505774d660a",
-                                        "10206at7088.out:md5,55cd326b1c5366ac14b415121493ebf1",
-                                        "1027at7088.out:md5,88709540ea80992153282f41a3917796",
-                                        "10391at7088.out:md5,8702439299301c829d22494d79288f35",
-                                        "1436at7088.out:md5,35e82e0c2eda33862a2cf5888e8f90d9",
-                                        "2885at7088.out:md5,ebb54cb8f119b30d3fea692746f97c26"
-                                    ],
-                                    [
-                                        ".checkpoint:md5,2821b958695316bdb5e4e8f4d039637e",
-                                        "GCA_927399515.1_lepidoptera_odb10.gff:md5,e01e33226927115cd44a521fa9adfd66",
-                                        "ref.mpi:md5,51d83c8365619a1dacd7b9d21cc60361",
-                                        [
-                                            "10001at7088.faa:md5,7054e7f02d19382502c83a8be29e9751",
-                                            "10206at7088.faa:md5,4bde4abf57d59a9b4d159aeb82b13f6e",
-                                            "1027at7088.faa:md5,218814d0bed07f84a2edd2857ac66533",
-                                            "10391at7088.faa:md5,1909e42f59f0765a0fdb6bbb0b602b8d",
-                                            "1436at7088.faa:md5,b6797d664ececc34d281eb6da0394ce2",
-                                            "2885at7088.faa:md5,a2984ca91de1a8b29448277b252749d2"
-                                        ]
-                                    ],
-                                    "missing_busco_list.tsv:md5,9b7ada3a7d8261117955954215d69766",
-                                    "short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
-                                    "short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1"
-                                ],
-                                [
-                                    "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
-                                ]
-                            ],
-                            [
-                                
-                            ]
-                        ]
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus",
-                            "lineage": "lepidoptera_odb10",
-                            "lineage_rating": "extra",
-                            "taxid": "5630",
-                            "outdir": "OUTPUT",
-                            "genome_size": 37878768
-                        },
-                        [
-                            "Laetiporus_sulphureus.fragmented_busco_sequences.tar.gz:md5,75b36929837f4576964f351c59a7c112",
-                            "Laetiporus_sulphureus.full_table.tsv.gz:md5,625b82bf106baf06d90b63dcec3792fe",
-                            "Laetiporus_sulphureus.missing_busco_list.tsv.gz:md5,9b7ada3a7d8261117955954215d69766",
-                            "Laetiporus_sulphureus.multi_copy_busco_sequences.tar.gz:md5,ab3dea8042fa55c4142b89c32f98d95b",
-                            "Laetiporus_sulphureus.short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
-                            "Laetiporus_sulphureus.short_summary.tsv:md5,1065660878ea4f1c44ace473668c1718",
-                            "Laetiporus_sulphureus.short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1",
-                            "Laetiporus_sulphureus.single_copy_busco_sequences.tar.gz:md5,605feb0a8036cfb6730f5c55a1b16691"
-                        ]
-                    ]
-                ],
-                "busco_full_table": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus",
-                            "lineage": "lepidoptera_odb10",
-                            "lineage_rating": "extra",
-                            "taxid": "5630",
-                            "outdir": "OUTPUT",
-                            "genome_size": 37878768
-                        },
-                        "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe"
-                    ]
-                ],
-                "busco_output": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus",
-                            "lineage": "lepidoptera_odb10",
-                            "lineage_rating": "extra",
-                            "taxid": "5630",
-                            "outdir": "OUTPUT",
-                            "genome_size": 37878768
-                        },
-                        [
-                            [
-                                [
-                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
-                                    "bbtools_out.log:md5,a371a4a93e67a29e92a16e4a55e8682b",
-                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
-                                    "hmmsearch_out.log:md5,6e06099b02695718f5cda7eac30c9ace",
-                                    "miniprot_align_lepidoptera_odb10_err.log:md5,571be60b73e229dff4ecd46a6371b74a",
-                                    "miniprot_align_lepidoptera_odb10_out.log:md5,e01e33226927115cd44a521fa9adfd66",
-                                    "miniprot_index_err.log:md5,d352274cf944c25934b023253f161b80",
-                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e"
-                                ],
-                                [
-                                    [
-                                        ".checkpoint:md5,30252b044823a917389e331841bc431b"
-                                    ],
-                                    [
-                                        [
-                                            
-                                        ],
-                                        [
-                                            "1027at7088.faa:md5,24653e6776446b7460e0ca7a501572f8",
-                                            "1027at7088.gff:md5,664a55660b8b6c0f26ff02d3c00d3e25"
-                                        ],
-                                        [
-                                            "10391at7088.faa:md5,51fdd3253c1a379d755acee4a34c1b25",
-                                            "10391at7088.gff:md5,e7da83e0bce43411441b2d441c6c3dba",
-                                            "2885at7088.faa:md5,e22e8d54d66d84ec417270c176cad042",
-                                            "2885at7088.gff:md5,3dfd2ecea7902e48ac2ffe984688f527"
-                                        ]
-                                    ],
-                                    "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe",
-                                    [
-                                        ".checkpoint:md5,27f14357dc4c28c2a88911cc01dc3931",
-                                        "10001at7088.out:md5,acee386d4cd5677dc80b7505774d660a",
-                                        "10206at7088.out:md5,55cd326b1c5366ac14b415121493ebf1",
-                                        "1027at7088.out:md5,88709540ea80992153282f41a3917796",
-                                        "10391at7088.out:md5,8702439299301c829d22494d79288f35",
-                                        "1436at7088.out:md5,35e82e0c2eda33862a2cf5888e8f90d9",
-                                        "2885at7088.out:md5,ebb54cb8f119b30d3fea692746f97c26"
-                                    ],
-                                    [
-                                        ".checkpoint:md5,2821b958695316bdb5e4e8f4d039637e",
-                                        "GCA_927399515.1_lepidoptera_odb10.gff:md5,e01e33226927115cd44a521fa9adfd66",
-                                        "ref.mpi:md5,51d83c8365619a1dacd7b9d21cc60361",
-                                        [
-                                            "10001at7088.faa:md5,7054e7f02d19382502c83a8be29e9751",
-                                            "10206at7088.faa:md5,4bde4abf57d59a9b4d159aeb82b13f6e",
-                                            "1027at7088.faa:md5,218814d0bed07f84a2edd2857ac66533",
-                                            "10391at7088.faa:md5,1909e42f59f0765a0fdb6bbb0b602b8d",
-                                            "1436at7088.faa:md5,b6797d664ececc34d281eb6da0394ce2",
-                                            "2885at7088.faa:md5,a2984ca91de1a8b29448277b252749d2"
-                                        ]
-                                    ],
-                                    "missing_busco_list.tsv:md5,9b7ada3a7d8261117955954215d69766",
-                                    "short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
-                                    "short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1"
-                                ],
-                                [
-                                    "refseq_db.faa:md5,f4f32162b4c0712a84e70c362c9ed146"
-                                ]
-                            ],
-                            [
-                                
-                            ]
-                        ]
-                    ]
-                ],
-                "odb_csv": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus"
-                        },
-                        "Laetiporus_sulphureus.busco_odb.csv:md5,9022465c11cfac0ca6507b98989067c6"
-                    ]
-                ],
-                "restructured_output": [
-                    [
-                        {
-                            "id": "Laetiporus_sulphureus",
-                            "lineage": "lepidoptera_odb10",
-                            "lineage_rating": "extra",
-                            "taxid": "5630",
-                            "outdir": "OUTPUT",
-                            "genome_size": 37878768
-                        },
-                        [
-                            "Laetiporus_sulphureus.fragmented_busco_sequences.tar.gz:md5,75b36929837f4576964f351c59a7c112",
-                            "Laetiporus_sulphureus.full_table.tsv.gz:md5,625b82bf106baf06d90b63dcec3792fe",
-                            "Laetiporus_sulphureus.missing_busco_list.tsv.gz:md5,9b7ada3a7d8261117955954215d69766",
-                            "Laetiporus_sulphureus.multi_copy_busco_sequences.tar.gz:md5,ab3dea8042fa55c4142b89c32f98d95b",
-                            "Laetiporus_sulphureus.short_summary.json:md5,21b9d49f80d4826d2e2b92554eb7aa6b",
-                            "Laetiporus_sulphureus.short_summary.tsv:md5,1065660878ea4f1c44ace473668c1718",
-                            "Laetiporus_sulphureus.short_summary.txt:md5,673bf463de1fb69f24ab70e31787b6b1",
-                            "Laetiporus_sulphureus.single_copy_busco_sequences.tar.gz:md5,605feb0a8036cfb6730f5c55a1b16691"
-                        ]
-                    ]
+            [
+                [
+                    {
+                        "id": "Laetiporus_sulphureus"
+                    },
+                    "Laetiporus_sulphureus.busco_odb.csv:md5,15dd0eb53d0d7dbca5a058f233a910ee"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "Laetiporus_sulphureus",
+                        "lineage": "lepidoptera_odb10",
+                        "lineage_rating": "extra",
+                        "taxid": "5630",
+                        "outdir": "OUTPUT",
+                        "genome_size": 37878768
+                    },
+                    "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe"
+                ]
+            ],
+            [
+                ".bbtools_output",
+                ".checkpoint",
+                ".checkpoint",
+                ".checkpoint",
+                "10001at7088.faa",
+                "10001at7088.out",
+                "10206at7088.faa",
+                "10206at7088.out",
+                "1027at7088.faa",
+                "1027at7088.faa",
+                "1027at7088.gff",
+                "1027at7088.out",
+                "10391at7088.faa",
+                "10391at7088.faa",
+                "10391at7088.gff",
+                "10391at7088.out",
+                "1436at7088.faa",
+                "1436at7088.out",
+                "2885at7088.faa",
+                "2885at7088.faa",
+                "2885at7088.gff",
+                "2885at7088.out",
+                "GCA_927399515.1.fasta",
+                "GCA_927399515.1_lepidoptera_odb10.gff",
+                "bbtools_err.log",
+                "bbtools_out.log",
+                "busco_sequences",
+                "fragmented_busco_sequences",
+                "full_table.tsv",
+                "hmmer_output",
+                "hmmsearch_err.log",
+                "hmmsearch_out.log",
+                "logs",
+                "logs",
+                "miniprot_align_lepidoptera_odb10_err.log",
+                "miniprot_align_lepidoptera_odb10_out.log",
+                "miniprot_index_err.log",
+                "miniprot_index_out.log",
+                "miniprot_output",
+                "missing_busco_list.tsv",
+                "multi_copy_busco_sequences",
+                "ref.mpi",
+                "refseq_db.faa",
+                "run_lepidoptera_odb10",
+                "short_summary.json",
+                "short_summary.txt",
+                "single_copy_busco_sequences",
+                "tmp",
+                "translated_proteins"
+            ],
+            [
+                "Laetiporus_sulphureus.fragmented_busco_sequences.tar.gz",
+                "Laetiporus_sulphureus.full_table.tsv.gz",
+                "Laetiporus_sulphureus.missing_busco_list.tsv.gz",
+                "Laetiporus_sulphureus.multi_copy_busco_sequences.tar.gz",
+                "Laetiporus_sulphureus.short_summary.json",
+                "Laetiporus_sulphureus.short_summary.tsv",
+                "Laetiporus_sulphureus.short_summary.txt",
+                "Laetiporus_sulphureus.single_copy_busco_sequences.tar.gz"
+            ]
         ],
-        "timestamp": "2026-06-10T10:45:18.8965775",
+        "timestamp": "2026-06-10T16:20:22.266118933",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

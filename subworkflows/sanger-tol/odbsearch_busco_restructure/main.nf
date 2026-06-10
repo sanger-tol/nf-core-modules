@@ -33,7 +33,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         .map { meta, csv ->
             def odbs = csv
                 .splitCsv( header: false )
-                .collect { row -> [ row[1], row[2] ] }
+                .collect { row -> [ row[0], row[1] ] }
             [ meta, odbs ]
         }
         .transpose() // Convert to [meta, odbs] pairs from [meta, [odb_list]]
