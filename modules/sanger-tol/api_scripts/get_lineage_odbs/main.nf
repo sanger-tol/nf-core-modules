@@ -1,6 +1,6 @@
 process API_SCRIPTS_GET_LINEAGE_ODBS {
     tag "${meta.id}"
-    label 'process_low'
+    label 'process_single'
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
@@ -41,6 +41,6 @@ process API_SCRIPTS_GET_LINEAGE_ODBS {
     stub:
     def prefix          = task.ext.prefix ?: "${meta.id}"
     """
-    echo "busco_lineage,eukaryota_odb10,ancestral" > ${prefix}.busco_odb.csv
+    touch ${prefix}.busco_odb.csv
     """
 }
