@@ -186,7 +186,10 @@ def get_odb(
     """
     Read the mapping between the BUSCO lineages and their taxon_id
     """
-    ancestral_lineages = get_lineage_data(taxid, lineage_db.by_taxid())
+    if "ancestral" in mode or "latest" in mode:
+        ancestral_lineages = get_lineage_data(taxid, lineage_db.by_taxid())
+    else:
+        ancestral_lineages = []
 
     master_list = BuscoSelection()
 
