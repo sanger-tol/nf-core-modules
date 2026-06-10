@@ -55,6 +55,7 @@ output:
         Regenerated Pretext contact map from `pretextmap`.
         Channel shape `[ val(meta), path(*.pretext) ]`.
       pattern: "*.pretext"
+authors:
   - "@yumisims"
 maintainers:
   - "@yumisims"
