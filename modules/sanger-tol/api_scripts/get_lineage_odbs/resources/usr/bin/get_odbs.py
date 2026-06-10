@@ -3,6 +3,7 @@
 import argparse
 import os
 import sys
+from collections.abc import Container
 from dataclasses import dataclass
 from pathlib import Path
 from string import Template
@@ -16,18 +17,42 @@ GOAT_API = Template(
 ENA_API = Template("https://www.ebi.ac.uk/ena/taxonomy/rest/v2/tax-id/${taxid}?binomialOnly=false")
 
 
-@dataclass
+# A single entry from a mapping file
+@dataclass(frozen=True)
 class BuscoLineage:
     taxid: int
     lineage: str
-    odb_string: str
 
 
+# All entries from a mapping file, with helper functions to index them
 @dataclass
+class BuscoDatabase:
+    lineages: list[BuscoLineage]
+
+    def by_taxid(self) -> dict[int, BuscoLineage]:
+        if not hasattr(self, "_lineage_tax_ids_dict"):
+            self._lineage_tax_ids_dict = {lineage.taxid: lineage for lineage in self.lineages}
+        return self._lineage_tax_ids_dict
+
+    def by_lineage(self) -> dict[str, BuscoLineage]:
+        if not hasattr(self, "_lineage_names_dict"):
+            self._lineage_names_dict = {lineage.lineage: lineage for lineage in self.lineages}
+        return self._lineage_names_dict
+
+
+# A class to hold the selected ODB lineages and their classifications (ancestral, basal, latest, extra)
 class BuscoSelection:
-    odb_string: str
-    taxid: int
-    classification: str
+    def __init__(self):
+        self.selections: dict[str, str] = dict()
+
+    def add_lineage(self, lineage: BuscoLineage, classification: str, odb_string: str):
+        self.selections.setdefault(f"{lineage.lineage}{odb_string}", classification)
+
+    def combine(self, other: "BuscoSelection"):
+        self.selections.update(other.selections)
+
+    def __iter__(self):
+        return iter(self.selections.items())
 
 
 def parse_args(args=None):
@@ -155,66 +180,40 @@ def get_odb(
     taxid: int,
     basal_lineages: list[str],
     extra_lineages: list[str],
-    lineage_tax_ids_dict: dict[int, BuscoLineage],
+    lineage_db: BuscoDatabase,
     odb_string: str,
     debug: bool,
-) -> dict[str, BuscoSelection]:
+) -> BuscoSelection:
     """
     Read the mapping between the BUSCO lineages and their taxon_id
     """
-    odb_dict: dict[str, BuscoLineage] = get_lineage_data(taxid, lineage_tax_ids_dict)
+    odb_dict: dict[str, BuscoLineage] = get_lineage_data(taxid, lineage_db.by_taxid())
 
-    master_list: dict[str, BuscoSelection] = dict()
+    master_list = BuscoSelection()
 
     if "ancestral" in mode:
-        master_list.update(
-            {
-                f"{odb_dict[lineage].taxid}_{lineage}{odb_string}": BuscoSelection(
-                    odb_string=lineage + odb_string,
-                    taxid=odb_dict[lineage].taxid,
-                    classification=(
-                        "latest"
-                        if lineage == list(odb_dict)[0]
-                        else "ancestral"
-                        if "basal" in mode and lineage not in basal_lineages
-                        else "basal"
-                        if "basal" in mode and lineage in basal_lineages
-                        else "ancestral"
-                    ),
-                )
-                for lineage in odb_dict
-            }
-        )
+        for lineage in odb_dict.values():
+            if lineage == odb_dict[list(odb_dict)[0]]:
+                classification = "latest"
+            elif "basal" in mode and lineage.lineage in basal_lineages:
+                classification = "basal"
+            else:
+                classification = "ancestral"
+            master_list.add_lineage(lineage, classification, odb_string)
 
     if "latest" in mode:
-        first_key = list(odb_dict)[0]
-        master_list[f"{odb_dict[first_key].taxid}_{odb_dict[first_key].lineage}{odb_string}"] = BuscoSelection(
-            odb_string=odb_dict[first_key].lineage + odb_string,
-            taxid=odb_dict[first_key].taxid,
-            classification="ancestral",
-        )
+        first_lin = odb_dict[list(odb_dict)[0]]
+        master_list.add_lineage(first_lin, "latest", odb_string)
 
     if "basal" in mode:
+        validate_lineage_names(lineage_db.by_lineage(), basal_lineages)
         for basal in basal_lineages:
-            for x, y in lineage_tax_ids_dict.items():
-                if basal == y.lineage:
-                    if f"{y.taxid}_{basal}{odb_string}" not in master_list.keys():
-                        master_list[f"{y.taxid}_{basal}{odb_string}"] = BuscoSelection(
-                            odb_string=basal + odb_string,
-                            taxid=y.taxid,
-                            classification="basal",
-                        )
+            master_list.add_lineage(lineage_db.by_lineage()[basal], "basal", odb_string)
 
     if extra_lineages:
+        validate_lineage_names(lineage_db.by_lineage(), extra_lineages)
         for lineage in extra_lineages:
-            for x, y in lineage_tax_ids_dict.items():
-                if lineage == y.lineage:
-                    if f"{y.taxid}_{lineage}{odb_string}" not in master_list.keys():
-                        master_list[f"{y.taxid}_{lineage}{odb_string}"] = BuscoSelection(
-                            odb_string=lineage + odb_string,
-                            taxid=y.taxid,
-                            classification="extra",
-                        )
+            master_list.add_lineage(lineage_db.by_lineage()[lineage], "extra", odb_string)
 
     if debug:
         print(master_list)
@@ -222,29 +221,29 @@ def get_odb(
     return master_list
 
 
-def print_out(lineage_list: dict[str, BuscoSelection], file_out: str, debug: bool):
+def print_out(lineage_list: BuscoSelection, file_out: str, debug: bool):
     """
     Print the lineage list to the output file.
     One line per lineage
     """
     with open(file_out, "w") as fout:
-        for item_code, data in lineage_list.items():
-            line = f"{data.odb_string},{data.classification}"
+        for odb_string, classification in lineage_list:
+            line = f"{odb_string},{classification}"
             if debug:
                 print(line)
 
             fout.write(f"{line}\n")
 
 
-def check_offline_availability(lineage: dict[str, BuscoSelection], lineages_path: str):
+def check_offline_availability(selected_buscos: BuscoSelection, lineages_path: str):
     """
     Validate that the lineage exists in the lineage path.
     IF path is given, if not then we assume that the user want to run busco in ONLINE mode which means we can't validate local ODBs.
     """
     error_lineages = []
-    for data in lineage.values():
-        if not os.path.exists(os.path.join(lineages_path, "lineages", data.odb_string)):
-            error_lineages.append(data.odb_string)
+    for odb_string, classification in selected_buscos:
+        if not os.path.exists(os.path.join(lineages_path, "lineages", odb_string)):
+            error_lineages.append(odb_string)
 
     if len(error_lineages) > 0:
         raise FileNotFoundError(f"Lineages {error_lineages} not found in {lineages_path}")
@@ -278,31 +277,41 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool) -> list[t
     return mapping_files
 
 
-def read_mapping_file(mapping_file: str, odb_string: str) -> dict[int, BuscoLineage]:
+def read_mapping_file(mapping_file: str) -> BuscoDatabase:
     """
-    Read the mapping file and return a dictionary mapping lineage taxids
-    to odb_dataset data.
+    Read the mapping file and return the database object containing
+    the list of taxids and lineage names.
     """
-    lineage_tax_ids_dict = {}
+    lineages = []
     with open(mapping_file) as file_in:
         for line in file_in:
             arr = line.split()
-            lineage_tax_ids_dict[int(arr[0])] = BuscoLineage(
-                taxid=int(arr[0]),
-                lineage=arr[1],
-                odb_string=odb_string,
+            lineages.append(
+                BuscoLineage(
+                    taxid=int(arr[0]),
+                    lineage=arr[1],
+                )
             )
-    return lineage_tax_ids_dict
+    return BuscoDatabase(lineages=lineages)
+
+
+def validate_lineage_names(valid_names: Container[str], lineages: list[str]):
+    """
+    Validate that the lineage names in the mapping file are valid.
+    """
+    for lineage in lineages:
+        if lineage not in valid_names:
+            raise ValueError(f"Lineage {lineage} not found in mapping file.")
 
 
 def main(args=None):
     args = parse_args(args)
 
     mapping_files = get_mapping_file(args.mapping_dir, args.odb_version, args.debug)
-    all_lineages: dict[str, BuscoSelection] = dict()
+    all_lineages = BuscoSelection()
 
     for mapping_file, odb_version_string in mapping_files:
-        mapping_data = read_mapping_file(mapping_file, odb_version_string)
+        mapping_data = read_mapping_file(mapping_file)
 
         lineage_list = get_odb(
             args.mode,
@@ -314,7 +323,7 @@ def main(args=None):
             args.debug,
         )
 
-        all_lineages.update(lineage_list.items())
+        all_lineages.combine(lineage_list)
 
     if args.odb_dir:
         check_offline_availability(all_lineages, args.odb_dir)
