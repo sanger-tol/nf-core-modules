@@ -136,36 +136,26 @@ def goat_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> 
     data = response["results"][0]["result"]["lineage"]
     query_tax_list = [int(taxid["taxon_id"]) for taxid in data]
 
-    return [
-        lineage_tax_ids_dict[taxon_id]
-        for taxon_id in query_tax_list
-        if taxon_id in lineage_tax_ids_dict
-    ]
+    return [lineage_tax_ids_dict[taxon_id] for taxon_id in query_tax_list if taxon_id in lineage_tax_ids_dict]
 
 
-def ena_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> list[BuscoLineage]:
+def ena_api_call(taxid: int, lineage_names_dict: dict[str, BuscoLineage]) -> list[BuscoLineage]:
     ena_response = get_http_request_json(ENA_API.substitute(taxid=taxid))
-    lineage_name = [lineage.lower() for lineage in ena_response["lineage"].split(";")]
-    odb_lineage_names = [tax_lin.lineage for tax_lin in lineage_tax_ids_dict.values()]
+    lineage_names = [lineage.strip().lower() for lineage in ena_response["lineage"].split(";")]
 
-    return [
-        lineage_tax_ids_dict[y.taxid]
-        for i in set(lineage_name + odb_lineage_names)
-        for y in lineage_tax_ids_dict.values()
-        if y.lineage == i
-    ]
+    return [lineage_names_dict[name] for name in reversed(lineage_names) if name in lineage_names_dict]
 
 
-def get_lineage_data(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> list[BuscoLineage]:
+def get_lineage_data(taxid: int, busco_db: BuscoDatabase) -> list[BuscoLineage]:
     """
     Get lineage data for a given taxid
     """
     try:
-        return goat_api_call(taxid, lineage_tax_ids_dict)
+        return goat_api_call(taxid, busco_db.by_taxid())
     except (requests.RequestException, KeyError, IndexError) as e:
         print(f"Warning: GOAT API call failed ({e}), falling back to ENA API", file=sys.stderr)
         try:
-            return ena_api_call(taxid, lineage_tax_ids_dict)
+            return ena_api_call(taxid, busco_db.by_lineage())
         except (requests.RequestException, KeyError, IndexError) as ena_error:
             print(
                 f"Error: Both GOAT and ENA servers could not be contacted. GOAT error: {e}. ENA error: {ena_error}",
@@ -179,14 +169,14 @@ def get_odb(
     taxid: int,
     basal_lineages: list[str],
     extra_lineages: list[str],
-    lineage_db: BuscoDatabase,
+    busco_db: BuscoDatabase,
     odb_string: str,
 ) -> BuscoSelection:
     """
     Read the mapping between the BUSCO lineages and their taxon_id
     """
     if "ancestral" in mode or "latest" in mode:
-        ancestral_lineages = get_lineage_data(taxid, lineage_db.by_taxid())
+        ancestral_lineages = get_lineage_data(taxid, busco_db)
     else:
         ancestral_lineages = []
 
@@ -207,12 +197,12 @@ def get_odb(
 
     if "basal" in mode:
         for basal in basal_lineages:
-            lin = lineage_db.validate_and_get(basal)
+            lin = busco_db.validate_and_get(basal)
             master_list.add_lineage(lin, "basal", odb_string)
 
     if extra_lineages:
         for lineage in extra_lineages:
-            lin = lineage_db.validate_and_get(lineage)
+            lin = busco_db.validate_and_get(lineage)
             master_list.add_lineage(lin, "extra", odb_string)
 
     return master_list
