@@ -1,4 +1,4 @@
-#!/software/treeoflife/conda/users/envs/tol/nf-core_4.0/bin/python3
+#!/usr/bin/env python3
 
 """
 Read the pipeline manifest and generate the CITATION.cff file
@@ -183,7 +183,7 @@ def build_cff(pipeline_obj):
         set_if_set(author, "family-names", family)
         authors.append(author)
     # Authors ordered by alphabetical order
-    authors.sort(key=operator.itemgetter("family-names", ""))
+    authors.sort(key=operator.itemgetter("family-names"))
     content["authors"] = authors
     return content
 
