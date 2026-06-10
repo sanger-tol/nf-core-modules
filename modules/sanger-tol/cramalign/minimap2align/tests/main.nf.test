@@ -48,9 +48,15 @@ nextflow_process {
                     [ id:'test' ], // meta map
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
-                    1,
-                    [0, 15],
-                ]).join(MINIMAP2_INDEX.out.index)
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3']
+                ])
+                input[1] = channel.of([
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
+                input[2] = channel.of([
+                    1, [0, 15]
+                ])
                 """
             }
         }
@@ -61,7 +67,7 @@ nextflow_process {
                 {
                     assert snapshot(
                         bam(process.out.bam.get(0).get(1)).getReadsMD5(),
-                        process.out.versions
+                        process.out.findAll { key, val -> key.startsWith("versions")}
                     ).match()
                 }
             )
@@ -91,9 +97,15 @@ nextflow_process {
                     [ id:'test' ], // meta map
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
-                    1,
-                    [0, 15],
-                ]).join(MINIMAP2_INDEX.out.index)
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3']
+                ])
+                input[1] = channel.of([
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
+                input[2] = channel.of([
+                    1, [0, 15]
+                ])
                 """
             }
         }
@@ -104,7 +116,7 @@ nextflow_process {
                 {
                     assert snapshot(
                         bam(process.out.bam.get(0).get(1)).getReadsMD5(),
-                        process.out.versions
+                        process.out.findAll { key, val -> key.startsWith("versions")}
                     ).match()
                 }
             )
@@ -134,9 +146,15 @@ nextflow_process {
                     [ id:'test' ], // meta map
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/pacbio/m64094_200911_174739.ccs.bc1022_BAK8B_OA--bc1022_BAK8B_OA.subset.cram.crai', checkIfExists: true),
-                    1,
-                    [0, 15],
-                ]).join(MINIMAP2_INDEX.out.index)
+                    []
+                ])
+                input[1] = channel.of([
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
+                input[2] = channel.of([
+                    1, [0, 15]
+                ])
                 """
             }
         }
@@ -147,7 +165,7 @@ nextflow_process {
                 {
                     assert snapshot(
                         bam(process.out.bam.get(0).get(1)).getReadsMD5(),
-                        process.out.versions
+                        process.out.findAll { key, val -> key.startsWith("versions")}
                     ).match()
                 }
             )
@@ -169,9 +187,15 @@ nextflow_process {
                     [ id:'test' ], // meta map
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
-                    1,
-                    [0, 1],
-                ]).join(MINIMAP2_INDEX.out.index)
+                    ['@RG\\\\tID:PAE35587_pass_1f1f0707_115\\\\tPL:ONT\\\\tSM:mMelMel3']
+                ])
+                input[1] = channel.of([
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
+                input[2] = channel.of([
+                    1, [0, 15]
+                ])
                 """
             }
         }
@@ -188,4 +212,54 @@ nextflow_process {
         }
 
     }
+
+    test("Meles meles - ONT reads - no readgroup lines") {
+        config "./nextflow.config"
+
+        when {
+
+            params {
+                samtools_cat_args   = ""
+                samtools_fastq_args = "-F0x200 -nt"
+                minimap2_args       = "-ax map-ont"
+                samtools_view_args  = ""
+                samtools_sort_args  = "--write-index -l1"
+            }
+
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id:'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel3/ont/PAE35587_pass_1f1f0707_115.subset.cram.crai', checkIfExists: true),
+                    []
+                ])
+                input[1] = channel.of([
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
+                ]).join(MINIMAP2_INDEX.out.index).map { meta, ref, idx -> [meta, idx, ref] }
+                input[2] = channel.of([
+                    1, [0, 15]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                {
+                    assert snapshot(
+                        bam(process.out.bam.get(0).get(1)).getReadsMD5(),
+                        process.out.findAll { key, val -> key.startsWith("versions")}
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules")
+        }
+    }
+
 }

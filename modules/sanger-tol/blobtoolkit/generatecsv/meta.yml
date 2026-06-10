@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
+name: "BLOBTOOLKIT_GENERATECSV"
+description: Generate a samplesheet csv for sanger-tol/blobtoolkit
+keywords:
+  - blobtoolkit/generatecsv
+  - generatecsv
+  - csv
+  - samplesheet
+tools:
+  - "blobtoolkit_generatecsv":
+      description: "A samplesheet generator for the BlobToolKit pipeline"
+      homepage: "https://pipelines.tol.sanger.ac.uk/blobtoolkit"
+      documentation: "https://pipelines.tol.sanger.ac.uk/blobtoolkit"
+      tool_dev_url: "https://pipelines.tol.sanger.ac.uk/blobtoolkit/usage#samplesheet-input"
+      doi: 10.5281/zenodo.7949058
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - pacbio_files:
+        type: file
+        description: |
+          Collection of *.fasta.gz formatted longread data
+        pattern: "[*.{fasta.gz,fa.gz}]"
+        ontologies:
+          - edam: "http://edamontology.org/format_3989" # FASTA
+  - - meta2:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - ont_files:
+        type: file
+        description: |
+          Collection of *.fasta.gz formatted longread data
+        pattern: "[*.{fasta.gz,fa.gz}]"
+        ontologies:
+          - edam: "http://edamontology.org/format_3989" # FASTA
+  - - meta3:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - illumina_files:
+        type: file
+        description: |
+          Collection of *.fasta.gz formatted longread data
+        pattern: "[*.{fasta.gz,fa.gz}]"
+        ontologies:
+          - edam: "http://edamontology.org/format_3989" # FASTA
+    - illumina_layout:
+        type: string
+        description: |
+          Layout of input data "SINGLE" or "PAIRED"
+output:
+  csv:
+    - - new_meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - ${prefix}.samplesheet.csv:
+          type: file
+          description: CSV samplesheet required for Blobtoolkit
+          ontologies:
+            - edam: "http://edamontology.org/format_3752" # CSV
+  versions_blobtoolkitgeneratecsv:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - blobtoolkit_generatecsv:
+          type: string
+          description: The name of the tool
+      - 1.0.0:
+          type: string
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - blobtoolkit_generatecsv:
+          type: string
+          description: The name of the tool
+      - 1.0.0:
+          type: string
+          description: The expression to obtain the version of the tool
+authors:
+  - "@mahesh-panchal"
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"

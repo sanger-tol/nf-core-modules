@@ -1,0 +1,4 @@
+cairosvg>=2.5
+click>=8.0
+pillow>=9.0
+pyyaml>=6.0

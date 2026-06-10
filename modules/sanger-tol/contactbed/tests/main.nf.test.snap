@@ -1,0 +1,112 @@
+{
+    "Undibacterium unclassified - bed - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_contacts.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "CONTACTBED",
+                        "coreutils",
+                        "9.5"
+                    ]
+                ],
+                "2": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "bed": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_contacts.bed:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_coreutils": [
+                    [
+                        "CONTACTBED",
+                        "coreutils",
+                        "9.5"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-20T14:31:10.342391",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Undibacterium unclassified - bed": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_contacts.bed:md5,e8bdfd7cd406439cf92e4d4d8edbb0ef"
+                    ]
+                ],
+                "1": [
+                    [
+                        "CONTACTBED",
+                        "coreutils",
+                        "9.5"
+                    ]
+                ],
+                "2": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ],
+                "bed": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_contacts.bed:md5,e8bdfd7cd406439cf92e4d4d8edbb0ef"
+                    ]
+                ],
+                "versions_coreutils": [
+                    [
+                        "CONTACTBED",
+                        "coreutils",
+                        "9.5"
+                    ]
+                ],
+                "versions_gawk": [
+                    [
+                        "CONTACTBED",
+                        "gawk",
+                        "5.3.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-20T14:31:06.513504",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

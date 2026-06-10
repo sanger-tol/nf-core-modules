@@ -1,0 +1,38 @@
+{
+    "Generate Paramsfile": {
+        "content": [
+            {
+                "versions_blobtoolkitgenerateparamsfile": [
+                    [
+                        "BLOBTOOLKIT_GENERATEPARAMSFILE",
+                        "blobtoolkit_generateparamsfile",
+                        "1.0.0"
+                    ]
+                ]
+            },
+            [
+                "use_work_dir_as_temp",
+                "align",
+                "fasta",
+                "busco_lineages",
+                "taxon",
+                "taxdump",
+                "blastp",
+                "blastn",
+                "blastx"
+            ],
+            [
+                true,
+                true,
+                "https://tolit.cog.sanger.ac.uk/test-data/resources/ascc/asccTinyTest_V2/assembly/Pyoeliiyoelii17XNL_assembly_adaptors_hap1.fa",
+                "fungi_odb10",
+                101012
+            ]
+        ],
+        "timestamp": "2026-03-20T13:52:02.388279",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

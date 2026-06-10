@@ -77,8 +77,7 @@ nextflow_workflow {
                     file(workflow.out.ancestral_pdf_plot.get(0).get(1)).size(),
                     file(workflow.out.ancestral_complete_location.get(0).get(1)),
                     file(workflow.out.ancestral_duplicate_location.get(0).get(1)),
-                    file(workflow.out.ancestral_summary.get(0).get(1)),
-                    workflow.out.versions
+                    file(workflow.out.ancestral_summary.get(0).get(1))
                 ).match() }
             )
         }
@@ -89,7 +88,9 @@ nextflow_workflow {
     }
 
     test("Cloeon_dipterum genome - stub") {
+
         options "-stub"
+
         when {
 
             params {
@@ -125,8 +126,7 @@ nextflow_workflow {
                     file(workflow.out.ancestral_pdf_plot.get(0).get(1)).getName(),
                     file(workflow.out.ancestral_complete_location.get(0).get(1)),
                     file(workflow.out.ancestral_duplicate_location.get(0).get(1)),
-                    file(workflow.out.ancestral_summary.get(0).get(1)),
-                    workflow.out.versions
+                    file(workflow.out.ancestral_summary.get(0).get(1))
                 ).match() }
             )
         }

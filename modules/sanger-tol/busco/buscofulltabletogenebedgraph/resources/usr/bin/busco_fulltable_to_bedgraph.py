@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+#
+#    Copyright (C) 2026 Genome Research Ltd.
+#
+#    Author: Danil Zilov <dz11@sanger.ac.uk>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+
+"""Parse BUSCO full_table.tsv and write Complete/Fragmented/Duplicated BEDGraph files."""
+
+import argparse
+import sys
+
+import pandas as pd
+
+__version__ = "1.0.0"
+
+
+BUSCO_COLS = ["busco_id", "status", "sequence", "start", "end", "strand", "score", "length", "ortho_url", "description"]
+BEDGRAPH_COLS = ["sequence", "start", "end", "score"]
+STATUS_SUFFIX = {
+    "Complete": "complete_buscos.bedgraph",
+    "Duplicated": "duplicated_buscos.bedgraph",
+    "Fragmented": "fragmented_buscos.bedgraph",
+}
+
+
+def bedgraph_filename(prefix: str, suffix: str) -> str:
+    return f"{prefix}.{suffix}" if prefix else suffix
+
+
+def parse_args():
+    p = argparse.ArgumentParser(description="BUSCO full_table → BEDGraph files")
+    p.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
+        help="Print version and exit",
+    )
+    p.add_argument("full_table", nargs="?", help="Path to BUSCO full_table.tsv")
+    p.add_argument("-o", "--outdir", default=".", help="Output directory (default: .)")
+    p.add_argument(
+        "--prefix", default="", help="Output filename prefix (e.g. sample → sample.complete_buscos.bedgraph)"
+    )
+    return p.parse_args()
+
+
+def main():
+    args = parse_args()
+
+    if not args.full_table:
+        print("error: full_table path is required", file=sys.stderr)
+        sys.exit(2)
+
+    df = pd.read_csv(
+        args.full_table,
+        sep="\t",
+        comment="#",
+        header=None,
+        names=BUSCO_COLS,
+    )
+
+    df = df[df["status"].isin(STATUS_SUFFIX)].copy()
+    df["start"] = pd.to_numeric(df["start"], errors="coerce")
+    df["end"] = pd.to_numeric(df["end"], errors="coerce")
+    df.dropna(subset=["start", "end"], inplace=True)
+    df[["start", "end"]] = df[["start", "end"]].astype(int)
+    df["score"] = 100
+
+    for status, suffix in STATUS_SUFFIX.items():
+        # Equivalent to: sort -k1,1 -k2,2n (sequence, then numeric start)
+        subset = df[df["status"] == status][BEDGRAPH_COLS].sort_values(by=["sequence", "start"], kind="mergesort")
+        filename = bedgraph_filename(args.prefix, suffix)
+        outpath = f"{args.outdir}/{filename}"
+        subset.to_csv(outpath, sep="\t", index=False, header=False)
+        print(f"{status}: {len(subset)} entries → {outpath}")
+
+
+if __name__ == "__main__":
+    main()

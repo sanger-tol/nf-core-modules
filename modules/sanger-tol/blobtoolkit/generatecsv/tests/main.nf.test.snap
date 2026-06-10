@@ -1,0 +1,125 @@
+{
+    "ont fasta.gz to csv": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,b07de6dacdd5c4f314047496e3d32a1b"
+                    ]
+                ],
+                "1": [
+                    [
+                        "BLOBTOOLKIT_GENERATECSV",
+                        "blobtoolkit_generatecsv",
+                        "1.0.0"
+                    ]
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,b07de6dacdd5c4f314047496e3d32a1b"
+                    ]
+                ],
+                "versions_blobtoolkitgeneratecsv": [
+                    [
+                        "BLOBTOOLKIT_GENERATECSV",
+                        "blobtoolkit_generatecsv",
+                        "1.0.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-20T13:51:11.601433",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "multiple fasta.gz to csv": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,0fe5576fba01adf31d602a1cf4a1a424"
+                    ]
+                ],
+                "1": [
+                    [
+                        "BLOBTOOLKIT_GENERATECSV",
+                        "blobtoolkit_generatecsv",
+                        "1.0.0"
+                    ]
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,0fe5576fba01adf31d602a1cf4a1a424"
+                    ]
+                ],
+                "versions_blobtoolkitgeneratecsv": [
+                    [
+                        "BLOBTOOLKIT_GENERATECSV",
+                        "blobtoolkit_generatecsv",
+                        "1.0.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-20T13:51:20.326023",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "pacbio fasta.gz to csv": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,85f28ee33669df8cbe5c945988879e54"
+                    ]
+                ],
+                "1": [
+                    [
+                        "BLOBTOOLKIT_GENERATECSV",
+                        "blobtoolkit_generatecsv",
+                        "1.0.0"
+                    ]
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.samplesheet.csv:md5,85f28ee33669df8cbe5c945988879e54"
+                    ]
+                ],
+                "versions_blobtoolkitgeneratecsv": [
+                    [
+                        "BLOBTOOLKIT_GENERATECSV",
+                        "blobtoolkit_generatecsv",
+                        "1.0.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-20T13:51:01.778898",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

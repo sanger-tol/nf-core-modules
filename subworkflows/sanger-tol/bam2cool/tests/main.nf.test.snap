@@ -1,0 +1,17 @@
+{
+    "bam - paired_end": {
+        "content": [
+            [
+                "test.cool"
+            ],
+            [
+                "test.mcool"
+            ]
+        ],
+        "timestamp": "2026-03-20T14:03:26.473952",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}
