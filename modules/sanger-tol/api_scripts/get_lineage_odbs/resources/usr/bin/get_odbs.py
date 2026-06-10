@@ -52,9 +52,9 @@ def parse_args(args=None):
     parser.add_argument(
         "--mode",
         help="Mode for ODB selection criteria",
-        choices=["ancestral", "basal", "latest", "none"],
+        choices=["ancestral", "basal", "latest"],
         action="append",
-        default=["none"],
+        default=[],
     )
     parser.add_argument("--debug", help="Debug mode.", action="store_true", default=False)
     parser.add_argument(
@@ -80,10 +80,10 @@ def parse_args(args=None):
     if not output_args.odb_version:
         parser.error("At least one --odb_version must be specified.")
 
-    if all(["ancestral", "latest"]) in output_args.mode:
+    if "ancestral" in output_args.mode and "latest" in output_args.mode:
         parser.error("Cannot use 'ancestral' and 'latest' at the same time.")
 
-    if not output_args.mode and not output_args.specified_lineages:
+    if not output_args.mode and not output_args.extra_lineages:
         parser.error("Must have either modes or specified lineages.")
 
     return output_args
