@@ -2,7 +2,7 @@ process JUICERC {
     tag "$meta.id"
     label 'process_medium'
 
-    container 'quay.io/sanger-tol/juicerc:1.2-c1'
+    container 'sanger-tol/juicerc:1.2-c1'
 
     input:
     tuple val(meta), path(hicmap)

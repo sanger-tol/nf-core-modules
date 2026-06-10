@@ -42,7 +42,8 @@ input:
         ontologies: []
   - agpfile:
       type: file
-      description: AGP file describing scaffold coordinates (typically output of `pretext2asm`)
+      description: AGP file describing scaffold coordinates (typically output of
+        `pretext2asm`)
       pattern: "*.agp"
       ontologies: []
   - idxfile:
@@ -57,7 +58,8 @@ output:
           description: Groovy Map containing sample information
       - "*_alignment_sorted.txt":
           type: file
-          description: Sorted Hi-C alignment records remapped to scaffold coordinates
+          description: Sorted Hi-C alignment records remapped to scaffold
+            coordinates
           pattern: "*_alignment_sorted.txt"
           ontologies: []
   outlog:
@@ -83,7 +85,7 @@ output:
       - juicerc:
           type: string
           description: The tool name
-      - "1.2":
+      - 1.2:
           type: string
           description: The expression to obtain the version of the tool
 topics:
@@ -103,7 +105,7 @@ topics:
       - juicerc:
           type: string
           description: The tool name
-      - "1.2":
+      - 1.2:
           type: string
           description: The expression to obtain the version of the tool
 authors:
