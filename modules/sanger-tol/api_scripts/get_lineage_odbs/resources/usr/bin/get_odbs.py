@@ -236,7 +236,7 @@ def print_out(lineage_list: dict[str, BuscoSelection], file_out: str, debug: boo
             fout.write(f"{line}\n")
 
 
-def validate_lineage(lineage: dict[str, BuscoSelection], lineages_path: str):
+def check_offline_availability(lineage: dict[str, BuscoSelection], lineages_path: str):
     """
     Validate that the lineage exists in the lineage path.
     IF path is given, if not then we assume that the user want to run busco in ONLINE mode which means we can't validate local ODBs.
@@ -317,7 +317,7 @@ def main(args=None):
         all_lineages.update(lineage_list.items())
 
     if args.odb_dir:
-        validate_lineage(all_lineages, args.odb_dir)
+        check_offline_availability(all_lineages, args.odb_dir)
     else:
         print("Skipping validation, odb_dir not provided (indicates your probably wanting busco to run in online mode)")
 
