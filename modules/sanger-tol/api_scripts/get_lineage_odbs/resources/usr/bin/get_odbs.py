@@ -109,11 +109,7 @@ def goat_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> 
     query_tax_list = [int(taxid["taxon_id"]) for taxid in data]
 
     return {
-        lineage_tax_ids_dict[taxon_id].lineage: BuscoLineage(
-            taxid=lineage_tax_ids_dict[taxon_id].taxid,
-            lineage=lineage_tax_ids_dict[taxon_id].lineage,
-            odb_string=lineage_tax_ids_dict[taxon_id].odb_string,
-        )
+        lineage_tax_ids_dict[taxon_id].lineage: lineage_tax_ids_dict[taxon_id]
         for taxon_id in query_tax_list
         if taxon_id in lineage_tax_ids_dict
     }
@@ -125,11 +121,7 @@ def ena_api_call(taxid: int, lineage_tax_ids_dict: dict[int, BuscoLineage]) -> d
     odb_lineage_names = [tax_lin.lineage for tax_lin in lineage_tax_ids_dict.values()]
 
     return {
-        lineage_tax_ids_dict[y.taxid].lineage: BuscoLineage(
-            lineage=lineage_tax_ids_dict[y.taxid].lineage,
-            taxid=lineage_tax_ids_dict[y.taxid].taxid,
-            odb_string=lineage_tax_ids_dict[y.taxid].odb_string,
-        )
+        lineage_tax_ids_dict[y.taxid].lineage: lineage_tax_ids_dict[y.taxid]
         for i in set(lineage_name + odb_lineage_names)
         for _x, y in lineage_tax_ids_dict.items()
         if y.lineage == i
@@ -166,19 +158,19 @@ def get_odb(
     """
     Read the mapping between the BUSCO lineages and their taxon_id
     """
-    odb_arr: dict[str, BuscoLineage] = get_lineage_data(taxid, lineage_tax_ids_dict)
+    odb_dict: dict[str, BuscoLineage] = get_lineage_data(taxid, lineage_tax_ids_dict)
 
     master_list = dict()
 
     if "ancestral" in mode:
         master_list.update(
             {
-                f"{odb_arr[lineage].taxid}_{lineage}{odb_string}": BuscoSelection(
+                f"{odb_dict[lineage].taxid}_{lineage}{odb_string}": BuscoSelection(
                     odb_string=lineage + odb_string,
-                    taxid=odb_arr[lineage].taxid,
+                    taxid=odb_dict[lineage].taxid,
                     classification=(
                         "latest"
-                        if lineage == list(odb_arr)[0]
+                        if lineage == list(odb_dict)[0]
                         else "ancestral"
                         if "basal" in mode and lineage not in basal_lineages
                         else "basal"
@@ -186,15 +178,15 @@ def get_odb(
                         else "ancestral"
                     ),
                 )
-                for lineage in odb_arr
+                for lineage in odb_dict
             }
         )
 
     if "latest" in mode:
-        first_key = list(odb_arr)[0]
-        master_list[f"{odb_arr[first_key].taxid}_{odb_arr[first_key].lineage}{odb_string}"] = BuscoSelection(
-            odb_string=odb_arr[first_key].lineage + odb_string,
-            taxid=odb_arr[first_key].taxid,
+        first_key = list(odb_dict)[0]
+        master_list[f"{odb_dict[first_key].taxid}_{odb_dict[first_key].lineage}{odb_string}"] = BuscoSelection(
+            odb_string=odb_dict[first_key].lineage + odb_string,
+            taxid=odb_dict[first_key].taxid,
             classification="ancestral",
         )
 
@@ -247,8 +239,10 @@ def validate_lineage(lineage: dict[str, BuscoLineage], lineages_path: str):
     """
     error_lineages = []
     for data in lineage.values():
-        if lineages_path and not os.path.exists(os.path.join(lineages_path, "lineages", data.odb_string)):
-            error_lineages.append(data.odb_string)
+        if lineages_path:
+            error_lineages.append(data.odb_string) if not os.path.exists(
+                os.path.join(lineages_path, "lineages", data.odb_string)
+            ) else None
         else:
             print(
                 f"Skipping validation of {data.odb_string}, odb_dir not provided (indicates your probably wanting busco to run in online mode)"
