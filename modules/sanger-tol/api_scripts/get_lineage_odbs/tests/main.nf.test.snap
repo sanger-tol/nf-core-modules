@@ -135,7 +135,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,da556c782e4d71c718da167d450a86c5"
+                        "GCA_000001405.15.busco_odb.csv:md5,8bb5cfd443a2a744fa3699bd7b14ab78"
                     ]
                 ],
                 "1": [
@@ -157,7 +157,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,da556c782e4d71c718da167d450a86c5"
+                        "GCA_000001405.15.busco_odb.csv:md5,8bb5cfd443a2a744fa3699bd7b14ab78"
                     ]
                 ],
                 "versions_get_odb": [
@@ -176,38 +176,6 @@
                 ]
             },
             [
-                {
-                    "C0": "primates_odb12",
-                    "C1": "latest"
-                },
-                {
-                    "C0": "euarchontoglires_odb12",
-                    "C1": "ancestral"
-                },
-                {
-                    "C0": "eutheria_odb12",
-                    "C1": "ancestral"
-                },
-                {
-                    "C0": "mammalia_odb12",
-                    "C1": "ancestral"
-                },
-                {
-                    "C0": "tetrapoda_odb12",
-                    "C1": "ancestral"
-                },
-                {
-                    "C0": "vertebrata_odb12",
-                    "C1": "ancestral"
-                },
-                {
-                    "C0": "metazoa_odb12",
-                    "C1": "ancestral"
-                },
-                {
-                    "C0": "eukaryota_odb12",
-                    "C1": "ancestral"
-                },
                 {
                     "C0": "primates_odb10",
                     "C1": "latest"
@@ -238,6 +206,38 @@
                 },
                 {
                     "C0": "eukaryota_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "primates_odb12",
+                    "C1": "latest"
+                },
+                {
+                    "C0": "euarchontoglires_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eutheria_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "mammalia_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "tetrapoda_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "vertebrata_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "metazoa_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eukaryota_odb12",
                     "C1": "ancestral"
                 }
             ]

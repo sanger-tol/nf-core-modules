@@ -261,13 +261,15 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool) -> list[t
     mapping_files = []
     odb_version_list = ["odb10", "odb12", "odb12.2"] if "all" in odb_version else odb_version
 
-    for file in Path(mapping_dir).glob("*.txt"):
-        for odb in odb_version_list:
-            # There is no odb12.2 mapping file as of 5th June 2026
-            odb_placeholder = "odb12" if odb == "odb12.2" else odb
-            if f"{odb_placeholder}" in str(file):
-                (print("Found", file) if debug else None)
-                mapping_files.append((str(file), f"_{odb}"))
+    files = [str(file) for file in Path(mapping_dir).glob("*.txt")]
+    for odb in odb_version_list:
+        # There is no odb12.2 mapping file as of 5th June 2026
+        odb_placeholder = "odb12" if odb == "odb12.2" else odb
+        for file in files:
+            if odb_placeholder in file:
+                if debug:
+                    print("Found", file)
+                mapping_files.append((file, f"_{odb}"))
 
     if len(mapping_files) == 0:
         raise FileNotFoundError(f"No mapping files found in {mapping_dir} for odb version(s) {odb_version}")
