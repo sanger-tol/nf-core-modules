@@ -8,12 +8,7 @@
         "subworkflows/sanger-tol/fasta_purge_retained_haplotype",
         "subworkflows/sanger-tol/fasta_10x_polishing_longranger_freebayes",
         "subworkflows/sanger-tol/telo_finder",
-<<<<<<< HEAD
-        "subworkflows/sanger-tol/zippypretext",
-        "subworkflows/sanger-tol/fasta_10x_polishing_longranger_freebayes"
-=======
         "subworkflows/sanger-tol/zippypretext"
->>>>>>> 780f47389524be502f3a48f2197fa2ff6c37b642
     ],
     "docker": ["modules/sanger-tol/longranger", "subworkflows/sanger-tol/fasta_10x_polishing_longranger_freebayes"],
     "singularity": []
