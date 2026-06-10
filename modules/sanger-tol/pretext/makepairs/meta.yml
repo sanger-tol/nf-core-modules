@@ -1,4 +1,4 @@
-name: "makepairs"
+name: "pretext_makepairs"
 description: |
   Build a gzipped Juicer `.pairs` file from a sorted alignment table and `juicerc`
   log — combining the zippypretext `make_header.sh` and `makepairs.sh` steps.

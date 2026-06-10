@@ -43,10 +43,10 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*_corrected*.agp":
+      - "${meta.id}_corrected*.agp":
           type: file
           description: Corrected AGP assembly coordinates after Pretext curation
-          pattern: "*_corrected*.agp"
+          pattern: "${meta.id}_corrected*.agp"
           ontologies: []
   versions_agp_tpf_utils:
     - - ${task.process}:

@@ -9,8 +9,8 @@
                         },
                         [
                             "test.fragmented_busco_sequences.tar.gz:md5,c3ed4b7e86c5025e5197b15a9a4a1050",
-                            "test.full_table.tsv:md5,efb53c4a9de7cdac7c0a51d23258a082",
-                            "test.missing_busco_list.tsv:md5,b25c10e67a7927f3f6d38b21cf95ef6d",
+                            "test.full_table.tsv.gz:md5,efb53c4a9de7cdac7c0a51d23258a082",
+                            "test.missing_busco_list.tsv.gz:md5,b25c10e67a7927f3f6d38b21cf95ef6d",
                             "test.multi_copy_busco_sequences.tar.gz:md5,40ed398cfbe4b60e4eb9ecc6ab3fad5e",
                             "test.short_summary.json:md5,d52b596284a40bcef35f0ceecac18043",
                             "test.short_summary.tsv:md5,3100ec7a29250052134240edec5e13fd",
@@ -33,8 +33,8 @@
                         },
                         [
                             "test.fragmented_busco_sequences.tar.gz:md5,c3ed4b7e86c5025e5197b15a9a4a1050",
-                            "test.full_table.tsv:md5,efb53c4a9de7cdac7c0a51d23258a082",
-                            "test.missing_busco_list.tsv:md5,b25c10e67a7927f3f6d38b21cf95ef6d",
+                            "test.full_table.tsv.gz:md5,efb53c4a9de7cdac7c0a51d23258a082",
+                            "test.missing_busco_list.tsv.gz:md5,b25c10e67a7927f3f6d38b21cf95ef6d",
                             "test.multi_copy_busco_sequences.tar.gz:md5,40ed398cfbe4b60e4eb9ecc6ab3fad5e",
                             "test.short_summary.json:md5,d52b596284a40bcef35f0ceecac18043",
                             "test.short_summary.tsv:md5,3100ec7a29250052134240edec5e13fd",
@@ -52,11 +52,11 @@
                 ]
             }
         ],
+        "timestamp": "2026-05-28T12:20:40.583816612",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.5",
             "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-03-24T23:59:07.495051618"
+        }
     },
     "stub": {
         "content": [
@@ -68,8 +68,8 @@
                         },
                         [
                             "test.fragmented_busco_sequences.tar.gz:md5,1276481102f218c981e0324180bafd9f",
-                            "test.full_table.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "test.missing_busco_list.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.full_table.tsv.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.missing_busco_list.tsv.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                             "test.multi_copy_busco_sequences.tar.gz:md5,1276481102f218c981e0324180bafd9f",
                             "test.short_summary.json:md5,d41d8cd98f00b204e9800998ecf8427e",
                             "test.short_summary.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -92,8 +92,8 @@
                         },
                         [
                             "test.fragmented_busco_sequences.tar.gz:md5,1276481102f218c981e0324180bafd9f",
-                            "test.full_table.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
-                            "test.missing_busco_list.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.full_table.tsv.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.missing_busco_list.tsv.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                             "test.multi_copy_busco_sequences.tar.gz:md5,1276481102f218c981e0324180bafd9f",
                             "test.short_summary.json:md5,d41d8cd98f00b204e9800998ecf8427e",
                             "test.short_summary.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -111,11 +111,11 @@
                 ]
             }
         ],
+        "timestamp": "2026-05-28T12:19:58.605469087",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.5",
             "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-03-24T23:59:12.834343629"
+        }
     },
     "busco dir all sequences": {
         "content": [
@@ -124,8 +124,6 @@
                     "id": "test"
                 },
                 "clean_busco_dir_md5": [
-                    "test.full_table.tsv:md5,0060f1602f1c49c421169eacef3b1b7b",
-                    "test.missing_busco_list.tsv:md5,173cbd833bdd85e88a627c89ec285023",
                     "test.short_summary.json:md5,09ca0d2f28d18b9ca51b12a8d87fd038",
                     "test.short_summary.tsv:md5,4a3e39a6e9a5071f8790ce4725f99ce6",
                     "test.short_summary.txt:md5,d21e6b3a676bae91079124c27acf97e4"
@@ -144,10 +142,10 @@
                 ]
             }
         ],
+        "timestamp": "2026-05-28T12:20:28.19044615",
         "meta": {
-            "nf-test": "0.9.3",
+            "nf-test": "0.9.5",
             "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-03-24T23:58:55.116927227"
+        }
     }
 }
