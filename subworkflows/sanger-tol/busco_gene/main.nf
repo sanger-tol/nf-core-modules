@@ -55,6 +55,10 @@ workflow BUSCO_GENE {
 
     ch_gz_index = HTSLIB_BGZIPTABIX.out.output
         .join(HTSLIB_BGZIPTABIX.out.index)
+    } else {
+        ch_gz_index = Channel.empty()
+    }
+
     emit:
     complete_bedgraph      = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
     duplicated_bedgraph    = BUSCOFULLTABLETOGENEBEDGRAPH.out.duplicated_bedgraph

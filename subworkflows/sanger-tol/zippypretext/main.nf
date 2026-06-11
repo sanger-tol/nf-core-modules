@@ -1,8 +1,8 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { PRETEXT2ASM       } from '../../../modules/sanger-tol/pretext/pretext2asm/main'
-include { JUICERC           } from '../../../modules/sanger-tol/pretext/juicerc/main'
+include { PRETEXT2ASM as PRETEXT_PRETEXT2ASM } from '../../../modules/sanger-tol/pretext/pretext2asm/main'
+include { JUICERC as PRETEXT_JUICERC         } from '../../../modules/sanger-tol/pretext/juicerc/main'
 include { PRETEXT_MAKEPAIRS } from '../../../modules/sanger-tol/pretext/makepairs/main'
 include { PRETEXTMAP        } from '../../../modules/nf-core/pretextmap/main'
 
