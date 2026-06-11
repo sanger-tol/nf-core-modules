@@ -46,9 +46,27 @@
                         "3.14.5"
                     ]
                 ]
-            }
+            },
+            [
+                {
+                    "C0": "bacteria_odb10",
+                    "C1": "basal"
+                },
+                {
+                    "C0": "archaea_odb10",
+                    "C1": "basal"
+                },
+                {
+                    "C0": "eukaryota_odb10",
+                    "C1": "basal"
+                },
+                {
+                    "C0": "mammalia_odb10",
+                    "C1": "extra"
+                }
+            ]
         ],
-        "timestamp": "2026-06-10T12:13:07.469581286",
+        "timestamp": "2026-06-10T18:24:14.930479239",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -117,7 +135,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,da556c782e4d71c718da167d450a86c5"
+                        "GCA_000001405.15.busco_odb.csv:md5,8bb5cfd443a2a744fa3699bd7b14ab78"
                     ]
                 ],
                 "1": [
@@ -139,7 +157,7 @@
                         {
                             "id": "GCA_000001405.15"
                         },
-                        "GCA_000001405.15.busco_odb.csv:md5,da556c782e4d71c718da167d450a86c5"
+                        "GCA_000001405.15.busco_odb.csv:md5,8bb5cfd443a2a744fa3699bd7b14ab78"
                     ]
                 ],
                 "versions_get_odb": [
@@ -156,9 +174,75 @@
                         "3.14.5"
                     ]
                 ]
-            }
+            },
+            [
+                {
+                    "C0": "primates_odb10",
+                    "C1": "latest"
+                },
+                {
+                    "C0": "euarchontoglires_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eutheria_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "mammalia_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "tetrapoda_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "vertebrata_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "metazoa_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eukaryota_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "primates_odb12",
+                    "C1": "latest"
+                },
+                {
+                    "C0": "euarchontoglires_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eutheria_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "mammalia_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "tetrapoda_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "vertebrata_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "metazoa_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eukaryota_odb12",
+                    "C1": "ancestral"
+                }
+            ]
         ],
-        "timestamp": "2026-06-10T12:13:15.595958669",
+        "timestamp": "2026-06-10T18:24:23.374429762",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
