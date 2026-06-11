@@ -1,0 +1,100 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "API_SCRIPTS_GET_LINEAGE_ODBS"
+description: |
+  A tool to collect ODB lineages using the GOAT API (with the ENA API as a fallback).
+keywords:
+  - assembly
+  - summary
+  - api_scripts
+  - get_lineage_odbs
+tools:
+  - "get_odb":
+      description: |
+        Generate a CSV containing relevant ODB's to run for a given assembly.
+      homepage: "https://github.com/sanger-tol/nf-core-modules"
+      documentation: "https://github.com/sanger-tol/nf-core-modules"
+      tool_dev_url: "https://github.com/sanger-tol/nf-core-modules"
+      licence: ["MIT"]
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - fasta:
+        type: file
+        description: Assembly summary file
+        pattern: "*.(fasta|fa|fna)$"
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
+  - odb_directory:
+      type: directory
+      description: Directory containing the ODB lineage data. Do not include the lineage subdirectory.
+  - mapping_directory:
+      type: directory
+      description: Directory containing the ODB lineage mapping data, these exist as txt files of taxid to lineage.
+  - taxid:
+      type: integer
+      description: Taxonomic ID of the assembly.
+      pattern: "^[0-9]+$"
+  - specified_lineages:
+      type: string
+      description: CSV list of specifiied lineages by user.
+output:
+  csv:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*.busco_odb.csv":
+          type: file
+          description: CSV file containing relevant ODB lineages for the assembly
+          pattern: "*.busco_odb.csv"
+          ontologies:
+            - edam: "http://edamontology.org/format_3307" # CSV
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_get_odb:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - get_odbs:
+          type: string
+          description: Name of the tool
+      - get_odbs.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - get_odbs:
+          type: string
+          description: Name of the tool
+      - get_odbs.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"

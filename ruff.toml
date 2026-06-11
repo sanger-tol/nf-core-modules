@@ -13,3 +13,6 @@ known-first-party = ["nf_core"]
 
 [lint.pep8-naming]
 extend-ignore-names = ["mocked_*", "*allOf", "*URI*"]
+
+[per-file-target-version]
+"modules/sanger-tol/api_scripts/get_lineage_odbs/resources/usr/bin/get_odbs.py" = "py314"
