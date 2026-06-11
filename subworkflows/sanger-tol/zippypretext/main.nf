@@ -32,7 +32,7 @@ workflow ZIPPYPRETEXT {
         ch_zippy_inputs.agp.map { meta, agp -> agp }
     )
 
-    JUICERC(
+    PRETEXT_JUICERC (
         ch_zippy_inputs.hicmap,
         PRETEXT2ASM.out.correctedagp.map { meta, agp -> agp },
         ch_zippy_inputs.idxfile.map { meta, idx -> idx }
