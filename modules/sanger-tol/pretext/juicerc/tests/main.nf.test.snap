@@ -54,7 +54,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-11T22:16:24.578511169",
+        "timestamp": "2026-06-11T22:48:51.720972937",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -72,7 +72,7 @@
                     ]
                 ],
                 "1": [
-                    "juicercout.log:md5,15ef511b341818e1b48ab02eb19cd8d1"
+                    "juicercout.log:md5,6a7c0789bf6e668f5042af33e627e347"
                 ],
                 "2": [
                     [
@@ -97,7 +97,7 @@
                     ]
                 ],
                 "outlog": [
-                    "juicercout.log:md5,15ef511b341818e1b48ab02eb19cd8d1"
+                    "juicercout.log:md5,6a7c0789bf6e668f5042af33e627e347"
                 ],
                 "versions_juicer_pre": [
                     [
@@ -115,7 +115,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-06-11T22:16:11.548133423",
+        "timestamp": "2026-06-11T22:48:35.906687136",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

@@ -46,18 +46,20 @@ workflow BUSCO_GENE {
                 items.collect { file -> tuple(meta, file, [], []) }
             }
 
-    HTSLIB_BGZIPTABIX(
-        ch_bedgraphs_for_zip,
-        'compress',
-        true,
-        'bedgraph'
-    )
-
-    ch_gz_index = HTSLIB_BGZIPTABIX.out.output
-        .join(HTSLIB_BGZIPTABIX.out.index)
-    } else {
-        ch_gz_index = Channel.empty()
+        HTSLIB_BGZIPTABIX(
+            ch_bedgraphs_for_zip,
+            'compress',
+            true,
+            'bedgraph'
+        )
     }
+
+    ch_gz_index = val_zip_bedgraph
+        ? HTSLIB_BGZIPTABIX.out.output
+            .combine(HTSLIB_BGZIPTABIX.out.index)
+            .filter { meta, gz, _meta2, idx -> idx.name.startsWith(gz.name) }
+            .map { meta, gz, _meta2, idx -> tuple(meta, gz, idx) }
+        : Channel.empty()
 
     emit:
     complete_bedgraph      = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
