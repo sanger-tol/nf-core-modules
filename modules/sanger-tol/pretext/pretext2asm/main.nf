@@ -1,4 +1,4 @@
-process PRETEXT2ASM {
+process PRETEXT_PRETEXT2ASM {
     tag "$meta.id"
     label 'process_single'
 
@@ -19,7 +19,7 @@ process PRETEXT2ASM {
 
     script:
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "PRETEXT2ASM module does not support Conda. Please use Docker / Singularity instead."
+        error "PRETEXT_PRETEXT2ASM module does not support Conda. Please use Docker / Singularity instead."
     }
     def args    = task.ext.args     ?: ''
     def prefix  = task.ext.prefix   ?: "${meta.id}"
@@ -30,7 +30,7 @@ process PRETEXT2ASM {
 
     stub:
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "PRETEXT2ASM module does not support Conda. Please use Docker / Singularity instead."
+        error "PRETEXT_PRETEXT2ASM module does not support Conda. Please use Docker / Singularity instead."
     }
     def prefix  = task.ext.prefix   ?: "${meta.id}"
     """

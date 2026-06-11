@@ -12,7 +12,7 @@
                 ],
                 "1": [
                     [
-                        "PRETEXT2ASM",
+                        "PRETEXT_PRETEXT2ASM",
                         "tola-agp-tpf-utils",
                         "1.3.4"
                     ]
@@ -27,14 +27,14 @@
                 ],
                 "versions_agp_tpf_utils": [
                     [
-                        "PRETEXT2ASM",
+                        "PRETEXT_PRETEXT2ASM",
                         "tola-agp-tpf-utils",
                         "1.3.4"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-10T13:49:07.207305805",
+        "timestamp": "2026-06-11T22:09:33.607875537",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -53,7 +53,7 @@
                 ],
                 "1": [
                     [
-                        "PRETEXT2ASM",
+                        "PRETEXT_PRETEXT2ASM",
                         "tola-agp-tpf-utils",
                         "1.3.4"
                     ]
@@ -68,18 +68,17 @@
                 ],
                 "versions_agp_tpf_utils": [
                     [
-                        "PRETEXT2ASM",
+                        "PRETEXT_PRETEXT2ASM",
                         "tola-agp-tpf-utils",
                         "1.3.4"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-10T13:48:57.733101384",
+        "timestamp": "2026-06-11T22:09:25.186906822",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
         }
     }
 }
-
