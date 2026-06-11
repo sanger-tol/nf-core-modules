@@ -1,4 +1,4 @@
-name: "juicerc"
+name: "pretext_juicerc"
 description: |
   Remap Hi-C alignments onto a curated AGP with `juicer pre`, sort pairs, and filter
   invalid coordinates — equivalent to the zippypretext `juicerc.sh` wrapper.
