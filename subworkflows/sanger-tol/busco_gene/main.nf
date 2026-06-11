@@ -47,7 +47,7 @@ workflow BUSCO_GENE {
             }
 
     HTSLIB_BGZIPTABIX(
-        ch_bedgraphs_for_zip.filter{ meta, file -> val_zip_bedgraph},
+        ch_bedgraphs_for_zip,
         'compress',
         true,
         'bedgraph'
