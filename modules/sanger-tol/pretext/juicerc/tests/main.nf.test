@@ -2,7 +2,7 @@ nextflow_process {
 
     name "Test Process JUICERC"
     script "../main.nf"
-    process "JUICERC"
+    process "PRETEXT_JUICERC"
 
     tag "modules"
     tag "modules_sangertol"
