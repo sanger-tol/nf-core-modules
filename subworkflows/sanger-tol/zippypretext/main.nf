@@ -27,7 +27,7 @@ workflow ZIPPYPRETEXT {
             idxfile: tuple(meta, idx)
         }
 
-    PRETEXT2ASM(
+    PRETEXT_PRETEXT2ASM (
         ch_zippy_inputs.fasta,
         ch_zippy_inputs.agp.map { meta, agp -> agp }
     )
