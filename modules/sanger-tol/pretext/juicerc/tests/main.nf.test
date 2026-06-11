@@ -45,12 +45,12 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert pre_c_sizes.size() > 0 },
-                { assert snapshot(
-                    process.out.alignment,
-                    pre_c_sizes,
-                    process.out.versions_juicer_pre,
-                    process.out.versions_juicerc
-                ).match() }
+                { assert snapshot([
+                    alignment: process.out.alignment,
+                    pre_c_sizes: pre_c_sizes,
+                    versions_juicer_pre: process.out.versions_juicer_pre,
+                    versions_juicerc: process.out.versions_juicerc,
+                ]).match() }
             )
         }
 
@@ -94,12 +94,12 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert pre_c_sizes.isEmpty() },
-                { assert snapshot(
-                    process.out.alignment,
-                    pre_c_sizes,
-                    process.out.versions_juicer_pre,
-                    process.out.versions_juicerc
-                ).match() }
+                { assert snapshot([
+                    alignment: process.out.alignment,
+                    pre_c_sizes: pre_c_sizes,
+                    versions_juicer_pre: process.out.versions_juicer_pre,
+                    versions_juicerc: process.out.versions_juicerc,
+                ]).match() }
             )
         }
 
