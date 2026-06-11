@@ -85,6 +85,9 @@ runs:
       run: |
         NFT_WORKDIR=~
         TAGS=$([ -n "${{ inputs.tags }}" ] && echo "--tag ${{ inputs.tags }}" || echo "")
+        if [[ "${{ inputs.profile }}" == *"singularity"* ]]; then
+          export NXF_ENABLE_TASK_MONITOR=false
+        fi
 
         nf-test test \
           --profile=${{ inputs.profile }} \
