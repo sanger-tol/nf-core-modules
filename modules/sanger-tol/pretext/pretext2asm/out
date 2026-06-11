@@ -1,9 +1,0 @@
-
-🚀[1m nf-test 0.9.5[0m
-https://www.nf-test.com
-Please cite: https://doi.org/10.1093/gigascience/giaf130
-(c) 2021 - 2026 Lukas Forer and Sebastian Schoenherr
-
-[33mWarning: This pipeline has no nf-test config file.[0m
-Warning: Module /nfs/treeoflife-01/teams/tola/users/yy5/nfm/nf-core-modules/modules/sanger-tol/pretext/pretext2asm/tests/main.nf.test: Dependency '/nfs/treeoflife-01/teams/tola/users/yy5/nfm/nf-core-modules/modules/sanger-tol/pretext/pretext2asm/tests/../main.nf' not found.
-[33mNo tests to execute.[0m
