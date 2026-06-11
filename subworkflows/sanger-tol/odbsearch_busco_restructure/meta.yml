@@ -2,7 +2,7 @@
 name: "odbsearch_busco_restructure"
 description: Build contact maps from pairs files using PretextMap, Juicertools, and Cooler
 keywords:
-  - busco
+  - sanger-tol/busco
   - odbsearch
   - restructure
   - gunzip

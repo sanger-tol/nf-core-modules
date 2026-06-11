@@ -7,7 +7,7 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/odbsearch_busco_restructure"
-    tag "api_scripts/get_lineage_odb"
+    tag "api_scripts/get_lineage_odbs"
     tag "restructurebuscodir"
     tag "busco/busco"
     tag "modules/nf-core/gunzip"
