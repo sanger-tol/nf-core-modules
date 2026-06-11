@@ -38,8 +38,8 @@ workflow ZIPPYPRETEXT {
         ch_zippy_inputs.idxfile.map { meta, idx -> idx }
     )
 
-    ch_makepairs_input = JUICERC.out.alignment
-        .combine(JUICERC.out.outlog)
+    ch_makepairs_input = PRETEXT_JUICERC.out.alignment
+        .combine(PRETEXT_JUICERC.out.outlog)
         .map { meta, alignment, outlog -> tuple(meta, alignment, outlog) }
 
     PRETEXT_MAKEPAIRS(ch_makepairs_input)
