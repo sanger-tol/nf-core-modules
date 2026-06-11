@@ -1,4 +1,4 @@
-name: "pretext2asm"
+name: "pretext_pretext2asm"
 description: |
   Convert a PretextView-curated AGP file and input assembly FASTA into a corrected AGP
   using agp-tpf-utils `pretext-to-asm`.

@@ -1,6 +1,6 @@
 nextflow_process {
 
-    name "Test Process JUICERC"
+    name "Test Process PRETEXT_JUICERC"
     script "../main.nf"
     process "PRETEXT_JUICERC"
 

@@ -1,4 +1,4 @@
-process PRETEXT2ASM {
+process PRETEXT_PRETEXT2ASM {
     tag "$meta.id"
     label 'process_single'
 
