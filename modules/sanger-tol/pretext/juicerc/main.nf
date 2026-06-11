@@ -1,4 +1,4 @@
-process JUICERC {
+process PRETEXT_JUICERC {
     tag "$meta.id"
     label 'process_medium'
 
@@ -21,7 +21,7 @@ process JUICERC {
 
     script:
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "JUICERC module does not support Conda. Please use Docker / Singularity instead."
+        error "PRETEXT_JUICERC module does not support Conda. Please use Docker / Singularity instead."
     }
     def prefix   = task.ext.prefix   ?: "${meta.id}"
     def sort_mem = (task.memory.toGiga() * 0.9).intValue()
@@ -35,7 +35,7 @@ process JUICERC {
 
     stub:
     if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        error "JUICERC module does not support Conda. Please use Docker / Singularity instead."
+        error "PRETEXT_JUICERC module does not support Conda. Please use Docker / Singularity instead."
     }
     def prefix  = task.ext.prefix   ?: "${meta.id}"
     """
