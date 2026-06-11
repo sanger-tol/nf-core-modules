@@ -24,7 +24,7 @@ class BuscoLineage:
 
 
 # A structure to hold the selected ODB lineages and their classifications (ancestral, basal, latest, extra)
-type BuscoSelection = dict[str, str]
+type BuscoSelection = dict[str, str]  # noqa
 
 
 # All entries from a mapping file, with helper functions to index them
