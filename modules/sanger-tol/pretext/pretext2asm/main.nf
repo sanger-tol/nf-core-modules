@@ -1,5 +1,5 @@
 process PRETEXT_PRETEXT2ASM {
-    tag "$meta.id"
+    tag "${meta.id}"
     label 'process_single'
 
     container 'quay.io/sanger-tol/agp-tpf-utils:1.3.4-c1'
