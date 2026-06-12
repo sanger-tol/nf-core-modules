@@ -1,0 +1,116 @@
+nextflow_workflow {
+
+    name "Test Subworkflow ODBSEARCH_BUSCO_RESTRUCTURE"
+    script "../main.nf"
+    workflow "ODBSEARCH_BUSCO_RESTRUCTURE"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/odbsearch_busco_restructure"
+    tag "api_scripts/get_lineage_odbs"
+    tag "restructurebuscodir"
+    tag "busco/busco"
+    tag "modules/nf-core/gunzip"
+    tag "subworkflows/../modules/nf-core/gunzip"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            ["gunzip"]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        run("GUNZIP"){
+            script "../../../../modules/nf-core/gunzip/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id: "Laetiporus_sulphureus" ],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        // Download mapping files once for all tests
+        def mapping_dir = new File("${launchDir}/mapping_files/")
+        def raw_mapping_dir = new File("${launchDir}/raw_mapping_files/")
+        mapping_dir.mkdirs()
+        raw_mapping_dir.mkdirs()
+
+        def all_mapping_files = [
+            "archaea_odb10.2019-12-16", "bacteria_odb10.2019-12-16", "eukaryota_odb10.2019-12-16",
+            "archaea_odb12.2024-11-15", "bacteria_odb12.2024-11-15", "eukaryota_odb12.2025-01-15",
+        ]
+
+        all_mapping_files.each { file_spec ->
+            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.${file_spec}.txt.tar.gz", "${launchDir}/raw_mapping_files")
+        }
+
+        // Concatenate by version
+        ['odb10', 'odb12'].each { version ->
+            def version_files = all_mapping_files.findAll { it.contains(version) }
+            if (version_files) {
+                def firstDate = version_files[0].split('\\.')[1]
+                def cmd = ['bash', '-c', "cat ${launchDir}/raw_mapping_files/*${version}* > ${launchDir}/mapping_files/${version}_mapping_file.${firstDate}.txt"]
+                def proc = cmd.execute()
+                proc.waitFor()
+                if (proc.exitValue() != 0) {
+                    throw new RuntimeException("Error - failed to cat ${version}_mapping_file: ${proc.err.text}")
+                }
+            }
+        }
+    }
+
+    test ( "Laetiporus_sulphureus - odb10 - latest - offline" ) {
+        config "./offline_basal.config"
+
+        setup {
+            curlAndExtract("https://tolit.cog.sanger.ac.uk/test-data/resources/busco/genomenote.GCA_963859965.1.2025-12-08.tar.gz", "${launchDir}/")
+        }
+
+        when {
+
+            params {
+                odb_path        = "${launchDir}/genomenote.GCA_963859965.1.2025-12-08"
+                mapping_path    = "${launchDir}/mapping_files"
+            }
+
+            workflow {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = Channel.value(file(params.odb_path, checkIfExists: true, type: 'dir'))
+                input[2] = Channel.value(file(params.mapping_path, checkIfExists: true, type: 'dir'))
+                input[3] = Channel.of([ id: "Laetiporus_sulphureus" ], "5630")
+                input[4] = Channel.of([ id: "Laetiporus_sulphureus" ], [])
+                input[5] = Channel.of([ id: "Laetiporus_sulphureus" ], "OUTPUT")
+                input[6] = Channel.value(true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.odb_csv,
+                    workflow.out.busco_full_table,
+                    workflow.out.busco_output.collect { meta, dir ->
+                        def files = []
+                        file(dir).eachFileRecurse { f -> files << f.getName() }
+                        files.sort()
+                    }.flatten().sort(),
+                    workflow.out.restructured_output.collect { meta, dir ->
+                        file(dir).list()
+                    }.flatten().sort(),
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+}
