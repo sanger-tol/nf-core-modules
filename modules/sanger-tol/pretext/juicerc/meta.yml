@@ -67,16 +67,6 @@ output:
       - juicer pre --version:
           type: eval
           description: The expression to obtain the version of the tool
-  versions_juicerc:
-    - - ${task.process}:
-          type: string
-          description: The process the versions were collected from
-      - juicerc:
-          type: string
-          description: The tool name
-      - "1.2":
-          type: string
-          description: The expression to obtain the version of the tool
 topics:
   versions:
     - - ${task.process}:
