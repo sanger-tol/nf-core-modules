@@ -36,7 +36,8 @@ input:
       pattern: "{genome,proteins,transcriptome}"
   - lineage:
       type: string
-      description: The BUSCO lineage to use, or "auto", "auto_prok" or "auto_euk"
+      description:
+        The BUSCO lineage to use, or "auto", "auto_prok" or "auto_euk"
         to automatically select lineage
   - busco_lineages_path:
       type: directory
@@ -168,7 +169,8 @@ output:
             e.g. [ id:'test' ]
       - busco_downloads/lineages/*:
           type: directory
-          description: Lineages downloaded by BUSCO when running the analysis, for
+          description:
+            Lineages downloaded by BUSCO when running the analysis, for
             example bacteria_odb12
           pattern: "busco_downloads/lineages/*"
   single_copy_faa:
@@ -193,6 +195,47 @@ output:
           description: Single copy .fna sequence files
           pattern: "*-busco/*/run_*/busco_sequences/single_copy_busco_sequences/*.fna"
           ontologies: []
+  restructure_busco_output:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test' ]
+      - lineage:
+          type: string
+          description: The lineage of the BUSCO gene set
+      - "*-busco.batch_summary.txt":
+          type: file
+          description: Summary of all sequence files analyzed
+          pattern: "*-busco.batch_summary.txt"
+          ontologies: []
+      - short_summary.*.txt:
+          type: file
+          description: Short Busco summary in plain text format
+          pattern: "short_summary.*.txt"
+          ontologies: []
+      - short_summary.*.json:
+          type: file
+          description: Short Busco summary in JSON format
+          pattern: "short_summary.*.json"
+          ontologies:
+            - edam: http://edamontology.org/format_3464
+      - "*-busco/*/run_*/full_table.tsv":
+          type: file
+          description: Full BUSCO results table
+          pattern: "full_table.tsv"
+          ontologies:
+            - edam: http://edamontology.org/format_3475
+      - "*-busco/*/run_*/missing_busco_list.tsv":
+          type: file
+          description: List of missing BUSCOs
+          pattern: "missing_busco_list.tsv"
+          ontologies:
+            - edam: http://edamontology.org/format_3475
+      - "*-busco/*/run_*/busco_sequences":
+          type: directory
+          description: BUSCO sequence directory
+          pattern: "busco_sequences"
   versions_busco:
     - - ${task.process}:
           type: string
