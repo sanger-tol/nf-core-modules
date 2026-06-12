@@ -7,7 +7,7 @@ keywords:
   - restructure
   - gunzip
 components:
-  - api_search/get_lineage_odbs
+  - api_scripts/get_lineage_odbs
   - busco/busco
   - restructurebuscodir
   - gunzip:
