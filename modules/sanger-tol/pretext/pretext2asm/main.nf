@@ -2,7 +2,7 @@ process PRETEXT_PRETEXT2ASM {
     tag "${meta.id}"
     label 'process_single'
 
-    container 'quay.io/sanger-tol/agp-tpf-utils:1.3.4-c1'
+    container 'quay.io/sanger-tol/agp-tpf-utils:1.3.4-c2'
 
     input:
     tuple val(meta), path(mappedfasta)
