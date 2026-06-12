@@ -1,0 +1,103 @@
+name: "pretext_juicerc"
+description: |
+  Remap Hi-C alignments onto a curated AGP with `juicer pre`, sort pairs, and filter
+  invalid coordinates — equivalent to the zippypretext `juicerc.sh` wrapper.
+keywords:
+  - pretext
+  - juicer
+  - hic
+  - agp
+  - curation
+tools:
+  - juicer_pre:
+      description: |
+        Remap Hi-C contacts from a `.bin` or BAM onto scaffold coordinates in an AGP
+        using a contig-level FASTA index (`juicer pre -q 0`).
+      homepage: https://github.com/aidenlab/juicer/wiki/Juicer-Tools-Quick-Start
+      documentation: https://github.com/aidenlab/juicer/wiki/Juicer-Tools-Quick-Start
+      licence:
+        - "MIT"
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - hicmap:
+        type: file
+        description: Hi-C alignment file (BAM or Juicer `.bin` contacts)
+        pattern: "*.{bam,bin}"
+        ontologies: []
+  - agpfile:
+      type: file
+      description: AGP file describing scaffold coordinates (typically output of
+        `pretext2asm`)
+      pattern: "*.agp"
+      ontologies: []
+  - idxfile:
+      type: file
+      description: FASTA index (`.fai`) matching the contig-level Hi-C assembly
+      pattern: "*.fai"
+      ontologies: []
+output:
+  alignment:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*_alignment_sorted.txt":
+          type: file
+          description: Sorted Hi-C alignment records remapped to scaffold
+            coordinates
+          pattern: "*_alignment_sorted.txt"
+          ontologies: []
+  outlog:
+    - juicercout.log:
+        type: file
+        description: Log file written by `juicerc.sh`
+        pattern: "juicercout.log"
+        ontologies: []
+  versions_juicer_pre:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - juicer_pre:
+          type: string
+          description: The tool name
+      - juicer pre --version:
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_juicerc:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - juicerc:
+          type: string
+          description: The tool name
+      - "1.2":
+          type: string
+          description: The version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - juicer_pre:
+          type: string
+          description: The tool name
+      - juicer pre --version:
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - juicerc:
+          type: string
+          description: The tool name
+      - "1.2":
+          type: string
+          description: The expression to obtain the version of the tool
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"

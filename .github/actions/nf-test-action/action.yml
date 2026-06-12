@@ -66,6 +66,46 @@ runs:
         conda-solver: libmamba
         conda-remove-defaults: true
 
+    # Cache BUSCO lineage downloads to avoid flaky failures when BUSCO data servers are unreachable.
+    # The cache key is tied to the specific BUSCO container image digest so the lineage version
+    # matches what the tests expect.
+    - name: Cache BUSCO lineage downloads
+      if: contains(inputs.profile, 'docker')
+      uses: actions/cache@v4
+      id: busco_cache
+      with:
+        path: ~/busco_downloads
+        key: busco-lineages-3ecb8547e6c97dd1
+
+    # Pre-download required BUSCO lineages into the cache directory.
+    # If this step fails (e.g. server temporarily unreachable) it is non-fatal
+    # (|| true) so the overall CI step does not abort; tests will fall back to
+    # downloading at runtime and will fail only if the server is still down.
+    - name: Pre-download BUSCO lineages
+      if: contains(inputs.profile, 'docker') && steps.busco_cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        mkdir -p ~/busco_downloads
+        docker run --rm \
+          --platform linux/amd64 \
+          -v ~/busco_downloads:/busco_downloads \
+          community.wave.seqera.io/library/busco_numpy:3ecb8547e6c97dd1 \
+          busco --download bacteria_odb10 \
+            --download_path /busco_downloads \
+            --download_base_url https://busco-data.s3.amazonaws.com/v5/data || true
+
+    # Export BUSCO_LINEAGES_PATH so Nextflow tests can find the cached lineages
+    # and run BUSCO with --offline, avoiding the online version-check entirely.
+    # Only exported when a versioned lineage directory (bacteria_odb10_YYYY-MM-DD)
+    # was actually populated.
+    - name: Export BUSCO lineages path
+      if: contains(inputs.profile, 'docker')
+      shell: bash
+      run: |
+        if find ~/busco_downloads/lineages -maxdepth 1 -name 'bacteria_odb10_*' -type d -print -quit 2>/dev/null | grep -q .; then
+          echo "BUSCO_LINEAGES_PATH=$HOME/busco_downloads" >> "$GITHUB_ENV"
+        fi
+
     # Set up secrets
     - name: Set up Nextflow secrets
       if: env.SENTIEON_ENCRYPTION_KEY != '' && env.SENTIEON_LICENSE_MESSAGE != ''

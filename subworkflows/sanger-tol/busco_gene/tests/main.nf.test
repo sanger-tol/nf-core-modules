@@ -10,8 +10,8 @@ nextflow_workflow {
     tag "subworkflows/busco_gene"
     tag "subworkflows/../../modules/nf-core/busco/busco"
     tag "busco/buscofulltabletogenebedgraph"
-    tag "tabix/bgziptabix"
-    tag "subworkflows/../../modules/nf-core/tabix/bgziptabix"
+    tag "htslib/bgziptabix"
+    tag "subworkflows/../../modules/nf-core/htslib/bgziptabix"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
@@ -19,7 +19,7 @@ nextflow_workflow {
             "${launchDir}/library/",
             [
                 "busco/busco",
-                "tabix/bgziptabix",
+                "htslib/bgziptabix",
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
@@ -35,7 +35,7 @@ nextflow_workflow {
                     file(params.nfcore_modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true),
                 ])
                 input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
-                input[2] = []
+                input[2] = params.busco_lineages_path ? file(params.busco_lineages_path) : []
                 input[3] = false
                 """
             }
@@ -72,7 +72,7 @@ nextflow_workflow {
                     file(params.nfcore_modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true),
                 ])
                 input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
-                input[2] = []
+                input[2] = params.busco_lineages_path ? file(params.busco_lineages_path) : []
                 input[3] = true
                 """
             }

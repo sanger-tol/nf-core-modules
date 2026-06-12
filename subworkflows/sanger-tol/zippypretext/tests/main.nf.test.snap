@@ -1,0 +1,38 @@
+{
+    "gfAmaRube1 - bin - stub": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test_alignment.pairs.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                ]
+            ],
+            "test.pretext"
+        ],
+        "timestamp": "2026-06-12T09:13:05.331027265",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "gfAmaRube1 - bin": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test_alignment.pairs.gz:md5,a79cff0b32469f85083b04af1e3b6d79"
+                ]
+            ],
+            "test.pretext"
+        ],
+        "timestamp": "2026-06-12T09:12:16.752126281",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

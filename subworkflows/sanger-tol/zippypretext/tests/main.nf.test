@@ -1,0 +1,111 @@
+nextflow_workflow {
+
+    name "Test Subworkflow ZIPPYPRETEXT"
+    script "../main.nf"
+    workflow "ZIPPYPRETEXT"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/zippypretext"
+    tag "pretext/pretext2asm"
+    tag "pretext/juicerc"
+    tag "pretext/makepairs"
+    tag "subworkflows/../../modules/nf-core/pretextmap"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "pretextmap",
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("gfAmaRube1 - bin") {
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true),
+                ])
+                input[1] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true),
+                ])
+                input[2] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.bin', checkIfExists: true),
+                ])
+                input[3] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa.fai', checkIfExists: true),
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert file(workflow.out.pretext.get(0).get(1)).length() > 0 },
+                { assert snapshot(
+                    workflow.out.pairs,
+                    file(workflow.out.pretext.get(0).get(1)).getName(),
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+
+    }
+
+    test("gfAmaRube1 - bin - stub") {
+
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true),
+                ])
+                input[1] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true),
+                ])
+                input[2] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.bin', checkIfExists: true),
+                ])
+                input[3] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa.fai', checkIfExists: true),
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.pairs,
+                    file(workflow.out.pretext.get(0).get(1)).getName(),
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+
+    }
+
+}

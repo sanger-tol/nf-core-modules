@@ -1,0 +1,84 @@
+{
+    "test - pairs": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment.pairs.gz:md5,bf0f5e9c05e7cc5845c13a8f6f39977e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
+                    ]
+                ],
+                "pairs": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment.pairs.gz:md5,bf0f5e9c05e7cc5845c13a8f6f39977e"
+                    ]
+                ],
+                "versions_pretext_makepairs": [
+                    [
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-11T22:19:56.647138392",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "test - pairs - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment.pairs.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "1": [
+                    [
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
+                    ]
+                ],
+                "pairs": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment.pairs.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "versions_pretext_makepairs": [
+                    [
+                        "PRETEXT_MAKEPAIRS",
+                        "pretext_makepairs",
+                        "1.0.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-11T22:20:04.969846719",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

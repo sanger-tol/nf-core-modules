@@ -4,7 +4,7 @@
 //
 include { BUSCO_BUSCO                      } from '../../../modules/nf-core/busco/busco/main'
 include { BUSCOFULLTABLETOGENEBEDGRAPH     } from '../../../modules/sanger-tol/busco/buscofulltabletogenebedgraph/main'
-include { TABIX_BGZIPTABIX                 } from '../../../modules/nf-core/tabix/bgziptabix/main'
+include { HTSLIB_BGZIPTABIX                } from '../../../modules/nf-core/htslib/bgziptabix/main'
 
 
 workflow BUSCO_GENE {
@@ -43,11 +43,23 @@ workflow BUSCO_GENE {
         ch_bedgraphs_for_zip = ch_bedgraphs_for_zip_raw
             .flatMap { meta, item ->
                 def items = (item instanceof List) ? item : [ item ]
-                items.collect { file -> tuple(meta, file) }
+                items.collect { file -> tuple(meta, file, [], []) }
             }
 
-        TABIX_BGZIPTABIX(ch_bedgraphs_for_zip)
+        HTSLIB_BGZIPTABIX(
+            ch_bedgraphs_for_zip,
+            'compress',
+            true,
+            'bedgraph'
+        )
     }
+
+    ch_gz_index = val_zip_bedgraph
+        ? HTSLIB_BGZIPTABIX.out.output
+            .combine(HTSLIB_BGZIPTABIX.out.index)
+            .filter { meta, gz, _meta2, idx -> idx.name.startsWith(gz.name) }
+            .map { meta, gz, _meta2, idx -> tuple(meta, gz, idx) }
+        : Channel.empty()
 
     emit:
     complete_bedgraph      = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
@@ -59,5 +71,5 @@ workflow BUSCO_GENE {
     short_summaries_txt    = BUSCO_BUSCO.out.short_summaries_txt
     short_summaries_json   = BUSCO_BUSCO.out.short_summaries_json
     busco_log              = BUSCO_BUSCO.out.log
-    gz_index               = val_zip_bedgraph ? TABIX_BGZIPTABIX.out.gz_index : channel.empty()
+    gz_index               = ch_gz_index
 }
