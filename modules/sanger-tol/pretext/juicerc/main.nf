@@ -1,5 +1,5 @@
 process PRETEXT_JUICERC {
-    tag "$meta.id"
+    tag "${meta.id}"
     label 'process_medium'
 
     container 'quay.io/sanger-tol/juicerc:1.2-c1'
