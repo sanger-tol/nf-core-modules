@@ -7,9 +7,9 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     ch_reference                // tuple([meta], reference)
     val_odb_directory           // val(path to lineages folder)
     val_mapping_directory       // val(path to mapping folder)
-    val_taxid                   // val(9606)
-    val_specified_lineages      // val("mammalia")
-    val_output_dir              // val(output directory)
+    ch_taxid                    // tuple([meta], val(9606))
+    ch_specified_lineages       // tuple([meta], val("mammalia"))
+    ch_output_dir               // tuple([meta], val(output directory))
     val_restructure_busco_dir   // val(boolean)
 
     main:
@@ -21,8 +21,8 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         ch_reference,
         val_odb_directory,
         val_mapping_directory,
-        val_taxid,
-        val_specified_lineages
+        ch_taxid.map{ meta, taxid -> taxid },
+        ch_specified_lineages.map{ meta, taxid -> taxid }
     )
 
 
@@ -40,25 +40,29 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         .map { meta, odb -> [ meta.id, meta, odb ] }
         .combine(
             ch_reference.map { meta, ref -> [ meta.id, meta, ref ] }, // Normalise the fasta so we can combine easier
-            by: 0
+            by: 0,
         )
         .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }
-        .combine( val_taxid )
-        .combine( val_output_dir )
-        .map { meta, odb, ref, tax_id, outdir_location ->
+        .combine( ch_taxid, by: 0 )
+        .combine( ch_output_dir, by: 0 )
+        .unique { meta, odb, ref, tax_id, outdir_location ->
+            [ meta, odb ]
+        } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entried in the input samplesheet
+        .multiMap { meta, odb, ref, tax_id, outdir_location ->
             def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1], taxid: tax_id, outdir: outdir_location, genome_size: ref.size() ]
-            [ new_meta, ref ]
+            reference: [ new_meta, ref ]
+            busco_mode: 'genome'
+            lineage: new_meta.lineage
         }
-
 
     //
     // MODULE: Run BUSCO search
     //
     BUSCO_BUSCO(
-        ch_busco_input,
-        'genome',
-        ch_busco_input.map { meta, _fasta -> meta.lineage },
-        val_odb_directory,
+        ch_busco_input.reference,
+        ch_busco_input.busco_mode,
+        ch_busco_input.lineage,
+        val_odb_directory.first(),
         [],
         []
     )
