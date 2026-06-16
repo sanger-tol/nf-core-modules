@@ -81,12 +81,12 @@ nextflow_workflow {
             workflow {
                 """
                 input[0] = GUNZIP.out.gunzip
-                input[1] = Channel.value(file(params.odb_path, checkIfExists: true, type: 'dir'))
-                input[2] = Channel.value(file(params.mapping_path, checkIfExists: true, type: 'dir'))
-                input[3] = Channel.of([ id: "Laetiporus_sulphureus" ], "5630")
-                input[4] = Channel.of([ id: "Laetiporus_sulphureus" ], [])
-                input[5] = Channel.of([ id: "Laetiporus_sulphureus" ], "OUTPUT")
-                input[6] = Channel.value(true)
+                input[1] = file(params.odb_path, checkIfExists: true, type: 'dir')
+                input[2] = file(params.mapping_path, checkIfExists: true, type: 'dir')
+                input[3] = channel.of([ [ id: "Laetiporus_sulphureus" ], "5630" ])
+                input[4] = channel.of([ [ id: "Laetiporus_sulphureus" ], [] ])
+                input[5] = channel.of([ [ id: "Laetiporus_sulphureus" ], "OUTPUT" ])
+                input[6] = channel.of(true)
                 """
             }
         }

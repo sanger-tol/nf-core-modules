@@ -55,6 +55,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
             lineage: new_meta.lineage
         }
 
+
     //
     // MODULE: Run BUSCO search
     //
@@ -62,7 +63,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         ch_busco_input.reference,
         ch_busco_input.busco_mode,
         ch_busco_input.lineage,
-        val_odb_directory.first(),
+        val_odb_directory,
         [],
         []
     )
