@@ -36,8 +36,7 @@ input:
       pattern: "{genome,proteins,transcriptome}"
   - lineage:
       type: string
-      description:
-        The BUSCO lineage to use, or "auto", "auto_prok" or "auto_euk"
+      description: The BUSCO lineage to use, or "auto", "auto_prok" or "auto_euk"
         to automatically select lineage
   - busco_lineages_path:
       type: directory
@@ -169,8 +168,7 @@ output:
             e.g. [ id:'test' ]
       - busco_downloads/lineages/*:
           type: directory
-          description:
-            Lineages downloaded by BUSCO when running the analysis, for
+          description: Lineages downloaded by BUSCO when running the analysis, for
             example bacteria_odb12
           pattern: "busco_downloads/lineages/*"
   single_copy_faa:
