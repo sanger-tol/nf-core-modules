@@ -3,7 +3,7 @@ nextflow_workflow {
     name "Test Subworkflow BUSCO_GENE"
     script "../main.nf"
     workflow "BUSCO_GENE"
-    config "./offline.config"
+    config "./online.config"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
