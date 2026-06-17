@@ -28,21 +28,21 @@
                 ],
                 "3": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
                 ],
                 "4": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "5": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph.py",
                         "1.0.0"
                     ]
@@ -73,21 +73,21 @@
                 ],
                 "versions_busco_fulltable_to_bedgraph": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph.py",
                         "1.0.0"
                     ]
                 ],
                 "versions_pandas": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "versions_python": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
@@ -129,21 +129,21 @@
                 ],
                 "3": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
                 ],
                 "4": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "5": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph.py",
                         "1.0.0"
                     ]
@@ -174,21 +174,21 @@
                 ],
                 "versions_busco_fulltable_to_bedgraph": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "busco_fulltable_to_bedgraph.py",
                         "1.0.0"
                     ]
                 ],
                 "versions_pandas": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "pandas",
                         "2.2.1"
                     ]
                 ],
                 "versions_python": [
                     [
-                        "BUSCOFULLTABLETOGENEBEDGRAPH",
+                        "BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH",
                         "python",
                         "3.12.3"
                     ]
