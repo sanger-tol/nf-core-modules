@@ -37,8 +37,8 @@ input:
       type: file
       description: AGP file exported from PretextView after manual curation
       pattern: "*.agp"
-        ontologies:
-          - edam: "http://edamontology.org/format_3693" # AGP
+    ontologies:
+        - edam: "http://edamontology.org/format_3693" # AGP
 output:
   correctedagp:
     - - meta:

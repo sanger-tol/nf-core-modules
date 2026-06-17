@@ -34,8 +34,8 @@ input:
       description: AGP file describing scaffold coordinates (typically output of
         `pretext2asm`)
       pattern: "*.agp"
-        ontologies:
-          - edam: "http://edamontology.org/format_3693" # AGP
+    ontologies:
+        - edam: "http://edamontology.org/format_3693" # AGP
   - idxfile:
       type: file
       description: FASTA index (`.fai`) matching the contig-level Hi-C assembly
