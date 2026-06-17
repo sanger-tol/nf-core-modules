@@ -1,8 +1,8 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { TELOMERE_FINDTELOMERE       } from '../../../modules/sanger-tol/telomere/findtelomere/main'
-include { HTSLIB_BGZIPTABIX  } from '../../../modules/nf-core/htslib/bgziptabix/main'
+include { TELOMERE_FINDTELOMERE } from '../../../modules/sanger-tol/telomere/findtelomere/main'
+include { HTSLIB_BGZIPTABIX     } from '../../../modules/nf-core/htslib/bgziptabix/main'
 
 
 workflow TELO_FINDER {
@@ -57,12 +57,12 @@ workflow TELO_FINDER {
         : Channel.empty()
 
     emit:
-    telomere         = FINDTELOMERE.out.telomere
-    telomere_bed_fwd = FINDTELOMERE.out.telomere_bed_fwd
-    telomere_bed_rev = FINDTELOMERE.out.telomere_bed_rev
-    windows_all      = FINDTELOMERE.out.windows_all
-    windows_fwd      = FINDTELOMERE.out.windows_fwd
-    windows_rev      = FINDTELOMERE.out.windows_rev
+    telomere         = TELOMERE_FINDTELOMERE.out.telomere
+    telomere_bed_fwd = TELOMERE_FINDTELOMERE.out.telomere_bed_fwd
+    telomere_bed_rev = TELOMERE_FINDTELOMERE.out.telomere_bed_rev
+    windows_all      = TELOMERE_FINDTELOMERE.out.windows_all
+    windows_fwd      = TELOMERE_FINDTELOMERE.out.windows_fwd
+    windows_rev      = TELOMERE_FINDTELOMERE.out.windows_rev
     gz_index         = ch_gz_index
 
 }
