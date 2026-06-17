@@ -32,12 +32,12 @@ input:
         description: Input assembly FASTA used for Pretext mapping
         pattern: "*.{fa,fna,fasta}"
         ontologies:
-          - edam: http://edamontology.org/format_1929
+          - edam: http://edamontology.org/format_1929 # FASTA
   - pretextagp:
       type: file
       description: AGP file exported from PretextView after manual curation
       pattern: "*.agp"
-    ontologies:
+      ontologies:
         - edam: "http://edamontology.org/format_3693" # AGP
 output:
   correctedagp:
@@ -48,8 +48,8 @@ output:
           type: file
           description: Corrected AGP assembly coordinates after Pretext curation
           pattern: "${meta.id}_corrected*.agp"
-        ontologies:
-          - edam: "http://edamontology.org/format_3693" # AGP
+          ontologies:
+            - edam: "http://edamontology.org/format_3693" # AGP
   versions_agp_tpf_utils:
     - - ${task.process}:
           type: string

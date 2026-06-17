@@ -28,13 +28,15 @@ input:
         type: file
         description: Hi-C alignment file (BAM or Juicer `.bin` contacts)
         pattern: "*.{bam,bin}"
-        ontologies: []
+        ontologies:
+          - edam: "http://edamontology.org/format_2572" # BAM
+          - edam: "http://edamontology.org/format_2333" # BIN
   - agpfile:
       type: file
       description: AGP file describing scaffold coordinates (typically output of
         `pretext2asm`)
       pattern: "*.agp"
-    ontologies:
+      ontologies:
         - edam: "http://edamontology.org/format_3693" # AGP
   - idxfile:
       type: file
@@ -51,7 +53,8 @@ output:
           description: Sorted Hi-C alignment records remapped to scaffold
             coordinates
           pattern: "*_alignment_sorted.txt"
-          ontologies: []
+          ontologies:
+            - edam: http://edamontology.org/format_2330 # Textual format
   outlog:
     - juicercout.log:
         type: file
