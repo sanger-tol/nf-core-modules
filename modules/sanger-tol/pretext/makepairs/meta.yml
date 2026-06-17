@@ -31,7 +31,7 @@ input:
         description: Sorted alignment table from `juicerc` (`*_alignment_sorted.txt`)
         pattern: "*_alignment_sorted.txt"
         ontologies:
-            - edam: "http://edamontology.org/format_2330" # TXT
+          - edam: "http://edamontology.org/format_2330" # TXT
     - outlog:
         type: file
         description: Log file from `juicerc` containing `PRE_C_SIZE` chromosome entries
