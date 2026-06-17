@@ -3,7 +3,7 @@ nextflow_workflow {
     name "Test Subworkflow BUSCO_GENE"
     script "../main.nf"
     workflow "BUSCO_GENE"
-    config "./nextflow.config"
+    config "./offline.config"
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
@@ -23,11 +23,19 @@ nextflow_workflow {
             ]
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        def busco_lineages_path = new File("${launchDir}/busco_dl_location/")
+        busco_lineages_path.mkdirs()
+
     }
 
     test("bacteroides_fragilis genome fasta.gz — bacteria_odb10") {
 
         when {
+            params {
+                busco_lineages_path = "${launchDir}/busco_dl_location/"
+            }
+
             workflow {
                 """
                 input[0] = channel.of([
@@ -35,7 +43,7 @@ nextflow_workflow {
                     file(params.nfcore_modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true),
                 ])
                 input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
-                input[2] = []
+                input[2] = file(params.busco_lineages_path, checkIfExists: true, type: 'dir')
                 input[3] = false
                 """
             }
@@ -60,9 +68,9 @@ nextflow_workflow {
     }
 
     test("bacteroides_fragilis genome fasta.gz — bacteria_odb10 — zip bedgraph") {
-
         when {
             params {
+                busco_lineages_path = "${launchDir}/busco_dl_location/"
                 bgzip_args = '--csi'
             }
             workflow {
@@ -72,7 +80,7 @@ nextflow_workflow {
                     file(params.nfcore_modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true),
                 ])
                 input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
-                input[2] = []
+                input[2] = file(params.busco_lineages_path, checkIfExists: true, type: 'dir')
                 input[3] = true
                 """
             }
