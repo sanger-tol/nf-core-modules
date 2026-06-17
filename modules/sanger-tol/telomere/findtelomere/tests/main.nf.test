@@ -1,8 +1,8 @@
 nextflow_process {
 
-    name "Test Process FINDTELOMERE"
+    name "Test Process TELOMERE_FINDTELOMERE"
     script "../main.nf"
-    process "FINDTELOMERE"
+    process "TELOMERE_FINDTELOMERE"
 
     tag "modules"
     tag "modules_sangertol"
