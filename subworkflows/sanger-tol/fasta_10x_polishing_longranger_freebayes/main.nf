@@ -198,6 +198,7 @@ workflow FASTA_10X_POLISHING_LONGRANGER_FREEBAYES {
 
     SEPARATE_HAPLOTYPES(
         ch_polished_assemblies_to_separate,
+        [],
         []
     )
 
