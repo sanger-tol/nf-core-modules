@@ -52,14 +52,13 @@ workflow BUSCO_GENE {
             true,
             'bedgraph'
         )
-    }
-
-    ch_gz_index = val_zip_bedgraph
-        ? HTSLIB_BGZIPTABIX.out.output
+    ch_gz_index = HTSLIB_BGZIPTABIX.out.output
             .combine(HTSLIB_BGZIPTABIX.out.index)
             .filter { meta, gz, _meta2, idx -> idx.name.startsWith(gz.name) }
             .map { meta, gz, _meta2, idx -> tuple(meta, gz, idx) }
-        : Channel.empty()
+} else {
+    ch_gz_index = Channel.empty()
+}
 
     emit:
     complete_bedgraph      = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
