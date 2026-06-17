@@ -37,7 +37,8 @@ input:
       type: file
       description: AGP file exported from PretextView after manual curation
       pattern: "*.agp"
-      ontologies: []
+        ontologies:
+          - edam: "http://edamontology.org/format_3693" # AGP
 output:
   correctedagp:
     - - meta:
@@ -47,7 +48,8 @@ output:
           type: file
           description: Corrected AGP assembly coordinates after Pretext curation
           pattern: "${meta.id}_corrected*.agp"
-          ontologies: []
+        ontologies:
+          - edam: "http://edamontology.org/format_3693" # AGP
   versions_agp_tpf_utils:
     - - ${task.process}:
           type: string

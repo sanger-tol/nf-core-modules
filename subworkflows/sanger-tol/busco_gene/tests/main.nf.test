@@ -35,7 +35,7 @@ nextflow_workflow {
                     file(params.nfcore_modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true),
                 ])
                 input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
-                input[2] = params.busco_lineages_path ? file(params.busco_lineages_path) : []
+                input[2] = []
                 input[3] = false
                 """
             }
@@ -72,7 +72,7 @@ nextflow_workflow {
                     file(params.nfcore_modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true),
                 ])
                 input[1] = channel.of([[ id:'test' ], 'bacteria_odb10'])
-                input[2] = params.busco_lineages_path ? file(params.busco_lineages_path) : []
+                input[2] = []
                 input[3] = true
                 """
             }
