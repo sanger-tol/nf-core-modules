@@ -30,7 +30,7 @@ input:
         type: file
         description: Sorted alignment table from `juicerc` (`*_alignment_sorted.txt`)
         pattern: "*_alignment_sorted.txt"
-        ontologies: 
+        ontologies:
             - edam: "http://edamontology.org/format_2330" # TXT
     - outlog:
         type: file
