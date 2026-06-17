@@ -1,7 +1,7 @@
 //
 // MODULE IMPORT BLOCK
 //
-include { FINDTELOMERE       } from '../../../modules/sanger-tol/telomere/findtelomere/main'
+include { TELOMERE_FINDTELOMERE       } from '../../../modules/sanger-tol/telomere/findtelomere/main'
 include { HTSLIB_BGZIPTABIX  } from '../../../modules/nf-core/htslib/bgziptabix/main'
 
 
@@ -19,15 +19,15 @@ workflow TELO_FINDER {
         .combine(ch_telomereseq, by: 0)
         .map { meta, reference, telomereseq -> tuple(meta, reference, telomereseq) }
 
-    FINDTELOMERE(ch_joined, val_split_telomere)
+    TELOMERE_FINDTELOMERE(ch_joined, val_split_telomere)
 
     ch_windows_for_zip = val_split_telomere
-        ? FINDTELOMERE.out.windows_fwd.mix(FINDTELOMERE.out.windows_rev)
-        : FINDTELOMERE.out.windows_all
+        ? TELOMERE_FINDTELOMERE.out.windows_fwd.mix(TELOMERE_FINDTELOMERE.out.windows_rev)
+        : TELOMERE_FINDTELOMERE.out.windows_all
 
     if (val_zip_bed) {
-        ch_beds_windows_for_zip_raw = FINDTELOMERE.out.telomere_bed_fwd
-            .mix(FINDTELOMERE.out.telomere_bed_rev)
+        ch_beds_windows_for_zip_raw = TELOMERE_FINDTELOMERE.out.telomere_bed_fwd
+            .mix(TELOMERE_FINDTELOMERE.out.telomere_bed_rev)
             .mix(ch_windows_for_zip)
 
         /*
