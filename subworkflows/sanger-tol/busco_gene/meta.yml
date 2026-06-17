@@ -7,7 +7,7 @@ description: |
 keywords:
   - busco
   - bedgraph
-  - buscofulltabletogenebedgraph
+  - busco/buscofulltabletogenebedgraph
   - qc
   - completeness
   - tabix
