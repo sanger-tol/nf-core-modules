@@ -2,9 +2,9 @@
 // Run BUSCO in genome mode on a FASTA assembly, then split gene coordinates from
 // full_table.tsv into Complete / Duplicated / Fragmented bedGraph-style tables (sequence, start, end, score).
 //
-include { BUSCO_BUSCO                      } from '../../../modules/nf-core/busco/busco/main'
-include { BUSCOFULLTABLETOGENEBEDGRAPH     } from '../../../modules/sanger-tol/busco/buscofulltabletogenebedgraph/main'
-include { HTSLIB_BGZIPTABIX                } from '../../../modules/nf-core/htslib/bgziptabix/main'
+include { BUSCO_BUSCO                           } from '../../../modules/nf-core/busco/busco/main'
+include { BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH    } from '../../../modules/sanger-tol/busco/buscofulltabletogenebedgraph/main'
+include { HTSLIB_BGZIPTABIX                     } from '../../../modules/nf-core/htslib/bgziptabix/main'
 
 
 workflow BUSCO_GENE {
@@ -33,12 +33,12 @@ workflow BUSCO_GENE {
         true
     )
 
-    BUSCOFULLTABLETOGENEBEDGRAPH(BUSCO_BUSCO.out.full_table)
+    BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH(BUSCO_BUSCO.out.full_table)
 
     if (val_zip_bedgraph) {
-        ch_bedgraphs_for_zip_raw = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
-            .mix(BUSCOFULLTABLETOGENEBEDGRAPH.out.duplicated_bedgraph)
-            .mix(BUSCOFULLTABLETOGENEBEDGRAPH.out.fragmented_bedgraph)
+        ch_bedgraphs_for_zip_raw = BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
+            .mix(BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH.out.duplicated_bedgraph)
+            .mix(BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH.out.fragmented_bedgraph)
 
         ch_bedgraphs_for_zip = ch_bedgraphs_for_zip_raw
             .flatMap { meta, item ->
@@ -52,18 +52,20 @@ workflow BUSCO_GENE {
             true,
             'bedgraph'
         )
-    ch_gz_index = HTSLIB_BGZIPTABIX.out.output
+
+        ch_gz_index = HTSLIB_BGZIPTABIX.out.output
             .combine(HTSLIB_BGZIPTABIX.out.index)
             .filter { meta, gz, _meta2, idx -> idx.name.startsWith(gz.name) }
             .map { meta, gz, _meta2, idx -> tuple(meta, gz, idx) }
-} else {
-    ch_gz_index = Channel.empty()
-}
+
+    } else {
+        ch_gz_index = channel.empty()
+    }
 
     emit:
-    complete_bedgraph      = BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
-    duplicated_bedgraph    = BUSCOFULLTABLETOGENEBEDGRAPH.out.duplicated_bedgraph
-    fragmented_bedgraph    = BUSCOFULLTABLETOGENEBEDGRAPH.out.fragmented_bedgraph
+    complete_bedgraph      = BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH.out.complete_bedgraph
+    duplicated_bedgraph    = BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH.out.duplicated_bedgraph
+    fragmented_bedgraph    = BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH.out.fragmented_bedgraph
     full_table             = BUSCO_BUSCO.out.full_table
     busco_dir              = BUSCO_BUSCO.out.busco_dir
     batch_summary          = BUSCO_BUSCO.out.batch_summary

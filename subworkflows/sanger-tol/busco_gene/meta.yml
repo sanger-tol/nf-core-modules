@@ -7,12 +7,12 @@ description: |
 keywords:
   - busco
   - bedgraph
-  - buscofulltabletogenebedgraph
+  - busco/buscofulltabletogenebedgraph
   - qc
   - completeness
   - tabix
 components:
-  - buscofulltabletogenebedgraph
+  - busco/buscofulltabletogenebedgraph
   - busco/busco:
       git_remote: https://github.com/nf-core/modules.git
   - htslib/bgziptabix:
