@@ -1,4 +1,4 @@
-name: "buscofulltabletogenebedgraph"
+name: "busco_buscofulltabletogenebedgraph"
 description: |
   Parse BUSCO genome-mode full_table.tsv and write three prefixed bedGraph files
   (Complete, Duplicated, Fragmented), sorted by sequence and numeric start; score is 100.
@@ -35,8 +35,7 @@ output:
           description: Groovy Map containing sample information
       - "*.complete_buscos.bedgraph":
           type: file
-          description: Intervals for BUSCO status Complete (sequence, start, end,
-            score)
+          description: Intervals for BUSCO status Complete (sequence, start, end, score)
           pattern: "*.complete_buscos.bedgraph"
           ontologies: []
   duplicated_bedgraph:
@@ -45,8 +44,7 @@ output:
           description: Groovy Map containing sample information
       - "*.duplicated_buscos.bedgraph":
           type: file
-          description: Intervals for BUSCO status Duplicated (sequence, start,
-            end, score)
+          description: Intervals for BUSCO status Duplicated (sequence, start, end, score)
           pattern: "*.duplicated_buscos.bedgraph"
           ontologies: []
   fragmented_bedgraph:
@@ -55,8 +53,7 @@ output:
           description: Groovy Map containing sample information
       - "*.fragmented_buscos.bedgraph":
           type: file
-          description: Intervals for BUSCO status Fragmented (sequence, start,
-            end, score)
+          description: Intervals for BUSCO status Fragmented (sequence, start, end, score)
           pattern: "*.fragmented_buscos.bedgraph"
           ontologies: []
   versions_python:
