@@ -1,0 +1,251 @@
+{
+    "homo_sapiens - fasta - basal and mammalia odb10": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.busco_odb.csv:md5,8dbe605959b15bdaa1cf34d154cef1ea"
+                    ]
+                ],
+                "1": [
+                    [
+                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "python",
+                        "3.14.5"
+                    ]
+                ],
+                "2": [
+                    [
+                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "get_odbs",
+                        "2.0"
+                    ]
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.busco_odb.csv:md5,8dbe605959b15bdaa1cf34d154cef1ea"
+                    ]
+                ],
+                "versions_get_odb": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "get_odbs",
+                        "2.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "python",
+                        "3.14.5"
+                    ]
+                ]
+            },
+            [
+                {
+                    "C0": "bacteria_odb10",
+                    "C1": "basal"
+                },
+                {
+                    "C0": "archaea_odb10",
+                    "C1": "basal"
+                },
+                {
+                    "C0": "eukaryota_odb10",
+                    "C1": "basal"
+                },
+                {
+                    "C0": "mammalia_odb10",
+                    "C1": "extra"
+                }
+            ]
+        ],
+        "timestamp": "2026-06-10T18:24:14.930479239",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "homo_sapiens - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "python",
+                        "3.14.5"
+                    ]
+                ],
+                "2": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "get_odbs",
+                        "2.0"
+                    ]
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.busco_odb.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_get_odb": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "get_odbs",
+                        "2.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "python",
+                        "3.14.5"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-10T11:00:10.278425236",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "homo_sapiens - fasta - 10/12 ancestral ODBs": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.busco_odb.csv:md5,8bb5cfd443a2a744fa3699bd7b14ab78"
+                    ]
+                ],
+                "1": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "python",
+                        "3.14.5"
+                    ]
+                ],
+                "2": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "get_odbs",
+                        "2.0"
+                    ]
+                ],
+                "csv": [
+                    [
+                        {
+                            "id": "GCA_000001405.15"
+                        },
+                        "GCA_000001405.15.busco_odb.csv:md5,8bb5cfd443a2a744fa3699bd7b14ab78"
+                    ]
+                ],
+                "versions_get_odb": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "get_odbs",
+                        "2.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "APISCRIPTS_GETLINEAGEODBS",
+                        "python",
+                        "3.14.5"
+                    ]
+                ]
+            },
+            [
+                {
+                    "C0": "primates_odb10",
+                    "C1": "latest"
+                },
+                {
+                    "C0": "euarchontoglires_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eutheria_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "mammalia_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "tetrapoda_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "vertebrata_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "metazoa_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eukaryota_odb10",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "primates_odb12",
+                    "C1": "latest"
+                },
+                {
+                    "C0": "euarchontoglires_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eutheria_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "mammalia_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "tetrapoda_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "vertebrata_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "metazoa_odb12",
+                    "C1": "ancestral"
+                },
+                {
+                    "C0": "eukaryota_odb12",
+                    "C1": "ancestral"
+                }
+            ]
+        ],
+        "timestamp": "2026-06-10T18:24:23.374429762",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
