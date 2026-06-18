@@ -7,12 +7,13 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/odbsearch_busco_restructure"
+    tag "subworkflows/../modules/nf-core/gunzip"
     tag "api_scripts/get_lineage_odbs"
     tag "restructurebuscodir"
     tag "busco/busco"
-    tag "gunzip"
     tag "modules/nf-core/gunzip"
-    tag "subworkflows/../modules/nf-core/gunzip"
+    tag "gunzip"
+
 
     setup {
         nfcoreInitialise("${launchDir}/library/")
