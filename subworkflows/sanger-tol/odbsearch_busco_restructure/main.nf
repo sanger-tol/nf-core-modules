@@ -73,7 +73,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     // MODULE: Tidy up the BUSCO output directories before publication
     //
     RESTRUCTUREBUSCODIR(
-        BUSCO_BUSCO.out.restructure_busco_output.filter { val_restructure_busco_output }
+        BUSCO_BUSCO.out.restructure_busco_output.filter { val_restructure_busco_dir }
     )
 
 
