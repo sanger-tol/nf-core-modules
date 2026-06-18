@@ -35,21 +35,21 @@
                     ]
                 ],
                 "4": [
-                    
+
                 ],
                 "5": [
-                    
+
                 ],
                 "6": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "java",
                         "17.0.18"
                     ]
                 ],
                 "7": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "find_telomere",
                         "0.0.2"
                     ]
@@ -80,14 +80,14 @@
                 ],
                 "versions_find_telomere": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "find_telomere",
                         "0.0.2"
                     ]
                 ],
                 "versions_java": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "java",
                         "17.0.18"
                     ]
@@ -101,14 +101,14 @@
                     ]
                 ],
                 "windows_fwd": [
-                    
+
                 ],
                 "windows_rev": [
-                    
+
                 ]
             }
         ],
-        "timestamp": "2026-05-17T22:02:47.355970575",
+        "timestamp": "2026-06-10T11:35:57.865222871",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -150,21 +150,21 @@
                     ]
                 ],
                 "4": [
-                    
+
                 ],
                 "5": [
-                    
+
                 ],
                 "6": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "java",
                         "17.0.18"
                     ]
                 ],
                 "7": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "find_telomere",
                         "0.0.2"
                     ]
@@ -195,14 +195,14 @@
                 ],
                 "versions_find_telomere": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "find_telomere",
                         "0.0.2"
                     ]
                 ],
                 "versions_java": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "java",
                         "17.0.18"
                     ]
@@ -216,14 +216,14 @@
                     ]
                 ],
                 "windows_fwd": [
-                    
+
                 ],
                 "windows_rev": [
-                    
+
                 ]
             }
         ],
-        "timestamp": "2026-05-17T22:02:21.449101738",
+        "timestamp": "2026-06-10T11:35:32.34287973",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -257,7 +257,7 @@
                     ]
                 ],
                 "3": [
-                    
+
                 ],
                 "4": [
                     [
@@ -277,14 +277,14 @@
                 ],
                 "6": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "java",
                         "17.0.18"
                     ]
                 ],
                 "7": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "find_telomere",
                         "0.0.2"
                     ]
@@ -315,20 +315,20 @@
                 ],
                 "versions_find_telomere": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "find_telomere",
                         "0.0.2"
                     ]
                 ],
                 "versions_java": [
                     [
-                        "FINDTELOMERE",
+                        "TELOMERE_FINDTELOMERE",
                         "java",
                         "17.0.18"
                     ]
                 ],
                 "windows_all": [
-                    
+
                 ],
                 "windows_fwd": [
                     [
@@ -348,7 +348,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-17T22:02:36.591639642",
+        "timestamp": "2026-06-10T11:35:47.559049877",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
