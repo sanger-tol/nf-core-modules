@@ -1,4 +1,4 @@
-process FINDTELOMERE {
+process TELOMERE_FINDTELOMERE {
     tag "${meta.id}"
     label 'process_low'
 
