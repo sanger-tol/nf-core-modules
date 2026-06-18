@@ -10,13 +10,18 @@ Modified by Damon-Lee Pointon (dp24)
 .
 ├── resources
 │   └── usr
-│       ├── assets
+│       └── assets
+│       │   ├── odb10_mapping.txt 
+│       │   ├── odb12_mapping.txt
+│       │   └── odb12.2_mapping.txt
 │       └── bin
 │           └── get_odbs.py
 ├── tests
 │   ├── main.nf.test
 │   ├── main.nf.test.snap
-│   └── nextflow.config
+│   ├── all_ancestral_odb.config
+│   ├── basal_and_mammalia.config
+│   └──  stub.config
 │
 ├── environment.yml
 ├── README.md
@@ -30,14 +35,20 @@ ODB mapping files are provided by the [BUSCO](https://busco.ezlab.org/) project 
 
 ODB files must be the merged collection of eukaryota, bacteria and archaea. For example:
 
-To make the `odb10` merged mapping file, the below files must be merged into a single file such as `mapping_files/odb10_mapping_file.txt`:
+To make the `odb10` merged mapping file, the below files must be merged into a single file such as `busco_mapping_files/odb10_mapping.txt`:
 
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.archaea_odb10.2019-12-16.txt.tar.gz"
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.bacteria_odb10.2019-12-16.txt.tar.gz"
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb10.2019-12-16.txt.tar.gz"
 
-To make the `odb12` merged mapping file, the below files must be merged into a single file such as `mapping_files/odb12_mapping_file.txt`:
+To make the `odb12` merged mapping file, the below files must be merged into a single file such as `busco_mapping_files/odb12_mapping.txt`:
 
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.archaea_odb12.2024-11-15.txt.tar.gz"
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.bacteria_odb12.2024-11-15.txt.tar.gz"
 - https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2024-11-15.txt.tar.gz"
+
+To make the `odb12.2` merged mapping file, the below files must be merged into a single file such as `busco_mapping_files/odb12.2_mapping.txt`:
+
+- https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.archaea_odb12.2.2026-05-27.txt.tar.gz"
+- https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.bacteria_odb12.2024-11-15.txt.tar.gz"
+- https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.eukaryota_odb12.2.2026-05-13.txt.tar.gz"
