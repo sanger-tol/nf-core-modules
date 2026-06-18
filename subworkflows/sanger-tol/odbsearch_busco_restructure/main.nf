@@ -1,4 +1,4 @@
-include { API_SCRIPTS_GET_LINEAGE_ODBS  } from "../../../modules/sanger-tol/api_scripts/get_lineage_odbs"
+include { APISCRIPTS_GETLINEAGEODBS     } from "../../../modules/sanger-tol/apiscripts/getlineageodbs"
 include { BUSCO_BUSCO                   } from '../../../modules/sanger-tol/busco/busco/main'
 include { RESTRUCTUREBUSCODIR           } from '../../../modules/sanger-tol/restructurebuscodir/main'
 
@@ -6,7 +6,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     take:
     ch_reference                // tuple([meta], reference)
     val_odb_directory           // val(path to directory containing `lineages` folder)
-    val_mapping_directory       // val(path to busco_odb_mapping folder, shipped with API_SCRIPTS_GET_LINEAGE_ODBS)
+    val_mapping_directory       // val(path to busco_odb_mapping folder, shipped with APISCRIPTS_GETLINEAGEODBS)
     ch_taxid                    // tuple([meta], val(9606))
     ch_specified_lineages       // tuple([meta], val("mammalia"))
     ch_output_dir               // tuple([meta], val(output directory)) This output directory exists UNDER params.outdir
@@ -17,7 +17,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     //
     // MODULE: GET LIKELY ODB CANDIDATES FROM GOAT/ENA USING TAXID
     //
-    API_SCRIPTS_GET_LINEAGE_ODBS (
+    APISCRIPTS_GETLINEAGEODBS (
         ch_reference,
         val_odb_directory,
         val_mapping_directory,
@@ -29,7 +29,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     //
     // LOGIC: TAKE CSV AND RETURN FLAT LIST OF ODBS
     //
-    ch_busco_input = API_SCRIPTS_GET_LINEAGE_ODBS.out.csv
+    ch_busco_input = APISCRIPTS_GETLINEAGEODBS.out.csv
         .map { meta, csv ->
             def odbs = csv
                 .splitCsv( header: false )
@@ -78,7 +78,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
 
 
     emit:
-    odb_csv             = API_SCRIPTS_GET_LINEAGE_ODBS.out.csv
+    odb_csv             = APISCRIPTS_GETLINEAGEODBS.out.csv
     busco_full_table    = BUSCO_BUSCO.out.full_table
     busco_output        = BUSCO_BUSCO.out.busco_dir
     restructured_output = RESTRUCTUREBUSCODIR.out.clean_busco_dir
