@@ -1,0 +1,60 @@
+nextflow_process {
+
+    name "Test Process PRETEXT_PRETEXT2ASM"
+    script "../main.nf"
+    process "PRETEXT_PRETEXT2ASM"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "pretext"
+    tag "pretext/pretext2asm"
+
+    test("gfAmaRube1 - fasta") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test'], // meta map
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true)
+                ]
+                input[1] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+    test("gfAmaRube1 - fasta - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test'], // meta map
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true)
+                ]
+                input[1] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+}
