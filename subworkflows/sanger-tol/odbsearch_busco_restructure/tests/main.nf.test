@@ -12,7 +12,6 @@ nextflow_workflow {
     tag "restructurebuscodir"
     tag "busco/busco"
     tag "modules/nf-core/gunzip"
-    tag "gunzip"
 
 
     setup {
