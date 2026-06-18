@@ -7,7 +7,7 @@ keywords:
   - restructure
   - busco
 components:
-  - api_scripts/get_lineage_odbs
+  - apiscripts/getlineageodbs
   - busco/busco
   - restructurebuscodir
 input:
