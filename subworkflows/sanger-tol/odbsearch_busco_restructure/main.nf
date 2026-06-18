@@ -5,11 +5,11 @@ include { RESTRUCTUREBUSCODIR           } from '../../../modules/sanger-tol/rest
 workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     take:
     ch_reference                // tuple([meta], reference)
-    val_odb_directory           // val(path to lineages folder)
-    val_mapping_directory       // val(path to mapping folder)
+    val_odb_directory           // val(path to directory containing `lineages` folder)
+    val_mapping_directory       // val(path to busco_odb_mapping folder, shipped with API_SCRIPTS_GET_LINEAGE_ODBS)
     ch_taxid                    // tuple([meta], val(9606))
     ch_specified_lineages       // tuple([meta], val("mammalia"))
-    ch_output_dir               // tuple([meta], val(output directory))
+    ch_output_dir               // tuple([meta], val(output directory)) This output directory exists UNDER params.outdir
     val_restructure_busco_dir   // val(boolean)
 
     main:
@@ -73,7 +73,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     // MODULE: Tidy up the BUSCO output directories before publication
     //
     RESTRUCTUREBUSCODIR(
-        BUSCO_BUSCO.out.restructure_busco_output
+        BUSCO_BUSCO.out.restructure_busco_output.filter { val_restructure_busco_output }
     )
 
 
