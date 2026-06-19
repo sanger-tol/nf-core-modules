@@ -1,0 +1,168 @@
+{
+    "gfAmaRube1 - bin - stub": {
+        "content": [
+            {
+                "alignment": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment_sorted.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "pre_c_sizes": [
+                    
+                ],
+                "versions_juicer_pre": [
+                    [
+                        "PRETEXT_JUICERC",
+                        "juicer_pre",
+                        "1.2"
+                    ]
+                ],
+                "versions_juicerc": [
+                    [
+                        "PRETEXT_JUICERC",
+                        "juicerc",
+                        "1.2"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-11T23:25:02.254720813",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "gfAmaRube1 - bin": {
+        "content": [
+            {
+                "alignment": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_alignment_sorted.txt:md5,3e00a447c0a514c7ae7e77d95ef2bddf"
+                    ]
+                ],
+                "pre_c_sizes": [
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_1 3761822",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_2 3678052",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_3 2649577",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_4 2574953",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_5 2481624",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_6 2362259",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_7 2339936",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_8 2332480",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_9 2292152",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_10 2260682",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_11 2066872",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_12 1753924",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_13 1475776",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_14 925251",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_15 346598",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_16 270483",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_17 150894",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_18 132346",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_19 126671",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_20 86000",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_21 65334",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_22 62367",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_23 53000",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_26 50722",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_27 49714",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_39 32674",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_43 31959",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_51 30755",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_52 30592",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_53 30390",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_56 29515",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_60 28545",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_68 27706",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_72 27271",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_80 26354",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_85 26133",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_89 25635",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_92 25308",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_97 25112",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_100 24831",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_117 23815",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_121 23665",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_128 23350",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_139 22964",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_140 22955",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_142 22891",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_146 22777",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_172 22010",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_190 21767",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_199 21519",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_208 21372",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_267 19888",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_296 19334",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_298 19307",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_363 18303",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_367 18254",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_371 18195",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_376 18063",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_450 17017",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_451 17010",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_462 16914",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_468 16871",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_475 16841",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_485 16633",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_490 16537",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_570 15476",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_572 15412",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_610 14913",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_619 14771",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_628 14696",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_630 14662",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_641 14507",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_662 14298",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_666 14264",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_720 13591",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_758 13012",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_786 12511",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_795 12340",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_826 11387",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_828 11354",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_839 10883",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_844 10511",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_847 10192",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_849 10127",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_851 9960",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_852 9706",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_853 9663",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_858 8196",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_860 7465",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_861 7231",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_862 7188",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_863 6047",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_864 5000",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_865 1000",
+                    "PRE_C_SIZE: HAP1_SCAFFOLD_866 1000"
+                ],
+                "versions_juicer_pre": [
+                    [
+                        "PRETEXT_JUICERC",
+                        "juicer_pre",
+                        "1.2"
+                    ]
+                ],
+                "versions_juicerc": [
+                    [
+                        "PRETEXT_JUICERC",
+                        "juicerc",
+                        "1.2"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-11T23:24:48.170142779",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
