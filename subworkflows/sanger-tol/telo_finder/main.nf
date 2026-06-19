@@ -47,14 +47,16 @@ workflow TELO_FINDER {
             true,
             ''
         )
+
+        ch_gz_index = HTSLIB_BGZIPTABIX.out.output
+            .combine(HTSLIB_BGZIPTABIX.out.index)
+            .filter { _meta, gz, _meta2, idx -> idx.name.startsWith(gz.name) }
+            .map { meta, gz, _meta2, idx -> tuple(meta, gz, idx) }
+
+    } else {
+        ch_gz_index = channel.empty()
     }
 
-    ch_gz_index = val_zip_bed
-        ? HTSLIB_BGZIPTABIX.out.output
-            .combine(HTSLIB_BGZIPTABIX.out.index)
-            .filter { meta, gz, _meta2, idx -> idx.name.startsWith(gz.name) }
-            .map { meta, gz, _meta2, idx -> tuple(meta, gz, idx) }
-        : Channel.empty()
 
     emit:
     telomere         = TELOMERE_FINDTELOMERE.out.telomere

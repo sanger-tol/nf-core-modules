@@ -1,0 +1,60 @@
+nextflow_process {
+
+    name "Test Process PRETEXT_MAKEPAIRS"
+    script "../main.nf"
+    process "PRETEXT_MAKEPAIRS"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "pretext"
+    tag "pretext/makepairs"
+
+    test("test - pairs") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file("${baseDir}/tests/data/test_alignment_sorted.txt"),
+                    file("${baseDir}/tests/data/juicercout.log")
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+    test("test - pairs - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file("${baseDir}/tests/data/test_alignment_sorted.txt"),
+                    file("${baseDir}/tests/data/juicercout.log")
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+}

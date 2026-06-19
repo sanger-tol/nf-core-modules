@@ -1,0 +1,74 @@
+name: "pretext_makepairs"
+description: |
+  Build a gzipped Juicer `.pairs` file from a sorted alignment table and `juicerc`
+  log — combining the zippypretext `make_header.sh` and `makepairs.sh` steps.
+keywords:
+  - pretext
+  - juicer
+  - pairs
+  - hic
+  - zippypretext
+tools:
+  - pretext_makepairs:
+      description: |
+        Parse chromosome sizes from `juicercout.log` (`PRE_C_SIZE` lines) to write
+        the pairs header, append alignment rows from `JUICERC` output, and gzip the
+        result. Output filename uses `task.ext.prefix` (default `meta.id`), e.g.
+        `sample_alignment.pairs.gz`.
+      homepage: https://github.com/sanger-tol/nf-core-modules
+      documentation: https://github.com/sanger-tol/nf-core-modules
+      licence:
+        - "MIT"
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - alignment:
+        type: file
+        description: Sorted alignment table from `juicerc` (`*_alignment_sorted.txt`)
+        pattern: "*_alignment_sorted.txt"
+        ontologies:
+          - edam: "http://edamontology.org/format_2330" # TXT
+    - outlog:
+        type: file
+        description: Log file from `juicerc` containing `PRE_C_SIZE` chromosome entries
+        pattern: "juicercout.log"
+        ontologies: []
+output:
+  pairs:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*_alignment.pairs.gz":
+          type: file
+          description: Gzipped pairs file for `pretextmap`
+          pattern: "*_alignment.pairs.gz"
+          ontologies: []
+  versions_pretext_makepairs:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - pretext_makepairs:
+          type: string
+          description: The tool name
+      - "1.0.0":
+          type: string
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - pretext_makepairs:
+          type: string
+          description: The tool name
+      - "1.0.0":
+          type: string
+          description: The expression to obtain the version of the tool
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"
