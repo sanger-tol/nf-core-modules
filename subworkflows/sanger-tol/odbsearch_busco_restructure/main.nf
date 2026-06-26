@@ -41,7 +41,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
             ch_reference.map { meta, ref -> [ meta.id, meta, ref ] }, // Normalise the fasta so we can combine easier
             by: 0,
         )
-        .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }
+        .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }  // meta == ref_meta thanks to APISCRIPTS_GETLINEAGEODBS
         .unique { meta, odb, ref ->
             [ meta, odb ]
         } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entried in the input samplesheet
