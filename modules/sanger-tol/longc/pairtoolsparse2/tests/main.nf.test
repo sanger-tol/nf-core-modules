@@ -1,8 +1,8 @@
 nextflow_process {
 
-    name "Test Process LONGC_PAIRTOOLS_PARSE2"
+    name "Test Process LONGC_PAIRTOOLSPARSE2"
     script "../main.nf"
-    process "LONGC_PAIRTOOLS_PARSE2"
+    process "LONGC_PAIRTOOLSPARSE2"
 
     tag "modules"
     tag "modules_sangertol"

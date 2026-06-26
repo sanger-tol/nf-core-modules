@@ -1,4 +1,4 @@
-process LONGC_PAIRTOOLS_PARSE2 {
+process LONGC_PAIRTOOLSPARSE2 {
     tag "${meta.id}"
     label 'process_high'
 
