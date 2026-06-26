@@ -32,9 +32,8 @@ process LONGC_DIGESTREADS {
     def args = task.ext.args ?: ''
     def reads_list = reads instanceof List ? reads : [ reads ]
     def reads_arg = reads_list.join(' ')
-    def lower_name = { f -> f.name.toLowerCase() }
-    def is_cram = reads_list.every { n -> lower_name(n).endsWith('.cram') }
-    def is_bam = reads_list.every { n -> lower_name(n).endsWith('.bam') }
+    def is_cram = reads_list.every { n -> n.name.toLowerCase().endsWith('.cram') }
+    def is_bam = reads_list.every { n -> n.name.toLowerCase().endsWith('.bam') }
     def is_alignment = is_cram || is_bam
     def digest_in = is_alignment ? '-' : reads_arg
     def samtools_ref = is_cram ? "--reference ${reference}" : ''
