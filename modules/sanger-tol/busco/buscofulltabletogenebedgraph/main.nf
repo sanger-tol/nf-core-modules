@@ -1,4 +1,4 @@
-process BUSCOFULLTABLETOGENEBEDGRAPH {
+process BUSCO_BUSCOFULLTABLETOGENEBEDGRAPH {
     tag "${meta.id}"
     label 'process_single'
 

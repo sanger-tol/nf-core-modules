@@ -27,22 +27,25 @@ workflow ZIPPYPRETEXT {
             idxfile: tuple(meta, idx)
         }
 
+
     PRETEXT_PRETEXT2ASM (
         ch_zippy_inputs.fasta,
-        ch_zippy_inputs.agp.map { meta, agp -> agp }
+        ch_zippy_inputs.agp.map { _meta, agp -> agp }
     )
+
 
     PRETEXT_JUICERC (
         ch_zippy_inputs.hicmap,
-        PRETEXT_PRETEXT2ASM.out.correctedagp.map { meta, agp -> agp },
-        ch_zippy_inputs.idxfile.map { meta, idx -> idx }
+        PRETEXT_PRETEXT2ASM.out.correctedagp.map { _meta, agp -> agp },
+        ch_zippy_inputs.idxfile.map { _meta, idx -> idx }
     )
 
     ch_makepairs_input = PRETEXT_JUICERC.out.alignment
         .combine(PRETEXT_JUICERC.out.outlog)
-        .map { meta, alignment, outlog -> tuple(meta, alignment, outlog) }
+
 
     PRETEXT_MAKEPAIRS(ch_makepairs_input)
+
 
     PRETEXTMAP(
         PRETEXT_MAKEPAIRS.out.pairs,
