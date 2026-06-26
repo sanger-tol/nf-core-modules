@@ -5,7 +5,7 @@ process LONGC_DIGESTREADS {
     // Note: the versions here need to match the versions used in the Wave container below and environment.yml
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container ?
-        'docker://community.wave.seqera.io/library/samtools_python:40e23973bbc3d3dd' :
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/ed/ed3c7b0f1c6f7543b89226d86062b118806bf76e376f69ecc062c84de93b8015/data' :
         'community.wave.seqera.io/library/samtools_python:40e23973bbc3d3dd' }"
 
     input:
@@ -51,6 +51,6 @@ process LONGC_DIGESTREADS {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    printf '@placeholder\\nN\\n+\\n!\\n' | gzip -n -c > ${prefix}.fastq.gz
+    echo "" | gzip > ${prefix}.fastq.gz
     """
 }
