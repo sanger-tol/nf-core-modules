@@ -54,8 +54,7 @@ def get_site(cutter: str) -> str:
     if re.match(r"^[ACGTacgt]+$", cutter):
         return cutter.upper()
     raise ValueError(
-        f"Unknown enzyme '{cutter}'. Use one of {list(ENZYME_SITES.keys())} "
-        "or a recognition sequence (e.g. CATG)"
+        f"Unknown enzyme '{cutter}'. Use one of {list(ENZYME_SITES.keys())} or a recognition sequence (e.g. CATG)"
     )
 
 
