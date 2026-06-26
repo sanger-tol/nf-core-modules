@@ -33,7 +33,7 @@ Modified by Damon-Lee Pointon (dp24)
 
 ODB mapping files are provided by the [BUSCO](https://busco.ezlab.org/) project at the `busco-data.ezlab.org` data repo:
 
-ODB files must be the merged collection of eukaryota, bacteria and archaea, they *must* also be named as `{odb_version}_mapping.txt`. For example:
+ODB files must be the merged collection of eukaryota, bacteria and archaea, they _must_ also be named as `{odb_version}_mapping.txt`. For example:
 
 To make the `odb10` merged mapping file, the below files must be merged into a single file such as `busco_mapping_files/odb10_mapping.txt`:
 
