@@ -44,7 +44,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }  // meta == ref_meta thanks to APISCRIPTS_GETLINEAGEODBS
         .unique { meta, odb, ref ->
             [ meta, odb ]
-        } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entried in the input samplesheet
+        } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entries in the input samplesheet
         .multiMap { meta, odb, ref ->
             def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1] ]
             reference: [ new_meta, ref ]
