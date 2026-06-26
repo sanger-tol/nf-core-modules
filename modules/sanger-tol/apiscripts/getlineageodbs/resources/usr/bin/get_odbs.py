@@ -241,8 +241,8 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool) -> list[t
     mapping_files = []
     odb_version_list = ["odb10", "odb12", "odb12.2"] if "all" in odb_version else odb_version
 
+    print(os.listdir(mapping_dir))
     for odb in odb_version_list:
-        print(os.listdir(mapping_dir))
         file = Path(mapping_dir) / f"{odb}_mapping.txt"
         if file.exists():
             if debug:
