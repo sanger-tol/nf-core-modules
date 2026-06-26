@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
+name: "zippypretext"
+description: |
+  Regenerate a Pretext contact map after manual curation in PretextView. Corrects the curated AGP
+  onto the input assembly (`pretext2asm`), remaps Hi-C contacts with `juicerc`, builds a pairs file
+  (`pretext/makepairs`), and runs `pretextmap`.
+keywords:
+  - pretext
+  - hic
+  - juicer
+  - pairs
+  - curation
+  - zippypretext
+components:
+  - pretext/pretext2asm
+  - pretext/juicerc
+  - pretext/makepairs
+  - pretextmap:
+      git_remote: https://github.com/nf-core/modules.git
+input:
+  - ch_fasta:
+      type: file
+      description: |
+        Input assembly FASTA used for the original Pretext map.
+        Channel shape `[ val(meta), path(fasta) ]`.
+      pattern: "*.{fa,fna,fasta}"
+  - ch_agp:
+      type: file
+      description: |
+        AGP exported from PretextView after manual curation.
+        Channel shape `[ val(meta), path(agp) ]` (same `meta.id` as `ch_fasta`).
+      pattern: "*.agp"
+  - ch_hicmap:
+      type: file
+      description: |
+        Hi-C contact file for remapping (Juicer `.bin` or BAM).
+        Channel shape `[ val(meta), path(hicmap) ]`.
+      pattern: "*.{bin,bam}"
+  - ch_idxfile:
+      type: file
+      description: |
+        FASTA index (`.fai`) for the contig-level assembly used in the original Hi-C mapping.
+        Channel shape `[ val(meta), path(fai) ]`.
+      pattern: "*.fai"
+output:
+  - pairs:
+      type: file
+      description: |
+        Gzipped pairs file from `pretext/makepairs`, ready for `pretextmap`.
+        Channel shape `[ val(meta), path(*_alignment.pairs.gz) ]`.
+      pattern: "*_alignment.pairs.gz"
+  - pretext:
+      type: file
+      description: |
+        Regenerated Pretext contact map from `pretextmap`.
+        Channel shape `[ val(meta), path(*.pretext) ]`.
+      pattern: "*.pretext"
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"

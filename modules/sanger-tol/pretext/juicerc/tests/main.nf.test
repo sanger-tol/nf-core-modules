@@ -1,0 +1,108 @@
+nextflow_process {
+
+    name "Test Process PRETEXT_JUICERC"
+    script "../main.nf"
+    process "PRETEXT_JUICERC"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "pretext"
+    tag "pretext/juicerc"
+    tag "pretext/pretext2asm"
+
+    test("gfAmaRube1 - bin") {
+
+        setup {
+            run("PRETEXT_PRETEXT2ASM") {
+                script "../../pretext2asm/main.nf"
+                process {
+                    """
+                    input[0] = [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true)
+                    ]
+                    input[1] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true)
+                    """
+                }
+            }
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.bin', checkIfExists: true)
+                ]
+                input[1] = PRETEXT_PRETEXT2ASM.out.correctedagp.map { meta, agp -> agp }
+                input[2] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa.fai', checkIfExists: true)
+                """
+            }
+        }
+
+        then {
+            def pre_c_sizes = file(process.out.outlog.get(0)).readLines().findAll { it.contains('PRE_C_SIZE') }
+            assertAll(
+                { assert process.success },
+                { assert pre_c_sizes.size() > 0 },
+                { assert snapshot([
+                    alignment: process.out.alignment,
+                    pre_c_sizes: pre_c_sizes,
+                    versions_juicer_pre: process.out.versions_juicer_pre,
+                    versions_juicerc: process.out.versions_juicerc,
+                ]).match() }
+            )
+        }
+
+    }
+
+    test("gfAmaRube1 - bin - stub") {
+
+        options "-stub"
+
+        setup {
+            run("PRETEXT_PRETEXT2ASM") {
+                options "-stub"
+                script "../../pretext2asm/main.nf"
+                process {
+                    """
+                    input[0] = [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa', checkIfExists: true)
+                    ]
+                    input[1] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1_pretext.agp', checkIfExists: true)
+                    """
+                }
+            }
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.bin', checkIfExists: true)
+                ]
+                input[1] = PRETEXT_PRETEXT2ASM.out.correctedagp.map { meta, agp -> agp }
+                input[2] = file(params.modules_testdata_base_path + 'Amanita_rubescens/assembly/gfAmaRube1.fa.fai', checkIfExists: true)
+                """
+            }
+        }
+
+        then {
+            def pre_c_sizes = file(process.out.outlog.get(0)).readLines().findAll { it.contains('PRE_C_SIZE') }
+            assertAll(
+                { assert process.success },
+                { assert pre_c_sizes.isEmpty() },
+                { assert snapshot([
+                    alignment: process.out.alignment,
+                    pre_c_sizes: pre_c_sizes,
+                    versions_juicer_pre: process.out.versions_juicer_pre,
+                    versions_juicerc: process.out.versions_juicerc,
+                ]).match() }
+            )
+        }
+
+    }
+
+}
