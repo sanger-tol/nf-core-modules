@@ -9,7 +9,6 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     val_mapping_directory       // val(path to busco_odb_mapping folder, shipped with APISCRIPTS_GETLINEAGEODBS)
     ch_taxid                    // tuple([meta], val(9606))
     ch_specified_lineages       // tuple([meta], val("mammalia"))
-    ch_output_dir               // tuple([meta], val(output directory)) This output directory exists UNDER params.outdir
     val_restructure_busco_dir   // val(boolean)
 
     main:
@@ -42,14 +41,12 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
             ch_reference.map { meta, ref -> [ meta.id, meta, ref ] }, // Normalise the fasta so we can combine easier
             by: 0,
         )
-        .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }
-        .combine( ch_taxid, by: 0 )
-        .combine( ch_output_dir, by: 0 )
-        .unique { meta, odb, ref, tax_id, outdir_location ->
+        .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }  // meta == ref_meta thanks to APISCRIPTS_GETLINEAGEODBS
+        .unique { meta, odb, ref ->
             [ meta, odb ]
-        } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entried in the input samplesheet
-        .multiMap { meta, odb, ref, tax_id, outdir_location ->
-            def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1], taxid: tax_id, outdir: outdir_location, genome_size: ref.size() ]
+        } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entries in the input samplesheet
+        .multiMap { meta, odb, ref ->
+            def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1] ]
             reference: [ new_meta, ref ]
             busco_mode: 'genome'
             lineage: new_meta.lineage
