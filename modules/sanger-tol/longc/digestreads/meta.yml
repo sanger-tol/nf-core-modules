@@ -1,0 +1,122 @@
+name: "longc_digestreads"
+description: |
+  Digest concatemer reads into monomers at restriction enzyme recognition sites.
+  Reads FASTQ/FASTA (optionally gzipped), BAM, or CRAM and writes gzipped FASTQ
+  monomers ready for alignment. BAM/CRAM are converted with samtools fastq
+  (reference FASTA required for CRAM).
+keywords:
+  - longc
+  - restriction-enzyme
+  - concatemer
+  - reads
+tools:
+  - digest_reads.py:
+      description: |
+        Split concatemer read sequences at restriction enzyme cut sites and emit
+        monomer reads as FASTQ.
+      homepage: https://github.com/sanger-tol/tollongc
+      documentation: https://github.com/sanger-tol/tollongc
+      licence:
+        - "MIT"
+      identifier: ""
+  - samtools:
+      description: Convert BAM/CRAM alignments to FASTQ before digestion
+      homepage: https://www.htslib.org/
+      documentation: https://www.htslib.org/doc/samtools.html
+      licence:
+        - "MIT"
+      identifier: biotools:samtools
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - reads:
+        type: file
+        description: |
+          Concatemer reads as FASTQ/FASTA (optionally gzipped), BAM, or CRAM.
+          BAM/CRAM are converted with samtools fastq before digestion.
+        pattern: "*.{bam,cram,fq,fastq,fa,fasta,fq.gz,fastq.gz,fa.gz,fasta.gz}"
+        ontologies: []
+    - reference:
+        type: file
+        description: |
+          Reference assembly FASTA. Required for CRAM; pass assembly FASTA for all input types.
+        pattern: "*.{fa,fna,fasta}{,.gz}"
+  - cutter:
+      type: string
+      description: Restriction enzyme name (e.g. `NlaIII`, `DpnII`) or recognition sequence (e.g. `CATG`)
+output:
+  digested_reads:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*.fastq.gz":
+          type: file
+          description: Gzipped FASTQ digested monomer reads
+          pattern: "*.fastq.gz"
+          ontologies: []
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - python:
+          type: string
+          description: The tool name
+      - python -c "import sys; print(sys.version.split()[0])":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_digest_reads:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - digest_reads.py:
+          type: string
+          description: The tool name
+      - digest_reads.py --version | sed 's/^.* //':
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_samtools:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - samtools:
+          type: string
+          description: The tool name
+      - samtools --version | head -n1 | sed "s/ /,/":
+          type: eval
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - python:
+          type: string
+          description: The tool name
+      - python -c "import sys; print(sys.version.split()[0])":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - digest_reads.py:
+          type: string
+          description: The tool name
+      - digest_reads.py --version | sed 's/^.* //':
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - samtools:
+          type: string
+          description: The tool name
+      - samtools --version | head -n1 | sed "s/ /,/":
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"

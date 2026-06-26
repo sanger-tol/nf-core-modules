@@ -1,0 +1,71 @@
+nextflow_process {
+
+    name "Test Process LONGC_PAIRTOOLS_PARSE2"
+    script "../main.nf"
+    process "LONGC_PAIRTOOLS_PARSE2"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "longc"
+    tag "longc/pairtoolsparse2"
+
+    config "./nextflow.config"
+
+    test("Prairievole annotated bam") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_annotated.bam', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa.fai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                {
+                    assert snapshot(
+                        file(process.out.pairs[0][1]).name,
+                        process.out.findAll { key, val -> key.startsWith("versions_") }
+                    ).match("pairs")
+                }
+            )
+        }
+
+    }
+
+    test("Prairievole annotated bam - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_annotated.bam', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa.fai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                {
+                    assert snapshot(
+                        process.out.findAll { key, val -> key.startsWith("versions_") }
+                    ).match("stub")
+                }
+            )
+        }
+
+    }
+
+}
