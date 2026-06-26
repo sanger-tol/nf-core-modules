@@ -31,8 +31,7 @@
                 "@SQ\tSN:SUPER_1\tLN:146143857",
                 "@SQ\tSN:SUPER_2\tLN:138373698",
                 "@PG\tID:minimap2\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t 2 -a prairevole_hap1_subset.mmi test.fastq.gz",
-                "@PG\tID:samtools\tPN:samtools\tPP:minimap2\tVN:1.23.1\tCL:samtools sort -@ 1 -o test.bam##idx##test.bam.bai --write-index",
-                "@PG\tID:samtools.1\tPN:samtools\tPP:samtools\tVN:1.21 (pysam)\tCL:samtools sort -o test_annotated.bam -@ 2 /tmp/tmp7gcvgy0h.bam"
+                "@PG\tID:samtools\tPN:samtools\tPP:minimap2\tVN:1.23.1\tCL:samtools sort -@ 1 -o test.bam##idx##test.bam.bai --write-index"
             ],
             "ad1faa817ee420fdbc716bf822962cb0",
             "test_annotated.bam.bai",
