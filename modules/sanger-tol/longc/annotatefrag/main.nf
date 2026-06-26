@@ -5,7 +5,7 @@ process LONGC_ANNOTATEFRAG {
     // Note: the versions here need to match the versions used in the Wave container below and environment.yml
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container ?
-        'docker://quay.io/biocontainers/pysam:0.23.0--py312h47d5410_0' :
+        'https://depot.galaxyproject.org/singularity/pysam:0.23.0--py312h47d5410_0' :
         'quay.io/biocontainers/pysam:0.23.0--py312h47d5410_0' }"
 
     input:
@@ -27,14 +27,11 @@ process LONGC_ANNOTATEFRAG {
     // nextflow.enable.moduleBinaries = true in your nextflow.config file.
     def prefix = task.ext.prefix ?: "${meta.id}"
     def args = task.ext.args ?: ''
-    def min_mapq = task.ext.min_mapq ?: 0
-    def threads = task.ext.threads ?: task.cpus
     """
     annotate_frag.py \\
         --input ${bam} \\
         --output ${prefix}_annotated.bam \\
-        --min-mapq ${min_mapq} \\
-        --threads ${threads} \\
+        --threads ${task.cpus} \\
         ${args}
     """
 

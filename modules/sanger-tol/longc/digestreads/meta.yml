@@ -1,9 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "longc_digestreads"
 description: |
   Digest concatemer reads into monomers at restriction enzyme recognition sites.
   Reads FASTQ/FASTA (optionally gzipped), BAM, or CRAM and writes gzipped FASTQ
   monomers ready for alignment. BAM/CRAM are converted with samtools fastq
-  (reference FASTA required for CRAM).
+  (reference FASTA required for CRAM). Optional `digest_reads.py` arguments such as
+  `--min-len` can be passed via `task.ext.args`.
 keywords:
   - longc
   - restriction-enzyme
@@ -16,16 +18,24 @@ tools:
         monomer reads as FASTQ.
       homepage: https://github.com/sanger-tol/tollongc
       documentation: https://github.com/sanger-tol/tollongc
-      licence:
-        - "MIT"
+      licence: ["MIT"]
       identifier: ""
   - samtools:
       description: Convert BAM/CRAM alignments to FASTQ before digestion
       homepage: https://www.htslib.org/
       documentation: https://www.htslib.org/doc/samtools.html
-      licence:
-        - "MIT"
+      licence: ["MIT"]
       identifier: biotools:samtools
+  - python:
+      description: Python runtime for digest_reads.py
+      homepage: https://www.python.org/
+      documentation: https://docs.python.org/3/
+      licence: ["PSF-2.0"]
+      identifier: ""
+extra_args:
+  - args:
+      description: |
+        Additional command-line arguments for digest_reads.py (e.g. `--min-len 50`).
 input:
   - - meta:
         type: map
@@ -46,7 +56,7 @@ input:
         pattern: "*.{fa,fna,fasta}{,.gz}"
   - cutter:
       type: string
-      description: Restriction enzyme name (e.g. `NlaIII`, `DpnII`) or recognition sequence (e.g. `CATG`)
+      description: Restriction enzyme name (e.g. `NlaIII`, `DpnII`, `HindIII`) or recognition sequence (e.g. `CATG`)
 output:
   digested_reads:
     - - meta:

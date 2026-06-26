@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
+name: "longc_pairtoolsparse2"
+description: |
+  Convert annotated Long-C monomer BAM alignments to `.pairs.gz` using pairtools parse2.
+  Expects BAM records with fragment tags (FI, FD, BX) from upstream annotation and a
+  chromosome sizes file for the reference assembly. Additional `pairtools parse2` options
+  can be passed via `task.ext.args`.
+keywords:
+  - longc
+  - hic
+  - pairtools
+  - pairs
+tools:
+  - pairtools:
+      description: |
+        CLI tools to process mapped Hi-C and chromatin conformation data; parse2 reports
+        ligation junctions from complex walks in annotated alignments.
+      homepage: https://pairtools.readthedocs.io/
+      documentation: https://pairtools.readthedocs.io/
+      tool_dev_url: https://github.com/open2c/pairtools
+      licence: ["MIT"]
+      identifier: ""
+extra_args:
+  - args:
+      description: Additional command-line arguments for `pairtools parse2`.
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - bam:
+        type: file
+        description: |
+          Annotated, coordinate-sorted BAM with FI, FD, and BX tags from Long-C fragment
+          annotation.
+        pattern: "*.bam"
+        ontologies: []
+    - chromsizes:
+        type: file
+        description: Chromosome sizes file for the reference assembly (e.g. from samtools faidx)
+        pattern: "*.{sizes,fa.fai,fai}"
+        ontologies: []
+output:
+  pairs:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*.pairs.gz":
+          type: file
+          description: Gzipped pairs file from pairtools parse2
+          pattern: "*.pairs.gz"
+          ontologies: []
+  versions_pairtools:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - pairtools:
+          type: string
+          description: The tool name
+      - pairtools --version | sed 's/.*pairtools.*version //':
+          type: eval
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - pairtools:
+          type: string
+          description: The tool name
+      - pairtools --version | sed 's/.*pairtools.*version //':
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"
