@@ -36,32 +36,17 @@ nextflow_workflow {
 
         // Download mapping files once for all tests
         def mapping_dir = new File("${launchDir}/mapping_files/")
-        def raw_mapping_dir = new File("${launchDir}/raw_mapping_files/")
         mapping_dir.mkdirs()
-        raw_mapping_dir.mkdirs()
 
-        def all_mapping_files = [
-            "archaea_odb10.2019-12-16", "bacteria_odb10.2019-12-16", "eukaryota_odb10.2019-12-16",
-            "archaea_odb12.2024-11-15", "bacteria_odb12.2024-11-15", "eukaryota_odb12.2025-01-15",
-        ]
-
-        all_mapping_files.each { file_spec ->
-            curlAndExtract("https://busco-data.s3.amazonaws.com/placement_files/mapping_taxids-busco_dataset_name.${file_spec}.txt.tar.gz", "${launchDir}/raw_mapping_files")
-        }
-
-        // Concatenate by version
         ['odb10', 'odb12'].each { version ->
-            def version_files = all_mapping_files.findAll { it.contains(version) }
-            if (version_files) {
-                def firstDate = version_files[0].split('\\.')[1]
-                def cmd = ['bash', '-c', "cat ${launchDir}/raw_mapping_files/*${version}* > ${launchDir}/mapping_files/${version}_mapping_file.${firstDate}.txt"]
-                def proc = cmd.execute()
-                proc.waitFor()
-                if (proc.exitValue() != 0) {
-                    throw new RuntimeException("Error - failed to cat ${version}_mapping_file: ${proc.err.text}")
-                }
+            def cmd = ['bash', '-c', "cp ${projectDir}/modules/sanger-tol/apiscripts/getlineageodbs/resources/busco_mapping_files/${version}_mapping.txt ${launchDir}/mapping_files/"]
+            def proc = cmd.execute()
+            proc.waitFor()
+            if (proc.exitValue() != 0) {
+                throw new RuntimeException("Error - failed to copy ${version}_mapping.txt: ${proc.err.text}")
             }
         }
+
     }
 
     test ( "Laetiporus_sulphureus - odb10 - latest - offline" ) {

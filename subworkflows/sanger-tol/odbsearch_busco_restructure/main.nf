@@ -1,4 +1,4 @@
-include { APISCRIPTS_GETLINEAGEODBS     } from "../../../modules/sanger-tol/apiscripts/getlineageodbs"
+include { APISCRIPTS_GETLINEAGEODBS     } from '../../../modules/sanger-tol/apiscripts/getlineageodbs'
 include { BUSCO_BUSCO                   } from '../../../modules/sanger-tol/busco/busco/main'
 include { RESTRUCTUREBUSCODIR           } from '../../../modules/sanger-tol/restructurebuscodir/main'
 

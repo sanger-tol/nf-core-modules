@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
 name: "odbsearch_busco_restructure"
-description: Build contact maps from pairs files using PretextMap, Juicertools, and Cooler
+description: Runs BUSCO with the relevant lineages
 keywords:
   - sanger-tol/busco
   - odbsearch
@@ -19,18 +19,18 @@ input:
   - val_odb_directory:
       type: string
       description: |
-        Input ODB directory - a directory containing ODB files.
+        Path to directory containing `lineages` folder)
   - val_mapping_directory:
       type: string
       description: |
-        Input custom order file - a txt file of new line separated chromosome names.
+        Path to busco_odb_mapping folder, shipped with APISCRIPTS_GETLINEAGEODBS
   - val_taxid:
       type: number
       description: Taxid of the input species
   - val_specified_lineages:
       type: string
       description: |
-        A CSV string of additional lineages to run busco with.
+        A CSV string of additional lineages to run busco with
   - val_output_dir:
       type: string
       description: Output directory for the restructure busco directory
@@ -59,7 +59,7 @@ output:
   - restructured_output:
       type: dir
       description: |
-        Restructured output directory containing the contact map in mCooler format.
+        Restructured output directory containing the BUSCO output files.
         Structure: [ val(meta), path(output_directory) ]
 authors:
   - "@DLBPointon"
