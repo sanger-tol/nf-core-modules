@@ -84,7 +84,7 @@ def open_text(path: str) -> TextIO:
         return sys.stdin
     if path.endswith(".gz"):
         return gzip.open(path, "rt")
-    return open(path, "rt")
+    return open(path)
 
 
 def iter_fastq(handle: TextIO) -> Iterator[tuple[str, str, str]]:
