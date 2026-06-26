@@ -16,7 +16,6 @@
                         "lineage": "lepidoptera_odb10",
                         "lineage_rating": "extra",
                         "taxid": "5630",
-                        "outdir": "OUTPUT",
                         "genome_size": 37878768
                     },
                     "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe"
@@ -84,7 +83,7 @@
                 "Laetiporus_sulphureus.single_copy_busco_sequences.tar.gz"
             ]
         ],
-        "timestamp": "2026-06-10T16:20:22.266118933",
+        "timestamp": "2026-06-26T16:19:38.858076226",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

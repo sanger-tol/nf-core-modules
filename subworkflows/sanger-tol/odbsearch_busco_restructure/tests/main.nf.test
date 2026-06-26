@@ -70,8 +70,7 @@ nextflow_workflow {
                 input[2] = file(params.mapping_path, checkIfExists: true, type: 'dir')
                 input[3] = channel.of([ [ id: "Laetiporus_sulphureus" ], "5630" ])
                 input[4] = channel.of([ [ id: "Laetiporus_sulphureus" ], [] ])
-                input[5] = channel.of([ [ id: "Laetiporus_sulphureus" ], "OUTPUT" ])
-                input[6] = channel.of(true)
+                input[5] = channel.of(true)
                 """
             }
         }
