@@ -42,12 +42,11 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
             by: 0,
         )
         .map { id, meta, odb, ref_meta, ref -> [ ref_meta, odb, ref ] }
-        .combine( ch_taxid, by: 0 )
-        .unique { meta, odb, ref, tax_id ->
+        .unique { meta, odb, ref ->
             [ meta, odb ]
         } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entried in the input samplesheet
-        .multiMap { meta, odb, ref, tax_id ->
-            def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1], taxid: tax_id ]
+        .multiMap { meta, odb, ref ->
+            def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1] ]
             reference: [ new_meta, ref ]
             busco_mode: 'genome'
             lineage: new_meta.lineage
