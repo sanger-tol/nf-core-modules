@@ -47,7 +47,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
             [ meta, odb ]
         } // Make unique by meta.id and odb[0] to avoid duplicate entries caused by multiple entried in the input samplesheet
         .multiMap { meta, odb, ref, tax_id ->
-            def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1], taxid: tax_id, genome_size: ref.size() ]
+            def new_meta = meta + [ lineage: odb[0], lineage_rating: odb[1], taxid: tax_id ]
             reference: [ new_meta, ref ]
             busco_mode: 'genome'
             lineage: new_meta.lineage
