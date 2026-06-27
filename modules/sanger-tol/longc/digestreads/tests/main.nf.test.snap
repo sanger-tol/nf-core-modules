@@ -1,0 +1,209 @@
+{
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "2": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.0.0"
+                    ]
+                ],
+                "3": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.21"
+                    ]
+                ],
+                "digested_reads": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_digest_reads": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.21"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-26T23:28:12.762221187",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "fastq": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                    ]
+                ],
+                "1": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "2": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.0.0"
+                    ]
+                ],
+                "3": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.21"
+                    ]
+                ],
+                "digested_reads": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                    ]
+                ],
+                "versions_digest_reads": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.21"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-26T23:26:06.47190363",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "bam": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                    ]
+                ],
+                "1": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "2": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.0.0"
+                    ]
+                ],
+                "3": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.21"
+                    ]
+                ],
+                "digested_reads": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                    ]
+                ],
+                "versions_digest_reads": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.21"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-26T23:27:47.592978861",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

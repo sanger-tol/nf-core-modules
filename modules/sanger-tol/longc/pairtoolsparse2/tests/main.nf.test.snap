@@ -1,0 +1,39 @@
+{
+    "stub": {
+        "content": [
+            {
+                "versions_pairtools": [
+                    [
+                        "LONGC_PAIRTOOLSPARSE2",
+                        "pairtools",
+                        "1.1.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-26T16:44:42.23943461",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "pairs": {
+        "content": [
+            "test.pairs.gz",
+            {
+                "versions_pairtools": [
+                    [
+                        "LONGC_PAIRTOOLSPARSE2",
+                        "pairtools",
+                        "1.1.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-26T16:44:28.979012192",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
