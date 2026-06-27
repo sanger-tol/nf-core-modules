@@ -1,15 +1,24 @@
 {
     "stub": {
         "content": [
-            [
-                [
-                    "LONGC_ANNOTATEFRAG",
-                    "annotate_frag.py",
-                    "1.0.0"
+            {
+                "versions_annotate_frag": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "annotate_frag.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "python",
+                        "3.12.8"
+                    ]
                 ]
-            ]
+            }
         ],
-        "timestamp": "2026-06-26T22:06:50.878243878",
+        "timestamp": "2026-06-27T10:48:18.006002195",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -27,15 +36,24 @@
             ],
             "ad1faa817ee420fdbc716bf822962cb0",
             "test_annotated.bam.bai",
-            [
-                [
-                    "LONGC_ANNOTATEFRAG",
-                    "annotate_frag.py",
-                    "1.0.0"
+            {
+                "versions_annotate_frag": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "annotate_frag.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "python",
+                        "3.12.8"
+                    ]
                 ]
-            ]
+            }
         ],
-        "timestamp": "2026-06-26T22:06:40.481347377",
+        "timestamp": "2026-06-27T10:48:10.159271012",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

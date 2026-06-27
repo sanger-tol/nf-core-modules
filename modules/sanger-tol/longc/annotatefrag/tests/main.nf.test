@@ -37,7 +37,7 @@ nextflow_process {
                         header,
                         bam(bam_file).getReadsMD5(),
                         file(process.out.index[0][1]).name,
-                        process.out.versions_annotate_frag
+                        process.out.findAll { key, val -> key.startsWith("versions_") }
                     ).match("bam")
                 }
             )
@@ -66,7 +66,7 @@ nextflow_process {
                 { assert process.success },
                 {
                     assert snapshot(
-                        process.out.versions_annotate_frag
+                        process.out.findAll { key, val -> key.startsWith("versions_") }
                     ).match("stub")
                 }
             )
