@@ -1,4 +1,4 @@
-process API_SCRIPTS_GET_LINEAGE_ODBS {
+process APISCRIPTS_GETLINEAGEODBS {
     tag "${meta.id}"
     label 'process_single'
 

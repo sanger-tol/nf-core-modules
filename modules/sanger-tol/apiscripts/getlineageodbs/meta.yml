@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "API_SCRIPTS_GET_LINEAGE_ODBS"
+name: "APISCRIPTS_GETLINEAGEODBS"
 description: |
   A tool to collect ODB lineages using the GOAT API (with the ENA API as a fallback).
 keywords:
   - assembly
   - summary
-  - api_scripts
-  - get_lineage_odbs
+  - apiscripts
+  - getlineageodbs
 tools:
   - "get_odb":
       description: |

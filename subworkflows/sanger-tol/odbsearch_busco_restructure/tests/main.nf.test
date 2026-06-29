@@ -1,0 +1,101 @@
+nextflow_workflow {
+
+    name "Test Subworkflow ODBSEARCH_BUSCO_RESTRUCTURE"
+    script "../main.nf"
+    workflow "ODBSEARCH_BUSCO_RESTRUCTURE"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/odbsearch_busco_restructure"
+    tag "subworkflows/../../modules/nf-core/gunzip"
+    tag "apiscripts/getlineageodbs"
+    tag "restructurebuscodir"
+    tag "busco/busco"
+    tag "modules/nf-core/gunzip"
+
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            ["gunzip"]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        run("GUNZIP"){
+            script "../../../../modules/nf-core/gunzip/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id: "Laetiporus_sulphureus" ],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        // Download mapping files once for all tests
+        def mapping_dir = new File("${launchDir}/mapping_files/")
+        mapping_dir.mkdirs()
+
+        ['odb10', 'odb12'].each { version ->
+            def cmd = ['bash', '-c', "cp ${projectDir}/modules/sanger-tol/apiscripts/getlineageodbs/resources/busco_mapping_files/${version}_mapping.txt ${launchDir}/mapping_files/"]
+            def proc = cmd.execute()
+            proc.waitFor()
+            if (proc.exitValue() != 0) {
+                throw new RuntimeException("Error - failed to copy ${version}_mapping.txt: ${proc.err.text}")
+            }
+        }
+
+    }
+
+    test ( "Laetiporus_sulphureus - odb10 - latest - offline" ) {
+        config "./offline_basal.config"
+
+        setup {
+            curlAndExtract("https://tolit.cog.sanger.ac.uk/test-data/resources/busco/genomenote.GCA_963859965.1.2025-12-08.tar.gz", "${launchDir}/")
+        }
+
+        when {
+
+            params {
+                odb_path        = "${launchDir}/genomenote.GCA_963859965.1.2025-12-08"
+                mapping_path    = "${launchDir}/mapping_files"
+            }
+
+            workflow {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = file(params.odb_path, checkIfExists: true, type: 'dir')
+                input[2] = file(params.mapping_path, checkIfExists: true, type: 'dir')
+                input[3] = channel.of([ [ id: "ignored" ], "5630" ])
+                input[4] = channel.of([ [ id: "also_ignored" ], [] ])
+                input[5] = channel.of(true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    workflow.out.odb_csv,
+                    workflow.out.busco_full_table,
+                    workflow.out.busco_output.collect { meta, dir ->
+                        def files = []
+                        file(dir).eachFileRecurse { f -> files << f.getName() }
+                        files.sort()
+                    }.flatten().sort(),
+                    workflow.out.restructured_output.collect { meta, dir ->
+                        file(dir).list()
+                    }.flatten().sort(),
+                ).match() }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+}
