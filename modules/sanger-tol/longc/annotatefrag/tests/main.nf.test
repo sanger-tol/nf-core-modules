@@ -1,0 +1,77 @@
+nextflow_process {
+
+    name "Test Process LONGC_ANNOTATEFRAG"
+    script "../main.nf"
+    process "LONGC_ANNOTATEFRAG"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "longc"
+    tag "longc/annotatefrag"
+
+    config "./nextflow.config"
+
+    test("Prairievole aligned bam") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_mapped.bam', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_mapped.bam.bai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                {
+                    def bam_file = process.out.bam[0][1]
+                    def header = bam(bam_file).getHeader().collect { line ->
+                        line.replaceAll(/\/tmp\/tmp[a-z0-9_]+\.bam/, 'PLACEHOLDER.bam')
+                    }
+                    assert snapshot(
+                        header,
+                        bam(bam_file).getReadsMD5(),
+                        file(process.out.index[0][1]).name,
+                        process.out.findAll { key, val -> key.startsWith("versions_") }
+                    ).match("bam")
+                }
+            )
+        }
+
+    }
+
+    test("Prairievole aligned bam - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_mapped.bam', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_mapped.bam.bai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                {
+                    assert snapshot(
+                        process.out.findAll { key, val -> key.startsWith("versions_") }
+                    ).match("stub")
+                }
+            )
+        }
+
+    }
+
+}

@@ -1,0 +1,88 @@
+nextflow_process {
+
+    name "Test Process LONGC_DIGESTREADS"
+    script "../main.nf"
+    process "LONGC_DIGESTREADS"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "longc"
+    tag "longc/digestreads"
+
+    config "./nextflow.config"
+
+    test("Prairievole HindIII fastq") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole.fq.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa', checkIfExists: true)
+                ]
+                input[1] = 'HindIII'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match("fastq") }
+            )
+        }
+
+    }
+
+    test("Prairievole HindIII bam") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_unmapped.bam', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa', checkIfExists: true)
+                ]
+                input[1] = 'HindIII'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match("bam") }
+            )
+        }
+
+    }
+
+    test("Prairievole HindIII fastq - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole.fq.gz', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa', checkIfExists: true)
+                ]
+                input[1] = 'HindIII'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match("stub") }
+            )
+        }
+
+    }
+
+}

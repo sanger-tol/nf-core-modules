@@ -1,0 +1,97 @@
+name: "longc_annotatefrag"
+description: |
+  Annotate aligned Long-C monomer BAM records: group alignments by concatemer read,
+  order monomers, and assign fragment tags (FI, FD, BX) for downstream pairtools parsing.
+keywords:
+  - longc
+  - hic
+  - bam
+  - fragments
+tools:
+  - annotate_frag.py:
+      description: |
+        Group alignments by read ID, filter by MAPQ, order monomers, and write FI/FD/BX BAM tags.
+      homepage: https://github.com/sanger-tol/tollongc
+      documentation: https://github.com/sanger-tol/tollongc
+      licence:
+        - "MIT"
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - bam:
+        type: file
+        description: Coordinate- or name-sorted aligned BAM from minimap2
+        pattern: "*.bam"
+        ontologies: []
+    - bai:
+        type: file
+        description: BAM index
+        pattern: "*.bam.bai"
+        ontologies: []
+output:
+  bam:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*.bam":
+          type: file
+          description: Annotated, coordinate-sorted BAM with FI, FD, and BX tags
+          pattern: "*.bam"
+          ontologies: []
+  index:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*.bam.bai":
+          type: file
+          description: BAM index
+          pattern: "*.bam.bai"
+          ontologies: []
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - python:
+          type: string
+          description: The tool name
+      - python -c "import sys; print(sys.version.split()[0])":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_annotate_frag:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - annotate_frag.py:
+          type: string
+          description: The tool name
+      - annotate_frag.py --version | sed 's/^.* //':
+          type: eval
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - python:
+          type: string
+          description: The tool name
+      - python -c "import sys; print(sys.version.split()[0])":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: The process the versions were collected from
+      - annotate_frag.py:
+          type: string
+          description: The tool name
+      - annotate_frag.py --version | sed 's/^.* //':
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"

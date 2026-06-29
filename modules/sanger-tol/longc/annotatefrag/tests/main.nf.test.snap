@@ -1,0 +1,62 @@
+{
+    "stub": {
+        "content": [
+            {
+                "versions_annotate_frag": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "annotate_frag.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "python",
+                        "3.12.8"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-27T10:48:18.006002195",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "bam": {
+        "content": [
+            [
+                "@HD\tVN:1.6\tSO:coordinate",
+                "@SQ\tSN:SUPER_1\tLN:146143857",
+                "@SQ\tSN:SUPER_2\tLN:138373698",
+                "@PG\tID:minimap2\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t 2 -a prairevole_hap1_subset.mmi test.fastq.gz",
+                "@PG\tID:samtools\tPN:samtools\tPP:minimap2\tVN:1.23.1\tCL:samtools sort -@ 1 -o test.bam##idx##test.bam.bai --write-index",
+                "@PG\tID:samtools.1\tPN:samtools\tPP:samtools\tVN:1.21 (pysam)\tCL:samtools sort -o test_annotated.bam -@ 2 PLACEHOLDER.bam"
+            ],
+            "ad1faa817ee420fdbc716bf822962cb0",
+            "test_annotated.bam.bai",
+            {
+                "versions_annotate_frag": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "annotate_frag.py",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_ANNOTATEFRAG",
+                        "python",
+                        "3.12.8"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-06-27T10:48:10.159271012",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
