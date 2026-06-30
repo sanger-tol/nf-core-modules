@@ -21,7 +21,7 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         val_odb_directory,
         val_mapping_directory,
         ch_taxid.map{ meta, taxid -> taxid },
-        ch_specified_lineages.map{ meta, taxid -> taxid }
+        ch_specified_lineages.map{ meta, lineage -> lineage }
     )
 
 
