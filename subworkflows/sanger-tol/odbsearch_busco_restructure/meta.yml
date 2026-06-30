@@ -24,10 +24,6 @@ input:
       type: string
       description: |
         Path to busco_odb_mapping folder, shipped with APISCRIPTS_GETLINEAGEODBS
-  - val_specified_lineages:
-      type: string
-      description: |
-        A CSV string of additional lineages to run busco with
   - val_output_dir:
       type: string
       description: Output directory for the restructure busco directory

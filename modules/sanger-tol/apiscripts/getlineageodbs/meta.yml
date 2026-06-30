@@ -33,9 +33,6 @@ input:
   - mapping_directory:
       type: directory
       description: Directory containing the ODB lineage mapping data, these exist as txt files of taxid to lineage.
-  - specified_lineages:
-      type: string
-      description: CSV list of specifiied lineages by user.
 output:
   csv:
     - - meta:

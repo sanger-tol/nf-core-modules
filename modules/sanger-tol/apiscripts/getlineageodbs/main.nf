@@ -11,7 +11,6 @@ process APISCRIPTS_GETLINEAGEODBS {
     tuple val(meta), path(fasta)
     path(odb_directory)
     path(mapping_directory)
-    val(specified_lineages)
 
     output:
     tuple val(meta), path("*.busco_odb.csv"), emit: csv
@@ -26,14 +25,12 @@ process APISCRIPTS_GETLINEAGEODBS {
     def prefix          = task.ext.prefix       ?: "${meta.id}"
     def odb_dir_path    = odb_directory         ? "--odb_dir ${odb_directory}"          : ""
     def mapping_dir_path= mapping_directory     ? "--mapping_dir ${mapping_directory}"  : ""
-    formatted_lineages  = specified_lineages    ? "--extra_lineages " + specified_lineages.tokenize(',').join(' ') : ""
     """
     get_odbs.py \\
         ${odb_dir_path} \\
         ${mapping_dir_path} \\
         --file_out ${prefix}.busco_odb.csv \\
-        ${args} \\
-        ${formatted_lineages}
+        ${args}
     """
 
     stub:
