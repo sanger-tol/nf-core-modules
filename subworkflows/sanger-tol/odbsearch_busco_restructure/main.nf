@@ -7,7 +7,6 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
     ch_reference                // tuple([meta], reference)
     val_odb_directory           // val(path to directory containing `lineages` folder)
     val_mapping_directory       // val(path to busco_odb_mapping folder, shipped with APISCRIPTS_GETLINEAGEODBS)
-    ch_taxid                    // tuple([meta], val(9606))
     ch_specified_lineages       // tuple([meta], val("mammalia"))
     val_restructure_busco_dir   // val(boolean)
 
@@ -20,7 +19,6 @@ workflow ODBSEARCH_BUSCO_RESTRUCTURE {
         ch_reference,
         val_odb_directory,
         val_mapping_directory,
-        ch_taxid.map{ meta, taxid -> taxid },
         ch_specified_lineages.map{ meta, lineage -> lineage }
     )
 

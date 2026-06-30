@@ -49,8 +49,7 @@ nextflow_process {
                 ])
                 input[1] = file(params.fake_odb_path, checkIfExists: true)
                 input[2] = file(params.mapping_dir, checkIfExists: true, type: 'dir')
-                input[3] = 9606
-                input[4] = "mammalia"
+                input[3] = "mammalia"
                 """
             }
         }
@@ -96,8 +95,7 @@ nextflow_process {
                 ])
                 input[1] = file(params.fake_odb_path, checkIfExists: true)
                 input[2] = file(params.mapping_dir, checkIfExists: true, type: 'dir')
-                input[3] = 9606
-                input[4] = []
+                input[3] = []
                 """
             }
         }
@@ -136,8 +134,7 @@ nextflow_process {
                 ])
                 input[1] = file(params.fake_odb_path, checkIfExists: true)
                 input[2] = file(params.mapping_dir, checkIfExists: true, type: 'dir')
-                input[3] = 9606
-                input[4] = []
+                input[3] = []
                 """
             }
         }

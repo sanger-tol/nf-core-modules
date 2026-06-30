@@ -68,9 +68,8 @@ nextflow_workflow {
                 input[0] = GUNZIP.out.gunzip
                 input[1] = file(params.odb_path, checkIfExists: true, type: 'dir')
                 input[2] = file(params.mapping_path, checkIfExists: true, type: 'dir')
-                input[3] = channel.of([ [ id: "ignored" ], "5630" ])
-                input[4] = channel.of([ [ id: "also_ignored" ], [] ])
-                input[5] = channel.of(true)
+                input[3] = channel.of([ [ id: "also_ignored" ], [] ])
+                input[4] = channel.of(true)
                 """
             }
         }

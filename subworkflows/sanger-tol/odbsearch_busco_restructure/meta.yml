@@ -24,9 +24,6 @@ input:
       type: string
       description: |
         Path to busco_odb_mapping folder, shipped with APISCRIPTS_GETLINEAGEODBS
-  - val_taxid:
-      type: number
-      description: Taxid of the input species
   - val_specified_lineages:
       type: string
       description: |
