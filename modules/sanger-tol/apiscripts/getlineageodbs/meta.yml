@@ -33,13 +33,6 @@ input:
   - mapping_directory:
       type: directory
       description: Directory containing the ODB lineage mapping data, these exist as txt files of taxid to lineage.
-  - taxid:
-      type: integer
-      description: Taxonomic ID of the assembly.
-      pattern: "^[0-9]+$"
-  - specified_lineages:
-      type: string
-      description: CSV list of specifiied lineages by user.
 output:
   csv:
     - - meta:
