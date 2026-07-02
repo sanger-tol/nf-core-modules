@@ -59,7 +59,7 @@ def parse_args(args=None):
     description = "Get ODB database value using NCBI API and BUSCO configuration file"
 
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument("--taxid", help="TaxID for the species to retrieve ODBs for.", type=int, required=True)
+    parser.add_argument("--taxid", help="TaxID for the species to retrieve ODBs for.", type=int)
     parser.add_argument(
         "--odb_version",
         help="Version of ODB to use",
@@ -107,6 +107,9 @@ def parse_args(args=None):
 
     if "ancestral" in output_args.mode and "latest" in output_args.mode:
         parser.error("Cannot use 'ancestral' and 'latest' at the same time.")
+
+    if ("ancestral" in output_args.mode or "latest" in output_args.mode) and not output_args.taxid:
+        parser.error("--taxid is required for the 'ancestral' and 'latest' modes.")
 
     if not output_args.mode and not output_args.extra_lineages:
         parser.error("Must have either modes or specified lineages.")
