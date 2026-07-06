@@ -31,7 +31,7 @@ nextflow_process {
                 {
                     def bam_file = process.out.bam[0][1]
                     def header = bam(bam_file).getHeader().collect { line ->
-                        line.replaceAll(/\/tmp\/tmp[a-z0-9_]+\.bam/, 'PLACEHOLDER.bam')
+                        line.replaceAll(/\/tmp\/tmp[a-z0-9_]+(?:\/unsorted)?\.bam/, 'unsorted.bam')
                     }
                     assert snapshot(
                         header,
