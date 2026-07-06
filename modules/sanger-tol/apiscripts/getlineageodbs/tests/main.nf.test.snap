@@ -12,14 +12,14 @@
                 ],
                 "1": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "python",
                         "3.14.5"
                     ]
                 ],
                 "2": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "get_odbs",
                         "2.0"
                     ]
@@ -34,14 +34,14 @@
                 ],
                 "versions_get_odb": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "get_odbs",
                         "2.0"
                     ]
                 ],
                 "versions_python": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "python",
                         "3.14.5"
                     ]
@@ -85,14 +85,14 @@
                 ],
                 "1": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "python",
                         "3.14.5"
                     ]
                 ],
                 "2": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "get_odbs",
                         "2.0"
                     ]
@@ -107,14 +107,14 @@
                 ],
                 "versions_get_odb": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "get_odbs",
                         "2.0"
                     ]
                 ],
                 "versions_python": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "python",
                         "3.14.5"
                     ]
@@ -140,14 +140,14 @@
                 ],
                 "1": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "python",
                         "3.14.5"
                     ]
                 ],
                 "2": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "get_odbs",
                         "2.0"
                     ]
@@ -162,14 +162,14 @@
                 ],
                 "versions_get_odb": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "get_odbs",
                         "2.0"
                     ]
                 ],
                 "versions_python": [
                     [
-                        "API_SCRIPTS_GET_LINEAGE_ODBS",
+                        "APISCRIPTS_GETLINEAGEODBS",
                         "python",
                         "3.14.5"
                     ]

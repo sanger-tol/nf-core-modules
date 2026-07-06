@@ -59,7 +59,7 @@ def parse_args(args=None):
     description = "Get ODB database value using NCBI API and BUSCO configuration file"
 
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument("--taxid", help="TaxID for the species to retrieve ODBs for.", type=int, required=True)
+    parser.add_argument("--taxid", help="TaxID for the species to retrieve ODBs for.", type=int)
     parser.add_argument(
         "--odb_version",
         help="Version of ODB to use",
@@ -107,6 +107,9 @@ def parse_args(args=None):
 
     if "ancestral" in output_args.mode and "latest" in output_args.mode:
         parser.error("Cannot use 'ancestral' and 'latest' at the same time.")
+
+    if ("ancestral" in output_args.mode or "latest" in output_args.mode) and not output_args.taxid:
+        parser.error("--taxid is required for the 'ancestral' and 'latest' modes.")
 
     if not output_args.mode and not output_args.extra_lineages:
         parser.error("Must have either modes or specified lineages.")
@@ -232,7 +235,7 @@ def check_offline_availability(selected_buscos: BuscoSelection, lineages_path: s
         raise FileNotFoundError(f"Lineages {error_lineages} not found in {lineages_path}")
 
 
-def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool) -> list[tuple[str, str]]:
+def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool) -> list[tuple[Path, str]]:
     """
     Get the mapping file(s) for the ODB version.
     Returns a list of (mapping_file, odb_version_string) tuples.
@@ -241,26 +244,20 @@ def get_mapping_file(mapping_dir: str, odb_version: list, debug: bool) -> list[t
     mapping_files = []
     odb_version_list = ["odb10", "odb12", "odb12.2"] if "all" in odb_version else odb_version
 
-    files = [str(file) for file in Path(mapping_dir).glob("*.txt")]
+    print(os.listdir(mapping_dir))
     for odb in odb_version_list:
-        # There is no odb12.2 mapping file as of 5th June 2026
-        # If a file is introduced we may have to change this logic to avoid matching
-        # "mapping_taxids-busco_dataset_name.eukaryota_odb12.2025-01-15.txt" by accident
-        # when looking for odb12.2 files
-        odb_placeholder = "odb12" if odb == "odb12.2" else odb
-        for file in files:
-            if odb_placeholder in file:
-                if debug:
-                    print("Found", file)
-                mapping_files.append((file, f"_{odb}"))
-
-    if len(mapping_files) == 0:
-        raise FileNotFoundError(f"No mapping files found in {mapping_dir} for odb version(s) {odb_version}")
+        file = Path(mapping_dir) / f"{odb}_mapping.txt"
+        if file.exists():
+            if debug:
+                print("Found", file)
+            mapping_files.append((file, f"_{odb}"))
+        else:
+            raise FileNotFoundError(f"{file} not found")
 
     return mapping_files
 
 
-def read_mapping_file(mapping_file: str, odb_string: str) -> BuscoDatabase:
+def read_mapping_file(mapping_file: Path, odb_string: str) -> BuscoDatabase:
     """
     Read the mapping file and return the database object containing
     the list of taxids and lineage names.

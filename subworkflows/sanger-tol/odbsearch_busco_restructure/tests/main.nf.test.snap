@@ -1,0 +1,90 @@
+{
+    "Laetiporus_sulphureus - odb10 - latest - offline": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "Laetiporus_sulphureus"
+                    },
+                    "Laetiporus_sulphureus.busco_odb.csv:md5,15dd0eb53d0d7dbca5a058f233a910ee"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "Laetiporus_sulphureus",
+                        "lineage": "lepidoptera_odb10",
+                        "lineage_rating": "extra"
+                    },
+                    "full_table.tsv:md5,625b82bf106baf06d90b63dcec3792fe"
+                ]
+            ],
+            [
+                ".bbtools_output",
+                ".checkpoint",
+                ".checkpoint",
+                ".checkpoint",
+                "10001at7088.faa",
+                "10001at7088.out",
+                "10206at7088.faa",
+                "10206at7088.out",
+                "1027at7088.faa",
+                "1027at7088.faa",
+                "1027at7088.gff",
+                "1027at7088.out",
+                "10391at7088.faa",
+                "10391at7088.faa",
+                "10391at7088.gff",
+                "10391at7088.out",
+                "1436at7088.faa",
+                "1436at7088.out",
+                "2885at7088.faa",
+                "2885at7088.faa",
+                "2885at7088.gff",
+                "2885at7088.out",
+                "GCA_927399515.1.fasta",
+                "GCA_927399515.1_lepidoptera_odb10.gff",
+                "bbtools_err.log",
+                "bbtools_out.log",
+                "busco_sequences",
+                "fragmented_busco_sequences",
+                "full_table.tsv",
+                "hmmer_output",
+                "hmmsearch_err.log",
+                "hmmsearch_out.log",
+                "logs",
+                "logs",
+                "miniprot_align_lepidoptera_odb10_err.log",
+                "miniprot_align_lepidoptera_odb10_out.log",
+                "miniprot_index_err.log",
+                "miniprot_index_out.log",
+                "miniprot_output",
+                "missing_busco_list.tsv",
+                "multi_copy_busco_sequences",
+                "ref.mpi",
+                "refseq_db.faa",
+                "run_lepidoptera_odb10",
+                "short_summary.json",
+                "short_summary.txt",
+                "single_copy_busco_sequences",
+                "tmp",
+                "translated_proteins"
+            ],
+            [
+                "Laetiporus_sulphureus.fragmented_busco_sequences.tar.gz",
+                "Laetiporus_sulphureus.full_table.tsv.gz",
+                "Laetiporus_sulphureus.missing_busco_list.tsv.gz",
+                "Laetiporus_sulphureus.multi_copy_busco_sequences.tar.gz",
+                "Laetiporus_sulphureus.short_summary.json",
+                "Laetiporus_sulphureus.short_summary.tsv",
+                "Laetiporus_sulphureus.short_summary.txt",
+                "Laetiporus_sulphureus.single_copy_busco_sequences.tar.gz"
+            ]
+        ],
+        "timestamp": "2026-06-26T16:29:49.124884799",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
