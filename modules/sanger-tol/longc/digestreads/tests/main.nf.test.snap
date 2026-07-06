@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "test.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test_HindIII.fastq.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "1": [
@@ -28,7 +28,7 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.21"
+                        "samtools,1.23.1"
                     ]
                 ],
                 "digested_reads": [
@@ -36,7 +36,7 @@
                         {
                             "id": "test"
                         },
-                        "test.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test_HindIII.fastq.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "versions_digest_reads": [
@@ -57,12 +57,12 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.21"
+                        "samtools,1.23.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-26T23:28:12.762221187",
+        "timestamp": "2026-07-06T15:03:57.413389166",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -76,7 +76,7 @@
                         {
                             "id": "test"
                         },
-                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
                     ]
                 ],
                 "1": [
@@ -97,7 +97,7 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.21"
+                        "samtools,1.23.1"
                     ]
                 ],
                 "digested_reads": [
@@ -105,7 +105,7 @@
                         {
                             "id": "test"
                         },
-                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
                     ]
                 ],
                 "versions_digest_reads": [
@@ -126,12 +126,12 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.21"
+                        "samtools,1.23.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-26T23:26:06.47190363",
+        "timestamp": "2026-07-06T15:01:37.281059378",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -145,7 +145,7 @@
                         {
                             "id": "test"
                         },
-                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
                     ]
                 ],
                 "1": [
@@ -166,7 +166,7 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.21"
+                        "samtools,1.23.1"
                     ]
                 ],
                 "digested_reads": [
@@ -174,7 +174,7 @@
                         {
                             "id": "test"
                         },
-                        "test.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
                     ]
                 ],
                 "versions_digest_reads": [
@@ -195,12 +195,12 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.21"
+                        "samtools,1.23.1"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-26T23:27:47.592978861",
+        "timestamp": "2026-07-06T15:02:23.870334759",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

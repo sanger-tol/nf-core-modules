@@ -59,6 +59,36 @@ nextflow_process {
 
     }
 
+    test("Prairievole HindIII multi fastq") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    [
+                        file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole.fq.gz', checkIfExists: true),
+                        file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole.fq.gz', checkIfExists: true),
+                    ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa', checkIfExists: true)
+                ]
+                input[1] = 'HindIII'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                {
+                    assert process.out.digested_reads.size() == 1
+                    assert file(process.out.digested_reads[0][1]).name == 'test_HindIII.fastq.gz'
+                }
+            )
+        }
+
+    }
+
     test("Prairievole HindIII fastq - stub") {
 
         options "-stub"

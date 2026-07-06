@@ -24,14 +24,13 @@ process LONGC_PAIRTOOLSPARSE2 {
     pairtools \\
         parse2 \\
         -c ${chromsizes} \\
-        -o ${prefix}.pairs.gz \\
         ${args} \\
-        ${bam}
+        ${bam} | bgzip -c > ${prefix}.pairs.gz
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    echo "" | gzip > ${prefix}.pairs.gz
+    echo "" | bgzip -c > ${prefix}.pairs.gz
     """
 }

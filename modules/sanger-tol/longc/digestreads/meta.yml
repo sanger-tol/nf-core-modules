@@ -47,6 +47,9 @@ input:
         description: |
           Concatemer reads as FASTQ/FASTA (optionally gzipped), BAM, or CRAM.
           BAM/CRAM are converted with samtools fastq before digestion.
+          Pass a single file or a list of files of the same type per sample; multiple
+          BAM/CRAM files are streamed together, and multiple FASTQ/FASTA files are
+          concatenated before digestion.
         pattern: "*.{bam,cram,fq,fastq,fa,fasta,fq.gz,fastq.gz,fa.gz,fasta.gz}"
         ontologies: []
     - reference:

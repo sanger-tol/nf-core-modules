@@ -5,11 +5,11 @@ process LONGC_DIGESTREADS {
     // Note: the versions here need to match the versions used in the Wave container below and environment.yml
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/a7/a7968a0e334fc598eebd9dede58fff52ca342b26697241222a7681171447c992/data' :
-        'community.wave.seqera.io/library/samtools_python:40e23973bbc3d3dd' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/a1/a1b1a8dc5d1b39c5dddbc805e42c8c103415265fd959de39270af9d01b939b3f/data' :
+        'community.wave.seqera.io/library/samtools_gzip_python:f254e26dc9c7603d' }"
 
     input:
-    tuple val(meta), path(reads), path(reference)
+    tuple val(meta), path(reads, stageAs: 'reads/?/*'), path(reference)
     val cutter    // restriction enzyme name, e.g. 'NlaIII'
 
     output:
@@ -34,22 +34,38 @@ process LONGC_DIGESTREADS {
     def reads_arg = reads_list.join(' ')
     def is_cram = reads_list.every { n -> n.name.toLowerCase().endsWith('.cram') }
     def is_bam = reads_list.every { n -> n.name.toLowerCase().endsWith('.bam') }
+    def is_fastq = reads_list.every { n -> n.name.toLowerCase() ==~ /.*\.(fq|fastq|fa|fasta)(\.gz)?$/ }
     def is_alignment = is_cram || is_bam
-    def digest_in = is_alignment ? '-' : reads_arg
+
+    if (reads_list.size() > 1 && !(is_alignment || is_fastq)) {
+        error("LONGC_DIGESTREADS: all reads in a list must be the same type (FASTQ/FASTA, BAM, or CRAM) for sample ${meta.id}")
+    }
+    if (is_bam && is_cram) {
+        error("LONGC_DIGESTREADS: cannot mix BAM and CRAM files in the same reads list for sample ${meta.id}")
+    }
+
     def samtools_ref = is_cram ? "--reference ${reference}" : ''
     def samtools_pipe = is_alignment ? "samtools fastq -T '*' --threads ${task.cpus} ${samtools_ref} ${reads_arg} |" : ''
+    def fastq_cat_pipe = ''
+    if (!is_alignment && reads_list.size() > 1) {
+        def cat_cmds = reads_list.collect { f ->
+            f.name.toLowerCase().endsWith('.gz') ? "gzip -dc '${f}'" : "cat '${f}'"
+        }.join('\n    ')
+        fastq_cat_pipe = "{\n    ${cat_cmds}\n} |"
+    }
+    def digest_in = (is_alignment || reads_list.size() > 1) ? '-' : reads_list[0]
     """
-    ${samtools_pipe} \\
+    ${samtools_pipe}${fastq_cat_pipe}
     digest_reads.py \\
         --cutter ${cutter} \\
         ${args} \\
         ${digest_in} | \\
-    python -c "import gzip, sys; gzip.open('${prefix}.fastq.gz', 'wt').write(sys.stdin.read())"
+    gzip -c > ${prefix}_${cutter}.fastq.gz
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    python -c "import gzip; gzip.open('${prefix}.fastq.gz', 'wb').write(b'')"
+    echo "" | gzip -c > ${prefix}_${cutter}.fastq.gz
     """
 }
