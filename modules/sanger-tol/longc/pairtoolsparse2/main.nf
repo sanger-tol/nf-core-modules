@@ -31,6 +31,6 @@ process LONGC_PAIRTOOLSPARSE2 {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    echo "" | bgzip -c > ${prefix}.pairs.gz
+    echo "" | gzip > ${prefix}.pairs.gz
     """
 }

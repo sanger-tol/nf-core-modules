@@ -115,4 +115,30 @@ nextflow_process {
 
     }
 
+    test("Prairievole HindIII bam - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_unmapped.bam', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa', checkIfExists: true)
+                ]
+                input[1] = 'HindIII'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match("stub") }
+            )
+        }
+
+    }
+
 }

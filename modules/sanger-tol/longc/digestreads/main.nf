@@ -66,6 +66,6 @@ process LONGC_DIGESTREADS {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    echo "" | gzip -c > ${prefix}_${cutter}.fastq.gz
+    echo "" | gzip > ${prefix}_${cutter}.fastq.gz
     """
 }

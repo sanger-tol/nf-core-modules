@@ -49,46 +49,52 @@ def parse_read_id(qname: str) -> tuple[str, int | None]:
     return qname, None
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Annotate fragments in BAM: group by read, filter, order, assign fragment IDs"
-    )
-    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
-    parser.add_argument("--input", "-i", required=True, help="Input BAM")
-    parser.add_argument("--output", "-o", required=True, help="Output annotated BAM")
-    parser.add_argument("--min-mapq", type=int, default=0, help="Minimum mapping quality [0]")
-    parser.add_argument("--primary-only", action="store_true", default=True, help="Keep only primary alignments")
-    parser.add_argument("--threads", type=int, default=1, help="Threads for BAM I/O")
-    args = parser.parse_args()
+def sort_read_alignments(alns: list[tuple[pysam.AlignedSegment, int | None]]) -> None:
+    """Order monomers by index in read name, else by alignment start."""
+    if alns[0][1] is not None:
+        alns.sort(key=lambda x: x[1])
+    else:
+        alns.sort(key=lambda x: x[0].query_alignment_start)
 
-    alns_by_read: dict[str, list] = defaultdict(list)
-    with pysam.AlignmentFile(args.input, "rb", threads=args.threads) as bam_in:
+
+def collect_alignments(
+    bam_path: str,
+    min_mapq: int,
+    primary_only: bool,
+    threads: int,
+) -> dict[str, list[tuple[pysam.AlignedSegment, int | None]]]:
+    """Read BAM, group alignments by concatemer read, and order monomers."""
+    alns_by_read: dict[str, list[tuple[pysam.AlignedSegment, int | None]]] = defaultdict(list)
+    with pysam.AlignmentFile(bam_path, "rb", threads=threads) as bam_in:
         for aln in bam_in:
             if aln.is_unmapped:
                 continue
-            if args.primary_only and (aln.is_secondary or aln.is_supplementary):
+            if primary_only and (aln.is_secondary or aln.is_supplementary):
                 continue
-            if aln.mapping_quality < args.min_mapq:
+            if aln.mapping_quality < min_mapq:
                 continue
             read_id, monomer_idx = parse_read_id(aln.query_name)
             alns_by_read[read_id].append((aln, monomer_idx))
 
-    for read_id in alns_by_read:
-        alns = alns_by_read[read_id]
-        if alns[0][1] is not None:
-            alns.sort(key=lambda x: x[1])
-        else:
-            alns.sort(key=lambda x: x[0].query_alignment_start)
+    for alns in alns_by_read.values():
+        sort_read_alignments(alns)
+    return alns_by_read
 
-    with pysam.AlignmentFile(args.input, "rb", threads=args.threads) as bam_in:
+
+def write_annotated_bam(
+    bam_path: str,
+    output_path: str,
+    alns_by_read: dict[str, list[tuple[pysam.AlignedSegment, int | None]]],
+    threads: int,
+) -> None:
+    """Write tagged alignments to a temp BAM, then sort and index the output."""
+    with pysam.AlignmentFile(bam_path, "rb", threads=threads) as bam_in:
         header = bam_in.header.copy()
-        with tempfile.NamedTemporaryFile(suffix=".bam", delete=False) as tmp:
-            tmp_path = tmp.name
-        try:
-            with pysam.AlignmentFile(tmp_path, "wb", header=header, threads=args.threads) as bam_out:
-                for read_id in sorted(alns_by_read.keys()):
-                    alns = alns_by_read[read_id]
-                    for frag_idx, (aln, _) in enumerate(alns):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_path = os.path.join(tmpdir, "unsorted.bam")
+            with pysam.AlignmentFile(tmp_path, "wb", header=header, threads=threads) as bam_out:
+                for read_id in sorted(alns_by_read):
+                    for frag_idx, (aln, _) in enumerate(alns_by_read[read_id]):
                         ref_id = aln.reference_id
                         ref_name = bam_in.get_reference_name(ref_id) if ref_id >= 0 else "."
                         ref_start = aln.reference_start + 1
@@ -101,10 +107,29 @@ def main():
                         new_aln.set_tag("BX", read_id, "Z")
                         bam_out.write(new_aln)
 
-            pysam.sort("-o", args.output, tmp_path, "-@", str(args.threads))
-            pysam.index(args.output, "-@", str(args.threads))
-        finally:
-            os.unlink(tmp_path)
+            pysam.sort("-o", output_path, tmp_path, "-@", str(threads))
+            pysam.index(output_path, "-@", str(threads))
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Annotate fragments in BAM: group by read, filter, order, assign fragment IDs"
+    )
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    parser.add_argument("--input", "-i", required=True, help="Input BAM")
+    parser.add_argument("--output", "-o", required=True, help="Output annotated BAM")
+    parser.add_argument("--min-mapq", type=int, default=0, help="Minimum mapping quality [0]")
+    parser.add_argument("--primary-only", action="store_true", default=True, help="Keep only primary alignments")
+    parser.add_argument("--threads", type=int, default=1, help="Threads for BAM I/O")
+    args = parser.parse_args()
+
+    try:
+        alns_by_read = collect_alignments(args.input, args.min_mapq, args.primary_only, args.threads)
+        write_annotated_bam(args.input, args.output, alns_by_read, args.threads)
+    except (OSError, ValueError) as exc:
+        sys.exit(f"ERROR: {exc}")
+    except pysam.utils.SamtoolsError as exc:
+        sys.exit(f"ERROR: samtools failed: {exc}")
 
 
 if __name__ == "__main__":
