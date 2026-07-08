@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "longc_digestreads"
 description: |
   Digest concatemer reads into monomers at restriction enzyme recognition sites.
