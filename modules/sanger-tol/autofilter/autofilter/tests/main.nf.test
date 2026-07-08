@@ -1,0 +1,140 @@
+nextflow_process {
+
+    name "Test Process AUTOFILTER_AUTOFILTER"
+    script "../main.nf"
+    process "AUTOFILTER_AUTOFILTER"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "autofilter"
+    tag "autofilter/autofilter"
+    tag "nf-core/gunzip"
+    tag "subworkflows/../../modules/nf-core/gunzip"
+
+    setup {
+
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall("${launchDir}/library/", ["gunzip"])
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+
+        run("GUNZIP") {
+            script "../../../../nf-core/gunzip/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id: "Laetiporus_sulphureus" ],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true)
+                ]
+                """
+            }
+        }
+    }
+
+    test("Laetiporus_sulphureus - fasta") {
+
+        config "../nextflow.config"
+
+        when {
+            process {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY.txt", checkIfExists: true)
+                    ]
+                )
+                input[2] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY_parsed_fcsgx.csv", checkIfExists: true)
+                    ]
+                )
+                input[3] = channel.value(5630)
+                input[4] = channel.of(
+                    file("/data/tol/resources/taxonomy/latest/new_taxdump/rankedlineage.dmp", checkIfExists: true)
+                )
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("Laetiporus_sulphureus - fasta - decontaminated assembly") {
+
+        config "./decon.config"
+
+        when {
+            process {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY.txt", checkIfExists: true)
+                    ]
+                )
+                input[2] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY_parsed_fcsgx.csv", checkIfExists: true)
+                    ]
+                )
+                input[3] = channel.value(5630)
+                input[4] = channel.of(
+                    file("/data/tol/resources/taxonomy/latest/new_taxdump/rankedlineage.dmp", checkIfExists: true)
+                )
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("Laetiporus_sulphureus - fasta - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = GUNZIP.out.gunzip
+                input[1] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY.txt", checkIfExists: true)
+                    ]
+                )
+                input[2] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY_parsed_fcsgx.csv", checkIfExists: true)
+                    ]
+                )
+                input[3] = channel.value(5630)
+                input[4] = channel.of(
+                    file("/data/tol/resources/taxonomy/latest/new_taxdump/rankedlineage.dmp", checkIfExists: true)
+                )
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

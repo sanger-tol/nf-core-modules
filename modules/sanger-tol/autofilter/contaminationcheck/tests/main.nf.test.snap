@@ -1,0 +1,176 @@
+{
+    "Laetiporus_sulphureus - fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "alarm_indicator_file.txt:md5,57a210036dfeb1294a1bef407cc8a196"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "autofiltering_done_indicator_file.txt:md5,42108d7619f85dbb14a7e047b4f2dfef"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_raw_report.txt:md5,5d1bb4dcceda3ae0fe98eb94cb942732"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "python",
+                        "3.9.1"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "abnormal_contamination_check",
+                        "V1.2.0"
+                    ]
+                ],
+                "alarm_file": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "alarm_indicator_file.txt:md5,57a210036dfeb1294a1bef407cc8a196"
+                    ]
+                ],
+                "indicator_file": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "autofiltering_done_indicator_file.txt:md5,42108d7619f85dbb14a7e047b4f2dfef"
+                    ]
+                ],
+                "raw_report": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_raw_report.txt:md5,5d1bb4dcceda3ae0fe98eb94cb942732"
+                    ]
+                ],
+                "versions_autofilter": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "abnormal_contamination_check",
+                        "V1.2.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "python",
+                        "3.9.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-08T14:12:49.560272143",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Laetiporus_sulphureus - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "alarm_indicator_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "autofiltering_done_indicator_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "raw_report.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "python",
+                        "3.9.1"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "abnormal_contamination_check",
+                        "V1.2.0"
+                    ]
+                ],
+                "alarm_file": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "alarm_indicator_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "indicator_file": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "autofiltering_done_indicator_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "raw_report": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "raw_report.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_autofilter": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "abnormal_contamination_check",
+                        "V1.2.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_CONTAMINATIONCHECK",
+                        "python",
+                        "3.9.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-08T14:13:00.521816804",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

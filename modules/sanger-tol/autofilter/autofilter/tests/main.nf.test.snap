@@ -1,0 +1,253 @@
+{
+    "Laetiporus_sulphureus - fasta": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_autofiltered.fasta:md5,504c1cc0a6e5150d8bf00e1c12c7863d"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_ABNORMAL_CHECK.csv:md5,eaa464515c7ba8223e8912d61787e25d"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "assembly_filtering_removed_sequences.txt:md5,495fd5ac397cb720d89f522168953d3e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "python",
+                        "3.9.1"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "autofilter",
+                        "1.0.3"
+                    ]
+                ],
+                "decontaminated_assembly": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_autofiltered.fasta:md5,504c1cc0a6e5150d8bf00e1c12c7863d"
+                    ]
+                ],
+                "fcs_tiara_summary": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_ABNORMAL_CHECK.csv:md5,eaa464515c7ba8223e8912d61787e25d"
+                    ]
+                ],
+                "removed_seqs": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "assembly_filtering_removed_sequences.txt:md5,495fd5ac397cb720d89f522168953d3e"
+                    ]
+                ],
+                "versions_autofilter": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "autofilter",
+                        "1.0.3"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "python",
+                        "3.9.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-08T14:38:30.873097969",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Laetiporus_sulphureus - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "autofiltered.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "ABNORMAL_CHECK.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "assembly_filtering_removed_sequences.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "python",
+                        "3.9.1"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "autofilter",
+                        ""
+                    ]
+                ],
+                "decontaminated_assembly": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "autofiltered.fasta:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fcs_tiara_summary": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "ABNORMAL_CHECK.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "removed_seqs": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "assembly_filtering_removed_sequences.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_autofilter": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "autofilter",
+                        ""
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "python",
+                        "3.9.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-08T11:32:36.343766831",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Laetiporus_sulphureus - fasta - decontaminated assembly": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_ABNORMAL_CHECK.csv:md5,eaa464515c7ba8223e8912d61787e25d"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "assembly_filtering_removed_sequences.txt:md5,495fd5ac397cb720d89f522168953d3e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "python",
+                        "3.9.1"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "autofilter",
+                        "1.0.3"
+                    ]
+                ],
+                "decontaminated_assembly": [
+                    
+                ],
+                "fcs_tiara_summary": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus_ABNORMAL_CHECK.csv:md5,eaa464515c7ba8223e8912d61787e25d"
+                    ]
+                ],
+                "removed_seqs": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "assembly_filtering_removed_sequences.txt:md5,495fd5ac397cb720d89f522168953d3e"
+                    ]
+                ],
+                "versions_autofilter": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "autofilter",
+                        "1.0.3"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_AUTOFILTER",
+                        "python",
+                        "3.9.1"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-08T14:38:43.291539231",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

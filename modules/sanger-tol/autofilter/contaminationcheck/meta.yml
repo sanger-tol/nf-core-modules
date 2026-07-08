@@ -1,0 +1,121 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "AUTOFILTER_CONTAMINATIONCHECK"
+description: |
+  A script to determine whether contamination levels exceed given thresholds for an assembly.
+keywords:
+  - assembly
+  - contamination
+  - autofilter
+tools:
+  - "abnormal_contamination_check":
+      description: |
+        Determine whether contamination levels exceed given thresholds for an assembly.
+      homepage: "https://github.com/sanger-tol/nf-core-modules"
+      documentation: "https://github.com/sanger-tol/nf-core-modules"
+      tool_dev_url: "https://github.com/sanger-tol/nf-core-modules"
+      licence: ["MIT"]
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - reference:
+        type: file
+        description: Assembly summary file
+        pattern: "*.(fasta|fa|fna)$"
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
+  - - meta2:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - check_csv:
+        type: file
+        description: Autofilter summary CSV
+        pattern: "*.csv$"
+        ontologies:
+          - edam: "http://edamontology.org/format_XXXX" #CSV
+output:
+  alarm_file:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "alarm_indicator_file.txt":
+          type: file
+          description: Alarm indicator file containing information about whether the assembly has passed or failed the contamination check.
+          pattern: "alarm_indicator_file.txt"
+          ontologies:
+            - edam: "http://edamontology.org/format_1929" # FASTA
+  indicator_file:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "autofiltering_done_indicator_file.txt":
+          type: file
+          description: An empty file indicating that autofiltering has been done - Needed for current system implementation.
+          pattern: "autofiltering_done_indicator_file.txt"
+          ontologies:
+            - edam: "http://edamontology.org/format_3307" # TXT
+  raw_report:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*raw_report.txt":
+          type: file
+          description: Raw report containing the results of the contamination check.
+          pattern: "*raw_report.txt"
+          ontologies:
+            - edam: "http://edamontology.org/format_XXXX" # TXT
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_autofilter:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - abnormal_contamination_check:
+          type: string
+          description: Name of the tool
+      - abnormal_contamination_check.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - abnormal_contamination_check:
+          type: string
+          description: Name of the tool
+      - abnormal_contamination_check.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"

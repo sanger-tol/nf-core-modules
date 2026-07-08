@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "AUTOFILTER_SANITISEFASTA"
+description: |
+  A tool to sanitise FASTA headers and filter sequences by length.
+  This module runs two sequential scripts to clean up assembly FASTA files.
+keywords:
+  - assembly
+  - fasta
+  - sanitise
+  - filter
+  - length
+tools:
+  - "sanitise_fasta_headers":
+      description: |
+        Sanitise FASTA headers to ensure compatibility and remove problematic characters.
+      homepage: "https://github.com/sanger-tol/nf-core-modules"
+      documentation: "https://github.com/sanger-tol/nf-core-modules"
+      tool_dev_url: "https://github.com/sanger-tol/nf-core-modules"
+      licence: ["MIT"]
+  - "filter_fasta_by_length":
+      description: |
+        Filter FASTA sequences by length to remove sequences below a specified threshold.
+      homepage: "https://github.com/sanger-tol/nf-core-modules"
+      documentation: "https://github.com/sanger-tol/nf-core-modules"
+      tool_dev_url: "https://github.com/sanger-tol/nf-core-modules"
+      licence: ["MIT"]
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - input_fasta:
+        type: file
+        description: Input assembly FASTA file
+        pattern: "*.(fasta|fa|fna)$"
+        ontologies:
+          - edam: "http://edamontology.org/format_1929" # FASTA
+output:
+  fasta:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_filtered.fasta":
+          type: file
+          description: Sanitised and length-filtered FASTA file
+          pattern: "*_filtered.fasta"
+          ontologies:
+            - edam: "http://edamontology.org/format_1929" # FASTA
+  sanitation_log:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "fasta_sanitation.json":
+          type: file
+          description: JSON log file containing FASTA header sanitisation details
+          pattern: "fasta_sanitation.json"
+          ontologies:
+            - edam: "http://edamontology.org/format_3464" # JSON
+  length_filtering_log:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "fasta_length_filtering.json":
+          type: file
+          description: JSON log file containing length filtering details
+          pattern: "fasta_length_filtering.json"
+          ontologies:
+            - edam: "http://edamontology.org/format_3464" # JSON
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_sanitise:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - sanitise_fasta_headers:
+          type: string
+          description: Name of the tool
+      - sanitise_fasta_headers.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_length:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - filter_fasta_by_length:
+          type: string
+          description: Name of the tool
+      - filter_fasta_by_length.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - sanitise_fasta_headers:
+          type: string
+          description: Name of the tool
+      - sanitise_fasta_headers.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - filter_fasta_by_length:
+          type: string
+          description: Name of the tool
+      - filter_fasta_by_length.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
