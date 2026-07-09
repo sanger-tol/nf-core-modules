@@ -70,9 +70,11 @@ nextflow_workflow {
                 "samtools/faidx",
                 "bedtools/intersect",
                 "bedtools/makewindows",
+                "bedtools/genomecov",
                 "bedtools/map",
                 "ucsc/bedgraphtobigwig",
                 "htslib/bgziptabix",
+                "tabix/bgziptabix",
                 "seqtk/cutn",
                 "find/concatenate",
                 "minimap2/align",
@@ -98,15 +100,16 @@ nextflow_workflow {
             script "../../../../modules/nf-core/samtools/faidx/main.nf"
             process {
                 """
-                input[0] = GUNZIP.out.gunzip
-                input[1] = channel.of([[],[]])
-                input[2] = channel.of(true)
+                input[0] = GUNZIP.out.gunzip.map { meta, fasta -> [meta, fasta, []] }
+                input[1] = channel.of(true)
                 """
             }
         }
     }
 
     test ( "Escherichia_coli" ) {
+
+        config "../nextflow.config"
 
         when {
             workflow {
