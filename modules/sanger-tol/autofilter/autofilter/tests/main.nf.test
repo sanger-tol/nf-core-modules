@@ -28,6 +28,17 @@ nextflow_process {
                 """
             }
         }
+        println "\nDownloading the new_taxdump..."
+        def new_taxdump_dir = "${launchDir}/new_taxdump"
+        def new_taxdump_url = "https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz"
+
+        def command = ['bash', '-c', "curl ${new_taxdump_url} -o ${launchDir}/new_taxdump.tar.gz"]
+        def process = command.execute()
+        process.waitFor()
+
+        def command2 = ['bash', '-c', "gunzip -c ${launchDir}/new_taxdump.tar.gz | tar xf - -C ${new_taxdump_dir}/"]
+        def process2 = command2.execute()
+        process2.waitFor()
     }
 
     test("Laetiporus_sulphureus - fasta") {
@@ -41,18 +52,18 @@ nextflow_process {
                 input[1] = channel.of(
                     [
                         [ id: "Laetiporus_sulphureus" ],
-                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY.txt", checkIfExists: true)
+                        file(params.modules_testdata_base_path + "Laetiporus_sulphureus/analysis/gfLaeSulp1.1/tiara/gfLaeSulp1.1_PRIMARY.txt", checkIfExists: true)
                     ]
                 )
                 input[2] = channel.of(
                     [
                         [ id: "Laetiporus_sulphureus" ],
-                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY_parsed_fcsgx.csv", checkIfExists: true)
+                        file(params.modules_testdata_base_path + "Laetiporus_sulphureus/analysis/gfLaeSulp1.1/fcsgx/gfLaeSulp1.1_PRIMARY_parsed_fcsgx.csv", checkIfExists: true)
                     ]
                 )
                 input[3] = channel.value(5630)
                 input[4] = channel.of(
-                    file("/data/tol/resources/taxonomy/latest/new_taxdump/rankedlineage.dmp", checkIfExists: true)
+                    file("${launchDir}/new_taxdump/rankedlineage.dmp", checkIfExists: true)
                 )
                 """
             }

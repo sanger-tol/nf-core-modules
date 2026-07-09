@@ -52,7 +52,7 @@ nextflow_process {
                 input[1] = channel.of(
                     [
                         [ id: "Laetiporus_sulphureus" ],
-                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY_ABNORMAL_CHECK.csv", checkIfExists: true)
+                        file(params.modules_testdata_base_path + "Laetiporus_sulphureus/analysis/gfLaeSulp1.1/autofilter/gfLaeSulp1.1_PRIMARY_ABNORMAL_CHECK.csv", checkIfExists: true)
                     ]
                 )
                 """
@@ -78,7 +78,7 @@ nextflow_process {
                 input[1] = channel.of(
                     [
                         [ id: "Laetiporus_sulphureus" ],
-                        file("/lustre/scratch124/tol/teams/tola/users/dp24/ascc/autofilter_data/odCymConc1_PRIMARY_ABNORMAL_CHECK.csv", checkIfExists: true)
+                        file(params.modules_testdata_base_path + "Laetiporus_sulphureus/analysis/gfLaeSulp1.1/autofilter/gfLaeSulp1.1_PRIMARY_ABNORMAL_CHECK.csv", checkIfExists: true)
                     ]
                 )
                 """
