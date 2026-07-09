@@ -7,7 +7,7 @@ nextflow_process {
     tag "modules"
     tag "modules_sangertol"
     tag "fcsgx"
-    tag "fcsgx/fetchdb"
+    tag "nf-core/fcsgx/fetchdb"
     tag "fcsgx/rungx"
 
     setup {
@@ -16,7 +16,7 @@ nextflow_process {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules")
 
         run("FCSGX_FETCHDB"){
-            script "../../fetchdb/main.nf"
+            script "../../../../nf-core/fetchdb/main.nf"
             process {
                 """
                 input[0] = file('https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest', checkIfExists: true)
