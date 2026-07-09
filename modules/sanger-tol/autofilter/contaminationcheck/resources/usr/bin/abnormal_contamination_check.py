@@ -2,7 +2,6 @@
 
 import argparse
 import os.path
-import pathlib
 import sys
 import textwrap
 from pathlib import Path

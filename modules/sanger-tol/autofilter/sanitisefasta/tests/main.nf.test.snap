@@ -30,7 +30,7 @@
                     [
                         "AUTOFILTER_SANITISEFASTA",
                         "python",
-                        "3.9.1"
+                        "3.14.0"
                     ]
                 ],
                 "4": [
@@ -82,7 +82,7 @@
                     [
                         "AUTOFILTER_SANITISEFASTA",
                         "python",
-                        "3.9.1"
+                        "3.14.0"
                     ]
                 ],
                 "versions_sanitise": [
@@ -131,7 +131,7 @@
                     [
                         "AUTOFILTER_SANITISEFASTA",
                         "python",
-                        "3.9.1"
+                        "3.14.0"
                     ]
                 ],
                 "4": [
@@ -183,7 +183,7 @@
                     [
                         "AUTOFILTER_SANITISEFASTA",
                         "python",
-                        "3.9.1"
+                        "3.14.0"
                     ]
                 ],
                 "versions_sanitise": [

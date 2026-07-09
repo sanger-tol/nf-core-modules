@@ -4,8 +4,8 @@ process AUTOFILTER_CONTAMINATIONCHECK {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/python:3.9' :
-        'biocontainers/python:3.9' }"
+        'https://depot.galaxyproject.org/singularity/python:3.14' :
+        'quay.io/biocontainers/python:3.14' }"
 
     input:
     tuple val(meta),    path(reference)
