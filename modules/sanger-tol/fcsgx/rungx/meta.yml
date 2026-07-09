@@ -10,8 +10,7 @@ keywords:
   - fcs-gx
 tools:
   - "fcsgx":
-      description:
-        "The NCBI Foreign Contamination Screen. Genomic cross-species aligner,
+      description: "The NCBI Foreign Contamination Screen. Genomic cross-species aligner,
         for contamination detection."
       homepage: "https://github.com/ncbi/fcs-gx"
       documentation: "https://github.com/ncbi/fcs/wiki/"
@@ -64,8 +63,7 @@ output:
             e.g. `[ id:'sample1', single_end:false ]`
       - "*.taxonomy.rpt":
           type: file
-          description:
-            Intermediate report with assigned taxonomies to individual
+          description: Intermediate report with assigned taxonomies to individual
             sequences.
           pattern: "*.taxonomy.rpt"
           ontologies: []
