@@ -40,7 +40,7 @@ input:
         description: FCS-GX report file
         pattern: "*.fcs_gx_report.txt"
         ontologies:
-          - edam: http://edamontology.org/format_3752 # TXT
+          - edam: http://edamontology.org/format_2330 # TXT
   - - ncbi_rankedlineage_path:
         type: file
         description: NCBI rankedlineage.dmp file
