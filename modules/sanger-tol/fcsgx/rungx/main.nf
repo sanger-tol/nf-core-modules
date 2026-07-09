@@ -8,7 +8,7 @@ process FCSGX_RUNGX {
         'quay.io/biocontainers/ncbi-fcs-gx:0.5.5--h9948957_0' }"
 
     input:
-    tuple val(meta), path(fasta)
+    tuple val(meta), val(taxid), path(fasta)
     path gxdb
     path ramdisk_path
     val production_mode
@@ -41,7 +41,7 @@ process FCSGX_RUNGX {
         run_gx \\
             --fasta ${fasta} \\
             --gx-db ${database} \\
-            --tax-id ${meta.taxid} \\
+            --tax-id ${taxid} \\
             --generate-logfile true \\
             --out-basename ${prefix} \\
             --out-dir . \\
@@ -55,7 +55,7 @@ process FCSGX_RUNGX {
         run_gx.py \\
             --fasta ${fasta} \\
             --gx-db ${database} \\
-            --tax-id ${meta.taxid} \\
+            --tax-id ${taxid} \\
             --generate-logfile true \\
             --out-basename ${prefix} \\
             --out-dir . \\

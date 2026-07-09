@@ -10,7 +10,8 @@ keywords:
   - fcs-gx
 tools:
   - "fcsgx":
-      description: "The NCBI Foreign Contamination Screen. Genomic cross-species aligner,
+      description:
+        "The NCBI Foreign Contamination Screen. Genomic cross-species aligner,
         for contamination detection."
       homepage: "https://github.com/ncbi/fcs-gx"
       documentation: "https://github.com/ncbi/fcs/wiki/"
@@ -39,6 +40,9 @@ input:
   - ramdisk_path:
       type: string
       description: Path to RAM disk for improved performance (optional)
+  - production_mode:
+      type: boolean
+      description: Whether to run in production mode (optional)
 output:
   fcsgx_report:
     - - meta:
@@ -60,7 +64,8 @@ output:
             e.g. `[ id:'sample1', single_end:false ]`
       - "*.taxonomy.rpt":
           type: file
-          description: Intermediate report with assigned taxonomies to individual
+          description:
+            Intermediate report with assigned taxonomies to individual
             sequences.
           pattern: "*.taxonomy.rpt"
           ontologies: []

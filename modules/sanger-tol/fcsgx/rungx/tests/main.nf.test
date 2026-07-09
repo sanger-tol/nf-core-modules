@@ -5,12 +5,16 @@ nextflow_process {
     process "FCSGX_RUNGX"
 
     tag "modules"
-    tag "modules_nfcore"
+    tag "modules_sangertol"
     tag "fcsgx"
     tag "fcsgx/fetchdb"
     tag "fcsgx/rungx"
 
     setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall("${launchDir}/library/", ["fcsgx/fetchdb"])
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules")
+
         run("FCSGX_FETCHDB"){
             script "../../fetchdb/main.nf"
             process {
