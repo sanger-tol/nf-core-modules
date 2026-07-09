@@ -1,5 +1,5 @@
 name: fcsgx_parseresults
-description:
+description: |
   Parses FCS-GX (Fungal Contamination Screening - GX) result files and augments them
   with NCBI taxonomy lineage information to produce a comprehensive CSV output containing
   contamination screening results with taxonomic classification.
