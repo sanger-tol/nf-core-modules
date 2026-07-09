@@ -37,7 +37,7 @@ input:
         description: Assembly summary file from Tiara
         pattern: "*.txt$"
         ontologies:
-          - edam: "http://edamontology.org/format_XXXX" # TXT
+          - edam: "http://edamontology.org/format_2330" # TXT
   - - fcs_meta:
         type: map
         description: |
@@ -48,7 +48,7 @@ input:
         description: Assembly summary file, a parsed fcsgx output file.
         pattern: "*.csv$"
         ontologies:
-          - edam: "http://edamontology.org/format_XXX" # CSVC
+          - edam: "http://edamontology.org/format_3752" # CSV
   - taxid:
       type: integer
       description: NCBI Taxonomy ID of the assembly.
@@ -79,7 +79,7 @@ output:
           description: CSV file containing information about abnormal contamination in files and how they now labeled.
           pattern: "*ABNORMAL_CHECK.csv"
           ontologies:
-            - edam: "http://edamontology.org/format_3307" # CSV
+            - edam: "http://edamontology.org/format_3752" # CSV
   removed_seqs:
     - - meta:
           type: map
@@ -91,7 +91,7 @@ output:
           description: TXT file containing references
           pattern: "assembly_filtering_removed_sequences.txt"
           ontologies:
-            - edam: "http://edamontology.org/format_XXXX" # TXT
+            - edam: "http://edamontology.org/format_2330" # TXT
   versions_python:
     - - ${task.process}:
           type: string

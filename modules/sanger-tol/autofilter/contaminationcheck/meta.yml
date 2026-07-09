@@ -36,7 +36,7 @@ input:
         description: Autofilter summary CSV
         pattern: "*.csv$"
         ontologies:
-          - edam: "http://edamontology.org/format_XXXX" #CSV
+          - edam: "http://edamontology.org/format_3752" #CSV
 output:
   alarm_file:
     - - meta:
@@ -61,7 +61,7 @@ output:
           description: An empty file indicating that autofiltering has been done - Needed for current system implementation.
           pattern: "autofiltering_done_indicator_file.txt"
           ontologies:
-            - edam: "http://edamontology.org/format_3307" # TXT
+            - edam: "http://edamontology.org/format_2330" # TXT
   raw_report:
     - - meta:
           type: map
@@ -73,7 +73,7 @@ output:
           description: Raw report containing the results of the contamination check.
           pattern: "*raw_report.txt"
           ontologies:
-            - edam: "http://edamontology.org/format_XXXX" # TXT
+            - edam: "http://edamontology.org/format_2330" # TXT
   versions_python:
     - - ${task.process}:
           type: string
