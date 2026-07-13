@@ -13,7 +13,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     ch_reference_tuple  // Channel [ val(meta), path(file)   ]
     ch_reference_sizes  // Channel [ val(meta), path(file)   ]
     ch_longread_reads   // Channel [ val(meta), [path(file)] ]
-    val_teloseq         // val(telomere_sequence)
+    ch_teloseq          // Channel [ val(meta), path(telomere_sequence) ]
     val_split_telomere  // val(bool)
     val_run_telomere    // val(bool)
     val_run_gaps        // val(bool)
@@ -39,7 +39,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     //
     TELO_FINDER (
         ch_reference_tuple.filter{ val_run_telomere },
-        val_teloseq,
+        ch_teloseq,
         val_split_telomere,
         false
     )
@@ -87,7 +87,7 @@ workflow PRETEXT_ACCESSORY_FILES {
 
     emit:
     gap_file            = GAP_FINDER.out.gap_file
-    repeat_file         = REPEAT_DENSITY.out.repeat_density
+    //repeat_file         = REPEAT_DENSITY.out.repeat_density
     telo_file           = telomere_data                     // This is the possible collection of telomere files
     coverage_file       = READ_COVERAGE.out.bigwig
 }

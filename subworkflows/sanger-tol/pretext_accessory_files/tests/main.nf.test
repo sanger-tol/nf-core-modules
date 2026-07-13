@@ -114,7 +114,7 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = SAMTOOLS_FAIDX.out.fa
+                input[0] = GUNZIP.out.gunzip
                 input[1] = SAMTOOLS_FAIDX.out.sizes
                 input[2] = channel.of(
                     [
@@ -125,14 +125,19 @@ nextflow_workflow {
                         ]
                     ]
                 )
-                input[3]  = channel.of("AATT")
-                input[4]  = channel.of(true)
-                input[5]  = channel.of(true)
-                input[6]  = channel.of(true)
-                input[7]  = channel.of(true)
-                input[8]  = channel.of(true)
-                input[9]  = channel.of(false)
-                input[10] = channel.of(false)
+                input[3]  = channel.of(
+                    [
+                        [ id:'test' ],
+                        "AATT"
+                    ]
+                )
+                input[4]  = true
+                input[5]  = true
+                input[6]  = true
+                input[7]  = true
+                input[8]  = true
+                input[9]  = false
+                input[10] = false
 
                 """
             }

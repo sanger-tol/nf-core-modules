@@ -1,0 +1,41 @@
+{
+    "Escherichia_coli": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus.gap.bedgraph:md5,4b008271ec0fdac9a3dbf2b33c1e1b0b"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "coverage_file": [
+                    
+                ],
+                "gap_file": [
+                    [
+                        {
+                            "id": "Laetiporus_sulphureus"
+                        },
+                        "Laetiporus_sulphureus.gap.bedgraph:md5,4b008271ec0fdac9a3dbf2b33c1e1b0b"
+                    ]
+                ],
+                "telo_file": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-07-10T14:01:55.323018779",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    }
+}
