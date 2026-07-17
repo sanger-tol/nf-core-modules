@@ -60,30 +60,6 @@ nextflow_workflow {
 
 
     setup {
-        nfcoreInitialise("${launchDir}/library/")
-        nfcoreInstall(
-            "${launchDir}/library/",
-            [
-                "gawk",
-                "gunzip",
-                "gnu/sort",
-                "samtools/faidx",
-                "bedtools/intersect",
-                "bedtools/makewindows",
-                "bedtools/genomecov",
-                "bedtools/map",
-                "ucsc/bedgraphtobigwig",
-                "htslib/bgziptabix",
-                "tabix/bgziptabix",
-                "seqtk/cutn",
-                "find/concatenate",
-                "minimap2/align",
-                "windowmasker/ustat",
-                "windowmasker/mkcounts",
-            ]
-        )
-        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
-
         run("GUNZIP"){
             script "../../../../modules/nf-core/gunzip/main.nf"
             process {
@@ -134,7 +110,7 @@ nextflow_workflow {
                 input[4]  = true
                 input[5]  = true
                 input[6]  = true
-                input[7]  = true
+                input[7]  = false
                 input[8]  = true
                 input[9]  = false
                 input[10] = false
@@ -149,10 +125,5 @@ nextflow_workflow {
                 { assert snapshot(workflow.out).match() }
             )
         }
-
-        cleanup {
-            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
-        }
     }
-
 }
