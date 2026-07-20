@@ -16,7 +16,7 @@ process AUTOFILTER_SANITISEFASTA {
     tuple val(meta), path("fasta_length_filtering.json"),   emit: length_filtering_log
 
     tuple val("${task.process}"), val('python'), eval('python --version | sed "s/Python //"'), emit: versions_python, topic: versions
-    tuple val("${task.process}"), val('sanitise_fasta'), eval('sanitise_fasta.py --version | cut -d" " -f2'), emit: versions_sanitise,  topic: versions
+    tuple val("${task.process}"), val('sanitise_fasta_headers'), eval('sanitise_fasta_headers.py --version | cut -d" " -f2'), emit: versions_sanitise,  topic: versions
     tuple val("${task.process}"), val('filter_fasta_by_length'), eval('filter_fasta_by_length.py --version | cut -d" " -f2'), emit: versions_length,    topic: versions
 
     when:
@@ -27,9 +27,10 @@ process AUTOFILTER_SANITISEFASTA {
     def args        = task.ext.args     ?: ''
     def args2       = task.ext.args2    ?: ''
     """
-    sanitise_fasta.py \\
+    sanitise_fasta_headers.py \\
         ${input_fasta} \\
-        --log_file fasta_sanitation.json > ${prefix}_shortened.fasta \\
+        --log_file fasta_sanitation.json \\
+        --max_detailed_changes 0 > ${prefix}_shortened.fasta \\
         ${args}
 
     filter_fasta_by_length.py \\

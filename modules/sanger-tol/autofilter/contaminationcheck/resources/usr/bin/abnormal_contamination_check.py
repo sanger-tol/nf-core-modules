@@ -4,7 +4,6 @@ import argparse
 import os.path
 import sys
 import textwrap
-from dataclasses import dataclass
 from pathlib import Path
 
 VERSION = "V1.2.0"
@@ -35,7 +34,7 @@ def parse_args():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent(DESCRIPTION),
     )
-    parser.add_argument("assembly", type=str, help="Path to the assembly FAI file")
+    parser.add_argument("assembly", type=str, help="Path to the fasta assembly file")
     parser.add_argument("summary_path", type=str, help="Path to the tiara summary file")
     parser.add_argument("-q", "--out_prefix", type=str, help="Output file prefix for the report")
     parser.add_argument("-o", "--output", type=str, help="Path to output file", default="alarm_indicator_file.txt")
@@ -68,6 +67,21 @@ def parse_args():
     return parser.parse_args()
 
 
+def file_to_list(path):
+    """
+    Function for loading text file as a list and removing line breaks from line ends
+    """
+    lines = []
+    if Path(path).exists():
+        with open(path) as in_file:
+            lines = in_file.readlines()
+            lines = [x.rstrip() for x in lines]
+    else:
+        sys.stderr.write("Error: file not found (" + path + ")\n")
+        sys.exit(1)
+    return lines
+
+
 def file_to_generator(file_path):
     """
     Brought in from Eeriks GPF library
@@ -83,18 +97,39 @@ def file_to_generator(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
 
 
-def get_sequence_lengths(assembly_fai):
+def read_fasta_in_chunks(in_path):
     """
-    Read FAI file and return a dictionary of sequence lengths
+    Input: path to FASTA file
+    Output (iterator): string tuples where the first element is a FASTA header and the second element is the corresponding FASTA sequence
+
+    Brought in from Eeriks GPF library
+    """
+    in_data = file_to_generator(in_path)
+    current_seq_header = None
+    seq = ""
+    for line in in_data:
+        if line != "":
+            if line[0] == ">":
+                if seq != "":
+                    yield (current_seq_header, seq)
+                seq = ""
+                current_seq_header = line[1 : len(line)]
+            else:
+                seq += line
+    if seq != "":
+        yield (current_seq_header, seq)
+
+
+def get_sequence_lengths(assembly_fasta_path):
+    """
+    Gets sequence lengths of a FASTA file and returns them as a dictionary
     """
     seq_lengths_dict = dict()
-    with open(assembly_fai) as fai_file:
-        for line in fai_file:
-            split_line = line.split("\t")
-            seq_name = split_line[0]
-            seq_len = int(split_line[1])
-            seq_lengths_dict[seq_name] = dict()
-            seq_lengths_dict[seq_name]["seq_len"] = seq_len
+    fasta_data = read_fasta_in_chunks(assembly_fasta_path)
+    for header, seq in fasta_data:
+        seq_len = len(seq)
+        seq_lengths_dict[header] = dict()
+        seq_lengths_dict[header]["seq_len"] = seq_len
     return seq_lengths_dict
 
 
@@ -102,29 +137,27 @@ def load_fcs_gx_results(seq_dict, fcs_gx_and_tiara_summary_path):
     """
     Loads FCS-GX actions from the FCS-GX and Tiara results summary file, adds them to the dictionary that contains sequence lengths
     """
-    fcs_gx_and_tiara_summary_data = file_to_generator(fcs_gx_and_tiara_summary_path)
-    # Skip the header line containing column names
-    next(fcs_gx_and_tiara_summary_data)
+    fcs_gx_and_tiara_summary_data = file_to_list(fcs_gx_and_tiara_summary_path)
 
+    fcs_gx_and_tiara_summary_data = fcs_gx_and_tiara_summary_data[1 : len(fcs_gx_and_tiara_summary_data)]
     for line in fcs_gx_and_tiara_summary_data:
         split_line = line.split(",")
         assert len(split_line) == 5
         seq_name = split_line[0]
         fcs_gx_action = split_line[1]
         seq_dict[seq_name]["fcs_gx_action"] = fcs_gx_action
-
     return seq_dict
 
 
 def main():
     args = parse_args()
-    if not os.path.isfile(args.summary_path):
+    if os.path.isfile(args.summary_path) is False:
         sys.stderr.write(
             f"The FCS-GX and Tiara results file was not found at the expected location ({args.summary_path})\n"
         )
         sys.exit(1)
 
-    if not os.path.isfile(args.assembly):
+    if os.path.isfile(args.assembly) is False:
         sys.stderr.write(f"The assembly FASTA file was not found at the expected location ({args.assembly})\n")
         sys.exit(1)
 
@@ -165,7 +198,7 @@ def main():
 
     with open(f"{args.out_prefix}_raw_report.txt", "a") as f:
         for x, y in report_dict.items():
-            print(f"{x}: {y}", file=f)
+            f.write(": ".join([x, str(y)]) + "\n")
 
     alarm_list = []
     for param in alarm_threshold_for_parameter:

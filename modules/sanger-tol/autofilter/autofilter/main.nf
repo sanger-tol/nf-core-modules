@@ -15,7 +15,7 @@ process AUTOFILTER_AUTOFILTER {
     path ncbi_rankedlineage
 
     output:
-    tuple val(meta), path("*autofiltered.txt"),                         emit: decontaminated_scaffolds, optional: true
+    tuple val(meta), path("*autofiltered.fasta"),                       emit: decontaminated_assembly, optional: true
     tuple val(meta), path("*ABNORMAL_CHECK.csv"),                       emit: fcs_tiara_summary
     tuple val(meta), path("assembly_filtering_removed_sequences.txt"),  emit: removed_seqs
     tuple val("${task.process}"), val('python'), eval('python --version | sed "s/Python //"'), emit: versions_python, topic: versions

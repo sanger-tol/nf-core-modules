@@ -48,6 +48,11 @@ def parse_args(argv=None):
         help="Optional: low pass filtering mode (sequences longer than the cutoff value will be removed)",
     )
     parser.add_argument(
+        "--remove_original_fasta",
+        action="store_true",
+        help="Optional: remove the input FASTA file after creating the filtered FASTA file",
+    )
+    parser.add_argument(
         "--log_file",
         type=str,
         help="Path to output log file in JSON format",
@@ -217,6 +222,9 @@ def main(args):
             f"No sequences remain in the FASTA file {fasta_path} after filtering the sequences by length (cutoff: {args.cutoff} bp)\n"
         )
         sys.exit(1)
+
+    if args.remove_original_fasta is True:
+        os.remove(fasta_path)
 
 
 if __name__ == "__main__":
