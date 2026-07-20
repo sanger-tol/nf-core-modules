@@ -72,7 +72,7 @@ workflow FASTX_MAP_LONG_READS {
         .combine(MINIMAP2_INDEX.out.index, by: 0)
         .transpose()
         .multiMap { meta, fasta, fxi, chunkn, slices, asm, index ->
-            fastx:     [ meta, fasta, fxi ]
+            fastx:     [ meta, fasta, fxi, [], [] ]
             reference: [ meta, index, asm ]
             slices:    [ chunkn, slices ]
         }
