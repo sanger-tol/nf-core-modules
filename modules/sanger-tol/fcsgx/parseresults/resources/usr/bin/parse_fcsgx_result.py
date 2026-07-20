@@ -24,34 +24,24 @@ def file_to_generator(input_file: str):
             for line in f:
                 line = line.rstrip()
                 yield line
-    else:
-        raise FileNotFoundError(f"File not found: {file_path}")
 
 
-def file_to_list(path):
+def file_to_list(path: str) -> list:
     """
     Function for loading text file as a list and removing line breaks from line ends
-
-    Brought in from Eeriks GPF library
-
-    Originally as gpf.ll(input_file)
     """
-    lines = []
-    if Path(path).exists():
-        with open(path) as in_file:
-            lines = in_file.readlines()
-            lines = [x.rstrip() for x in lines]
-    else:
+    try:
+        return list(file_to_generator(path))
+    except FileNotFoundError:
         sys.stderr.write("Error: file not found (" + path + ")\n")
         sys.exit(1)
-    return lines
 
 
 def load_taxids_data(taxonomy_file: str) -> dict:
     """
     Parses the *.taxonomy.rpt to find taxids that correspond to species names. Returns this as a dictionary
     """
-    taxonomy_data = list(file_to_generator(taxonomy_file))[2:]
+    taxonomy_data: list = file_to_list(taxonomy_file)[2:]
     assert taxonomy_data, "Taxonomy data is empty"
 
     collection_dict = dict()
@@ -102,7 +92,7 @@ def load_report_data(report_file: str, collection_dict: dict) -> dict:
     """
     Parses the *.fcs_gx_report.txt to add entries from the 'action' column to the collection of entries per scaffold that is stored in collection_dict
     """
-    report_data = list(file_to_generator(report_file))
+    report_data = file_to_list(report_file)
     if len(report_data) > 2:
         report_data = report_data[2 : len(report_data)]
         for line in report_data:
@@ -167,7 +157,7 @@ def get_lineages_by_taxid(taxids_list: list, rankedlineage_path: str) -> dict:
     return lineages_dict
 
 
-def main(taxonomy_report: str, fcs_report: str, ncbi_rankedlineage_path: str):
+def main(taxonomy_report: str, fcs_report: str, ncbi_rankedlineage_path: str) -> None:
     collection_dict = load_taxids_data(taxonomy_report)
     collection_dict = load_report_data(fcs_report, collection_dict)
     taxids_list = get_taxids_list(taxonomy_report)
@@ -189,7 +179,7 @@ def main(taxonomy_report: str, fcs_report: str, ncbi_rankedlineage_path: str):
     out_header += "," + ",".join(rankedlineage_col_names)
     print(out_header)
     for scaff, row_dict in collection_dict.items():
-        out_line: str = "{},{},{},{},{},{},{},{},{}".format(
+        out_line = [
             scaff,
             row_dict["fcs_gx_top_tax_name"],
             row_dict["fcs_gx_top_taxid"],
@@ -199,16 +189,16 @@ def main(taxonomy_report: str, fcs_report: str, ncbi_rankedlineage_path: str):
             row_dict["fcs_gx_score"],
             row_dict["fcs_gx_multiple_divs_per_scaff"],
             row_dict["fcs_gx_action"],
-        )
+        ]
         row_top_taxid: str = row_dict["fcs_gx_top_taxid"]
         if row_top_taxid in lineages_dict:
             current_lineage_dict: dict = lineages_dict[row_dict["fcs_gx_top_taxid"]]
             for i in range(1, 10):
-                out_line += f",{current_lineage_dict[rankedlineage_col_names[i]]}"
+                out_line.append(current_lineage_dict[rankedlineage_col_names[i]])
         else:
             for _ in range(1, 10):
-                out_line += ","
-        print(out_line)
+                out_line.append("")
+        print(*out_line, sep=",")
 
 
 if __name__ == "__main__":
