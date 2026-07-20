@@ -56,18 +56,18 @@ input:
       type: file
       description: File containing the NCBI ranked lineage data.
 output:
-  decontaminated_assembly:
+  decontaminated_scaffolds:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "*autofiltered.fasta":
+      - "*autofiltered.txt":
           type: file
-          description: A FASTA file decontaminated of abnormal sequences flagged by Tiara and FGSGX.
-          pattern: "*autofiltered.fasta"
+          description: A TXT file of clean scaffold headers, deemed safe by FCSGX and Tiara analysis.
+          pattern: "*autofiltered.txt"
           ontologies:
-            - edam: "http://edamontology.org/format_1929" # FASTA
+            - edam: "http://edamontology.org/format_2330" # TXT
   fcs_tiara_summary:
     - - meta:
           type: map
