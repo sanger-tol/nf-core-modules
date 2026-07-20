@@ -8,17 +8,16 @@ Updated by Damon-Lee Pointon (dp24)
 import argparse
 import os
 import sys
-from collections import OrderedDict
 from pathlib import Path
 
 
-def file_to_generator(file_path):
+def file_to_generator(input_file: str):
     """
     Brought in from Eeriks GPF library
 
     Originally as gpf.l(input_file)
     """
-    file_path = Path(file_path)
+    file_path = Path(input_file)
 
     if file_path.exists():
         with open(file_path) as f:
@@ -55,7 +54,7 @@ def load_taxids_data(taxonomy_file: str) -> dict:
     taxonomy_data = list(file_to_generator(taxonomy_file))[2:]
     assert taxonomy_data, "Taxonomy data is empty"
 
-    collection_dict = OrderedDict()
+    collection_dict = dict()
 
     for line in taxonomy_data:
         split_line = line.split("\t")
@@ -71,7 +70,7 @@ def load_taxids_data(taxonomy_file: str) -> dict:
             int(split_line[10]) if split_line[10] else 0,
         )
 
-        if scaff in collection_dict and collection_dict[scaff]["fcs_gx_score"] < score_1:
+        if scaff in collection_dict and int(collection_dict[scaff]["fcs_gx_score"] or 0) < score_1:
             row_dict = {
                 "fcs_gx_top_tax_name": tax_name_1,
                 "fcs_gx_top_taxid": tax_id_1,
@@ -109,8 +108,8 @@ def load_report_data(report_file: str, collection_dict: dict) -> dict:
         for line in report_data:
             split_line = line.split("\t")
             assert len(split_line) == 8
-            scaff = split_line[0]
-            fcs_gx_action = split_line[4]
+            scaff: str = split_line[0]
+            fcs_gx_action: str = split_line[4]
             collection_dict[scaff]["fcs_gx_action"] = fcs_gx_action
     return collection_dict
 
@@ -119,15 +118,14 @@ def get_taxids_list(fcs_gx_taxonomy_file_path: str) -> list:
     """
     Goes through FCS-GX taxonomy output file and returns a list of unique taxIDs found in the file
     """
-    if os.path.isfile(fcs_gx_taxonomy_file_path) is False:
+    if not os.path.isfile(fcs_gx_taxonomy_file_path):
         sys.stderr.write(
             f"The FCS-GX taxonomy file was not found at the expected location ({fcs_gx_taxonomy_file_path})\n"
         )
         sys.exit(1)
     taxids_list = list()
-    fcs_gx_taxonomy_data = file_to_list(fcs_gx_taxonomy_file_path)
-    for line in fcs_gx_taxonomy_data:
-        if line.startswith("#") is False:
+    for line in file_to_list(fcs_gx_taxonomy_file_path):
+        if not line.startswith("#"):
             split_line = line.split("\t")
             assert len(split_line) == 34
             taxid = split_line[6]
@@ -154,8 +152,7 @@ def get_lineages_by_taxid(taxids_list: list, rankedlineage_path: str) -> dict:
         "fcs_gx_domain",
     )
 
-    rankedlineage_data: list = file_to_list(rankedlineage_path)
-    for line in rankedlineage_data:
+    for line in file_to_list(rankedlineage_path):
         split_line: list = line.split("|")
         split_line: list = [n.strip() for n in split_line]
         assert len(split_line) >= 11, (
