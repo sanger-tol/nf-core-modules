@@ -4,10 +4,9 @@ import argparse
 import os.path
 import sys
 import textwrap
-from dataclasses import dataclass
 from pathlib import Path
 
-VERSION = "V1.2.0"
+VERSION = "V1.3.0"
 
 DESCRIPTION = """
 -------------------------------------

@@ -37,7 +37,7 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "abnormal_contamination_check",
-                        "V1.2.0"
+                        "V1.3.0"
                     ]
                 ],
                 "alarm_file": [
@@ -68,7 +68,7 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "abnormal_contamination_check",
-                        "V1.2.0"
+                        "V1.3.0"
                     ]
                 ],
                 "versions_python": [
@@ -124,7 +124,7 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "abnormal_contamination_check",
-                        "V1.2.0"
+                        "V1.3.0"
                     ]
                 ],
                 "alarm_file": [
@@ -155,7 +155,7 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "abnormal_contamination_check",
-                        "V1.2.0"
+                        "V1.3.0"
                     ]
                 ],
                 "versions_python": [
