@@ -40,7 +40,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def prefix      = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
     def post_filter = args2 ? "samtools view -h ${args2} - |" : ''
     def sort_bam    = "samtools sort -@ ${task.cpus > 1 ? task.cpus - 1 : 1} -o ${prefix}.bam -T ${prefix}_sort_tmp ${args3} -"
-    def pg_part     = pg_lines ? "insert_cram_pg_header -v pgfile=\"${prefix}_pg_lines.tmp\" | " : ''
+    def pg_part     = pg_lines ? "insert_cram_pg_header.awk -v pgfile=\"${prefix}_pg_lines.tmp\" | " : ''
     def bam_output  = bam_format ? "-a | ${pg_part}${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
     def rg_arg = rglines ? rglines.collect { line ->
             // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)

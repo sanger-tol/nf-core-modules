@@ -46,7 +46,7 @@ process CRAMALIGN_MINIMAP2ALIGN {
     samtools cat ${args1} -r "#:${range[0]}-${range[1]}" ${cram} | \\
         samtools fastq ${args2} - |  \\
         minimap2 -t${task.cpus} ${args3} ${index} ${rg_arg} - | \\
-        insert_cram_pg_header -v pgfile="${prefix}_cram_pg.tmp" | \
+        insert_cram_pg_header.awk -v pgfile="${prefix}_cram_pg.tmp" | \
         ${post_filter} \\
         samtools sort ${args5} -@${task.cpus} -T ${prefix}_sort_tmp -o ${prefix}.bam -
 
