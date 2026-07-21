@@ -11,9 +11,9 @@ process AUTOFILTER_FILTERFASTA {
     tuple val(meta), path(fai)
 
     output:
-    tuple val(meta), path("*_mapping.txt"),         emit: fasta
-    tuple val(meta), path("*_new_scaffolds.txt"),   emit: sanitation_log
-    tuple val(meta), path("*_stats.json"),          emit: length_filtering_log
+    tuple val(meta), path("*_mapping.txt"),         emit: mapping_file
+    tuple val(meta), path("*_new_scaffolds.txt"),   emit: new_scaffolds
+    tuple val(meta), path("*_stats.json"),          emit: stats
 
     tuple val("${task.process}"), val('python'), eval('python --version | sed "s/Python //"'), emit: versions_python, topic: versions
     tuple val("${task.process}"), val('filter_fasta'), eval('filter_fasta.py --version | cut -d" " -f2'), emit: versions_filter_fasta,  topic: versions
