@@ -8,7 +8,7 @@ process AUTOFILTER_CONTAMINATIONCHECK {
         'quay.io/biocontainers/python:3.14' }"
 
     input:
-    tuple val(meta),    path(reference)
+    tuple val(meta),    path(fai)
     tuple val(meta2),   path(check_csv)
 
     output:
@@ -26,9 +26,9 @@ process AUTOFILTER_CONTAMINATIONCHECK {
     def args    = task.ext.args     ?: ""
     """
     abnormal_contamination_check.py \\
-        ${reference} \\
+        ${fai} \\
         ${check_csv} \\
-        --out_prefix ${prefix}
+        --prefix ${prefix}
 
     # The indicator file is used in Sanger-Tol to allow for other processes
     # to begin once generated. This allows us to speed up the overall flow of the

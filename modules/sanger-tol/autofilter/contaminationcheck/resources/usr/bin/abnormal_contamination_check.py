@@ -34,9 +34,9 @@ def parse_args():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent(DESCRIPTION),
     )
-    parser.add_argument("assembly", type=str, help="Path to the assembly FAI file")
+    parser.add_argument("fai", type=str, help="Path to the assembly FAI file")
     parser.add_argument("summary_path", type=str, help="Path to the tiara summary file")
-    parser.add_argument("-q", "--out_prefix", type=str, help="Output file prefix for the report")
+    parser.add_argument("-q", "--prefix", type=str, help="Output file prefix for the report")
     parser.add_argument("-o", "--output", type=str, help="Path to output file", default="alarm_indicator_file.txt")
     parser.add_argument(
         "-p",
@@ -123,11 +123,11 @@ def main():
         )
         sys.exit(1)
 
-    if not os.path.isfile(args.assembly):
-        sys.stderr.write(f"The assembly FASTA file was not found at the expected location ({args.assembly})\n")
+    if not os.path.isfile(args.fai):
+        sys.stderr.write(f"The assembly FASTA file was not found at the expected location ({args.fai})\n")
         sys.exit(1)
 
-    seq_dict = get_sequence_lengths(args.assembly)
+    seq_dict = get_sequence_lengths(args.fai)
     seq_dict = load_fcs_gx_results(seq_dict, args.summary_path)
 
     total_assembly_length = 0
@@ -162,7 +162,7 @@ def main():
         "REVIEW_OR_INFO": review_info,
     }
 
-    with open(f"{args.out_prefix}_raw_report.txt", "a") as f:
+    with open(f"{args.prefix}_raw_report.txt", "a") as f:
         for x, y in report_dict.items():
             print(f"{x}: {y}", file=f)
 
@@ -174,11 +174,11 @@ def main():
         # IF CONTAMINATING SEQ FOUND FILL FILE WITH ABNORMAL CONTAM
         if param_value > alarm_threshold_for_parameter[param]:
             alarm_list.append(
-                f"YES_ABNORMAL_CONTAMINATION: Stage 1 decon for {args.assembly}: {param} == {param_value} : Alarm threshold == {alarm_threshold}\n"
+                f"YES_ABNORMAL_CONTAMINATION: Stage 1 decon for {args.fai}: {param} == {param_value} : Alarm threshold == {alarm_threshold}\n"
             )
         else:
             alarm_list.append(
-                f"NO_ABNORMAL_CONTAMINATION: Stage 1 decon for {args.assembly}: {param} == {param_value} : Alarm threshold == {alarm_threshold}\n"
+                f"NO_ABNORMAL_CONTAMINATION: Stage 1 decon for {args.fai}: {param} == {param_value} : Alarm threshold == {alarm_threshold}\n"
             )
 
     # Separated out to ensure that the file is written in one go and doesn't confuse Nextflow

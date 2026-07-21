@@ -31,28 +31,16 @@ def parse_args():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent(DESCRIPTION),
     )
-    parser.add_argument("fasta", type=str, help="Path to the assembly FASTA file")
+    parser.add_argument("fai", type=str, help="Path to the assembly FASTA file")
     parser.add_argument("-t", "--tiara", type=str, help="Path to the Tiara summary file")
     parser.add_argument("-s", "--fcsgx_summary", type=str, help="Path to the fcs-gx_summary.csv file")
-    parser.add_argument("--out_prefix", type=str, help="Prefix for output files", default="assembly")
-    parser.add_argument(
-        "-r",
-        "--rejected_seq",
-        type=str,
-        help="Path to the assembly_filtering_removed_sequences.txt file",
-        default="assembly_filtering_removed_sequences.txt",
-    )
+    parser.add_argument("-p", "--prefix", type=str, help="Prefix for output files", default="assembly")
     parser.add_argument("-i", "--taxid", type=int, help="NCBI taxonomy ID of the species")
     parser.add_argument(
         "-n",
         "--ncbi_rankedlineage_path",
         type=str,
         help="Path to the rankedlineage.dmp of NCBI taxonomy",
-    )
-    parser.add_argument(
-        "--generate_decontaminated_assembly",
-        action="store_true",
-        help="Generate a decontaminated assembly FASTA file.",
     )
     parser.add_argument(
         "--tiara_action_mode",
@@ -206,7 +194,7 @@ def output_file(data: list, filename: str) -> None:
     Writes list of data to a file
     """
     with open(filename, "w") as output:
-        print(data, file=output)
+        print(*data, file=output, sep="\n")
 
 
 def main():
@@ -267,12 +255,13 @@ def main():
 
     # Export file of scaffs to keep and remove
     scaffs_to_keep = [s for s in scaffs if s not in scaffs_to_exclude]
+    scaffs_to_keep = ["EMPTY"] if len(scaffs_to_keep) == 0 else scaffs_to_keep
 
-    output_file(scaffs_to_keep, f"{args.out_prefix}_autofiltered.txt")
-    output_file(scaffs_to_exclude, args.rejected_seq)
+    output_file(scaffs_to_keep, f"{args.prefix}_autofiltered.txt")
+    output_file(scaffs_to_exclude, f"{args.prefix}_removed_scaffolds.txt")
 
     out_csv_list = generate_report(combined_action_dict)
-    output_file(out_csv_list, f"{args.out_prefix}_ABNORMAL_CHECK.csv")
+    output_file(out_csv_list, f"{args.prefix}_ABNORMAL_CHECK.csv")
 
 
 if __name__ == "__main__":

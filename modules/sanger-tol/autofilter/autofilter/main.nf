@@ -8,16 +8,16 @@ process AUTOFILTER_AUTOFILTER {
         'quay.io/biocontainers/python:3.14' }"
 
     input:
-    tuple val(meta),        path(reference)
+    tuple val(meta),        path(fai)
     tuple val(tiara_meta),  path(tiara_txt)
     tuple val(fcs_meta),    path(fcs_csv)
     val taxid
     path ncbi_rankedlineage
 
     output:
-    tuple val(meta), path("*autofiltered.txt"),                         emit: decontaminated_scaffolds, optional: true
-    tuple val(meta), path("*ABNORMAL_CHECK.csv"),                       emit: fcs_tiara_summary
-    tuple val(meta), path("assembly_filtering_removed_sequences.txt"),  emit: removed_seqs
+    tuple val(meta), path("*_autofiltered.txt"),       emit: keep_scaffs
+    tuple val(meta), path("*_removed_scaffolds.txt"),  emit: remove_scaffolds
+    tuple val(meta), path("*_ABNORMAL_CHECK.csv"),     emit: fcs_tiara_summary
     tuple val("${task.process}"), val('python'), eval('python --version | sed "s/Python //"'), emit: versions_python, topic: versions
     tuple val("${task.process}"), val('autofilter'), eval('autofilter.py --version | cut -d" " -f2'), emit: versions_autofilter, topic: versions
 
@@ -29,19 +29,21 @@ process AUTOFILTER_AUTOFILTER {
     def args    = task.ext.args     ?: ""
     """
     autofilter.py \\
-        $reference \\
+        $fai \\
         --taxid $taxid \\
         --tiara $tiara_txt \\
         --fcsgx_sum $fcs_csv \\
-        --out_prefix $prefix \\
+        --prefix $prefix \\
         --ncbi_rankedlineage_path $ncbi_rankedlineage \\
         ${args}
     """
 
     stub:
+    def prefix  = task.ext.prefix   ?: "${meta.id}"
+
     """
-    touch autofiltered.fasta
-    touch ABNORMAL_CHECK.csv
-    touch assembly_filtering_removed_sequences.txt
+    touch ${prefix}_autofiltered.txt
+    touch ${prefix}_removed_scaffolds.txt
+    touch ${prefix}_ABNORMAL_CHECK.csv
     """
 }

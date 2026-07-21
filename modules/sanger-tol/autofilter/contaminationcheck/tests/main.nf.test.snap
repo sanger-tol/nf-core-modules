@@ -7,7 +7,7 @@
                         {
                             "id": "Laetiporus_sulphureus"
                         },
-                        "alarm_indicator_file.txt:md5,57a210036dfeb1294a1bef407cc8a196"
+                        "alarm_indicator_file.txt:md5,557d7f2913eaa4d54060b511b810b55d"
                     ]
                 ],
                 "1": [
@@ -30,7 +30,7 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "python",
-                        "3.14.3"
+                        "3.14.0"
                     ]
                 ],
                 "4": [
@@ -45,7 +45,7 @@
                         {
                             "id": "Laetiporus_sulphureus"
                         },
-                        "alarm_indicator_file.txt:md5,57a210036dfeb1294a1bef407cc8a196"
+                        "alarm_indicator_file.txt:md5,557d7f2913eaa4d54060b511b810b55d"
                     ]
                 ],
                 "indicator_file": [
@@ -75,12 +75,12 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "python",
-                        "3.14.3"
+                        "3.14.0"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-07-08T14:12:49.560272143",
+        "timestamp": "2026-07-21T13:04:40.223074732",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -117,7 +117,7 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "python",
-                        "3.14.3"
+                        "3.14.0"
                     ]
                 ],
                 "4": [
@@ -162,12 +162,12 @@
                     [
                         "AUTOFILTER_CONTAMINATIONCHECK",
                         "python",
-                        "3.14.3"
+                        "3.14.0"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-07-08T14:13:00.521816804",
+        "timestamp": "2026-07-21T12:57:52.785238206",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

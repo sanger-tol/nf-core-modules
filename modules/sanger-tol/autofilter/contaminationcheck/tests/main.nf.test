@@ -10,37 +10,21 @@ nextflow_process {
     tag "modules_sangertol"
     tag "autofilter"
     tag "autofilter/contaminationcheck"
-    tag "autofilter/sanitisefasta"
-    tag "nf-core/gunzip"
-    tag "subworkflows/../../modules/nf-core/gunzip"
+    tag "autofilter/filterfasta"
 
     setup {
 
-        nfcoreInitialise("${launchDir}/library/")
-        nfcoreInstall("${launchDir}/library/", ["gunzip"])
-        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
-
-        run("GUNZIP") {
-            script "../../../../nf-core/gunzip/main.nf"
+        run("AUTOFILTER_FILTERFASTA") {
+            script "../../../../sanger-tol/autofilter/filterfasta/main.nf"
             process {
                 """
                 input[0] = [
-                    [ id: "Laetiporus_sulphureus" ],
-                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true)
+                    [id: "Laetiporus_sulphureus"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
                 ]
                 """
             }
         }
-
-        run("AUTOFILTER_SANITISEFASTA") {
-            script "../../../../sanger-tol/autofilter/sanitisefasta/main.nf"
-            process {
-                """
-                input[0] = GUNZIP.out.gunzip
-                """
-            }
-        }
-
     }
 
     test("Laetiporus_sulphureus - fasta") {
@@ -48,7 +32,10 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = AUTOFILTER_SANITISEFASTA.out.fasta
+                input[0] = [
+                    [id: "Laetiporus_sulphureus"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
+                ]
                 input[1] = channel.of(
                     [
                         [ id: "Laetiporus_sulphureus" ],
@@ -74,7 +61,10 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = GUNZIP.out.gunzip
+                input[0] = [
+                    [id: "Laetiporus_sulphureus"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
+                ]
                 input[1] = channel.of(
                     [
                         [ id: "Laetiporus_sulphureus" ],
