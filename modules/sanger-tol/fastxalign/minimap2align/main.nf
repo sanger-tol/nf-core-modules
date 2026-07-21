@@ -44,9 +44,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def bam_output  = bam_format ? "-a | ${pg_part}${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
     def rg_arg = rglines ? rglines.collect { line ->
             // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-            def l = line.contains("SM:") ? line
-                : meta.sample ? "${line}\tSM:${meta.sample}"
-                : "${line}\tSM:${meta.id}"
+            def l = line.contains("SM:") ? line : "${line}\tSM:${meta.id}"
             "-R '${l.replaceAll("\t", "\\\\t")}'"
         }.join(' ')
         : ''
