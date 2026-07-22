@@ -32,10 +32,10 @@ input:
         Input channel containing YAML file for HiFiTrimmer adapter trimming, specific to each read files, paired by meta information.
         Structure: [ val(meta), path(yaml) ]
       pattern: "*.yaml"
-  - val_adapter_fasta:
+  - val_hifi_adapter:
       type: file
       description: |
-        Adapter database for BLASTN adapter detection.
+        Path to Adapter database or Adapter fasta for BLASTN adapter detection.
       pattern: "*.(fasta|fa|fna)"
   - val_uli_primers:
       type: file
