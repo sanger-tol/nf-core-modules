@@ -32,7 +32,7 @@ process FCSGX_RUNGX {
     ( ramdisk_path ?
         """
         # Copy DB to RAM-disk when supplied. Otherwise, rungx is very slow.
-        rclone copy ${gxdb} ${database}
+        rclone copy --ignore-existing ${gxdb} ${database}
         """ : ""
     )
 
