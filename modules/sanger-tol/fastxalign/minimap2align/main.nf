@@ -8,7 +8,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
         'community.wave.seqera.io/library/htslib_minimap2_pyfastx_samtools_pruned:05af6ab781364616' }"
 
     input:
-    tuple val(meta),  path(fastx), path(fxi), val(rglines), val(pg_lines)
+    tuple val(meta),  path(fastx), path(fxi), val(pg_lines)
     tuple val(meta2), path(index), path(reference)
     tuple val(chunkn), val(range)
     val bam_format
@@ -34,7 +34,7 @@ process FASTXALIGN_MINIMAP2ALIGN {
     // either have to copy this file to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true
     // in your nextflow.config file.
-    def args       = task.ext.args  ?: ''
+    def args        = task.ext.args  ?: ''
     def args2       = task.ext.args2  ?: ''
     def args3       = task.ext.args3  ?: ''
     def prefix      = task.ext.prefix ?: "${fastx}.${chunkn}.${meta.id}"
@@ -42,20 +42,13 @@ process FASTXALIGN_MINIMAP2ALIGN {
     def sort_bam    = "samtools sort -@ ${task.cpus > 1 ? task.cpus - 1 : 1} -o ${prefix}.bam -T ${prefix}_sort_tmp ${args3} -"
     def pg_part     = pg_lines ? "insert_cram_pg_header.awk -v pgfile=\"${prefix}_pg_lines.tmp\" | " : ''
     def bam_output  = bam_format ? "-a | ${pg_part}${post_filter} ${sort_bam}" : "| bgzip -@ ${task.cpus} > ${prefix}.paf.gz"
-    def rg_arg = rglines ? rglines.collect { line ->
-            // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-            def l = line.contains("SM:") ? line : "${line}\tSM:${meta.id}"
-            "-R '${l.replaceAll("\t", "\\\\t")}'"
-        }.join(' ')
-        : ''
-    def pg_setup   = pg_lines ? "printf '%b\\n' ${pg_lines.collect { "'${it}'" }.join(' ')} > ${prefix}_pg_lines.tmp" : ''
-    def pg_cleanup = pg_lines ? "rm ${prefix}_pg_lines.tmp" : ''
+    def pg_setup    = pg_lines ? "printf '%b\\n' ${pg_lines.collect { line -> "'${line}'" }.join(' ')} > ${prefix}_pg_lines.tmp" : ''
     """
     ${pg_setup}
     slice_fasta.py slice ${fastx} ${range[0]} ${range[1]} | \\
-        minimap2 -t${task.cpus} ${args} ${index} ${rg_arg} - \\
+        minimap2 -t${task.cpus} ${args} ${index} - \\
         ${bam_output}
-    ${pg_cleanup}
+
     """
 
     stub:
