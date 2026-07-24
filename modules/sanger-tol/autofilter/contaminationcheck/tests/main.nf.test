@@ -1,0 +1,85 @@
+nextflow_process {
+
+    name "Test Process AUTOFILTER_CONTAMINATIONCHECK"
+    script "../main.nf"
+    process "AUTOFILTER_CONTAMINATIONCHECK"
+
+    config "../nextflow.config"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "autofilter"
+    tag "autofilter/contaminationcheck"
+    tag "autofilter/filterfasta"
+
+    setup {
+
+        run("AUTOFILTER_FILTERFASTA") {
+            script "../../../../sanger-tol/autofilter/filterfasta/main.nf"
+            process {
+                """
+                input[0] = [
+                    [id: "Laetiporus_sulphureus"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+    }
+
+    test("Laetiporus_sulphureus - fasta") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "Laetiporus_sulphureus"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
+                ]
+                input[1] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file(params.modules_testdata_base_path + "Laetiporus_sulphureus/analysis/gfLaeSulp1.1/autofilter/gfLaeSulp1.1_PRIMARY_ABNORMAL_CHECK.csv", checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("Laetiporus_sulphureus - fasta - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "Laetiporus_sulphureus"],
+                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz.fai', checkIfExists: true)
+                ]
+                input[1] = channel.of(
+                    [
+                        [ id: "Laetiporus_sulphureus" ],
+                        file(params.modules_testdata_base_path + "Laetiporus_sulphureus/analysis/gfLaeSulp1.1/autofilter/gfLaeSulp1.1_PRIMARY_ABNORMAL_CHECK.csv", checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

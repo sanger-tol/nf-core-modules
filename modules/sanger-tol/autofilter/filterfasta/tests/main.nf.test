@@ -1,0 +1,78 @@
+nextflow_process {
+
+    name "Test Process AUTOFILTER_FILTERFASTA"
+    script "../main.nf"
+    process "AUTOFILTER_FILTERFASTA"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "autofilter"
+    tag "autofilter/filterfasta"
+
+    test("ilDryDodo1 - sizes") {
+        config "../nextflow.config"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "ilDryDodo1"],
+                    file(params.modules_testdata_base_path + 'resources/modules/pretextannotate/ilDryDodo1.1.sizes', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("Cantharis_rufa - fai") {
+        config "./small.config"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "Cantharis_rufa"],
+                    file(params.modules_testdata_base_path + 'Cantharis_rufa/assembly/GCA_947369205.1_OX376310.1_CANBKR010000003.1.fasta.gz.fai', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("Laetiporus_sulphureus - fasta - stub") {
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id: "ilDryDodo1"],
+                    file(params.modules_testdata_base_path + 'resources/modules/pretextannotate/ilDryDodo1.1.sizes', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assertAll(
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}
