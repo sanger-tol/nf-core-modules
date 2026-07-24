@@ -68,19 +68,16 @@ workflow FASTX_MAP_LONG_READS {
     //
     // Module: Map slices of each FASTA file to the reference
     //
+    // Resolve optional PG lines once on unique meta IDs, then fan out over all FASTX chunks.
+    ch_pg_full = ch_assemblies
+        .join(ch_pg_lines, by: 0, remainder: true)
+        .map { meta, _asm, pglines -> [ meta, pglines ?: [] ] }
 
-    ch_fasta_with_slices = ch_fastx_chunks
+    ch_fasta_with_slices_added_pg = ch_fastx_chunks
         .combine(ch_assemblies, by: 0)
         .combine(MINIMAP2_INDEX.out.index, by: 0)
         .transpose()
-
-    ch_fasta_with_slices_no_pg = ch_fasta_with_slices
-        .join(ch_pg_lines, by: 0, remainder: true)
-        .filter { _meta, _fasta, _fxi, _chunkn, _slices, _asm, _index, pglines -> !pglines }
-        .map { meta, fasta, fxi, chunkn, slices, asm, index, _pglines -> [meta, fasta, fxi, chunkn, slices, asm, index, []] }
-
-    ch_fasta_with_slices_added_pg = ch_fasta_with_slices.combine(ch_pg_lines, by: 0)
-        .mix(ch_fasta_with_slices_no_pg)
+        .combine(ch_pg_full, by: 0)
         .multiMap { meta, fasta, fxi, chunkn, slices, asm, index, pglines ->
             fastx:     [ meta, fasta, fxi, pglines ]
             reference: [ meta, index, asm ]
