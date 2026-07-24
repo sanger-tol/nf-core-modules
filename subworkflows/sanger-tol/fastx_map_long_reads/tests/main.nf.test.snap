@@ -78,23 +78,23 @@
                     "@PG\tID:pseudo_tool\tPN:test_program\tVN:1.0",
                     "@PG\tID:minimap2\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool",
                     "@PG\tID:samtools\tPN:samtools\tPP:minimap2\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.0.test.bam -T HiFi.reads.fasta.0.test_sort_tmp -",
-                    "@PG\tID:pseudo_tool-668B85D9\tPN:test_program\tVN:1.0",
-                    "@PG\tID:minimap2-037C5D4F\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-668B85D9",
-                    "@PG\tID:samtools-520E35ED\tPN:samtools\tPP:minimap2-037C5D4F\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.1.test.bam -T HiFi.reads.fasta.1.test_sort_tmp -",
-                    "@PG\tID:pseudo_tool-5C228338\tPN:test_program\tVN:1.0",
-                    "@PG\tID:minimap2-66A7E4EB\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-5C228338",
-                    "@PG\tID:samtools-6D63EF71\tPN:samtools\tPP:minimap2-66A7E4EB\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.2.test.bam -T HiFi.reads.fasta.2.test_sort_tmp -",
-                    "@PG\tID:pseudo_tool-46C23A7C\tPN:test_program\tVN:1.0",
-                    "@PG\tID:minimap2-3C538AC5\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-46C23A7C",
-                    "@PG\tID:samtools-75A9ED85\tPN:samtools\tPP:minimap2-3C538AC5\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.3.test.bam -T HiFi.reads.fasta.3.test_sort_tmp -",
-                    "@PG\tID:pseudo_tool-54221D23\tPN:test_program\tVN:1.0",
-                    "@PG\tID:minimap2-6D090F8B\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-54221D23",
-                    "@PG\tID:samtools-233140C2\tPN:samtools\tPP:minimap2-6D090F8B\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.4.test.bam -T HiFi.reads.fasta.4.test_sort_tmp -",
+                    "@PG\tID:pseudo_tool-HASH\tPN:test_program\tVN:1.0",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-HASH",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.1.test.bam -T HiFi.reads.fasta.1.test_sort_tmp -",
+                    "@PG\tID:pseudo_tool-HASH\tPN:test_program\tVN:1.0",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-HASH",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.2.test.bam -T HiFi.reads.fasta.2.test_sort_tmp -",
+                    "@PG\tID:pseudo_tool-HASH\tPN:test_program\tVN:1.0",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-HASH",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.3.test.bam -T HiFi.reads.fasta.3.test_sort_tmp -",
+                    "@PG\tID:pseudo_tool-HASH\tPN:test_program\tVN:1.0",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -\tPP:pseudo_tool-HASH",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.4.test.bam -T HiFi.reads.fasta.4.test_sort_tmp -",
                     "@PG\tID:samtools.1\tPN:samtools\tPP:samtools\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam",
-                    "@PG\tID:samtools.2\tPN:samtools\tPP:samtools-520E35ED\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam",
-                    "@PG\tID:samtools.3\tPN:samtools\tPP:samtools-6D63EF71\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam",
-                    "@PG\tID:samtools.4\tPN:samtools\tPP:samtools-75A9ED85\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam",
-                    "@PG\tID:samtools.5\tPN:samtools\tPP:samtools-233140C2\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam"
+                    "@PG\tID:samtools.2\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam",
+                    "@PG\tID:samtools.3\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam",
+                    "@PG\tID:samtools.4\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam",
+                    "@PG\tID:samtools.5\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test.bam 1/HiFi.reads.fasta.0.test.bam 2/HiFi.reads.fasta.1.test.bam 3/HiFi.reads.fasta.2.test.bam 4/HiFi.reads.fasta.3.test.bam 5/HiFi.reads.fasta.4.test.bam"
                 ],
                 "test1.bam": [
                     "@HD\tVN:1.6\tSO:coordinate",
@@ -110,19 +110,19 @@
                     "@SQ\tSN:h1tg000010l\tLN:23205",
                     "@PG\tID:minimap2\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
                     "@PG\tID:samtools\tPN:samtools\tPP:minimap2\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.0.test1.bam -T HiFi.reads.fasta.0.test1_sort_tmp -",
-                    "@PG\tID:minimap2-668B85D9\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
-                    "@PG\tID:samtools-037C5D4F\tPN:samtools\tPP:minimap2-668B85D9\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.1.test1.bam -T HiFi.reads.fasta.1.test1_sort_tmp -",
-                    "@PG\tID:minimap2-520E35ED\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
-                    "@PG\tID:samtools-5C228338\tPN:samtools\tPP:minimap2-520E35ED\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.2.test1.bam -T HiFi.reads.fasta.2.test1_sort_tmp -",
-                    "@PG\tID:minimap2-66A7E4EB\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
-                    "@PG\tID:samtools-6D63EF71\tPN:samtools\tPP:minimap2-66A7E4EB\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.3.test1.bam -T HiFi.reads.fasta.3.test1_sort_tmp -",
-                    "@PG\tID:minimap2-46C23A7C\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
-                    "@PG\tID:samtools-3C538AC5\tPN:samtools\tPP:minimap2-46C23A7C\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.4.test1.bam -T HiFi.reads.fasta.4.test1_sort_tmp -",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.1.test1.bam -T HiFi.reads.fasta.1.test1_sort_tmp -",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.2.test1.bam -T HiFi.reads.fasta.2.test1_sort_tmp -",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.3.test1.bam -T HiFi.reads.fasta.3.test1_sort_tmp -",
+                    "@PG\tID:minimap2-HASH\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -t2 -a baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.mmi -",
+                    "@PG\tID:samtools-HASH\tPN:samtools\tPP:minimap2-HASH\tVN:1.23.1\tCL:samtools sort -@ 1 -o HiFi.reads.fasta.4.test1.bam -T HiFi.reads.fasta.4.test1_sort_tmp -",
                     "@PG\tID:samtools.1\tPN:samtools\tPP:samtools\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam",
-                    "@PG\tID:samtools.2\tPN:samtools\tPP:samtools-037C5D4F\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam",
-                    "@PG\tID:samtools.3\tPN:samtools\tPP:samtools-5C228338\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam",
-                    "@PG\tID:samtools.4\tPN:samtools\tPP:samtools-6D63EF71\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam",
-                    "@PG\tID:samtools.5\tPN:samtools\tPP:samtools-3C538AC5\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam"
+                    "@PG\tID:samtools.2\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam",
+                    "@PG\tID:samtools.3\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam",
+                    "@PG\tID:samtools.4\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam",
+                    "@PG\tID:samtools.5\tPN:samtools\tPP:samtools-HASH\tVN:1.24\tCL:samtools merge --threads 1 --reference baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa.gz test1.bam 1/HiFi.reads.fasta.0.test1.bam 2/HiFi.reads.fasta.1.test1.bam 3/HiFi.reads.fasta.2.test1.bam 4/HiFi.reads.fasta.3.test1.bam 5/HiFi.reads.fasta.4.test1.bam"
                 ]
             },
             [
@@ -130,10 +130,10 @@
                 "test.bam"
             ]
         ],
-        "timestamp": "2026-07-24T15:02:08.80546958",
+        "timestamp": "2026-07-24T19:45:03.023380224",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "25.10.4"
         }
     },
     "Undibacterium unclassified - fasta - paf": {

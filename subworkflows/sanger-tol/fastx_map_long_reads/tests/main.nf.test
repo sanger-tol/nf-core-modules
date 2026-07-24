@@ -101,8 +101,12 @@ nextflow_workflow {
                     : (text instanceof Collection ? text : (text?.toString()?.readLines() ?: []))
                 lines
                     .collect { line ->
-                        line.toString()
+                        def normalized = line.toString()
                             .replaceAll(/\bUR:\/(?:[^\/\s]+\/)*([^\/\s]+)/, 'UR:$1')
+                        if (normalized.startsWith('@PG\t')) {
+                            normalized = normalized.replaceAll(/(ID|PP):([^\t]+)-[0-9A-F]{8}\b/, '$1:$2-HASH')
+                        }
+                        normalized
                     }
             }
             assert workflow.success
