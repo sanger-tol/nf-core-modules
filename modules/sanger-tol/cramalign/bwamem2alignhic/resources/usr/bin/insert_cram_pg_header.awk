@@ -23,21 +23,21 @@ function get_id(record) {
 /^@PG/ && !pg_i {
     aid = get_id($0)
     pg_count = 0
+    last_id = ""
     while ((getline line < pgfile) > 0) {
+        print line
         pg_lines[++pg_count] = line
-        if ((id = get_id(line)) != "")
+        if ((id = get_id(line)) != "") {
             seen[id] = 1
+            last_id = id
+        }
     }
     close(pgfile)
-    last_id = ""
-    for (k=1; k<=pg_count; k++) {
-        last_id = get_id(pg_lines[k])
-        print pg_lines[k]
-    }
-    new_aid = aid
-    if (aid in seen) { sfx = 1; while ((aid "." sfx) in seen) sfx++; new_aid = aid "." sfx }
     pg_i = 1
-    if (new_aid != aid) {
+    if (aid in seen) {
+        sfx = 1
+        while ((aid "." sfx) in seen) sfx++
+        new_aid = aid "." sfx
         n = split($0, af, "\t"); out = ""
         for (j=1; j<=n; j++) { f = af[j]; if (f ~ /^ID:/) f = "ID:" new_aid; out = out (j > 1 ? "\t" : "") f }
         $0 = out
