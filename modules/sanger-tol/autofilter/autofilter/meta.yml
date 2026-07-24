@@ -75,7 +75,7 @@ output:
             e.g. `[ id:'sample1' ]`
       - "*_removed_scaffolds.txt":
           type: file
-          description: TXT file containing references
+          description: TXT file of scaffold names filtered out by by FCSGX and Tiara analysis.
           pattern: "*_removed_scaffolds.txt"
           ontologies:
             - edam: "http://edamontology.org/format_2330" # TXT
