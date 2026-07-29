@@ -1,4 +1,39 @@
 {
+    "grTriPseu1": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "coverage_file": [
+                    
+                ],
+                "gap_file": [
+                    
+                ],
+                "repeat_file": [
+                    
+                ],
+                "telo_file": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-07-28T13:55:24.350062571",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
     "Escherichia_coli": {
         "content": [
             {

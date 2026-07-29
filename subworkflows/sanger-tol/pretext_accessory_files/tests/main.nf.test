@@ -44,7 +44,6 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/bedtools/intersect"
     tag "subworkflows/../../modules/nf-core/windowmasker/ustat"
     tag "subworkflows/../../modules/nf-core/windowmasker/mkcounts"
-    tag "modules/nf-core/gunzip"
     tag "modules/nf-core/samtools/faidx"
     tag "modules/nf-core/htslib/bgziptabix"
     tag "modules/nf-core/gawk"
@@ -60,44 +59,60 @@ nextflow_workflow {
 
 
     setup {
-        run("GUNZIP"){
-            script "../../../../modules/nf-core/gunzip/main.nf"
-            process {
-                """
-                input[0] = [
-                    [ id: "Laetiporus_sulphureus" ],
-                    file(params.modules_testdata_base_path + 'Laetiporus_sulphureus/assembly/release/gfLaeSulp1.1/insdc/GCA_927399515.1.fasta.gz', checkIfExists: true)
-                ]
-                """
-            }
-        }
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "gawk",
+                "gnu/sort",
+                "samtools/faidx",
+                "bedtools/intersect",
+                "bedtools/makewindows",
+                "bedtools/genomecov",
+                "bedtools/map",
+                "ucsc/bedgraphtobigwig",
+                "htslib/bgziptabix",
+                "tabix/bgziptabix",
+                "seqtk/cutn",
+                "find/concatenate",
+                "minimap2/align",
+                "windowmasker/ustat",
+                "windowmasker/mkcounts",
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
 
         run("SAMTOOLS_FAIDX"){
             script "../../../../modules/nf-core/samtools/faidx/main.nf"
             process {
                 """
-                input[0] = GUNZIP.out.gunzip.map { meta, fasta -> [meta, fasta, []] }
+                input[0] = [
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/assembly/draft/grTriPseu1.fa', checkIfExists: true)
+                ]
                 input[1] = channel.of(true)
                 """
             }
         }
     }
 
-    test ( "Escherichia_coli" ) {
+    test ( "grTriPseu1" ) {
 
         config "../nextflow.config"
 
         when {
             workflow {
                 """
-                input[0] = GUNZIP.out.gunzip
+                input[0] = [
+                    [ id: "test" ],
+                    file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/assembly/draft/grTriPseu1.fa', checkIfExists: true)
+                ]
                 input[1] = SAMTOOLS_FAIDX.out.sizes
                 input[2] = channel.of(
                     [
                         [ id:'test', readtype:'ont' ],
                         [
-                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true),
-                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true)
+                            file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/genomic_data/pacbio/seqkitPacbio50000.fasta.gz', checkIfExists: true),
                         ]
                     ]
                 )

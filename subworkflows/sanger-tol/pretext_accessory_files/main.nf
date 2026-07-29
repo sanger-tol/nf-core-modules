@@ -38,7 +38,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     // SUBWORKFLOW: GENERATE TELOMERE WINDOW FILES WITH LONGREAD READS AND REFERENCE
     //
     TELO_FINDER (
-        ch_reference_tuple.filter{ val_run_telomere },
+        ch_reference_tuple.filter { val_run_telomere },
         ch_teloseq,
         val_split_telomere,
         false
@@ -53,7 +53,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     // SUBWORKFLOW: GENERATES A BIGWIG FOR A REPEAT DENSITY TRACK
     //
     REPEAT_DENSITY (
-        ch_reference_tuple.filter{ val_run_repeat_den },
+        ch_reference_tuple.filter { val_run_repeat_den },
         ch_reference_sizes
     )
 
@@ -63,8 +63,8 @@ workflow PRETEXT_ACCESSORY_FILES {
     //
     READ_COVERAGE (
         ch_longread_reads,
-        ch_reference_tuple.filter{ val_run_coverage },
-        ch_reference_sizes.map{ _meta, file -> file }
+        ch_reference_tuple.filter { val_run_coverage },
+        ch_reference_sizes.map { _meta, file -> file }
     )
 
 
@@ -87,7 +87,7 @@ workflow PRETEXT_ACCESSORY_FILES {
 
     emit:
     gap_file            = GAP_FINDER.out.gap_file
-    //repeat_file         = REPEAT_DENSITY.out.repeat_density
+    repeat_file         = REPEAT_DENSITY.out.repeat_density
     telo_file           = telomere_data                     // This is the possible collection of telomere files
     coverage_file       = READ_COVERAGE.out.bigwig
 }
