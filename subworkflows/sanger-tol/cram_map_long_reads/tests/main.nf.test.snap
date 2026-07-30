@@ -34,10 +34,10 @@
                 "test: SM:mMelMel3"
             ]
         ],
-        "timestamp": "2026-03-06T10:54:38.332646",
+        "timestamp": "2026-07-20T16:24:42.682209021",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
         }
     },
     "meles meles - mismatch meta test": {
@@ -125,10 +125,10 @@
                 "test.bam.csi"
             ]
         ],
-        "timestamp": "2026-03-06T10:53:26.260999",
+        "timestamp": "2026-07-20T16:22:02.793364078",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
         }
     }
 }

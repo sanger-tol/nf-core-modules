@@ -1,0 +1,263 @@
+{
+    "ilDryDodo1 - sizes": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_mapping.txt:md5,8640b3bf023e6538b537818617704684"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_new_scaffolds.txt:md5,9adf9303452b1502d85dfb9e8dc1e55c"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_stats.json:md5,1524f2dfd654ab6808ce264e13f6e6b3"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "python",
+                        "3.14.3"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "filter_fasta",
+                        "1.0.0"
+                    ]
+                ],
+                "mapping_file": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_mapping.txt:md5,8640b3bf023e6538b537818617704684"
+                    ]
+                ],
+                "new_scaffolds": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_new_scaffolds.txt:md5,9adf9303452b1502d85dfb9e8dc1e55c"
+                    ]
+                ],
+                "stats": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_stats.json:md5,1524f2dfd654ab6808ce264e13f6e6b3"
+                    ]
+                ],
+                "versions_filter_fasta": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "filter_fasta",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "python",
+                        "3.14.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-21T12:05:20.079370284",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Cantharis_rufa - fai": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "Cantharis_rufa"
+                        },
+                        "Cantharis_rufa_mapping.txt:md5,2acc41be28e418371e49dcf76966f4fc"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "Cantharis_rufa"
+                        },
+                        "Cantharis_rufa_new_scaffolds.txt:md5,9d6fe63b72f774334523e40abce6884f"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "Cantharis_rufa"
+                        },
+                        "Cantharis_rufa_stats.json:md5,741865109e10e9918f206291ed33de34"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "python",
+                        "3.14.3"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "filter_fasta",
+                        "1.0.0"
+                    ]
+                ],
+                "mapping_file": [
+                    [
+                        {
+                            "id": "Cantharis_rufa"
+                        },
+                        "Cantharis_rufa_mapping.txt:md5,2acc41be28e418371e49dcf76966f4fc"
+                    ]
+                ],
+                "new_scaffolds": [
+                    [
+                        {
+                            "id": "Cantharis_rufa"
+                        },
+                        "Cantharis_rufa_new_scaffolds.txt:md5,9d6fe63b72f774334523e40abce6884f"
+                    ]
+                ],
+                "stats": [
+                    [
+                        {
+                            "id": "Cantharis_rufa"
+                        },
+                        "Cantharis_rufa_stats.json:md5,741865109e10e9918f206291ed33de34"
+                    ]
+                ],
+                "versions_filter_fasta": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "filter_fasta",
+                        "1.0.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "python",
+                        "3.14.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-21T12:05:26.434789651",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Laetiporus_sulphureus - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_mapping.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_new_scaffolds.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "python",
+                        "3.14.3"
+                    ]
+                ],
+                "4": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "filter_fasta",
+                        ""
+                    ]
+                ],
+                "mapping_file": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_mapping.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "new_scaffolds": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_new_scaffolds.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "stats": [
+                    [
+                        {
+                            "id": "ilDryDodo1"
+                        },
+                        "ilDryDodo1_stats.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_filter_fasta": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "filter_fasta",
+                        ""
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "AUTOFILTER_FILTERFASTA",
+                        "python",
+                        "3.14.3"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-07-21T12:05:32.503412153",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

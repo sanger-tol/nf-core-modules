@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "AUTOFILTER_FILTERFASTA"
+description: |
+  A tool to filter FASTA headers and filter sequences by length.
+keywords:
+  - assembly
+  - fasta
+  - filter
+  - length
+tools:
+  - "filter_fasta":
+      description: |
+        Filter FASTA sequences by length to remove sequences below a specified threshold.
+      homepage: "https://github.com/sanger-tol/nf-core-modules"
+      documentation: "https://github.com/sanger-tol/nf-core-modules"
+      tool_dev_url: "https://github.com/sanger-tol/nf-core-modules"
+      licence: ["MIT"]
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - fai:
+        type: file
+        description: Input assembly FAI index file
+        pattern: "*.fai"
+        ontologies: []
+output:
+  mapping_file:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_mapping.txt":
+          type: file
+          description: Mapping file linking old FASTA headers to new ones
+          pattern: "*_mapping.txt"
+          ontologies:
+            - edam: "http://edamontology.org/format_2330" # TXT
+  new_scaffolds:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_new_scaffolds.txt":
+          type: file
+          description: Text file containing only the new scaffold names
+          pattern: "*_new_scaffolds.txt"
+          ontologies:
+            - edam: "http://edamontology.org/format_2330" # TXT
+  stats:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_stats.json":
+          type: file
+          description: Stats file detailing changes
+          pattern: "*_stats.json"
+          ontologies:
+            - edam: "http://edamontology.org/format_3464" # JSON
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_filter_fasta:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - filter_fasta:
+          type: string
+          description: Name of the tool
+      - filter_fasta.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - filter_fasta:
+          type: string
+          description: Name of the tool
+      - filter_fasta.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"

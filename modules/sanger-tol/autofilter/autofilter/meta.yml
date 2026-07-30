@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "AUTOFILTER_AUTOFILTER"
+description: |
+  A tool to filter an assembly fasta based on FCSGX and TIARA summary files.
+  This also generates a join FCSGX/TIARA summary file.
+keywords:
+  - assembly
+  - summary
+  - autofilter
+tools:
+  - "autofilter":
+      description: |
+        Filter an assembly with FCSGX and TIARA summary files.
+      homepage: "https://github.com/sanger-tol/nf-core-modules"
+      documentation: "https://github.com/sanger-tol/nf-core-modules"
+      tool_dev_url: "https://github.com/sanger-tol/nf-core-modules"
+      licence: ["MIT"]
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - fai:
+        type: file
+        description: Assembly reference fai file
+        pattern: "*.fai$"
+        ontologies: []
+  - - tiara_meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - tiara_txt:
+        type: file
+        description: Assembly summary file from Tiara
+        pattern: "*.txt$"
+        ontologies:
+          - edam: "http://edamontology.org/format_2330" # TXT
+  - - fcs_meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - fcs_csv:
+        type: file
+        description: Assembly summary file, a parsed fcsgx output file.
+        pattern: "*.csv$"
+        ontologies:
+          - edam: "http://edamontology.org/format_3752" # CSV
+  - taxid:
+      type: integer
+      description: NCBI Taxonomy ID of the assembly.
+  - ncbi_rankedlineage:
+      type: file
+      description: File containing the NCBI ranked lineage data.
+output:
+  keep_scaffs:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_autofiltered.txt":
+          type: file
+          description: A TXT file of clean scaffold headers, deemed safe by FCSGX and Tiara analysis.
+          pattern: "*_autofiltered.txt"
+          ontologies:
+            - edam: "http://edamontology.org/format_2330" # TXT
+  remove_scaffolds:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_removed_scaffolds.txt":
+          type: file
+          description: TXT file of scaffold names filtered out by by FCSGX and Tiara analysis.
+          pattern: "*_removed_scaffolds.txt"
+          ontologies:
+            - edam: "http://edamontology.org/format_2330" # TXT
+  fcs_tiara_summary:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'sample1' ]`
+      - "*_ABNORMAL_CHECK.csv":
+          type: file
+          description: CSV file containing information about abnormal contamination in files and how they now labeled.
+          pattern: "*_ABNORMAL_CHECK.csv"
+          ontologies:
+            - edam: "http://edamontology.org/format_3752" # CSV
+
+  versions_python:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+  versions_autofilter:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - autofilter:
+          type: string
+          description: Name of the tool
+      - autofilter.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - python:
+          type: string
+          description: Name of the tool
+      - python --version | sed "s/Python //":
+          type: eval
+          description: The expression to obtain the version of the tool
+    - - ${task.process}:
+          type: string
+          description: Name of the process
+      - autofilter:
+          type: string
+          description: Name of the tool
+      - autofilter.py --version | cut -d" " -f2:
+          type: eval
+          description: The expression to obtain the version of the tool
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
