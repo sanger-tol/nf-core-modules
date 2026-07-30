@@ -37,7 +37,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     //
     // SUBWORKFLOW: GENERATE TELOMERE WINDOW FILES WITH LONGREAD READS AND REFERENCE
     //
-    TELO_FINDER (
+    TELO_FINDER(
         ch_reference_tuple.filter { val_run_telomere },
         ch_teloseq,
         val_split_telomere,
@@ -52,7 +52,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     //
     // SUBWORKFLOW: GENERATES A BIGWIG FOR A REPEAT DENSITY TRACK
     //
-    REPEAT_DENSITY (
+    REPEAT_DENSITY(
         ch_reference_tuple.filter { val_run_repeat_den },
         ch_reference_sizes
     )
@@ -61,7 +61,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     //
     // SUBWORKFLOW: Takes reference, longread reads
     //
-    READ_COVERAGE (
+    READ_COVERAGE(
         ch_longread_reads,
         ch_reference_tuple.filter { val_run_coverage },
         ch_reference_sizes.map { _meta, file -> file }

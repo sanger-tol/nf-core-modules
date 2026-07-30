@@ -18,7 +18,6 @@ nextflow_workflow {
     tag "seqtk/cutn"
     tag "gawk"
     tag "gunzip"
-    tag "tabix/bgziptabix"
     tag "telomere/findtelomere"
     tag "htslib/bgziptabix"
     tag "windowmasker/ustat"
@@ -65,6 +64,7 @@ nextflow_workflow {
             [
                 "gawk",
                 "gnu/sort",
+                "gunzip",
                 "samtools/faidx",
                 "bedtools/intersect",
                 "bedtools/makewindows",
@@ -72,7 +72,6 @@ nextflow_workflow {
                 "bedtools/map",
                 "ucsc/bedgraphtobigwig",
                 "htslib/bgziptabix",
-                "tabix/bgziptabix",
                 "seqtk/cutn",
                 "find/concatenate",
                 "minimap2/align",
@@ -82,37 +81,44 @@ nextflow_workflow {
         )
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
 
+        run("GUNZIP"){
+            script "../../../../modules/nf-core/gunzip/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome.fasta.gz', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
         run("SAMTOOLS_FAIDX"){
             script "../../../../modules/nf-core/samtools/faidx/main.nf"
             process {
                 """
-                input[0] = [
-                    [ id: "test" ],
-                    file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/assembly/draft/grTriPseu1.fa', checkIfExists: true)
-                ]
+                input[0] = GUNZIP.out.gunzip.map { meta, file -> tuple(meta, file, []) }
                 input[1] = channel.of(true)
                 """
             }
         }
     }
 
-    test ( "grTriPseu1" ) {
+    test ( "Escherichia_coli" ) {
 
         config "../nextflow.config"
 
         when {
             workflow {
                 """
-                input[0] = [
-                    [ id: "test" ],
-                    file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/assembly/draft/grTriPseu1.fa', checkIfExists: true)
-                ]
+                input[0] = GUNZIP.out.gunzip
                 input[1] = SAMTOOLS_FAIDX.out.sizes
                 input[2] = channel.of(
                     [
                         [ id:'test', readtype:'ont' ],
                         [
-                            file(params.modules_testdata_base_path + 'resources/treeval/TreeValTinyData/genomic_data/pacbio/seqkitPacbio50000.fasta.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true)
                         ]
                     ]
                 )
@@ -125,7 +131,7 @@ nextflow_workflow {
                 input[4]  = true
                 input[5]  = true
                 input[6]  = true
-                input[7]  = false
+                input[7]  = true
                 input[8]  = true
                 input[9]  = false
                 input[10] = false

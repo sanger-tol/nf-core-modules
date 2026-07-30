@@ -3,13 +3,40 @@
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
                 ],
                 "1": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,3f66a9152d793a62f877b733c2336dfd"
+                    ]
                 ],
                 "2": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "grTriPseu1.fa.fwd.telomere.bed:md5,e0d02391507104b4e5d8016a665f72b1"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "grTriPseu1.fa.rev.telomere.bed:md5,e2660736a018faaf9a6d4b77b43f347f"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,2c6abfa011e0542306885a130e52e89c"
+                    ]
                 ],
                 "3": [
                     
@@ -18,17 +45,44 @@
                     
                 ],
                 "gap_file": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
                 ],
                 "repeat_file": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,3f66a9152d793a62f877b733c2336dfd"
+                    ]
                 ],
                 "telo_file": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "grTriPseu1.fa.fwd.telomere.bed:md5,e0d02391507104b4e5d8016a665f72b1"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "grTriPseu1.fa.rev.telomere.bed:md5,e2660736a018faaf9a6d4b77b43f347f"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,2c6abfa011e0542306885a130e52e89c"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-07-28T13:55:24.350062571",
+        "timestamp": "2026-07-30T11:01:43.406922321",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -40,15 +94,35 @@
                 "0": [
                     [
                         {
-                            "id": "Laetiporus_sulphureus"
+                            "id": "test"
                         },
-                        "Laetiporus_sulphureus.gap.bedgraph:md5,4b008271ec0fdac9a3dbf2b33c1e1b0b"
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
                     
                 ],
                 "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.fasta.fwd.telomere.bed:md5,af1c41c4c9b5a9dccc58d223b063acd0"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.fasta.rev.telomere.bed:md5,0c752b48892d877a9a7537d71f0c4433"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,617bcfa939142935bf3e57cb77fbcf9c"
+                    ]
+                ],
+                "3": [
                     
                 ],
                 "coverage_file": [
@@ -57,20 +131,40 @@
                 "gap_file": [
                     [
                         {
-                            "id": "Laetiporus_sulphureus"
+                            "id": "test"
                         },
-                        "Laetiporus_sulphureus.gap.bedgraph:md5,4b008271ec0fdac9a3dbf2b33c1e1b0b"
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
-                "telo_file": [
+                "repeat_file": [
                     
+                ],
+                "telo_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.fasta.fwd.telomere.bed:md5,af1c41c4c9b5a9dccc58d223b063acd0"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.fasta.rev.telomere.bed:md5,0c752b48892d877a9a7537d71f0c4433"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,617bcfa939142935bf3e57cb77fbcf9c"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-07-10T14:01:55.323018779",
+        "timestamp": "2026-07-30T12:01:39.786850026",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.6"
+            "nextflow": "25.10.4"
         }
     }
 }
