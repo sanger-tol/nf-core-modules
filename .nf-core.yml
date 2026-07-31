@@ -1,2 +1,5 @@
 repository_type: modules
 org_path: sanger-tol
+container-registry:
+  - ghcr.io/sanger-tol
+  - gitlab-registry.internal.sanger.ac.uk/tol-it/software/docker-images

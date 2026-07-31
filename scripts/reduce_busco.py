@@ -6,7 +6,7 @@ import shutil
 import sys
 from collections.abc import Container, Sized
 from pathlib import Path
-from typing import Dict, List, Set, TypeAlias
+from typing import TypeAlias
 
 BUSCO_MODES = ("Missing", "Complete", "Duplicated", "Fragmented")
 
@@ -15,12 +15,12 @@ BuscoMode: TypeAlias = str
 GeneName: TypeAlias = str
 
 
-def read_full_table(filename: str) -> tuple[LineageName, Dict[BuscoMode, List[GeneName]]]:
+def read_full_table(filename: str) -> tuple[LineageName, dict[BuscoMode, list[GeneName]]]:
     """Read a Busco full_table file and return a tuple of (lineage, genes)
     where `genes` maps modes (cf BUSCO_MODES) to list(gene_ids).
     """
     lineage = None
-    genes: Dict[BuscoMode, List[GeneName]] = {s: [] for s in BUSCO_MODES}
+    genes: dict[BuscoMode, list[GeneName]] = {s: [] for s in BUSCO_MODES}
     with open(filename) as fh:
         for line in fh:
             if line.startswith("# The lineage dataset is: "):
@@ -37,13 +37,13 @@ def read_full_table(filename: str) -> tuple[LineageName, Dict[BuscoMode, List[Ge
     return (lineage, genes)
 
 
-def read_full_tables(files: List[str]) -> Dict[LineageName, Dict[BuscoMode, Set[GeneName]]]:
+def read_full_tables(files: list[str]) -> dict[LineageName, dict[BuscoMode, set[GeneName]]]:
     """Read multiple full_table files and aggregate genes per-lineage.
 
     Returns `lineage_map` which maps each lineage to a dict of
     mode -> set(gene_ids).
     """
-    lineage_map: Dict[LineageName, Dict[BuscoMode, Set[GeneName]]] = {}
+    lineage_map: dict[LineageName, dict[BuscoMode, set[GeneName]]] = {}
     for ft in files:
         lineage, genes = read_full_table(ft)
         if lineage not in lineage_map:
@@ -79,7 +79,7 @@ class BuscoReducer:
     # - `filters` maps column numbers (0-based) to the only values that are allowed in said
     #    column. Rows that have different values in any of those columns are discarded.
     # - `header` is the number of lines to copy as-is.
-    def filter_tsv(self, filename: str, filters: Dict[int, Container[str]], header: int = 0):
+    def filter_tsv(self, filename: str, filters: dict[int, Container[str]], header: int = 0):
         input = self.input_dir / filename
         output = self.output_dir / filename
         print("filter_tsv", filename)
@@ -131,7 +131,7 @@ class BuscoReducer:
                         fho.write(line)
 
 
-def write_subset_file(output_dir: Path, subset_genes: Dict[str, str]):
+def write_subset_file(output_dir: Path, subset_genes: dict[str, str]):
     with open(output_dir / "SUBSET", "w") as fh:
         for gene, mode in subset_genes.items():
             print(gene, mode, file=fh)
@@ -141,7 +141,7 @@ def main(args):
     print(args)
     all_full_tables = read_full_tables(args.full_table)
 
-    expected_counts: Dict[BuscoMode, int] = dict(
+    expected_counts: dict[BuscoMode, int] = dict(
         zip(
             BUSCO_MODES,
             [
@@ -153,9 +153,9 @@ def main(args):
         )
     )
 
-    selected_genes: Dict[LineageName, Dict[GeneName, BuscoMode]] = {}
-    all_selected_genes: Set[GeneName] = set()
-    all_selected_odb10_genes: Set[GeneName] = set()
+    selected_genes: dict[LineageName, dict[GeneName, BuscoMode]] = {}
+    all_selected_genes: set[GeneName] = set()
+    all_selected_odb10_genes: set[GeneName] = set()
     for lineage, gene_map in all_full_tables.items():
         selected_genes[lineage] = {}
         for mode, genes in gene_map.items():
