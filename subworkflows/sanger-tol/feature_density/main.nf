@@ -116,6 +116,9 @@ workflow FEATURE_DENSITY {
         "bed"
     )
 
+    htslib_bed_index = HTSLIB_BGZIPTABIX.out.output
+        .combine(HTSLIB_BGZIPTABIX.out.index, by: 0)
+
     //
     // LOGIC: COMBINES THE REFORMATTED INTERSECT FILE AND WINDOWS FILE CHANNELS AND SORTS INTO
     //        tuple(intersect_meta, windows file, intersect file)
@@ -166,5 +169,5 @@ workflow FEATURE_DENSITY {
 
     emit:
     density_file    = UCSC_BEDGRAPHTOBIGWIG.out.bigwig
-    density_tabix   = HTSLIB_BGZIPTABIX.out.index
+    density_tabix   = htslib_bed_index
 }
