@@ -13,8 +13,7 @@ include { GNU_SORT as GNU_SORT_C            } from '../../../modules/nf-core/gnu
 include { GAWK as GAWK_RENAME_IDS           } from '../../../modules/nf-core/gawk/main'
 include { GAWK as GAWK_REPLACE_DOTS         } from '../../../modules/nf-core/gawk/main'
 include { GAWK as GAWK_REFORMAT_INTERSECT   } from '../../../modules/nf-core/gawk/main'
-include { TABIX_BGZIPTABIX                  } from '../../../modules/nf-core/tabix/bgziptabix'
-
+include { HTSLIB_BGZIPTABIX                 } from '../../../modules/nf-core/htslib/bgziptabix'
 
 workflow FEATURE_DENSITY {
     take:
@@ -110,8 +109,11 @@ workflow FEATURE_DENSITY {
     //
     // MODULE: TABIX AND GZIP THE DENSITY BED FILE
     //
-    TABIX_BGZIPTABIX (
-        GAWK_REFORMAT_INTERSECT.out.output
+    HTSLIB_BGZIPTABIX (
+        GAWK_REFORMAT_INTERSECT.out.output.map { meta, file -> tuple(meta, file, [], []) },
+        "compress",
+        true,
+        "bed"
     )
 
     //
@@ -164,5 +166,5 @@ workflow FEATURE_DENSITY {
 
     emit:
     density_file    = UCSC_BEDGRAPHTOBIGWIG.out.bigwig
-    density_tabix   = TABIX_BGZIPTABIX.out.gz_index
+    density_tabix   = HTSLIB_BGZIPTABIX.out.index
 }

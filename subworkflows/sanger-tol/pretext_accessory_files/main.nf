@@ -12,8 +12,8 @@ workflow PRETEXT_ACCESSORY_FILES {
     take:
     ch_reference_tuple  // Channel [ val(meta), path(file)   ]
     ch_reference_sizes  // Channel [ val(meta), path(file)   ]
-    ch_longread_reads   // Channel [ val(meta), [path(file)] ]
-    ch_teloseq          // Channel [ val(meta), path(telomere_sequence) ]
+    ch_longread_reads   // Channel [ val(meta), [ path(file) ] ]
+    ch_teloseq          // Channel [ val(meta), val(telomere_sequence) ]
     val_split_telomere  // val(bool)
     val_run_telomere    // val(bool)
     val_run_gaps        // val(bool)
