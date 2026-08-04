@@ -23,7 +23,6 @@ process AUTOFILTER_CONTAMINATIONCHECK {
 
     script:
     def prefix  = task.ext.prefix   ?: "${meta.id}"
-    def args    = task.ext.args     ?: ""
     """
     abnormal_contamination_check.py \\
         ${fai} \\
