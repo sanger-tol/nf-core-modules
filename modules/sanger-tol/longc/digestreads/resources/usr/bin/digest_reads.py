@@ -30,7 +30,8 @@ import argparse
 import gzip
 import re
 import sys
-from typing import Iterator, TextIO
+from collections.abc import Iterator
+from typing import TextIO
 
 __version__ = "1.0.0"
 

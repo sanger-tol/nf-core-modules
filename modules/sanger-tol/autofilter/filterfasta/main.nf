@@ -24,7 +24,6 @@ process AUTOFILTER_FILTERFASTA {
     script:
     def prefix      = task.ext.prefix   ?: "${meta.id}"
     def args        = task.ext.args     ?: ''
-    def args2       = task.ext.args2    ?: ''
     """
     filter_fasta.py \\
         ${fai} \\
