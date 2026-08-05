@@ -65,6 +65,12 @@ output:
         Gap file in bed 4 format.
         Structure: [ val(meta), path(bed) ]
       pattern: "*.bed"
+  - gap_bed_and_index:
+      type: file
+      description: |
+        Gap file in bed 4 format.
+        Structure: [ val(meta), path(bed), path(csi) ]
+      pattern: "*.gz | *.csi"
   - repeat_file:
       type: file
       description: |
@@ -77,6 +83,18 @@ output:
         Telomere file array, which can consist of an array of 3 bed files
         Structure: [ val(meta), path(bed) ]
       pattern: "*.bed"
+  - telo_windows:
+      type: file
+      description: |
+        Telomere window file array, which can consist of an array of 3 files
+        Structure: [ val(meta), path(windows) ]
+      pattern: "*.bed"
+  - telo_bed_and_index:
+      type: file
+      description: |
+        Telomere file in bed 4 format.
+        Structure: [ val(meta), path(bed), path(csi) ]
+      pattern: "*.gz | *.csi"
   - coverage_file:
       type: file
       description: |

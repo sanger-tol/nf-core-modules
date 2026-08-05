@@ -93,13 +93,13 @@ nextflow_workflow {
                 input[0] = channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome_cleaned.fasta', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/artificial_features/genome_cleaned_with_gap.fasta', checkIfExists: true)
                     ]
                 )
                 input[1] = channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome_cleaned.chrom.sizes', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/artificial_features/genome_cleaned_with_gap.chrom.sizes', checkIfExists: true)
                     ]
                 )
                 input[2] = channel.of(
@@ -148,13 +148,13 @@ nextflow_workflow {
                 input[0] = channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome_cleaned.fasta', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/artificial_features/genome_cleaned.fasta', checkIfExists: true)
                     ]
                 )
                 input[1] = channel.of(
                     [
                         [ id:'test' ],
-                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome_cleaned.chrom.sizes', checkIfExists: true)
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/artificial_features/genome_cleaned.chrom.sizes', checkIfExists: true)
                     ]
                 )
                 input[2] = channel.of(
