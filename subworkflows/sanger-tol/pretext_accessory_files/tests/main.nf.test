@@ -83,7 +83,7 @@ nextflow_workflow {
 
     }
 
-    test ( "Escherichia_coli" ) {
+    test ( "Escherichia_coli w/indexes" ) {
 
         config "../nextflow.config"
 
@@ -124,6 +124,62 @@ nextflow_workflow {
                 input[8]  = true
                 input[9]  = false
                 input[10] = false
+                input[11] = true
+
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+
+    test ( "Escherichia_coli no indexes" ) {
+
+        config "../nextflow.config"
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome_cleaned.fasta', checkIfExists: true)
+                    ]
+                )
+                input[1] = channel.of(
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'Escherichia_coli/reference/genome_cleaned.chrom.sizes', checkIfExists: true)
+                    ]
+                )
+                input[2] = channel.of(
+                    [
+                        [ id:'test', readtype:'ont' ],
+                        [
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true),
+                            file(params.modules_testdata_base_path + 'Escherichia_coli/genomic_data/ont/ont.fastq.gz', checkIfExists: true)
+                        ]
+                    ]
+                )
+                input[3]  = channel.of(
+                    [
+                        [ id:'test' ],
+                        "AATT"
+                    ]
+                )
+                input[4]  = true
+                input[5]  = true
+                input[6]  = true
+                input[7]  = true
+                input[8]  = true
+                input[9]  = false
+                input[10] = false
+                input[11] = false
 
                 """
             }
