@@ -15,8 +15,8 @@
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,f51267c295ab15061fd918300d4c5093",
-                        "test.bed.gz.tbi:md5,d61ea0f548309595898858e360733b7f"
+                        "repden_test.bed.gz:md5,f51267c295ab15061fd918300d4c5093",
+                        "repden_test.bed.gz.csi:md5,9f096f14fd3a8f38880df0246e589124"
                     ]
                 ],
                 "repeat_density": [
@@ -32,13 +32,13 @@
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,f51267c295ab15061fd918300d4c5093",
-                        "test.bed.gz.tbi:md5,d61ea0f548309595898858e360733b7f"
+                        "repden_test.bed.gz:md5,f51267c295ab15061fd918300d4c5093",
+                        "repden_test.bed.gz.csi:md5,9f096f14fd3a8f38880df0246e589124"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-04T17:13:23.560049935",
+        "timestamp": "2026-08-05T11:21:40.011523826",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -60,8 +60,8 @@
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                        "test.bed.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "repden_test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                        "repden_test.bed.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "repeat_density": [
@@ -77,13 +77,13 @@
                         {
                             "id": "test"
                         },
-                        "test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                        "test.bed.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "repden_test.bed.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
+                        "repden_test.bed.gz.tbi:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-04T17:15:13.712210988",
+        "timestamp": "2026-08-05T11:23:16.907170342",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
