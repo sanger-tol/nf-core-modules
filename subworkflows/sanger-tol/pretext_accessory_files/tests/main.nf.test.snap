@@ -1,4 +1,209 @@
 {
+    "Undibacterium_unclassified w/indexes": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "test.bed.bed.gz.csi:md5,a76ffd9c2c19bc3100eecc93162f31d9"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,fe21775b423447331bbd41ca7fafd0bf"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed:md5,09cf53d7fc6d573e67396c40113d4446"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed:md5,daf4ec604e107233c33d24363f7ecadb"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,a6961e369dd231bf06c7b94cf39c5b53"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fwd.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.rev.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed.gz:md5,09cf53d7fc6d573e67396c40113d4446",
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed.gz.csi:md5,8f72cc863d9910e6d805101a0e4adc2b"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed.gz:md5,daf4ec604e107233c33d24363f7ecadb",
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed.gz.csi:md5,8f72cc863d9910e6d805101a0e4adc2b"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fwd.windows.gz:md5,9e520633fab2608159aea847ac9b5f1d",
+                        "test.fwd.windows.gz.csi:md5,551064c5ac6a63c6ff5004f697b9280b"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.rev.windows.gz:md5,9e520633fab2608159aea847ac9b5f1d",
+                        "test.rev.windows.gz.csi:md5,551064c5ac6a63c6ff5004f697b9280b"
+                    ]
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,b07ea8117ce74e76ea37d38d4cac6025"
+                    ]
+                ],
+                "coverage_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,b07ea8117ce74e76ea37d38d4cac6025"
+                    ]
+                ],
+                "gap_bed_and_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed.bed.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "test.bed.bed.gz.csi:md5,a76ffd9c2c19bc3100eecc93162f31d9"
+                    ]
+                ],
+                "gap_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "repeat_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,fe21775b423447331bbd41ca7fafd0bf"
+                    ]
+                ],
+                "telo_bed_and_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed.gz:md5,09cf53d7fc6d573e67396c40113d4446",
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed.gz.csi:md5,8f72cc863d9910e6d805101a0e4adc2b"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed.gz:md5,daf4ec604e107233c33d24363f7ecadb",
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed.gz.csi:md5,8f72cc863d9910e6d805101a0e4adc2b"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fwd.windows.gz:md5,9e520633fab2608159aea847ac9b5f1d",
+                        "test.fwd.windows.gz.csi:md5,551064c5ac6a63c6ff5004f697b9280b"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.rev.windows.gz:md5,9e520633fab2608159aea847ac9b5f1d",
+                        "test.rev.windows.gz.csi:md5,551064c5ac6a63c6ff5004f697b9280b"
+                    ]
+                ],
+                "telo_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed:md5,09cf53d7fc6d573e67396c40113d4446"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed:md5,daf4ec604e107233c33d24363f7ecadb"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,a6961e369dd231bf06c7b94cf39c5b53"
+                    ]
+                ],
+                "telo_windows": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fwd.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.rev.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-08-06T13:10:21.876028444",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
     "Escherichia_coli w/indexes": {
         "content": [
             {
@@ -341,6 +546,145 @@
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.04.6"
+        }
+    },
+    "Undibacterium_unclassified no indexes": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,fe21775b423447331bbd41ca7fafd0bf"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed:md5,09cf53d7fc6d573e67396c40113d4446"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed:md5,daf4ec604e107233c33d24363f7ecadb"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,a6961e369dd231bf06c7b94cf39c5b53"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fwd.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.rev.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ]
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,b07ea8117ce74e76ea37d38d4cac6025"
+                    ]
+                ],
+                "coverage_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,b07ea8117ce74e76ea37d38d4cac6025"
+                    ]
+                ],
+                "gap_bed_and_index": [
+                    
+                ],
+                "gap_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.gap.bedgraph:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "repeat_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bigWig:md5,fe21775b423447331bbd41ca7fafd0bf"
+                    ]
+                ],
+                "telo_bed_and_index": [
+                    
+                ],
+                "telo_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.fwd.telomere.bed:md5,09cf53d7fc6d573e67396c40113d4446"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.rev.telomere.bed:md5,daf4ec604e107233c33d24363f7ecadb"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere:md5,a6961e369dd231bf06c7b94cf39c5b53"
+                    ]
+                ],
+                "telo_windows": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fwd.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.rev.windows:md5,9e520633fab2608159aea847ac9b5f1d"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-08-06T13:12:30.441749126",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
         }
     },
     "Escherichia_coli": {
