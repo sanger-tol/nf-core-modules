@@ -84,8 +84,18 @@ nextflow_workflow {
             assert workflow.success
             assertAll(
                 {
+                    // Full BAM file MD5 is unstable: pysam/samtools @PG CL lines embed
+                    // absolute /tmp paths that differ across runners.
+                    def bam_file = workflow.out.bam[0][1]
+                    def header = bam(bam_file).getHeader().collect { line ->
+                        line
+                            .replaceAll(/\/tmp\/tmp[a-z0-9_]+(?:\/unsorted)?\.bam/, 'unsorted.bam')
+                            .replaceAll(/\/\S+\/unsorted\.bam/, 'unsorted.bam')
+                    }
                     assert snapshot(
-                        workflow.out.bam,
+                        header,
+                        bam(bam_file).getReadsMD5(),
+                        file(workflow.out.bam[0][2]).name,
                         workflow.out.pairs,
                         workflow.out.cool,
                         workflow.out.mcool,

@@ -2,12 +2,21 @@
     "Prairievole HindIII": {
         "content": [
             [
+                "@HD\tVN:1.6\tSO:coordinate",
+                "@SQ\tSN:SUPER_1\tLN:146143857",
+                "@SQ\tSN:SUPER_2\tLN:138373698",
+                "@PG\tID:minimap2\tPN:minimap2\tVN:2.30-r1287\tCL:minimap2 -ax map-hifi -t 2 -L -a prairievole_hap1_subset.mmi test_HindIII.fastq.gz",
+                "@PG\tID:samtools\tPN:samtools\tPP:minimap2\tVN:1.23.1\tCL:samtools sort -@ 1 -o test.bam##idx##test.bam.bai --write-index",
+                "@PG\tID:samtools.1\tPN:samtools\tPP:samtools\tVN:1.21 (pysam)\tCL:samtools sort -o test_annotated.bam -@ 2 unsorted.bam"
+            ],
+            "b390d45f078d32a48d4550a69acf9181",
+            "test_annotated.bam.bai",
+            [
                 [
                     {
                         "id": "test"
                     },
-                    "test_annotated.bam:md5,e779dee1fda85450170ef6b7561f79a6",
-                    "test_annotated.bam.bai:md5,8567363c739d9a492da27112d3ad9651"
+                    "test.pairs.gz:md5,bbf1771544ba1ba7bb4f62573b1cae1f"
                 ]
             ],
             [
@@ -15,7 +24,7 @@
                     {
                         "id": "test"
                     },
-                    "test.pairs.gz:md5,36c9ea0562962bc4b620c634ad6e60c7"
+                    "test.cool:md5,041ad6722506cc7ee8c3ceabd39ae865"
                 ]
             ],
             [
@@ -23,15 +32,7 @@
                     {
                         "id": "test"
                     },
-                    "test.cool:md5,0d66aa53410bf49550e7898e0decdda3"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.mcool:md5,0aa18b7037414ac4d77035a43559db35"
+                    "test.mcool:md5,ced7a245c4f8feffd1b709e952e9f3a2"
                 ]
             ],
             [
@@ -43,7 +44,7 @@
                 ]
             ]
         ],
-        "timestamp": "2026-08-07T18:31:31.94864697",
+        "timestamp": "2026-08-07T20:53:59.415895283",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
