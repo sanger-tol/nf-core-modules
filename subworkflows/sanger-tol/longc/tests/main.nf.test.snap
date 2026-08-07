@@ -6,8 +6,8 @@
                     {
                         "id": "test"
                     },
-                    "test_annotated.bam:md5,73b9e09562205ec26c5231b7c651a555",
-                    "test_annotated.bam.bai:md5,37cea7b2fba546169b4ec4a1e4fa9a57"
+                    "test_annotated.bam:md5,e779dee1fda85450170ef6b7561f79a6",
+                    "test_annotated.bam.bai:md5,8567363c739d9a492da27112d3ad9651"
                 ]
             ],
             [
@@ -15,7 +15,7 @@
                     {
                         "id": "test"
                     },
-                    "test.pairs.gz:md5,5b8a1fe8b10a9a913fc7fe38c5dbcf86"
+                    "test.pairs.gz:md5,36c9ea0562962bc4b620c634ad6e60c7"
                 ]
             ],
             [
@@ -23,7 +23,7 @@
                     {
                         "id": "test"
                     },
-                    "test.cool:md5,6aa4dcb746dfe5a7179978fe61cdbebf"
+                    "test.cool:md5,0d66aa53410bf49550e7898e0decdda3"
                 ]
             ],
             [
@@ -31,7 +31,7 @@
                     {
                         "id": "test"
                     },
-                    "test.mcool:md5,3680e9bf57442ffbc683783875c21d06"
+                    "test.mcool:md5,0aa18b7037414ac4d77035a43559db35"
                 ]
             ],
             [
@@ -39,11 +39,11 @@
                     {
                         "id": "test"
                     },
-                    "test.pretext:md5,2e65dc9998ee3185c19667bb6fc983b2"
+                    "test.pretext:md5,32da4e84351650c52bc514ca92854452"
                 ]
             ]
         ],
-        "timestamp": "2026-07-03T22:41:01.859266407",
+        "timestamp": "2026-08-07T18:31:31.94864697",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
