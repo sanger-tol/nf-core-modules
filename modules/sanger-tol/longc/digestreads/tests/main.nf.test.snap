@@ -1,5 +1,5 @@
 {
-    "stub": {
+    "stub-bam": {
         "content": [
             {
                 "0": [
@@ -21,14 +21,14 @@
                     [
                         "LONGC_DIGESTREADS",
                         "digest_reads.py",
-                        "1.0.0"
+                        "1.1.0"
                     ]
                 ],
                 "3": [
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.23.1"
+                        "samtools,1.24"
                     ]
                 ],
                 "digested_reads": [
@@ -43,7 +43,7 @@
                     [
                         "LONGC_DIGESTREADS",
                         "digest_reads.py",
-                        "1.0.0"
+                        "1.1.0"
                     ]
                 ],
                 "versions_python": [
@@ -57,12 +57,81 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.23.1"
+                        "samtools,1.24"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-07-06T15:03:57.413389166",
+        "timestamp": "2026-08-07T14:52:06.282548459",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "stub-fastq": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_HindIII.fastq.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "1": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "2": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.1.0"
+                    ]
+                ],
+                "3": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.24"
+                    ]
+                ],
+                "digested_reads": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_HindIII.fastq.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                    ]
+                ],
+                "versions_digest_reads": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "digest_reads.py",
+                        "1.1.0"
+                    ]
+                ],
+                "versions_python": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "python",
+                        "3.14.6"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "LONGC_DIGESTREADS",
+                        "samtools",
+                        "samtools,1.24"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-08-07T14:51:40.567157743",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -76,7 +145,7 @@
                         {
                             "id": "test"
                         },
-                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,ba1f51322f39e263d02b252a660b9dc5"
                     ]
                 ],
                 "1": [
@@ -90,14 +159,14 @@
                     [
                         "LONGC_DIGESTREADS",
                         "digest_reads.py",
-                        "1.0.0"
+                        "1.1.0"
                     ]
                 ],
                 "3": [
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.23.1"
+                        "samtools,1.24"
                     ]
                 ],
                 "digested_reads": [
@@ -105,14 +174,14 @@
                         {
                             "id": "test"
                         },
-                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,ba1f51322f39e263d02b252a660b9dc5"
                     ]
                 ],
                 "versions_digest_reads": [
                     [
                         "LONGC_DIGESTREADS",
                         "digest_reads.py",
-                        "1.0.0"
+                        "1.1.0"
                     ]
                 ],
                 "versions_python": [
@@ -126,12 +195,12 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.23.1"
+                        "samtools,1.24"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-07-06T15:01:37.281059378",
+        "timestamp": "2026-08-07T14:49:28.279394882",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -145,7 +214,7 @@
                         {
                             "id": "test"
                         },
-                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,ba1f51322f39e263d02b252a660b9dc5"
                     ]
                 ],
                 "1": [
@@ -159,14 +228,14 @@
                     [
                         "LONGC_DIGESTREADS",
                         "digest_reads.py",
-                        "1.0.0"
+                        "1.1.0"
                     ]
                 ],
                 "3": [
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.23.1"
+                        "samtools,1.24"
                     ]
                 ],
                 "digested_reads": [
@@ -174,14 +243,14 @@
                         {
                             "id": "test"
                         },
-                        "test_HindIII.fastq.gz:md5,b5197b4c3a5121d76680cc39df162c24"
+                        "test_HindIII.fastq.gz:md5,ba1f51322f39e263d02b252a660b9dc5"
                     ]
                 ],
                 "versions_digest_reads": [
                     [
                         "LONGC_DIGESTREADS",
                         "digest_reads.py",
-                        "1.0.0"
+                        "1.1.0"
                     ]
                 ],
                 "versions_python": [
@@ -195,12 +264,12 @@
                     [
                         "LONGC_DIGESTREADS",
                         "samtools",
-                        "samtools,1.23.1"
+                        "samtools,1.24"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-07-06T15:02:23.870334759",
+        "timestamp": "2026-08-07T14:50:10.593009577",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
