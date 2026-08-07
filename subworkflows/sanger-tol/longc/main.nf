@@ -48,9 +48,9 @@ workflow LONGC {
     }
 
     //
-    // Optionally digest reads (split concatemers at restriction sites)
-    // skip_digest=true: align raw reads directly (merge multi-file lists first)
-    // skip_digest=false: digest_reads.py on FASTQ, or BAM/CRAM via samtools fastq
+    // Optionally digest reads (split concatemers at restriction sites).
+    // Default / wf-pore-c path: skip_digest=false → digest then align monomers.
+    // skip_digest=true: align raw reads directly (merge multi-file lists first).
     //
     if (val_skip_digest) {
         ch_reads_list.branch { meta, reads_list ->
@@ -118,7 +118,7 @@ workflow LONGC {
         true,    // bam_format
         'bai',   // bam_index_extension
         false,   // cigar_paf_format
-        false    // cigar_bam
+        true     // cigar_bam — minimap2 -L; supplementary / split alignments in BAM
     )
 
     //
@@ -130,18 +130,17 @@ workflow LONGC {
     LONGC_ANNOTATEFRAG(ch_align_bam)
 
     //
-    // Convert BAM to pairs (pairtools parse2)
+    // Convert name-sorted BAM to pairs (pairtools parse2 --expand), matching wf-pore-c
     //
-    ch_bam_for_parse = LONGC_ANNOTATEFRAG.out.bam
-
     LONGC_PAIRTOOLSPARSE2(
-        ch_bam_for_parse.combine(SAMTOOLS_FAIDX.out.sizes, by: 0)
+        LONGC_ANNOTATEFRAG.out.ns_bam.combine(SAMTOOLS_FAIDX.out.sizes, by: 0)
     )
 
     //
-    // Optionally restrict pairs to restriction fragments (cooler digest → pairtools restrict)
+    // Optionally restrict pairs to restriction fragments (cooler digest → pairtools restrict).
+    // Independent of read digestion: fragment BED comes from the reference + cutter.
     //
-    use_restrict = !val_skip_digest && val_restrict_frags
+    use_restrict = val_restrict_frags
 
     if (use_restrict) {
         ch_digest = reference.combine(SAMTOOLS_FAIDX.out.sizes, by: 0)
@@ -175,7 +174,8 @@ workflow LONGC {
     }
 
     //
-    // Optionally deduplicate pairs (pairtools sort → dedup; wf-pore-c hi_c path)
+    // Optionally deduplicate pairs (pairtools sort → dedup) for cool/mcool / emitted pairs.
+    // Pretext always uses non-deduplicated pairs for denser curation signal.
     //
     if (val_dedup) {
         PAIRTOOLS_SORT(ch_pairs_final)
@@ -213,7 +213,7 @@ workflow LONGC {
 
     if (val_pretext) {
         PRETEXTMAP(
-            ch_pairs_out,
+            ch_pairs_final,
             [[], [], []]
         )
     }
