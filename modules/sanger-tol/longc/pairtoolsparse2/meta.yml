@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
 name: "longc_pairtoolsparse2"
 description: |
   Convert annotated Long-C monomer BAM alignments to `.pairs.gz` using pairtools parse2,

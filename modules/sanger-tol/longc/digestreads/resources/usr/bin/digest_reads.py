@@ -33,7 +33,8 @@ import argparse
 import gzip
 import math
 import sys
-from typing import Iterator, TextIO
+from collections.abc import Iterator
+from typing import TextIO
 
 try:
     from Bio import Restriction
