@@ -1,0 +1,52 @@
+{
+    "Prairievole HindIII": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test_annotated.bam:md5,73b9e09562205ec26c5231b7c651a555",
+                    "test_annotated.bam.bai:md5,37cea7b2fba546169b4ec4a1e4fa9a57"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.pairs.gz:md5,5b8a1fe8b10a9a913fc7fe38c5dbcf86"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.cool:md5,6aa4dcb746dfe5a7179978fe61cdbebf"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.mcool:md5,3680e9bf57442ffbc683783875c21d06"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.pretext:md5,2e65dc9998ee3185c19667bb6fc983b2"
+                ]
+            ]
+        ],
+        "timestamp": "2026-07-03T22:41:01.859266407",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
