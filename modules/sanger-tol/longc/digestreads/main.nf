@@ -3,10 +3,13 @@ process LONGC_DIGESTREADS {
     label 'process_medium'
 
     // Note: the versions here need to match the versions used in the Wave container below and environment.yml
+    // environment.yml / Wave freeze: samtools=1.23.1 + gzip=1.14 + python=3.14.6 + biopython=1.86
+    // Docker:  community.wave.seqera.io/library/samtools_gzip_python_biopython:c338e4d96f9312d5
+    // Singularity native SIF: samtools_gzip_python_biopython:41a0e9b031779042
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/a1/a1b1a8dc5d1b39c5dddbc805e42c8c103415265fd959de39270af9d01b939b3f/data' :
-        'community.wave.seqera.io/library/samtools_gzip_python:f254e26dc9c7603d' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/38/3867ff7ef51d4be6e84565f1f506f2073ab4027ddd66b79744a534440fc84250/data' :
+        'community.wave.seqera.io/library/samtools_gzip_biopython_python:09f17801b9745830' }"
 
     input:
     tuple val(meta), path(reads, stageAs: 'reads/?/*'), path(reference)
@@ -55,12 +58,17 @@ process LONGC_DIGESTREADS {
     }
     def digest_in = (is_alignment || reads_list.size() > 1) ? '-' : reads_list[0]
     """
+    set -o pipefail
     ${samtools_pipe}${fastq_cat_pipe}
     digest_reads.py \\
         --cutter ${cutter} \\
         ${args} \\
         ${digest_in} | \\
     gzip -c > ${prefix}_${cutter}.fastq.gz
+
+    # Fail loudly if digestion produced no monomers (gzip of empty stdin is still a non-zero .gz).
+    python3 -c 'import gzip,sys; sys.exit(0 if gzip.open(sys.argv[1],"rb").read(1) else 1)' ${prefix}_${cutter}.fastq.gz \\
+        || { echo "ERROR: ${prefix}_${cutter}.fastq.gz is empty after digestion" >&2; exit 1; }
     """
 
     stub:

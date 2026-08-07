@@ -1,0 +1,116 @@
+nextflow_workflow {
+
+    name "Test Subworkflow LONGC"
+    script "../main.nf"
+    workflow "LONGC"
+    config "./nextflow.config"
+
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/longc"
+    tag "longc/digestreads"
+    tag "longc/annotatefrag"
+    tag "longc/pairtoolsparse2"
+    tag "find/concatenate"
+    tag "subworkflows/../../modules/sanger-tol/longc/digestreads"
+    tag "subworkflows/../../modules/sanger-tol/longc/annotatefrag"
+    tag "subworkflows/../../modules/sanger-tol/longc/pairtoolsparse2"
+    tag "subworkflows/../../modules/sanger-tol/find/concatenate"
+    tag "minimap2/index"
+    tag "minimap2/align"
+
+    tag "subworkflows/../../modules/nf-core/minimap2/index"
+    tag "subworkflows/../../modules/nf-core/minimap2/align"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/samtools/merge"
+    tag "subworkflows/../../modules/nf-core/pairtools/restrict"
+    tag "subworkflows/../../modules/nf-core/pairtools/sort"
+    tag "subworkflows/../../modules/nf-core/pairtools/dedup"
+    tag "subworkflows/../../modules/nf-core/cooler/digest"
+    tag "subworkflows/../../modules/nf-core/cooler/cload"
+    tag "subworkflows/../../modules/nf-core/cooler/zoomify"
+    tag "subworkflows/../../modules/nf-core/pretextmap"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "minimap2/index",
+                "minimap2/align",
+                "samtools/faidx",
+                "samtools/merge",
+                "pairtools/restrict",
+                "pairtools/sort",
+                "pairtools/dedup",
+                "cooler/digest",
+                "cooler/cload",
+                "cooler/zoomify",
+                "pretextmap",
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
+
+    test("Prairievole HindIII") {
+
+        when {
+            params {
+                cooler_cload_args = '-0 -c1 2 -p1 3 -c2 4 -p2 5'
+            }
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole_hap1_subset.fa', checkIfExists: true)
+                ])
+                input[1] = Channel.of([
+                    [ id:'test' ],
+                    file(params.modules_testdata_base_path + 'resources/modules/longc/prairievole.fq.gz', checkIfExists: true),
+                ])
+                input[2] = false
+                input[3] = 'HindIII'
+                input[4] = true
+                input[5] = true
+                input[6] = true
+                input[7] = true
+                input[8] = 1000
+                input[9] = true
+                """
+            }
+        }
+
+        then {
+            assert workflow.success
+            assertAll(
+                {
+                    // BAM file MD5 / @PG CL lines are unstable across runners:
+                    // absolute /tmp paths and -t/-@ thread counts differ (local cpus=2 vs CI cpus=4).
+                    def bam_file = workflow.out.bam[0][1]
+                    def header = bam(bam_file).getHeader().collect { line ->
+                        line
+                            .replaceAll(/\/tmp\/tmp[a-z0-9_]+(?:\/unsorted)?\.bam/, 'unsorted.bam')
+                            .replaceAll(/\/\S+\/unsorted\.bam/, 'unsorted.bam')
+                            .replaceAll(/-t \d+/, '-t N')
+                            .replaceAll(/-@ \d+/, '-@ N')
+                            .replaceAll(/\tCL:[^\t]*/, '')
+                    }
+                    assert snapshot(
+                        header,
+                        bam(bam_file).getReadsMD5(),
+                        file(workflow.out.bam[0][2]).name,
+                        workflow.out.pairs,
+                        workflow.out.cool,
+                        workflow.out.mcool,
+                        workflow.out.pretext,
+                    ).match()
+                }
+            )
+        }
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+}

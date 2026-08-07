@@ -1,0 +1,53 @@
+{
+    "Prairievole HindIII": {
+        "content": [
+            [
+                "@HD\tVN:1.6\tSO:coordinate",
+                "@SQ\tSN:SUPER_1\tLN:146143857",
+                "@SQ\tSN:SUPER_2\tLN:138373698",
+                "@PG\tID:minimap2\tPN:minimap2\tVN:2.30-r1287",
+                "@PG\tID:samtools\tPN:samtools\tPP:minimap2\tVN:1.23.1",
+                "@PG\tID:samtools.1\tPN:samtools\tPP:samtools\tVN:1.21 (pysam)"
+            ],
+            "b390d45f078d32a48d4550a69acf9181",
+            "test_annotated.bam.bai",
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.pairs.gz:md5,8bd93a008a2dd0ca4c6e514cc2922c34"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.cool:md5,80d0166f9bafef4298b9da87f7711dff"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.mcool:md5,ba6f49bd25d38a89f0fca0af82cf429c"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test.pretext:md5,32da4e84351650c52bc514ca92854452"
+                ]
+            ]
+        ],
+        "timestamp": "2026-08-07T22:04:19.160171053",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
