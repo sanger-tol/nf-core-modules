@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
+name: "fcsgx_parsecsv"
+description: Run FCS_GX to classify sequences in an assembly, parse the output files into a single CSV.
+keywords:
+  - fcsgx
+  - csv
+  - fasta
+  - classification
+components:
+  - samtools/dict:
+      git_remote: https://github.com/nf-core/modules.git
+  - fcsgx/rungx
+  - fcsgx/parseresults
+input:
+  - reference:
+      type: file
+      description: |
+        Input fasta reference assembly.
+
+        Structure: [ val(meta), path(fasta) ]
+      pattern: "*.{fasta,fa,fna}"
+  - fcsgx_db:
+      type: file
+      description: |
+        The FSCGX database path
+
+        Structure: [ path(directory) ]
+  - ncbi_rankedlineage_path:
+      type: file
+      description: |
+        Path to the rankedlineage.dmp file provided by NCBI taxonomy
+
+        Structure: [ path(rankedlineage.dmp) ]
+      pattern: "*.{fasta,fa,fna}"
+output:
+  - fcsgxresult:
+      type: file
+      description: |
+        CSV desribing the
+        Structure: [ val(meta), path(csv) ]
+      pattern: "*.csv"
+  - genomedict:
+      type: file
+      description: |
+        SAMTOOLS dict output
+
+        Structure: [ val(meta), path(reference), path(dict) ]
+      pattern: "*.fasta | *.dict"
+  - fcsgx_report_txt:
+      type: file
+      description: |
+        Classification report from FCSGX
+
+        Structure: [ val(meta), path(report) ]
+      pattern: "*.fcs_gx_report.txt"
+  - fcsgx_taxonomy_rpt:
+      type: file
+      description: |
+        Taxonomy report of classified sequences from FCSGX
+
+        Structure: [ val(meta), path(taxonomy_report) ]
+      pattern: "*.taxonomy.rpt"
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"

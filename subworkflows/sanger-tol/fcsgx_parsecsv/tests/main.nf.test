@@ -1,0 +1,97 @@
+nextflow_workflow {
+
+    name "Test Workflow FCSGX_PARSECSV"
+    script "../main.nf"
+    config "../nextflow.config"
+    workflow "FCSGX_PARSECSV"
+
+    tag "modules"
+    tag "modules_sangertol"
+    tag "fcsgx"
+    tag "nf-core/samtools/dict"
+    tag "nf-core/fcsgx/fetchdb"
+    tag "nf-core/fetchdb"
+    tag "fcsgx/rungx"
+    tag "fcsgx/parseresults"
+
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "fcsgx/fetchdb",
+                "samtools/dict"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules")
+
+        run("FCSGX_FETCHDB"){
+            script "../../../../modules/nf-core/fcsgx/fetchdb/main.nf"
+            process {
+                """
+                input[0] = file('https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest', checkIfExists: true)
+                """
+            }
+        }
+
+        curlAndExtract("https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz", "${launchDir}/ncbi_taxonomy")
+    }
+
+    test("sarscov2 - fasta") {
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of(
+                    [
+                        [ id:'test', single_end:false, taxid: '2697049' ], // meta map
+                        file(params.nfcore_modules_testdata_base_path + 'genomics/sarscov2/genome/genome.fasta', checkIfExists: true),
+                    ]
+                )
+                input[1] = FCSGX_FETCHDB.out.database
+                input[2] = file("${launchDir}/ncbi_taxonomy/rankedlineage.dmp")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert snapshot(
+                    path(workflow.out.fcsgx_report_txt[0][1]).readLines()[1],
+                    path(workflow.out.fcsgx_taxonomy_rpt[0][1]).readLines()[1..2],
+                    path(workflow.out.genomedict[0][1]).readLines()[1],
+                    workflow.out.fcsgxresult
+                ).match() }
+            )
+        }
+
+    }
+
+    test("sarscov2 - fasta - stub") {
+
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of(
+                    [
+                        [ id:'test', single_end:false, taxid: '2697049' ], // meta map
+                        file(params.nfcore_modules_testdata_base_path + 'genomics/sarscov2/genome/genome.fasta', checkIfExists: true),
+                    ]
+                )
+                input[1] = FCSGX_FETCHDB.out.database
+                input[2] = file("${launchDir}/ncbi_taxonomy/rankedlineage.dmp")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert snapshot( workflow.out ).match() }
+            )
+        }
+
+    }
+
+}
