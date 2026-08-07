@@ -11,9 +11,11 @@ nextflow_workflow {
     tag "longc/digestreads"
     tag "longc/annotatefrag"
     tag "longc/pairtoolsparse2"
+    tag "find/concatenate"
     tag "subworkflows/../../modules/sanger-tol/longc/digestreads"
     tag "subworkflows/../../modules/sanger-tol/longc/annotatefrag"
     tag "subworkflows/../../modules/sanger-tol/longc/pairtoolsparse2"
+    tag "subworkflows/../../modules/sanger-tol/find/concatenate"
     tag "minimap2/index"
     tag "minimap2/align"
 
