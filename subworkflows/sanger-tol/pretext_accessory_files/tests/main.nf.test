@@ -43,6 +43,7 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/bedtools/intersect"
     tag "subworkflows/../../modules/nf-core/windowmasker/ustat"
     tag "subworkflows/../../modules/nf-core/windowmasker/mkcounts"
+    tag "modules/nf-core/gunzip"
     tag "modules/nf-core/samtools/faidx"
     tag "modules/nf-core/htslib/bgziptabix"
     tag "modules/nf-core/gawk"
