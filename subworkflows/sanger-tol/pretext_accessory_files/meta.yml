@@ -23,7 +23,7 @@ input:
   - ch_reference_sizes:
       type: file
       description: |
-        Input chromosome sizes file - a TSV with two columns, name and size.
+        Input chromosome sizes file - a TSV with two columns (name and size) and no header line.
 
         Structure: [ val(meta), path(sizes) ]
       pattern: "*.{sizes,tsv}"

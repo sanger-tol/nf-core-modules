@@ -55,11 +55,26 @@ workflow PRETEXT_ACCESSORY_FILES {
 
 
     //
+    // LOGIC: MAP TOGETHER THE REF, SIZES AND READS SO WE DON'T GET MISMATCHED INPUTS
+    //
+    data = ch_reference_tuple
+        .combine(ch_reference_sizes
+            .map{ meta, file -> tuple([id: meta.id], file)}, by: 0)
+        .combine(ch_longread_reads
+            .map{ meta, file_list -> tuple([id: meta.id], file_list)}, by: 0)
+        .multiMap { meta, ref, sizes, reads_list ->
+            reference: tuple(meta, ref)
+            sizes: tuple(meta, sizes)
+            longreads: tuple(meta, reads_list)
+        }
+
+
+    //
     // SUBWORKFLOW: GENERATES A BIGWIG FOR A REPEAT DENSITY TRACK
     //
     REPEAT_DENSITY(
-        ch_reference_tuple.filter { val_run_repeat_den },
-        ch_reference_sizes
+        data.reference.filter { val_run_repeat_den },
+        data.sizes
     )
 
 
@@ -67,9 +82,9 @@ workflow PRETEXT_ACCESSORY_FILES {
     // SUBWORKFLOW: Takes reference, longread reads
     //
     READ_COVERAGE(
-        ch_longread_reads,
-        ch_reference_tuple.filter { val_run_coverage },
-        ch_reference_sizes.map { _meta, file -> file }
+        data.longreads,
+        data.reference.filter { val_run_coverage },
+        data.sizes.map { _meta, file -> file }
     )
 
 
