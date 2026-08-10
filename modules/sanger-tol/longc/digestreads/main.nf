@@ -66,9 +66,15 @@ process LONGC_DIGESTREADS {
         ${digest_in} | \\
     gzip -c > ${prefix}_${cutter}.fastq.gz
 
-    # Fail loudly if digestion produced no monomers (gzip of empty stdin is still a non-zero .gz).
-    python3 -c 'import gzip,sys; sys.exit(0 if gzip.open(sys.argv[1],"rb").read(1) else 1)' ${prefix}_${cutter}.fastq.gz \\
-        || { echo "ERROR: ${prefix}_${cutter}.fastq.gz is empty after digestion" >&2; exit 1; }
+    # Fail loudly if digestion produced no monomers (gzip of empty stdin is still a valid .gz).
+    # Temporarily drop pipefail: head closes early and would otherwise SIGPIPE gzip.
+    set +o pipefail
+    has_data=\$(gzip -dc ${prefix}_${cutter}.fastq.gz | head -c 1 | wc -c)
+    set -o pipefail
+    if [ "\${has_data}" -eq 0 ]; then
+        echo "ERROR: ${prefix}_${cutter}.fastq.gz is empty after digestion" >&2
+        exit 1
+    fi
     """
 
     stub:
