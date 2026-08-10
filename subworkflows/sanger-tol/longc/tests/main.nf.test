@@ -84,8 +84,7 @@ nextflow_workflow {
             assert workflow.success
             assertAll(
                 {
-                    // BAM file MD5 / @PG CL lines are unstable across runners:
-                    // absolute /tmp paths and -t/-@ thread counts differ (local cpus=2 vs CI cpus=4).
+                    // BAM @PG CL lines embed /tmp paths and thread counts; strip them.
                     def bam_file = workflow.out.bam[0][1]
                     def header = bam(bam_file).getHeader().collect { line ->
                         line
@@ -95,14 +94,24 @@ nextflow_workflow {
                             .replaceAll(/-@ \d+/, '-@ N')
                             .replaceAll(/\tCL:[^\t]*/, '')
                     }
+                    // pairs.gz / cool / mcool / pretext binary MD5s are unstable across
+                    // runners (gzip timestamps, cooler container builds). Assert names + size.
+                    def pairs_file = file(workflow.out.pairs[0][1])
+                    def cool_file = file(workflow.out.cool[0][1])
+                    def mcool_file = file(workflow.out.mcool[0][1])
+                    def pretext_file = file(workflow.out.pretext[0][1])
+                    assert pairs_file.length() > 0
+                    assert cool_file.length() > 0
+                    assert mcool_file.length() > 0
+                    assert pretext_file.length() > 0
                     assert snapshot(
                         header,
                         bam(bam_file).getReadsMD5(),
                         file(workflow.out.bam[0][2]).name,
-                        workflow.out.pairs,
-                        workflow.out.cool,
-                        workflow.out.mcool,
-                        workflow.out.pretext,
+                        pairs_file.name,
+                        cool_file.name,
+                        mcool_file.name,
+                        pretext_file.name,
                     ).match()
                 }
             )

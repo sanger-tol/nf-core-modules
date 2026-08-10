@@ -11,40 +11,12 @@
             ],
             "b390d45f078d32a48d4550a69acf9181",
             "test_annotated.bam.bai",
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.pairs.gz:md5,8bd93a008a2dd0ca4c6e514cc2922c34"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.cool:md5,80d0166f9bafef4298b9da87f7711dff"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.mcool:md5,ba6f49bd25d38a89f0fca0af82cf429c"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test.pretext:md5,32da4e84351650c52bc514ca92854452"
-                ]
-            ]
+            "test.pairs.gz",
+            "test.cool",
+            "test.mcool",
+            "test.pretext"
         ],
-        "timestamp": "2026-08-07T22:04:19.160171053",
+        "timestamp": "2026-08-10T10:08:19.261576963",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
