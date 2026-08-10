@@ -5,12 +5,16 @@ nextflow_workflow {
     config "../nextflow.config"
     workflow "FCSGX_PARSECSV"
 
-    tag "modules"
-    tag "modules_sangertol"
-    tag "fcsgx"
+    tag "subworkflows"
+    tag "subworkflows_sangertol"
+    tag "subworkflows/fcsgx_parsecsv"
+    tag "subworkflows/../../modules/nf-core/samtools/dict"
+    tag "modules/nf-core/fcsgx/fetchdb"
+    tag "modules/nf-core/samtools/dict"
     tag "nf-core/samtools/dict"
     tag "nf-core/fcsgx/fetchdb"
     tag "nf-core/fetchdb"
+    tag "fcsgx"
     tag "fcsgx/rungx"
     tag "fcsgx/parseresults"
 
@@ -59,7 +63,7 @@ nextflow_workflow {
                 { assert snapshot(
                     path(workflow.out.fcsgx_report_txt[0][1]).readLines()[1],
                     path(workflow.out.fcsgx_taxonomy_rpt[0][1]).readLines()[1..2],
-                    path(workflow.out.genomedict[0][1]).readLines()[1],
+                    path(workflow.out.genomedict[0][1]).readLines()[1].split("file:///")[0],
                     workflow.out.fcsgxresult
                 ).match() }
             )

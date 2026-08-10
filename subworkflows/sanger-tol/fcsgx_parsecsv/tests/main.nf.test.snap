@@ -85,7 +85,7 @@
                 "#seq-id\tseq-len\t(xp,lc,co,n,mt,pt,pm)-len\tcvg-by-all\tsep1\ttax-name-1\ttax-id-1\tdiv-1\tcvg-by-div-1\tcvg-by-tax-1\tscore-1\tsep2\ttax-id-2\tdiv-2\tcvg-by-div-2\tcvg-by-tax-2\tscore-2\tsep3\ttax-id-3\tdiv-3\tcvg-by-div-3\tcvg-by-tax-3\tscore-3\tsep4\ttax-id-4\tdiv-4\tcvg-by-div-4\tcvg-by-tax-4\tscore-4\tsep5\treserved\tresult\tdiv\tdiv_pct_cvg",
                 "MT192765.1\t29829\t0,0,0,0,0,0,0\t0\t|\t\t\t\t\t\t\t|\t\t\t\t\t\t|\t\t\t\t\t\t|\t\t\t\t\t\t|\tn/a\tlow-coverage\tnone\t0"
             ],
-            "@SQ\tSN:MT192765.1\tLN:29829\tM5:c95f3e5592d0ad9974e41e7f0ea14eb0\tUR:file:///lustre/scratch124/tol/teams/tola/users/dp24/nf-core-modules/.nf-test/tests/3a65d08810c04b9ceb174d045650b490/work/stage-ab1e36a6-2199-4feb-b2d1-3659e5ebfd9a/7a/bf10c5776c3968288e765e1cf76193/genome.fasta",
+            "@SQ\tSN:MT192765.1\tLN:29829\tM5:c95f3e5592d0ad9974e41e7f0ea14eb0\tUR:",
             [
                 [
                     {
@@ -95,7 +95,7 @@
                 ]
             ]
         ],
-        "timestamp": "2026-08-07T14:48:19.538231547",
+        "timestamp": "2026-08-10T14:14:43.844644494",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
