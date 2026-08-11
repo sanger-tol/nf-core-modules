@@ -12,6 +12,9 @@ nextflow_workflow {
     tag "modules/nf-core/gunzip"
     tag "modules/nf-core/gawk"
     tag "modules/nf-core/samtools/faidx"
+    tag "../../../modules/nf-core/gunzip"
+    tag "../../../modules/nf-core/gawk"
+    tag "../../../modules/nf-core/samtools/faidx"
 
 
     setup {
