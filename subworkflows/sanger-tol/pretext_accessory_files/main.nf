@@ -19,8 +19,8 @@ workflow PRETEXT_ACCESSORY_FILES {
     val_run_gaps        // val(bool)
     val_run_coverage    // val(bool)
     val_run_repeat_den  // val(bool)
-    val_run_busco_track // val(bool) PLACEHOLDER
-    val_run_pebble      // val(bool) PLACEHOLDER
+    _val_run_busco_track // val(bool) PLACEHOLDER
+    _val_run_pebble      // val(bool) PLACEHOLDER
     val_output_indexes  // val(bool)
 
 
