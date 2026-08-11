@@ -1,0 +1,104 @@
+{
+    "sarscov2 - fasta - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_parsed_fcsgx.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false,
+                            "taxid": "2697049"
+                        },
+                        "genome.fasta.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fcs_gx_report.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.taxonomy.rpt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fcsgx_report_txt": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fcs_gx_report.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fcsgx_taxonomy_rpt": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.taxonomy.rpt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "fcsgxresult": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_parsed_fcsgx.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "genomedict": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false,
+                            "taxid": "2697049"
+                        },
+                        "genome.fasta.dict:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-08-07T14:37:37.569229783",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "sarscov2 - fasta": {
+        "content": [
+            "#seq_id\tstart_pos\tend_pos\tseq_len\taction\tdiv\tagg_cont_cov\ttop_tax_name",
+            [
+                "#seq-id\tseq-len\t(xp,lc,co,n,mt,pt,pm)-len\tcvg-by-all\tsep1\ttax-name-1\ttax-id-1\tdiv-1\tcvg-by-div-1\tcvg-by-tax-1\tscore-1\tsep2\ttax-id-2\tdiv-2\tcvg-by-div-2\tcvg-by-tax-2\tscore-2\tsep3\ttax-id-3\tdiv-3\tcvg-by-div-3\tcvg-by-tax-3\tscore-3\tsep4\ttax-id-4\tdiv-4\tcvg-by-div-4\tcvg-by-tax-4\tscore-4\tsep5\treserved\tresult\tdiv\tdiv_pct_cvg",
+                "MT192765.1\t29829\t0,0,0,0,0,0,0\t0\t|\t\t\t\t\t\t\t|\t\t\t\t\t\t|\t\t\t\t\t\t|\t\t\t\t\t\t|\tn/a\tlow-coverage\tnone\t0"
+            ],
+            "@SQ\tSN:MT192765.1\tLN:29829\tM5:c95f3e5592d0ad9974e41e7f0ea14eb0\tUR:",
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test_parsed_fcsgx.csv:md5,2cea4c74f31582f182c6b789b241436a"
+                ]
+            ]
+        ],
+        "timestamp": "2026-08-10T14:14:43.844644494",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
