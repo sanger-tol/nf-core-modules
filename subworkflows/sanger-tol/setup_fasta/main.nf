@@ -5,7 +5,7 @@ include { SAMTOOLS_FAIDX                } from "../../../modules/nf-core/samtool
 workflow SETUP_FASTA {
     take:
     ch_reference // channel.of( [meta], reference )
-    val_sizes    // boolean
+    val_get_chromsizes    // boolean: emit chromsizes
 
     main:
 
@@ -13,12 +13,11 @@ workflow SETUP_FASTA {
     // LOGIC: SPLIT THE INPUT REFERENCES INTO THOSE THAT ARE ZIPPED OR UNZIPPED
     //        THIS ENSURES THAT ALL INPUT ARE UNZIPPED FOR DOWNSTREAM PROCESSING
     //
-    ch_reference
+    ch_input = ch_reference
             .branch { _meta, file ->
                 zipped: file.name.endsWith('.gz')
                 unzipped: !file.name.endsWith('.gz')
             }
-            .set {ch_input}
 
 
     //
@@ -32,10 +31,8 @@ workflow SETUP_FASTA {
     //
     // LOGIC: MIX CHANELS WHICH MAY OR MAY NOT BE EMPTY INTO A SINGLE QUEUE CHANNEL
     //
-    unzipped_input = channel.empty()
-
-    unzipped_reference = unzipped_input
-        .mix(ch_input.unzipped, GUNZIP.out.gunzip)
+    unzipped_reference = ch_input.unzipped
+        .mix(GUNZIP.out.gunzip)
 
 
     //
@@ -43,13 +40,11 @@ workflow SETUP_FASTA {
     //         AWK = IF HEADER PASS ELSE CONVERT LINE TO UPPER CASE
     //
     ch_upper_sequence = channel.of('''\
-        /^>/ {
-            print; next
-        } {
-            print toupper(\$0)
-        }'''.stripIndent())
-        .collectFile(name: "uppercase_sequence.awk", cache: true)
-        .collect()
+        /^>/ { print; next }
+        !/^>/ { print toupper(\$0) }
+        '''.stripIndent()
+    ).collectFile(name: "uppercase_sequence.awk", cache: true)
+    .collect()
 
     GAWK_UPPER_SEQUENCE(
         unzipped_reference,
