@@ -4,7 +4,7 @@ include { SAMTOOLS_FAIDX                } from "../../../modules/nf-core/samtool
 
 workflow SETUP_FASTA {
     take:
-    ch_reference // channel.of( [meta], reference )
+    ch_reference          // channel.of( [meta], reference )
     val_get_chromsizes    // boolean: emit chromsizes
 
     main:
@@ -58,7 +58,7 @@ workflow SETUP_FASTA {
     //
     SAMTOOLS_FAIDX (
         GAWK_UPPER_SEQUENCE.out.output.map { meta, file -> [meta, file, []] },
-        val_sizes
+        val_get_chromsizes
     )
 
 
