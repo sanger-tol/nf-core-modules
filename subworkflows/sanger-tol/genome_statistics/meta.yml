@@ -47,7 +47,7 @@ input:
       description: |
         A path to a local directory containing pre-downloaded BUSCO lineages.
 output:
-  - asmstats:
+  - stats:
       type: file
       description: |
         Channel containing assembly statistics from asmstats.
