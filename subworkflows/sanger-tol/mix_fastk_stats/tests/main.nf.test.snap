@@ -1,0 +1,759 @@
+{
+    "meles meles - no trio - no busco - no fastk": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "baUndUnlc1.hic.hap1.p_ctg.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                            "baUndUnlc1.hic.hap1.p_ctg.fa.stats:md5,e14c1c6f5d73ac47a7e142822ef83756",
+                            "test_PRIMARY_0_prim_hap.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                            "test_PRIMARY_0_prim_hap.fa.stats:md5,e1ccca0461e996db455378c8d9ba18e2"
+                        ]
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.stats:md5,e14c1c6f5d73ac47a7e142822ef83756"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0_prim_hap.fa.stats:md5,e1ccca0461e996db455378c8d9ba18e2"
+                    ]
+                ],
+                "10": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap.qv:md5,99bffab053032dd199f9bf361e925553"
+                    ]
+                ],
+                "11": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap.completeness.stats:md5,e427a3884c5b5eb8173500ebe664c863"
+                    ]
+                ],
+                "12": [
+                    
+                ],
+                "13": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.fl.png:md5,c822999188fc201042dd1ce1f2b09d0c",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.ln.png:md5,5df4e2575e1d509fbc0d4d4bb1dc8bce",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.st.png:md5,00d060b52cc12ea5f36e4e06a3b33591",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,ea0a5ee8d40b3ce7a35fb40ce6f56ef2",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,0e7b3e49f01eac2a535c45a7527ba138",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,e936705a73e0098197ba0c352c3281fd",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5"
+                        ]
+                    ]
+                ],
+                "14": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.hist:md5,f854554e977de1ca4c24b6a789b2bca2"
+                        ],
+                        [
+                            ".test.ktab.1:md5,969444ac2972986a1c9ac07ccf26fda4",
+                            ".test.ktab.2:md5,8954c596c95633ee43aabbadb03d8f9f",
+                            ".test.ktab.3:md5,a6f9788f133c8a927fd576749552f5d2",
+                            ".test.ktab.4:md5,9e9550d252980d012d24095a8c18c005",
+                            "test.ktab:md5,16507f451ed7b951e9f3818a2f637101"
+                        ]
+                    ]
+                ],
+                "15": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0"
+                        },
+                        "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                        "test_PRIMARY_0_prim_hap.fa:md5,e5c01369a8bb02740acc39734d6abfcd"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0_prim_hap.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.json:md5,e849d88758d7e664a5935f568688fbea",
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.txt:md5,02c4d4b40ae4d1e56875d7717b1fc0a3",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.json:md5,fd0b2165987812a4b52186277a0484c3",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.txt:md5,323f2bdf7ae6960ce9362a0fa538d700",
+                            [
+                                [
+                                    [
+                                        "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                        "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                        "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "hmmsearch_out.log:md5,f9783c27953ffd6c9fa21bb9c39e12a7",
+                                        "miniprot_align_eukaryota_odb12.2_err.log:md5,8492f48365eca1ecc4f93f826098a9ad",
+                                        "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                        "miniprot_index_err.log:md5,97ec394432b3b94ee37972b1163f00e1",
+                                        "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                        "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                        "sepp_err.log:md5,6ad9319dba1387ca9c3c2d1c2ab872fb",
+                                        "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                    ],
+                                    [
+                                        ".checkpoint:md5,79aade19214a00dc21c0fd730b48b8b4",
+                                        [
+                                            "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                            "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                        ]
+                                    ],
+                                    [
+                                        "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                    ]
+                                ],
+                                "batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b",
+                                [
+                                    
+                                ],
+                                [
+                                    [
+                                        "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                        "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                        "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "hmmsearch_out.log:md5,94d6a887d2ee03b777a69035136ca914",
+                                        "miniprot_align_eukaryota_odb12.2_err.log:md5,13387c2ddc22b15a2aff3401ab842c12",
+                                        "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                        "miniprot_index_err.log:md5,e05ca7b4497591e0d4eaa9a2ba74fe82",
+                                        "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                        "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                        "sepp_err.log:md5,d622401e9156d350398db049aee4310e",
+                                        "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                    ],
+                                    [
+                                        ".checkpoint:md5,d2f56319d745ca8a5b2b0d6397a47837",
+                                        [
+                                            "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                            "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                        ]
+                                    ],
+                                    [
+                                        "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                    ]
+                                ]
+                            ],
+                            "test_PRIMARY_0_prim_hap-auto-busco.batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b",
+                            "test_PRIMARY_0_prim_hap-auto-busco.log:md5,5fcf745e4a107a8d7b35fade696c4337"
+                        ]
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap-auto-busco.batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.txt:md5,02c4d4b40ae4d1e56875d7717b1fc0a3",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.txt:md5,323f2bdf7ae6960ce9362a0fa538d700"
+                        ]
+                    ]
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.json:md5,e849d88758d7e664a5935f568688fbea",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.json:md5,fd0b2165987812a4b52186277a0484c3"
+                        ]
+                    ]
+                ],
+                "7": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap-auto-busco.log:md5,5fcf745e4a107a8d7b35fade696c4337"
+                    ]
+                ],
+                "8": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,f9783c27953ffd6c9fa21bb9c39e12a7",
+                                    "miniprot_align_eukaryota_odb12.2_err.log:md5,8492f48365eca1ecc4f93f826098a9ad",
+                                    "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                    "miniprot_index_err.log:md5,97ec394432b3b94ee37972b1163f00e1",
+                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                    "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                    "sepp_err.log:md5,6ad9319dba1387ca9c3c2d1c2ab872fb",
+                                    "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                ],
+                                [
+                                    ".checkpoint:md5,79aade19214a00dc21c0fd730b48b8b4",
+                                    [
+                                        "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                        "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                    ]
+                                ],
+                                [
+                                    "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                ]
+                            ],
+                            "batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b",
+                            [
+                                
+                            ],
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,94d6a887d2ee03b777a69035136ca914",
+                                    "miniprot_align_eukaryota_odb12.2_err.log:md5,13387c2ddc22b15a2aff3401ab842c12",
+                                    "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                    "miniprot_index_err.log:md5,e05ca7b4497591e0d4eaa9a2ba74fe82",
+                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                    "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                    "sepp_err.log:md5,d622401e9156d350398db049aee4310e",
+                                    "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                ],
+                                [
+                                    ".checkpoint:md5,d2f56319d745ca8a5b2b0d6397a47837",
+                                    [
+                                        "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                        "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                    ]
+                                ],
+                                [
+                                    "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                "9": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5",
+                            "test_PRIMARY_0_prim_hap.completeness.stats:md5,e427a3884c5b5eb8173500ebe664c863",
+                            "test_PRIMARY_0_prim_hap.qv:md5,99bffab053032dd199f9bf361e925553",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.fl.png:md5,c822999188fc201042dd1ce1f2b09d0c",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.ln.png:md5,5df4e2575e1d509fbc0d4d4bb1dc8bce",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.st.png:md5,00d060b52cc12ea5f36e4e06a3b33591",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,ea0a5ee8d40b3ce7a35fb40ce6f56ef2",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,0e7b3e49f01eac2a535c45a7527ba138",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,e936705a73e0098197ba0c352c3281fd",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5"
+                        ]
+                    ]
+                ],
+                "asmstats": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.stats:md5,e14c1c6f5d73ac47a7e142822ef83756"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0_prim_hap.fa.stats:md5,e1ccca0461e996db455378c8d9ba18e2"
+                    ]
+                ],
+                "busco": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.json:md5,e849d88758d7e664a5935f568688fbea",
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.txt:md5,02c4d4b40ae4d1e56875d7717b1fc0a3",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.json:md5,fd0b2165987812a4b52186277a0484c3",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.txt:md5,323f2bdf7ae6960ce9362a0fa538d700",
+                            [
+                                [
+                                    [
+                                        "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                        "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                        "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "hmmsearch_out.log:md5,f9783c27953ffd6c9fa21bb9c39e12a7",
+                                        "miniprot_align_eukaryota_odb12.2_err.log:md5,8492f48365eca1ecc4f93f826098a9ad",
+                                        "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                        "miniprot_index_err.log:md5,97ec394432b3b94ee37972b1163f00e1",
+                                        "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                        "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                        "sepp_err.log:md5,6ad9319dba1387ca9c3c2d1c2ab872fb",
+                                        "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                    ],
+                                    [
+                                        ".checkpoint:md5,79aade19214a00dc21c0fd730b48b8b4",
+                                        [
+                                            "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                            "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                        ]
+                                    ],
+                                    [
+                                        "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                    ]
+                                ],
+                                "batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b",
+                                [
+                                    
+                                ],
+                                [
+                                    [
+                                        "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                        "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                        "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "hmmsearch_out.log:md5,94d6a887d2ee03b777a69035136ca914",
+                                        "miniprot_align_eukaryota_odb12.2_err.log:md5,13387c2ddc22b15a2aff3401ab842c12",
+                                        "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                        "miniprot_index_err.log:md5,e05ca7b4497591e0d4eaa9a2ba74fe82",
+                                        "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                        "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                        "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                        "sepp_err.log:md5,d622401e9156d350398db049aee4310e",
+                                        "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                    ],
+                                    [
+                                        ".checkpoint:md5,d2f56319d745ca8a5b2b0d6397a47837",
+                                        [
+                                            "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                            "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                        ]
+                                    ],
+                                    [
+                                        "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                    ]
+                                ]
+                            ],
+                            "test_PRIMARY_0_prim_hap-auto-busco.batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b",
+                            "test_PRIMARY_0_prim_hap-auto-busco.log:md5,5fcf745e4a107a8d7b35fade696c4337"
+                        ]
+                    ]
+                ],
+                "busco_batch_summary": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap-auto-busco.batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b"
+                    ]
+                ],
+                "busco_directory": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,f9783c27953ffd6c9fa21bb9c39e12a7",
+                                    "miniprot_align_eukaryota_odb12.2_err.log:md5,8492f48365eca1ecc4f93f826098a9ad",
+                                    "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                    "miniprot_index_err.log:md5,97ec394432b3b94ee37972b1163f00e1",
+                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                    "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                    "sepp_err.log:md5,6ad9319dba1387ca9c3c2d1c2ab872fb",
+                                    "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                ],
+                                [
+                                    ".checkpoint:md5,79aade19214a00dc21c0fd730b48b8b4",
+                                    [
+                                        "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                        "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                    ]
+                                ],
+                                [
+                                    "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                ]
+                            ],
+                            "batch_summary.txt:md5,014905c92b0c9ed83596b369b36b588b",
+                            [
+                                
+                            ],
+                            [
+                                [
+                                    "bbtools_err.log:md5,aa77e7af499029f37af8ce8ee4c9509f",
+                                    "bbtools_out.log:md5,e088878ddadddfd856726fc1b2a4fa4a",
+                                    "hmmsearch_err.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "hmmsearch_out.log:md5,94d6a887d2ee03b777a69035136ca914",
+                                    "miniprot_align_eukaryota_odb12.2_err.log:md5,13387c2ddc22b15a2aff3401ab842c12",
+                                    "miniprot_align_eukaryota_odb12.2_out.log:md5,35df952ce8e404fa420b94c40ee61c37",
+                                    "miniprot_index_err.log:md5,e05ca7b4497591e0d4eaa9a2ba74fe82",
+                                    "miniprot_index_out.log:md5,d41d8cd98f00b204e9800998ecf8427e",
+                                    "prodigal_err.log:md5,94e22eb1e053fc577c6217118e81ae57",
+                                    "prodigal_out.log:md5,f4f75a2c0c3a2c57b206e298d7000353",
+                                    "sepp_err.log:md5,d622401e9156d350398db049aee4310e",
+                                    "sepp_out.log:md5,fca88f012fec41587b7be2d3227e1866"
+                                ],
+                                [
+                                    ".checkpoint:md5,d2f56319d745ca8a5b2b0d6397a47837",
+                                    [
+                                        "predicted.faa:md5,a49908facd10b392adc180c10ebec715",
+                                        "predicted.fna:md5,b0b7b64a82e1b1ad15234adea8a47196"
+                                    ]
+                                ],
+                                [
+                                    "refseq_db.faa:md5,3eb728355de0dd7b380cbf1a62531f40"
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                "busco_log": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap-auto-busco.log:md5,5fcf745e4a107a8d7b35fade696c4337"
+                    ]
+                ],
+                "busco_summary_json": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.json:md5,e849d88758d7e664a5935f568688fbea",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.json:md5,fd0b2165987812a4b52186277a0484c3"
+                        ]
+                    ]
+                ],
+                "busco_summary_txt": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.hic.hap1.p_ctg.fa.txt:md5,02c4d4b40ae4d1e56875d7717b1fc0a3",
+                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0_prim_hap.fa.txt:md5,323f2bdf7ae6960ce9362a0fa538d700"
+                        ]
+                    ]
+                ],
+                "cross_hap_collection": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0"
+                        },
+                        "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                        "test_PRIMARY_0_prim_hap.fa:md5,e5c01369a8bb02740acc39734d6abfcd"
+                    ]
+                ],
+                "fastkdb": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.hist:md5,f854554e977de1ca4c24b6a789b2bca2"
+                        ],
+                        [
+                            ".test.ktab.1:md5,969444ac2972986a1c9ac07ccf26fda4",
+                            ".test.ktab.2:md5,8954c596c95633ee43aabbadb03d8f9f",
+                            ".test.ktab.3:md5,a6f9788f133c8a927fd576749552f5d2",
+                            ".test.ktab.4:md5,9e9550d252980d012d24095a8c18c005",
+                            "test.ktab:md5,16507f451ed7b951e9f3818a2f637101"
+                        ]
+                    ]
+                ],
+                "gfstats": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.hic.hap1.p_ctg.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0_prim_hap.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96"
+                    ]
+                ],
+                "gstats": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "baUndUnlc1.hic.hap1.p_ctg.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                            "baUndUnlc1.hic.hap1.p_ctg.fa.stats:md5,e14c1c6f5d73ac47a7e142822ef83756",
+                            "test_PRIMARY_0_prim_hap.fa.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
+                            "test_PRIMARY_0_prim_hap.fa.stats:md5,e1ccca0461e996db455378c8d9ba18e2"
+                        ]
+                    ]
+                ],
+                "merqury": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5",
+                            "test_PRIMARY_0_prim_hap.completeness.stats:md5,e427a3884c5b5eb8173500ebe664c863",
+                            "test_PRIMARY_0_prim_hap.qv:md5,99bffab053032dd199f9bf361e925553",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.fl.png:md5,c822999188fc201042dd1ce1f2b09d0c",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.ln.png:md5,5df4e2575e1d509fbc0d4d4bb1dc8bce",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.st.png:md5,00d060b52cc12ea5f36e4e06a3b33591",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,ea0a5ee8d40b3ce7a35fb40ce6f56ef2",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,0e7b3e49f01eac2a535c45a7527ba138",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,e936705a73e0098197ba0c352c3281fd",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5"
+                        ]
+                    ]
+                ],
+                "merqury_completeness": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap.completeness.stats:md5,e427a3884c5b5eb8173500ebe664c863"
+                    ]
+                ],
+                "merqury_images": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        [
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.fl.png:md5,c822999188fc201042dd1ce1f2b09d0c",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.ln.png:md5,5df4e2575e1d509fbc0d4d4bb1dc8bce",
+                            "test_PRIMARY_0_prim_hap.spectra-asm.st.png:md5,00d060b52cc12ea5f36e4e06a3b33591",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,ea0a5ee8d40b3ce7a35fb40ce6f56ef2",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,0e7b3e49f01eac2a535c45a7527ba138",
+                            "test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,e936705a73e0098197ba0c352c3281fd",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.fl.png:md5,0b2a29191675afb49249256c7f173ec9",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.ln.png:md5,56a65dfc96a7164f06918c1828484256",
+                            "test_PRIMARY_0_prim_hap.test_PRIMARY_0_prim_hap.spectra-cn.st.png:md5,5f3609c2fa139355ac5668d2ba7b8be5"
+                        ]
+                    ]
+                ],
+                "merqury_phased_stats": [
+                    
+                ],
+                "merqury_qv": [
+                    [
+                        {
+                            "id": "test_PRIMARY_0_prim_hap",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0_prim_hap.qv:md5,99bffab053032dd199f9bf361e925553"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-08-12T14:58:01.988061216",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}
