@@ -12,7 +12,7 @@ keywords:
   - busco
 components:
   - asmstats
-  - cat/cat:
+  - find/concatenate:
       git_remote: https://github.com/nf-core/modules.git
   - gfastats:
       git_remote: https://github.com/nf-core/modules.git
