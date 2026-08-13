@@ -35,16 +35,13 @@ workflow MIX_FASTK_STATS {
         .map { meta, primary, hap_list ->
             def hap_list_safe = hap_list ?: []
             def new_meta = meta + [real_primary: primary]
-            if (hap_list_safe.size() > 1) {
+            if (hap_list_safe.size() >= 1) {
                 def all_files = [primary] + hap_list_safe
                 all_files.collect { file ->
                     def others = all_files.findAll { all_files != file }
                     def meta_with_type = new_meta + [ori_id: meta.id, type: (file == primary ? "PRIMARY" : "HAP")]
-                    [meta_with_type, file, others]
+                    tuple(meta_with_type, file, others)
                 }
-            } else if (hap_list_safe.size() == 1) {
-                def meta_with_type = new_meta + [type: "PRIMARY"]
-                [[meta_with_type, primary, [hap_list[0]]]]
             } else {
                 def meta_with_type = new_meta + [type: "PRIMARY"]
                 [[meta_with_type, primary, []]]
