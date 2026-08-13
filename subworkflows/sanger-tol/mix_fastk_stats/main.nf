@@ -64,7 +64,7 @@ workflow MIX_FASTK_STATS {
         .flatMap { row -> row }
 
 
-    def cat_cat_input = mixed_assemblies.map { meta, file, collection ->
+    def concat_input = mixed_assemblies.map { meta, file, collection ->
         def new_meta = meta + [
             id: meta.hap_id + (collection.size() > 1 ? new File(file.toString()).name + "_pseudo_haplotype" : "_prim_hap"),
             pseudo_primary: file ]
@@ -77,8 +77,9 @@ workflow MIX_FASTK_STATS {
     //         TO GET PER HAP RESULTS IN GENOME_STATISTICS
     //
     FIND_CONCATENATE (
-        cat_cat_input
+        concat_input
     )
+
 
     //
     // LOGIC: IF PRE-COMPUTED FASTK DATA EXISTS FINE FILES, ELSE RUN FASTK
@@ -94,7 +95,9 @@ workflow MIX_FASTK_STATS {
                 def hist = files.findAll { all_files -> all_files.name ==~ /.*\.hist$/ }.collect { hists -> file(hists) }
                 tuple(meta, hist, ktab)
             }
+
     } else {
+
         //
         // MODULE: RUN FASTK TO GENERATE KTAB AND HIST FILES
         //

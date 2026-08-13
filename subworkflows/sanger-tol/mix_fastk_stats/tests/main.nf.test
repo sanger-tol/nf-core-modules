@@ -6,9 +6,8 @@ nextflow_workflow {
 
     tag "subworkflows"
     tag "subworkflows_sangertol"
+    tag "genome_statistics"
     tag "subworkflows/mix_fastk_stats"
-    tag "subworkflows/genome_statistics"
-    tag "asmstats"
     tag "subworkflows/../../modules/nf-core/busco/busco"
     tag "subworkflows/../../modules/nf-core/gfastats"
     tag "subworkflows/../../modules/nf-core/merquryfk/merquryfk"
@@ -43,13 +42,11 @@ nextflow_workflow {
                 """
                 input[0] = channel.of([
                     [ id: "test"],
-                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa', checkIfExists: true),
                 ])
                 input[1] = channel.of([
                     [ id: "test"],
-                    [
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa', checkIfExists: true),
-                    ]
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa', checkIfExists: true),
                 ])
                 input[2] = channel.of([
                     [ id: "test"],
@@ -57,9 +54,9 @@ nextflow_workflow {
                 ])
                 input[3] = channel.empty()
                 input[4] = channel.empty()
-                input[5] = false
+                input[5] = []
                 input[6] = false
-                input[7] = []
+                input[7] = false
                 """
             }
         }
@@ -67,9 +64,21 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(
+                    sanitizeOutput(workflow.out, unstableKeys:[
+                        "busco",
+                        "busco_batch_summary",
+                        "busco_summary_txt",
+                        "busco_summary_json",
+                        "busco_log",
+                        "busco_directory",
+                        "merqury",
+                        "merqury_images"
+                    ])).match()
+                }
             )
         }
+
 
         cleanup {
             nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")

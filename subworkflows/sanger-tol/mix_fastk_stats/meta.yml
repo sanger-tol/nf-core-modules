@@ -11,16 +11,10 @@ keywords:
   - merquryfk
   - busco
 components:
-  - asmstats
+  - genome_statistics
   - find/concatenate:
       git_remote: https://github.com/nf-core/modules.git
-  - gfastats:
-      git_remote: https://github.com/nf-core/modules.git
-  - busco/busco:
-      git_remote: https://github.com/nf-core/modules.git
   - fastk/fastk:
-      git_remote: https://github.com/nf-core/modules.git
-  - merquryfk/merquryfk:
       git_remote: https://github.com/nf-core/modules.git
 
 input:
