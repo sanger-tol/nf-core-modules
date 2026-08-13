@@ -4,7 +4,6 @@
 Read the pipeline manifest and generate the ro-crate-metadata.json file
 """
 
-import json
 import logging
 import os
 import sys
@@ -25,21 +24,9 @@ log = logging.getLogger(__name__)
 
 # Read and parse the manifest
 def get_contributors(pipeline_obj):
-    if "manifest.contributors" not in pipeline_obj.nf_config:
-        log.error("No contributors field in manifest of nextflow.config")
-        return
-
-    # Grab the contributor list and convert to JSON
-    contributors_str = pipeline_obj.nf_config["manifest.contributors"]
-    log.debug("manifest.contributors: %s", contributors_str)
-    # JSON uses double quotes, not single quotes
-    contributors_str = contributors_str.replace("'", '"')
-    for key in ["name", "affiliation", "github", "contribution", "orcid", "email"]:
-        # All dictionary keys need to be quoted
-        contributors_str = contributors_str.replace(f"{key}:", f'"{key}":')
-    # Use curly braces for dictionaries
-    contributors_str = contributors_str.replace("], [", "}, {").replace("[[", "[{").replace("]]", "}]")
-    contributors = json.loads(contributors_str)
+    # Grab the contributor list
+    contributors = pipeline_obj.nf_config["manifest"].get("contributors", [])
+    log.debug("manifest.contributors: %s", contributors)
 
     # Using a progress bar because parsing the git log could be slow
     progress_bar = Progress(
@@ -160,7 +147,13 @@ class SangerToLROCrate(ROCrate):
         Add workflow contributors to the crate using author information from the Nextflow manifest
         Overrides the implementation from the parent class
         """
-        if "manifest.contributors" not in self.pipeline_obj.nf_config:
+
+        manifest = self.pipeline_obj.nf_config.get("manifest")
+        if not manifest:
+            log.error("No manifest in nextflow.config")
+            return
+
+        if "contributors" not in self.pipeline_obj.nf_config["manifest"]:
             log.error("No contributors field in manifest of nextflow.config")
             return
 

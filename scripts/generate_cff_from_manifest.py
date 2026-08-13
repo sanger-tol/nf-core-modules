@@ -5,7 +5,6 @@ Read the pipeline manifest and generate the CITATION.cff file
 """
 
 import datetime
-import json
 import logging
 import operator
 import os
@@ -25,21 +24,9 @@ log = logging.getLogger(__name__)
 
 # Read and parse the manifest
 def get_contributors(pipeline_obj):
-    if "manifest.contributors" not in pipeline_obj.nf_config:
-        log.error("No contributors field in manifest of nextflow.config")
-        return
-
-    # Grab the contributor list and convert to JSON
-    contributors_str = pipeline_obj.nf_config["manifest.contributors"]
-    log.debug("manifest.contributors: %s", contributors_str)
-    # JSON uses double quotes, not single quotes
-    contributors_str = contributors_str.replace("'", '"')
-    for key in ["name", "affiliation", "github", "contribution", "orcid", "email"]:
-        # All dictionary keys need to be quoted
-        contributors_str = contributors_str.replace(f"{key}:", f'"{key}":')
-    # Use curly braces for dictionaries
-    contributors_str = contributors_str.replace("], [", "}, {").replace("[[", "[{").replace("]]", "}]")
-    contributors = json.loads(contributors_str)
+    # Grab the contributor list
+    contributors = pipeline_obj.nf_config["manifest"].get("contributors", [])
+    log.debug("manifest.contributors: %s", contributors)
 
     # Using a progress bar because parsing the git log could be slow
     progress_bar = Progress(
@@ -137,8 +124,14 @@ def find_release_name(pipeline_dir, version):
 # Schema: https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md
 # Validate with `cffconvert`
 def build_cff(pipeline_obj):
-    pipeline_name = pipeline_obj.nf_config["manifest.name"]
-    pipeline_version = pipeline_obj.nf_config["manifest.version"]
+
+    manifest = pipeline_obj.nf_config.get("manifest")
+    if not manifest:
+        log.error("No manifest in nextflow.config")
+        return
+
+    pipeline_name = manifest["name"]
+    pipeline_version = manifest["version"]
     release_name = find_release_name(pipeline_obj.wf_path, pipeline_version)
 
     content = {
@@ -151,9 +144,12 @@ def build_cff(pipeline_obj):
         "version": pipeline_version,
         "date-released": datetime.date.today().isoformat(),
     }
-    set_if_set(content, "repository-code", pipeline_obj.nf_config.get("manifest.homePage"))
-    set_if_set(content, "doi", pipeline_obj.nf_config.get("manifest.doi"))
+    set_if_set(content, "repository-code", manifest.get("homePage"))
+    set_if_set(content, "doi", manifest.get("doi"))
 
+    if "contributors" not in pipeline_obj.nf_config["manifest"]:
+        log.error("No contributors field in manifest of nextflow.config")
+        return
     contributors = get_contributors(pipeline_obj)
     log.debug("Parsed contributors: %s", contributors)
     if not contributors:
