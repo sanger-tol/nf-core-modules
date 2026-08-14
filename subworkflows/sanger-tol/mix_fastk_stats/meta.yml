@@ -28,7 +28,9 @@ input:
   - ch_haplotypes:
       type: file
       description: |
-        Input haplotypes fasta reference assembly.
+        Input haplotypes fasta reference assembly. This channel is joined with
+        `ch_reference` on the meta map, so the meta of a given sample must be
+        identical in both channels. Samples with no haplotypes may be omitted.
 
         Structure: [ val(meta), [path(fasta)] ]
       pattern: "*.{(fasta,fa,fna)}"
@@ -126,7 +128,14 @@ output:
       type: file
       description: |
         A cross mapping of pseudo primary assembly
-        against a contatenated pseudo haplotype file
+        against a contatenated pseudo haplotype file. Each assembly of a sample
+        (primary and haplotypes) appears once as the pseudo primary, paired with
+        the concatenation of all of the remaining assemblies of that sample.
+
+        The meta map additionally contains `ori_id` (the original sample id),
+        `real_primary` (the actual primary assembly), `type` ("PRIMARY" or
+        "HAP"), `hap_num` (assembly counter, where the actual primary is always
+        0) and `hap_id` ("{ori_id}_{type}_{hap_num}", also used as the row id).
 
         Structure: [ val(meta), path(pseudo_primary), path(pseudo_haplotype) ]
       pattern: "*.{(fasta,fa,fna)}"

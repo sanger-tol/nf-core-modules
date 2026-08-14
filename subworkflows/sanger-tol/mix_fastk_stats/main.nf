@@ -12,11 +12,9 @@ workflow MIX_FASTK_STATS {
     ch_longreads            // channel.of ( [meta], [files] )
     ch_kmer_dir             // channel.of ( [meta], file )
     ch_busco                // channel.of ( [meta], file )
-    val_busco_lineage       // string
+    val_busco_lineage       // string  | "lepidoptera_odb12"
     val_existing_fastk      // boolean
     val_run_busco           // boolean
-
-
 
     main:
     //
@@ -38,11 +36,16 @@ workflow MIX_FASTK_STATS {
             if (hap_list_safe.size() >= 1) {
                 def all_files = [primary] + hap_list_safe
                 all_files.collect { file ->
-                    def others = all_files.findAll { all_files != file }
+                    def others = all_files.findAll { files -> files != file }
                     def meta_with_type = new_meta + [ori_id: meta.id, type: (file == primary ? "PRIMARY" : "HAP")]
-                    tuple(meta_with_type, file, others)
+                    [meta_with_type, file, others]
                 }
+            } else if (hap_list_safe.size() == 1) {
+                // NOTE: BECAUSE WITH A SIMPLE PRIM/HAP PAIR, WE ONLY WANT ONE OUTPUT e.g. TUPLE(META, PRIMARY, [HAP])
+                def meta_with_type = new_meta + [type: "PRIMARY"]
+                [[meta_with_type, primary, [hap_list[0]]]]
             } else {
+                // NOTE: WITH NO HAP LIST, WE ONLY WANT ONE OUTPUT e.g. TUPLE(META, PRIMARY, [])
                 def meta_with_type = new_meta + [type: "PRIMARY"]
                 [[meta_with_type, primary, []]]
             }
@@ -123,10 +126,13 @@ workflow MIX_FASTK_STATS {
                 meta, meta.pseudo_primary, haplotype
             ]
             busco_channel: [
-                meta, val_busco_lineage ?: "auto"
+                // NOTE: ONLY RUN BUSCO IF val_run_busco IS TRUE, IF TRUE THEN BASE ARGS OFF OF val_busco_lineage
+                meta, val_run_busco ? val_busco_lineage ?: "auto" : null
             ]
         }
 
+
+    gs_input.refer_channel.view { "gs_input: $it" }
 
     //
     // SUBWORKFLOW: RUN GENOME_STATISTICS FOR BUSCO, GFASTATS AND MERQURY STATS
@@ -136,7 +142,7 @@ workflow MIX_FASTK_STATS {
          gs_input.refer_channel,                                            // Needs to be in a [meta], asm1, asm2 - merqury can only take 2 assemblies so we trick it as above.
          gs_input.fastk_channel,                                            // format [ val(meta), fastk_hist_file, [fastk ktab files], [mat_fastk_ktabs ?: []], [pat_fastk_ktabs ?: []] ]
          gs_input.busco_channel,                                            // [ val(meta), string: busco_lineage ] - "lepidoptera_odb12" for specific lineage, "auto", "auto_euk", "auto_prok" // NO CSV OPTION, MEANS WE MIGHT NEED TO STOP THIS ONE AND RUN IT IN BTK ONLY?
-         val_run_busco ? ch_busco.map{ _meta, file -> file } : []     // path to dir
+         val_run_busco ? ch_busco.map{ _meta, file -> file } : []           // path to dir
     )
 
 

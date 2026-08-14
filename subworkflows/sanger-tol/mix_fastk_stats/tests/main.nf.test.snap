@@ -1,5 +1,5 @@
 {
-    "meles meles - no trio - no busco - no fastk": {
+    "Undibacterium_unclassified + other - fasta_mixing 3 output - fastk - genomestats": {
         "content": [
             {
                 "asmstats": [
@@ -25,7 +25,31 @@
                             "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
                             "_hap": "hap2"
                         },
-                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,a420fbf4dca450c1e3d7047afb8bd378"
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,54506c426e92f75e8f5d68470d1732fa"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap1"
+                        },
+                        "GCA_922984935.2.subset.fasta.stats:md5,dce4e13f2159bae47099912c54325f00"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.stats:md5,2bdce92a4de47dfc6832cce99f0f85e2"
                     ],
                     [
                         {
@@ -49,46 +73,11 @@
                             "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "_hap": "hap2"
                         },
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,b2db58bf32e3a8dd4941b2c662639336"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,05a6f50ca539c725819f2cbaee1f1526"
                     ]
                 ],
                 "busco": [
-                    [
-                        {
-                            "hap_id": "test_HAP_1",
-                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
-                            "ori_id": "test",
-                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
-                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "type": "HAP"
-                        },
-                        [
-                            "short_summary.specific.bacteria_odb12.2.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.json",
-                            "short_summary.specific.bacteria_odb12.2.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.txt",
-                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-auto-busco",
-                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-auto-busco.batch_summary.txt",
-                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-auto-busco.log"
-                        ]
-                    ],
-                    [
-                        {
-                            "hap_id": "test_PRIMARY_0",
-                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
-                            "ori_id": "test",
-                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "type": "PRIMARY"
-                        },
-                        [
-                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.bp.hap1.p_ctg.fa.json",
-                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.bp.hap1.p_ctg.fa.txt",
-                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.json",
-                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.txt",
-                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-auto-busco",
-                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-auto-busco.batch_summary.txt",
-                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-auto-busco.log"
-                        ]
-                    ]
+                    
                 ],
                 "busco_batch_summary": [
                     [
@@ -100,7 +89,18 @@
                             "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "type": "HAP"
                         },
-                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-auto-busco.batch_summary.txt"
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco.batch_summary.txt"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco.batch_summary.txt"
                     ],
                     [
                         {
@@ -111,7 +111,7 @@
                             "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "type": "PRIMARY"
                         },
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-auto-busco.batch_summary.txt"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco.batch_summary.txt"
                     ]
                 ],
                 "busco_directory": [
@@ -124,7 +124,18 @@
                             "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "type": "HAP"
                         },
-                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-auto-busco"
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco"
                     ],
                     [
                         {
@@ -135,7 +146,7 @@
                             "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "type": "PRIMARY"
                         },
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-auto-busco"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco"
                     ]
                 ],
                 "busco_log": [
@@ -148,7 +159,18 @@
                             "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "type": "HAP"
                         },
-                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-auto-busco.log"
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco.log"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco.log"
                     ],
                     [
                         {
@@ -159,62 +181,14 @@
                             "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "type": "PRIMARY"
                         },
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-auto-busco.log"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco.log"
                     ]
                 ],
                 "busco_summary_json": [
-                    [
-                        {
-                            "hap_id": "test_HAP_1",
-                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
-                            "ori_id": "test",
-                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
-                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "type": "HAP"
-                        },
-                        "short_summary.specific.bacteria_odb12.2.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.json"
-                    ],
-                    [
-                        {
-                            "hap_id": "test_PRIMARY_0",
-                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
-                            "ori_id": "test",
-                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "type": "PRIMARY"
-                        },
-                        [
-                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.bp.hap1.p_ctg.fa.json",
-                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.json"
-                        ]
-                    ]
+                    
                 ],
                 "busco_summary_txt": [
-                    [
-                        {
-                            "hap_id": "test_HAP_1",
-                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
-                            "ori_id": "test",
-                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
-                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "type": "HAP"
-                        },
-                        "short_summary.specific.bacteria_odb12.2.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.txt"
-                    ],
-                    [
-                        {
-                            "hap_id": "test_PRIMARY_0",
-                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
-                            "ori_id": "test",
-                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                            "type": "PRIMARY"
-                        },
-                        [
-                            "short_summary.specific.bacteria_odb12.2.baUndUnlc1.bp.hap1.p_ctg.fa.txt",
-                            "short_summary.specific.bacteria_odb12.2.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.txt"
-                        ]
-                    ]
+                    
                 ],
                 "cross_hap_collection": [
                     [
@@ -226,7 +200,18 @@
                             "hap_id": "test_HAP_1"
                         },
                         "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
-                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa:md5,ce4f60626bee9a7143c2149574abe770"
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa:md5,6ad006f2abad30e7f5452910903fd944"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2"
+                        },
+                        "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa:md5,ce4f60626bee9a7143c2149574abe770"
                     ],
                     [
                         {
@@ -237,7 +222,7 @@
                             "hap_id": "test_PRIMARY_0"
                         },
                         "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa:md5,ce4f60626bee9a7143c2149574abe770"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa:md5,d819801bbae19bed2407d8804988a33d"
                     ]
                 ],
                 "fastkdb": [
@@ -280,7 +265,31 @@
                             "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
                             "_hap": "hap2"
                         },
-                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137"
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,36caaad743b367824f8af98e06431ece"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap1"
+                        },
+                        "GCA_922984935.2.subset.fasta.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137"
                     ],
                     [
                         {
@@ -304,7 +313,7 @@
                             "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "_hap": "hap2"
                         },
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,bd1c52139f1f78aca0e979f986e9c848"
                     ]
                 ],
                 "gstats": [
@@ -320,8 +329,24 @@
                         [
                             "baUndUnlc1.bp.hap2.p_ctg.fa.assembly_summary:md5,fdc3d15de68220bb4fdb2066911b56f4",
                             "baUndUnlc1.bp.hap2.p_ctg.fa.stats:md5,5407da96b066ee539932953ff8712196",
-                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137",
-                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,a420fbf4dca450c1e3d7047afb8bd378"
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,36caaad743b367824f8af98e06431ece",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,54506c426e92f75e8f5d68470d1732fa"
+                        ]
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        [
+                            "GCA_922984935.2.subset.fasta.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d",
+                            "GCA_922984935.2.subset.fasta.stats:md5,dce4e13f2159bae47099912c54325f00",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.stats:md5,2bdce92a4de47dfc6832cce99f0f85e2"
                         ]
                     ],
                     [
@@ -336,8 +361,8 @@
                         [
                             "baUndUnlc1.bp.hap1.p_ctg.fa.assembly_summary:md5,0fa53662aee8c74fc6720ff4408a08c4",
                             "baUndUnlc1.bp.hap1.p_ctg.fa.stats:md5,ab6d9f1909e45552bc0080d882fd7f03",
-                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137",
-                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,b2db58bf32e3a8dd4941b2c662639336"
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,bd1c52139f1f78aca0e979f986e9c848",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,05a6f50ca539c725819f2cbaee1f1526"
                         ]
                     ]
                 ],
@@ -366,6 +391,32 @@
                             "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
                             "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
                             "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.completeness.stats",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.qv",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -409,6 +460,17 @@
                     ],
                     [
                         {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.completeness.stats:md5,954b0e4ec49d6b5fde51fe3bc77845eb"
+                    ],
+                    [
+                        {
                             "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
                             "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
                             "ori_id": "test",
@@ -416,7 +478,7 @@
                             "hap_id": "test_PRIMARY_0",
                             "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
                         },
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.completeness.stats:md5,b16834f8efec20947aed35bf26cd705b"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.completeness.stats:md5,d4d6c86552e5864eb49d472995db89cb"
                     ]
                 ],
                 "merqury_images": [
@@ -442,6 +504,30 @@
                             "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
                             "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
                             "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -482,7 +568,18 @@
                             "hap_id": "test_HAP_1",
                             "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa"
                         },
-                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.qv:md5,e90aa90f72211463fec6484041eebd4e"
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.qv:md5,b2defa521c8893fe9d82bface57e791f"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.qv:md5,a48ba344c9f58d71eb05f8a71332ed75"
                     ],
                     [
                         {
@@ -493,12 +590,1216 @@
                             "hap_id": "test_PRIMARY_0",
                             "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
                         },
-                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.qv:md5,d9df9bf004952a55f179ec05a5541b52"
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.qv:md5,5b79557bd67c3ddae0ffafa687a8c256"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-13T14:13:27.528819913",
+        "timestamp": "2026-08-14T11:07:58.324257099",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Undibacterium_unclassified - fasta_mixing 1 output - fastk - genomestats": {
+        "content": [
+            {
+                "asmstats": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap2.p_ctg.fa.stats:md5,5407da96b066ee539932953ff8712196"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,54506c426e92f75e8f5d68470d1732fa"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap1"
+                        },
+                        "GCA_922984935.2.subset.fasta.stats:md5,dce4e13f2159bae47099912c54325f00"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.stats:md5,2bdce92a4de47dfc6832cce99f0f85e2"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.stats:md5,ab6d9f1909e45552bc0080d882fd7f03"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,05a6f50ca539c725819f2cbaee1f1526"
+                    ]
+                ],
+                "busco": [
+                    
+                ],
+                "busco_batch_summary": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco.batch_summary.txt"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco.batch_summary.txt"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco.batch_summary.txt"
+                    ]
+                ],
+                "busco_directory": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco"
+                    ]
+                ],
+                "busco_log": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco.log"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco.log"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco.log"
+                    ]
+                ],
+                "busco_summary_json": [
+                    
+                ],
+                "busco_summary_txt": [
+                    
+                ],
+                "cross_hap_collection": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1"
+                        },
+                        "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa:md5,6ad006f2abad30e7f5452910903fd944"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2"
+                        },
+                        "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa:md5,ce4f60626bee9a7143c2149574abe770"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0"
+                        },
+                        "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa:md5,d819801bbae19bed2407d8804988a33d"
+                    ]
+                ],
+                "fastkdb": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.hist:md5,f854554e977de1ca4c24b6a789b2bca2"
+                        ],
+                        [
+                            ".test.ktab.1:md5,969444ac2972986a1c9ac07ccf26fda4",
+                            ".test.ktab.2:md5,8954c596c95633ee43aabbadb03d8f9f",
+                            ".test.ktab.3:md5,a6f9788f133c8a927fd576749552f5d2",
+                            ".test.ktab.4:md5,9e9550d252980d012d24095a8c18c005",
+                            "test.ktab:md5,16507f451ed7b951e9f3818a2f637101"
+                        ]
+                    ]
+                ],
+                "gfstats": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap2.p_ctg.fa.assembly_summary:md5,fdc3d15de68220bb4fdb2066911b56f4"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,36caaad743b367824f8af98e06431ece"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap1"
+                        },
+                        "GCA_922984935.2.subset.fasta.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.assembly_summary:md5,0fa53662aee8c74fc6720ff4408a08c4"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,bd1c52139f1f78aca0e979f986e9c848"
+                    ]
+                ],
+                "gstats": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa"
+                        },
+                        [
+                            "baUndUnlc1.bp.hap2.p_ctg.fa.assembly_summary:md5,fdc3d15de68220bb4fdb2066911b56f4",
+                            "baUndUnlc1.bp.hap2.p_ctg.fa.stats:md5,5407da96b066ee539932953ff8712196",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,36caaad743b367824f8af98e06431ece",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,54506c426e92f75e8f5d68470d1732fa"
+                        ]
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        [
+                            "GCA_922984935.2.subset.fasta.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d",
+                            "GCA_922984935.2.subset.fasta.stats:md5,dce4e13f2159bae47099912c54325f00",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.stats:md5,2bdce92a4de47dfc6832cce99f0f85e2"
+                        ]
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
+                        },
+                        [
+                            "baUndUnlc1.bp.hap1.p_ctg.fa.assembly_summary:md5,0fa53662aee8c74fc6720ff4408a08c4",
+                            "baUndUnlc1.bp.hap1.p_ctg.fa.stats:md5,ab6d9f1909e45552bc0080d882fd7f03",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,bd1c52139f1f78aca0e979f986e9c848",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,05a6f50ca539c725819f2cbaee1f1526"
+                        ]
+                    ]
+                ],
+                "merqury": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.completeness.stats",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.qv",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.completeness.stats",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.qv",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        [
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.completeness.stats",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.qv",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ]
+                ],
+                "merqury_completeness": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.completeness.stats:md5,4fc882b596e2ff4fc10e60abe0eb5171"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.completeness.stats:md5,954b0e4ec49d6b5fde51fe3bc77845eb"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.completeness.stats:md5,d4d6c86552e5864eb49d472995db89cb"
+                    ]
+                ],
+                "merqury_images": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        [
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ]
+                ],
+                "merqury_phased_stats": [
+                    
+                ],
+                "merqury_qv": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.qv:md5,b2defa521c8893fe9d82bface57e791f"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.qv:md5,a48ba344c9f58d71eb05f8a71332ed75"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.qv:md5,5b79557bd67c3ddae0ffafa687a8c256"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-08-14T11:06:02.434122006",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "meles meles - no trio - no busco - no fastk": {
+        "content": [
+            {
+                "asmstats": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap2.p_ctg.fa.stats:md5,5407da96b066ee539932953ff8712196"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,54506c426e92f75e8f5d68470d1732fa"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap1"
+                        },
+                        "GCA_922984935.2.subset.fasta.stats:md5,dce4e13f2159bae47099912c54325f00"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.stats:md5,2bdce92a4de47dfc6832cce99f0f85e2"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.stats:md5,ab6d9f1909e45552bc0080d882fd7f03"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,05a6f50ca539c725819f2cbaee1f1526"
+                    ]
+                ],
+                "busco": [
+                    
+                ],
+                "busco_batch_summary": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco.batch_summary.txt"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco.batch_summary.txt"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco.batch_summary.txt"
+                    ]
+                ],
+                "busco_directory": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco"
+                    ]
+                ],
+                "busco_log": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype-null-busco.log"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype-null-busco.log"
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype-null-busco.log"
+                    ]
+                ],
+                "busco_summary_json": [
+                    
+                ],
+                "busco_summary_txt": [
+                    
+                ],
+                "cross_hap_collection": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1"
+                        },
+                        "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa:md5,6ad006f2abad30e7f5452910903fd944"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2"
+                        },
+                        "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa:md5,ce4f60626bee9a7143c2149574abe770"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0"
+                        },
+                        "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa:md5,d819801bbae19bed2407d8804988a33d"
+                    ]
+                ],
+                "fastkdb": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test.hist:md5,f854554e977de1ca4c24b6a789b2bca2"
+                        ],
+                        [
+                            ".test.ktab.1:md5,969444ac2972986a1c9ac07ccf26fda4",
+                            ".test.ktab.2:md5,8954c596c95633ee43aabbadb03d8f9f",
+                            ".test.ktab.3:md5,a6f9788f133c8a927fd576749552f5d2",
+                            ".test.ktab.4:md5,9e9550d252980d012d24095a8c18c005",
+                            "test.ktab:md5,16507f451ed7b951e9f3818a2f637101"
+                        ]
+                    ]
+                ],
+                "gfstats": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap2.p_ctg.fa.assembly_summary:md5,fdc3d15de68220bb4fdb2066911b56f4"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,36caaad743b367824f8af98e06431ece"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap1"
+                        },
+                        "GCA_922984935.2.subset.fasta.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "_hap": "hap2"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap1"
+                        },
+                        "baUndUnlc1.bp.hap1.p_ctg.fa.assembly_summary:md5,0fa53662aee8c74fc6720ff4408a08c4"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "_hap": "hap2"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,bd1c52139f1f78aca0e979f986e9c848"
+                    ]
+                ],
+                "gstats": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa"
+                        },
+                        [
+                            "baUndUnlc1.bp.hap2.p_ctg.fa.assembly_summary:md5,fdc3d15de68220bb4fdb2066911b56f4",
+                            "baUndUnlc1.bp.hap2.p_ctg.fa.stats:md5,5407da96b066ee539932953ff8712196",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,36caaad743b367824f8af98e06431ece",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.fa.stats:md5,54506c426e92f75e8f5d68470d1732fa"
+                        ]
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        [
+                            "GCA_922984935.2.subset.fasta.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d",
+                            "GCA_922984935.2.subset.fasta.stats:md5,dce4e13f2159bae47099912c54325f00",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.assembly_summary:md5,5b519ef834e34d8047dd9ba942ab8137",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.fa.stats:md5,2bdce92a4de47dfc6832cce99f0f85e2"
+                        ]
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
+                        },
+                        [
+                            "baUndUnlc1.bp.hap1.p_ctg.fa.assembly_summary:md5,0fa53662aee8c74fc6720ff4408a08c4",
+                            "baUndUnlc1.bp.hap1.p_ctg.fa.stats:md5,ab6d9f1909e45552bc0080d882fd7f03",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.assembly_summary:md5,bd1c52139f1f78aca0e979f986e9c848",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.fa.stats:md5,05a6f50ca539c725819f2cbaee1f1526"
+                        ]
+                    ]
+                ],
+                "merqury": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.completeness.stats",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.qv",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.completeness.stats",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.qv",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        [
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.completeness.stats",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.qv",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ]
+                ],
+                "merqury_completeness": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.completeness.stats:md5,4fc882b596e2ff4fc10e60abe0eb5171"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.completeness.stats:md5,954b0e4ec49d6b5fde51fe3bc77845eb"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.completeness.stats:md5,d4d6c86552e5864eb49d472995db89cb"
+                    ]
+                ],
+                "merqury_images": [
+                    [
+                        {
+                            "hap_id": "test_HAP_1",
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap2.p_ctg.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_HAP_2",
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "HAP"
+                        },
+                        [
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-asm.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "hap_id": "test_PRIMARY_0",
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "ori_id": "test",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "type": "PRIMARY"
+                        },
+                        [
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.baUndUnlc1.bp.hap1.p_ctg.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-asm.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.fl.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.ln.png",
+                            "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.spectra-cn.st.png"
+                        ]
+                    ]
+                ],
+                "merqury_phased_stats": [
+                    
+                ],
+                "merqury_qv": [
+                    [
+                        {
+                            "id": "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_1",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa"
+                        },
+                        "test_HAP_1baUndUnlc1.bp.hap2.p_ctg.fa_pseudo_haplotype.qv:md5,b2defa521c8893fe9d82bface57e791f"
+                    ],
+                    [
+                        {
+                            "id": "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "HAP",
+                            "hap_id": "test_HAP_2",
+                            "pseudo_primary": "/test-data/Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta"
+                        },
+                        "test_HAP_2GCA_922984935.2.subset.fasta_pseudo_haplotype.qv:md5,a48ba344c9f58d71eb05f8a71332ed75"
+                    ],
+                    [
+                        {
+                            "id": "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype",
+                            "real_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa",
+                            "ori_id": "test",
+                            "type": "PRIMARY",
+                            "hap_id": "test_PRIMARY_0",
+                            "pseudo_primary": "/test-data/Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa"
+                        },
+                        "test_PRIMARY_0baUndUnlc1.bp.hap1.p_ctg.fa_pseudo_haplotype.qv:md5,5b79557bd67c3ddae0ffafa687a8c256"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-08-13T16:16:05.087327581",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

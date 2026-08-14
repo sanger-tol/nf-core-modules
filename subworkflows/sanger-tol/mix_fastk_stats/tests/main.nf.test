@@ -4,6 +4,8 @@ nextflow_workflow {
     script "../main.nf"
     workflow "MIX_FASTK_STATS"
 
+    config "./fastk.config"
+
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "genome_statistics"
@@ -14,24 +16,22 @@ nextflow_workflow {
     tag "subworkflows/../../modules/nf-core/find/concatenate"
     tag "subworkflows/../../modules/nf-core/fastk/fastk"
 
-    test("meles meles - no trio - no busco - no fastk") {
+    setup {
+        nfcoreInitialise("${launchDir}/library/")
+        nfcoreInstall(
+            "${launchDir}/library/",
+            [
+                "busco/busco",
+                "gfastats",
+                "merquryfk/merquryfk",
+                "find/concatenate",
+                "fastk/fastk"
+            ]
+        )
+        nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
+    }
 
-        config "./fastk.config"
-
-        setup {
-            nfcoreInitialise("${launchDir}/library/")
-            nfcoreInstall(
-                "${launchDir}/library/",
-                [
-                    "busco/busco",
-                    "gfastats",
-                    "merquryfk/merquryfk",
-                    "find/concatenate",
-                    "fastk/fastk"
-                ]
-            )
-            nfcoreLink("${launchDir}/library/", "${baseDir}/modules/")
-        }
+    test("Undibacterium_unclassified - fasta_mixing 1 output - fastk - genomestats") {
 
         when {
             params {
@@ -47,6 +47,68 @@ nextflow_workflow {
                 input[1] = channel.of([
                     [ id: "test"],
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa', checkIfExists: true),
+                ],
+                [
+                    [ id: "test2"],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta', checkIfExists: true),
+                ])
+                input[2] = channel.of([
+                    [ id: "test"],
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/genomic_data/baUndUnlc1/pacbio/fasta/HiFi.reads.fasta', checkIfExists: true),
+                ])
+                input[3] = channel.empty()
+                input[4] = channel.empty()
+                input[5] = []
+                input[6] = false
+                input[7] = false
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    sanitizeOutput(workflow.out, unstableKeys:[
+                        "busco",
+                        "busco_batch_summary",
+                        "busco_summary_txt",
+                        "busco_summary_json",
+                        "busco_log",
+                        "busco_directory",
+                        "merqury",
+                        "merqury_images"
+                    ])).match()
+                }
+            )
+        }
+
+
+        cleanup {
+            nfcoreUnlink("${launchDir}/library/", "${baseDir}/modules/nf-core")
+        }
+    }
+
+    test("Undibacterium_unclassified + other - fasta_mixing 3 output - fastk - genomestats") {
+
+        when {
+            params {
+                fastk_args = "-t"
+            }
+
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id: "test"],
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa', checkIfExists: true),
+                ])
+                input[1] = channel.of([
+                    [ id: "test"],
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap2.p_ctg.fa', checkIfExists: true),
+                ],
+                [
+                    [ id: "test2"],
+                    file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.1_paternal_haplotype/GCA_922984935.2.subset.fasta', checkIfExists: true),
                 ])
                 input[2] = channel.of([
                     [ id: "test"],
