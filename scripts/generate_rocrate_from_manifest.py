@@ -15,7 +15,7 @@ import rocrate.rocrate
 from rich.progress import BarColumn, Progress
 from rocrate.model.person import Person
 
-from nf_core.pipelines.rocrate import CustomNextflowCrateBuilder, ROCrate
+from nf_core.pipelines.rocrate import ROCrate
 
 log = logging.getLogger(__name__)
 
@@ -83,21 +83,6 @@ def set_if_set(d, k, v):
 
 
 ##### End of shared functions #####
-
-# Future-proof the script
-# nf-core 3.3 defines the expected CI as nf-test.yml but not all our
-# pipelines will immediately use nf-test, so revert to ci.yml if needed
-orig_build_method = CustomNextflowCrateBuilder.build
-
-
-def new_build_method(self, workflow, *args, **kwargs):
-    ci_workflow = kwargs["ci_workflow"]
-    if not (workflow.parent / ".github" / "workflows" / ci_workflow).exists():
-        kwargs["ci_workflow"] = "ci.yml"
-    return orig_build_method(self, workflow, *args, **kwargs)
-
-
-CustomNextflowCrateBuilder.build = new_build_method
 
 
 class SangerToLROCrate(ROCrate):
