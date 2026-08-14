@@ -8,70 +8,15 @@ import datetime
 import logging
 import operator
 import os
-import sys
 from pathlib import Path
 
 import rich_click as click
-from rich.progress import BarColumn, Progress
 
 from nf_core.pipelines.lint_utils import dump_yaml_with_prettier
+from nf_core.pipelines.rocrate import ROCrate
 from nf_core.utils import Pipeline
 
 log = logging.getLogger(__name__)
-
-##### Shared functions to read and transform the manifest #####
-
-
-# Read and parse the manifest
-def get_contributors(pipeline_obj):
-    # Grab the contributor list
-    contributors = pipeline_obj.nf_config["manifest"].get("contributors", [])
-    log.debug("manifest.contributors: %s", contributors)
-
-    # Using a progress bar because parsing the git log could be slow
-    progress_bar = Progress(
-        "[bold blue]{task.description}",
-        BarColumn(bar_width=None),
-        "[magenta]{task.completed} of {task.total}[reset] » [bold yellow]{task.fields[name]}",
-        transient=True,
-        disable=os.environ.get("HIDE_PROGRESS", None) is not None,
-    )
-    with progress_bar:
-        bump_progress = progress_bar.add_task("Searching for author emails", total=len(contributors), name="")
-
-        for author in contributors:
-            if "name" not in author:
-                log.error(f"No name field for author: {author}")
-                sys.exit(1)
-
-            progress_bar.update(bump_progress, advance=1, name=author["name"])
-
-            # Fill in the email from the git history (if missing)
-            if "email" not in author or not author["email"].strip():
-                # get email from git log
-                name = author["name"].split()[0].replace(",", "")
-                email = pipeline_obj.repo.git.log(f"--author={name}", "--pretty=format:%ae", "-1")
-                if email:
-                    author["email"] = email
-                elif "email" in author:
-                    del author["email"]
-
-            # Fix the ORCID URL
-            if "orcid" in author:
-                orcid = author["orcid"].strip()
-                if orcid and not orcid.startswith("http"):
-                    author["orcid"] = "https://orcid.org/" + orcid
-                elif not orcid:
-                    del author["orcid"]
-
-            # Fix the GitHub URL
-            if "github" in author:
-                if author["github"].startswith("@"):
-                    author["github"] = "https://github.com/" + author["github"][1:]
-                elif not author["github"].startswith("http"):
-                    author["github"] = "https://github.com/" + author["github"]
-
-    return contributors
 
 
 # Only update the dictionary if there's a value
@@ -82,7 +27,37 @@ def set_if_set(d, k, v):
             d[k] = sv
 
 
-##### End of shared functions #####
+## Hijack nf-core's ROCrate code to parse manifest.contributors
+
+
+# Object with a dummy "append_to" method
+class DummyCrateEntity:
+    def append_to(self, mode, author_entity):
+        pass
+
+
+# Object with a dummy "resolve_id" method, and an "add" method that records all values
+class DummyCrate:
+    def __init__(self):
+        self.elements = []
+
+    def add(self, obj):
+        self.elements.append(obj)
+
+    def resolve_id(self, _id):
+        return _id
+
+
+def get_contributors(pipeline_dir):
+    # The nf-core ROCrate object
+    rocrate_obj = ROCrate(pipeline_dir)
+    # "add_main_authors" needs "self.crate" with "add" and "resolve_id"
+    rocrate_obj.crate = DummyCrate()
+    # "add_main_authors" needs "wf_file" with "append_to"
+    dummy_wf_file = DummyCrateEntity()
+    rocrate_obj.add_main_authors(dummy_wf_file)
+    return rocrate_obj.crate.elements
+
 
 message = (
     "If you use this software, please cite it using the metadata from this file and all references from CITATIONS.md."
@@ -123,8 +98,9 @@ def find_release_name(pipeline_dir, version):
 # Intro: https://citation-file-format.github.io/
 # Schema: https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md
 # Validate with `cffconvert`
-def build_cff(pipeline_obj):
+def build_cff(pipeline_dir):
 
+    pipeline_obj = get_pipeline(pipeline_dir)
     manifest = pipeline_obj.nf_config.get("manifest")
     if not manifest:
         log.error("No manifest in nextflow.config")
@@ -147,10 +123,7 @@ def build_cff(pipeline_obj):
     set_if_set(content, "repository-code", manifest.get("homePage"))
     set_if_set(content, "doi", manifest.get("doi"))
 
-    if "contributors" not in pipeline_obj.nf_config["manifest"]:
-        log.error("No contributors field in manifest of nextflow.config")
-        return
-    contributors = get_contributors(pipeline_obj)
+    contributors = get_contributors(pipeline_dir)
     log.debug("Parsed contributors: %s", contributors)
     if not contributors:
         log.error("Empty list of contributors in manifest of nextflow.config")
@@ -159,12 +132,13 @@ def build_cff(pipeline_obj):
 
     authors = []
     for contributor in contributors:
+        # Note: contributor is a ROCrate "Person" object, which has a dict interface
         log.debug(f"Adding author: {contributor}")
         author = {}
         set_if_set(author, "affiliation", contributor.get("affiliation"))
-        set_if_set(author, "orcid", contributor.get("orcid"))
+        set_if_set(author, "orcid", contributor.get("@id"))
         set_if_set(author, "email", contributor.get("email"))
-        set_if_set(author, "website", contributor.get("github"))
+        set_if_set(author, "website", contributor.get("url"))
         if "," in contributor["name"]:
             # "Family name, Given name"
             (family, given) = contributor["name"].split(",", 1)
@@ -193,8 +167,8 @@ def build_cff(pipeline_obj):
     metavar="<pipeline directory>",
 )
 def cff(pipeline_dir):
-    pipeline_obj = get_pipeline(pipeline_dir)
-    content = build_cff(pipeline_obj)
+    pipeline_dir = Path(pipeline_dir)
+    content = build_cff(pipeline_dir)
     # dump_yaml_with_prettier expects to be run from the directory of the repository
     os.chdir(pipeline_dir)
     # Use the function from nf-core to make sure the CFF file is pretty
