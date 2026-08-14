@@ -5,84 +5,15 @@ Read the pipeline manifest and generate the ro-crate-metadata.json file
 """
 
 import logging
-import os
-import sys
 from pathlib import Path
 
 import requests
 import rich_click as click
 import rocrate.rocrate
-from rich.progress import BarColumn, Progress
-from rocrate.model.person import Person
 
 from nf_core.pipelines.rocrate import ROCrate
 
 log = logging.getLogger(__name__)
-
-##### Shared functions to read and transform the manifest #####
-
-
-# Read and parse the manifest
-def get_contributors(pipeline_obj):
-    # Grab the contributor list
-    contributors = pipeline_obj.nf_config["manifest"].get("contributors", [])
-    log.debug("manifest.contributors: %s", contributors)
-
-    # Using a progress bar because parsing the git log could be slow
-    progress_bar = Progress(
-        "[bold blue]{task.description}",
-        BarColumn(bar_width=None),
-        "[magenta]{task.completed} of {task.total}[reset] » [bold yellow]{task.fields[name]}",
-        transient=True,
-        disable=os.environ.get("HIDE_PROGRESS", None) is not None,
-    )
-    with progress_bar:
-        bump_progress = progress_bar.add_task("Searching for author emails", total=len(contributors), name="")
-
-        for author in contributors:
-            if "name" not in author:
-                log.error(f"No name field for author: {author}")
-                sys.exit(1)
-
-            progress_bar.update(bump_progress, advance=1, name=author["name"])
-
-            # Fill in the email from the git history (if missing)
-            if "email" not in author or not author["email"].strip():
-                # get email from git log
-                name = author["name"].split()[0].replace(",", "")
-                email = pipeline_obj.repo.git.log(f"--author={name}", "--pretty=format:%ae", "-1")
-                if email:
-                    author["email"] = email
-                elif "email" in author:
-                    del author["email"]
-
-            # Fix the ORCID URL
-            if "orcid" in author:
-                orcid = author["orcid"].strip()
-                if orcid and not orcid.startswith("http"):
-                    author["orcid"] = "https://orcid.org/" + orcid
-                elif not orcid:
-                    del author["orcid"]
-
-            # Fix the GitHub URL
-            if "github" in author:
-                if author["github"].startswith("@"):
-                    author["github"] = "https://github.com/" + author["github"][1:]
-                elif not author["github"].startswith("http"):
-                    author["github"] = "https://github.com/" + author["github"]
-
-    return contributors
-
-
-# Only update the dictionary if there's a value
-def set_if_set(d, k, v):
-    if v is not None:
-        sv = v.strip()
-        if sv:
-            d[k] = sv
-
-
-##### End of shared functions #####
 
 
 class SangerToLROCrate(ROCrate):
@@ -126,45 +57,6 @@ class SangerToLROCrate(ROCrate):
 
         log.debug(f"Adding topics: {topics}")
         self.crate.mainEntity["keywords"] = topics
-
-    def add_main_authors(self, wf_file: rocrate.model.entity.Entity) -> None:
-        """
-        Add workflow contributors to the crate using author information from the Nextflow manifest
-        Overrides the implementation from the parent class
-        """
-
-        manifest = self.pipeline_obj.nf_config.get("manifest")
-        if not manifest:
-            log.error("No manifest in nextflow.config")
-            return
-
-        if "contributors" not in self.pipeline_obj.nf_config["manifest"]:
-            log.error("No contributors field in manifest of nextflow.config")
-            return
-
-        contributors = get_contributors(self.pipeline_obj)
-        log.debug("Parsed contributors: %s", contributors)
-        if not contributors:
-            log.error("Empty list of contributors in manifest of nextflow.config")
-            return
-        log.info(f"Found {len(contributors)} contributors")
-
-        for author in contributors:
-            # Mandatory fields
-            for field in ["contribution", "orcid"]:
-                if field not in author:
-                    log.error(f"No {field} field for author: {author}")
-                    sys.exit(1)
-            log.debug(f"Adding author: {author}")
-
-            properties = {"name": author["name"]}
-            set_if_set(properties, "affiliation", author.get("affiliation"))
-            set_if_set(properties, "url", author.get("github"))
-            set_if_set(properties, "email", author.get("email"))
-
-            author_entity = self.crate.add(Person(self.crate, author["orcid"], properties=properties))
-            for mode in author["contribution"]:
-                wf_file.append_to(mode, author_entity)
 
 
 @click.command()
