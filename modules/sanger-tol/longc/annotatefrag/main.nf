@@ -12,8 +12,9 @@ process LONGC_ANNOTATEFRAG {
     tuple val(meta), path(bam), path(bai)
 
     output:
-    tuple val(meta), path("*.bam"), emit: bam
-    tuple val(meta), path("*.bam.bai"), emit: index
+    tuple val(meta), path("*_annotated.bam"), emit: bam
+    tuple val(meta), path("*_annotated.bam.bai"), emit: index
+    tuple val(meta), path("*_annotated.ns.bam"), emit: ns_bam
     tuple val("${task.process}"), val('python'), eval('python -c "import sys; print(sys.version.split()[0])"'), topic: versions, emit: versions_python
     tuple val("${task.process}"), val('annotate_frag.py'), eval("annotate_frag.py --version | sed 's/^.* //'"), topic: versions, emit: versions_annotate_frag
 
@@ -31,6 +32,7 @@ process LONGC_ANNOTATEFRAG {
     annotate_frag.py \\
         --input ${bam} \\
         --output ${prefix}_annotated.bam \\
+        --name-sorted-output ${prefix}_annotated.ns.bam \\
         --threads ${task.cpus} \\
         ${args}
     """
@@ -40,5 +42,6 @@ process LONGC_ANNOTATEFRAG {
     """
     touch ${prefix}_annotated.bam
     touch ${prefix}_annotated.bam.bai
+    touch ${prefix}_annotated.ns.bam
     """
 }
