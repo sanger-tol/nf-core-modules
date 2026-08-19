@@ -4,7 +4,7 @@
 
 include { SEQTK_CUTN                } from '../../../modules/nf-core/seqtk/cutn/main'
 include { GAWK as GAWK_GAP_LENGTH   } from '../../../modules/nf-core/gawk/main'
-include { HTSLIB_BGZIPTABIX          } from '../../../modules/nf-core/htslib/bgziptabix/main'
+include { HTSLIB_BGZIPTABIX         } from '../../../modules/nf-core/htslib/bgziptabix/main'
 
 workflow GAP_FINDER {
     take:
