@@ -59,7 +59,8 @@ workflow GENOME_STATISTICS {
     // Module: Assess assembly using BUSCO.
     //
     ch_assemblies_for_busco = ch_assemblies
-        .join(ch_busco_lineage, by: 0)
+        .join(ch_busco_lineage, by: 0, remainder: true)
+        .filter { meta, asms, lineage -> lineage}
         .multiMap { meta, asms, lineage ->
             asms: [meta, asms]
             lineage: lineage
@@ -107,7 +108,7 @@ workflow GENOME_STATISTICS {
     ch_statistics_output = ASMSTATS.out.stats
         .mix(GFASTATS.out.assembly_summary)
         .map { meta, stats -> [meta - meta.subMap("_hap"), stats] }
-        .groupTuple(size: 4)
+        .groupTuple()
         .map { meta, out -> [meta, out.flatten().sort { f -> f.getName() }] }
 
     ch_busco_output = BUSCO_BUSCO.out.batch_summary

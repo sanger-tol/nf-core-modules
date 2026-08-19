@@ -1267,27 +1267,20 @@
                             "id": "test"
                         },
                         [
+                            "GCA_922984935.2.subset.fasta.gz.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d",
+                            "GCA_922984935.2.subset.fasta.gz.stats:md5,4f692268fb5b50290af7454a32744055",
+                            "GCA_965654295.1.fa.gz.assembly_summary:md5,5f23cffaa0f243f55db88fb5bd01d365",
+                            "GCA_965654295.1.fa.gz.stats:md5,2172e78b0325ee1688af53df8ad16e1e",
                             "baUndUnlc1.hic.hap1.p_ctg.fa.gz.assembly_summary:md5,1a9954f4d2d0347a04e0e115c0556d96",
                             "baUndUnlc1.hic.hap1.p_ctg.fa.gz.stats:md5,2ed748b50332840fdbba4e472681f6e7",
                             "baUndUnlc1.hic.hap2.p_ctg.fa.gz.assembly_summary:md5,08214ac5e67c7ebf49104c2212936437",
                             "baUndUnlc1.hic.hap2.p_ctg.fa.gz.stats:md5,cb3b18c6cdca1d3df3565d4c5b842d86"
                         ]
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        [
-                            "GCA_922984935.2.subset.fasta.gz.assembly_summary:md5,d399a2381448be8a15ca0eee133bfe1d",
-                            "GCA_922984935.2.subset.fasta.gz.stats:md5,4f692268fb5b50290af7454a32744055",
-                            "GCA_965654295.1.fa.gz.assembly_summary:md5,5f23cffaa0f243f55db88fb5bd01d365",
-                            "GCA_965654295.1.fa.gz.stats:md5,2172e78b0325ee1688af53df8ad16e1e"
-                        ]
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-19T09:00:20.601262",
+        "timestamp": "2026-08-19T15:05:56.616927",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
