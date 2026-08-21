@@ -60,7 +60,7 @@ workflow GENOME_STATISTICS {
     //
     ch_assemblies_for_busco = ch_assemblies
         .join(ch_busco_lineage, by: 0, remainder: true)
-        .filter { meta, asms, lineage -> lineage}
+        .filter { _meta, _asms, lineage -> lineage}
         .multiMap { meta, asms, lineage ->
             asms: [meta, asms]
             lineage: lineage
