@@ -2,86 +2,93 @@ include { BLAST_BLASTN                         } from '../../../modules/sanger-t
 include { BLAST_MAKEBLASTDB                    } from '../../../modules/nf-core/blast/makeblastdb/main'
 include { HIFITRIMMER_PROCESSBLAST             } from '../../../modules/nf-core/hifitrimmer/processblast/main'
 include { HIFITRIMMER_TRIM                     } from '../../../modules/nf-core/hifitrimmer/trim/main'
-include { LIMA                                 } from '../../../modules/nf-core/lima/main'
+include { LIMA as LIMA_ULI                     } from '../../../modules/nf-core/lima/main'
+include { LIMA as LIMA_PIMMS                   } from '../../../modules/nf-core/lima/main'
 include { PBMARKDUP                            } from '../../../modules/nf-core/pbmarkdup/main'
 include { UNTAR                                } from '../../../modules/nf-core/untar/main'
 
 workflow PACBIO_PREPROCESS {
 
     take:
-    ch_reads                    // Channel [meta, input]: input reads in FASTA/FASTQ/BAM format
-    ch_adapter_yaml             // Channel [meta, yaml]: yaml file for hifitrimmer adapter trimming
-    val_hifi_adapter            // Path to Hifi adapter DB or Hifi adapter fasta to make database for blastn
-    val_uli_primers             // Primer file for lima
-    val_pbmarkdup               // Options to run pbmarkdup
+    ch_reads_standard     // Channel [meta, input]: standard reads → optional hifi-trimmer
+    ch_reads_uli          // Channel [meta, input]: ULI reads → LIMA(global) + pbmarkdup
+    ch_reads_pimms        // Channel [meta, input]: pimms reads → per-sample LIMA + pbmarkdup
+    ch_reads_amplified    // Channel [meta, input]: amplified reads → pbmarkdup only
+    ch_adapter_yaml       // Channel [meta, yaml]: yaml for hifitrimmer (applies to ch_reads_standard)
+    ch_pimms_primers      // Channel [meta, path]: per-sample LIMA adapter file for pimms
+    val_hifi_adapter      // Path to Hifi adapter DB or Hifi adapter fasta to make database for blastn
+    val_uli_primers       // Primer file for ULI LIMA
 
     main:
-    lima_reports = channel.empty()
-    lima_summary = channel.empty()
+    lima_reports    = channel.empty()
+    lima_summary    = channel.empty()
     pbmarkdup_stats = channel.empty()
 
     //
-    // DEMULTIPLEX WITH LIMA
+    // ULI: LIMA with global adapter
     //
-    if ( val_uli_primers ) {
-        LIMA( ch_reads, val_uli_primers )
-
-        lima_reports = lima_reports.mix( LIMA.out.report )
-        lima_summary = lima_summary.mix( LIMA.out.summary )
-
-        // prepare input for markdup or trimming
-        ch_input_for_md = LIMA.out.bam
-            .mix(LIMA.out.fastq)
-            .mix(LIMA.out.fasta)
-            .mix(LIMA.out.fastqgz)
-            .mix( LIMA.out.fastagz )
-    } else {
-        ch_input_for_md = ch_reads
-    }
+    LIMA_ULI(ch_reads_uli, val_uli_primers)
+    lima_reports = lima_reports.mix(LIMA_ULI.out.report)
+    lima_summary = lima_summary.mix(LIMA_ULI.out.summary)
+    ch_uli_post_lima = LIMA_ULI.out.bam
+        .mix(LIMA_ULI.out.fastq)
+        .mix(LIMA_ULI.out.fasta)
+        .mix(LIMA_ULI.out.fastqgz)
+        .mix(LIMA_ULI.out.fastagz)
 
     //
-    // MARKDUP WITH PBMARKDUP
+    // PiMmS: per-sample LIMA; adapter file passed as ch_pimms_primers channel
     //
-    if ( val_pbmarkdup ) {
-        PBMARKDUP( ch_input_for_md )
-        pbmarkdup_stats = pbmarkdup_stats.mix( PBMARKDUP.out.log )
+    ch_pimms_lima_input = ch_reads_pimms
+        .join(ch_pimms_primers, by: 0)
+        .multiMap { meta, reads, primers ->
+            reads:   [ meta, reads ]
+            primers: primers
+        }
 
-        ch_input_pre_trim = PBMARKDUP.out.markduped
-    } else {
-        // If not running markdup, pass the input to trimming step
-        ch_input_pre_trim = ch_input_for_md
-    }
+    LIMA_PIMMS(ch_pimms_lima_input.reads, ch_pimms_lima_input.primers)
+    lima_reports = lima_reports.mix(LIMA_PIMMS.out.report)
+    lima_summary = lima_summary.mix(LIMA_PIMMS.out.summary)
+    ch_pimms_post_lima = LIMA_PIMMS.out.bam
+        .mix(LIMA_PIMMS.out.fastq)
+        .mix(LIMA_PIMMS.out.fasta)
+        .mix(LIMA_PIMMS.out.fastqgz)
+        .mix(LIMA_PIMMS.out.fastagz)
+
+    //
+    // pbmarkdup: ULI (post-LIMA) + pimms (post-LIMA) + amplified (raw)
+    //
+    PBMARKDUP(ch_uli_post_lima.mix(ch_pimms_post_lima).mix(ch_reads_amplified))
+    pbmarkdup_stats = pbmarkdup_stats.mix(PBMARKDUP.out.log)
 
     //
     // TRIMMING WITH HIFITRIMMER
     //
     hifitrimmer_summary = channel.empty()
-    hifitrimmer_bed = channel.empty()
-    trimmed_bam = channel.empty()
-    trimmed_cram = channel.empty()
-    trimmed_sam = channel.empty()
-    trimmed_fasta = channel.empty()
-    trimmed_fastq = channel.empty()
+    hifitrimmer_bed     = channel.empty()
+    trimmed_bam         = channel.empty()
+    trimmed_cram        = channel.empty()
+    trimmed_sam         = channel.empty()
+    trimmed_fasta       = channel.empty()
+    trimmed_fastq       = channel.empty()
+    ch_hifitrimmer_input = ch_reads_standard.mix(PBMARKDUP.out.markduped)
+
     if ( val_hifi_adapter ) {
-        // Assign ch_input_skip_trimm to those without adapter yaml for trimming
-        ch_input_skip_trim = ch_input_pre_trim
+        
+        ch_input_skip_trim = ch_hifitrimmer_input
             .join(ch_adapter_yaml, by: 0, remainder: true)
             .filter { _meta, _reads, yaml -> !yaml }
             .map { meta, reads, _yaml -> [meta, reads] }
 
-        // Warning for skip trimming
         ch_input_skip_trim
             .subscribe { _meta, reads ->
                 log.warn "No adapter YAML provided, skipping adapter trimming step for: ${reads}"
             }
 
-        // PREPARE INPUT FOR TRIMMING
-        // Combine adapter yaml to input reads, only those with adapter yaml will be used for trimming, skip those without
-        ch_input_to_trim = ch_input_pre_trim
+        ch_input_to_trim = ch_hifitrimmer_input
             .combine(ch_adapter_yaml, by: 0)
             .map { meta, reads, _yaml -> [meta, reads] }
 
-        // Make adapter database
         adapter_fasta_ch = channel.of([ [id: file(val_hifi_adapter).baseName], file(val_hifi_adapter) ])
         if ( val_hifi_adapter.endsWith('.tar.gz') ) {
             UNTAR( adapter_fasta_ch )
@@ -91,16 +98,8 @@ workflow PACBIO_PREPROCESS {
             adapter_db = BLAST_MAKEBLASTDB.out.db
         }
 
-        //
-        // ADAPTER SEARCH WITH BLASTN
-        //
-        // Convert reads to FASTA for BLASTN
         BLAST_BLASTN ( ch_input_to_trim, adapter_db.collect(), [],[],[] )
 
-        //
-        // PROCESS BLAST OUTPUT WITH HIFITRIMMER PROCESSBLAST
-        //
-        // Prepare input for Hifitimmer processblast
         ch_input_processblast = BLAST_BLASTN.out.txtgz.combine( ch_adapter_yaml, by: 0 )
             .multiMap { meta, blastn, yaml ->
                 blastn: [ meta, blastn ]
@@ -110,22 +109,18 @@ workflow PACBIO_PREPROCESS {
         HIFITRIMMER_PROCESSBLAST ( ch_input_processblast.blastn, ch_input_processblast.yaml )
 
         hifitrimmer_summary = hifitrimmer_summary.mix ( HIFITRIMMER_PROCESSBLAST.out.summary )
-        hifitrimmer_bed = hifitrimmer_bed.mix ( HIFITRIMMER_PROCESSBLAST.out.bed )
+        hifitrimmer_bed     = hifitrimmer_bed.mix ( HIFITRIMMER_PROCESSBLAST.out.bed )
 
-        //
-        // FILTER READS WITH HIFITRIMMER FILTERBAM
-        //
-        // Convert FASTA and FASTQ to BAM for hifitrimmer filtering
         ch_input_filterbam = ch_input_to_trim.combine( HIFITRIMMER_PROCESSBLAST.out.bed, by: 0 )
         HIFITRIMMER_TRIM ( ch_input_filterbam )
 
-        trimmed_bam = trimmed_bam.mix( HIFITRIMMER_TRIM.out.bam )
-        trimmed_cram = trimmed_cram.mix( HIFITRIMMER_TRIM.out.cram )
-        trimmed_sam = trimmed_sam.mix( HIFITRIMMER_TRIM.out.sam )
+        trimmed_bam   = trimmed_bam.mix( HIFITRIMMER_TRIM.out.bam )
+        trimmed_cram  = trimmed_cram.mix( HIFITRIMMER_TRIM.out.cram )
+        trimmed_sam   = trimmed_sam.mix( HIFITRIMMER_TRIM.out.sam )
         trimmed_fasta = trimmed_fasta.mix( HIFITRIMMER_TRIM.out.fasta )
         trimmed_fastq = trimmed_fastq.mix( HIFITRIMMER_TRIM.out.fastq )
     } else {
-        ch_input_skip_trim = ch_input_pre_trim
+        ch_input_skip_trim = ch_hifitrimmer_input
     }
 
     ch_input_skip_trim_branch = ch_input_skip_trim

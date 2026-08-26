@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
 name: "pacbio_preprocess"
-description: "Preprocesses PacBio sequencing data by demultiplexing with LIMA and marking duplicates (ULI data), adapter trimming (optional), and converting to FASTA/FASTQ/CRAM format."
+description: "Preprocesses standard, ULI, PiMmS, and amplified PacBio reads with library-specific demultiplexing, duplicate marking, and optional adapter trimming."
 keywords:
   - pacbio
   - demultiplex
@@ -22,33 +22,52 @@ components:
       git_remote: https://github.com/nf-core/modules.git
 
 input:
-  - ch_reads:
+  - ch_reads_standard:
       type: file
       description: |
-        Input channel containing sequencing reads in BAM, FASTQ, or FASTA format.
+        Standard PacBio reads passed directly to optional HiFiTrimmer adapter trimming.
+        Structure: [ val(meta), path(reads) ]
+      pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
+  - ch_reads_uli:
+      type: file
+      description: |
+        ULI PacBio reads processed with LIMA using the global ULI primer file, then with pbmarkdup.
+        Structure: [ val(meta), path(reads) ]
+      pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
+  - ch_reads_pimms:
+      type: file
+      description: |
+        PiMmS PacBio reads processed with LIMA using a matching per-sample primer file, then with pbmarkdup.
+        Structure: [ val(meta), path(reads) ]
+      pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
+  - ch_reads_amplified:
+      type: file
+      description: |
+        Amplified PacBio reads processed with pbmarkdup without prior LIMA demultiplexing.
         Structure: [ val(meta), path(reads) ]
       pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
   - ch_adapter_yaml:
       type: file
       description: |
-        Input channel containing YAML file for HiFiTrimmer adapter trimming, specific to each read files, paired by meta information.
+        Per-sample HiFiTrimmer configuration. Its meta map must match the reads to trim.
         Structure: [ val(meta), path(yaml) ]
       pattern: "*.yaml"
+  - ch_pimms_primers:
+      type: file
+      description: |
+        Per-sample PiMmS primer FASTA used by LIMA. Its meta map must match ch_reads_pimms.
+        Structure: [ val(meta), path(primers) ]
+      pattern: "*.(fasta|fa|fna)"
   - val_hifi_adapter:
       type: file
       description: |
-        Path to Adapter database or Adapter fasta for BLASTN adapter detection.
-      pattern: "*.(fasta|fa|fna)"
+        HiFi adapter BLAST database archive or FASTA used to build a database. An empty value disables adapter trimming.
+      pattern: "*.(tar.gz|fasta|fa|fna)"
   - val_uli_primers:
       type: file
       description: |
-        ULI primer FASTA file used by LIMA for barcode demultiplexing.
-        Provide a primer FASTA to enable demultiplexing, or an empty channel to skip.
-      pattern: "*.fasta|*.fa"
-  - val_pbmarkdup:
-      type: boolean
-      description: |
-        Whether to run pbmarkdup for duplicate marking.
+        Global ULI primer FASTA used by LIMA for barcode demultiplexing.
+      pattern: "*.(fasta|fa|fna)"
 
 output:
   - untrimmed_fastx:
@@ -96,33 +115,33 @@ output:
   - lima_report:
       type: file
       description: |
-        LIMA demultiplexing reports (if val_uli_primers).
+        LIMA demultiplexing reports for ULI reads and matched PiMmS reads.
         Structure: [ val(meta), path(report) ]
-      pattern: "*.report.csv"
+      pattern: "*.lima.report"
   - lima_summary:
       type: file
       description: |
-        LIMA demultiplexing summary (if uli_primers).
+        LIMA demultiplexing summaries for ULI reads and matched PiMmS reads.
         Structure: [ val(meta), path(summary) ]
-      pattern: "*.summary.txt"
+      pattern: "*.lima.summary"
   - hifitrimmer_bed:
       type: file
       description: |
-        HiFiTrimmer adapter trim coordinates in BED format (if val_adapter_fasta and ch_adapter_yaml provided).
+        HiFiTrimmer adapter coordinates for reads with matching YAML configuration.
         Structure: [ val(meta), path(bed) ]
-      pattern: "*.bed"
+      pattern: "*.bed.gz"
   - hifitrimmer_summary:
       type: file
       description: |
-        HiFiTrimmer trimming summary (if val_adapter_fasta and ch_adapter_yaml provided).
+        HiFiTrimmer summaries for reads with matching YAML configuration.
         Structure: [ val(meta), path(summary) ]
       pattern: "*.summary.json"
   - pbmarkdup_stats:
       type: file
       description: |
-        pbmarkdup duplicate marking statistics (if val_uli_primers provided).
+        pbmarkdup logs for ULI, matched PiMmS, and amplified reads.
         Structure: [ val(meta), path(log) ]
-      pattern: "*.log"
+      pattern: "*.pbmarkdup.log"
 authors:
   - "@sainsachiko"
 maintainers:
