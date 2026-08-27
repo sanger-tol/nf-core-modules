@@ -31,13 +31,13 @@ input:
   - ch_reads_uli:
       type: file
       description: |
-        ULI PacBio reads processed with LIMA using the global ULI primer file, then with pbmarkdup.
+        ULI PacBio reads processed with LIMA using the global ULI adapter file, then with pbmarkdup.
         Structure: [ val(meta), path(reads) ]
       pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
   - ch_reads_pimms:
       type: file
       description: |
-        PiMmS PacBio reads processed with LIMA using a matching per-sample primer file, then with pbmarkdup.
+        PiMmS PacBio reads processed with LIMA using a matching per-sample adapter file, then with pbmarkdup.
         Structure: [ val(meta), path(reads) ]
       pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
   - ch_reads_amplified:
@@ -52,21 +52,21 @@ input:
         Per-sample HiFiTrimmer configuration. Its meta map must match the reads to trim.
         Structure: [ val(meta), path(yaml) ]
       pattern: "*.yaml"
-  - ch_pimms_primers:
+  - ch_pimms_adapters:
       type: file
       description: |
-        Per-sample PiMmS primer FASTA used by LIMA. Its meta map must match ch_reads_pimms.
-        Structure: [ val(meta), path(primers) ]
+        Per-sample PiMmS adapter FASTA used by LIMA. Its meta map must match ch_reads_pimms.
+        Structure: [ val(meta), path(adapter) ]
       pattern: "*.(fasta|fa|fna)"
   - val_hifi_adapter:
       type: file
       description: |
         HiFi adapter BLAST database archive or FASTA used to build a database. An empty value disables adapter trimming.
       pattern: "*.(tar.gz|fasta|fa|fna)"
-  - val_uli_primers:
+  - val_uli_adapter:
       type: file
       description: |
-        Global ULI primer FASTA used by LIMA for barcode demultiplexing.
+        Global ULI adapter FASTA used by LIMA for barcode demultiplexing.
       pattern: "*.(fasta|fa|fna)"
 
 output:

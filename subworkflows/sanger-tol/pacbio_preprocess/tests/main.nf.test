@@ -57,7 +57,6 @@ nextflow_workflow {
                 )
                 input[2] = channel.of(
                     [ [ id:'pimms_bam' ], file(params.modules_testdata_base_path + 'Siboglinum_fiordicum/genomic_data/wsSibFior13/pacbio/m84047_250307_124228_s4.hifi_reads.bc2059.subset.bam', checkIfExists: true) ],
-                    [ [ id:'pimms_bam_mismatch' ], file(params.modules_testdata_base_path + 'Siboglinum_fiordicum/genomic_data/wsSibFior13/pacbio/m84047_250307_124228_s4.hifi_reads.bc2059.subset.bam', checkIfExists: true) ],
                     [ [ id:'pimms_fastq' ], file(params.modules_testdata_base_path + 'Siboglinum_fiordicum/genomic_data/wsSibFior13/pacbio/m84047_250307_124228_s4.hifi_reads.bc2059.subset.fastq.gz', checkIfExists: true) ]
                 )
                 input[3] = channel.of(
@@ -150,7 +149,6 @@ nextflow_workflow {
                 )
                 input[2] = channel.of(
                     [ [ id:'pimms_bam' ], file(params.modules_testdata_base_path + 'Siboglinum_fiordicum/genomic_data/wsSibFior13/pacbio/m84047_250307_124228_s4.hifi_reads.bc2059.subset.bam', checkIfExists: true) ],
-                    [ [ id:'pimms_bam_mismatch' ], file(params.modules_testdata_base_path + 'Siboglinum_fiordicum/genomic_data/wsSibFior13/pacbio/m84047_250307_124228_s4.hifi_reads.bc2059.subset.bam', checkIfExists: true) ],
                     [ [ id:'pimms_fastq' ], file(params.modules_testdata_base_path + 'Siboglinum_fiordicum/genomic_data/wsSibFior13/pacbio/m84047_250307_124228_s4.hifi_reads.bc2059.subset.fastq.gz', checkIfExists: true) ]
                 )
                 input[3] = channel.of(

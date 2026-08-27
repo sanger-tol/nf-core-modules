@@ -15,9 +15,9 @@ workflow PACBIO_PREPROCESS {
     ch_reads_pimms        // Channel [meta, input]: pimms reads → per-sample LIMA + pbmarkdup
     ch_reads_amplified    // Channel [meta, input]: amplified reads → pbmarkdup only
     ch_adapter_yaml       // Channel [meta, yaml]: yaml for hifitrimmer (applies to ch_reads_standard)
-    ch_pimms_primers      // Channel [meta, path]: per-sample LIMA adapter file for pimms
+    ch_pimms_adapters     // Channel [meta, path]: per-sample LIMA adapter file for pimms
     val_hifi_adapter      // Path to Hifi adapter DB or Hifi adapter fasta to make database for blastn
-    val_uli_primers       // Primer file for ULI LIMA
+    val_uli_adapter       // Adapter file for ULI LIMA
 
     main:
     lima_reports    = channel.empty()
@@ -27,7 +27,7 @@ workflow PACBIO_PREPROCESS {
     //
     // ULI: LIMA with global adapter
     //
-    LIMA_ULI(ch_reads_uli, val_uli_primers)
+    LIMA_ULI(ch_reads_uli, val_uli_adapter)
     lima_reports = lima_reports.mix(LIMA_ULI.out.report)
     lima_summary = lima_summary.mix(LIMA_ULI.out.summary)
     ch_uli_post_lima = LIMA_ULI.out.bam
@@ -37,16 +37,20 @@ workflow PACBIO_PREPROCESS {
         .mix(LIMA_ULI.out.fastagz)
 
     //
-    // PiMmS: per-sample LIMA; adapter file passed as ch_pimms_primers channel
+    // PiMmS: per-sample LIMA with matching adapter file
     //
     ch_pimms_lima_input = ch_reads_pimms
-        .join(ch_pimms_primers, by: 0)
-        .multiMap { meta, reads, primers ->
-            reads:   [ meta, reads ]
-            primers: primers
+        .join(ch_pimms_adapters, by: 0, remainder: true)
+        .map { meta, reads, adapter ->
+            if (!adapter) { error "PiMmS adapter file is required for ${meta.id}: ${reads}" }
+            [ meta, reads, adapter ]
+        }
+        .multiMap { meta, reads, adapter ->
+            reads:    [ meta, reads ]
+            adapters: adapter
         }
 
-    LIMA_PIMMS(ch_pimms_lima_input.reads, ch_pimms_lima_input.primers)
+    LIMA_PIMMS(ch_pimms_lima_input.reads, ch_pimms_lima_input.adapters)
     lima_reports = lima_reports.mix(LIMA_PIMMS.out.report)
     lima_summary = lima_summary.mix(LIMA_PIMMS.out.summary)
     ch_pimms_post_lima = LIMA_PIMMS.out.bam
