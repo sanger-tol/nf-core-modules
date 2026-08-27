@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
 name: "pacbio_preprocess"
-description: "Preprocesses standard, ULI, PiMmS, and amplified PacBio reads with library-specific demultiplexing, duplicate marking, and optional adapter trimming."
+description: "Preprocesses PacBio reads with optional LIMA demultiplexing, duplicate marking, and adapter trimming configured per input."
 keywords:
   - pacbio
   - demultiplex
@@ -22,29 +22,12 @@ components:
       git_remote: https://github.com/nf-core/modules.git
 
 input:
-  - ch_reads_standard:
+  - ch_reads:
       type: file
       description: |
-        Standard PacBio reads passed directly to optional HiFiTrimmer adapter trimming.
-        Structure: [ val(meta), path(reads) ]
-      pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
-  - ch_reads_uli:
-      type: file
-      description: |
-        ULI PacBio reads processed with LIMA using the global ULI adapter file, then with pbmarkdup.
-        Structure: [ val(meta), path(reads) ]
-      pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
-  - ch_reads_pimms:
-      type: file
-      description: |
-        PiMmS PacBio reads processed with LIMA using a matching per-sample adapter file, then with pbmarkdup.
-        Structure: [ val(meta), path(reads) ]
-      pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
-  - ch_reads_amplified:
-      type: file
-      description: |
-        Amplified PacBio reads processed with pbmarkdup without prior LIMA demultiplexing.
-        Structure: [ val(meta), path(reads) ]
+        PacBio reads with an optional per-input LIMA adapter file and a flag controlling duplicate marking.
+        Use an empty value for lima_adapter to skip LIMA.
+        Structure: [ val(meta), path(reads), path(lima_adapter), val(run_pbmarkdup) ]
       pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
   - ch_adapter_yaml:
       type: file
@@ -52,22 +35,11 @@ input:
         Per-sample HiFiTrimmer configuration. Its meta map must match the reads to trim.
         Structure: [ val(meta), path(yaml) ]
       pattern: "*.yaml"
-  - ch_pimms_adapters:
-      type: file
-      description: |
-        Per-sample PiMmS adapter FASTA used by LIMA. Its meta map must match ch_reads_pimms.
-        Structure: [ val(meta), path(adapter) ]
-      pattern: "*.(fasta|fa|fna)"
   - val_hifi_adapter:
       type: file
       description: |
         HiFi adapter BLAST database archive or FASTA used to build a database. An empty value disables adapter trimming.
       pattern: "*.(tar.gz|fasta|fa|fna)"
-  - val_uli_adapter:
-      type: file
-      description: |
-        Global ULI adapter FASTA used by LIMA for barcode demultiplexing.
-      pattern: "*.(fasta|fa|fna)"
 
 output:
   - untrimmed_fastx:
@@ -115,13 +87,13 @@ output:
   - lima_report:
       type: file
       description: |
-        LIMA demultiplexing reports for ULI reads and matched PiMmS reads.
+        LIMA demultiplexing reports for reads supplied with a LIMA adapter.
         Structure: [ val(meta), path(report) ]
       pattern: "*.lima.report"
   - lima_summary:
       type: file
       description: |
-        LIMA demultiplexing summaries for ULI reads and matched PiMmS reads.
+        LIMA demultiplexing summaries for reads supplied with a LIMA adapter.
         Structure: [ val(meta), path(summary) ]
       pattern: "*.lima.summary"
   - hifitrimmer_bed:
@@ -139,7 +111,7 @@ output:
   - pbmarkdup_stats:
       type: file
       description: |
-        pbmarkdup logs for ULI, matched PiMmS, and amplified reads.
+        pbmarkdup logs for reads with run_pbmarkdup set to true.
         Structure: [ val(meta), path(log) ]
       pattern: "*.pbmarkdup.log"
 authors:

@@ -396,7 +396,7 @@
                     {
                         "id": "pimms_fastq"
                     },
-                    "pimms_fastq.fastq.gz:md5,35a448e48e80fecf0ef7e26a60b5ef57"
+                    "pimms_fastq.fastq.gz:md5,a54d1559e43f04ef611f431f4a1aae36"
                 ],
                 [
                     {
@@ -415,9 +415,9 @@
                 
             ],
             [
-                "134d8af3351f08e9b819b0ad50fad242",
                 "91aa198f3b4cb8934347168b441b6b5d",
                 "9b94f58967a9b5bed52a6a56ce0ee405",
+                "d5aa6c0b4c05f78aadff0a63a814ccf6",
                 "f95b68051caa07568e20c2da31ad337d"
             ],
             [
@@ -741,7 +741,7 @@
                         "detections": [
                             {
                                 "adapter": "gnl|uv|NGB00973.1:1-35",
-                                "n_hits": 2973
+                                "n_hits": 2970
                             },
                             {
                                 "adapter": "TruSeq_D708",
@@ -1034,8 +1034,8 @@
                             }
                         ],
                         "summary": {
-                            "total_reads_processed": 519,
-                            "total_bases_processed": 5428790,
+                            "total_reads_processed": 517,
+                            "total_bases_processed": 5406475,
                             "total_reads_discarded": 28,
                             "total_reads_trimmed": 2,
                             "total_bases_removed": 375254
@@ -1050,7 +1050,7 @@
                         "detections": [
                             {
                                 "adapter": "gnl|uv|NGB00973.1:1-35",
-                                "n_hits": 2973
+                                "n_hits": 2970
                             },
                             {
                                 "adapter": "TruSeq_D708",
@@ -1343,8 +1343,8 @@
                             }
                         ],
                         "summary": {
-                            "total_reads_processed": 519,
-                            "total_bases_processed": 5428790,
+                            "total_reads_processed": 517,
+                            "total_bases_processed": 5406475,
                             "total_reads_discarded": 28,
                             "total_reads_trimmed": 2,
                             "total_bases_removed": 375254
@@ -2169,13 +2169,13 @@
                     {
                         "id": "pimms_bam"
                     },
-                    "pimms_bam.lima.report:md5,96526354e9ea3967d8de1dc3cef1c829"
+                    "pimms_bam.lima.report:md5,ae560485462c93d2ca3097927a2dcb69"
                 ],
                 [
                     {
                         "id": "pimms_fastq"
                     },
-                    "pimms_fastq.lima.report:md5,7fe043aed0ebb45bebaee2b74f882435"
+                    "pimms_fastq.lima.report:md5,591367f5cd965fd8c869564fbd561446"
                 ],
                 [
                     {
@@ -2195,13 +2195,13 @@
                     {
                         "id": "pimms_bam"
                     },
-                    "pimms_bam.lima.summary:md5,1a66239ea1eb7983bf13d4d86a8ed2e1"
+                    "pimms_bam.lima.summary:md5,25bf7f3bf06e36b2980627934ff9f795"
                 ],
                 [
                     {
                         "id": "pimms_fastq"
                     },
-                    "pimms_fastq.lima.summary:md5,1a66239ea1eb7983bf13d4d86a8ed2e1"
+                    "pimms_fastq.lima.summary:md5,25bf7f3bf06e36b2980627934ff9f795"
                 ],
                 [
                     {
@@ -2227,13 +2227,13 @@
                     {
                         "id": "pimms_bam"
                     },
-                    "pimms_bam_pbmarkdup.pbmarkdup.log:md5,7cb533be59869a7f74eebaee2c241b06"
+                    "pimms_bam_pbmarkdup.pbmarkdup.log:md5,a9ae60b02f4d3da0612e607f88ab47be"
                 ],
                 [
                     {
                         "id": "pimms_fastq"
                     },
-                    "pimms_fastq_pbmarkdup.pbmarkdup.log:md5,13cead25e9e71d5d22a21f2c1618bb94"
+                    "pimms_fastq_pbmarkdup.pbmarkdup.log:md5,a9fec4132362ef6d12b134e5e67af0e3"
                 ],
                 [
                     {
@@ -2249,10 +2249,10 @@
                 ]
             ]
         ],
-        "timestamp": "2026-08-26T22:06:38.92067361",
+        "timestamp": "2026-08-27T09:59:36.860200468",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "25.10.4"
         }
     }
 }

@@ -2,68 +2,55 @@ include { BLAST_BLASTN                         } from '../../../modules/sanger-t
 include { BLAST_MAKEBLASTDB                    } from '../../../modules/nf-core/blast/makeblastdb/main'
 include { HIFITRIMMER_PROCESSBLAST             } from '../../../modules/nf-core/hifitrimmer/processblast/main'
 include { HIFITRIMMER_TRIM                     } from '../../../modules/nf-core/hifitrimmer/trim/main'
-include { LIMA as LIMA_ULI                     } from '../../../modules/nf-core/lima/main'
-include { LIMA as LIMA_PIMMS                   } from '../../../modules/nf-core/lima/main'
+include { LIMA                                 } from '../../../modules/nf-core/lima/main'
 include { PBMARKDUP                            } from '../../../modules/nf-core/pbmarkdup/main'
 include { UNTAR                                } from '../../../modules/nf-core/untar/main'
 
 workflow PACBIO_PREPROCESS {
 
     take:
-    ch_reads_standard     // Channel [meta, input]: standard reads → optional hifi-trimmer
-    ch_reads_uli          // Channel [meta, input]: ULI reads → LIMA(global) + pbmarkdup
-    ch_reads_pimms        // Channel [meta, input]: pimms reads → per-sample LIMA + pbmarkdup
-    ch_reads_amplified    // Channel [meta, input]: amplified reads → pbmarkdup only
-    ch_adapter_yaml       // Channel [meta, yaml]: yaml for hifitrimmer (applies to ch_reads_standard)
-    ch_pimms_adapters     // Channel [meta, path]: per-sample LIMA adapter file for pimms
-    val_hifi_adapter      // Path to Hifi adapter DB or Hifi adapter fasta to make database for blastn
-    val_uli_adapter       // Adapter file for ULI LIMA
+    ch_reads          // Channel [meta, reads, lima_adapter, run_pbmarkdup]
+    ch_adapter_yaml   // Channel [meta, yaml]: per-sample yaml for hifitrimmer
+    val_hifi_adapter  // Path to Hifi adapter DB or Hifi adapter fasta to make database for blastn
 
     main:
-    lima_reports    = channel.empty()
-    lima_summary    = channel.empty()
-    pbmarkdup_stats = channel.empty()
+    ch_reads_branch = ch_reads.branch { meta, reads, lima_adapter, run_pbmarkdup ->
+        lima: lima_adapter
+            return [ meta + [_run_pbmarkdup: run_pbmarkdup], reads, lima_adapter ]
+        no_lima: true
+            return [ meta, reads, run_pbmarkdup ]
+    }
 
-    //
-    // ULI: LIMA with global adapter
-    //
-    LIMA_ULI(ch_reads_uli, val_uli_adapter)
-    lima_reports = lima_reports.mix(LIMA_ULI.out.report)
-    lima_summary = lima_summary.mix(LIMA_ULI.out.summary)
-    ch_uli_post_lima = LIMA_ULI.out.bam
-        .mix(LIMA_ULI.out.fastq)
-        .mix(LIMA_ULI.out.fasta)
-        .mix(LIMA_ULI.out.fastqgz)
-        .mix(LIMA_ULI.out.fastagz)
-
-    //
-    // PiMmS: per-sample LIMA with matching adapter file
-    //
-    ch_pimms_lima_input = ch_reads_pimms
-        .join(ch_pimms_adapters, by: 0, remainder: true)
-        .map { meta, reads, adapter ->
-            if (!adapter) { error "PiMmS adapter file is required for ${meta.id}: ${reads}" }
-            [ meta, reads, adapter ]
-        }
+    ch_lima_input = ch_reads_branch.lima
         .multiMap { meta, reads, adapter ->
             reads:    [ meta, reads ]
             adapters: adapter
         }
 
-    LIMA_PIMMS(ch_pimms_lima_input.reads, ch_pimms_lima_input.adapters)
-    lima_reports = lima_reports.mix(LIMA_PIMMS.out.report)
-    lima_summary = lima_summary.mix(LIMA_PIMMS.out.summary)
-    ch_pimms_post_lima = LIMA_PIMMS.out.bam
-        .mix(LIMA_PIMMS.out.fastq)
-        .mix(LIMA_PIMMS.out.fasta)
-        .mix(LIMA_PIMMS.out.fastqgz)
-        .mix(LIMA_PIMMS.out.fastagz)
+    // args for LIMA should be passed to config file based on libary type
+    // For ULI: --hifi-preset 'SYMMETRIC' (For TOL setting, we have one ULI adapter, whose preset is SYMMETRIC)
+    // For PiMms: --peek-guess --hifi-preset ${adapter_preset} --split-named"
+    LIMA(ch_lima_input.reads, ch_lima_input.adapters)
+    lima_reports = LIMA.out.report.map { meta, report -> [ meta - meta.subMap('_run_pbmarkdup'), report ] }
+    lima_summary = LIMA.out.summary.map { meta, summary -> [ meta - meta.subMap('_run_pbmarkdup'), summary ] }
+    ch_post_lima = LIMA.out.bam
+        .mix(LIMA.out.fastq)
+        .mix(LIMA.out.fasta)
+        .mix(LIMA.out.fastqgz)
+        .mix(LIMA.out.fastagz)
+        .map { meta, reads -> [ meta - meta.subMap('_run_pbmarkdup'), reads, meta._run_pbmarkdup ] }
 
-    //
-    // pbmarkdup: ULI (post-LIMA) + pimms (post-LIMA) + amplified (raw)
-    //
-    PBMARKDUP(ch_uli_post_lima.mix(ch_pimms_post_lima).mix(ch_reads_amplified))
-    pbmarkdup_stats = pbmarkdup_stats.mix(PBMARKDUP.out.log)
+    ch_pbmarkdup_branch = ch_reads_branch.no_lima
+        .mix(ch_post_lima)
+        .branch { meta, reads, run_pbmarkdup ->
+            markdup: run_pbmarkdup
+                return [ meta, reads ]
+            no_markdup: true
+                return [ meta, reads ]
+        }
+
+    PBMARKDUP(ch_pbmarkdup_branch.markdup)
+    pbmarkdup_stats = PBMARKDUP.out.log
 
     //
     // TRIMMING WITH HIFITRIMMER
@@ -75,7 +62,7 @@ workflow PACBIO_PREPROCESS {
     trimmed_sam         = channel.empty()
     trimmed_fasta       = channel.empty()
     trimmed_fastq       = channel.empty()
-    ch_hifitrimmer_input = ch_reads_standard.mix(PBMARKDUP.out.markduped)
+    ch_hifitrimmer_input = ch_pbmarkdup_branch.no_markdup.mix(PBMARKDUP.out.markduped)
 
     if ( val_hifi_adapter ) {
 
