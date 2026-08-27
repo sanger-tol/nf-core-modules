@@ -78,7 +78,7 @@ workflow PACBIO_PREPROCESS {
     ch_hifitrimmer_input = ch_reads_standard.mix(PBMARKDUP.out.markduped)
 
     if ( val_hifi_adapter ) {
-        
+
         ch_input_skip_trim = ch_hifitrimmer_input
             .join(ch_adapter_yaml, by: 0, remainder: true)
             .filter { _meta, _reads, yaml -> !yaml }
