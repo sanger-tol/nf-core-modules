@@ -37,19 +37,29 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.bam":
+      - "*_annotated.bam":
           type: file
           description: Annotated, coordinate-sorted BAM with FI, FD, and BX tags
-          pattern: "*.bam"
+          pattern: "*_annotated.bam"
           ontologies: []
   index:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.bam.bai":
+      - "*_annotated.bam.bai":
           type: file
-          description: BAM index
-          pattern: "*.bam.bai"
+          description: BAM index for the coordinate-sorted annotated BAM
+          pattern: "*_annotated.bam.bai"
+          ontologies: []
+  ns_bam:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*_annotated.ns.bam":
+          type: file
+          description: |
+            Annotated, name-sorted BAM for pairtools parse2 (wf-pore-c style).
+          pattern: "*_annotated.ns.bam"
           ontologies: []
   versions_python:
     - - ${task.process}:
