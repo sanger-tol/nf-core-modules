@@ -9,16 +9,15 @@ include { UNTAR                                } from '../../../modules/nf-core/
 workflow PACBIO_PREPROCESS {
 
     take:
-    ch_reads          // Channel [meta, reads, lima_adapter, run_pbmarkdup]
-    ch_adapter_yaml   // Channel [meta, yaml]: per-sample yaml for hifitrimmer
+    ch_reads          // Channel [meta, reads, lima_adapter, run_pbmarkdup, adapter_yaml]
     val_hifi_adapter  // Path to Hifi adapter DB or Hifi adapter fasta to make database for blastn
 
     main:
-    ch_reads_branch = ch_reads.branch { meta, reads, lima_adapter, run_pbmarkdup ->
+    ch_reads_branch = ch_reads.branch { meta, reads, lima_adapter, run_pbmarkdup, adapter_yaml ->
         lima: lima_adapter
-            return [ meta + [_run_pbmarkdup: run_pbmarkdup], reads, lima_adapter ]
+            return [ meta + [_run_pbmarkdup: run_pbmarkdup, _adapter_yaml: adapter_yaml], reads, lima_adapter ]
         no_lima: true
-            return [ meta, reads, run_pbmarkdup ]
+            return [ meta + [_adapter_yaml: adapter_yaml], reads, run_pbmarkdup ]
     }
 
     ch_lima_input = ch_reads_branch.lima
@@ -31,8 +30,8 @@ workflow PACBIO_PREPROCESS {
     // For ULI: --hifi-preset 'SYMMETRIC' (For TOL setting, we have one ULI adapter, whose preset is SYMMETRIC)
     // For PiMms: --peek-guess --hifi-preset ${adapter_preset} --split-named"
     LIMA(ch_lima_input.reads, ch_lima_input.adapters)
-    lima_reports = LIMA.out.report.map { meta, report -> [ meta - meta.subMap('_run_pbmarkdup'), report ] }
-    lima_summary = LIMA.out.summary.map { meta, summary -> [ meta - meta.subMap('_run_pbmarkdup'), summary ] }
+    lima_reports = LIMA.out.report.map { meta, report -> [ meta - meta.subMap('_run_pbmarkdup', '_adapter_yaml'), report ] }
+    lima_summary = LIMA.out.summary.map { meta, summary -> [ meta - meta.subMap('_run_pbmarkdup', '_adapter_yaml'), summary ] }
     ch_post_lima = LIMA.out.bam
         .mix(LIMA.out.fastq)
         .mix(LIMA.out.fasta)
@@ -51,6 +50,7 @@ workflow PACBIO_PREPROCESS {
 
     PBMARKDUP(ch_pbmarkdup_branch.markdup)
     pbmarkdup_stats = PBMARKDUP.out.log
+        .map { meta, log -> [ meta - meta.subMap('_adapter_yaml'), log ] }
 
     //
     // TRIMMING WITH HIFITRIMMER
@@ -66,19 +66,22 @@ workflow PACBIO_PREPROCESS {
 
     if ( val_hifi_adapter ) {
 
-        ch_input_skip_trim = ch_hifitrimmer_input
-            .join(ch_adapter_yaml, by: 0, remainder: true)
-            .filter { _meta, _reads, yaml -> !yaml }
-            .map { meta, reads, _yaml -> [meta, reads] }
+        // Split on whether this record carries an adapter YAML (rides in meta._adapter_yaml)
+        ch_hifitrimmer_branch = ch_hifitrimmer_input.branch { meta, reads ->
+            trim:      meta._adapter_yaml
+            skip_trim: true
+        }
+
+        ch_input_skip_trim = ch_hifitrimmer_branch.skip_trim
+            .map { meta, reads -> [ meta - meta.subMap('_adapter_yaml'), reads ] }
 
         ch_input_skip_trim
             .subscribe { _meta, reads ->
                 log.warn "No adapter YAML provided, skipping adapter trimming step for: ${reads}"
             }
 
-        ch_input_to_trim = ch_hifitrimmer_input
-            .combine(ch_adapter_yaml, by: 0)
-            .map { meta, reads, _yaml -> [meta, reads] }
+        ch_input_to_trim = ch_hifitrimmer_branch.trim
+            .map { meta, reads -> [ meta - meta.subMap('_adapter_yaml'), reads ] }
 
         adapter_fasta_ch = channel.of([ [id: file(val_hifi_adapter).baseName], file(val_hifi_adapter) ])
         if ( val_hifi_adapter.endsWith('.tar.gz') ) {
@@ -91,10 +94,12 @@ workflow PACBIO_PREPROCESS {
 
         BLAST_BLASTN ( ch_input_to_trim, adapter_db.collect(), [],[],[] )
 
-        ch_input_processblast = BLAST_BLASTN.out.txtgz.combine( ch_adapter_yaml, by: 0 )
+        // Recover each sample's YAML from meta._adapter_yaml alongside its blastn output
+        ch_input_processblast = BLAST_BLASTN.out.txtgz
+            .join(ch_hifitrimmer_branch.trim.map { meta, reads -> [ meta - meta.subMap('_adapter_yaml'), meta._adapter_yaml ] }, by: 0)
             .multiMap { meta, blastn, yaml ->
                 blastn: [ meta, blastn ]
-                yaml: [ meta, yaml ]
+                yaml:   [ meta, yaml ]
             }
 
         HIFITRIMMER_PROCESSBLAST ( ch_input_processblast.blastn, ch_input_processblast.yaml )
@@ -111,7 +116,8 @@ workflow PACBIO_PREPROCESS {
         trimmed_fasta = trimmed_fasta.mix( HIFITRIMMER_TRIM.out.fasta )
         trimmed_fastq = trimmed_fastq.mix( HIFITRIMMER_TRIM.out.fastq )
     } else {
-        ch_input_skip_trim = ch_hifitrimmer_input
+        log.warn "No adapter DB provided, skipping adapter trimming"
+        ch_input_skip_trim = ch_hifitrimmer_input.map { meta, reads -> [ meta - meta.subMap('_adapter_yaml'), reads ] }
     }
 
     ch_input_skip_trim_branch = ch_input_skip_trim

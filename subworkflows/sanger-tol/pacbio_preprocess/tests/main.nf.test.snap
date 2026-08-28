@@ -302,9 +302,9 @@
                 ],
                 [
                     {
-                        "id": "uli_bam_mismatch"
+                        "id": "uli_bam_untrim"
                     },
-                    "uli_bam_mismatch.lima.report:md5,4e75e227f80bb115040ac340345e4742"
+                    "uli_bam_untrim.lima.report:md5,4e75e227f80bb115040ac340345e4742"
                 ],
                 [
                     {
@@ -328,9 +328,9 @@
                 ],
                 [
                     {
-                        "id": "uli_bam_mismatch"
+                        "id": "uli_bam_untrim"
                     },
-                    "uli_bam_mismatch.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                    "uli_bam_untrim.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
                 ],
                 [
                     {
@@ -360,9 +360,9 @@
                 ],
                 [
                     {
-                        "id": "uli_bam_mismatch"
+                        "id": "uli_bam_untrim"
                     },
-                    "uli_bam_mismatch_pbmarkdup.pbmarkdup.log:md5,02efc656c114d8029ad4e8e79e778e35"
+                    "uli_bam_untrim_pbmarkdup.pbmarkdup.log:md5,02efc656c114d8029ad4e8e79e778e35"
                 ],
                 [
                     {
@@ -372,10 +372,10 @@
                 ]
             ]
         ],
-        "timestamp": "2026-08-26T21:27:19.150295834",
+        "timestamp": "2026-08-28T11:43:18.287761026",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.3"
+            "nextflow": "25.10.4"
         }
     },
     "Test full preprocessing for standard, ULI, PiMmS, and amplified reads": {
@@ -2179,9 +2179,9 @@
                 ],
                 [
                     {
-                        "id": "uli_bam_mismatch"
+                        "id": "uli_bam_untrim"
                     },
-                    "uli_bam_mismatch.lima.report:md5,4e75e227f80bb115040ac340345e4742"
+                    "uli_bam_untrim.lima.report:md5,4e75e227f80bb115040ac340345e4742"
                 ],
                 [
                     {
@@ -2205,9 +2205,9 @@
                 ],
                 [
                     {
-                        "id": "uli_bam_mismatch"
+                        "id": "uli_bam_untrim"
                     },
-                    "uli_bam_mismatch.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
+                    "uli_bam_untrim.lima.summary:md5,3bbe4a6ad5e8a563f1d7f39972e824fb"
                 ],
                 [
                     {
@@ -2237,9 +2237,9 @@
                 ],
                 [
                     {
-                        "id": "uli_bam_mismatch"
+                        "id": "uli_bam_untrim"
                     },
-                    "uli_bam_mismatch_pbmarkdup.pbmarkdup.log:md5,02efc656c114d8029ad4e8e79e778e35"
+                    "uli_bam_untrim_pbmarkdup.pbmarkdup.log:md5,02efc656c114d8029ad4e8e79e778e35"
                 ],
                 [
                     {
@@ -2249,7 +2249,7 @@
                 ]
             ]
         ],
-        "timestamp": "2026-08-27T09:59:36.860200468",
+        "timestamp": "2026-08-28T11:37:34.278494292",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

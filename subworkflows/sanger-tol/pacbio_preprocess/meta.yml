@@ -25,16 +25,12 @@ input:
   - ch_reads:
       type: file
       description: |
-        PacBio reads with an optional per-input LIMA adapter file and a flag controlling duplicate marking.
+        PacBio reads with an optional per-input LIMA adapter file, a flag controlling duplicate marking,
+        and an optional per-input HiFiTrimmer configuration YAML.
         Use an empty value for lima_adapter to skip LIMA.
-        Structure: [ val(meta), path(reads), path(lima_adapter), val(run_pbmarkdup) ]
+        Use an empty value for adapter_yaml to skip adapter trimming for that input.
+        Structure: [ val(meta), path(reads), path(lima_adapter), val(run_pbmarkdup), path(adapter_yaml) ]
       pattern: "*.(bam|fastq|fq|fasta|fa|fna)(.gz)?"
-  - ch_adapter_yaml:
-      type: file
-      description: |
-        Per-sample HiFiTrimmer configuration. Its meta map must match the reads to trim.
-        Structure: [ val(meta), path(yaml) ]
-      pattern: "*.yaml"
   - val_hifi_adapter:
       type: file
       description: |
