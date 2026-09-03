@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "pretext_graph"
+description: "Generate Pretext contact maps with additional data tracks"
+keywords:
+  - pretext
+  - pretext_view
+  - visualization
+  - coverage
+  - telomere
+  - repeat
+  - gap
+  - bigWig
+  - bed
+tools:
+  - pretextgraph:
+      description: "Paired REad TEXTure mapper graph generator"
+      homepage: "https://github.com/wtsi-hpag/PretextGraph"
+      documentation: "https://github.com/wtsi-hpag/PretextGraph"
+      licence: ["MIT"]
+  - bigwigtobedgraph:
+      description: "UCSC tool to convert bigWig to bedGraph format"
+      homepage: "https://genome.ucsc.edu/"
+      documentation: "https://genome.ucsc.edu/"
+      licence: ["varies"]
+      identifier: "biotools:bigwig_to_bedgraph"
+
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - pretext_file:
+        type: file
+        description: Input Pretext contact map file
+        pattern: "*.pretext"
+        ontologies: []
+  - - gap_file:
+        type: file
+        description: BED file containing gap information and co-ordinates
+        pattern: "*.bed"
+        optional: true
+        ontologies:
+          - edam: http://edamontology.org/format_3003 # BED
+  - - coverage:
+        type: file
+        description: BigWig file containing coverage data across an assembly
+        pattern: "*.bw"
+        optional: true
+        ontologies:
+          - edam: http://edamontology.org/format_3006 # BIGWIG
+  - - telomere_files:
+        type: file
+        description: Directory containing telomere bedGraph files, this maybe 1 or 4 files.
+        pattern: "*.bedgraph"
+        optional: true
+        ontologies:
+          - edam: "http://edamontology.org/format_3583" # BEDGRAPH
+  - - repeat_density:
+        type: file
+        description: BigWig file containing repeat density data
+        pattern: "*.bw"
+        optional: true
+        ontologies:
+          - edam: http://edamontology.org/format_3006 # BIGWIG
+  - - split_telo_bool:
+        type: boolean
+        description: Boolean flag for telomere processing
+        ontologies: []
+
+output:
+  pretext:
+    - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'sample1' ]`
+    - "*.pretext":
+        type: file
+        description: Output Pretext contact map with upto 7 accessory tracks.
+        ontologies: []
+  versions:
+    - "versions.yml":
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+        ontologies:
+          - edam: http://edamontology.org/format_3750 # YAML
+
+authors:
+  - "@DLBPointon"
+maintainers:
+  - "@DLBPointon"
