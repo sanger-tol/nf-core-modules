@@ -45,14 +45,14 @@ workflow GENOME_STATISTICS {
     // Module: Calculate assembly stats with gfastats
     //
     GFASTATS(
-        ch_assemblies_split,
-        "fasta",
-        "",
-        "",
-        [[], []],
-        [[], []],
-        [[], []],
-        [[], []],
+        ch_assemblies_split, // assembly
+        "fasta",             // out_fmt
+        "",                  // genome size
+        "",                  // target
+        [[], []],             // agp file
+        [[], []],             // include bed
+        [[], []],             // exclude bed
+        [[], []]              // instructions
     )
 
     //
@@ -67,12 +67,12 @@ workflow GENOME_STATISTICS {
         }
 
     BUSCO_BUSCO(
-        ch_assemblies_for_busco.asms,
-        "genome",
-        ch_assemblies_for_busco.lineage,
-        val_busco_lineage_directory ?: [],
-        [],
-        true,
+        ch_assemblies_for_busco.asms,      // assembly
+        "genome",                          // busco mode
+        ch_assemblies_for_busco.lineage,   // lineage to run BUSCO predictions
+        val_busco_lineage_directory ?: [], // busco lineage directory
+        [],                                // busco config
+        true                               // clean intermediates
     )
 
     //
