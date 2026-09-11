@@ -670,19 +670,71 @@
                     ]
                 ],
                 "merqury": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        [
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
+                            "test.completeness.stats",
+                            "test.qv",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png"
+                        ]
+                    ]
                 ],
                 "merqury_completeness": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.completeness.stats:md5,ed7048b3f686740b48d701baa24be7dd"
+                    ]
                 ],
                 "merqury_images": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        [
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png"
+                        ]
+                    ]
                 ],
                 "merqury_phased_stats": [
                     
                 ],
                 "merqury_qv": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.qv:md5,5754802f3d1e6e84365dcf8bbf549343"
+                    ]
                 ],
                 "stats": [
                     [
@@ -699,7 +751,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-19T08:26:02.935575",
+        "timestamp": "2026-09-10T09:42:45.725876",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -1247,19 +1299,239 @@
                     ]
                 ],
                 "merqury": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        [
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
+                            "test.completeness.stats",
+                            "test.qv",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        [
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
+                            "test.completeness.stats",
+                            "test.qv",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap3",
+                            "id": "test"
+                        },
+                        [
+                            "test.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test.completeness.stats",
+                            "test.qv",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap4",
+                            "id": "test"
+                        },
+                        [
+                            "test.GCA_965654295.1.spectra-cn.fl.png",
+                            "test.GCA_965654295.1.spectra-cn.ln.png",
+                            "test.GCA_965654295.1.spectra-cn.st.png",
+                            "test.completeness.stats",
+                            "test.qv",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ]
                 ],
                 "merqury_completeness": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.completeness.stats:md5,05633e9f063234c110df5fa7fbb8e5c2"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.completeness.stats:md5,0afa8e685cc9e8c08db9d7ed1c9366cc"
+                    ],
+                    [
+                        {
+                            "_hap": "hap3",
+                            "id": "test"
+                        },
+                        "test.completeness.stats:md5,7dc9bd04377e9e5c1f85a15ebae24421"
+                    ],
+                    [
+                        {
+                            "_hap": "hap4",
+                            "id": "test"
+                        },
+                        "test.completeness.stats:md5,158e4899a025a978626f4535d6421129"
+                    ]
                 ],
                 "merqury_images": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        [
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        [
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
+                            "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap3",
+                            "id": "test"
+                        },
+                        [
+                            "test.GCA_922984935.2.subset.spectra-cn.fl.png",
+                            "test.GCA_922984935.2.subset.spectra-cn.ln.png",
+                            "test.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap4",
+                            "id": "test"
+                        },
+                        [
+                            "test.GCA_965654295.1.spectra-cn.fl.png",
+                            "test.GCA_965654295.1.spectra-cn.ln.png",
+                            "test.GCA_965654295.1.spectra-cn.st.png",
+                            "test.spectra-asm.fl.png",
+                            "test.spectra-asm.ln.png",
+                            "test.spectra-asm.st.png",
+                            "test.spectra-cn.fl.png",
+                            "test.spectra-cn.ln.png",
+                            "test.spectra-cn.st.png",
+                            "test.temp.spectra-cn.fl.png",
+                            "test.temp.spectra-cn.ln.png",
+                            "test.temp.spectra-cn.st.png"
+                        ]
+                    ]
                 ],
                 "merqury_phased_stats": [
                     
                 ],
                 "merqury_qv": [
-                    
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.qv:md5,d23c07da79afae1f35707e60e5d0afc2"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.qv:md5,b7916ca46b21648109e1658b105fafbb"
+                    ],
+                    [
+                        {
+                            "_hap": "hap3",
+                            "id": "test"
+                        },
+                        "test.qv:md5,bc580ccf53c6e93e23e2a3fd89b7d82b"
+                    ],
+                    [
+                        {
+                            "_hap": "hap4",
+                            "id": "test"
+                        },
+                        "test.qv:md5,36c9ac35716604f245ad097504f0fe00"
+                    ]
                 ],
                 "stats": [
                     [
@@ -1280,7 +1552,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-19T15:05:56.616927",
+        "timestamp": "2026-09-10T10:34:50.673956",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
