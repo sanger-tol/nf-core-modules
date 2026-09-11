@@ -381,8 +381,21 @@ For those who know how to exit vim, here is a for loop that runs `vimdiff` over 
 
 ```
 cd /path/to/nf-core/modules
-for i in $(git ls-files | grep -v '^modules/nf-core/' | grep -v '^subworkflows/nf-core/'); do [[ -e /path/to/sanger-tol/modules/$i ]] && vimdiff $i /path/to/sanger-tol/modules/$i; done
+# Flag missing files
+for i in $(git ls-files | grep -v '^modules/nf-core/' | grep -v '^subworkflows/nf-core/'); do [[ -e /path/to/sanger-tol/modules/$i ]] || echo "$i needs to be copied to sanger-tol/modules"; done
+
+# Modified files
+for i in $(git ls-files | grep -v '^modules/nf-core/' | grep -v '^subworkflows/nf-core/'); do [[ -e /path/to/sanger-tol/modules/$i ]] && vimdiff <(sed 's|nf-core/modules|sanger-tol/nf-core-modules|g' $i) /path/to/sanger-tol/modules/$i; done
+
+# Removed files
+for i in $(git ls-files | grep -v '^modules/nf-core/' | grep -v '^subworkflows/nf-core/'); do [[ -e /path/to/sanger-tol/modules/$i ]] || echo "$i needs to be copied to sanger-tol/modules"; done
 ```
+
+Differences we want to keep:
+
+- we use `main`, not `master`
+- we have our own token name
+- we only use the "ubuntu-latest" runners
 
 ![Exit with `:q!`](https://i.programmerhumor.io/2025/07/f6b01d87b8b74d245801f7226ab83a61815082926468e68d5e0c04ca77fb1e48.jpeg)
 
