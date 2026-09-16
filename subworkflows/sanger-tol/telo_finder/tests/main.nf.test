@@ -12,7 +12,7 @@ nextflow_workflow {
     tag "htslib/bgziptabix"
     tag "subworkflows/../../modules/nf-core/htslib/bgziptabix"
     tag "gawk"
-    tag "subworkflows/../../modules/nf-core/gawk/"
+    tag "subworkflows/../../modules/nf-core/gawk"
 
     setup {
             nfcoreInitialise("${launchDir}/library/")
