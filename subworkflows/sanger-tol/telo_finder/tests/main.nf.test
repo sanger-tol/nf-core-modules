@@ -11,12 +11,15 @@ nextflow_workflow {
     tag "telomere/findtelomere"
     tag "htslib/bgziptabix"
     tag "subworkflows/../../modules/nf-core/htslib/bgziptabix"
+    tag "gawk"
+    tag "subworkflows/../../modules/nf-core/gawk/"
 
     setup {
             nfcoreInitialise("${launchDir}/library/")
             nfcoreInstall(
                 "${launchDir}/library/",
                 [
+                    "gawk",
                     "htslib/bgziptabix",
                 ]
             )
