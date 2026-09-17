@@ -37,22 +37,24 @@
             [
                 
             ],
-            [
-                [
-                    "TELOMERE_FINDTELOMERE",
-                    "find_telomere",
-                    "0.0.2"
+            {
+                "versions_find_telomere": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "find_telomere",
+                        "0.0.2"
+                    ]
+                ],
+                "versions_java": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "java",
+                        "17.0"
+                    ]
                 ]
-            ],
-            [
-                [
-                    "TELOMERE_FINDTELOMERE",
-                    "java",
-                    "17.0"
-                ]
-            ]
+            }
         ],
-        "timestamp": "2026-09-17T10:47:24.682527972",
+        "timestamp": "2026-09-17T15:22:58.239764868",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -96,22 +98,24 @@
             [
                 
             ],
-            [
-                [
-                    "TELOMERE_FINDTELOMERE",
-                    "find_telomere",
-                    "0.0.2"
+            {
+                "versions_find_telomere": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "find_telomere",
+                        "0.0.2"
+                    ]
+                ],
+                "versions_java": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "java",
+                        "17.0"
+                    ]
                 ]
-            ],
-            [
-                [
-                    "TELOMERE_FINDTELOMERE",
-                    "java",
-                    "17.0"
-                ]
-            ]
+            }
         ],
-        "timestamp": "2026-09-17T10:47:01.802384817",
+        "timestamp": "2026-09-17T15:22:26.932187296",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -158,22 +162,24 @@
                     "Cloeon_Dipeterum.rev.windows"
                 ]
             ],
-            [
-                [
-                    "TELOMERE_FINDTELOMERE",
-                    "find_telomere",
-                    "0.0.2"
+            {
+                "versions_find_telomere": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "find_telomere",
+                        "0.0.2"
+                    ]
+                ],
+                "versions_java": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "java",
+                        "17.0"
+                    ]
                 ]
-            ],
-            [
-                [
-                    "TELOMERE_FINDTELOMERE",
-                    "java",
-                    "17.0"
-                ]
-            ]
+            }
         ],
-        "timestamp": "2026-09-17T10:47:14.931739281",
+        "timestamp": "2026-09-17T15:22:45.8726003",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

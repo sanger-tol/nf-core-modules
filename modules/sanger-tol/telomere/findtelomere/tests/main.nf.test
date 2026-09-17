@@ -31,8 +31,9 @@ nextflow_process {
         }
 
         then {
-            // FindTelomereWindows MD5 and Java patch can differ across runners/images;
-            // keep content checks for stable telomere/BED outputs only.
+            // FindTelomereWindows MD5 and Java patch can differ across runners/images.
+            // Keep content checks for stable telomere/BED outputs; names only for windows.
+            // Include versions_* keys so nf-core modules lint (test_snap_versions) passes.
             def window_names = { ch ->
                 ch.collect { meta, f -> [ meta.id, file(f).name ] }.sort()
             }
@@ -48,8 +49,10 @@ nextflow_process {
                     window_names(process.out.windows_all),
                     window_names(process.out.windows_fwd),
                     window_names(process.out.windows_rev),
-                    process.out.versions_find_telomere,
-                    java_major_minor
+                    [
+                        versions_find_telomere: process.out.versions_find_telomere,
+                        versions_java: java_major_minor
+                    ]
                 ).match() }
             )
         }
@@ -90,8 +93,10 @@ nextflow_process {
                     window_names(process.out.windows_all),
                     window_names(process.out.windows_fwd),
                     window_names(process.out.windows_rev),
-                    process.out.versions_find_telomere,
-                    java_major_minor
+                    [
+                        versions_find_telomere: process.out.versions_find_telomere,
+                        versions_java: java_major_minor
+                    ]
                 ).match() }
             )
         }
@@ -134,8 +139,10 @@ nextflow_process {
                     window_names(process.out.windows_all),
                     window_names(process.out.windows_fwd),
                     window_names(process.out.windows_rev),
-                    process.out.versions_find_telomere,
-                    java_major_minor
+                    [
+                        versions_find_telomere: process.out.versions_find_telomere,
+                        versions_java: java_major_minor
+                    ]
                 ).match() }
             )
         }
