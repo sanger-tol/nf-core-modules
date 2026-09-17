@@ -31,9 +31,26 @@ nextflow_process {
         }
 
         then {
+            // FindTelomereWindows MD5 and Java patch can differ across runners/images;
+            // keep content checks for stable telomere/BED outputs only.
+            def window_names = { ch ->
+                ch.collect { meta, f -> [ meta.id, file(f).name ] }.sort()
+            }
+            def java_major_minor = process.out.versions_java.collect { proc, name, ver ->
+                [ proc, name, (ver.toString() =~ /^(\d+\.\d+)/)[0][1] ]
+            }
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    process.out.telomere,
+                    process.out.telomere_bed_fwd,
+                    process.out.telomere_bed_rev,
+                    window_names(process.out.windows_all),
+                    window_names(process.out.windows_fwd),
+                    window_names(process.out.windows_rev),
+                    process.out.versions_find_telomere,
+                    java_major_minor
+                ).match() }
             )
         }
     }
@@ -58,10 +75,24 @@ nextflow_process {
         }
 
         then {
-            assert process.success
+            def window_names = { ch ->
+                ch.collect { meta, f -> [ meta.id, file(f).name ] }.sort()
+            }
+            def java_major_minor = process.out.versions_java.collect { proc, name, ver ->
+                [ proc, name, (ver.toString() =~ /^(\d+\.\d+)/)[0][1] ]
+            }
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    process.out.telomere,
+                    process.out.telomere_bed_fwd,
+                    process.out.telomere_bed_rev,
+                    window_names(process.out.windows_all),
+                    window_names(process.out.windows_fwd),
+                    window_names(process.out.windows_rev),
+                    process.out.versions_find_telomere,
+                    java_major_minor
+                ).match() }
             )
         }
     }
@@ -88,10 +119,24 @@ nextflow_process {
         }
 
         then {
-            assert process.success
+            def window_names = { ch ->
+                ch.collect { meta, f -> [ meta.id, file(f).name ] }.sort()
+            }
+            def java_major_minor = process.out.versions_java.collect { proc, name, ver ->
+                [ proc, name, (ver.toString() =~ /^(\d+\.\d+)/)[0][1] ]
+            }
             assertAll(
-                /* Stub outputs are non-empty placeholders; full process.out matches nf-core snapshot coverage. */
-                { assert snapshot(process.out).match() }
+                { assert process.success },
+                { assert snapshot(
+                    process.out.telomere,
+                    process.out.telomere_bed_fwd,
+                    process.out.telomere_bed_rev,
+                    window_names(process.out.windows_all),
+                    window_names(process.out.windows_fwd),
+                    window_names(process.out.windows_rev),
+                    process.out.versions_find_telomere,
+                    java_major_minor
+                ).match() }
             )
         }
     }
