@@ -27,14 +27,14 @@
                     ]
                 ],
                 "3": [
-
+                    
                 ],
                 "4": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
+                        "Cloeon_Dipeterum.fwd.windows:md5,9e157c00bda1689fbf4c8b7be3a985a1"
                     ]
                 ],
                 "5": [
@@ -42,7 +42,7 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
+                        "Cloeon_Dipeterum.rev.windows:md5,e4b80e16064053c6faa501a2bfed1356"
                     ]
                 ],
                 "6": [
@@ -50,15 +50,15 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows.gz:md5,0329c6280ca161abd1e20517bcf402ff",
-                        "Cloeon_Dipeterum.fwd.windows.gz.csi:md5,bbca4c53402784d4857732d597d6730e"
+                        "Cloeon_Dipeterum.fwd.windows.gz:md5,9e157c00bda1689fbf4c8b7be3a985a1",
+                        "Cloeon_Dipeterum.fwd.windows.gz.csi:md5,57294c42d329b744bfd44ee924945233"
                     ],
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows.gz:md5,808126409e6e5075f94d233a6d5cc002",
-                        "Cloeon_Dipeterum.rev.windows.gz.csi:md5,3dcd271cffbecfb21ac9be2f5fbddf27"
+                        "Cloeon_Dipeterum.rev.windows.gz:md5,e4b80e16064053c6faa501a2bfed1356",
+                        "Cloeon_Dipeterum.rev.windows.gz.csi:md5,a9e02d4a79e6d505012bf181f591c40f"
                     ],
                     [
                         {
@@ -80,15 +80,15 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows.gz:md5,0329c6280ca161abd1e20517bcf402ff",
-                        "Cloeon_Dipeterum.fwd.windows.gz.csi:md5,bbca4c53402784d4857732d597d6730e"
+                        "Cloeon_Dipeterum.fwd.windows.gz:md5,9e157c00bda1689fbf4c8b7be3a985a1",
+                        "Cloeon_Dipeterum.fwd.windows.gz.csi:md5,57294c42d329b744bfd44ee924945233"
                     ],
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows.gz:md5,808126409e6e5075f94d233a6d5cc002",
-                        "Cloeon_Dipeterum.rev.windows.gz.csi:md5,3dcd271cffbecfb21ac9be2f5fbddf27"
+                        "Cloeon_Dipeterum.rev.windows.gz:md5,e4b80e16064053c6faa501a2bfed1356",
+                        "Cloeon_Dipeterum.rev.windows.gz.csi:md5,a9e02d4a79e6d505012bf181f591c40f"
                     ],
                     [
                         {
@@ -130,14 +130,14 @@
                     ]
                 ],
                 "windows_all": [
-
+                    
                 ],
                 "windows_fwd": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
+                        "Cloeon_Dipeterum.fwd.windows:md5,9e157c00bda1689fbf4c8b7be3a985a1"
                     ]
                 ],
                 "windows_rev": [
@@ -145,12 +145,12 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
+                        "Cloeon_Dipeterum.rev.windows:md5,e4b80e16064053c6faa501a2bfed1356"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-05-26T23:33:20.063968372",
+        "timestamp": "2026-09-17T13:41:09.074758555",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -188,20 +188,20 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
+                        "Cloeon_Dipeterum.all.windows:md5,a290b9adf60f91eb5425396e78e71890"
                     ]
                 ],
                 "4": [
-
+                    
                 ],
                 "5": [
-
+                    
                 ],
                 "6": [
-
+                    
                 ],
                 "gz_index": [
-
+                    
                 ],
                 "telomere": [
                     [
@@ -232,18 +232,18 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
+                        "Cloeon_Dipeterum.all.windows:md5,a290b9adf60f91eb5425396e78e71890"
                     ]
                 ],
                 "windows_fwd": [
-
+                    
                 ],
                 "windows_rev": [
-
+                    
                 ]
             }
         ],
-        "timestamp": "2026-05-26T23:32:47.20140847",
+        "timestamp": "2026-09-17T13:40:10.446168506",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
