@@ -35,16 +35,16 @@
                     ]
                 ],
                 "4": [
-
+                    
                 ],
                 "5": [
-
+                    
                 ],
                 "6": [
                     [
                         "TELOMERE_FINDTELOMERE",
                         "java",
-                        "17.0.18"
+                        "17.0.19"
                     ]
                 ],
                 "7": [
@@ -89,7 +89,7 @@
                     [
                         "TELOMERE_FINDTELOMERE",
                         "java",
-                        "17.0.18"
+                        "17.0.19"
                     ]
                 ],
                 "windows_all": [
@@ -101,14 +101,14 @@
                     ]
                 ],
                 "windows_fwd": [
-
+                    
                 ],
                 "windows_rev": [
-
+                    
                 ]
             }
         ],
-        "timestamp": "2026-06-10T11:35:57.865222871",
+        "timestamp": "2026-09-17T10:07:21.833712921",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -146,20 +146,20 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
+                        "Cloeon_Dipeterum.all.windows:md5,a290b9adf60f91eb5425396e78e71890"
                     ]
                 ],
                 "4": [
-
+                    
                 ],
                 "5": [
-
+                    
                 ],
                 "6": [
                     [
                         "TELOMERE_FINDTELOMERE",
                         "java",
-                        "17.0.18"
+                        "17.0.19"
                     ]
                 ],
                 "7": [
@@ -204,7 +204,7 @@
                     [
                         "TELOMERE_FINDTELOMERE",
                         "java",
-                        "17.0.18"
+                        "17.0.19"
                     ]
                 ],
                 "windows_all": [
@@ -212,18 +212,18 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.all.windows:md5,df807b71106d474e1284e37234a52932"
+                        "Cloeon_Dipeterum.all.windows:md5,a290b9adf60f91eb5425396e78e71890"
                     ]
                 ],
                 "windows_fwd": [
-
+                    
                 ],
                 "windows_rev": [
-
+                    
                 ]
             }
         ],
-        "timestamp": "2026-06-10T11:35:32.34287973",
+        "timestamp": "2026-09-17T10:06:53.567409106",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -257,14 +257,14 @@
                     ]
                 ],
                 "3": [
-
+                    
                 ],
                 "4": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
+                        "Cloeon_Dipeterum.fwd.windows:md5,9e157c00bda1689fbf4c8b7be3a985a1"
                     ]
                 ],
                 "5": [
@@ -272,14 +272,14 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
+                        "Cloeon_Dipeterum.rev.windows:md5,e4b80e16064053c6faa501a2bfed1356"
                     ]
                 ],
                 "6": [
                     [
                         "TELOMERE_FINDTELOMERE",
                         "java",
-                        "17.0.18"
+                        "17.0.19"
                     ]
                 ],
                 "7": [
@@ -324,18 +324,18 @@
                     [
                         "TELOMERE_FINDTELOMERE",
                         "java",
-                        "17.0.18"
+                        "17.0.19"
                     ]
                 ],
                 "windows_all": [
-
+                    
                 ],
                 "windows_fwd": [
                     [
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.fwd.windows:md5,0329c6280ca161abd1e20517bcf402ff"
+                        "Cloeon_Dipeterum.fwd.windows:md5,9e157c00bda1689fbf4c8b7be3a985a1"
                     ]
                 ],
                 "windows_rev": [
@@ -343,12 +343,12 @@
                         {
                             "id": "Cloeon_Dipeterum"
                         },
-                        "Cloeon_Dipeterum.rev.windows:md5,808126409e6e5075f94d233a6d5cc002"
+                        "Cloeon_Dipeterum.rev.windows:md5,e4b80e16064053c6faa501a2bfed1356"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-06-10T11:35:47.559049877",
+        "timestamp": "2026-09-17T10:07:10.67005185",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
