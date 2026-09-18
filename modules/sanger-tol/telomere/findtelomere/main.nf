@@ -2,7 +2,7 @@ process TELOMERE_FINDTELOMERE {
     tag "${meta.id}"
     label 'process_low'
 
-    container 'quay.io/sanger-tol/telomere:0.0.2-c1'
+    container 'quay.io/sanger-tol/telomere:0.0.3-c2'
 
     input:
     tuple val(meta), path(reference), val(telomereseq)
