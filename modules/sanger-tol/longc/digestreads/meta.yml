@@ -1,20 +1,21 @@
 name: "longc_digestreads"
 description: |
-  Digest concatemer reads into monomers at restriction enzyme recognition sites.
-  Reads FASTQ/FASTA (optionally gzipped), BAM, or CRAM and writes gzipped FASTQ
-  monomers ready for alignment. BAM/CRAM are converted with samtools fastq
-  (reference FASTA required for CRAM). Optional `digest_reads.py` arguments such as
-  `--min-len` can be passed via `task.ext.args`.
+  Digest concatemer reads into monomers at Biopython restriction enzyme cut sites
+  (pore-c-py style via Bio.Restriction). Reads FASTQ/FASTA (optionally gzipped), BAM,
+  or CRAM and writes gzipped FASTQ monomers ready for alignment. BAM/CRAM are converted
+  with samtools fastq (reference FASTA required for CRAM). Optional `digest_reads.py`
+  arguments such as `--min-len` and `--max-monomers` can be passed via `task.ext.args`.
 keywords:
   - longc
   - restriction-enzyme
   - concatemer
   - reads
+  - biopython
 tools:
   - digest_reads.py:
       description: |
-        Split concatemer read sequences at restriction enzyme cut sites and emit
-        monomer reads as FASTQ.
+        Split concatemer read sequences at Bio.Restriction cut positions and emit
+        monomer reads as FASTQ (same cut logic as pore-c-py digest).
       homepage: https://github.com/sanger-tol/tollongc
       documentation: https://github.com/sanger-tol/tollongc
       licence: ["MIT"]
@@ -31,10 +32,17 @@ tools:
       documentation: https://docs.python.org/3/
       licence: ["PSF-2.0"]
       identifier: ""
+  - biopython:
+      description: Bio.Restriction enzyme definitions and cut-site search
+      homepage: https://biopython.org/
+      documentation: https://biopython.org/wiki/Documentation
+      licence: ["Biopython"]
+      identifier: biotools:biopython
 extra_args:
   - args:
       description: |
-        Additional command-line arguments for digest_reads.py (e.g. `--min-len 50`).
+        Additional command-line arguments for digest_reads.py
+        (e.g. `--min-len 50`, `--max-monomers 250`).
 input:
   - - meta:
         type: map
@@ -58,7 +66,7 @@ input:
         pattern: "*.{fa,fna,fasta}{,.gz}"
   - cutter:
       type: string
-      description: Restriction enzyme name (e.g. `NlaIII`, `DpnII`, `HindIII`) or recognition sequence (e.g. `CATG`)
+      description: Biopython restriction enzyme name (e.g. `NlaIII`, `DpnII`, `HindIII`)
 output:
   digested_reads:
     - - meta:
