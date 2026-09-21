@@ -27,8 +27,9 @@ input:
   - val_split_telomere:
       type: boolean
       description: |
-        When true, run `FindTelomereWindows` in `--split` mode (`*.fwd.windows`, `*.rev.windows`).
-        When false, emit a single `*.windows` file.
+        When true, run `FindTelomereWindows` in `--split` mode so strand-specific
+        `*.fwd.windows` / `*.rev.windows` are emitted in addition to combined
+        `*.all.windows`. When false, only `*.all.windows` is produced.
   - val_zip_bed:
       type: boolean
       description: |
@@ -50,7 +51,7 @@ output:
   - windows_all:
       type: file
       description: |
-        `[ val(meta), path(*.all.windows) ]` when `val_split_telomere` is false; otherwise empty.
+        `[ val(meta), path(*.all.windows) ]` — combined both-strand windows (always emitted).
   - windows_fwd:
       type: file
       description: |

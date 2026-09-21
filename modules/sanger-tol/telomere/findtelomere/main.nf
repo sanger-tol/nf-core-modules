@@ -12,8 +12,10 @@ process TELOMERE_FINDTELOMERE {
     tuple val(meta), path("*.telomere"), emit: telomere
     tuple val(meta), path("*.fwd.telomere.bed"), emit: telomere_bed_fwd, optional: true
     tuple val(meta), path("*.rev.telomere.bed"), emit: telomere_bed_rev, optional: true
-    // Use an exact basename: `*.all.windows` also matches `*.fwd.windows` / `*.rev.windows`, which breaks split-mode staging.
-    tuple val(meta), path("*.all.windows"), emit: windows_all, optional: true
+    // Combined (both-strand) windows always go to stdout → `*.all.windows`.
+    // With `--split`, FindTelomereWindows also writes `*.fwd.windows` / `*.rev.windows`.
+    // Use `*.all.windows` (not `*.windows`) so split strand files are not staged on this channel.
+    tuple val(meta), path("*.all.windows"), emit: windows_all
     tuple val(meta), path("*.fwd.windows"), emit: windows_fwd, optional: true
     tuple val(meta), path("*.rev.windows"), emit: windows_rev, optional: true
     tuple val("${task.process}"), val('java'), eval("java -version 2>&1 | head -n 1 | cut -d '\"' -f2"), topic: versions, emit: versions_java
@@ -32,7 +34,6 @@ process TELOMERE_FINDTELOMERE {
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     def split_opt = split_windows ? '--split' : ''
-    def split_windows_output = split_windows ? '' : "> ${prefix}.all.windows"
     def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
 
@@ -46,7 +47,7 @@ process TELOMERE_FINDTELOMERE {
         FindTelomereWindows \\
         ${split_opt} ${prefix}.telomere \\
         ${args2} \\
-        ${split_windows_output}
+        > ${prefix}.all.windows
     """
 
     stub:
@@ -59,11 +60,10 @@ process TELOMERE_FINDTELOMERE {
     printf "stub\\n" > ${prefix}.telomere
     printf "stub\\n" > ${prefix}.fwd.telomere.bed
     printf "stub\\n" > ${prefix}.rev.telomere.bed
+    printf "stub\\n" > ${prefix}.all.windows
     if [ -n "${split_opt}" ]; then
         printf "stub\\n" > ${prefix}.fwd.windows
         printf "stub\\n" > ${prefix}.rev.windows
-    else
-        printf "stub\\n" > ${prefix}.all.windows
     fi
     """
 

@@ -21,9 +21,10 @@ workflow TELO_FINDER {
 
     TELOMERE_FINDTELOMERE(ch_joined, val_split_telomere)
 
-    ch_windows_for_zip = val_split_telomere
-        ? TELOMERE_FINDTELOMERE.out.windows_fwd.mix(TELOMERE_FINDTELOMERE.out.windows_rev)
-        : TELOMERE_FINDTELOMERE.out.windows_all
+    // Always zip combined windows; when split, also zip strand-specific tracks
+    ch_windows_for_zip = TELOMERE_FINDTELOMERE.out.windows_all
+        .mix(TELOMERE_FINDTELOMERE.out.windows_fwd)
+        .mix(TELOMERE_FINDTELOMERE.out.windows_rev)
 
     if (val_zip_bed) {
         ch_beds_windows_for_zip_raw = TELOMERE_FINDTELOMERE.out.telomere_bed_fwd
