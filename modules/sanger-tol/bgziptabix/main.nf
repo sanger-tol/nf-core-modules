@@ -4,8 +4,8 @@ process BGZIPTABIX {
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
-        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/e9/e994bf4eb3731150511a14f5706b7bdfd64df1b6d40898fff334286c027e0859/data'
-        : 'community.wave.seqera.io/library/htslib_samtools:1.24--d697cfb9dce007cd'}"
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/86/863ca0dbbba30c8367fa4fbd3fa3a84393532fb7b300a5c5c2e70f0dfc475bbf/data'
+        : 'community.wave.seqera.io/library/htslib_xz:32f2772a564b3cd2'}"
 
     input:
     tuple val(meta), path(input), val(max_seq_length)
@@ -25,10 +25,64 @@ process BGZIPTABIX {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def input_data = column_numbers ? "<(cut -f${column_numbers} ${input} | tail -n+${header_lines + 1})" : input
+    def filter_cut = column_numbers ? "cut -f${column_numbers} |" : ""
+    def filter_tail = header_lines ? "tail -n+${header_lines+1} |" : ""
     extension ?= input.extension
     """
-    bgzip --threads ${task.cpus} --index ${args} ${input_data} --output ${prefix}.${extension}.gz
+    # The function must read from stdin and create the output file
+    # Filters must be Nextflow strings that end with a pipe, so that they can be chained
+    filter_compress () {
+        ${filter_cut} ${filter_tail} bgzip --threads ${task.cpus} --index ${args} --output ${prefix}.${extension}.gz
+    }
+
+    FILE_TYPE=\$(htsfile ${input})
+
+    # DECOMPRESS is the bash command to decompress and print a file to stdout
+    DECOMPRESS=()
+    # NEED_COMPRESS is set to 0 when data are already compressed and there's
+    # nothing else to do
+    NEED_COMPRESS=1
+
+    case "\$FILE_TYPE" in
+        *BGZF-compressed*)
+            if [[ -z "${filter_cut}${filter_tail}" ]]
+            then
+                ln -s ${input} ${prefix}.${extension}.gz
+                # Build the .gzi index
+                bgzip --threads ${task.cpus} --reindex ${args} ${prefix}.${extension}.gz
+                NEED_COMPRESS=0
+            else
+                # Note: gzip isn't available in this container
+                DECOMPRESS=(bgzip -d -c -@ ${task.cpus})
+            fi
+            ;;
+        *gzip-compressed*)
+            # Note: gzip isn't available in this container
+            DECOMPRESS=(bgzip -d -c -@ ${task.cpus})
+            ;;
+        *bzip2-compressed*)
+            DECOMPRESS=(bzcat)
+            ;;
+        *XZ-compressed*)
+            DECOMPRESS=(xzcat)
+            ;;
+        *)
+            ;;
+    esac
+
+    if ((NEED_COMPRESS))
+    then
+        # filter_compress is called directly, with input data on its stdin
+        # to avoid spawning a sub-shell like "... | filter_compress" would
+        if ((\${#DECOMPRESS[@]}))
+        then
+            filter_compress < <("\${DECOMPRESS[@]}" ${input})
+        else
+            filter_compress < ${input}
+        fi
+    fi
+
+    # Now that the file is ready in bgzip format, we can call tabix
     [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
     [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
     """
