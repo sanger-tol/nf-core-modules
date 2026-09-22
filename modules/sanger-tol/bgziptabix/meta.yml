@@ -3,6 +3,7 @@ name: "bgziptabix"
 description: bgzip a sorted tab-delimited genome file and then create tabix
   indexes in TBI and CSI format when the coordinate / sequence length is within
   the supported range of each index format.
+  Compressed files are accepted and will be decompressed on the fly.
 keywords:
   - bgzip
   - compress
@@ -33,7 +34,7 @@ input:
           e.g. [ id:'test', single_end:false ]
     - input:
         type: file
-        description: Sorted tab-delimited genome file
+        description: Sorted tab-delimited genome file, possibly compressed
         ontologies: []
     - max_seq_length:
         type: integer

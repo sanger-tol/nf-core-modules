@@ -6,4 +6,3 @@ channels:
 
 dependencies:
   - bioconda::htslib=1.24
-  - bioconda::samtools=1.24

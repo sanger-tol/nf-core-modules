@@ -88,6 +88,95 @@
             "nextflow": "26.04.0"
         }
     },
+    "vcf file already compressed with filtering": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz:md5,b89a74213c5b50a2f772062b0b658855",
+                        "newtest.vcf.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.tbi:md5,202f18f5520b04b038641c386fa1d292"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.csi:md5,ba56749910942e4e88a1b15ef40f8a33"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.24"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.24"
+                    ]
+                ],
+                "csi": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.csi:md5,ba56749910942e4e88a1b15ef40f8a33"
+                    ]
+                ],
+                "gz_index": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz:md5,b89a74213c5b50a2f772062b0b658855",
+                        "newtest.vcf.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "tbi": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.tbi:md5,202f18f5520b04b038641c386fa1d292"
+                    ]
+                ],
+                "versions_bgzip": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.24"
+                    ]
+                ],
+                "versions_tabix": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.24"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-09-22T16:54:06.667074287",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
+        }
+    },
     "stub": {
         "content": [
             {
@@ -409,6 +498,95 @@
             }
         ],
         "timestamp": "2026-09-22T16:03:01.828037021",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
+        }
+    },
+    "vcf file already compressed": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz:md5,8e722884ffb75155212a3fc053918766",
+                        "newtest.vcf.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.tbi:md5,d22e5b84e4fcd18792179f72e6da702e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.csi:md5,04b41c1efd9ab3c6b1e008a286e27d2b"
+                    ]
+                ],
+                "3": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.24"
+                    ]
+                ],
+                "4": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.24"
+                    ]
+                ],
+                "csi": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.csi:md5,04b41c1efd9ab3c6b1e008a286e27d2b"
+                    ]
+                ],
+                "gz_index": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz:md5,8e722884ffb75155212a3fc053918766",
+                        "newtest.vcf.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474"
+                    ]
+                ],
+                "tbi": [
+                    [
+                        {
+                            "id": "newtest"
+                        },
+                        "newtest.vcf.gz.tbi:md5,d22e5b84e4fcd18792179f72e6da702e"
+                    ]
+                ],
+                "versions_bgzip": [
+                    [
+                        "BGZIPTABIX",
+                        "bgzip",
+                        "1.24"
+                    ]
+                ],
+                "versions_tabix": [
+                    [
+                        "BGZIPTABIX",
+                        "tabix",
+                        "1.24"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-09-22T16:49:52.965258671",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"

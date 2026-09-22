@@ -4,8 +4,8 @@ process BGZIPTABIX {
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
-        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/e9/e994bf4eb3731150511a14f5706b7bdfd64df1b6d40898fff334286c027e0859/data'
-        : 'community.wave.seqera.io/library/htslib_samtools:1.24--d697cfb9dce007cd'}"
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/86/863ca0dbbba30c8367fa4fbd3fa3a84393532fb7b300a5c5c2e70f0dfc475bbf/data'
+        : 'community.wave.seqera.io/library/htslib_xz:32f2772a564b3cd2'}"
 
     input:
     tuple val(meta), path(input), val(max_seq_length)
@@ -25,10 +25,58 @@ process BGZIPTABIX {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def input_data = column_numbers ? "<(cut -f${column_numbers} ${input} | tail -n+${header_lines + 1})" : input
     extension ?= input.extension
     """
-    bgzip --threads ${task.cpus} --index ${args} ${input_data} --output ${prefix}.${extension}.gz
+    filter_compress () {
+        if [[ -z "${column_numbers}" ]]
+        then
+            # No column / line filtering
+            bgzip --threads ${task.cpus} --index ${args} --output ${prefix}.${extension}.gz
+        else
+            # Column / line filtering
+            cut -f${column_numbers} | tail -n+${header_lines + 1} | bgzip --threads ${task.cpus} --index ${args} --output ${prefix}.${extension}.gz
+        fi
+    }
+
+    FILE_TYPE=\$(htsfile ${input})
+
+    DECOMPRESS=()
+    NEED_COMPRESS=1
+
+    case "\$FILE_TYPE" in
+        *BGZF-compressed*)
+            if [[ -z "${column_numbers}" ]]
+            then
+                ln -s "${input}" "${prefix}.${extension}.gz"
+                bgzip --threads ${task.cpus} --reindex ${args} "${prefix}.${extension}.gz"
+                NEED_COMPRESS=0
+            else
+                DECOMPRESS=(bgzip -d -c -@ "${task.cpus}")
+            fi
+            ;;
+        *gzip-compressed*)
+            DECOMPRESS=(bgzip -d -c -@ "${task.cpus}")
+            ;;
+        *bzip2-compressed*)
+            DECOMPRESS=(bzcat)
+            ;;
+        *XZ-compressed*)
+            DECOMPRESS=(xzcat)
+            ;;
+        *)
+            ;;
+    esac
+
+    if ((NEED_COMPRESS))
+    then
+        if ((\${#DECOMPRESS[@]}))
+        then
+            filter_compress < <("\${DECOMPRESS[@]}" ${input})
+        else
+            filter_compress < ${input}
+        fi
+    fi
+
     [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
     [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
     """
