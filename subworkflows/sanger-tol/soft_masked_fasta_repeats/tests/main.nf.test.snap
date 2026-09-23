@@ -86,17 +86,17 @@
                             "id": "test"
                         },
                         "test.bed.gz",
-                        "test.bed.gz.gzi:md5,c2cb56f4c5bf656faca0986e7eba0308",
+                        "test.bed.gz.gzi:md5,7dea362b3fac8e00956a4952a3d4f474",
                         "test.bed.gz.tbi:md5,ec06685d85d15d8f118a789a9ccc42ad",
                         "test.bed.gz.csi:md5,a76ffd9c2c19bc3100eecc93162f31d9"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-02-27T17:54:47.29734636",
+        "timestamp": "2026-09-22T17:03:44.466414985",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         }
     }
 }
