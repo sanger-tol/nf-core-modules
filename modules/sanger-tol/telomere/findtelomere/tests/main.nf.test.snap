@@ -14,35 +14,21 @@
                     {
                         "id": "Cloeon_Dipeterum"
                     },
-                    "Cloeon_Dipeterum.fwd.telomere.bed:md5,f50b84b1db4b83ba62ec1deacc69c260"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "Cloeon_Dipeterum"
-                    },
-                    "Cloeon_Dipeterum.rev.telomere.bed:md5,f50b84b1db4b83ba62ec1deacc69c260"
+                    "Cloeon_Dipeterum.telomere.bed:md5,f50b84b1db4b83ba62ec1deacc69c260"
                 ]
             ],
             [
                 [
                     "Cloeon_Dipeterum",
-                    "Cloeon_Dipeterum.all.windows"
+                    "Cloeon_Dipeterum.windows"
                 ]
-            ],
-            [
-                
-            ],
-            [
-                
             ],
             {
                 "versions_find_telomere": [
                     [
                         "TELOMERE_FINDTELOMERE",
                         "find_telomere",
-                        "0.0.2"
+                        "0.0.4"
                     ]
                 ],
                 "versions_java": [
@@ -54,68 +40,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-21T11:02:52.839093305",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
-        }
-    },
-    "GCA_963859965.1 - fasta": {
-        "content": [
-            [
-                [
-                    {
-                        "id": "Cloeon_Dipeterum"
-                    },
-                    "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "Cloeon_Dipeterum"
-                    },
-                    "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "Cloeon_Dipeterum"
-                    },
-                    "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
-                ]
-            ],
-            [
-                [
-                    "Cloeon_Dipeterum",
-                    "Cloeon_Dipeterum.all.windows"
-                ]
-            ],
-            [
-                
-            ],
-            [
-                
-            ],
-            {
-                "versions_find_telomere": [
-                    [
-                        "TELOMERE_FINDTELOMERE",
-                        "find_telomere",
-                        "0.0.2"
-                    ]
-                ],
-                "versions_java": [
-                    [
-                        "TELOMERE_FINDTELOMERE",
-                        "java",
-                        "17.0"
-                    ]
-                ]
-            }
-        ],
-        "timestamp": "2026-09-21T11:02:25.714954849",
+        "timestamp": "2026-09-23T12:56:04.87682548",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -136,7 +61,7 @@
                     {
                         "id": "Cloeon_Dipeterum"
                     },
-                    "GCA_949628265.1.fasta.gz.fwd.telomere.bed:md5,b5318b4e0219e39538b687a6c3d9a755"
+                    "Cloeon_Dipeterum.telomere.bed:md5,0511f505323a5a29793f1bc68b64e899"
                 ]
             ],
             [
@@ -144,13 +69,21 @@
                     {
                         "id": "Cloeon_Dipeterum"
                     },
-                    "GCA_949628265.1.fasta.gz.rev.telomere.bed:md5,52e81dda4958f5c58ede54219bd78af0"
+                    "Cloeon_Dipeterum.fwd.telomere.bed:md5,1a2b71656cf56d3fbe89deeb76ee3e00"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.rev.telomere.bed:md5,59f063d6602bded0caad9700114755ed"
                 ]
             ],
             [
                 [
                     "Cloeon_Dipeterum",
-                    "Cloeon_Dipeterum.all.windows"
+                    "Cloeon_Dipeterum.windows"
                 ]
             ],
             [
@@ -170,7 +103,7 @@
                     [
                         "TELOMERE_FINDTELOMERE",
                         "find_telomere",
-                        "0.0.2"
+                        "0.0.4"
                     ]
                 ],
                 "versions_java": [
@@ -182,7 +115,54 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-21T11:02:41.399014472",
+        "timestamp": "2026-09-23T12:55:53.161200968",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "GCA_963859965.1 - fasta - no split": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.telomere:md5,543e5ddbee3008d23f7a6d194914470b"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "Cloeon_Dipeterum"
+                    },
+                    "Cloeon_Dipeterum.telomere.bed:md5,0511f505323a5a29793f1bc68b64e899"
+                ]
+            ],
+            [
+                [
+                    "Cloeon_Dipeterum",
+                    "Cloeon_Dipeterum.windows"
+                ]
+            ],
+            {
+                "versions_find_telomere": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "find_telomere",
+                        "0.0.4"
+                    ]
+                ],
+                "versions_java": [
+                    [
+                        "TELOMERE_FINDTELOMERE",
+                        "java",
+                        "17.0"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-09-23T12:55:35.883425181",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

@@ -46,6 +46,7 @@ workflow PRETEXT_ACCESSORY_FILES {
     )
 
     telomere_data = TELO_FINDER.out.telomere
+                        .mix( TELO_FINDER.out.telomere_bed )
                         .mix( TELO_FINDER.out.telomere_bed_fwd )
                         .mix( TELO_FINDER.out.telomere_bed_rev )
 
