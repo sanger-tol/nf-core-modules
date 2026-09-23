@@ -67,9 +67,9 @@ def collect_alignments(
     alns_by_read: dict[str, list[tuple[pysam.AlignedSegment, int | None]]] = defaultdict(list)
     with pysam.AlignmentFile(bam_path, "rb", threads=threads) as bam_in:
         for aln in bam_in:
-            if aln.is_unmapped:
+            if aln.is_unmapped or aln.is_secondary:
                 continue
-            if primary_only and (aln.is_secondary or aln.is_supplementary):
+            if primary_only and aln.is_supplementary:
                 continue
             if aln.mapping_quality < min_mapq:
                 continue
@@ -86,8 +86,9 @@ def write_annotated_bam(
     output_path: str,
     alns_by_read: dict[str, list[tuple[pysam.AlignedSegment, int | None]]],
     threads: int,
+    name_sorted_path: str | None = None,
 ) -> None:
-    """Write tagged alignments to a temp BAM, then sort and index the output."""
+    """Write tagged alignments, then emit coordinate-sorted (+ index) and optional name-sorted BAM."""
     with pysam.AlignmentFile(bam_path, "rb", threads=threads) as bam_in:
         header = bam_in.header.copy()
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -107,8 +108,12 @@ def write_annotated_bam(
                         new_aln.set_tag("BX", read_id, "Z")
                         bam_out.write(new_aln)
 
+            # Coordinate-sorted for viewing / indexing (like wf-pore-c *.cs.bam)
             pysam.sort("-o", output_path, tmp_path, "-@", str(threads))
             pysam.index(output_path, "-@", str(threads))
+            # Name-sorted for pairtools parse2 --expand (like wf-pore-c *_out.ns.bam)
+            if name_sorted_path:
+                pysam.sort("-n", "-o", name_sorted_path, tmp_path, "-@", str(threads))
 
 
 def main() -> None:
@@ -117,15 +122,33 @@ def main() -> None:
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     parser.add_argument("--input", "-i", required=True, help="Input BAM")
-    parser.add_argument("--output", "-o", required=True, help="Output annotated BAM")
+    parser.add_argument("--output", "-o", required=True, help="Output coordinate-sorted annotated BAM")
+    parser.add_argument(
+        "--name-sorted-output",
+        help="Optional name-sorted annotated BAM for pairtools parse2",
+    )
     parser.add_argument("--min-mapq", type=int, default=0, help="Minimum mapping quality [0]")
-    parser.add_argument("--primary-only", action="store_true", default=True, help="Keep only primary alignments")
+    parser.add_argument(
+        "--primary-only",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help=(
+            "Keep only primary alignments; secondary is always dropped. "
+            "Use --no-primary-only to also keep supplementary alignments"
+        ),
+    )
     parser.add_argument("--threads", type=int, default=1, help="Threads for BAM I/O")
     args = parser.parse_args()
 
     try:
         alns_by_read = collect_alignments(args.input, args.min_mapq, args.primary_only, args.threads)
-        write_annotated_bam(args.input, args.output, alns_by_read, args.threads)
+        write_annotated_bam(
+            args.input,
+            args.output,
+            alns_by_read,
+            args.threads,
+            name_sorted_path=args.name_sorted_output,
+        )
     except (OSError, ValueError) as exc:
         sys.exit(f"ERROR: {exc}")
     except pysam.utils.SamtoolsError as exc:
