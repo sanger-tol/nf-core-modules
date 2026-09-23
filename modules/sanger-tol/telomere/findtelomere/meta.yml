@@ -52,7 +52,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.telomere":
+      - ${prefix}.telomere:
           type: file
           description: Motif-hit table from find_telomere (reformatted TSV)
           pattern: "*.telomere"
@@ -61,7 +61,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.telomere.bed":
+      - ${prefix}.telomere.bed:
           type: file
           description: |
             Combined motif runs from FindTelomereWindows
@@ -73,7 +73,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.fwd.telomere.bed":
+      - ${prefix}.fwd.telomere.bed:
           type: file
           description: Forward-strand motif BED (only when split_windows is true)
           pattern: "*.fwd.telomere.bed"
@@ -83,7 +83,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.rev.telomere.bed":
+      - ${prefix}.rev.telomere.bed:
           type: file
           description: Reverse-strand motif BED (only when split_windows is true)
           pattern: "*.rev.telomere.bed"
@@ -93,7 +93,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.windows":
+      - ${prefix}.windows:
           type: file
           description: |
             Combined both-strand density windows from FindTelomereWindows
@@ -104,7 +104,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.fwd.windows":
+      - ${prefix}.fwd.windows:
           type: file
           description: Forward-strand windows (only when split_windows is true)
           pattern: "*.fwd.windows"
@@ -113,7 +113,7 @@ output:
     - - meta:
           type: map
           description: Groovy Map containing sample information
-      - "*.rev.windows":
+      - ${prefix}.rev.windows:
           type: file
           description: Reverse-strand windows (only when split_windows is true)
           pattern: "*.rev.windows"
