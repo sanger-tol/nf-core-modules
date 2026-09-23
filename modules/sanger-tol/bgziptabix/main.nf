@@ -30,6 +30,8 @@ process BGZIPTABIX {
     extension ?= input.name.replaceFirst(/\.(gz|bz2|xz)$/, '').tokenize('.').last()
     def outfile = "${prefix}.${extension}.gz"
     """
+    [ "\$(basename ${input})" == "\$(basename ${outfile})" ] && echo "Input and output names cannot be the same" && exit 1
+
     # The function must read from stdin and create the output file
     # Filters must be Nextflow strings that end with a pipe, so that they can be chained
     filter_compress () {
