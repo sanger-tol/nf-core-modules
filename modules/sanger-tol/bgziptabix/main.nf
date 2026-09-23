@@ -28,11 +28,12 @@ process BGZIPTABIX {
     def filter_cut = column_numbers ? "cut -f${column_numbers} |" : ""
     def filter_tail = header_lines ? "tail -n+${header_lines+1} |" : ""
     extension ?= input.extension
+    def outfile = "${prefix}.${extension}.gz"
     """
     # The function must read from stdin and create the output file
     # Filters must be Nextflow strings that end with a pipe, so that they can be chained
     filter_compress () {
-        ${filter_cut} ${filter_tail} bgzip --threads ${task.cpus} --index ${args} --output ${prefix}.${extension}.gz
+        ${filter_cut} ${filter_tail} bgzip --threads ${task.cpus} --index ${args} --output ${outfile}
     }
 
     FILE_TYPE=\$(htsfile ${input})
@@ -47,9 +48,9 @@ process BGZIPTABIX {
         *BGZF-compressed*)
             if [[ -z "${filter_cut}${filter_tail}" ]]
             then
-                ln -s ${input} ${prefix}.${extension}.gz
+                ln -s ${input} ${outfile}
                 # Build the .gzi index
-                bgzip --threads ${task.cpus} --reindex ${args} ${prefix}.${extension}.gz
+                bgzip --threads ${task.cpus} --reindex ${args} ${outfile}
                 NEED_COMPRESS=0
             else
                 # Note: gzip isn't available in this container
@@ -83,8 +84,8 @@ process BGZIPTABIX {
     fi
 
     # Now that the file is ready in bgzip format, we can call tabix
-    [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${prefix}.${extension}.gz
-    [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${prefix}.${extension}.gz
+    [[ ${max_seq_length} -lt \$(( 2 ** 29 )) ]] && tabix --threads ${task.cpus} ${args2} ${outfile}
+    [[ ${max_seq_length} -lt \$(( 2 ** 32 )) ]] && tabix --threads ${task.cpus} --csi ${args2} ${outfile}
     """
 
     stub:
@@ -96,8 +97,8 @@ process BGZIPTABIX {
     def outfile = "${prefix}.${extension}.gz"
     """
     echo "" | bgzip > ${outfile}
-    touch ${prefix}.${extension}.gz.gzi
-    touch ${prefix}.${extension}.gz.tbi
-    touch ${prefix}.${extension}.gz.csi
+    touch ${outfile}.gzi
+    touch ${outfile}.tbi
+    touch ${outfile}.csi
     """
 }
