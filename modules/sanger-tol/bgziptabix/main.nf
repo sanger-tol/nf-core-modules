@@ -27,7 +27,7 @@ process BGZIPTABIX {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def filter_cut = column_numbers ? "cut -f${column_numbers} |" : ""
     def filter_tail = header_lines ? "tail -n+${header_lines+1} |" : ""
-    extension ?= input.extension
+    extension ?= input.name.replaceFirst(/\.(gz|bz2|xz)$/, '').tokenize('.').last()
     def outfile = "${prefix}.${extension}.gz"
     """
     # The function must read from stdin and create the output file
