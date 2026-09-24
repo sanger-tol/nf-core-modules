@@ -42,7 +42,7 @@ workflow REPEAT_DENSITY {
         .collect()
 
     GAWK_EXTRACT_REPEATS(
-        REPEAT_MASKING.out.repeat_intervals,
+        REPEAT_MASKING.out.repeat_intervals.map { meta, file -> tuple(meta, file, 'bed') },
         ch_extract_repeats_awk,
         false
     )

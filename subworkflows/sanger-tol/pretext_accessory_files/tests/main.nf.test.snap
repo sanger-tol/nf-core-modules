@@ -21,19 +21,25 @@
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed:md5,8bb611e81510a0b23c5d44ca9fffd842"
+                        "test.fwd.telomere.bed:md5,fe07f1667e67b6ccbc01d60e491c9c35"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed:md5,527bab69ee51df490d574db6514f1072"
+                        "test.rev.telomere.bed:md5,4f2800fb10fd7dae2d7af60aa108959f"
                     ],
                     [
                         {
                             "id": "test"
                         },
                         "test.telomere:md5,a1568c3fcf5ea84145fc19c8cb719ddf"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere.bed:md5,dbd16061f8923feef5851616c5ae73c9"
                     ]
                 ],
                 "4": [
@@ -41,13 +47,19 @@
                         {
                             "id": "test"
                         },
-                        "test.fwd.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.fwd.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.rev.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.rev.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ]
                 ],
                 "5": [
@@ -55,29 +67,43 @@
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed.gz:md5,8bb611e81510a0b23c5d44ca9fffd842",
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed.gz.csi:md5,82f0be91bf401ae0900b57e2fa277cf5"
+                        "test.fwd.telomere.bed.gz:md5,fe07f1667e67b6ccbc01d60e491c9c35",
+                        "test.fwd.telomere.bed.gz.csi:md5,c4f39856d23b5b550aa95b5f9d9b3f06"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed.gz:md5,527bab69ee51df490d574db6514f1072",
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed.gz.csi:md5,82f0be91bf401ae0900b57e2fa277cf5"
+                        "test.fwd.windows.gz:md5,c8f80e15b52a9f5c7a6c813a40b54a63",
+                        "test.fwd.windows.gz.csi:md5,bee398e3c95c641dc7606f6575a67c54"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.fwd.windows.gz:md5,8b1056d10ee0ac39c9fa481509736ee8",
-                        "test.fwd.windows.gz.csi:md5,16be4f804608ad875ab4113067e884f7"
+                        "test.rev.telomere.bed.gz:md5,4f2800fb10fd7dae2d7af60aa108959f",
+                        "test.rev.telomere.bed.gz.csi:md5,4acc70174b3656e1ef84f747b2b10933"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.rev.windows.gz:md5,8b1056d10ee0ac39c9fa481509736ee8",
-                        "test.rev.windows.gz.csi:md5,16be4f804608ad875ab4113067e884f7"
+                        "test.rev.windows.gz:md5,c8f80e15b52a9f5c7a6c813a40b54a63",
+                        "test.rev.windows.gz.csi:md5,bee398e3c95c641dc7606f6575a67c54"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere.bed.gz:md5,dbd16061f8923feef5851616c5ae73c9",
+                        "test.telomere.bed.gz.csi:md5,1c1d15f2e097eee8d2667744c1759fc2"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.windows.gz:md5,c8f80e15b52a9f5c7a6c813a40b54a63",
+                        "test.windows.gz.csi:md5,bee398e3c95c641dc7606f6575a67c54"
                     ]
                 ],
                 "6": [
@@ -115,29 +141,43 @@
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed.gz:md5,8bb611e81510a0b23c5d44ca9fffd842",
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed.gz.csi:md5,82f0be91bf401ae0900b57e2fa277cf5"
+                        "test.fwd.telomere.bed.gz:md5,fe07f1667e67b6ccbc01d60e491c9c35",
+                        "test.fwd.telomere.bed.gz.csi:md5,c4f39856d23b5b550aa95b5f9d9b3f06"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed.gz:md5,527bab69ee51df490d574db6514f1072",
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed.gz.csi:md5,82f0be91bf401ae0900b57e2fa277cf5"
+                        "test.fwd.windows.gz:md5,c8f80e15b52a9f5c7a6c813a40b54a63",
+                        "test.fwd.windows.gz.csi:md5,bee398e3c95c641dc7606f6575a67c54"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.fwd.windows.gz:md5,8b1056d10ee0ac39c9fa481509736ee8",
-                        "test.fwd.windows.gz.csi:md5,16be4f804608ad875ab4113067e884f7"
+                        "test.rev.telomere.bed.gz:md5,4f2800fb10fd7dae2d7af60aa108959f",
+                        "test.rev.telomere.bed.gz.csi:md5,4acc70174b3656e1ef84f747b2b10933"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.rev.windows.gz:md5,8b1056d10ee0ac39c9fa481509736ee8",
-                        "test.rev.windows.gz.csi:md5,16be4f804608ad875ab4113067e884f7"
+                        "test.rev.windows.gz:md5,c8f80e15b52a9f5c7a6c813a40b54a63",
+                        "test.rev.windows.gz.csi:md5,bee398e3c95c641dc7606f6575a67c54"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere.bed.gz:md5,dbd16061f8923feef5851616c5ae73c9",
+                        "test.telomere.bed.gz.csi:md5,1c1d15f2e097eee8d2667744c1759fc2"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.windows.gz:md5,c8f80e15b52a9f5c7a6c813a40b54a63",
+                        "test.windows.gz.csi:md5,bee398e3c95c641dc7606f6575a67c54"
                     ]
                 ],
                 "telo_file": [
@@ -145,19 +185,25 @@
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed:md5,8bb611e81510a0b23c5d44ca9fffd842"
+                        "test.fwd.telomere.bed:md5,fe07f1667e67b6ccbc01d60e491c9c35"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed:md5,527bab69ee51df490d574db6514f1072"
+                        "test.rev.telomere.bed:md5,4f2800fb10fd7dae2d7af60aa108959f"
                     ],
                     [
                         {
                             "id": "test"
                         },
                         "test.telomere:md5,a1568c3fcf5ea84145fc19c8cb719ddf"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere.bed:md5,dbd16061f8923feef5851616c5ae73c9"
                     ]
                 ],
                 "telo_windows": [
@@ -165,18 +211,24 @@
                         {
                             "id": "test"
                         },
-                        "test.fwd.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.fwd.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.rev.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.rev.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-07T12:50:23.251845927",
+        "timestamp": "2026-09-24T20:16:13.515185978",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -204,19 +256,25 @@
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed:md5,8bb611e81510a0b23c5d44ca9fffd842"
+                        "test.fwd.telomere.bed:md5,fe07f1667e67b6ccbc01d60e491c9c35"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed:md5,527bab69ee51df490d574db6514f1072"
+                        "test.rev.telomere.bed:md5,4f2800fb10fd7dae2d7af60aa108959f"
                     ],
                     [
                         {
                             "id": "test"
                         },
                         "test.telomere:md5,a1568c3fcf5ea84145fc19c8cb719ddf"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere.bed:md5,dbd16061f8923feef5851616c5ae73c9"
                     ]
                 ],
                 "4": [
@@ -224,13 +282,19 @@
                         {
                             "id": "test"
                         },
-                        "test.fwd.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.fwd.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.rev.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.rev.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ]
                 ],
                 "5": [
@@ -274,19 +338,25 @@
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.fwd.telomere.bed:md5,8bb611e81510a0b23c5d44ca9fffd842"
+                        "test.fwd.telomere.bed:md5,fe07f1667e67b6ccbc01d60e491c9c35"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "genome_cleaned_with_gap.fasta.rev.telomere.bed:md5,527bab69ee51df490d574db6514f1072"
+                        "test.rev.telomere.bed:md5,4f2800fb10fd7dae2d7af60aa108959f"
                     ],
                     [
                         {
                             "id": "test"
                         },
                         "test.telomere:md5,a1568c3fcf5ea84145fc19c8cb719ddf"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere.bed:md5,dbd16061f8923feef5851616c5ae73c9"
                     ]
                 ],
                 "telo_windows": [
@@ -294,18 +364,24 @@
                         {
                             "id": "test"
                         },
-                        "test.fwd.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.fwd.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ],
                     [
                         {
                             "id": "test"
                         },
-                        "test.rev.windows:md5,8b1056d10ee0ac39c9fa481509736ee8"
+                        "test.rev.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.windows:md5,c8f80e15b52a9f5c7a6c813a40b54a63"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-07T12:52:35.565862056",
+        "timestamp": "2026-09-24T20:31:23.529899428",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -380,7 +456,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-07T13:06:49.101572199",
+        "timestamp": "2026-09-24T20:46:09.272550932",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
