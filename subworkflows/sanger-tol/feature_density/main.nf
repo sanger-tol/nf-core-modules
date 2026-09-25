@@ -63,7 +63,7 @@ workflow FEATURE_DENSITY {
         .collect()
 
     GAWK_RENAME_IDS(
-        BEDTOOLS_INTERSECT.out.intersect,
+        BEDTOOLS_INTERSECT.out.intersect.map { meta, file -> tuple(meta, file, 'bed') },
         ch_rename_ids_awk,
         false
     )
@@ -101,7 +101,7 @@ workflow FEATURE_DENSITY {
         .collect()
 
     GAWK_REFORMAT_INTERSECT (
-        GNU_SORT_A.out.sorted,
+        GNU_SORT_A.out.sorted.map { meta, file -> tuple(meta, file, 'bed') },
         ch_reformat_intersect_awk,
         false
     )
@@ -154,7 +154,7 @@ workflow FEATURE_DENSITY {
         .collect()
 
     GAWK_REPLACE_DOTS (
-        BEDTOOLS_MAP.out.mapped,
+        BEDTOOLS_MAP.out.mapped.map { meta, file -> tuple(meta, file, 'bed') },
         ch_replace_dots_awk,
         false
     )
