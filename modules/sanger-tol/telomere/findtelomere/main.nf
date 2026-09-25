@@ -40,10 +40,6 @@ process TELOMERE_FINDTELOMERE {
     """
     find_telomere ${args} ${reference} ${telomereseq} | awk '{print \$1"\\t"\$(NF-4)"\\t"\$(NF-3)"\\t"\$(NF-2)"\\t"\$(NF-1)"\\t"\$NF}' - > ${prefix}.telomere
 
-    # find_telomere also writes <fasta>.fwd/.rev.telomere.bed; discard those so only
-    # FindTelomereWindows prefix.* BED/windows outputs are staged.
-    rm -f ${reference}.fwd.telomere.bed ${reference}.rev.telomere.bed
-
     java \\
         -Xmx${max_heap_size_mega}M \\
         -Xss${max_stack_size_mega}M  \\
