@@ -106,7 +106,57 @@
             "nextflow": "25.10.4"
         }
     },
+    "meles meles - single test - chunk_size=1": {
+        "content": [
+            [
+                {
+                    "maxReadLength": 96980,
+                    "minReadLength": 0,
+                    "meanReadLength": 4840,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 3,
+                    "readCount": 16265,
+                    "duplicateReadCount": 0,
+                    "sorted": false
+                }
+            ],
+            [
+                "test.bam.csi"
+            ]
+        ],
+        "timestamp": "2026-07-20T16:22:02.793364078",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    },
     "meles meles - single test": {
+        "content": [
+            [
+                {
+                    "maxReadLength": 96980,
+                    "minReadLength": 0,
+                    "meanReadLength": 4840,
+                    "maxQuality": 60,
+                    "minQuality": 0,
+                    "meanQuality": 3,
+                    "readCount": 16265,
+                    "duplicateReadCount": 0,
+                    "sorted": false
+                }
+            ],
+            [
+                "test.bam.csi"
+            ]
+        ],
+        "timestamp": "2026-07-20T16:22:02.793364078",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.3"
+        }
+    },
+    "meles meles - single test - chunk_size=100": {
         "content": [
             [
                 {
