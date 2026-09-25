@@ -45,10 +45,9 @@ workflow PRETEXT_ACCESSORY_FILES {
         val_output_indexes
     )
 
-    telomere_data = TELO_FINDER.out.telomere
-                        .mix( TELO_FINDER.out.telomere_bed )
-                        .mix( TELO_FINDER.out.telomere_bed_fwd )
-                        .mix( TELO_FINDER.out.telomere_bed_rev )
+    telomere_data = TELO_FINDER.out.telomere_bed
+        .mix( TELO_FINDER.out.telomere_bed_fwd )
+        .mix( TELO_FINDER.out.telomere_bed_rev )
 
     telomere_windows = TELO_FINDER.out.windows_all
                         .mix( TELO_FINDER.out.windows_fwd )
