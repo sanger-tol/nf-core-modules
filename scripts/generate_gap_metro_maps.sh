@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if [[ $# -ne 1 ]]
+then
+  echo "Usage: $0 /path/to/diagram.mmd"
+  exit 1
+fi
+
 MMD="$1"
 NAME="${MMD//.mmd}"
 LOGO="${NAME//metro_map/logo}"
