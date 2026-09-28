@@ -6,6 +6,8 @@ then
   exit 1
 fi
 
+set -e
+
 MMD="$1"
 NAME="${MMD//.mmd}"
 LOGO="${NAME//metro_map/logo}"
