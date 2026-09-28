@@ -71,6 +71,7 @@ nextflow_workflow {
                 input[0] = [
                     [ id:'test' ], // meta map
                     file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.bp.hap1.p_ctg.fa.fai', checkIfExists: true),
+                    'sizes'
                 ]
                 input[1] = channel.of('BEGIN { FS = OFS = "\\t" } { print \$1, \$2 }').collectFile(name: "sizes.awk")
                 input[2] = false
@@ -91,7 +92,7 @@ nextflow_workflow {
             script "../../../../modules/nf-core/gawk/main.nf"
             process {
                 """
-                input[0] = REPEAT_MASKING.out.repeat_intervals
+                input[0] = REPEAT_MASKING.out.repeat_intervals.map { meta, file -> tuple(meta, file, 'bed') }
                 input[1] = channel.of('BEGIN { FS = " - "; OFS = "\\t" } /^>/ { header = substr(\$0, 2); next } { print header, \$1, \$2 }').collectFile(name: "extract_repeats.awk")
                 input[2] = false
                 """
