@@ -1,0 +1,125 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
+name: "longc"
+description: |
+  Long-C Hi-C workflow: digest concatemer reads at restriction sites (optional skip),
+  align with minimap2, annotate multi-fragment walks, convert name-sorted BAM to pairs
+  with pairtools parse2 --expand, optionally restrict to enzyme fragments, and build
+  cooler / mcool / Pretext contact maps (aligned with wf-pore-c).
+keywords:
+  - longc
+  - hic
+  - concatemer
+  - pairtools
+  - cooler
+  - pretext
+  - minimap2
+components:
+  - longc/digestreads
+  - longc/annotatefrag
+  - longc/pairtoolsparse2
+  - find/concatenate
+  - cooler/digest:
+      git_remote: https://github.com/nf-core/modules.git
+  - minimap2/index:
+      git_remote: https://github.com/nf-core/modules.git
+  - minimap2/align:
+      git_remote: https://github.com/nf-core/modules.git
+  - pairtools/restrict:
+      git_remote: https://github.com/nf-core/modules.git
+  - pairtools/sort:
+      git_remote: https://github.com/nf-core/modules.git
+  - pairtools/dedup:
+      git_remote: https://github.com/nf-core/modules.git
+  - samtools/faidx:
+      git_remote: https://github.com/nf-core/modules.git
+  - samtools/merge:
+      git_remote: https://github.com/nf-core/modules.git
+  - cooler/cload:
+      git_remote: https://github.com/nf-core/modules.git
+  - cooler/zoomify:
+      git_remote: https://github.com/nf-core/modules.git
+  - pretextmap:
+      git_remote: https://github.com/nf-core/modules.git
+input:
+  - reference:
+      type: file
+      description: |
+        Reference assembly FASTA.
+        Structure: `[ val(meta), path(fasta) ]`
+      pattern: "*.{fa,fna,fasta}{,.gz}"
+  - longc_reads:
+      type: file
+      description: |
+        Long-C concatemer reads as FASTQ/FASTA (optionally gzipped), BAM, or CRAM.
+        Structure: `[ val(meta), path(reads) ]` or `[ val(meta), [ path(reads), ... ] ]`.
+        With digestion enabled, multiple BAM/CRAM files are streamed with samtools
+        fastq and multiple FASTQ/FASTA files are concatenated before digestion
+        (reference FASTA is passed automatically for CRAM). With digestion skipped,
+        multiple FASTQ/FASTA files are concatenated and multiple BAM/CRAM files
+        are merged with samtools before alignment.
+      pattern: "*.{bam,cram,fq,fastq,fa,fasta,fq.gz,fastq.gz,fa.gz,fasta.gz}"
+  - val_skip_digest:
+      type: boolean
+      description: Skip concatemer digestion and align raw reads
+  - val_cutter:
+      type: string
+      description: Restriction enzyme name (e.g. `NlaIII`, `DpnII`)
+  - val_restrict_frags:
+      type: boolean
+      description: Restrict pairs to enzyme fragments (cooler digest of reference + pairtools restrict)
+  - val_cool:
+      type: boolean
+      description: Build `.cool` contact map
+  - val_mcool:
+      type: boolean
+      description: Build multi-resolution `.mcool` (requires val_cool)
+  - val_pretext:
+      type: boolean
+      description: Build Pretext contact map
+  - val_cool_bin_size:
+      type: integer
+      description: Cooler bin size in bp
+  - val_dedup:
+      type: boolean
+      description: |
+        Sort and deduplicate pairs with pairtools before emitting pairs and
+        building cool/mcool maps. Pretext always uses non-deduplicated pairs.
+output:
+  - bam:
+      type: file
+      description: |
+        Annotated, coordinate-sorted BAM with fragment tags (FI, FD, BX).
+        A name-sorted BAM is also produced for pairtools parse2.
+        Structure: `[ val(meta), path(bam), path(bai) ]`
+      pattern: "*.bam"
+  - pairs:
+      type: file
+      description: |
+        Hi-C pairs from pairtools parse2 (optionally restricted and deduplicated).
+        Structure: `[ val(meta), path(*.pairs.gz) ]`
+      pattern: "*.pairs.gz"
+  - cool:
+      type: file
+      description: |
+        Cooler contact map.
+        Structure: `[ val(meta), path(*.cool) ]`
+      pattern: "*.cool"
+  - mcool:
+      type: file
+      description: |
+        Multi-resolution cooler file.
+        Structure: `[ val(meta), path(*.mcool) ]`
+      pattern: "*.mcool"
+  - pretext:
+      type: file
+      description: |
+        Pretext contact map.
+        Structure: `[ val(meta), path(*.pretext) ]`
+      pattern: "*.pretext"
+  - versions:
+      type: string
+      description: Collated software version tuples (versions topic)
+authors:
+  - "@yumisims"
+maintainers:
+  - "@yumisims"
