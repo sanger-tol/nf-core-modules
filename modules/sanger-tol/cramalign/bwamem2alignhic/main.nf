@@ -14,7 +14,7 @@ process CRAMALIGN_BWAMEM2ALIGNHIC {
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
-    tuple val("${task.process}"), val('bwamem2'), eval('bwa-mem2 version 2>| grep -o -E "[0-9]+(\\.[0-9]+)+"'), emit: versions_bwamem2, topic: versions
+    tuple val("${task.process}"), val('bwamem2'), eval('bwa-mem2 version 2>&1 | grep -o -E "[0-9]+(\\.[0-9]+)+"'), emit: versions_bwamem2, topic: versions
     tuple val("${task.process}"), val('samtools'), eval('samtools --version | head -1 | sed -e "s/samtools //"'), emit: versions_samtools, topic: versions
 
     when:
