@@ -20,7 +20,7 @@ process BEDTOOLS_BAMTOBEDSORT {
 
     script:
     def prefix      = task.ext.prefix ?: "${meta.id}"
-    def args        = task.ext.args   ?: ""
+    def args        = task.ext.args   ?: "-hu"
     def args2       = task.ext.args2  ?: ""
     def args3       = task.ext.args3  ?: ""
     def st_cores    = task.cpus > 4 ? 4 : task.cpus
