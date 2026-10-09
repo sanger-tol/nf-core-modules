@@ -2,9 +2,9 @@
 // Prepare all the indexes for a Fasta file
 //
 
-include { SAMTOOLS_BGZIP } from '../../../modules/nf-core/samtools/bgzip/main'
-include { SAMTOOLS_DICT  } from '../../../modules/nf-core/samtools/dict/main'
-include { SAMTOOLS_FAIDX } from '../../../modules/nf-core/samtools/faidx/main'
+include { HTSLIB_BGZIPTABIX } from '../../../modules/nf-core/htslib/bgziptabix/main'
+include { SAMTOOLS_DICT     } from '../../../modules/nf-core/samtools/dict/main'
+include { SAMTOOLS_FAIDX    } from '../../../modules/nf-core/samtools/faidx/main'
 
 workflow FASTA_COMPRESS_INDEX {
     take:
@@ -14,8 +14,13 @@ workflow FASTA_COMPRESS_INDEX {
     main:
 
     // Compress the Fasta file
-    SAMTOOLS_BGZIP(ch_fasta, [])
-    ch_compressed_fasta = SAMTOOLS_BGZIP.out.output
+    HTSLIB_BGZIPTABIX(
+        ch_fasta.map { meta, fasta -> tuple(meta, fasta, [], []) },
+        'compress',
+        false,
+        'fa',
+    )
+    ch_compressed_fasta = HTSLIB_BGZIPTABIX.out.output
 
     // Generate .gzi and .fai index files, and chromosome size file
     ch_fasta_with_dummy_fai = ch_compressed_fasta.map { meta, fasta -> [meta, fasta, []] }
