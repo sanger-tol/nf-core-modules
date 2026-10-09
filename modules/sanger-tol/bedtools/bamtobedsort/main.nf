@@ -4,8 +4,8 @@ process BEDTOOLS_BAMTOBEDSORT {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/7a/7a011a9c08762afa2e8f56f8bc27b8c4acabf6d7e3f922febed2cdb279a2e5da/data' :
-        'community.wave.seqera.io/library/bedtools_htslib_samtools_coreutils:c291642efc7551d0' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/3e/3ed03d6b4fc208960b4053d5d0a320fc6ca1ef39eef09a89aab9f43790638db6/data' :
+        'community.wave.seqera.io/library/bedtools_htslib_samtools_coreutils:a52bfee84c9f20c4' }"
 
     input:
     tuple val(meta), path(bam)

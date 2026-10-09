@@ -59,16 +59,16 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         },
-        "timestamp": "2026-01-14T13:34:17.708593"
+        "timestamp": "2026-10-09T11:23:19.901662793"
     },
     "Undibacterium_unclassified - pacbio hifi - bin files": {
         "content": [
@@ -135,16 +135,16 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         },
-        "timestamp": "2026-01-14T13:34:00.831621"
+        "timestamp": "2026-10-09T11:21:59.477119169"
     },
     "Undibacterium_unclassified - long reads only": {
         "content": [
@@ -221,16 +221,16 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         },
-        "timestamp": "2026-01-14T13:33:49.015556"
+        "timestamp": "2026-10-09T11:21:47.457190466"
     },
     "Undibacterium_unclassified - hi-c cram": {
         "content": [
@@ -297,16 +297,16 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         },
-        "timestamp": "2026-01-14T13:34:43.561351"
+        "timestamp": "2026-10-09T11:23:42.483972535"
     },
     "Undibacterium_unclassified - stub": {
         "content": [
@@ -395,7 +395,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ],
                 "assembly_fasta": [
@@ -482,7 +482,7 @@
                     [
                         "HIFIASM",
                         "samtools",
-                        "1.23"
+                        "1.23.1"
                     ]
                 ]
             }

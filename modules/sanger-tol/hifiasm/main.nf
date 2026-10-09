@@ -4,8 +4,8 @@ process HIFIASM {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/70/709e33ba3578cdaf75b73e4ca5e6d5159269394ab891618f4e97fb53d041cc0b/data' :
-        'community.wave.seqera.io/library/hifiasm_htslib_samtools_gawk:d1de2b33932e02cb' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/17/17053ea7b1ae932805a745499662dfbca1c2267597a0126ef48d33bc90bc1d6a/data' :
+        'community.wave.seqera.io/library/hifiasm_htslib_samtools_findutils_gawk:fb65b90c39bfe422' }"
 
     input:
     tuple val(meta) , path(long_reads, arity: '1..*'), path(ul_reads, arity: '0..*')
