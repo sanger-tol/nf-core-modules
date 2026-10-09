@@ -20,7 +20,7 @@ process BEDTOOLS_BAMTOBEDSORT {
 
     script:
     def prefix      = task.ext.prefix ?: "${meta.id}"
-    def args1       = task.ext.args1  ?: ""
+    def args        = task.ext.args   ?: ""
     def args2       = task.ext.args2  ?: ""
     def args3       = task.ext.args3  ?: ""
     def st_cores    = task.cpus > 4 ? 4 : task.cpus
@@ -28,7 +28,7 @@ process BEDTOOLS_BAMTOBEDSORT {
     """
     samtools view \\
         -@${st_cores} \\
-        ${args1} \\
+        ${args} \\
         ${bam} | \\
     bamToBed ${args2} -i stdin | \\
     sort ${args3} \\
