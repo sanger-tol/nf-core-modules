@@ -331,13 +331,13 @@
                             "id": "test"
                         },
                         [
-                            "test.a_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.bp.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.hap1.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.hap2.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.p_utg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.r_utg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                            "test.a_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.bp.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.hap1.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.hap2.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.p_utg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.r_utg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                         ]
                     ]
                 ],
@@ -362,7 +362,7 @@
                         {
                             "id": "test"
                         },
-                        "test.ec.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.ec.fa.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "4": [
@@ -370,7 +370,7 @@
                         {
                             "id": "test"
                         },
-                        "test.ovlp.paf.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.ovlp.paf.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "5": [
@@ -420,13 +420,13 @@
                             "id": "test"
                         },
                         [
-                            "test.a_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.bp.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.hap1.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.hap2.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.p_ctg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.p_utg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940",
-                            "test.r_utg.gfa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                            "test.a_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.bp.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.hap1.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.hap2.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.p_ctg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.p_utg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test.r_utg.gfa.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                         ]
                     ]
                 ],
@@ -452,7 +452,7 @@
                         {
                             "id": "test"
                         },
-                        "test.ec.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.ec.fa.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "log": [
@@ -468,7 +468,7 @@
                         {
                             "id": "test"
                         },
-                        "test.ovlp.paf.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                        "test.ovlp.paf.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions_hifiasm": [
@@ -488,9 +488,9 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.0"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         },
-        "timestamp": "2026-01-14T13:34:48.05805"
+        "timestamp": "2026-10-08T12:55:47.316968955"
     }
 }
