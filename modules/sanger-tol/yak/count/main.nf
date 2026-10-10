@@ -18,11 +18,11 @@ process YAK_COUNT {
     task.ext.when == null || task.ext.when
 
     script:
-    def args1 = task.ext.args1 ?: ''
+    def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     def need_samtools = (reads[0].getExtension() in ["sam", "bam", "cram"])
-    def fasta_command = need_samtools ? "samtools cat ${reads} | samtools fastq ${args1}" : "zcat ${reads}"
+    def fasta_command = need_samtools ? "samtools cat ${reads} | samtools fastq ${args}" : "zcat ${reads}"
     """
     yak \\
         count \\

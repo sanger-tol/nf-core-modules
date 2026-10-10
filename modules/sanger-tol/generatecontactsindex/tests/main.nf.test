@@ -1,8 +1,8 @@
 nextflow_process {
 
-    name "Test Process GENERATE_CONTACTS_INDEX"
+    name "Test Process GENERATECONTACTSINDEX"
     script "../main.nf"
-    process "GENERATE_CONTACTS_INDEX"
+    process "GENERATECONTACTSINDEX"
 
     tag "modules"
     tag "modules_sangertol"

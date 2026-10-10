@@ -352,7 +352,7 @@
                         {
                             "id": "test"
                         },
-                        "test.txt.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.txt.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "1": [
@@ -381,7 +381,7 @@
                         {
                             "id": "test"
                         },
-                        "test.txt.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "test.txt.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
                     ]
                 ],
                 "versions_blast": [
@@ -408,9 +408,9 @@
             }
         ],
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
         },
-        "timestamp": "2026-03-25T10:06:00.306544523"
+        "timestamp": "2026-10-08T12:53:30.779089731"
     }
 }

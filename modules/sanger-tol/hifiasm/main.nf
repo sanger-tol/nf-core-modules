@@ -4,8 +4,8 @@ process HIFIASM {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/70/709e33ba3578cdaf75b73e4ca5e6d5159269394ab891618f4e97fb53d041cc0b/data' :
-        'community.wave.seqera.io/library/hifiasm_htslib_samtools_gawk:d1de2b33932e02cb' }"
+        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/17/17053ea7b1ae932805a745499662dfbca1c2267597a0126ef48d33bc90bc1d6a/data' :
+        'community.wave.seqera.io/library/hifiasm_htslib_samtools_findutils_gawk:fb65b90c39bfe422' }"
 
     input:
     tuple val(meta) , path(long_reads, arity: '1..*'), path(ul_reads, arity: '0..*')
@@ -105,22 +105,16 @@ process HIFIASM {
     touch ${prefix}.ovlp.reverse.bin
     touch ${prefix}.hic.tlb.bin
     touch ${prefix}.hic.lk.bin
-    echo "" | bgzip > ${prefix}.r_utg.gfa.gz
-    touch ${prefix}.r_utg.fa
-    echo "" | bgzip > ${prefix}.bp.p_ctg.gfa.gz
-    touch ${prefix}.bp.p_ctg.fa
-    echo "" | bgzip > ${prefix}.p_utg.gfa.gz
-    touch ${prefix}.p_utg.fa
-    echo "" | bgzip > ${prefix}.p_ctg.gfa.gz
-    touch ${prefix}.p_ctg.fa
-    echo "" | bgzip > ${prefix}.a_ctg.gfa.gz
-    touch ${prefix}.a_ctg.fa
-    echo "" | bgzip > ${prefix}.hap1.p_ctg.gfa.gz
-    touch ${prefix}.hap1.p_ctg.fa
-    echo "" | bgzip > ${prefix}.hap2.p_ctg.gfa.gz
-    touch ${prefix}.hap2.p_ctg.fa
-    echo "" | bgzip > ${prefix}.ec.fa.gz
-    echo "" | bgzip > ${prefix}.ovlp.paf.gz
+    for f in r_utg bp.p_ctg p_utg p_ctg a_ctg hap1.p_ctg hap2.p_ctg
+    do
+      touch ${prefix}.\${f}.gfa
+      bgzip ${prefix}.\${f}.gfa
+      touch ${prefix}.\${f}.fa
+    done
+    touch ${prefix}.ec.fa
+    bgzip ${prefix}.ec.fa
+    touch ${prefix}.ovlp.paf
+    bgzip ${prefix}.ovlp.paf
     touch ${prefix}.log
     """
 }

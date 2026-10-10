@@ -72,6 +72,6 @@ process BLAST_BLASTN {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    gzip -c /dev/null > ${prefix}.txt.gz
+    echo "" | gzip > ${prefix}.txt.gz
     """
 }
