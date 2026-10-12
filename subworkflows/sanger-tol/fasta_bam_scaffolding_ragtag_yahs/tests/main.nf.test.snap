@@ -1,0 +1,362 @@
+{
+    "Undibacterium_unclassified - bam - nucmer": {
+        "content": [
+            {
+                "confidence_txt": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.confidence.txt:md5,3b09577c7d8da1263acba017b12c2493"
+                    ]
+                ],
+                "ragtag_agp": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.agp:md5,a51f4d8be7ab9b934609bf34aa072f67"
+                    ]
+                ],
+                "ragtag_delta": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.asm.delta.gz"
+                    ]
+                ],
+                "ragtag_paf": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.asm.paf.gz:md5,a45a0ab014f3696c6240d706defae722"
+                    ]
+                ],
+                "ragtag_scaffolds": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.fasta.gz:md5,fc598854b057068a4457f520696de04b"
+                    ]
+                ],
+                "ragtag_stats": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.stats:md5,bc713262ee0e1519155e196852fe0207"
+                    ]
+                ],
+                "scaffolds_agp": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.agp:md5,831680b731bb36172403d9cd20cbd101"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.agp:md5,45ca5161396e64fa035ab4015e14968a"
+                    ]
+                ],
+                "scaffolds_chromsizes": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa.sizes:md5,c0b96ad6055c6a4a59b8505137273e2b"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa.sizes:md5,f9a68ed150605245906e88848ddc290d"
+                    ]
+                ],
+                "scaffolds_fasta": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa:md5,4d88d1357044b03a0bb70e7a1769bc54"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa:md5,44e2b7c024975834c4e5cd1993b8be2b"
+                    ]
+                ],
+                "scaffolds_pairs": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.pairs.gz:md5,a56899cf33fa224b33c8ef78889a476c"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.pairs.gz:md5,698758bf2c59989b094fc7fc6d47e6a1"
+                    ]
+                ],
+                "yahs_bin": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.bin:md5,a7a1c5a6f6e0b9cba6d5ac2512710f59"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.bin:md5,3c8a2388924b624fa311af72c83c483d"
+                    ]
+                ],
+                "yahs_inital": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        [
+                            "test_inital_break_01.agp:md5,424b56dafdf7889b3476fd808af0fde5",
+                            "test_inital_break_02.agp:md5,424b56dafdf7889b3476fd808af0fde5"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_inital_break_01.agp:md5,c078e1521ed510cbd9c9d637acab9414"
+                    ]
+                ],
+                "yahs_intermediate": [
+                    
+                ],
+                "yahs_log": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.log"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.log"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-10-12T09:13:30.23613",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "Undibacterium_unclassified - bam - minimap2": {
+        "content": [
+            {
+                "confidence_txt": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.confidence.txt:md5,a2abf06c470a219d3ffa23747fc966ce"
+                    ]
+                ],
+                "ragtag_agp": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.agp:md5,a51f4d8be7ab9b934609bf34aa072f67"
+                    ]
+                ],
+                "ragtag_delta": [
+                    
+                ],
+                "ragtag_paf": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.asm.paf.gz:md5,dfede8e1099f3d52ccb69168a96d4ec9"
+                    ]
+                ],
+                "ragtag_scaffolds": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.fasta.gz:md5,fc598854b057068a4457f520696de04b"
+                    ]
+                ],
+                "ragtag_stats": [
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.stats:md5,bc713262ee0e1519155e196852fe0207"
+                    ]
+                ],
+                "scaffolds_agp": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.agp:md5,831680b731bb36172403d9cd20cbd101"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.agp:md5,45ca5161396e64fa035ab4015e14968a"
+                    ]
+                ],
+                "scaffolds_chromsizes": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa.sizes:md5,c0b96ad6055c6a4a59b8505137273e2b"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa.sizes:md5,f9a68ed150605245906e88848ddc290d"
+                    ]
+                ],
+                "scaffolds_fasta": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa:md5,4d88d1357044b03a0bb70e7a1769bc54"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_scaffolds_final.fa:md5,44e2b7c024975834c4e5cd1993b8be2b"
+                    ]
+                ],
+                "scaffolds_pairs": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.pairs.gz:md5,a56899cf33fa224b33c8ef78889a476c"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.pairs.gz:md5,698758bf2c59989b094fc7fc6d47e6a1"
+                    ]
+                ],
+                "yahs_bin": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.bin:md5,a7a1c5a6f6e0b9cba6d5ac2512710f59"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.bin:md5,3c8a2388924b624fa311af72c83c483d"
+                    ]
+                ],
+                "yahs_inital": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        [
+                            "test_inital_break_01.agp:md5,424b56dafdf7889b3476fd808af0fde5",
+                            "test_inital_break_02.agp:md5,424b56dafdf7889b3476fd808af0fde5"
+                        ]
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test_inital_break_01.agp:md5,c078e1521ed510cbd9c9d637acab9414"
+                    ]
+                ],
+                "yahs_intermediate": [
+                    
+                ],
+                "yahs_log": [
+                    [
+                        {
+                            "_hap": "hap1",
+                            "id": "test"
+                        },
+                        "test.log"
+                    ],
+                    [
+                        {
+                            "_hap": "hap2",
+                            "id": "test"
+                        },
+                        "test.log"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-10-12T09:13:12.14633",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    }
+}
