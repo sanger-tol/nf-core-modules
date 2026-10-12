@@ -1,4 +1,3 @@
-
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
 name: "fasta_bam_scaffolding_ragtag_yahs"
 description: |
