@@ -92,6 +92,8 @@ process HIFIASM {
     ## where all contigs get the "h1tg" schema instead of the actual haplotype
     ## number. In the name of simpler code we just arrange a fix for all Hi-C
     ## GFA files.
+    ##
+    ## https://github.com/chhylp123/hifiasm/issues/489
     find . -maxdepth 1 -name "*.gfa" | while read graph; do
         if [[ "\$graph" =~ hic\\.hap([0-9]+)\\.p_ctg\\.gfa ]]; then
             hap_num="\${BASH_REMATCH[1]}"
