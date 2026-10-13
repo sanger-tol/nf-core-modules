@@ -76,11 +76,11 @@ workflow FASTA_PURGE_RETAINED_HAPLOTYPE {
     //
     MINIMAP2_ALIGN_ASSEMBLY(
         PURGEDUPS_SPLITFA.out.split_fasta,
-        [[:], []],
-        false,
-        false,
-        false,
-        false,
+        [[:], []], // Trigger read to read alignment
+        false,     // bam output
+        false,     // bam index extension
+        false,     // cigar in paf file
+        false      // cigar in bam file
     )
 
     //
