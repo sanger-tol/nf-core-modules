@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
-name: "BLOBTOOLKIT_GENERATECSV"
+name: "blobtoolkit_generatecsv"
 description: Generate a samplesheet csv for sanger-tol/blobtoolkit
 keywords:
   - blobtoolkit/generatecsv
