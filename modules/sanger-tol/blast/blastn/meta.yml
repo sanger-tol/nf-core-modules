@@ -8,7 +8,7 @@ keywords:
   - cram
   - blast
   - blastn
-  - DNA sequence
+  - dna sequence
   - taxids
 tools:
   - blast:
