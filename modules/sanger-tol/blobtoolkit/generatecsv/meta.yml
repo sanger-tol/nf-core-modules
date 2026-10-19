@@ -2,7 +2,7 @@
 name: "blobtoolkit_generatecsv"
 description: Generate a samplesheet csv for sanger-tol/blobtoolkit
 keywords:
-  - blobtoolkit/generatecsv
+  - blobtoolkit
   - generatecsv
   - csv
   - samplesheet
