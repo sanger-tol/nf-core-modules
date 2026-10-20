@@ -9,12 +9,12 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/pacbio_preprocess"
     tag "blast/blastn"
-    tag "subworkflows/../../modules/nf-core/blast/makeblastdb"
-    tag "subworkflows/../../modules/nf-core/hifitrimmer/processblast"
-    tag "subworkflows/../../modules/nf-core/hifitrimmer/trim"
-    tag "subworkflows/../../modules/nf-core/lima"
-    tag "subworkflows/../../modules/nf-core/pbmarkdup"
-    tag "subworkflows/../../modules/nf-core/untar"
+    tag "subworkflows/../../../modules/nf-core/blast/makeblastdb"
+    tag "subworkflows/../../../modules/nf-core/hifitrimmer/processblast"
+    tag "subworkflows/../../../modules/nf-core/hifitrimmer/trim"
+    tag "subworkflows/../../../modules/nf-core/lima"
+    tag "subworkflows/../../../modules/nf-core/pbmarkdup"
+    tag "subworkflows/../../../modules/nf-core/untar"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")

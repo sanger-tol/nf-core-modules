@@ -11,11 +11,11 @@ nextflow_workflow {
     tag "subworkflows/bam_samtools_merge_markdup"
     tag "cramalign/gencramchunks"
     tag "cramalign/minimap2align"
-    tag "subworkflows/../../modules/nf-core/minimap2/index"
-    tag "subworkflows/../../modules/nf-core/samtools/merge"
-    tag "subworkflows/../../modules/nf-core/samtools/index"
-    tag "subworkflows/../../modules/nf-core/samtools/faidx"
-    tag "subworkflows/../../modules/nf-core/samtools/splitheader"
+    tag "subworkflows/../../../modules/nf-core/minimap2/index"
+    tag "subworkflows/../../../modules/nf-core/samtools/merge"
+    tag "subworkflows/../../../modules/nf-core/samtools/index"
+    tag "subworkflows/../../../modules/nf-core/samtools/faidx"
+    tag "subworkflows/../../../modules/nf-core/samtools/splitheader"
 
 
     setup {
