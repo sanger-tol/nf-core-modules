@@ -8,7 +8,7 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/fcsgx_parsecsv"
-    tag "subworkflows/../../../modules/nf-core/samtools/dict"
+    tag "subworkflows/../../modules/nf-core/samtools/dict"
     tag "modules/nf-core/fcsgx/fetchdb"
     tag "modules/nf-core/samtools/dict"
     tag "nf-core/samtools/dict"
@@ -30,7 +30,7 @@ nextflow_workflow {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules")
 
         run("FCSGX_FETCHDB"){
-            script "../../../../modules/nf-core/fcsgx/fetchdb/main.nf"
+            script "../../../modules/nf-core/fcsgx/fetchdb/main.nf"
             process {
                 """
                 input[0] = file('https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest', checkIfExists: true)

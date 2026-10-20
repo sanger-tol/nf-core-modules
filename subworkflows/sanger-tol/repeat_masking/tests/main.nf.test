@@ -7,8 +7,8 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_sangertol"
     tag "subworkflows/repeat_masking"
-    tag "subworkflows/../../../modules/nf-core/windowmasker/ustat"
-    tag "subworkflows/../../../modules/nf-core/windowmasker/mkcounts"
+    tag "subworkflows/../../modules/nf-core/windowmasker/ustat"
+    tag "subworkflows/../../modules/nf-core/windowmasker/mkcounts"
     tag "modules/nf-core/gunzip"
 
     setup {
