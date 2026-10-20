@@ -13,7 +13,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "3": [
@@ -107,7 +107,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "telo_bed_and_index": [
@@ -196,7 +196,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "3": [
@@ -263,7 +263,7 @@
                         {
                             "id": "test"
                         },
-                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "telo_bed_and_index": [
