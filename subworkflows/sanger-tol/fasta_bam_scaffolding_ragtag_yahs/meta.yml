@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/subworkflows/yaml-schema.json
 name: "fasta_bam_scaffolding_ragtag_yahs"
 description: |
-  Scaffold a set of assemblies using YaHS and RagTag. YaHS is used to scaffold the first provided assembly,
-  and then RagTag is used to scaffold the remaining assemblies using the first scaffolded assembly as a reference.
-  Finally the RagTag scaffolds are re-scaffolded using YaHS to correct errors.
+  Scaffold a set of assemblies using RagTag and YaHS. First, each assembly is scaffolded with RagTag against
+  the provided reference. Then, the RagTag scaffolds are re-scaffolded using YaHS with the provided Hi-C BAM
+  to correct errors.
 keywords:
   - scaffolding
   - hic
@@ -30,6 +30,12 @@ input:
       type: file
       description: |
         Channel containing BAM files of Hi-C reads mapped to each assembly.
+        Structure: [ val(meta), path(bam) ]
+      pattern: "*.{bam/cram/sam}"
+  - ch_ragtag_reference:
+      type: file
+      description: |
+        Channel containing a reference assembly to scaffold each assembly against.
         Structure: [ val(meta), path(bam) ]
       pattern: "*.{bam/cram/sam}"
 output:

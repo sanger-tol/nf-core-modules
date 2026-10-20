@@ -45,17 +45,15 @@ nextflow_workflow {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ],
-                    [
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa', checkIfExists: true),
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa', checkIfExists: true),
-                    ]
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa', checkIfExists: true)
                 ])
                 input[1] = channel.of([
                     [id: "test"],
-                    [
-                        file(params.modules_testdata_base_path + "Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.3.bam"),
-                        file(params.modules_testdata_base_path + "Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.2.bam")
-                    ]
+                    file(params.modules_testdata_base_path + "Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.3.bam")
+                ])
+                input[2] = channel.of([
+                    [id: "test"],
+                    file(params.modules_testdata_base_path + "Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa")
                 ])
                 """
             }
@@ -83,17 +81,15 @@ nextflow_workflow {
                 """
                 input[0] = Channel.of([
                     [ id:'test' ],
-                    [
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa', checkIfExists: true),
-                        file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa', checkIfExists: true),
-                    ]
+                    file(params.modules_testdata_base_path + 'Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.fa', checkIfExists: true)
                 ])
                 input[1] = channel.of([
                     [id: "test"],
-                    [
-                        file(params.modules_testdata_base_path + "Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.3.bam"),
-                        file(params.modules_testdata_base_path + "Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.2.bam")
-                    ]
+                    file(params.modules_testdata_base_path + "Undibacterium_unclassified/analysis/hic_mapping/41741_2.7.sub.cram.baUndUnlc1_hic_phased_hap1.3.bam")
+                ])
+                input[2] = channel.of([
+                    [id: "test"],
+                    file(params.modules_testdata_base_path + "Undibacterium_unclassified/assembly/draft/baUndUnlc1.hic.hap1.p_ctg.unscaffolded.fa")
                 ])
                 """
             }
