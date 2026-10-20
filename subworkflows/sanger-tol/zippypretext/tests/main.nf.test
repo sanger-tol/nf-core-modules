@@ -10,7 +10,7 @@ nextflow_workflow {
     tag "pretext/pretext2asm"
     tag "pretext/juicerc"
     tag "pretext/makepairs"
-    tag "subworkflows/../../modules/nf-core/pretextmap"
+    tag "subworkflows/../../../modules/nf-core/pretextmap"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")

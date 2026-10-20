@@ -8,9 +8,9 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/genome_statistics"
     tag "asmstats"
-    tag "subworkflows/../../modules/nf-core/busco/busco"
-    tag "subworkflows/../../modules/nf-core/gfastats"
-    tag "subworkflows/../../modules/nf-core/merquryfk/merquryfk"
+    tag "subworkflows/../../../modules/nf-core/busco/busco"
+    tag "subworkflows/../../../modules/nf-core/gfastats"
+    tag "subworkflows/../../../modules/nf-core/merquryfk/merquryfk"
     tag "modules/nf-core/fastk/fastk"
 
     test("meles meles - no trio - no busco - no fastk") {
