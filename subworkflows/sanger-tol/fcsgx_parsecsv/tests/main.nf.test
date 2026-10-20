@@ -30,7 +30,7 @@ nextflow_workflow {
         nfcoreLink("${launchDir}/library/", "${baseDir}/modules")
 
         run("FCSGX_FETCHDB"){
-            script "../../../modules/nf-core/fcsgx/fetchdb/main.nf"
+            script "../../../../modules/nf-core/fcsgx/fetchdb/main.nf"
             process {
                 """
                 input[0] = file('https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest', checkIfExists: true)
