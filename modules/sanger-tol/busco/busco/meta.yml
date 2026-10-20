@@ -1,7 +1,7 @@
 name: busco_busco
 description: Benchmarking Universal Single Copy Orthologs
 keywords:
-  - quality control
+  - qc
   - genome
   - transcriptome
   - proteome
