@@ -38,7 +38,7 @@ nextflow_workflow {
     }
 
     test("ilCerPisi1.1 - local plots - png") {
-       	config "./nextflow.config"
+        config "./nextflow.config"
 
         when {
 
@@ -73,7 +73,7 @@ nextflow_workflow {
     }
 
     test("ilCerPisi1.1 - online plots - svg") {
-       	config "./nextflow.config"
+        config "./nextflow.config"
 
         when {
 
@@ -111,7 +111,7 @@ nextflow_workflow {
     test("ilCerPisi1.1 - online plots - stub") {
         options "-stub"
 
-       	config "./nextflow.config"
+        config "./nextflow.config"
 
         when {
 
