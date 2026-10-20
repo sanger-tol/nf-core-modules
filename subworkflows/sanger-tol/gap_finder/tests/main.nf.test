@@ -11,9 +11,9 @@ nextflow_workflow {
     tag "seqtk/cutn"
     tag "gawk"
     tag "htslib/bgziptabix"
-    tag "subworkflows/../../modules/nf-core/gawk"
-    tag "subworkflows/../../modules/nf-core/htslib/bgziptabix"
-    tag "subworkflows/../../modules/nf-core/seqtk/cutn"
+    tag "subworkflows/../../../modules/nf-core/gawk"
+    tag "subworkflows/../../../modules/nf-core/htslib/bgziptabix"
+    tag "subworkflows/../../../modules/nf-core/seqtk/cutn"
     tag "modules/nf-core/gunzip"
 
     setup {

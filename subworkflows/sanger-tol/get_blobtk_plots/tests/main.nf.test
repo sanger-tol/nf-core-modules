@@ -10,8 +10,8 @@ nextflow_workflow {
     tag "subworkflows/get_blobtk_plots"
     tag "modules/nf-core/blobtk/plot"
     tag "modules/nf-core/untar"
-    tag "subworkflows/../../modules/nf-core/blobtk/plot"
-    tag "subworkflows/../../modules/nf-core/untar"
+    tag "subworkflows/../../../modules/nf-core/blobtk/plot"
+    tag "subworkflows/../../../modules/nf-core/untar"
 
     setup {
         nfcoreInitialise("${launchDir}/library/")

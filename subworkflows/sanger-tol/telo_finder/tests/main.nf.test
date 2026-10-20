@@ -10,7 +10,7 @@ nextflow_workflow {
     tag "subworkflows/telo_finder"
     tag "telomere/findtelomere"
     tag "htslib/bgziptabix"
-    tag "subworkflows/../../modules/nf-core/htslib/bgziptabix"
+    tag "subworkflows/../../../modules/nf-core/htslib/bgziptabix"
 
     setup {
             nfcoreInitialise("${launchDir}/library/")

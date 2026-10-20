@@ -10,7 +10,7 @@ nextflow_workflow {
     tag "fastxalign"
     tag "fastxalign/pyfastxindex"
     tag "fastxalign/minimap2align"
-    tag "subworkflows/../../modules/nf-core/minimap2/index"
+    tag "subworkflows/../../../modules/nf-core/minimap2/index"
     tag "subworkflows/bam_samtools_merge_markdup"
 
 
