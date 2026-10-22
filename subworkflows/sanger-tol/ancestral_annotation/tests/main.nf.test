@@ -11,7 +11,7 @@ nextflow_workflow {
     tag "samtools/faidx"
     tag "ancestral/extract"
     tag "ancestral/plot"
-    tag "subworkflows/../../../modules/nf-core/samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
     tag "modules/nf-core/gunzip"
 
     setup {

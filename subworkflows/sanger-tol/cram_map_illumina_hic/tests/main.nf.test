@@ -12,13 +12,13 @@ nextflow_workflow {
     tag "cramalign/gencramchunks"
     tag "cramalign/bwamem2alignhic"
     tag "cramalign/minimap2alignhic"
-    tag "subworkflows/../../../modules/nf-core/samtools/markdup"
-    tag "subworkflows/../../../modules/nf-core/minimap2/index"
-    tag "subworkflows/../../../modules/nf-core/samtools/merge"
-    tag "subworkflows/../../../modules/nf-core/samtools/index"
-    tag "subworkflows/../../../modules/nf-core/samtools/faidx"
-    tag "subworkflows/../../../modules/nf-core/samtools/splitheader"
-    tag "subworkflows/../../../modules/nf-core/bwamem2/index"
+    tag "subworkflows/../../modules/nf-core/samtools/markdup"
+    tag "subworkflows/../../modules/nf-core/minimap2/index"
+    tag "subworkflows/../../modules/nf-core/samtools/merge"
+    tag "subworkflows/../../modules/nf-core/samtools/index"
+    tag "subworkflows/../../modules/nf-core/samtools/faidx"
+    tag "subworkflows/../../modules/nf-core/samtools/splitheader"
+    tag "subworkflows/../../modules/nf-core/bwamem2/index"
 
 
     setup {
