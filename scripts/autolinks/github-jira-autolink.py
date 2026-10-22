@@ -4,7 +4,9 @@ import argparse
 
 # Define the autolink reference pattern because GitHub's API doesn't
 # support keys being a substring of another key e.g. DO- and DOC- overlap
-key_prefixes = ['AB-1a23v', 'ABC-1a23v', "AC-1a23v"]
+key_prefixes = ['TOLIT-', 'TOLP-', 'TOLA-', 'TOLSD-']
+
+jira_server = 'https://jira.sanger.ac.uk/browse/'
 
 # Set up argument parser
 parser = argparse.ArgumentParser(
@@ -13,6 +15,7 @@ parser.add_argument('--token', required=True, help='Your GitHub token')
 parser.add_argument('--org', required=True,
                     help='Your organization name on GitHub')
 parser.add_argument('--repo', help='A specific repo to update')
+parser.add_argument('--list', action='store_true', help='Only list the current autolinks')
 
 args = parser.parse_args()
 
@@ -63,12 +66,24 @@ key_prefixes.sort(key=len, reverse=True)
 # Define the autolink reference pattern
 # Append '-1a23v' to each prefix
 for repo_name in repos_to_update:
+    if args.list:
+        autolink_response = requests.get(f'https://api.github.com/repos/{GITHUB_ORG_NAME}/{repo_name}/autolinks',
+                                         headers=github_headers)
+        if autolink_response.status_code == 200:
+            for autolink in autolink_response.json():
+                print(repo_name, autolink['key_prefix'], '->', autolink['url_template'])
+        else:
+            print(
+                f'Failed to list the autolink references in repo "{repo_name}": {autolink_response.text}')
+        continue
+
     for prefix in key_prefixes:
         # Create the payload for the GitHub request
         autolink_payload = {
-            'key_prefix': prefix,  # The key_prefix now includes '-1a23v'
+            'key_prefix': prefix,
             # Remove '1a23v' in the URL template
-            'url_template': f"https://bitgoinc.atlassian.net/browse/{prefix.rstrip('1a23v')}<num>"
+            'url_template': f"{jira_server}{prefix}<num>",
+            'is_alphanumeric': False,
         }
 
         # Create the autolink reference in the repository
@@ -86,4 +101,4 @@ for repo_name in repos_to_update:
             print(
                 f'Failed to create autolink reference in repo "{repo_name}": {autolink_response.text}')
 
-print('Autolink references processing finished.')
+print(f'Autolink references {"list" if args.list else "process"}ing finished.')
