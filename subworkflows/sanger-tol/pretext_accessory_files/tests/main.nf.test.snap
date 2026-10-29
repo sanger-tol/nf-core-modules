@@ -130,7 +130,27 @@
                         "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
-                "telo_bed_and_index": [
+                "telo_file": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.fwd.telomere.bed:md5,fe07f1667e67b6ccbc01d60e491c9c35"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.rev.telomere.bed:md5,4f2800fb10fd7dae2d7af60aa108959f"
+                    ],
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.telomere.bed:md5,dbd16061f8923feef5851616c5ae73c9"
+                    ]
+                ],
+                "telo_gz_and_index": [
                     [
                         {
                             "id": "test"
@@ -174,26 +194,6 @@
                         "test.windows.gz.csi:md5,bee398e3c95c641dc7606f6575a67c54"
                     ]
                 ],
-                "telo_file": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.fwd.telomere.bed:md5,fe07f1667e67b6ccbc01d60e491c9c35"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.rev.telomere.bed:md5,4f2800fb10fd7dae2d7af60aa108959f"
-                    ],
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.telomere.bed:md5,dbd16061f8923feef5851616c5ae73c9"
-                    ]
-                ],
                 "telo_windows": [
                     [
                         {
@@ -216,10 +216,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-27T09:12:35.984516417",
+        "timestamp": "2026-10-29T11:26:47.408230563",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     },
     "Escherichia_coli no indexes": {
@@ -312,9 +312,6 @@
                         "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
-                "telo_bed_and_index": [
-                    
-                ],
                 "telo_file": [
                     [
                         {
@@ -334,6 +331,9 @@
                         },
                         "test.telomere.bed:md5,dbd16061f8923feef5851616c5ae73c9"
                     ]
+                ],
+                "telo_gz_and_index": [
+                    
                 ],
                 "telo_windows": [
                     [
@@ -357,10 +357,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-27T09:27:59.904501162",
+        "timestamp": "2026-10-29T11:30:35.113101957",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     },
     "Cloeon_dipterum w/indexes GAP ONLY": {
@@ -421,10 +421,10 @@
                 "repeat_file": [
                     
                 ],
-                "telo_bed_and_index": [
+                "telo_file": [
                     
                 ],
-                "telo_file": [
+                "telo_gz_and_index": [
                     
                 ],
                 "telo_windows": [
@@ -432,10 +432,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-27T09:43:34.868596484",
+        "timestamp": "2026-10-29T11:33:58.709642066",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     }
 }
