@@ -47,7 +47,8 @@ workflow FEATURE_DENSITY {
     //
     BEDTOOLS_INTERSECT(
         intervals,
-        ch_chrom_sizes
+        ch_chrom_sizes,
+        ""
     )
 
     //
