@@ -9,7 +9,7 @@ process PRETEXTANNOTATE {
 
     input:
     tuple val(meta),  path(sizes)
-    tuple val(meta1), path(snapshot)
+    tuple val(meta2), path(snapshot)
 
     output:
     tuple val(meta), path("*.png"), emit: png
