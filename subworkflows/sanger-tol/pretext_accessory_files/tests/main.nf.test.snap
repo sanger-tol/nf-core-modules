@@ -13,7 +13,7 @@
                         {
                             "id": "test"
                         },
-                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "3": [
@@ -127,7 +127,7 @@
                         {
                             "id": "test"
                         },
-                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "telo_file": [
@@ -216,7 +216,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-10-29T11:26:47.408230563",
+        "timestamp": "2026-10-30T12:05:15.541131418",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"
@@ -236,7 +236,7 @@
                         {
                             "id": "test"
                         },
-                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "3": [
@@ -309,7 +309,7 @@
                         {
                             "id": "test"
                         },
-                        "test_repeat_density.bigWig:md5,2e7680772bd94838620df7badf4cb143"
+                        "test.bigWig:md5,2e7680772bd94838620df7badf4cb143"
                     ]
                 ],
                 "telo_file": [
@@ -357,7 +357,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-10-29T11:30:35.113101957",
+        "timestamp": "2026-10-30T12:09:09.3746483",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"
