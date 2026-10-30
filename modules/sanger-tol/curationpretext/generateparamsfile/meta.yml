@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
-name: "CURATIONPRETEXT_GENERATEPARAMSFILE"
+name: "curationpretext_generateparamsfile"
 description: Generate a params file in json format for
   sanger-tol/curationpretext
 keywords:
-  - curationpretext/generateparamsfile
+  - curationpretext
   - generateparamsfile
   - json
   - paramsfile

@@ -13,7 +13,7 @@
                 ],
                 "1": [
                     [
-                        "GENERATE_CONTACTS_INDEX",
+                        "GENERATECONTACTSINDEX",
                         "coreutils",
                         "9.5"
                     ]
@@ -29,7 +29,7 @@
                 ],
                 "versions_coreutils": [
                     [
-                        "GENERATE_CONTACTS_INDEX",
+                        "GENERATECONTACTSINDEX",
                         "coreutils",
                         "9.5"
                     ]
@@ -56,7 +56,7 @@
                 ],
                 "1": [
                     [
-                        "GENERATE_CONTACTS_INDEX",
+                        "GENERATECONTACTSINDEX",
                         "coreutils",
                         "9.5"
                     ]
@@ -72,7 +72,7 @@
                 ],
                 "versions_coreutils": [
                     [
-                        "GENERATE_CONTACTS_INDEX",
+                        "GENERATECONTACTSINDEX",
                         "coreutils",
                         "9.5"
                     ]

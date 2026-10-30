@@ -63,16 +63,7 @@ nextflow_workflow {
             }
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.telomere_bed_fwd.isEmpty() },
-                { assert workflow.out.telomere_bed_rev.isEmpty() },
-                { assert workflow.out.windows_fwd.isEmpty() },
-                { assert workflow.out.windows_rev.isEmpty() },
-                { assert snapshot(
-                    workflow.out.telomere,
-                    workflow.out.telomere_bed,
-                    file_names(workflow.out.windows_all),
-                    gz_names(workflow.out.gz_index)
-                ).match() }
+                { assert snapshot(workflow.out).match() }
             )
         }
 

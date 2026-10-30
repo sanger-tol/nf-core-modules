@@ -1,6 +1,6 @@
 include { BEDTOOLS_BAMTOBEDSORT     } from '../../../modules/sanger-tol/bedtools/bamtobedsort/main'
 include { CONTACTBED                } from '../../../modules/sanger-tol/contactbed/main'
-include { GENERATE_CONTACTS_INDEX   } from '../../../modules/sanger-tol/generatecontactsindex/main'
+include { GENERATECONTACTSINDEX     } from '../../../modules/sanger-tol/generatecontactsindex/main'
 include { COOLER_CLOAD              } from '../../../modules/nf-core/cooler/cload/main'
 include { COOLER_MERGE              } from '../../../modules/nf-core/cooler/merge/main'
 include { COOLER_ZOOMIFY            } from '../../../modules/nf-core/cooler/zoomify/main'
@@ -38,14 +38,14 @@ workflow BAM2COOL {
     //
     // Generate index file from contacts
     //
-    GENERATE_CONTACTS_INDEX(
+    GENERATECONTACTSINDEX(
         CONTACTBED.out.bed
     )
 
     //
     // Generate individual .cool files
     //
-    ch_cooler_cload_input = GENERATE_CONTACTS_INDEX.out.contacts_with_index
+    ch_cooler_cload_input = GENERATECONTACTSINDEX.out.contacts_with_index
         .map { meta, contacts, index ->
             def meta_join = meta - meta.subMap("bam_idx")
             [ meta_join, meta, contacts, index ]
