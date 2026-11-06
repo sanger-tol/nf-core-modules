@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/sanger-tol/nf-core-modules/main/modules/meta-schema.json
-name: "generate_contacts_index"
+name: "generatecontactsindex"
 description: |
   Generates a TSV index file from contacts BED file by sorting and extracting unique contact positions.
 keywords:

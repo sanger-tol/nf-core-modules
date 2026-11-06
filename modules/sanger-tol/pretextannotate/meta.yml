@@ -28,7 +28,7 @@ input:
           TSV containing chromosome names and lengths
         pattern: "*.{genome,sizes}"
         ontologies: []
-  - - meta1:
+  - - meta2:
         type: map
         description: |
           Groovy Map containing sample information

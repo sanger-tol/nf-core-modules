@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "AUTOFILTER_AUTOFILTER"
+name: "autofilter_autofilter"
 description: |
   A tool to filter an assembly fasta based on FCSGX and TIARA summary files.
   This also generates a join FCSGX/TIARA summary file.

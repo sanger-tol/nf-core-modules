@@ -91,7 +91,7 @@ output:
       - bwamem2:
           type: string
           description: The name of the tool
-      - bwa-mem2 version 2>| grep -o -E "[0-9]+(\.[0-9]+)+":
+      - bwa-mem2 version 2>&1 | grep -o -E "[0-9]+(\.[0-9]+)+":
           type: eval
           description: The expression to obtain the version of the tool
 
@@ -113,7 +113,7 @@ topics:
       - bwamem2:
           type: string
           description: The name of the tool
-      - bwa-mem2 version 2>| grep -o -E "[0-9]+(\.[0-9]+)+":
+      - bwa-mem2 version 2>&1 | grep -o -E "[0-9]+(\.[0-9]+)+":
           type: eval
           description: The expression to obtain the version of the tool
     - - ${task.process}:

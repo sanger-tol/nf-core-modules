@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-name: "AUTOFILTER_CONTAMINATIONCHECK"
+name: "autofilter_contaminationcheck"
 description: |
   A script to determine whether contamination levels exceed given thresholds for an assembly.
 keywords:

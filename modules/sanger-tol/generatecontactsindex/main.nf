@@ -1,4 +1,4 @@
-process GENERATE_CONTACTS_INDEX {
+process GENERATECONTACTSINDEX {
     tag "$meta.id"
     label 'process_low'
 
