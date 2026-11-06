@@ -45,13 +45,13 @@ workflow PRETEXT_ACCESSORY_FILES {
         val_output_indexes
     )
 
-    telomere_data = TELO_FINDER.out.telomere
-                        .mix( TELO_FINDER.out.telomere_bed_fwd )
-                        .mix( TELO_FINDER.out.telomere_bed_rev )
+    telomere_data = TELO_FINDER.out.telomere_bed
+        .mix( TELO_FINDER.out.telomere_bed_fwd )
+        .mix( TELO_FINDER.out.telomere_bed_rev )
 
     telomere_windows = TELO_FINDER.out.windows_all
-                        .mix( TELO_FINDER.out.windows_fwd )
-                        .mix( TELO_FINDER.out.windows_rev )
+        .mix( TELO_FINDER.out.windows_fwd )
+        .mix( TELO_FINDER.out.windows_rev )
 
 
     //
@@ -111,6 +111,6 @@ workflow PRETEXT_ACCESSORY_FILES {
     repeat_file         = REPEAT_DENSITY.out.repeat_density
     telo_file           = telomere_data                     // This is the possible collection of telomere files
     telo_windows        = telomere_windows                  // This is the possible collection of window files
-    telo_bed_and_index  = TELO_FINDER.out.gz_index
+    telo_gz_and_index   = TELO_FINDER.out.gz_index
     coverage_file       = READ_COVERAGE.out.bigwig
 }
