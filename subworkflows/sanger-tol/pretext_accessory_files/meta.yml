@@ -37,13 +37,6 @@ input:
   - val_teloseq:
       type: string
       description: A telomeric motif sequence
-  - val_split_telomere:
-      type: boolean
-      description: |
-        When true, run `FindTelomereWindows --split` so strand BED
-        (`*.fwd.telomere.bed` / `*.rev.telomere.bed`) and strand windows
-        (`*.fwd.windows` / `*.rev.windows`) are emitted in addition to combined
-        `*.telomere.bed` and `*.windows`.
   - val_run_telomere:
       type: boolean
       description: Run the telomere file generation subworkflow

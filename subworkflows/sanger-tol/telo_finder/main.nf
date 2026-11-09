@@ -10,7 +10,6 @@ workflow TELO_FINDER {
     take:
     ch_reference           // channel: [ val(meta), path(fasta) ]
     ch_telomereseq         // channel: [ val(meta), val(telomere_motif) ]
-    val_split_telomere     // boolean — FindTelomereWindows --split
     val_zip_bed            // boolean — bgzip+tabix BED/windows (not the *.telomere TSV)
 
     main:
@@ -19,7 +18,7 @@ workflow TELO_FINDER {
         .combine(ch_telomereseq, by: 0)
         .map { meta, reference, telomereseq -> tuple(meta, reference, telomereseq) }
 
-    TELOMERE_FINDTELOMERE(ch_joined, val_split_telomere)
+    TELOMERE_FINDTELOMERE(ch_joined)
 
     /*
      * Zip set mirrors FindTelomereWindows outputs from sanger-tol/telomere:

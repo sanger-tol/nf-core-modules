@@ -6,7 +6,6 @@ process TELOMERE_FINDTELOMERE {
 
     input:
     tuple val(meta), path(reference), val(telomereseq)
-    val split_windows
 
     output:
     tuple val(meta), path("${prefix}.telomere"), emit: telomere
@@ -33,7 +32,6 @@ process TELOMERE_FINDTELOMERE {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     prefix = task.ext.prefix ?: "${meta.id}"
-    def split_opt = split_windows ? '--split' : ''
     def max_heap_size_mega = (task.memory.toMega() * 0.9).intValue()
     def max_stack_size_mega = 999 //most java jdks will not allow Xss > 1GB, so fixing this to the allowed max
 
@@ -45,7 +43,7 @@ process TELOMERE_FINDTELOMERE {
         -Xss${max_stack_size_mega}M  \\
         -cp /opt/telomere/telomere.jar \\
         FindTelomereWindows \\
-        ${split_opt} ${prefix}.telomere \\
+        ${prefix}.telomere \\
         ${args2}
     """
 
@@ -54,12 +52,13 @@ process TELOMERE_FINDTELOMERE {
         error "FINDTELOMERE module does not support Conda. Please use Docker / Singularity instead."
     }
     prefix = task.ext.prefix ?: "${meta.id}"
-    def split_opt = split_windows ? '--split ' : ''
+    def args2 = task.ext.args2 ?: ''
+
     """
     printf "stub\\n" > ${prefix}.telomere
     printf "stub\\n" > ${prefix}.telomere.bed
     printf "stub\\n" > ${prefix}.windows
-    if [ -n "${split_opt}" ]; then
+    if [[ "${args2}" == *--split* ]]; then
         printf "stub\\n" > ${prefix}.fwd.telomere.bed
         printf "stub\\n" > ${prefix}.rev.telomere.bed
         printf "stub\\n" > ${prefix}.fwd.windows

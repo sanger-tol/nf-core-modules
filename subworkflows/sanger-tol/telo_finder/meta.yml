@@ -25,12 +25,6 @@ input:
       description: |
         Channel shape `[ val(meta), val(telomere_motif) ]` — DNA motif sequence string (same `meta.id`
         as `ch_reference` entries).
-  - val_split_telomere:
-      type: boolean
-      description: |
-        When true, run `FindTelomereWindows --split` so strand `*.fwd.telomere.bed` /
-        `*.rev.telomere.bed` and `*.fwd.windows` / `*.rev.windows` are emitted in addition to
-        combined `*.telomere.bed` and `*.windows`.
   - val_zip_bed:
       type: boolean
       description: |

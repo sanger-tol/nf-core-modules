@@ -14,7 +14,6 @@ workflow PRETEXT_ACCESSORY_FILES {
     ch_reference_sizes  // Channel [ val(meta), path(file)   ]
     ch_longread_reads   // Channel [ val(meta), [ path(file) ] ]
     ch_teloseq          // Channel [ val(meta), val(telomere_sequence) ]
-    val_split_telomere  // val(bool)
     val_run_telomere    // val(bool)
     val_run_gaps        // val(bool)
     val_run_coverage    // val(bool)
@@ -41,7 +40,6 @@ workflow PRETEXT_ACCESSORY_FILES {
     TELO_FINDER(
         ch_reference_tuple.filter { val_run_telomere },
         ch_teloseq,
-        val_split_telomere,
         val_output_indexes
     )
 
