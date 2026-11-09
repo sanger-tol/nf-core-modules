@@ -1309,16 +1309,16 @@
                             "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
                             "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
                             "test.completeness.stats",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.qv",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -1331,16 +1331,16 @@
                             "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
                             "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
                             "test.completeness.stats",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.qv",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -1353,16 +1353,16 @@
                             "test.GCA_922984935.2.subset.spectra-cn.ln.png",
                             "test.GCA_922984935.2.subset.spectra-cn.st.png",
                             "test.completeness.stats",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.qv",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -1375,16 +1375,16 @@
                             "test.GCA_965654295.1.spectra-cn.ln.png",
                             "test.GCA_965654295.1.spectra-cn.st.png",
                             "test.completeness.stats",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.qv",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ]
                 ],
@@ -1394,28 +1394,28 @@
                             "_hap": "hap1",
                             "id": "test"
                         },
-                        "test.completeness.stats:md5,05633e9f063234c110df5fa7fbb8e5c2"
+                        "test.completeness.stats:md5,9b7029ba986880f6ea9dd6838faf5053"
                     ],
                     [
                         {
                             "_hap": "hap2",
                             "id": "test"
                         },
-                        "test.completeness.stats:md5,0afa8e685cc9e8c08db9d7ed1c9366cc"
+                        "test.completeness.stats:md5,00dfed4416b1d6abea57dcccaf5daadd"
                     ],
                     [
                         {
                             "_hap": "hap3",
                             "id": "test"
                         },
-                        "test.completeness.stats:md5,7dc9bd04377e9e5c1f85a15ebae24421"
+                        "test.completeness.stats:md5,b57660ab6723d6f6cf4cfdac672b344a"
                     ],
                     [
                         {
                             "_hap": "hap4",
                             "id": "test"
                         },
-                        "test.completeness.stats:md5,158e4899a025a978626f4535d6421129"
+                        "test.completeness.stats:md5,5dafe0302e3532e9645f6ead65eb45cf"
                     ]
                 ],
                 "merqury_images": [
@@ -1428,15 +1428,15 @@
                             "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.fl.png",
                             "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.ln.png",
                             "test.baUndUnlc1.hic.hap1.p_ctg.spectra-cn.st.png",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -1448,15 +1448,15 @@
                             "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.fl.png",
                             "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.ln.png",
                             "test.baUndUnlc1.hic.hap2.p_ctg.spectra-cn.st.png",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -1468,15 +1468,15 @@
                             "test.GCA_922984935.2.subset.spectra-cn.fl.png",
                             "test.GCA_922984935.2.subset.spectra-cn.ln.png",
                             "test.GCA_922984935.2.subset.spectra-cn.st.png",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ],
                     [
@@ -1488,15 +1488,15 @@
                             "test.GCA_965654295.1.spectra-cn.fl.png",
                             "test.GCA_965654295.1.spectra-cn.ln.png",
                             "test.GCA_965654295.1.spectra-cn.st.png",
+                            "test.concat_haps.spectra-cn.fl.png",
+                            "test.concat_haps.spectra-cn.ln.png",
+                            "test.concat_haps.spectra-cn.st.png",
                             "test.spectra-asm.fl.png",
                             "test.spectra-asm.ln.png",
                             "test.spectra-asm.st.png",
                             "test.spectra-cn.fl.png",
                             "test.spectra-cn.ln.png",
-                            "test.spectra-cn.st.png",
-                            "test.temp.spectra-cn.fl.png",
-                            "test.temp.spectra-cn.ln.png",
-                            "test.temp.spectra-cn.st.png"
+                            "test.spectra-cn.st.png"
                         ]
                     ]
                 ],
@@ -1509,28 +1509,28 @@
                             "_hap": "hap1",
                             "id": "test"
                         },
-                        "test.qv:md5,d23c07da79afae1f35707e60e5d0afc2"
+                        "test.qv:md5,c176229f293ec1f834936c5e953f885f"
                     ],
                     [
                         {
                             "_hap": "hap2",
                             "id": "test"
                         },
-                        "test.qv:md5,b7916ca46b21648109e1658b105fafbb"
+                        "test.qv:md5,ad466cedb15e72a8e5d0322ed8b216a3"
                     ],
                     [
                         {
                             "_hap": "hap3",
                             "id": "test"
                         },
-                        "test.qv:md5,bc580ccf53c6e93e23e2a3fd89b7d82b"
+                        "test.qv:md5,f0bf89a047934b037dba3b68f1815d2a"
                     ],
                     [
                         {
                             "_hap": "hap4",
                             "id": "test"
                         },
-                        "test.qv:md5,36c9ac35716604f245ad097504f0fe00"
+                        "test.qv:md5,6cb9fef18b12b55f55762c242357c7a4"
                     ]
                 ],
                 "stats": [
@@ -1552,10 +1552,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-10T10:34:50.673956",
+        "timestamp": "2026-11-09T11:39:53.009098",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.6"
+            "nextflow": "26.10.5"
         }
     },
     "meles meles - no trio - no busco - no fastk": {
