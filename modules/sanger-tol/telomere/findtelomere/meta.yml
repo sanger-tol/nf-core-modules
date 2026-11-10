@@ -40,13 +40,6 @@ input:
     - telomereseq:
         type: string
         description: DNA sequence of a telomere motif
-  - split_windows:
-      type: boolean
-      description: |
-        When true, run `FindTelomereWindows --split` so strand-specific
-        `*.fwd.telomere.bed` / `*.rev.telomere.bed` and `*.fwd.windows` / `*.rev.windows`
-        are written in addition to combined `*.telomere.bed` and `*.windows`.
-        When false, only the combined BED and windows files are produced.
 output:
   telomere:
     - - meta:
