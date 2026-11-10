@@ -3,9 +3,9 @@ process ASMSTATS {
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c4/c47c4b4f55ce62f79edd9b4c5a26b7b1ed60684452dbbbd03f0be0d56c7b00be/data':
-        'community.wave.seqera.io/library/seqtk_perl:37201934bb74266e' }"
+    container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/c4/c47c4b4f55ce62f79edd9b4c5a26b7b1ed60684452dbbbd03f0be0d56c7b00be/data'
+        : 'community.wave.seqera.io/library/seqtk_perl:37201934bb74266e'}"
 
     input:
     tuple val(meta), path(assembly)
@@ -24,17 +24,17 @@ process ASMSTATS {
     // ${moduleDir}/resources/usr/bin/asmstats. To use this module, you will
     // either have to copy this file to ${projectDir}/bin or set the option
     // nextflow.enable.moduleBinaries = true in your nextflow.config file.
-    def args    = task.ext.args ?: ''
-    def prefix  = task.ext.prefix ?: "${assembly.getName()}"
+    def args = task.ext.args ?: ''
+    def prefix = task.ext.prefix ?: "${assembly.getName()}"
     """
     asmstats \\
-        $args \\
+        ${args} \\
         ${assembly} \\
         > ${prefix}.stats
     """
 
     stub:
-    def prefix  = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.stats
     """
