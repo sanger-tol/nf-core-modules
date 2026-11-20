@@ -9,12 +9,11 @@ include { SAMTOOLS_SPLITHEADER       } from '../../../modules/nf-core/samtools/s
 include { BAM_SAMTOOLS_MERGE_MARKDUP } from '../bam_samtools_merge_markdup/main'
 
 workflow CRAM_MAP_ILLUMINA_HIC {
-
     take:
-    ch_assemblies        // Channel [meta, assembly]
-    ch_hic_cram          // Channel [meta, cram] OR [meta, [cram1, cram2, ..., cram_n]]
-    val_aligner          // string: [either "bwamem2" or "minimap2"]
-    val_cram_chunk_size  // integer: Number of CRAM slices per chunk for mapping
+    ch_assemblies // Channel [meta, assembly]
+    ch_hic_cram // Channel [meta, cram] OR [meta, [cram1, cram2, ..., cram_n]]
+    val_aligner // string: [either "bwamem2" or "minimap2"]
+    val_cram_chunk_size // integer: Number of CRAM slices per chunk for mapping
 
     main:
     //
@@ -22,13 +21,12 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     def val_asm_meta_list = Collections.synchronizedSet(new HashSet())
 
-    ch_assemblies
-        .map { meta, _sample ->
-            if (!val_asm_meta_list.add(meta)) {
-                error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${meta}")
-            }
-            meta
+    ch_assemblies.map { meta, _sample ->
+        if (!val_asm_meta_list.add(meta)) {
+            error("Error: Duplicate meta object found in `ch_assemblies` in CRAM_MAP_ILLUMINA_HIC: ${meta}")
         }
+        meta
+    }
 
     //
     // Logic: check if CRAM files are accompanied by an index
@@ -36,26 +34,24 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     ch_hic_cram_meta_mod = ch_hic_cram
         .transpose()
-        .map { meta, cram -> [ meta + [ cramfile: cram ], cram ]}
+        .map { meta, cram -> [meta + [cramfile: cram], cram] }
 
-    ch_hic_cram_raw = ch_hic_cram_meta_mod
-            .branch { meta, cram ->
-                def index = file(cram.toUriString() + ".crai")
-                have_index: index.exists()
-                    return [ meta, cram, index ]
-                no_index: true
-                    return [ meta, cram ]
-            }
+    ch_hic_cram_raw = ch_hic_cram_meta_mod.branch { meta, cram ->
+        def index = file(cram.toUriString() + ".crai")
+        have_index: index.exists()
+        return [meta, cram, index]
+        no_index: true
+        return [meta, cram]
+    }
 
     //
     // Module: Index CRAM files without indexes
     //
     SAMTOOLS_INDEX(ch_hic_cram_raw.no_index)
 
-    ch_hic_cram_indexed = ch_hic_cram_raw.have_index
-        .mix(
-            ch_hic_cram_raw.no_index.join(SAMTOOLS_INDEX.out.index)
-        )
+    ch_hic_cram_indexed = ch_hic_cram_raw.have_index.mix(
+        ch_hic_cram_raw.no_index.join(SAMTOOLS_INDEX.out.index)
+    )
 
     //
     // Module: Process the cram index files to determine how many
@@ -63,7 +59,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     //
     CRAMALIGN_GENCRAMCHUNKS(
         ch_hic_cram_indexed,
-        val_cram_chunk_size
+        val_cram_chunk_size,
     )
 
     //
@@ -72,21 +68,20 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     ch_n_cram_chunks = CRAMALIGN_GENCRAMCHUNKS.out.cram_slices
         .map { meta, _cram, _crai, chunkn, _slices ->
             def clean_meta = meta - meta.subMap("cramfile")
-            [ clean_meta, chunkn ]
+            [clean_meta, chunkn]
         }
         .transpose()
         .groupTuple(by: 0)
-        .map { meta, chunkns -> [ meta, chunkns.size() ] }
+        .map { meta, chunkns -> [meta, chunkns.size()] }
 
     //
     // Module: Extract read groups from CRAM headers
     //
     SAMTOOLS_SPLITHEADER(ch_hic_cram_meta_mod)
 
-    ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup
-        .map { meta, rg_file ->
-            [ meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") } ]
-        }
+    ch_readgroups = SAMTOOLS_SPLITHEADER.out.readgroup.map { meta, rg_file ->
+        [meta, rg_file.readLines().collect { line -> line.replaceAll("\t", "\\\\t") }]
+    }
 
     //
     // Logic: Join reagroups with the CRAM chunks and clean meta
@@ -95,35 +90,36 @@ workflow CRAM_MAP_ILLUMINA_HIC {
         .combine(CRAMALIGN_GENCRAMCHUNKS.out.cram_slices.transpose(), by: 0)
         .map { meta, rg, cram, crai, chunkn, slices ->
             def clean_meta = meta - meta.subMap("cramfile")
-            [ clean_meta, rg, cram, crai, chunkn, slices ]
+            [clean_meta, rg, cram, crai, chunkn, slices]
         }
 
     //
     // Logic: Begin alignment - fork depending on specified aligner
     //
-    if(val_aligner == "bwamem2") {
+    if (val_aligner == "bwamem2") {
         //
         // Module: Create bwa-mem2 index for assembly
         //
-        BWAMEM2_INDEX(ch_assemblies)
+        BWAMEM2_INDEX(ch_assemblies, [])
 
         ch_mapping_inputs = ch_cram_rg
             .combine(ch_assemblies, by: 0)
             .combine(BWAMEM2_INDEX.out.index, by: 0)
             .multiMap { meta, rg, cram, crai, chunkn, slices, assembly, index ->
-                cram:      [ meta, cram, crai, rg ]
-                reference: [ meta, index, assembly ]
-                slices:    [ chunkn, slices ]
+                cram: [meta, cram, crai, rg]
+                reference: [meta, index, assembly]
+                slices: [chunkn, slices]
             }
 
         CRAMALIGN_BWAMEM2ALIGNHIC(
             ch_mapping_inputs.cram,
             ch_mapping_inputs.reference,
-            ch_mapping_inputs.slices
+            ch_mapping_inputs.slices,
         )
 
         ch_mapped_bams = CRAMALIGN_BWAMEM2ALIGNHIC.out.bam
-    } else if(val_aligner == "minimap2") {
+    }
+    else if (val_aligner == "minimap2") {
         //
         // MODULE: generate minimap2 mmi file
         //
@@ -133,19 +129,20 @@ workflow CRAM_MAP_ILLUMINA_HIC {
             .combine(ch_assemblies, by: 0)
             .combine(MINIMAP2_INDEX.out.index, by: 0)
             .multiMap { meta, rg, cram, crai, chunkn, slices, assembly, index ->
-                cram:      [ meta, cram, crai, rg ]
-                reference: [ meta, index, assembly ]
-                slices:    [ chunkn, slices ]
+                cram: [meta, cram, crai, rg]
+                reference: [meta, index, assembly]
+                slices: [chunkn, slices]
             }
 
         CRAMALIGN_MINIMAP2ALIGNHIC(
             ch_mapping_inputs.cram,
             ch_mapping_inputs.reference,
-            ch_mapping_inputs.slices
+            ch_mapping_inputs.slices,
         )
 
         ch_mapped_bams = CRAMALIGN_MINIMAP2ALIGNHIC.out.bam
-    } else {
+    }
+    else {
         error("Unsupported aligner: ${val_aligner}")
     }
 
@@ -170,7 +167,7 @@ workflow CRAM_MAP_ILLUMINA_HIC {
     BAM_SAMTOOLS_MERGE_MARKDUP(
         ch_merge_input,
         ch_assemblies,
-        true
+        true,
     )
 
     emit:
