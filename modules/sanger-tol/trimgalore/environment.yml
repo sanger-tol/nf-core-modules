@@ -4,6 +4,6 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - bioconda::trim-galore=2.3.0
-  - bioconda::samtools=1.21
+  - bioconda::samtools=1.25
+  - bioconda::trim-galore=2.6.0
   - conda-forge::gzip=1.14

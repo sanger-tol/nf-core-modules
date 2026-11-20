@@ -15,12 +15,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/c-ares-1.34.9-hebe6cf0_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.10.23-hbd8a1cb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/gzip-1.14-hb9d3cd8_0.conda
-      - conda: https://conda.anaconda.org/bioconda/linux-64/htslib-1.24-ha79157c_0.conda
+      - conda: https://conda.anaconda.org/bioconda/linux-64/htslib-1.25-ha79157c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-79.1-py314hb486520_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/keyutils-1.6.3-h7cc23a3_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/krb5-1.22.2-hbc21106_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libcurl-8.23.0-ha042cf0_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/libdeflate-1.26-h351257e_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/libdeflate-1.25-hd45a770_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libedit-3.1.20260512-pl5321h373387f_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libev-4.33-h280c20c_3.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda
@@ -30,12 +30,13 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libpsl-0.23.1-h7fe8442_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libssh2-1.11.1-h6154650_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_7.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/libxcrypt-4.4.38-h280c20c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/libzlib-1.3.2-h25fd6f3_3.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/ncurses-6.6-hdb14827_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/procps-ng-4.0.6-h3cf9a74_1.conda
-      - conda: https://conda.anaconda.org/bioconda/linux-64/samtools-1.21-h96c455f_1.tar.bz2
-      - conda: https://conda.anaconda.org/bioconda/linux-64/trim-galore-2.3.0-hf1b6044_0.conda
+      - conda: https://conda.anaconda.org/bioconda/linux-64/samtools-1.25-h9dcdb79_0.conda
+      - conda: https://conda.anaconda.org/bioconda/linux-64/trim-galore-2.6.0-hf1b6044_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/which-2.25-h171cf75_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_7.conda
 packages:
@@ -90,22 +91,22 @@ packages:
   license_family: GPL
   size: 124254
   timestamp: 1744281694433
-- conda: https://conda.anaconda.org/bioconda/linux-64/htslib-1.24-ha79157c_0.conda
-  sha256: 97e0f0b8700f56b1ade3034f81070ede705fce3ef9a1b5f15e79e3eb9997ac17
-  md5: 232775112c6fea38e9e7c25d2a58d7d2
+- conda: https://conda.anaconda.org/bioconda/linux-64/htslib-1.25-ha79157c_0.conda
+  sha256: a7bbfece33fb2369856bcafad28630f60f4a3083b67ea81f3e1397eea12890d9
+  md5: 1acd897ce9614d1b64de6f9d737e5f80
   depends:
   - __glibc >=2.17,<3.0.a0
   - bzip2 >=1.0.8,<2.0a0
-  - libcurl >=8.21.0,<9.0a0
-  - libdeflate >=1.25,<1.27.0a0
+  - libcurl >=8.23.0,<9.0a0
+  - libdeflate >=1.25,<1.26.0a0
   - libgcc >=14
   - liblzma >=5.8.3,<6.0a0
   - libzlib >=1.3.2,<2.0a0
-  - openssl >=3.5.7,<4.0a0
+  - openssl >=3.5.9,<4.0a0
   license: MIT
   license_family: MIT
-  size: 1166222
-  timestamp: 1783611817902
+  size: 1175378
+  timestamp: 1793105002055
 - conda: https://conda.anaconda.org/conda-forge/linux-64/icu-79.1-py314hb486520_0.conda
   sha256: 9a339bedff62e63bb949383edc656956abef1f23663c879f7fcb66a004a18ef9
   md5: 0be836734696f6476615ef0e97b388a3
@@ -158,16 +159,16 @@ packages:
   license_family: MIT
   size: 505683
   timestamp: 1791990900844
-- conda: https://conda.anaconda.org/conda-forge/linux-64/libdeflate-1.26-h351257e_0.conda
-  sha256: f437f68abb1fa1dededd082a0c2800bec40495e01cf9ec46f4e693e34d60b644
-  md5: d0c17fc12939a990f0865b7a14b49cfe
+- conda: https://conda.anaconda.org/conda-forge/linux-64/libdeflate-1.25-hd45a770_1.conda
+  sha256: 82e134c8a08b1eed9a2ed8ab578b89aa1730dcde3dea8dd87645ed0637878e54
+  md5: 40f9b31aa9cf007789867df0decd0492
   depends:
   - __glibc >=2.17,<3.0.a0
-  - libgcc >=15
+  - libgcc >=14
   license: MIT
   license_family: MIT
-  size: 74338
-  timestamp: 1787442593524
+  size: 73710
+  timestamp: 1785908694612
 - conda: https://conda.anaconda.org/conda-forge/linux-64/libedit-3.1.20260512-pl5321h373387f_0.conda
   sha256: 45301f14f4eb66da57cfaf2d265f3eeee73f8b07e99614ee3afc5b26eea91126
   md5: 27dbd7e2984b8fe48e069379636ccfdd
@@ -275,6 +276,15 @@ packages:
   license_family: GPL
   size: 6615436
   timestamp: 1790303132935
+- conda: https://conda.anaconda.org/conda-forge/linux-64/libxcrypt-4.4.38-h280c20c_0.conda
+  sha256: f7e9292dd219a6435bbb1223da9586c3e70d66d169c5a92f08db3f2127df04e9
+  md5: f7a7ff5a6ab331e037abd34f379a631d
+  depends:
+  - libgcc >=14
+  - __glibc >=2.17,<3.0.a0
+  license: LGPL-2.1-or-later
+  size: 101957
+  timestamp: 1785887123445
 - conda: https://conda.anaconda.org/conda-forge/linux-64/libzlib-1.3.2-h25fd6f3_3.conda
   sha256: eb8a0db0aa570124f7d2a93d7c7f596e3390df5e047818d873baad32985fc736
   md5: 0de0122d9570a8ab637c6b73db268389
@@ -317,20 +327,22 @@ packages:
   license_family: GPL
   size: 593790
   timestamp: 1794091094920
-- conda: https://conda.anaconda.org/bioconda/linux-64/samtools-1.21-h96c455f_1.tar.bz2
-  sha256: 2a22cd528c5f8448398a6ca77154bed39081cee521f95ac704af4df64114304f
-  md5: 0ff9d5d48561198378ad3cb34ce830bf
+- conda: https://conda.anaconda.org/bioconda/linux-64/samtools-1.25-h9dcdb79_0.conda
+  sha256: 92282894edc9e5c1ae4d0ea21a6e4e58257716ee0b4ad81d6fc8b0dc89d35692
+  md5: 653e70a5ed974a5b25775bfee26430b8
   depends:
-  - htslib >=1.21,<1.25.0a0
-  - libgcc >=13
-  - libzlib >=1.3.1,<2.0a0
-  - ncurses >=6.5,<7.0a0
+  - __glibc >=2.17,<3.0.a0
+  - htslib >=1.25,<1.26.0a0
+  - libgcc >=14
+  - libxcrypt >=4.4.38
+  - libzlib >=1.3.2,<2.0a0
+  - ncurses >=6.6,<7.0a0
   license: MIT
-  size: 487188
-  timestamp: 1734249911773
-- conda: https://conda.anaconda.org/bioconda/linux-64/trim-galore-2.3.0-hf1b6044_0.conda
-  sha256: 37ddd712ee2585b518380c74522661f297f2d3ec6b1ece53519bfefca6ce3e0c
-  md5: 1936873edc4dd0803b8a1d83408328a5
+  size: 508705
+  timestamp: 1793107769064
+- conda: https://conda.anaconda.org/bioconda/linux-64/trim-galore-2.6.0-hf1b6044_0.conda
+  sha256: 931ba42b5055a3210fc60bb27d4d82f52a0155f3cb25890d17d4e93f7aabf597
+  md5: 198db4d6dac695766eef43b43b9bcb08
   depends:
   - __glibc >=2.17,<3.0.a0
   - libgcc >=14
@@ -339,8 +351,8 @@ packages:
   - __glibc >=2.17
   license: GPL-3.0-only
   license_family: GPL
-  size: 3263165
-  timestamp: 1782577475869
+  size: 3487609
+  timestamp: 1795047013740
 - conda: https://conda.anaconda.org/conda-forge/linux-64/which-2.25-h171cf75_0.conda
   sha256: 2bf9a40d86d29fd5c30d0febec99d06398143ddeece9ebb175cc5a6d20279943
   md5: f16d4aec5e8135e8e7bba02ef600149e

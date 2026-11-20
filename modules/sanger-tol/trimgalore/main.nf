@@ -5,8 +5,8 @@ process TRIMGALORE {
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
-        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/92/92076024c2fd5addd785ce04fef5f754fb744c668efb457ff19f20150a405999/data'
-        : 'community.wave.seqera.io/library/trim-galore_samtools_gzip:270d120a8d462d4a'}"
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/77/7766de81bf56e85fe9376b02553efc161d270625c9179c87784d1df988215a5e/data'
+        : 'community.wave.seqera.io/library/samtools_trim-galore_gzip:1d20361594ece765'}"
 
     input:
     tuple val(meta), path(cram)

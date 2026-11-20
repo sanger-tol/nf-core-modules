@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "test_val.cram:md5,cfe0a441fdf2d6206441d783b09b7bca"
+                        "test_val.cram:md5,4c506c2e08b4d87f466c0f75ce4c8883"
                     ]
                 ],
                 "html": [
@@ -19,8 +19,8 @@
                             "id": "test"
                         },
                         [
-                            "test_R1_trimming_report.txt:md5,a5a6dd4dabf27249091f5ce37e30eb07",
-                            "test_R2_trimming_report.txt:md5,8f46401dc8df98ce8a46adf783b1c633"
+                            "test_R1_trimming_report.txt:md5,490be9cd477c413ec8cc6286e8add2c7",
+                            "test_R2_trimming_report.txt:md5,1c9c5dd1a7367f39810a9c4e7b72191b"
                         ]
                     ]
                 ],
@@ -28,7 +28,7 @@
                     [
                         "TRIMGALORE",
                         "trimgalore",
-                        "2.3.0"
+                        "2.6.0"
                     ]
                 ],
                 "zip": [
@@ -36,7 +36,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-11-20T11:18:09.769946474",
+        "timestamp": "2026-11-20T11:41:41.851644719",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
@@ -74,7 +74,7 @@
                     [
                         "TRIMGALORE",
                         "trimgalore",
-                        "2.3.0"
+                        "2.6.0"
                     ]
                 ],
                 "cram": [
@@ -103,7 +103,7 @@
                     [
                         "TRIMGALORE",
                         "trimgalore",
-                        "2.3.0"
+                        "2.6.0"
                     ]
                 ],
                 "zip": [
@@ -111,7 +111,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-11-20T11:18:16.600714869",
+        "timestamp": "2026-11-20T11:41:48.788626897",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"

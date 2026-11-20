@@ -15,7 +15,8 @@ tools:
         MspI-digested RRBS-type (Reduced Representation Bisufite-Seq) libraries.
       homepage: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
       documentation: https://github.com/FelixKrueger/TrimGalore/blob/master/Docs/Trim_Galore_User_Guide.md
-      licence: ["GPL-3.0-or-later"]
+      licence:
+        - "GPL-3.0-or-later"
       identifier: biotools:trim_galore
 
 input:
@@ -24,27 +25,25 @@ input:
         description: |
           Groovy Map containing sample information
           e.g. [ id:'test', single_end:false ]
-    - reads:
+    - cram:
         type: file
         description: |
-          List of input FastQ files of size 1 and 2 for single-end and paired-end data,
-          respectively.
+          Cram file of interleaved paired-end illumina sequencing data
         ontologies:
-          - edam: "http://edamontology.org/format_1930" # FASTQ
+          - edam: "http://edamontology.org/format_3462" # CRAM
 output:
-  reads:
+  cram:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. [ id:'test', single_end:false ]
-      - "*{3prime,5prime,trimmed,val}{,_1,_2}.fq.gz":
+      - "*{trimmed,val}.cram":
           type: file
           description: The trimmed/modified fastq reads
-          pattern: "*{3prime,5prime,trimmed,val}{,_1,_2}.fq.gz"
+          pattern: "*{trimmed,val}.cram"
           ontologies:
-            - edam: "http://edamontology.org/format_1930" # FASTQ
-            - edam: http://edamontology.org/format_3989 # GZIP format
+            - edam: http://edamontology.org/format_3462 # CRAM
   log:
     - - meta:
           type: map
@@ -57,19 +56,6 @@ output:
           pattern: "*report.txt"
           ontologies:
             - edam: "http://edamontology.org/format_2330" # Textual format
-  unpaired:
-    - - meta:
-          type: map
-          description: |
-            Groovy Map containing sample information
-            e.g. [ id:'test', single_end:false ]
-      - "*unpaired{,_1,_2}.fq.gz":
-          type: file
-          description: unpaired reads when --retain_unpaired flag is used
-          pattern: "*unpaired*.fq.gz"
-          ontologies:
-            - edam: "http://edamontology.org/format_1930" # FASTQ
-            - edam: http://edamontology.org/format_3989 # GZIP format
   html:
     - - meta:
           type: map
@@ -126,25 +112,25 @@ maintainers:
   - "@tbrown91"
 containers:
   docker:
-    linux/arm64:
-      name: community.wave.seqera.io/library/trim-galore_samtools_gzip:a6ba585a002f7a03
-      build_id: bd-a6ba585a002f7a03_1
-      scan_id: sc-f6d703b7f644ba94_1
     linux/amd64:
-      name: community.wave.seqera.io/library/trim-galore_samtools_gzip:270d120a8d462d4a
-      build_id: bd-270d120a8d462d4a_1
-      scan_id: sc-cb9d8281c79124ed_1
+      name: community.wave.seqera.io/library/samtools_trim-galore_gzip:1d20361594ece765
+      build_id: bd-1d20361594ece765_1
+      scan_id: sc-8f57f2627fd1b459_1
+    linux/arm64:
+      name: community.wave.seqera.io/library/samtools_trim-galore_gzip:85728b687c84a421
+      build_id: bd-85728b687c84a421_1
+      scan_id: sc-ecc147ae780ec6e3_1
   singularity:
-    linux/arm64:
-      name: oras://community.wave.seqera.io/library/trim-galore_samtools_gzip:5f20fc846fcc5ec3
-      build_id: bd-5f20fc846fcc5ec3_1
-      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/e5/e50a5eca816cf8a7d2895739aa7b12bfe3a21d586dce4f25881b8fd6a9452512/data
     linux/amd64:
-      name: oras://community.wave.seqera.io/library/trim-galore_samtools_gzip:efda62fd71b1c63a
-      build_id: bd-efda62fd71b1c63a_1
-      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/92/92076024c2fd5addd785ce04fef5f754fb744c668efb457ff19f20150a405999/data
+      name: oras://community.wave.seqera.io/library/samtools_trim-galore_gzip:a55b8d09c8b7be30
+      build_id: bd-a55b8d09c8b7be30_1
+      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/77/7766de81bf56e85fe9376b02553efc161d270625c9179c87784d1df988215a5e/data
+    linux/arm64:
+      name: oras://community.wave.seqera.io/library/samtools_trim-galore_gzip:17b682295deb6d56
+      build_id: bd-17b682295deb6d56_1
+      https: https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/7d/7d2b76fae5d5ae295c96bdee0221183201c5c9721a53a7cadcccc88a56cb8494/data
   conda:
     linux/amd64:
-      lock_file: modules/sanger-tol/trimgalore/.conda-lock/linux_amd64-bd-270d120a8d462d4a_1.txt
+      lock_file: modules/sanger-tol/trimgalore/.conda-lock/linux_amd64-bd-1d20361594ece765_1.txt
     linux/arm64:
-      lock_file: modules/sanger-tol/trimgalore/.conda-lock/linux_arm64-bd-a6ba585a002f7a03_1.txt
+      lock_file: modules/sanger-tol/trimgalore/.conda-lock/linux_arm64-bd-85728b687c84a421_1.txt
