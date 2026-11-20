@@ -7,11 +7,16 @@
                         {
                             "id": "test"
                         },
-                        "test_val.cram:md5,4c506c2e08b4d87f466c0f75ce4c8883"
+                        "test_val.cram:md5,2f94ed8771a187834db35f67a4e5e3b8"
                     ]
                 ],
                 "html": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_val_fastqc.html"
+                    ]
                 ],
                 "log": [
                     [
@@ -32,11 +37,16 @@
                     ]
                 ],
                 "zip": [
-                    
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_val_fastqc.zip"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-11-20T11:41:41.851644719",
+        "timestamp": "2026-11-20T12:07:24.988379144",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "25.10.4"
