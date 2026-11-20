@@ -12,7 +12,7 @@ process TRIMGALORE {
     tuple val(meta), path(cram)
 
     output:
-    tuple val(meta), path("*{trimmed,val}.cram")                       , emit: cram 
+    tuple val(meta), path("*{trimmed,val}.cram")                       , emit: cram
     tuple val(meta), path("*report.txt")                               , emit: log     , optional: true
     tuple val(meta), path("*.html")                                    , emit: html    , optional: true
     tuple val(meta), path("*.zip")                                     , emit: zip     , optional: true
@@ -37,12 +37,12 @@ process TRIMGALORE {
         }
     }
 
-    // Convert from cram to unaligned bam and pass to trim_galore 
+    // Convert from cram to unaligned bam and pass to trim_galore
     // Will likely not work for single-end RNAseq datasets - not in scope of current workflow
 
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    samtools view -h -@ ${task.cpus} -O BAM ${cram} -o ${prefix}.bam 
+    samtools view -h -@ ${task.cpus} -O BAM ${cram} -o ${prefix}.bam
 
     trim_galore \\
         ${args} \\
