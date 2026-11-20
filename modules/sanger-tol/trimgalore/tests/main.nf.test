@@ -14,7 +14,7 @@ nextflow_process {
         when {
             process {
                 """
-                
+
                 input[0] = [
                     [ id:'test' ],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel1/illumina/31231_3_1.subset.cram', checkIfExists: true),
@@ -41,7 +41,7 @@ nextflow_process {
         when {
             process {
                 """
-                
+
                 input[0] = [
                     [ id:'test' ],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel1/illumina/31231_3_1.subset.cram', checkIfExists: true),
