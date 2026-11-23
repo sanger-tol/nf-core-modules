@@ -9,9 +9,9 @@ nextflow_workflow {
     tag "subworkflows_sangertol"
     tag "subworkflows/fasta_decontamination_syncon"
     tag "syncon"
-    tag "syncon/build"
-    tag "syncon/decon"
-    tag "syncon/fetch"
+    tag "subworkflows/../../modules/nf-core/syncon/build"
+    tag "subworkflows/../../modules/nf-core/syncon/fetch"
+    tag "subworkflows/../../modules/nf-core/syncon/decon"
 
     config "./nextflow.config"
 
