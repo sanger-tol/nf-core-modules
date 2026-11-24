@@ -48,7 +48,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-11-24T09:38:15.970110967",
+        "timestamp": "2026-11-24T14:36:12.122527651",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -57,52 +57,14 @@
     "Meles meles - illumina - cram": {
         "content": [
             {
-                "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "31231_3_1.subset.cram.1.test.star.bam:md5,5b9459ce5c89d309e334e42b8d730210"
-                    ]
-                ],
-                "1": [
-                    [
-                        "CRAMALIGN_STARALIGN",
-                        "star",
-                        "2.7.11b"
-                    ]
-                ],
-                "2": [
-                    [
-                        "CRAMALIGN_STARALIGN",
-                        "samtools",
-                        "1.24"
-                    ]
-                ],
                 "bam": [
                     [
                         {
                             "id": "test"
                         },
-                        "31231_3_1.subset.cram.1.test.star.bam:md5,5b9459ce5c89d309e334e42b8d730210"
+                        "31231_3_1.subset.cram.1.test.star.bam:md5Reads,f3c412538d01c027bf5fe145c0d272ee"
                     ]
                 ],
-                "versions_samtools": [
-                    [
-                        "CRAMALIGN_STARALIGN",
-                        "samtools",
-                        "1.24"
-                    ]
-                ],
-                "versions_star": [
-                    [
-                        "CRAMALIGN_STARALIGN",
-                        "star",
-                        "2.7.11b"
-                    ]
-                ]
-            },
-            {
                 "versions_samtools": [
                     [
                         "CRAMALIGN_STARALIGN",
@@ -119,7 +81,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-11-24T09:50:34.518895036",
+        "timestamp": "2026-11-24T14:35:50.659212976",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
