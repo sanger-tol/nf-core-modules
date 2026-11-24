@@ -39,19 +39,16 @@ process CRAMALIGN_STARALIGN {
     STAR \\
         --genomeDir $index \\
         --runThreadN $task.cpus \\
-        --outFileNamePrefix $prefix. \\
         $args \\
         --readFilesCommand "samtools view -h" \\
-        --readFilesIn unaligned.bam
-
-    samtools view -h ${prefix}.Aligned.out.bam |
+        --readFilesIn unaligned.bam |\\
+        samtools view -h |\\
         insert_cram_pg_header.awk -v pgfile="${prefix}_cram_pg.tmp" |\\
         samtools fixmate ${args2} - - |\\
         samtools view -h ${args3} |\\
         samtools sort ${args4} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.star.bam -
 
     rm unaligned.bam
-    rm ${prefix}.Aligned.out.bam
     """
 
     stub:
