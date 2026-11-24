@@ -39,6 +39,9 @@ process CRAMALIGN_STARALIGN {
     STAR \\
         --genomeDir $index \\
         --runThreadN $task.cpus \\
+        --outSAMtype BAM Unsorted \\
+        --readFilesType SAM PE \\
+        --outStd BAM_Unsorted \\
         $args \\
         --readFilesCommand "samtools view -h" \\
         --readFilesIn unaligned.bam |\\
