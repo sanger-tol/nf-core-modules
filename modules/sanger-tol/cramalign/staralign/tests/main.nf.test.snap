@@ -1,0 +1,128 @@
+{
+    "Meles meles - illumina - cram - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "31231_3_1.subset.cram.1.test.star.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "star",
+                        "2.7.11b"
+                    ]
+                ],
+                "2": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "samtools",
+                        "1.24"
+                    ]
+                ],
+                "bam": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "31231_3_1.subset.cram.1.test.star.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "samtools",
+                        "1.24"
+                    ]
+                ],
+                "versions_star": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "star",
+                        "2.7.11b"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-24T09:38:15.970110967",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "Meles meles - illumina - cram": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "31231_3_1.subset.cram.1.test.star.bam:md5,5b9459ce5c89d309e334e42b8d730210"
+                    ]
+                ],
+                "1": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "star",
+                        "2.7.11b"
+                    ]
+                ],
+                "2": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "samtools",
+                        "1.24"
+                    ]
+                ],
+                "bam": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "31231_3_1.subset.cram.1.test.star.bam:md5,5b9459ce5c89d309e334e42b8d730210"
+                    ]
+                ],
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "samtools",
+                        "1.24"
+                    ]
+                ],
+                "versions_star": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "star",
+                        "2.7.11b"
+                    ]
+                ]
+            },
+            {
+                "versions_samtools": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "samtools",
+                        "1.24"
+                    ]
+                ],
+                "versions_star": [
+                    [
+                        "CRAMALIGN_STARALIGN",
+                        "star",
+                        "2.7.11b"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-11-24T09:50:34.518895036",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    }
+}
