@@ -74,7 +74,7 @@ output:
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - '*.star.bam':
+      - "*.star.bam":
           type: file
           description: BAM file of mapped sequences
           pattern: "*.star.bam"

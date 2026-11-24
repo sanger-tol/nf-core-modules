@@ -9,8 +9,8 @@ nextflow_process {
     tag "star/genomegenerate"
     tag "cramalign"
     tag "cramalign/staralign"
-    tag "nf-core/star/genomegenerate" 
-    
+    tag "nf-core/star/genomegenerate"
+
     config "./nextflow.config"
 
     setup {
@@ -39,7 +39,7 @@ nextflow_process {
         when {
             process {
                 """
-                
+
                 input[0] = Channel.of([
                     [ id:'test' ],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel1/illumina/31231_3_1.subset.cram', checkIfExists: true),
@@ -75,7 +75,7 @@ nextflow_process {
         when {
             process {
                 """
-                
+
                 input[0] = Channel.of([
                     [ id:'test' ],
                     file(params.modules_testdata_base_path + 'Meles_meles/genomic_data/mMelMel1/illumina/31231_3_1.subset.cram', checkIfExists: true),
@@ -89,7 +89,7 @@ nextflow_process {
                 input[2] = channel.of([
                     1, [0, 15]
                 ])
-                
+
                 """
             }
         }
