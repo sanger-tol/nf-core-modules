@@ -26,32 +26,28 @@ process CRAMALIGN_STARALIGN {
     def args2 = task.ext.args2 ?: ''
     def args3 = task.ext.args3 ?: ""
     def args4 = task.ext.args4 ?: ''
-    // Prepare read group arguments if rglines are found, else, empty string
-    def rg_arg = rglines ? '-C ' + rglines.collect { line ->
-            // Add SM when not present to avoid errors from downstream tool (e.g. variant callers)
-            def l = line.contains("SM:") ? line : "${line}\tSM:${meta.id}"
-            "-H '${l.replaceAll("\t", "\\\\t")}'"
-        }.join(' ')
-        : ''
+    def args5 = task.ext.args4 ?: ''
     """
+    samtools view --no-PG -H ${cram} | grep ^@PG > ${prefix}_cram_pg.tmp
 
-    samtools view -b -h -o unaligned.bam ${cram}
+    samtools cat ${args} -r "#:${range[0]}-${range[1]}" ${cram} |\\
+    samtools view -b -h -o ${cram.getBaseName()}.bam -
+
     STAR \\
         --genomeDir $index \\
         --runThreadN $task.cpus \\
         --outSAMtype BAM Unsorted \\
         --readFilesType SAM PE \\
         --outStd BAM_Unsorted \\
-        $args \\
+        $args2 \\
         --readFilesCommand "samtools view -h" \\
-        --readFilesIn unaligned.bam |\\
-        samtools view -h |\\
-        insert_cram_pg_header.awk -v pgfile="${prefix}_cram_pg.tmp" |\\
-        samtools fixmate ${args2} - - |\\
-        samtools view -h ${args3} |\\
-        samtools sort ${args4} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.star.bam -
+        --readFilesIn ${cram.getBaseName()}.bam |\\
+    insert_cram_pg_header.awk -v pgfile="${prefix}_cram_pg.tmp" |\\
+    samtools fixmate ${args3} - - |\\
+    samtools view -h ${args4} |\\
+    samtools sort ${args5} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.star.bam -
 
-    rm unaligned.bam
+    rm ${cram.getBaseName()}.bam
     """
 
     stub:

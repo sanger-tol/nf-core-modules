@@ -62,7 +62,7 @@
                         {
                             "id": "test"
                         },
-                        "31231_3_1.subset.cram.1.test.star.bam:md5Reads,f3c412538d01c027bf5fe145c0d272ee"
+                        "31231_3_1.subset.cram.1.test.star.bam:md5Reads,a09126be301d20d2a58b05e8a65589da"
                     ]
                 ],
                 "versions_samtools": [
@@ -81,7 +81,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-11-24T14:35:50.659212976",
+        "timestamp": "2026-11-26T11:28:05.795049432",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"

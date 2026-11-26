@@ -1,5 +1,8 @@
 name: cramalign_staralign
-description: Align reads to a reference genome using STAR
+description: |
+  Aligns a subset of RNASeq reads from a CRAM file to a reference genome using STAR,
+  pipes the resulting alignments through samtools fixmate and samtools sort, outputting
+  an alignment in BAM format.
 keywords:
   - align
   - fasta

@@ -51,7 +51,7 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'Meles_meles/assembly/release/mMelMel3.2_paternal_haplotype/insdc/GCA_922984935.2.subset.fasta.gz', checkIfExists: true)
                 ]).join(STAR_GENOMEGENERATE.out.index).map{ meta, assembly, index -> [meta, index, assembly] }
                 input[2] = channel.of([
-                    1, [0, 15]
+                    1, [0, 1]
                 ])
                 """
             }
