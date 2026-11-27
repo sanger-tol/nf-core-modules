@@ -77,10 +77,10 @@ output:
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "*.star.bam":
+      - "*.bam":
           type: file
           description: BAM file of mapped sequences
-          pattern: "*.star.bam"
+          pattern: "*.bam"
           ontologies:
             - edam: "http://edamontology.org/format_2572"
   versions_star:

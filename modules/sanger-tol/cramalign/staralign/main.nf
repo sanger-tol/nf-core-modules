@@ -13,7 +13,7 @@ process CRAMALIGN_STARALIGN {
     tuple val(chunkn), val(range)
 
     output:
-    tuple val(meta), path("*.star.bam"), emit: bam
+    tuple val(meta), path("*.bam"), emit: bam
     tuple val("${task.process}"), val('star'), eval('STAR --version | sed -e "s/STAR_//g"'), emit: versions_star, topic: versions
     tuple val("${task.process}"), val('samtools'), eval('samtools --version | head -1 | sed -e "s/samtools //"'), emit: versions_samtools, topic: versions
 
@@ -45,7 +45,7 @@ process CRAMALIGN_STARALIGN {
     insert_cram_pg_header.awk -v pgfile="${prefix}_cram_pg.tmp" |\\
     samtools fixmate ${args3} - - |\\
     samtools view -h ${args4} |\\
-    samtools sort ${args5} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.star.bam -
+    samtools sort ${args5} -@${task.cpus} -T ${prefix}_tmp -o ${prefix}.bam -
 
     rm ${cram.getBaseName()}.bam
     """
@@ -53,6 +53,6 @@ process CRAMALIGN_STARALIGN {
     stub:
     def prefix  = task.ext.prefix ?: "${cram}.${chunkn}.${meta.id}"
     """
-    touch ${prefix}.star.bam
+    touch ${prefix}.bam
     """
 }
