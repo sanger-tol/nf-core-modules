@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "31231_3_1.subset.cram.1.test.star.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "31231_3_1.subset.cram.1.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "1": [
@@ -29,7 +29,7 @@
                         {
                             "id": "test"
                         },
-                        "31231_3_1.subset.cram.1.test.star.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        "31231_3_1.subset.cram.1.test.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions_samtools": [
@@ -48,7 +48,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-11-24T14:36:12.122527651",
+        "timestamp": "2026-11-27T12:54:26.866752335",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -62,7 +62,7 @@
                         {
                             "id": "test"
                         },
-                        "31231_3_1.subset.cram.1.test.star.bam:md5Reads,a09126be301d20d2a58b05e8a65589da"
+                        "31231_3_1.subset.cram.1.test.bam:md5Reads,a09126be301d20d2a58b05e8a65589da"
                     ]
                 ],
                 "versions_samtools": [
@@ -81,7 +81,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-11-26T11:28:05.795049432",
+        "timestamp": "2026-11-27T12:54:03.350788143",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
