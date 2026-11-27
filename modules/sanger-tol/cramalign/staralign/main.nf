@@ -39,7 +39,7 @@ process CRAMALIGN_STARALIGN {
         --outSAMtype BAM Unsorted \\
         --readFilesType SAM PE \\
         --outStd BAM_Unsorted \\
-        $args2 \\
+        ${args2} \\
         --readFilesCommand "samtools view -h" \\
         --readFilesIn ${cram.getBaseName()}.bam |\\
     insert_cram_pg_header.awk -v pgfile="${prefix}_cram_pg.tmp" |\\
